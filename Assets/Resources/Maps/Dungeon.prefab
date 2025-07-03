@@ -12180,7 +12180,7 @@ GameObject:
   - component: {fileID: 2056131363973384503}
   - component: {fileID: 6498544884791936806}
   m_Layer: 0
-  m_Name: GameMap0000
+  m_Name: Dungeon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

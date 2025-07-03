@@ -1,13 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class MapLoader : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> MapList;
     public static MapLoader Instance { get; private set; }
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -15,10 +11,18 @@ public class MapLoader : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
         Instance = this;
     }
-    public void RenderMap(Vector3 position, int index)
+
+    void Start()
     {
-        Instantiate(MapList[index], position, Quaternion.identity);
+        RenderMap(Vector3.zero, "Dungeon");
+    }
+
+    private void RenderMap(Vector3 position, string mapName)
+    {
+        GameObject map = Resources.Load<GameObject>("Maps/" + mapName);
+        Instantiate(map, position, Quaternion.identity);
     }
 }
