@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      monster_rokita_0: 998882358334532859
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

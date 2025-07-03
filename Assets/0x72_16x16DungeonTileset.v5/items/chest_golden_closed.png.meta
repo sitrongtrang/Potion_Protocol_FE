@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      chest_golden_closed_0: -1916011556198081166
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

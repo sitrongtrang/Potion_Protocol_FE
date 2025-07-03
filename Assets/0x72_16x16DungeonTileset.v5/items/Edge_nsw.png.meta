@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Edge_nsw_0: -6451972171241350726
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

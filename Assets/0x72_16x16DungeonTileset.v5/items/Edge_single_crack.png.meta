@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Edge_single_crack_0: -7189110361766722250
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      gargoyle_mid_top_right_0: -9207338866800356727
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

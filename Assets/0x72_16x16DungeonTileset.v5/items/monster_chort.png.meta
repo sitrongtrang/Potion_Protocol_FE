@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      monster_chort_0: -5389241831629746534
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

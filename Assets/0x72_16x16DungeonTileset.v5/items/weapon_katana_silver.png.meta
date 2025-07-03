@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      weapon_katana_silver_0: 4616654550269642890
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

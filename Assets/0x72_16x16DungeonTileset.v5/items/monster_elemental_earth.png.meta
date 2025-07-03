@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      monster_elemental_earth_0: 6974251691625338248
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

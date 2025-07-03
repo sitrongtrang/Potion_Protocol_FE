@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      weapon_sledgehammer_0: 430741304504979887
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

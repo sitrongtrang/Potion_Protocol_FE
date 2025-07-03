@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      monster_zombie_small_0: 5267387816075831293
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

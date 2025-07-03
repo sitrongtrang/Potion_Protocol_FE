@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      wall_missing_brick_1_0: -9120929500333083644
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

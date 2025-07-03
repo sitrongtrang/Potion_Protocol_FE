@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      monster_elemental_gold_short_0: -2949108459271749749
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      monster_wogol_0: 7656354600595462534
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      floor_gargoyle_green_basin_0: 455005567554019350
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      monster_elemental_water_small_0: -889960650435674446
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

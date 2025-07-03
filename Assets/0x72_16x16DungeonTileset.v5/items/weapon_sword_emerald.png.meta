@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      weapon_sword_emerald_0: 2682953544306141838
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

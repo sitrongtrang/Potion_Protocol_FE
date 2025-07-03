@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      monster_elemental_fire_small_0: -7161229500485554534
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

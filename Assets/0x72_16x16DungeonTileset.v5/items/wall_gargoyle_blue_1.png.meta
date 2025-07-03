@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      wall_gargoyle_blue_1_0: 2350868523608790461
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

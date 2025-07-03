@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      weapon_silver_topaz_0: -4407641818345055028
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

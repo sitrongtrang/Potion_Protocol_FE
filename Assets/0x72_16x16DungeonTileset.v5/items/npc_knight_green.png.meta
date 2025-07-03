@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      npc_knight_green_0: -1754082037430881496
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

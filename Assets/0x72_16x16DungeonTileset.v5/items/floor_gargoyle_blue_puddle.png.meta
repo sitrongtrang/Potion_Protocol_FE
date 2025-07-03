@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      floor_gargoyle_blue_puddle_0: -1117133652239616291
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
