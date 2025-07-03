@@ -4,8 +4,39 @@ using UnityEngine;
 public class PlayerInventory
 {
     private IngredientConfig[] ingredients = new IngredientConfig[GameConstants.MaxSlot];
+
+    public IngredientConfig Get(int idx) => ingredients[idx];
+
+    public void Initialize()
+    {
+        return;
+    }
+
     public bool Add(IngredientConfig ingredient)
     {
-        return false;
+        int idx = FindSlot();
+        if (idx == -1) return false;
+        ingredients[idx] = ingredient;
+        Debug.Log("Picked up item " + ingredient.Name);
+        return true;
     }
+
+    public bool Remove(int idx)
+    {
+        if (ingredients[idx] == null) return false;
+        ingredients[idx] = null;
+        return true;
+    }
+
+    private int FindSlot()
+    {
+        for (int i = 0; i < GameConstants.MaxSlot; i++)
+        {
+            if (ingredients[i] == null) return i;
+        }
+
+        return -1;
+    }
+
+
 }
