@@ -5,21 +5,24 @@ public class EnemyController : MonoBehaviour
     [Header("Components")]
     [field: SerializeField] public EnemyConfig EnemyConf { get; private set; }
     [Header("Movement")]
-    public Vector3 PatrolTarget { get; private set; }
+    public Vector3 TargetToMove { get; private set; }
     public Vector3 PatrolCenter { get; private set; }
     private EnemyMovementState _currentMovementState;
     [Header("Combat")]
     private float _currentHp;
-    private float _searchTimer;
     [field: SerializeField] public LayerMask PlayerLayer { get; private set; }
     private Transform _playerTransform;
-    public Vector3 SearchTarget { get; private set; }
     public Vector3 LastSeenPlayerPosition { get; private set; }
+    [Header("Cooldown")]
+    private float _searchTimer;
+    public float _searchInterval;
+    public float _patrolInterval;
+    public float _attackInterval;
 
     #region UNITY_METHODS
     private void Start()
     {
-        // PatrolCenter = transform.position;
+        PatrolCenter = transform.position;
         _currentHp = EnemyConf.Hp;
         _currentMovementState = EnemyMovementState.Return;
     }
@@ -29,7 +32,8 @@ public class EnemyController : MonoBehaviour
     }
     private void Update()
     {
-
+        HandleState();
+        HandleDetection();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -74,7 +78,12 @@ public class EnemyController : MonoBehaviour
 
     private void HandlePatrol()
     {
-        EnemyConf.Patrol(this);
+        _patrolInterval -= Time.deltaTime;
+        if (_patrolInterval <= 0f)
+        {
+            EnemyConf.Patrol(this);
+        }
+
         if (_playerTransform != null)
             TransitionTo(EnemyMovementState.Chase);
     }
@@ -83,7 +92,7 @@ public class EnemyController : MonoBehaviour
     {
         if (_playerTransform == null)
         {
-            TransitionToSearch();
+            TransitionTo(EnemyMovementState.Search);
             return;
         }
 
@@ -99,11 +108,15 @@ public class EnemyController : MonoBehaviour
     {
         if (_playerTransform == null)
         {
-            TransitionToSearch();
+            TransitionTo(EnemyMovementState.Search);
             return;
         }
 
-        EnemyConf.Attack(this, _playerTransform);
+        _attackInterval -= Time.deltaTime;
+        if (_attackInterval <= 0f)
+        {
+            EnemyConf.Attack(this, _playerTransform);
+        }
 
         if (distanceToPlayer > EnemyConf.AttackRadius)
             TransitionTo(EnemyMovementState.Chase);
@@ -111,8 +124,13 @@ public class EnemyController : MonoBehaviour
 
     private void HandleSearch()
     {
-        EnemyConf.Search(this);
         _searchTimer -= Time.deltaTime;
+        _searchInterval -= Time.deltaTime;
+        
+        if (_searchInterval <= 0f)
+        {
+            EnemyConf.Search(this);
+        }
 
         if (_searchTimer <= 0)
             TransitionTo(EnemyMovementState.Return);
@@ -130,31 +148,26 @@ public class EnemyController : MonoBehaviour
     private void TransitionTo(EnemyMovementState newState)
     {
         _currentMovementState = newState;
-    }
-
-    private void TransitionToSearch()
-    {
-        _searchTimer = EnemyConf.SearchDuration;
-        TransitionTo(EnemyMovementState.Search);
+        if (newState == EnemyMovementState.Patrol)
+            _patrolInterval = 0f;
+        else if (newState == EnemyMovementState.Search)
+        {
+            _searchTimer = EnemyConf.SearchDuration;
+            _searchInterval = 0f;
+        }
+        else if (newState == EnemyMovementState.Attack)
+            _attackInterval = 0f;
     }
     #endregion
 
     #region MOVEMENT
-    public void MoveTowards(Vector3 target)
-    {
-        transform.position = Vector3.MoveTowards(transform.position, target, EnemyConf.Speed * Time.deltaTime);
-    }
-    public bool HasPatrolTarget()
-    {
-        return PatrolTarget != default && Vector3.Distance(transform.position, PatrolTarget) > 0.1f;
-    }
     public void SetPatrolTarget(float radius)
     {
-        PatrolTarget = PatrolCenter + (Vector3)Random.insideUnitCircle * radius;
+        TargetToMove = PatrolCenter + (Vector3)Random.insideUnitCircle * radius;
     }
     public void SetSearchTarget(float radius)
     {
-        SearchTarget = LastSeenPlayerPosition + (Vector3)Random.insideUnitCircle * radius;
+        TargetToMove = LastSeenPlayerPosition + (Vector3)Random.insideUnitCircle * radius;
     }
     #endregion
 
@@ -202,6 +215,11 @@ public class EnemyController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(PatrolCenter, EnemyConf.PatrolRadius);
+    }
+    void DrawSearchRadius()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(LastSeenPlayerPosition, EnemyConf.SearchRadius);
     }
     #endregion
 }
