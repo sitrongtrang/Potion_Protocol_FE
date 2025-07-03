@@ -13,13 +13,7 @@ public class IngredientController : MonoBehaviour
         _config = config;
         StartCoroutine(DisappearCoroutine());
     }
-
-    public void OnPickup(PlayerInventory inventory)
-    {
-        bool isAdded = inventory.Add(_config);
-        if (isAdded) Destroy(gameObject);
-    }
-
+    
     private IEnumerator DisappearCoroutine()
     {
         yield return new WaitForSeconds(_config.ExistDuration);
