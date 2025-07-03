@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24b283275af73a4ab4c7144cac466b6, type: 3}
+  m_Name: RatFang
+  m_EditorClassIdentifier: 
+  _name: RatFang
+  _id: I2
+  _type: 0
+  _existDuration: 30
+  _prefab: {fileID: 3340524484685893166, guid: 29b530780f384304ca524f56b4c22a96, type: 3}
