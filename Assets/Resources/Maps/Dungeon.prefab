@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6410693698748835110}
   - component: {fileID: 821675222529458386}
   m_Layer: 0
-  m_Name: trang_tri
+  m_Name: Decoration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
