@@ -7,6 +7,7 @@ public abstract class EnemyConfig : ScriptableObject
     [field: SerializeField] public float Hp { get; private set; }
     [field: SerializeField] public float Speed { get; private set; }
     [field: SerializeField] public float Damage { get; private set; }
+    [field: SerializeField] public float AttackCooldown { get; private set; }
     [field: SerializeField] public float PatrolRadius { get; private set; }
     [field: SerializeField] public float ChaseRadius { get; private set; }
     [field: SerializeField] public float VisionRadius { get; private set; }
