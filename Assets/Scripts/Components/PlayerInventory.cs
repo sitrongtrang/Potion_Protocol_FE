@@ -58,6 +58,7 @@ public class PlayerInventory
         }
 
         // Found an empty slot, put ingredient into that slot
+        _choosingSlot = idx;
         ingredients[idx] = ingredient;
         Debug.Log("Picked up item " + ingredient.Name + " to slot " + (idx + 1).ToString());
         return true;
