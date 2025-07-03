@@ -7,7 +7,7 @@ public class PlayerInventory
 
     public IngredientConfig Get(int idx) => ingredients[idx];
 
-    public void Initialize()
+    public PlayerInventory()
     {
         return;
     }
@@ -15,7 +15,11 @@ public class PlayerInventory
     public bool Add(IngredientConfig ingredient)
     {
         int idx = FindSlot();
-        if (idx == -1) return false;
+        if (idx == -1)
+        {
+            Debug.Log("Inventory is full");
+            return false;
+        }
         ingredients[idx] = ingredient;
         Debug.Log("Picked up item " + ingredient.Name);
         return true;

@@ -15,4 +15,5 @@ MonoBehaviour:
   _name: Slime Gel
   _id: I1
   _type: 0
-  _existDuration: 1800
+  _existDuration: 30
+  _prefab: {fileID: 3639830082907310808, guid: b1d4b81329e046445a245b0f33919520, type: 3}

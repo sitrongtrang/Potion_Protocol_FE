@@ -14,7 +14,9 @@ public class IngredientConfig : ScriptableObject
     [SerializeField] private string _id;
     [SerializeField] private IngredientType _type;
     [SerializeField] private float _existDuration;
+    [SerializeField] private IngredientController _prefab;
 
     public string Name => _name;
     public float ExistDuration => _existDuration;
+    public IngredientController Prefab => _prefab;
 }
