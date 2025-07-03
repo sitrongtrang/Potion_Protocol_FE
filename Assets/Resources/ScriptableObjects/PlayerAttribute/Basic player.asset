@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Basic player
   m_EditorClassIdentifier: 
   _moveSpeed: 3
-  _dashCooldown: 0
+  _dashCooldown: 3
   _dashSpeed: 15
   _dashTime: 0.5
   _attackCooldown: 1

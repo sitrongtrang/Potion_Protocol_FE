@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,7 +7,6 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private PlayerAttribute _playerAttribute; // player attribute from data asset
     // bool _isAttacking = false;
     bool _canAttack = true;
-    
     bool[] _canUseSkills = new bool[3];
     bool _isInAction = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,15 +19,12 @@ public class PlayerAttack : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void MyUpdate()
     {
         
         if (!_isInAction)
         {
-            if (_canAttack && Input.GetKeyDown(KeyCode.J))
-            {
-                StartCoroutine(Attack());
-            }
+            
             if (_canUseSkills[0] && Input.GetKeyDown(KeyCode.U))
             {
                 StartCoroutine(UseSkill(1));
@@ -42,15 +39,20 @@ public class PlayerAttack : MonoBehaviour
             }
         }
     }
+    
     // Can not perform any action when an action is active by variable _isInAction
-    IEnumerator Attack()
+    public IEnumerator Attack()
     {
-        _canAttack = false;
-        // _isInAction = true;
-        Debug.Log("Player Attacked");
-        yield return new WaitForSeconds(_playerAttribute.AttackCooldown);
-        // _isInAction = false;
-        _canAttack = true;
+        if (_canAttack && !_isInAction && Input.GetKeyDown(KeyCode.J))
+        {
+            _canAttack = false;
+            // _isInAction = true;
+            Debug.Log("Player Attacked");
+            yield return new WaitForSeconds(_playerAttribute.AttackCooldown);
+            // _isInAction = false;
+            _canAttack = true;
+        }
+        
     }
     
     IEnumerator UseSkill(int skillNumber)
