@@ -21,7 +21,7 @@ public class PlayerInventory
             return false;
         }
         ingredients[idx] = ingredient;
-        Debug.Log("Picked up item " + ingredient.Name);
+        Debug.Log("Picked up item " + ingredient.Name + " to slot " + (idx+1).ToString());
         return true;
     }
 
