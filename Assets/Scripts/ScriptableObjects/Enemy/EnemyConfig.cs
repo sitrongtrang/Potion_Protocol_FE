@@ -3,31 +3,55 @@ using UnityEngine;
 public abstract class EnemyConfig : ScriptableObject
 {
     [Header("Basic Stats")]
-    [SerializeField] public string Name { get; private set; }
-    [SerializeField] public float Hp { get; private set; }
-    [SerializeField] public float Speed { get; private set; }
-    [SerializeField] public float Damage { get; private set; }
+    [SerializeField] private string _name;
+    public string Name => _name;
+
+    [SerializeField] private float _hp;
+    public float Hp => _hp;
+
+    [SerializeField] private float _speed;
+    public float Speed => _speed;
+
+    [SerializeField] private float _damage;
+    public float Damage => _damage;
 
     [Header("Patrol")]
-    [SerializeField] public float PatrolRadius { get; private set; }
-    [SerializeField] public float PatrolInterval { get; private set; }
+    [SerializeField] private float _patrolRadius;
+    public float PatrolRadius => _patrolRadius;
+
+    [SerializeField] private float _patrolInterval;
+    public float PatrolInterval => _patrolInterval;
 
     [Header("Chase")]
-    [SerializeField] public float ChaseRadius { get; private set; }
+    [SerializeField] private float _chaseRadius;
+    public float ChaseRadius => _chaseRadius;
 
     [Header("Attack")]
-    [SerializeField] public float VisionRadius { get; private set; }
-    [SerializeField] public float AttackRadius { get; private set; }
-    [SerializeField] public float AttackInterval { get; private set; }
+    [SerializeField] private float _visionRadius;
+    public float VisionRadius => _visionRadius;
+
+    [SerializeField] private float _attackRadius;
+    public float AttackRadius => _attackRadius;
+
+    [SerializeField] private float _attackInterval;
+    public float AttackInterval => _attackInterval;
 
     [Header("Search")]
-    [SerializeField] public float SearchRadius { get; private set; }
-    [SerializeField] public float SearchDuration { get; private set; }
-    [SerializeField] public float SearchInterval { get; private set; }
+    [SerializeField] private float _searchRadius;
+    public float SearchRadius => _searchRadius;
+
+    [SerializeField] private float _searchDuration;
+    public float SearchDuration => _searchDuration;
+
+    [SerializeField] private float _searchInterval;
+    public float SearchInterval => _searchInterval;
 
     [Header("Drop")]
-    [SerializeField] public IngredientConfig Ingredient { get; private set; }
+    [SerializeField] private IngredientConfig _ingredient;
+    public IngredientConfig Ingredient => _ingredient;
 
+    [SerializeField] private EnemyController _prefab;
+    public EnemyController Prefab => _prefab;
     public abstract void Move(EnemyController controller);
     // public abstract void Patrol(EnemyController controller);
     // public abstract void Chase(EnemyController controller, Transform target);

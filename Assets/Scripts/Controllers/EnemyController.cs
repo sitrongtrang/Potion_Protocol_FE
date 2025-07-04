@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [Header("Components")]
-    [field: SerializeField] public EnemyConfig EnemyConf { get; private set; }
+    public EnemyConfig EnemyConf { get; private set; }
     [Header("Movement")]
     public Vector3 TargetToMove { get; private set; }
     public Vector3 PatrolCenter { get; private set; }
@@ -21,14 +20,12 @@ public class EnemyController : MonoBehaviour
     // public float _attackInterval;
 
     #region UNITY_METHODS
-    private void Start()
-    {
-        _currentHp = EnemyConf.Hp;
-        // _currentMovementState = EnemyMovementState.Return;
-    }
     [ContextMenu("Test")]
-    public void Initialize()
+    public void Initialize(EnemyConfig config)
     {
+        EnemyConf = config;
+        _currentHp = config.Hp;
+        
         PatrolCenter = transform.position;
         BasicStateMachine = new(this);
 
