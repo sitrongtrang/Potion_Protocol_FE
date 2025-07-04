@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PlayerInventory
+public class PlayerInventory : IComponent
 {
     private PlayerController _player;
     private IngredientConfig[] ingredients = new IngredientConfig[GameConstants.MaxSlot];
@@ -17,7 +17,7 @@ public class PlayerInventory
         }
     }
     public event Action OnSlotChanged;
-    
+
 
     public IngredientConfig Get(int idx) => ingredients[idx];
 
@@ -47,7 +47,7 @@ public class PlayerInventory
         {
             // Drop the ingredient into the world at player's position
             IngredientConfig configToDrop = ingredients[ChoosingSlot];
-            Vector3 dropPosition = _player.gameObject.transform.position + _player.gameObject.transform.forward; 
+            Vector3 dropPosition = _player.gameObject.transform.position + _player.gameObject.transform.forward;
 
             IngredientPool.Instance.SpawnIngredient(configToDrop, dropPosition);
 
@@ -117,7 +117,5 @@ public class PlayerInventory
         }
 
         return -1;
-    }
-
-
+    } 
 }

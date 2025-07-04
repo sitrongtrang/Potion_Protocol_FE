@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1f72a32d16108f468e0290e6b9a422e, type: 3}
   m_Name: BasicPlayer
   m_EditorClassIdentifier: 
-  _moveSpeed: 3
-  _dashCooldown: 3
-  _dashSpeed: 15
-  _dashTime: 0.5
-  _attackCooldown: 1
-  _skillsCooldown:
+  <MoveSpeed>k__BackingField: 5
+  <DashCooldown>k__BackingField: 7
+  <DashSpeed>k__BackingField: 20
+  <DashTime>k__BackingField: 3
+  <AttackCooldown>k__BackingField: 1
+  <SkillsCoolDown>k__BackingField:
+  - 2
   - 5
   - 7
-  - 10

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class IngredientController : MonoBehaviour
 {
-    [SerializeField] private IngredientConfig _config;
+    private IngredientConfig _config;
 
     public IngredientConfig Config => _config;
 
