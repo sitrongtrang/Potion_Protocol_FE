@@ -2,19 +2,30 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private PlayerConfig _config;
     [SerializeField] private PlayerInventory _inventory;
+    private PlayerInteraction _interactionComponent;
+    private PlayerAttack _attackComponent;
+    private PlayerMovement _movementComponent;
 
+    public PlayerConfig Config => _config;
     public PlayerInventory Inventory => _inventory;
 
-    void Start()
+    void Awake()
     {
         _inventory = new PlayerInventory();
-        GetComponent<PlayerInteraction>().Initialize(_inventory);
+        _interactionComponent = GetComponent<PlayerInteraction>();
+        _attackComponent = GetComponent<PlayerAttack>();
+        _movementComponent = GetComponent<PlayerMovement>();
+
+        _interactionComponent.Initialize(_inventory);
+        _attackComponent.Initialize(this);
     }
+    
     void Update()
     {
-        GetComponent<PlayerAttack>().MyUpdate();
-        GetComponent<PlayerInteraction>().MyUpdate();
-        GetComponent<PlayerMovement>().MyUpdate();
+        _interactionComponent.MyUpdate();
+        _attackComponent.MyUpdate();
+        _movementComponent.MyUpdate();
     }
 }

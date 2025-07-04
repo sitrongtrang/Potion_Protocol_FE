@@ -7,27 +7,21 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 MoveDir => _moveDir;
     private bool _isMoving = false;
     public bool IsMoving => _isMoving;
-    [SerializeField] private PlayerAttribute _playerAttribute; // player attribute from data asset
+    [SerializeField] private PlayerConfig _playerConfig; // player attribute from data asset
     private Vector2 _playerDir; // player direction
     public Vector2 PlayerDir => _playerDir;
     [SerializeField] private float _dashCD; // player
 
     private float _dashTime = 0;
     private bool _isDashing = false;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     public void MyUpdate()
     {
         // move logic
         _moveDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
         _isMoving = _moveDir != Vector2.zero;
         if (_isMoving) _playerDir = _moveDir;
-        transform.Translate(_moveDir * _playerAttribute.MoveSpeed * Time.deltaTime);
+        transform.Translate(_moveDir * _playerConfig.MoveSpeed * Time.deltaTime);
 
         // dash logic
         if (_dashCD <= 0 && Input.GetKey(KeyCode.L))
@@ -35,15 +29,15 @@ public class PlayerMovement : MonoBehaviour
             // Dash();
             _isDashing = true;
         }
-        if (_dashTime <= _playerAttribute.DashTime && _isDashing)
+        if (_dashTime <= _playerConfig.DashTime && _isDashing)
         {
-            transform.Translate(_playerDir * _playerAttribute.DashSpeed * Time.deltaTime);
+            transform.Translate(_playerDir * _playerConfig.DashSpeed * Time.deltaTime);
             _dashTime += Time.deltaTime;
         }
-        else if (_dashTime >= _playerAttribute.DashTime)
+        else if (_dashTime >= _playerConfig.DashTime)
         {
             _isDashing = false;
-            _dashCD = _playerAttribute.DashCoolDown;
+            _dashCD = _playerConfig.DashCoolDown;
             _dashTime = 0;
         }
         _dashCD -= Time.deltaTime;

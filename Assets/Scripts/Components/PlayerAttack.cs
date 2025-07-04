@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] private PlayerAttribute _playerAttribute; // player attribute from data asset
+    private PlayerController _player;
     // bool _isAttacking = false;
     bool _canAttack = true;
-    bool[] _canUseSkills = new bool[3];
+    bool[] _canUseSkills = new bool[GameConstants.NumSkills];
     bool _isInAction = false;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    public void Initialize(PlayerController player)
     {
         for (int i = 0; i < 3; i++)
         {
             _canUseSkills[i] = true;
         }
+        _player = player;
     }
 
-    // Update is called once per frame
     public void MyUpdate()
     {
         
@@ -48,20 +48,20 @@ public class PlayerAttack : MonoBehaviour
             _canAttack = false;
             // _isInAction = true;
             Debug.Log("Player Attacked");
-            yield return new WaitForSeconds(_playerAttribute.AttackCooldown);
+            yield return new WaitForSeconds(_player.Config.AttackCooldown);
             // _isInAction = false;
             _canAttack = true;
         }
         
     }
     
-    IEnumerator UseSkill(int skillNumber)
+    private IEnumerator UseSkill(int skillNumber)
     {
         _canUseSkills[skillNumber - 1] = false;
         // _isInAction = true;
         Debug.Log($"Using ability {skillNumber}");
-        yield return new WaitForSeconds(_playerAttribute.SkillsCoolDown[skillNumber - 1]);
+        yield return new WaitForSeconds(_player.Config.SkillsCoolDown[skillNumber - 1]);
         // _isInAction = false;
-        _canUseSkills[skillNumber - 1] = true; ;
+        _canUseSkills[skillNumber - 1] = true;
     }
 }

@@ -1,28 +1,40 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInventory
 {
     private IngredientConfig[] ingredients = new IngredientConfig[GameConstants.MaxSlot];
-    public int ChoosingSlot;
+    private int _choosingSlot = 0;
+    public int ChoosingSlot
+    {
+        get => _choosingSlot;
+        set
+        {
+            int oldSlot = _choosingSlot;
+            _choosingSlot = value;
+            if (oldSlot != value) OnSlotChanged?.Invoke();
+        }
+    }
+
+    public event Action OnSlotChanged;
     public IngredientConfig Get(int idx) => ingredients[idx];
 
     public PlayerInventory()
     {
-        ChoosingSlot = 0;
         return;
     }
 
     public void Pickup(IngredientController ingredient)
     {
         bool isAdded = Add(ingredient.Config);
-        if (isAdded) Object.Destroy(ingredient.gameObject);
+        if (isAdded) UnityEngine.Object.Destroy(ingredient.gameObject);
     }
 
 
     public void TransferToStation(StationController station)
     {
-        if (ChoosingSlot == -1 || ingredients[ChoosingSlot] == null)
+        if (_choosingSlot == -1 || ingredients[_choosingSlot] == null)
         {
             // Not choosing any ingredient
             Debug.Log("No ingredient in slot to transfer");
@@ -30,11 +42,11 @@ public class PlayerInventory
         else
         {
             // Transfer the ingredient to the station if the station requires
-            if (station.RequireIngredient(ingredients[ChoosingSlot]))
+            if (station.RequireIngredient(ingredients[_choosingSlot]))
             {
-                Debug.Log("Transferred item " + ingredients[ChoosingSlot].Name + " in slot " + (ChoosingSlot + 1).ToString() + " to station");
+                Debug.Log("Transferred item " + ingredients[_choosingSlot].Name + " in slot " + (_choosingSlot + 1).ToString() + " to station");
                 // TODO: add ingredient to the station
-                Remove(ChoosingSlot);
+                Remove(_choosingSlot);
             }
             else
             {
@@ -47,7 +59,7 @@ public class PlayerInventory
     {
         int idx;
         // If choosing slot is empty, put the ingredient into that slot; else put in the first slot that is empty
-        if (ingredients[ChoosingSlot] == null) idx = ChoosingSlot;
+        if (ingredients[_choosingSlot] == null) idx = _choosingSlot;
         else idx = FindSlot();
 
         // No empty slot, cannot add ingredient
@@ -58,6 +70,7 @@ public class PlayerInventory
         }
 
         // Found an empty slot, put ingredient into that slot
+        ChoosingSlot = idx;
         ingredients[idx] = ingredient;
         Debug.Log("Picked up item " + ingredient.Name + " to slot " + (idx + 1).ToString());
         return true;

@@ -14,13 +14,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         this._inventory = _inventory;
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
+    
     public void MyUpdate()
     {
         // choosing slot logic
@@ -78,7 +72,7 @@ public class PlayerInteraction : MonoBehaviour
             // Remove item at _ingredient.ChoosingSlot
             Debug.Log($"Drop item: {_inventory.ChoosingSlot}");
         }
-        
+
     }
     void OnTriggerEnter2D(Collider2D collider)
     {
