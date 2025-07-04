@@ -1,6 +1,5 @@
 using UnityEngine;
 
-// [CreateAssetMenu(fileName = "EnemyConfig", menuName = "Scriptable Objects/Enemy/Configuration")]
 public abstract class EnemyConfig : ScriptableObject
 {
     [Header("Basic Stats")]
@@ -48,8 +47,11 @@ public abstract class EnemyConfig : ScriptableObject
     public float SearchInterval => _searchInterval;
 
     [Header("Drop")]
-    [SerializeField] private string[] ingredientsConfig;
-    public string[] IngredientsConfig => ingredientsConfig;    
+    [SerializeField] private IngredientConfig _ingredient;
+    public IngredientConfig Ingredient => _ingredient;
+
+    [SerializeField] private EnemyController _prefab;
+    public EnemyController Prefab => _prefab;
     public abstract void Move(EnemyController controller);
     // public abstract void Patrol(EnemyController controller);
     // public abstract void Chase(EnemyController controller, Transform target);
