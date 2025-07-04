@@ -18,6 +18,12 @@ public class PatrolState : IBasicState<EnemyController>
 
     public void Execute(EnemyController owner)
     {
+        if (_owner.IsPlayerInRange())
+        {
+            _owner.BasicStateMachine.ChangeState(EnemyState.Chase);
+            return;
+        }
+        
         if (Vector3.Distance(_owner.transform.position, _patrolTarget) >= 0.1f)
         {
             _owner.EnemyConf.Move(_owner);
@@ -27,6 +33,7 @@ public class PatrolState : IBasicState<EnemyController>
             _owner.BasicStateMachine.ChangeState(EnemyState.Idle, new object[]{
                 EnemyState.Patrol, _owner.EnemyConf.PatrolInterval
             });
+            return;
         }
     }
 

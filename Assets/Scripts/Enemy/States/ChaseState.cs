@@ -7,16 +7,32 @@ public class ChaseState : IBasicState<EnemyController>
     }
     public void Enter(EnemyController owner, object[] enterParameters)
     {
-        throw new System.NotImplementedException();
+
     }
 
     public void Execute(EnemyController owner)
     {
-        throw new System.NotImplementedException();
+        if (!_owner.IsPlayerInRange())
+        {
+            _owner.BasicStateMachine.ChangeState(EnemyState.Search, new object[]{
+                _owner.EnemyConf.SearchDuration
+            });
+            return;
+        }
+        if (_owner.DistanceToPlayer() <= _owner.EnemyConf.AttackRadius)
+        {
+            _owner.BasicStateMachine.ChangeState(EnemyState.Attack);
+            return;
+        }
+        else if (_owner.DistanceToPlayer() > _owner.EnemyConf.ChaseRadius)
+        {
+            _owner.BasicStateMachine.ChangeState(EnemyState.Return);
+            return;
+        }
     }
 
     public void Exit(EnemyController owner)
     {
-        throw new System.NotImplementedException();
+
     }
 }

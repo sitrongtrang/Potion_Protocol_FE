@@ -14,6 +14,12 @@ public class ReturnState : IBasicState<EnemyController>
 
     public void Execute(EnemyController owner)
     {
+        if (_owner.IsPlayerInRange())
+        {
+            _owner.BasicStateMachine.ChangeState(EnemyState.Chase);
+            return;
+        }
+        
         if (Vector3.Distance(_owner.transform.position, _owner.PatrolCenter) >= 0.1f)
         {
             _owner.EnemyConf.Move(_owner);
@@ -21,6 +27,7 @@ public class ReturnState : IBasicState<EnemyController>
         else
         {
             _owner.BasicStateMachine.ChangeState(EnemyState.Patrol);
+            return;
         }
     }
 

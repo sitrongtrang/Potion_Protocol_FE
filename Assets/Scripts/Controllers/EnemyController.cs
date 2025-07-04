@@ -212,6 +212,16 @@ public class EnemyController : MonoBehaviour
             _playerTransform = null;
         }
     }
+    public bool IsPlayerInRange()
+    {
+        return _playerTransform != null;
+    }
+    public float DistanceToPlayer()
+    {
+        return _playerTransform != null
+            ? Vector3.Distance(transform.position, _playerTransform.position)
+            : Mathf.Infinity;
+    }
     public void TakeDamage(float amount)
     {
         _currentHp -= amount;
@@ -220,7 +230,6 @@ public class EnemyController : MonoBehaviour
             Die();
         }
     }
-
     private void Die()
     {
         EnemyConf.OnDeath(this);
