@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PlayerInteraction : MonoBehaviour
+public class PlayerInteraction : IPlayerAction
 {
+    private PlayerController _player;
     [SerializeField] private List<GameObject> _objectInCollision = new List<GameObject>();
 
     [SerializeField] bool _isNearStation = false;
     PlayerInventory _inventory;
     StationController _nearStation;
-    public void Initialize(PlayerInventory _inventory)
+    public void Initialize(PlayerController player)
     {
-        this._inventory = _inventory;
+        _inventory = player.Inventory;
+        _player = player;
     }
     
     public void MyUpdate()
@@ -39,10 +41,11 @@ public class PlayerInteraction : MonoBehaviour
             {
                 // pick up logic
                 float minDistance = 99999999f;
+                // find nearest object in list collision objects
                 GameObject nearestIngredient = _objectInCollision[0];
                 for (int i = 0; i < _objectInCollision.Count; i++)
                 {
-                    Vector2 distanceVector = transform.position - _objectInCollision[i].transform.position;
+                    Vector2 distanceVector = _player.gameObject.transform.position - _objectInCollision[i].transform.position;
                     Debug.Log(distanceVector);
                     float distance = (float)Math.Sqrt(distanceVector.x * distanceVector.x + distanceVector.y * distanceVector.y);
                     if (distance < minDistance)
@@ -62,19 +65,22 @@ public class PlayerInteraction : MonoBehaviour
             // Attack
             else
             {
-                StartCoroutine(GetComponent<PlayerAttack>().Attack());
+                if (_player.PlayerComponents[1] is PlayerAttack attackAction)
+                {
+                    _player.StartCoroutine(attackAction.Attack());
+                }
             }
         }
 
         // drop logic
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            // Remove item at _ingredient.ChoosingSlot
-            Debug.Log($"Drop item: {_inventory.ChoosingSlot}");
+            // Remove item at _ingredient.ChoosingSlot: _inventory.Drop(_inventory.ChoosingSlot);
+            Debug.Log($"Drop item: {_inventory.ChoosingSlot + 1}");
         }
 
     }
-    void OnTriggerEnter2D(Collider2D collider)
+    public void OnTriggerEnter2D(Collider2D collider)
     {
         Debug.Log(collider);
         if (collider.gameObject.tag == "Ingredient")
@@ -93,7 +99,7 @@ public class PlayerInteraction : MonoBehaviour
             // display UI to inform player to transfer item
         }
     }
-    void OnTriggerExit2D(Collider2D collider)
+    public void OnTriggerExit2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Ingredient")
         {

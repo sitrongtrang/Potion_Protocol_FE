@@ -129,9 +129,6 @@ GameObject:
   m_Component:
   - component: {fileID: 888710818}
   - component: {fileID: 888710817}
-  - component: {fileID: 888710816}
-  - component: {fileID: 888710819}
-  - component: {fileID: 888710820}
   - component: {fileID: 888710821}
   - component: {fileID: 888710822}
   - component: {fileID: 888710823}
@@ -142,20 +139,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &888710816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 888710815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d75b5fdaa8831742b91e640dae798e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerAttribute: {fileID: 11400000, guid: a7df0d474df11194e9a81497ceca8fdf, type: 2}
-  _dashCD: 0
 --- !u!212 &888710817
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -226,33 +209,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &888710819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 888710815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 872b0e3276653a64f913edee2925d46a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerAttribute: {fileID: 11400000, guid: a7df0d474df11194e9a81497ceca8fdf, type: 2}
---- !u!114 &888710820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 888710815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f0773f9a6fe6f5408e65378e20eb89c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _objectInCollision: []
-  _isNearStation: 0
 --- !u!58 &888710821
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -328,6 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8f3278400377b4880c6bca9a3d7fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: a7df0d474df11194e9a81497ceca8fdf, type: 2}
 --- !u!1 &1208335344
 GameObject:
   m_ObjectHideFlags: 0

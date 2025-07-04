@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour
+public class PlayerAttack : IPlayerAction
 {
     private PlayerController _player;
     // bool _isAttacking = false;
@@ -27,15 +27,15 @@ public class PlayerAttack : MonoBehaviour
             
             if (_canUseSkills[0] && Input.GetKeyDown(KeyCode.U))
             {
-                StartCoroutine(UseSkill(1));
+                _player.StartCoroutine(UseSkill(1));
             }
             if (_canUseSkills[1] && Input.GetKeyDown(KeyCode.I))
             {
-                StartCoroutine(UseSkill(2));
+                _player.StartCoroutine(UseSkill(2));
             }
             if (_canUseSkills[2] && Input.GetKeyDown(KeyCode.O))
             {
-                StartCoroutine(UseSkill(3));
+                _player.StartCoroutine(UseSkill(3));
             }
         }
     }
