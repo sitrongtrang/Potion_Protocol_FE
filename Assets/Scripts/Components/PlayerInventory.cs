@@ -1,24 +1,47 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInventory
 {
+    private PlayerController _player;
     private IngredientConfig[] ingredients = new IngredientConfig[GameConstants.MaxSlot];
     private int _choosingSlot = 0;
 
     public IngredientConfig Get(int idx) => ingredients[idx];
 
-    public PlayerInventory()
+    public void Initialize(PlayerController player)
     {
-        return;
+        _player = player;
     }
 
     public void Pickup(IngredientController ingredient)
     {
         bool isAdded = Add(ingredient.Config);
-        if (isAdded) Object.Destroy(ingredient.gameObject);
+        if (isAdded)
+        {
+            IngredientPool.Instance.RemoveIngredient(ingredient);
+        }
     }
 
+    public void Drop()
+    {
+        if (_choosingSlot == -1 || ingredients[_choosingSlot] == null)
+        {
+            // Not choosing any ingredient
+            Debug.Log("No ingredient to drop");
+            return;
+        }
+        else
+        {
+            // Drop the ingredient into the world at player's position
+            IngredientConfig configToDrop = ingredients[_choosingSlot];
+            Vector3 dropPosition = _player.transform.position + _player.transform.forward; 
+
+            IngredientPool.Instance.SpawnIngredient(configToDrop, dropPosition);
+
+            // Remove from inventory
+            ingredients[_choosingSlot] = null;
+        }
+    }
 
     public void TransferToStation(StationController station)
     {

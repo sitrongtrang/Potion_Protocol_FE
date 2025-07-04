@@ -3,4 +3,5 @@ using UnityEngine;
 public static class GameConstants
 {
     public const int MaxSlot = 5;
+    public const int MaxIngredients = 30;
 }

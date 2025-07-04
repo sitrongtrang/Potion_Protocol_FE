@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _inventory = new PlayerInventory();
+        _inventory.Initialize(this);
     }
 
 }
