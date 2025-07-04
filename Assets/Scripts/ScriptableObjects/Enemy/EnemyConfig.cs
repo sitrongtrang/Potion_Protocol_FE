@@ -59,4 +59,19 @@ public abstract class EnemyConfig : ScriptableObject
     // public abstract void Search(EnemyController controller);
     // public abstract void ReturnToSpawn(EnemyController controller);
     public abstract void OnDeath(EnemyController controller);
+    private void OnValidate()
+    {
+        // Ensure AttackRadius < VisionRadius < ChaseRadius
+        if (_attackRadius >= _visionRadius)
+        {
+            Debug.LogWarning($"Attack radius ({_attackRadius}) should be smaller than vision radius ({_visionRadius}). Adjusting...");
+            _visionRadius = _attackRadius + 0.1f;
+        }
+
+        if (_visionRadius >= _chaseRadius)
+        {
+            Debug.LogWarning($"Vision radius ({_visionRadius}) should be smaller than chase radius ({_chaseRadius}). Adjusting...");
+            _chaseRadius = _visionRadius + 0.1f;
+        }
+    }
 }

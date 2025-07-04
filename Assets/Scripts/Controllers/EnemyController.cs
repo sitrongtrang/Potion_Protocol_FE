@@ -22,12 +22,12 @@ public class EnemyController : MonoBehaviour
 
     #region UNITY_METHODS
     [ContextMenu("Test")]
-    public void Initialize(EnemyConfig config)
+    public void Initialize(EnemyConfig config, Vector3 patrolCenter)
     {
         EnemyConf = config;
         _currentHp = config.Hp;
         
-        PatrolCenter = transform.position;
+        PatrolCenter = patrolCenter;
         BasicStateMachine = new(this);
 
         IdleState idleState = new IdleState(this);
