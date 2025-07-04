@@ -67,7 +67,7 @@ public class PlayerInventory : IComponent
             // Transfer the ingredient to the station if the station requires
             if (station.RequireIngredient(ingredients[_choosingSlot]))
             {
-                Debug.Log("Transferred item {ingredients[_choosingSlot].Name} in slot {(ChoosingSlot + 1).ToString()} to station");
+                Debug.Log($"Transferred item {ingredients[_choosingSlot].Name} in slot {(ChoosingSlot + 1).ToString()} to station");
                 // TODO: add ingredient to the station
                 Remove(ChoosingSlot);
             }
@@ -95,7 +95,7 @@ public class PlayerInventory : IComponent
         // Found an empty slot, put ingredient into that slot
         ChoosingSlot = idx;
         ingredients[idx] = ingredient;
-        Debug.Log("Picked up item {ingredient.Name} to slot {(idx + 1).ToString()}");
+        Debug.Log($"Picked up item {ingredient.Name} to slot {(idx + 1).ToString()}");
         return true;
     }
 
