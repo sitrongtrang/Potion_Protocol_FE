@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using UnityEngine;
 
-public class PlayerMovement : IPlayerAction
+public class PlayerMovement : IComponent, IUpdatableComponent
 {
     private PlayerController _player;
     private Vector2 _moveDir;
@@ -43,10 +43,9 @@ public class PlayerMovement : IPlayerAction
         else if (_dashTime >= _playerConfig.DashTime)
         {
             _isDashing = false;
-            _dashCD = _playerConfig.DashCoolDown;
+            _dashCD = _playerConfig.DashCooldown;
             _dashTime = 0;
         }
         _dashCD -= Time.deltaTime;
-
     }
 }

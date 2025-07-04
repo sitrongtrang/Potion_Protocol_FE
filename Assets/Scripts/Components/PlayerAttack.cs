@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class PlayerAttack : IPlayerAction
+public class PlayerAttack : IComponent, IUpdatableComponent
 {
     private PlayerController _player;
     // bool _isAttacking = false;

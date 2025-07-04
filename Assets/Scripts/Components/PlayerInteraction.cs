@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PlayerInteraction : IPlayerAction
+public class PlayerInteraction : IComponent, IUpdatableComponent
 {
     private PlayerController _player;
     [SerializeField] private List<GameObject> _objectInCollision = new List<GameObject>();
@@ -65,10 +65,7 @@ public class PlayerInteraction : IPlayerAction
             // Attack
             else
             {
-                if (_player.PlayerComponents[1] is PlayerAttack attackAction)
-                {
-                    _player.StartCoroutine(attackAction.Attack());
-                }
+                _player.StartCoroutine(_player.Attack.Attack());
             }
         }
 

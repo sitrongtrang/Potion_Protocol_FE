@@ -1,50 +1,56 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerConfig _config;
-    [SerializeField] private PlayerInventory _inventory;
-    [SerializeField] private List<IPlayerAction> _playerComponents = new List<IPlayerAction>();
-    public List<IPlayerAction> PlayerComponents => _playerComponents;
+    private List<IUpdatableComponent> _updatableComponents = new();
+
     public PlayerConfig Config => _config;
-    public PlayerInventory Inventory => _inventory;
+    public PlayerInventory Inventory { get; private set; }
+    public PlayerAttack Attack { get; private set; }
+    public PlayerInteraction Interaction { get; private set; }
+    public PlayerMovement Movement { get; private set; }
 
     void Awake()
     {
-        _inventory = new PlayerInventory();
-        _inventory.Initialize(this);
-        _playerComponents.Add(new PlayerMovement());
-        _playerComponents.Add(new PlayerAttack());
-        _playerComponents.Add(new PlayerInteraction());
-        for (int i = 0; i < _playerComponents.Count; i++)
-        {
-            _playerComponents[i].Initialize(this);
-        }
-        Debug.Log($"Số lượng collider trên Player: {GetComponents<Collider2D>().Length}");
+        Inventory = RegisterComponent(new PlayerInventory());
+        Attack = RegisterComponent(new PlayerAttack());
+        Interaction = RegisterComponent(new PlayerInteraction());
+        Movement = RegisterComponent(new PlayerMovement());
     }
 
     void Update()
     {
-        for (int i = 0; i < _playerComponents.Count; i++)
+        for (int i = 0; i < _updatableComponents.Count; i++)
         {
-            _playerComponents[i].MyUpdate();
+            _updatableComponents[i].MyUpdate();
         }
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (_playerComponents[2] is PlayerInteraction interaction)
-        {
-            interaction.OnTriggerEnter2D(collider);
-        }
+        Interaction.OnTriggerEnter2D(collider);
     }
 
     void OnTriggerExit2D(Collider2D collider)
     {
-        if (_playerComponents[2] is PlayerInteraction interaction)
+        Interaction.OnTriggerExit2D(collider);
+    }
+
+    private T RegisterComponent<T>(T component) where T : class
+    {
+        if (component is IComponent playerComponent)
         {
-            interaction.OnTriggerExit2D(collider);
+            playerComponent.Initialize(this);
         }
+
+        if (component is IUpdatableComponent updatable)
+        {
+            _updatableComponents.Add(updatable);
+        }
+
+        return component;
     }
 }
