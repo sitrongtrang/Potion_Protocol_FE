@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Station
+  - Ingredient
   layers:
   - Default
   - TransparentFX
@@ -40,6 +42,12 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Map
+    uniqueID: 2113903207
+    locked: 0
+  - name: Entities
+    uniqueID: 3929672519
     locked: 0
   m_RenderingLayers:
   - Default

@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24b283275af73a4ab4c7144cac466b6, type: 3}
   m_Name: SlimeGel
   m_EditorClassIdentifier: 
-  _name: Slime Gel
-  _id: I1
-  _type: 0
-  _existDuration: 30
-  _prefab: {fileID: 3639830082907310808, guid: b1d4b81329e046445a245b0f33919520, type: 3}
+  <Name>k__BackingField: Slime Gel
+  <Id>k__BackingField: I1
+  <Type>k__BackingField: 0
+  <Prefab>k__BackingField: {fileID: 3639830082907310808, guid: b1d4b81329e046445a245b0f33919520, type: 3}

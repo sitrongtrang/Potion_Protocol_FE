@@ -6,6 +6,4 @@ public class StationController : MonoBehaviour
     {
         return true;
     }
-
-    
 }
