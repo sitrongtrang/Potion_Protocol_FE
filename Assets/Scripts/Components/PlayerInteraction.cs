@@ -75,8 +75,10 @@ public class PlayerInteraction : IPlayerAction
         // drop logic
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            // Remove item at _ingredient.ChoosingSlot: _inventory.Drop(_inventory.ChoosingSlot);
-            Debug.Log($"Drop item: {_inventory.ChoosingSlot + 1}");
+            Debug.Log($"Drop item number {_inventory.ChoosingSlot + 1} is {_inventory.Get(_inventory.ChoosingSlot)}");
+            // Remove item at _ingredient.ChoosingSlot: 
+            _inventory.Drop();
+            
         }
 
     }

@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         _inventory = new PlayerInventory();
+        _inventory.Initialize(this);
         _playerComponents.Add(new PlayerMovement());
         _playerComponents.Add(new PlayerAttack());
         _playerComponents.Add(new PlayerInteraction());
