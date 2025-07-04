@@ -7,32 +7,51 @@ public class EnemyController : MonoBehaviour
     [Header("Movement")]
     public Vector3 TargetToMove { get; private set; }
     public Vector3 PatrolCenter { get; private set; }
-    private EnemyMovementState _currentMovementState;
+    // private EnemyMovementState _currentMovementState;
     [Header("Combat")]
     private float _currentHp;
     [field: SerializeField] public LayerMask PlayerLayer { get; private set; }
     private Transform _playerTransform;
     public Vector3 LastSeenPlayerPosition { get; private set; }
-    [Header("Cooldown")]
-    private float _searchTimer;
-    public float _searchInterval;
-    public float _patrolInterval;
-    public float _attackInterval;
+    public BasicStateMachine<EnemyController, EnemyState> BasicStateMachine { get; private set; }
+    // [Header("Cooldown")]
+    // private float _searchTimer;
+    // public float _searchInterval;
+    // public float _patrolInterval;
+    // public float _attackInterval;
 
     #region UNITY_METHODS
     private void Start()
     {
-        PatrolCenter = transform.position;
         _currentHp = EnemyConf.Hp;
-        _currentMovementState = EnemyMovementState.Return;
+        // _currentMovementState = EnemyMovementState.Return;
     }
-    public void Initialize(Vector3 patrolCenter)
+    [ContextMenu("Test")]
+    public void Initialize()
     {
-        PatrolCenter = patrolCenter;
+        PatrolCenter = transform.position;
+        BasicStateMachine = new(this);
+
+        IdleState idleState = new IdleState(this);
+        PatrolState patrolState = new PatrolState(this);
+        ChaseState chaseState = new ChaseState(this);
+        ReturnState returnState = new ReturnState(this);
+        SearchState searchState = new SearchState(this);
+        AttackState attackState = new AttackState(this);
+
+        BasicStateMachine.AddState(EnemyState.Idle, idleState);
+        BasicStateMachine.AddState(EnemyState.Patrol, patrolState);
+        BasicStateMachine.AddState(EnemyState.Chase, chaseState);
+        BasicStateMachine.AddState(EnemyState.Return, returnState);
+        BasicStateMachine.AddState(EnemyState.Search, searchState);
+        BasicStateMachine.AddState(EnemyState.Attack, attackState);
+
+        BasicStateMachine.ChangeState(EnemyState.Return);
     }
     private void Update()
     {
-        HandleState();
+        BasicStateMachine?.Execute();
+        // HandleState();
         HandleDetection();
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -45,130 +64,138 @@ public class EnemyController : MonoBehaviour
     }
     #endregion
 
-    #region STATE
-    private void HandleState()
-    {
-        float distanceToPlayer = _playerTransform != null
-            ? Vector3.Distance(transform.position, _playerTransform.position)
-            : Mathf.Infinity;
+    // #region STATE
+    // private void HandleState()
+    // {
+    //     float distanceToPlayer = _playerTransform != null
+    //         ? Vector3.Distance(transform.position, _playerTransform.position)
+    //         : Mathf.Infinity;
 
-        switch (_currentMovementState)
-        {
-            case EnemyMovementState.Patrol:
-                HandlePatrol();
-                break;
+    //     switch (_currentMovementState)
+    //     {
+    //         case EnemyMovementState.Patrol:
+    //             HandlePatrol();
+    //             break;
 
-            case EnemyMovementState.Chase:
-                HandleChase(distanceToPlayer);
-                break;
+    //         case EnemyMovementState.Chase:
+    //             HandleChase(distanceToPlayer);
+    //             break;
 
-            case EnemyMovementState.Attack:
-                HandleAttack(distanceToPlayer);
-                break;
+    //         case EnemyMovementState.Attack:
+    //             HandleAttack(distanceToPlayer);
+    //             break;
 
-            case EnemyMovementState.Search:
-                HandleSearch();
-                break;
+    //         case EnemyMovementState.Search:
+    //             HandleSearch();
+    //             break;
 
-            case EnemyMovementState.Return:
-                HandleReturn();
-                break;
-        }
-    }
+    //         case EnemyMovementState.Return:
+    //             HandleReturn();
+    //             break;
+    //     }
+    // }
 
-    private void HandlePatrol()
-    {
-        _patrolInterval -= Time.deltaTime;
-        if (_patrolInterval <= 0f)
-        {
-            EnemyConf.Patrol(this);
-        }
+    // private void HandlePatrol()
+    // {
+    //     _patrolInterval -= Time.deltaTime;
+    //     if (_patrolInterval <= 0f)
+    //     {
+    //         EnemyConf.Patrol(this);
+    //     }
 
-        if (_playerTransform != null)
-            TransitionTo(EnemyMovementState.Chase);
-    }
+    //     if (_playerTransform != null)
+    //         TransitionTo(EnemyMovementState.Chase);
+    // }
 
-    private void HandleChase(float distanceToPlayer)
-    {
-        if (_playerTransform == null)
-        {
-            TransitionTo(EnemyMovementState.Search);
-            return;
-        }
+    // private void HandleChase(float distanceToPlayer)
+    // {
+    //     if (_playerTransform == null)
+    //     {
+    //         TransitionTo(EnemyMovementState.Search);
+    //         return;
+    //     }
 
-        EnemyConf.Chase(this, _playerTransform);
+    //     EnemyConf.Chase(this, _playerTransform);
 
-        if (distanceToPlayer <= EnemyConf.AttackRadius)
-            TransitionTo(EnemyMovementState.Attack);
-        else if (distanceToPlayer > EnemyConf.ChaseRadius)
-            TransitionTo(EnemyMovementState.Return);
-    }
+    //     if (distanceToPlayer <= EnemyConf.AttackRadius)
+    //         TransitionTo(EnemyMovementState.Attack);
+    //     else if (distanceToPlayer > EnemyConf.ChaseRadius)
+    //         TransitionTo(EnemyMovementState.Return);
+    // }
 
-    private void HandleAttack(float distanceToPlayer)
-    {
-        if (_playerTransform == null)
-        {
-            TransitionTo(EnemyMovementState.Search);
-            return;
-        }
+    // private void HandleAttack(float distanceToPlayer)
+    // {
+    //     if (_playerTransform == null)
+    //     {
+    //         TransitionTo(EnemyMovementState.Search);
+    //         return;
+    //     }
 
-        _attackInterval -= Time.deltaTime;
-        if (_attackInterval <= 0f)
-        {
-            EnemyConf.Attack(this, _playerTransform);
-        }
+    //     _attackInterval -= Time.deltaTime;
+    //     if (_attackInterval <= 0f)
+    //     {
+    //         EnemyConf.Attack(this, _playerTransform);
+    //     }
 
-        if (distanceToPlayer > EnemyConf.AttackRadius)
-            TransitionTo(EnemyMovementState.Chase);
-    }
+    //     if (distanceToPlayer > EnemyConf.AttackRadius)
+    //         TransitionTo(EnemyMovementState.Chase);
+    // }
 
-    private void HandleSearch()
-    {
-        _searchTimer -= Time.deltaTime;
-        _searchInterval -= Time.deltaTime;
-        
-        if (_searchInterval <= 0f)
-        {
-            EnemyConf.Search(this);
-        }
+    // private void HandleSearch()
+    // {
+    //     _searchTimer -= Time.deltaTime;
+    //     _searchInterval -= Time.deltaTime;
 
-        if (_searchTimer <= 0)
-            TransitionTo(EnemyMovementState.Return);
-        else if (_playerTransform != null)
-            TransitionTo(EnemyMovementState.Chase);
-    }
+    //     if (_searchInterval <= 0f)
+    //     {
+    //         EnemyConf.Search(this);
+    //     }
 
-    private void HandleReturn()
-    {
-        EnemyConf.ReturnToSpawn(this);
-        if (Vector3.Distance(transform.position, PatrolCenter) < 0.1f)
-            TransitionTo(EnemyMovementState.Patrol);
-    }
+    //     if (_searchTimer <= 0)
+    //         TransitionTo(EnemyMovementState.Return);
+    //     else if (_playerTransform != null)
+    //         TransitionTo(EnemyMovementState.Chase);
+    // }
 
-    private void TransitionTo(EnemyMovementState newState)
-    {
-        _currentMovementState = newState;
-        if (newState == EnemyMovementState.Patrol)
-            _patrolInterval = 0f;
-        else if (newState == EnemyMovementState.Search)
-        {
-            _searchTimer = EnemyConf.SearchDuration;
-            _searchInterval = 0f;
-        }
-        else if (newState == EnemyMovementState.Attack)
-            _attackInterval = 0f;
-    }
-    #endregion
+    // private void HandleReturn()
+    // {
+    //     EnemyConf.ReturnToSpawn(this);
+    //     if (Vector3.Distance(transform.position, PatrolCenter) < 0.1f)
+    //         TransitionTo(EnemyMovementState.Patrol);
+    // }
+
+    // private void TransitionTo(EnemyMovementState newState)
+    // {
+    //     _currentMovementState = newState;
+    //     if (newState == EnemyMovementState.Patrol)
+    //         _patrolInterval = 0f;
+    //     else if (newState == EnemyMovementState.Search)
+    //     {
+    //         _searchTimer = EnemyConf.SearchDuration;
+    //         _searchInterval = 0f;
+    //     }
+    //     else if (newState == EnemyMovementState.Attack)
+    //         _attackInterval = 0f;
+    // }
+    // #endregion
 
     #region MOVEMENT
-    public void SetPatrolTarget(float radius)
+    public void SetTargetToMove(Vector3 position)
     {
-        TargetToMove = PatrolCenter + (Vector3)Random.insideUnitCircle * radius;
+        TargetToMove = position;
     }
-    public void SetSearchTarget(float radius)
-    {
-        TargetToMove = LastSeenPlayerPosition + (Vector3)Random.insideUnitCircle * radius;
-    }
+    // public void SetReturnTarget()
+    // {
+    //     TargetToMove = PatrolCenter;
+    // }
+    // public void SetPatrolTarget(float radius)
+    // {
+    //     TargetToMove = PatrolCenter + (Vector3)Random.insideUnitCircle * radius;
+    // }
+    // public void SetSearchTarget(float radius)
+    // {
+    //     TargetToMove = LastSeenPlayerPosition + (Vector3)Random.insideUnitCircle * radius;
+    // }
     #endregion
 
     #region COMBAT

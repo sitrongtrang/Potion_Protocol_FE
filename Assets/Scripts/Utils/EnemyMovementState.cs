@@ -1,8 +1,12 @@
-public enum EnemyMovementState
+public enum EnemyState
 {
+    // MOVEMENT
+    Idle,
     Patrol,
     Chase,
-    Attack,
     Search,
-    Return
+    Return,
+
+    // COMBAT
+    Attack,
 }

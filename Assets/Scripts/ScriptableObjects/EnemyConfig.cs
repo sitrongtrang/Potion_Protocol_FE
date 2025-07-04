@@ -51,10 +51,10 @@ public abstract class EnemyConfig : ScriptableObject
     [SerializeField] private string[] ingredientsConfig;
     public string[] IngredientsConfig => ingredientsConfig;    
     public abstract void Move(EnemyController controller);
-    public abstract void Patrol(EnemyController controller);
-    public abstract void Chase(EnemyController controller, Transform target);
-    public abstract void Attack(EnemyController controller, Transform target);
-    public abstract void Search(EnemyController controller);
-    public abstract void ReturnToSpawn(EnemyController controller);
+    // public abstract void Patrol(EnemyController controller);
+    // public abstract void Chase(EnemyController controller, Transform target);
+    // public abstract void Attack(EnemyController controller, Transform target);
+    // public abstract void Search(EnemyController controller);
+    // public abstract void ReturnToSpawn(EnemyController controller);
     public abstract void OnDeath(EnemyController controller);
 }
