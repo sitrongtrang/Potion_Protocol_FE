@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour
     private Transform _playerTransform;
     public Vector3 LastSeenPlayerPosition { get; private set; }
     public BasicStateMachine<EnemyController, EnemyState> BasicStateMachine { get; private set; }
+    public EnemyState CurrentEnemyStateEnum;
     // [Header("Cooldown")]
     // private float _searchTimer;
     // public float _searchInterval;
@@ -53,6 +54,7 @@ public class EnemyController : MonoBehaviour
         BasicStateMachine?.Execute();
         // HandleState();
         HandleDetection();
+        CurrentEnemyStateEnum = BasicStateMachine.CurrentStateEnum;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -196,6 +198,10 @@ public class EnemyController : MonoBehaviour
     // {
     //     TargetToMove = LastSeenPlayerPosition + (Vector3)Random.insideUnitCircle * radius;
     // }
+    public bool IsTooFarFromPatrolCenter()
+    {
+        return Vector3.Distance(transform.position, PatrolCenter) > EnemyConf.ChaseRadius;
+    }
     #endregion
 
     #region COMBAT

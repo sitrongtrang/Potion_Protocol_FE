@@ -1,15 +1,14 @@
 public class AttackState : IBasicState<EnemyController>
 {
     private EnemyController _owner;
-    private float _attackInterval;
-    private bool _attacked;
+    private float _attackCooldown;
     public AttackState(EnemyController controller)
     {
         _owner = controller;
     }
     public void Enter(EnemyController owner, object[] enterParameters)
     {
-        
+        _attackCooldown = (float)enterParameters[0];
     }
 
     public void Execute(EnemyController owner)
@@ -21,11 +20,11 @@ public class AttackState : IBasicState<EnemyController>
             });
             return;
         }
-        if (_attackInterval <= 0)
+        
+        if (_attackCooldown <= 0)
         {
             // ATTACK HERE
-            _attackInterval = _owner.EnemyConf.AttackInterval;
-            _attacked = true;
+            _attackCooldown = _owner.EnemyConf.AttackInterval;
             return;
         }
         if (_owner.DistanceToPlayer() > _owner.EnemyConf.AttackRadius)

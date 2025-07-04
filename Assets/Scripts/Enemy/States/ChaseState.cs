@@ -1,17 +1,39 @@
+using UnityEngine;
+
 public class ChaseState : IBasicState<EnemyController>
 {
     private EnemyController _owner;
+    private float _attackCooldown;
+    private EnemyState _previousState;
     public ChaseState(EnemyController controller)
     {
         _owner = controller;
     }
     public void Enter(EnemyController owner, object[] enterParameters)
     {
-
+        if (enterParameters != null)
+            _previousState = (EnemyState)enterParameters[0];
+        if (_previousState == EnemyState.Attack)
+        {
+            _attackCooldown = (float)enterParameters[1];
+        }
+        else
+        {
+            _attackCooldown = _owner.EnemyConf.AttackInterval / 2;
+        }
     }
 
     public void Execute(EnemyController owner)
     {
+        if (_owner.IsTooFarFromPatrolCenter())
+        {
+            _owner.BasicStateMachine.ChangeState(EnemyState.Return);
+            return;
+        }
+
+        _owner.SetTargetToMove(_owner.LastSeenPlayerPosition);
+        _owner.EnemyConf.Move(_owner);
+
         if (!_owner.IsPlayerInRange())
         {
             _owner.BasicStateMachine.ChangeState(EnemyState.Search, new object[]{
@@ -19,14 +41,13 @@ public class ChaseState : IBasicState<EnemyController>
             });
             return;
         }
+
+        _attackCooldown -= Time.deltaTime;
         if (_owner.DistanceToPlayer() <= _owner.EnemyConf.AttackRadius)
         {
-            _owner.BasicStateMachine.ChangeState(EnemyState.Attack);
-            return;
-        }
-        else if (_owner.DistanceToPlayer() > _owner.EnemyConf.ChaseRadius)
-        {
-            _owner.BasicStateMachine.ChangeState(EnemyState.Return);
+            _owner.BasicStateMachine.ChangeState(EnemyState.Attack, new object[]{
+                _attackCooldown
+            });
             return;
         }
     }
