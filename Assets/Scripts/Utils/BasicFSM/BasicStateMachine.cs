@@ -24,7 +24,8 @@ public class BasicStateMachine<TOwner, TStateEnum>
     public void ChangeState(TStateEnum newStateEnum, object[] parameters = null)
     {
         if (!_states.TryGetValue(newStateEnum, out var newState))
-            throw new ArgumentException($"State {newStateEnum} not registered");
+            // throw new ArgumentException($"State {newStateEnum} not registered");
+            return;
 
         CurrentStateEnum = newStateEnum;
         CurrentState?.Exit(_owner);
