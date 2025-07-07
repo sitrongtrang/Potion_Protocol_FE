@@ -49,7 +49,7 @@ public abstract class EnemyConfig : ScriptableObject
     [Header("Drop")]
     [SerializeField] private IngredientConfig _ingredient;
     public IngredientConfig Ingredient => _ingredient;
-
+    [Header("Component")]
     [SerializeField] private EnemyController _prefab;
     public EnemyController Prefab => _prefab;
     public abstract void Move(EnemyController controller);

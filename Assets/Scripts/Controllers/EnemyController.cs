@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    [Header("Component")]
     public EnemyConfig EnemyConf { get; private set; }
+    public EnemySpawner Spawner { get; private set; }
+    public int IndexPosition { get; private set; }
     [Header("Movement")]
     public Vector2 TargetToMove { get; private set; }
     public Vector2 PatrolCenter { get; private set; }
@@ -40,9 +43,12 @@ public class EnemyController : MonoBehaviour
     #endregion
 
     #region STATE
-    public void Initialize(EnemyConfig config, Vector2 patrolCenter)
+    public void Initialize(EnemyConfig config, EnemySpawner spawner, Vector2 patrolCenter, int indexPosition)
     {
         EnemyConf = config;
+        Spawner = spawner;
+        IndexPosition = indexPosition;
+        
         _currentHp = config.Hp;
 
         PatrolCenter = patrolCenter;

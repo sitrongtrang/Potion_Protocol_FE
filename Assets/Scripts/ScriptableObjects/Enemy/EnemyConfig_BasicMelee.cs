@@ -21,6 +21,7 @@ public class EnemyConfig_BasicMelee : EnemyConfig
 
     public override void OnDeath(EnemyController controller)
     {
+        controller.Spawner.UnoccupiedSpace(controller.IndexPosition);
         Debug.Log(Name + "died, dropping " + Ingredient.Name);
     }
 }
