@@ -22,15 +22,15 @@ public class SearchState : IBasicState<EnemyController>
     {
         if (_owner.IsPlayerInRange())
         {
-            _owner.BasicStateMachine.ChangeState(EnemyState.Chase);
-            return;
+            if (_owner.BasicStateMachine.ChangeState(EnemyState.Chase))
+                return;
         }
         
         _searchRemaining -= Time.deltaTime;
         if (_searchRemaining <= 0)
         {
-            _owner.BasicStateMachine.ChangeState(EnemyState.Return);
-            return;
+            if (_owner.BasicStateMachine.ChangeState(EnemyState.Return))
+                return;
         }
         if (Vector3.Distance(_owner.transform.position, _searchTarget) >= 0.1f)
         {
@@ -38,10 +38,11 @@ public class SearchState : IBasicState<EnemyController>
         }
         else
         {
-            _owner.BasicStateMachine.ChangeState(EnemyState.Idle, new object[]{
-                EnemyState.Search, _owner.EnemyConf.SearchInterval, _searchRemaining
-            });
-            return;
+            if (
+                _owner.BasicStateMachine.ChangeState(EnemyState.Idle, new object[]{
+                    EnemyState.Search, _owner.EnemyConf.SearchInterval, _searchRemaining
+                })
+            ) return;
         }
     }
 

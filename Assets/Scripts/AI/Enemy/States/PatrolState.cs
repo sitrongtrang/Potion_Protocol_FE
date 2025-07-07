@@ -20,8 +20,8 @@ public class PatrolState : IBasicState<EnemyController>
     {
         if (_owner.IsPlayerInRange())
         {
-            _owner.BasicStateMachine.ChangeState(EnemyState.Chase);
-            return;
+            if (_owner.BasicStateMachine.ChangeState(EnemyState.Chase))
+                return;
         }
         
         if (Vector3.Distance(_owner.transform.position, _patrolTarget) >= 0.1f)
@@ -30,10 +30,11 @@ public class PatrolState : IBasicState<EnemyController>
         }
         else
         {
-            _owner.BasicStateMachine.ChangeState(EnemyState.Idle, new object[]{
-                EnemyState.Patrol, _owner.EnemyConf.PatrolInterval
-            });
-            return;
+            if (
+                _owner.BasicStateMachine.ChangeState(EnemyState.Idle, new object[]{
+                    EnemyState.Patrol, _owner.EnemyConf.PatrolInterval
+                })
+            ) return;
         }
     }
 

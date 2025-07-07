@@ -23,8 +23,8 @@ public class IdleState : IBasicState<EnemyController>
     {
         if (_owner.IsPlayerInRange())
         {
-            _owner.BasicStateMachine.ChangeState(EnemyState.Chase);
-            return;
+            if (_owner.BasicStateMachine.ChangeState(EnemyState.Chase))
+                return;
         }
         
         _idleTime -= Time.deltaTime;
@@ -32,15 +32,16 @@ public class IdleState : IBasicState<EnemyController>
         {
             if (_previousState == EnemyState.Patrol)
             {
-                _owner.BasicStateMachine.ChangeState(EnemyState.Patrol);
-                return;
+                if (_owner.BasicStateMachine.ChangeState(EnemyState.Patrol))
+                    return;
             }
             else if (_previousState == EnemyState.Search)
             {
-                _owner.BasicStateMachine.ChangeState(EnemyState.Search, new object[]{
-                    _searchRemaining
-                });
-                return;
+                if (
+                    _owner.BasicStateMachine.ChangeState(EnemyState.Search, new object[]{
+                        _searchRemaining
+                    })
+                ) return;
             }
         }
     }

@@ -490,11 +490,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 028e7218131d034458c17cff485d4414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <EnemyConf>k__BackingField: {fileID: 11400000, guid: 7279709a75a51d34bb1a191d823af0a4, type: 2}
-  <PlayerLayer>k__BackingField:
+  _playerLayer:
     serializedVersion: 2
     m_Bits: 64
-  CurrentEnemyStateEnum: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

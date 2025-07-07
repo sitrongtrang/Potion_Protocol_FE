@@ -53,12 +53,9 @@ public abstract class EnemyConfig : ScriptableObject
     [SerializeField] private EnemyController _prefab;
     public EnemyController Prefab => _prefab;
     public abstract void Move(EnemyController controller);
-    // public abstract void Patrol(EnemyController controller);
-    // public abstract void Chase(EnemyController controller, Transform target);
-    // public abstract void Attack(EnemyController controller, Transform target);
-    // public abstract void Search(EnemyController controller);
-    // public abstract void ReturnToSpawn(EnemyController controller);
     public abstract void OnDeath(EnemyController controller);
+    public abstract void Attack(EnemyController controller);
+    public abstract void Initialize(EnemyController controller);
     private void OnValidate()
     {
         // Ensure AttackRadius < VisionRadius < ChaseRadius

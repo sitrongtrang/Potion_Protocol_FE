@@ -16,8 +16,8 @@ public class ReturnState : IBasicState<EnemyController>
     {
         if (_owner.IsPlayerInRange() && !_owner.IsTooFarFromPatrolCenter())
         {
-            _owner.BasicStateMachine.ChangeState(EnemyState.Chase);
-            return;
+            if (_owner.BasicStateMachine.ChangeState(EnemyState.Chase))
+                return;
         }
         
         if (Vector3.Distance(_owner.transform.position, _owner.PatrolCenter) >= 0.1f)
@@ -26,8 +26,8 @@ public class ReturnState : IBasicState<EnemyController>
         }
         else
         {
-            _owner.BasicStateMachine.ChangeState(EnemyState.Patrol);
-            return;
+            if (_owner.BasicStateMachine.ChangeState(EnemyState.Patrol))
+                return;
         }
     }
 

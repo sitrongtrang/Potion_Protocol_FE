@@ -27,8 +27,9 @@ public class ChaseState : IBasicState<EnemyController>
     {
         if (_owner.IsTooFarFromPatrolCenter())
         {
-            _owner.BasicStateMachine.ChangeState(EnemyState.Return);
-            return;
+            if (
+                _owner.BasicStateMachine.ChangeState(EnemyState.Return)
+            ) return;
         }
 
         _owner.SetTargetToMove(_owner.LastSeenPlayerPosition);
@@ -36,19 +37,21 @@ public class ChaseState : IBasicState<EnemyController>
 
         if (!_owner.IsPlayerInRange())
         {
-            _owner.BasicStateMachine.ChangeState(EnemyState.Search, new object[]{
-                _owner.EnemyConf.SearchDuration
-            });
-            return;
+            if (
+                _owner.BasicStateMachine.ChangeState(EnemyState.Search, new object[]{
+                    _owner.EnemyConf.SearchDuration
+                })  
+            ) return;
         }
 
         _attackCooldown -= Time.deltaTime;
         if (_owner.DistanceToPlayer() <= _owner.EnemyConf.AttackRadius)
         {
-            _owner.BasicStateMachine.ChangeState(EnemyState.Attack, new object[]{
-                _attackCooldown
-            });
-            return;
+            if (
+                _owner.BasicStateMachine.ChangeState(EnemyState.Attack, new object[]{
+                    _attackCooldown
+                })
+            ) return;
         }
     }
 

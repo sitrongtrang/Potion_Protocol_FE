@@ -21,16 +21,17 @@ public class BasicStateMachine<TOwner, TStateEnum>
         _states[stateEnum] = state;
     }
 
-    public void ChangeState(TStateEnum newStateEnum, object[] parameters = null)
+    public bool ChangeState(TStateEnum newStateEnum, object[] parameters = null)
     {
         if (!_states.TryGetValue(newStateEnum, out var newState))
             // throw new ArgumentException($"State {newStateEnum} not registered");
-            return;
+            return false;
 
         CurrentStateEnum = newStateEnum;
         CurrentState?.Exit(_owner);
         CurrentState = newState;
         CurrentState.Enter(_owner, parameters);
+        return true;
     }
 
     public void Execute()
