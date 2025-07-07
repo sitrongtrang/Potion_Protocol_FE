@@ -530,28 +530,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49bd5cd201fac7e42acdb1a7e6fa64dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positions:
-  - {x: 8.713, y: 0.819, z: 0}
-  - {x: 6.655, y: 0.819, z: 0}
-  - {x: 4.339, y: 0.819, z: 0}
-  - {x: 2.15, y: 0.819, z: 0}
-  - {x: -0.17, y: 0.819, z: 0}
-  - {x: -2.354, y: 0.819, z: 0}
-  - {x: -4.7, y: 0.819, z: 0}
-  - {x: -6.855, y: 0.819, z: 0}
-  - {x: -4.205, y: 2.835, z: 0}
-  - {x: -3.295, y: 2.835, z: 0}
-  - {x: 0.15, y: 2.82, z: 0}
-  - {x: 1.83, y: 2.82, z: 0}
-  - {x: 4.7, y: 2.35, z: 0}
-  - {x: -4.73, y: -1.65, z: 0}
-  - {x: 3.81, y: -2.65, z: 0}
-  - {x: -3.317, y: -2.163, z: 0}
-  - {x: 0.82, y: -2.163, z: 0}
-  - {x: -0.5, y: -2.163, z: 0}
-  - {x: -1.99, y: -2.163, z: 0}
-  - {x: 8.69, y: 2.35, z: 0}
-  Fire: {fileID: 2743854361385876680, guid: 8dfffcb4dbe46f94c8f48f8c6ebc3644, type: 3}
 --- !u!4 &610365345
 Transform:
   m_ObjectHideFlags: 0
@@ -561,7 +539,7 @@ Transform:
   m_GameObject: {fileID: 610365343}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.2976503, y: 0.8845563, z: 0.003229361}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

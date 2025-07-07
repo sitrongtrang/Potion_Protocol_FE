@@ -19,4 +19,5 @@ public class IngredientConfig : ScriptableObject
     public string Name => _name;
     public float ExistDuration => _existDuration;
     public IngredientController Prefab => _prefab;
+    public string Id => _id;
 }
