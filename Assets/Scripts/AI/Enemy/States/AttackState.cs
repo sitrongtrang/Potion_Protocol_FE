@@ -13,7 +13,7 @@ public class AttackState : IBasicState<EnemyController>
 
     public void Execute(EnemyController owner)
     {
-        if (!_owner.IsPlayerInRange())
+        if (!_owner.IsPlayerInRange)
         {
             if (
                 _owner.BasicStateMachine.ChangeState(EnemyState.Search, new object[]{

@@ -14,8 +14,10 @@ public class EnemyController : MonoBehaviour
     public LayerMask ObstacleLayer => _obstacleLayer;
     private Transform _playerTransform;
     public Vector2 LastSeenPlayerPosition { get; private set; }
-    public BasicStateMachine<EnemyController, EnemyState> BasicStateMachine { get; private set; }
+    private bool _isPlayerInRange = false;
+    public bool IsPlayerInRange => _isPlayerInRange;
     [Header("Enemy State")]
+    public BasicStateMachine<EnemyController, EnemyState> BasicStateMachine { get; private set; }
     public EnemyState CurrentEnemyStateEnum => BasicStateMachine.CurrentStateEnum;
 
     #region UNITY_METHODS
@@ -82,25 +84,36 @@ public class EnemyController : MonoBehaviour
     #region COMBAT
     private void HandleDetection()
     {
-        Collider2D hit = Physics2D.OverlapCircle(transform.position, EnemyConf.VisionRadius, PlayerLayer);
-        if (hit != null && hit.CompareTag("Player"))
+        Collider2D playerHit = Physics2D.OverlapCircle(transform.position, EnemyConf.VisionRadius, PlayerLayer);
+        if (playerHit != null && playerHit.CompareTag("Player"))
         {
-            _playerTransform = hit.transform;
-            LastSeenPlayerPosition = _playerTransform.position;
+            _playerTransform = playerHit.transform;
+            Vector2 start = transform.position;
+            Vector2 end = _playerTransform.position;
+            RaycastHit2D obstacleHit = Physics2D.Linecast(start, end, ObstacleLayer);
+            if (obstacleHit.transform == null)
+            {
+                _isPlayerInRange = true;
+                LastSeenPlayerPosition = _playerTransform.position;
+            }
+            else
+            {
+                _isPlayerInRange = false;
+            }
         }
         else
         {
             _playerTransform = null;
         }
     }
-    public bool IsPlayerInRange()
-    {
-        if (_playerTransform == null) return false;
-        Vector2 start = transform.position;
-        Vector2 end = _playerTransform.position;
-        RaycastHit2D hit = Physics2D.Linecast(start, end, ObstacleLayer);
-        return hit.transform != null;
-    }
+    // public bool IsPlayerInRange()
+    // {
+    //     if (_playerTransform == null) return false;
+    //     Vector2 start = transform.position;
+    //     Vector2 end = _playerTransform.position;
+    //     RaycastHit2D hit = Physics2D.Linecast(start, end, ObstacleLayer);
+    //     return hit.transform != null;
+    // }
     public float DistanceToPlayer()
     {
         return _playerTransform != null

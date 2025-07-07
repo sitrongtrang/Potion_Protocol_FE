@@ -35,7 +35,7 @@ public class ChaseState : IBasicState<EnemyController>
         _owner.SetTargetToMove(_owner.LastSeenPlayerPosition);
         _owner.EnemyConf.Move(_owner);
 
-        if (!_owner.IsPlayerInRange())
+        if (!_owner.IsPlayerInRange)
         {
             if (
                 _owner.BasicStateMachine.ChangeState(EnemyState.Search, new object[]{
