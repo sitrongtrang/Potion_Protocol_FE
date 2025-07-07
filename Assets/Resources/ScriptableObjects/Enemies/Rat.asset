@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: Rat
   m_EditorClassIdentifier: 
   _name: Shadowtail
-  _hp: 0
-  _speed: 0
-  _damage: 0
+  _hp: 1
+  _speed: 3
+  _damage: 1
   _patrolRadius: 5
   _patrolInterval: 1
-  _chaseRadius: 6
+  _chaseRadius: 6.1
   _visionRadius: 6
   _attackRadius: 1
   _attackInterval: 1
   _searchRadius: 5
   _searchDuration: 100
   _searchInterval: 1
-  ingredientsConfig: []
+  _ingredient: {fileID: 11400000, guid: 11e6b186983da7542821215d78acc18c, type: 2}
+  _prefab: {fileID: 7341765061055309171, guid: 6f876ace08c51b7429681775649feb35, type: 3}
