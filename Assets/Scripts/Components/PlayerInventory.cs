@@ -20,7 +20,7 @@ public class PlayerInventory : IComponent
     
     public IngredientConfig Get(int idx) => ingredients[idx];
 
-    public void Initialize(PlayerController player)
+    public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
         _player = player;
     }

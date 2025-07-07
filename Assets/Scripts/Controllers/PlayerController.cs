@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerConfig _config;
+    // input manager (new input system)
+    private PlayerInputManager _inputManager;
+
     private List<IUpdatableComponent> _updatableComponents = new();
 
     public PlayerConfig Config => _config;
@@ -15,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        _inputManager = new PlayerInputManager();
         Inventory = RegisterComponent(new PlayerInventory());
         Attack = RegisterComponent(new PlayerAttack());
         Interaction = RegisterComponent(new PlayerInteraction());
@@ -43,7 +47,7 @@ public class PlayerController : MonoBehaviour
     {
         if (component is IComponent playerComponent)
         {
-            playerComponent.Initialize(this);
+            playerComponent.Initialize(this, _inputManager);
         }
 
         if (component is IUpdatableComponent updatable)
@@ -52,5 +56,9 @@ public class PlayerController : MonoBehaviour
         }
 
         return component;
+    }
+    void OnDestroy()
+    {
+        _inputManager.OnDestroy();
     }
 }

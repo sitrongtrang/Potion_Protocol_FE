@@ -1,4 +1,4 @@
 public interface IComponent
 {
-    public void Initialize(PlayerController player);
+    public void Initialize(PlayerController player, PlayerInputManager inputManager);
 }

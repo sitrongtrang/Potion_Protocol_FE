@@ -1,51 +1,67 @@
+using System.Collections;
 using NUnit.Framework;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : IComponent, IUpdatableComponent
 {
     private PlayerController _player;
+    PlayerInputManager _inputManager;
     private Vector2 _moveDir;
     public Vector2 MoveDir => _moveDir;
-    private bool _isMoving = false;
-    public bool IsMoving => _isMoving;
+    // private bool _isMoving = false;
+    // public bool IsMoving => _isMoving;
     [SerializeField] private PlayerConfig _playerConfig; // player attribute from data asset
     private Vector2 _playerDir; // player direction
     public Vector2 PlayerDir => _playerDir;
     [SerializeField] private float _dashCD; // player
-
-    private float _dashTime = 0;
     private bool _isDashing = false;
+    private bool _canDash = true;
 
-    public void Initialize(PlayerController player)
+    public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
         _player = player;
         _playerConfig = player.Config;
+        _inputManager = inputManager;
+        _inputManager.controls.Player.Move.performed += ctx =>
+        {
+            _moveDir = ctx.ReadValue<Vector2>().normalized;
+            _playerDir = _moveDir;
+        };
+        _inputManager.controls.Player.Move.canceled += ctx =>
+        {
+            _moveDir = Vector2.zero;
+        };
+        _inputManager.controls.Player.Dash.performed += ctx =>
+        {
+            if (_canDash) _player.StartCoroutine(Dash());
+        };
     }
+    
     public void MyUpdate()
     {
-        // move logic
-        _moveDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
-        _isMoving = _moveDir != Vector2.zero;
-        if (_isMoving) _playerDir = _moveDir;
-        _player.gameObject.transform.Translate(_moveDir * _playerConfig.MoveSpeed * Time.deltaTime);
+        if (_moveDir != Vector2.zero) _player.gameObject.transform.Translate(_moveDir * _playerConfig.MoveSpeed * Time.deltaTime);
+    }
 
-        // dash logic
-        if (_dashCD <= 0 && Input.GetKey(KeyCode.L))
+    
+    IEnumerator Dash()
+    {
+        _isDashing = true;
+        _canDash = false;
+
+        float dashTime = 0f;
+        while (dashTime < _playerConfig.DashTime)
         {
-            // Dash();
-            _isDashing = true;
+            
+            _player.transform.Translate(_playerDir * _playerConfig.DashSpeed * Time.deltaTime);
+            dashTime += Time.deltaTime;
+            yield return null;
         }
-        if (_dashTime <= _playerConfig.DashTime && _isDashing)
-        {
-            _player.gameObject.transform.Translate(_playerDir * _playerConfig.DashSpeed * Time.deltaTime);
-            _dashTime += Time.deltaTime;
-        }
-        else if (_dashTime >= _playerConfig.DashTime)
-        {
-            _isDashing = false;
-            _dashCD = _playerConfig.DashCooldown;
-            _dashTime = 0;
-        }
-        _dashCD -= Time.deltaTime;
+
+        _isDashing = false;
+
+        // Dash Cooldown
+        yield return new WaitForSeconds(_playerConfig.DashCooldown);
+        _canDash = true;
     }
 }
