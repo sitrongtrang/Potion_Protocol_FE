@@ -55,24 +55,6 @@ public class EnemyController : MonoBehaviour
         BasicStateMachine = new(this);
 
         config.Initialize(this);
-        
-        // This is for example only, add states in enemy config
-
-        // IdleState idleState = new IdleState(this);
-        // PatrolState patrolState = new PatrolState(this);
-        // ChaseState chaseState = new ChaseState(this);
-        // ReturnState returnState = new ReturnState(this);
-        // SearchState searchState = new SearchState(this);
-        // AttackState attackState = new AttackState(this);
-
-        // BasicStateMachine.AddState(EnemyState.Idle, idleState);
-        // BasicStateMachine.AddState(EnemyState.Patrol, patrolState);
-        // BasicStateMachine.AddState(EnemyState.Chase, chaseState);
-        // BasicStateMachine.AddState(EnemyState.Return, returnState);
-        // BasicStateMachine.AddState(EnemyState.Search, searchState);
-        // BasicStateMachine.AddState(EnemyState.Attack, attackState);
-
-        // BasicStateMachine.ChangeState(EnemyState.Return);
     }
     #endregion
 
@@ -112,14 +94,6 @@ public class EnemyController : MonoBehaviour
             _playerTransform = null;
         }
     }
-    // public bool IsPlayerInRange()
-    // {
-    //     if (_playerTransform == null) return false;
-    //     Vector2 start = transform.position;
-    //     Vector2 end = _playerTransform.position;
-    //     RaycastHit2D hit = Physics2D.Linecast(start, end, ObstacleLayer);
-    //     return hit.transform != null;
-    // }
     public float DistanceToPlayer()
     {
         return _playerTransform != null
@@ -137,6 +111,7 @@ public class EnemyController : MonoBehaviour
     private void Die()
     {
         EnemyConf.OnDeath(this);
+        Spawner.UnoccupiedSpace(IndexPosition);
         Destroy(gameObject);
     }
     #endregion

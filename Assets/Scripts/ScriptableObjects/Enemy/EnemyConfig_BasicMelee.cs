@@ -10,7 +10,15 @@ public class EnemyConfig_BasicMelee : EnemyConfig
 
     public override void Initialize(EnemyController controller)
     {
+        IdleState idleState = new(controller);
+        PatrolState patrolState = new(controller);
+        ReturnState returnState = new(controller);
+
+        controller.BasicStateMachine.AddState(EnemyState.Idle, idleState);
+        controller.BasicStateMachine.AddState(EnemyState.Patrol, patrolState);
+        controller.BasicStateMachine.AddState(EnemyState.Return, returnState);
         
+        controller.BasicStateMachine.ChangeState(EnemyState.Return);
     }
 
     public override void Move(EnemyController controller)
@@ -21,7 +29,6 @@ public class EnemyConfig_BasicMelee : EnemyConfig
 
     public override void OnDeath(EnemyController controller)
     {
-        controller.Spawner.UnoccupiedSpace(controller.IndexPosition);
         Debug.Log(Name + "died, dropping " + Ingredient.Name);
     }
 }
