@@ -4,7 +4,7 @@ public class SearchState : IBasicState<EnemyController>
 {
     private EnemyController _owner;
     private float _searchRemaining;
-    private Vector3 _searchTarget;
+    private Vector2 _searchTarget;
     public SearchState(EnemyController controller)
     {
         _owner = controller;
@@ -32,7 +32,7 @@ public class SearchState : IBasicState<EnemyController>
             if (_owner.BasicStateMachine.ChangeState(EnemyState.Return))
                 return;
         }
-        if (Vector3.Distance(_owner.transform.position, _searchTarget) >= 0.1f)
+        if (Vector2.Distance(_owner.transform.position, _searchTarget) >= 0.1f)
         {
             _owner.EnemyConf.Move(_owner);
         }
@@ -50,8 +50,8 @@ public class SearchState : IBasicState<EnemyController>
     {
 
     }
-    private Vector3 GetSearchTarget()
+    private Vector2 GetSearchTarget()
     {
-        return _owner.LastSeenPlayerPosition + (Vector3)Random.insideUnitCircle * _owner.EnemyConf.SearchRadius;
+        return _owner.LastSeenPlayerPosition + (Vector2)Random.insideUnitCircle * _owner.EnemyConf.SearchRadius;
     }
 }

@@ -15,7 +15,7 @@ public class EnemyConfig_BasicMelee : EnemyConfig
 
     public override void Move(EnemyController controller)
     {
-        Vector3 direction = (controller.TargetToMove - controller.transform.position).normalized;
+        Vector2 direction = (controller.TargetToMove - controller.transform.position).normalized;
         controller.transform.Translate(Speed * Time.deltaTime * direction);
     }
 

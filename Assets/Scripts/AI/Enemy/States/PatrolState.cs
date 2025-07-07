@@ -5,7 +5,7 @@ using UnityEngine;
 public class PatrolState : IBasicState<EnemyController>
 {
     private EnemyController _owner;
-    private Vector3 _patrolTarget;
+    private Vector2 _patrolTarget;
     public PatrolState(EnemyController controller)
     {
         _owner = controller;
@@ -24,7 +24,7 @@ public class PatrolState : IBasicState<EnemyController>
                 return;
         }
         
-        if (Vector3.Distance(_owner.transform.position, _patrolTarget) >= 0.1f)
+        if (Vector2.Distance(_owner.transform.position, _patrolTarget) >= 0.1f)
         {
             _owner.EnemyConf.Move(_owner);
         }
@@ -43,8 +43,8 @@ public class PatrolState : IBasicState<EnemyController>
 
     }
 
-    private Vector3 GetPatrolTarget()
+    private Vector2 GetPatrolTarget()
     {
-        return _owner.PatrolCenter + (Vector3)Random.insideUnitCircle * _owner.EnemyConf.PatrolRadius;
+        return _owner.PatrolCenter + (Vector2)Random.insideUnitCircle * _owner.EnemyConf.PatrolRadius;
     }
 }

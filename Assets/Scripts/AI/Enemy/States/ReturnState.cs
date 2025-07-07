@@ -20,7 +20,7 @@ public class ReturnState : IBasicState<EnemyController>
                 return;
         }
         
-        if (Vector3.Distance(_owner.transform.position, _owner.PatrolCenter) >= 0.1f)
+        if (Vector2.Distance(_owner.transform.position, _owner.PatrolCenter) >= 0.1f)
         {
             _owner.EnemyConf.Move(_owner);
         }
