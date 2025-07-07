@@ -99,7 +99,7 @@ public class EnemyController : MonoBehaviour
         Vector2 start = transform.position;
         Vector2 end = _playerTransform.position;
         RaycastHit2D hit = Physics2D.Linecast(start, end, ObstacleLayer);
-        return _playerTransform != null;
+        return hit.transform != null;
     }
     public float DistanceToPlayer()
     {
