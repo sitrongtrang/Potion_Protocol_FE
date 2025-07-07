@@ -2,32 +2,37 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [Header("Components")]
-    [field: SerializeField] public EnemyConfig EnemyConf { get; private set; }
+    [Header("Component")]
+    public EnemyConfig EnemyConf { get; private set; }
+    public EnemySpawner Spawner { get; private set; }
+    public int IndexPosition { get; private set; }
     [Header("Movement")]
-    public Vector3 SpawnPosition { get; private set; }
-    public Vector3 PatrolTarget { get; private set; }
-    public Vector3 PatrolCenter;
-    private EnemyMovementState _currentMovementState;
+    public Vector2 TargetToMove { get; private set; }
+    public Vector2 PatrolCenter { get; private set; }
     [Header("Combat")]
     private float _currentHp;
-    private float _searchTimer;
-    [field: SerializeField] public LayerMask PlayerLayer { get; private set; }
+    [SerializeField] private LayerMask _playerLayer;
+    public LayerMask PlayerLayer => _playerLayer;
+    [SerializeField] private LayerMask _obstacleLayer;
+    public LayerMask ObstacleLayer => _obstacleLayer;
     private Transform _playerTransform;
-    public Vector3 LastSeenPlayerPosition { get; private set; }
+    public Vector2 LastSeenPlayerPosition { get; private set; }
+    private bool _isPlayerInRange = false;
+    public bool IsPlayerInRange => _isPlayerInRange;
+    [Header("Enemy State")]
+    public BasicStateMachine<EnemyController, EnemyState> BasicStateMachine { get; private set; }
+    public EnemyState CurrentEnemyStateEnum => BasicStateMachine.CurrentStateEnum;
 
     #region UNITY_METHODS
-    private void Start()
-    {
-        SpawnPosition = transform.position;
-        _currentHp = EnemyConf.Hp;
-        _currentMovementState = EnemyMovementState.Return;
-    }
     private void Update()
     {
-
+        BasicStateMachine?.Execute();
     }
-    private void OisionEnter2D(Collision2D collision)
+    private void FixedUpdate()
+    {
+        HandleDetection();
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
     {
 
     }
@@ -38,96 +43,62 @@ public class EnemyController : MonoBehaviour
     #endregion
 
     #region STATE
-    private void HandleState()
+    public void Initialize(EnemyConfig config, EnemySpawner spawner, Vector2 patrolCenter, int indexPosition)
     {
-        float distanceToPlayer = _playerTransform != null ? Vector3.Distance(transform.position, _playerTransform.position) : Mathf.Infinity;
+        EnemyConf = config;
+        Spawner = spawner;
+        IndexPosition = indexPosition;
+        
+        _currentHp = config.Hp;
 
-        switch (_currentMovementState)
-        {
-            case EnemyMovementState.Patrol:
-                EnemyConf.Patrol(this);
-                if (_playerTransform != null)
-                    _currentMovementState = EnemyMovementState.Chase;
-                break;
+        PatrolCenter = patrolCenter;
+        BasicStateMachine = new(this);
 
-            case EnemyMovementState.Chase:
-                if (_playerTransform != null)
-                {
-                    EnemyConf.Chase(this, _playerTransform);
-
-                    if (distanceToPlayer <= EnemyConf.AttackRadius)
-                        _currentMovementState = EnemyMovementState.Attack;
-                    else if (distanceToPlayer > EnemyConf.ChaseRadius)
-                        _currentMovementState = EnemyMovementState.Return;
-                }
-                else
-                {
-                    _currentMovementState = EnemyMovementState.Search;
-                    _searchTimer = EnemyConf.SearchDuration;
-                }
-                break;
-
-            case EnemyMovementState.Attack:
-                if (_playerTransform != null)
-                {
-                    EnemyConf.Attack(this, _playerTransform);
-
-                    if (distanceToPlayer > EnemyConf.AttackRadius)
-                        _currentMovementState = EnemyMovementState.Chase;
-                }
-                else
-                {
-                    _currentMovementState = EnemyMovementState.Search;
-                    _searchTimer = EnemyConf.SearchDuration;
-                }
-                break;
-
-            case EnemyMovementState.Search:
-                EnemyConf.Search(this);
-                _searchTimer -= Time.deltaTime;
-                if (_searchTimer <= 0)
-                    _currentMovementState = EnemyMovementState.Return;
-                else if (_playerTransform != null)
-                    _currentMovementState = EnemyMovementState.Chase;
-                break;
-
-            case EnemyMovementState.Return:
-                EnemyConf.ReturnToSpawn(this);
-                if (Vector3.Distance(transform.position, SpawnPosition) < 0.1f)
-                    _currentMovementState = EnemyMovementState.Patrol;
-                break;
-        }
+        config.Initialize(this);
     }
     #endregion
 
     #region MOVEMENT
-    public void MoveTowards(Vector3 target)
+    public void SetTargetToMove(Vector2 position)
     {
-        transform.position = Vector3.MoveTowards(transform.position, target, EnemyConf.Speed * Time.deltaTime);
+        TargetToMove = position;
     }
-    public bool HasPatrolTarget()
+    public bool IsTooFarFromPatrolCenter()
     {
-        return PatrolTarget != default && Vector3.Distance(transform.position, PatrolTarget) > 0.1f;
-    }
-    public void SetPatrolTargetAroundSpawn(float radius)
-    {
-        PatrolTarget = SpawnPosition + (Vector3)Random.insideUnitCircle * radius;
+        return Vector2.Distance(transform.position, PatrolCenter) > EnemyConf.ChaseRadius;
     }
     #endregion
 
     #region COMBAT
     private void HandleDetection()
     {
-        Collider2D hit = Physics2D.OverlapCircle(transform.position, EnemyConf.VisionRadius, PlayerLayer);
-        if (hit != null && hit.CompareTag("Player"))
+        Collider2D playerHit = Physics2D.OverlapCircle(transform.position, EnemyConf.VisionRadius, PlayerLayer);
+        if (playerHit != null && playerHit.CompareTag("Player"))
         {
-            _playerTransform = hit.transform;
-            LastSeenPlayerPosition = _playerTransform.position;
+            _playerTransform = playerHit.transform;
+            Vector2 start = transform.position;
+            Vector2 end = _playerTransform.position;
+            RaycastHit2D obstacleHit = Physics2D.Linecast(start, end, ObstacleLayer);
+            if (obstacleHit.transform == null)
+            {
+                _isPlayerInRange = true;
+                LastSeenPlayerPosition = _playerTransform.position;
+            }
+            else
+            {
+                _isPlayerInRange = false;
+            }
         }
         else
         {
             _playerTransform = null;
         }
+    }
+    public float DistanceToPlayer()
+    {
+        return _playerTransform != null
+            ? Vector2.Distance(transform.position, _playerTransform.position)
+            : Mathf.Infinity;
     }
     public void TakeDamage(float amount)
     {
@@ -137,10 +108,10 @@ public class EnemyController : MonoBehaviour
             Die();
         }
     }
-
     private void Die()
     {
         EnemyConf.OnDeath(this);
+        Spawner.UnoccupiedSpace(IndexPosition);
         Destroy(gameObject);
     }
     #endregion
@@ -159,6 +130,16 @@ public class EnemyController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(PatrolCenter, EnemyConf.PatrolRadius);
+    }
+    void DrawVisionRadius()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(PatrolCenter, EnemyConf.VisionRadius);
+    }
+    void DrawSearchRadius()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(LastSeenPlayerPosition, EnemyConf.SearchRadius);
     }
     #endregion
 }

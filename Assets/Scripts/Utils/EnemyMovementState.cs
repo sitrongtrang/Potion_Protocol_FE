@@ -1,8 +1,15 @@
-public enum EnemyMovementState
+using System;
+
+[Serializable]
+public enum EnemyState
 {
+    // MOVEMENT
+    Idle,
     Patrol,
     Chase,
-    Attack,
     Search,
-    Return
+    Return,
+
+    // COMBAT
+    Attack,
 }
