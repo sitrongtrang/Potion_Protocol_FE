@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerMovement : IComponent, IUpdatableComponent
 {
     private PlayerController _player;
-    PlayerInputManager _inputManager;
+    private PlayerInputManager _inputManager;
     private Vector2 _moveDir;
     public Vector2 MoveDir => _moveDir;
     // private bool _isMoving = false;
@@ -14,7 +14,6 @@ public class PlayerMovement : IComponent, IUpdatableComponent
     [SerializeField] private PlayerConfig _playerConfig; // player attribute from data asset
     private Vector2 _playerDir; // player direction
     public Vector2 PlayerDir => _playerDir;
-    [SerializeField] private float _dashCD; // player
     private bool _isDashing = false;
     private bool _canDash = true;
 
@@ -23,6 +22,7 @@ public class PlayerMovement : IComponent, IUpdatableComponent
         _player = player;
         _playerConfig = player.Config;
         _inputManager = inputManager;
+
         _inputManager.controls.Player.Move.performed += ctx =>
         {
             _moveDir = ctx.ReadValue<Vector2>().normalized;
@@ -40,10 +40,10 @@ public class PlayerMovement : IComponent, IUpdatableComponent
     
     public void MyUpdate()
     {
-        if (_moveDir != Vector2.zero) _player.gameObject.transform.Translate(_moveDir * _playerConfig.MoveSpeed * Time.deltaTime);
+        if (_moveDir != Vector2.zero)
+            _player.gameObject.transform.Translate(_moveDir * _playerConfig.MoveSpeed * Time.deltaTime);
     }
 
-    
     IEnumerator Dash()
     {
         _isDashing = true;

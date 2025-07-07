@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerConfig _config;
     // input manager (new input system)
     private PlayerInputManager _inputManager;
-
     private List<IUpdatableComponent> _updatableComponents = new();
 
     public PlayerConfig Config => _config;

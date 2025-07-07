@@ -6,12 +6,12 @@ using static InputSystem_Actions;
 
 public class PlayerAttack : IComponent, IUpdatableComponent
 {
-    PlayerInputManager _inputManager;
+    private PlayerInputManager _inputManager;
     private PlayerController _player;
     // bool _isAttacking = false;
-    bool _canAttack = true;
-    bool[] _canUseSkills = new bool[GameConstants.NumSkills];
-    bool _isInAction = false;
+    private bool _canAttack = true;
+    private bool[] _canUseSkills = new bool[GameConstants.NumSkills];
+    private bool _isInAction = false;
     private InputAction[] _skillActions;
 
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
@@ -20,6 +20,7 @@ public class PlayerAttack : IComponent, IUpdatableComponent
         {
             _canUseSkills[i] = true;
         }
+
         _player = player;
         _inputManager = inputManager;
         _skillActions = new InputAction[]
@@ -36,7 +37,7 @@ public class PlayerAttack : IComponent, IUpdatableComponent
             {
                 if (_canUseSkills[index] && !_isInAction)
                 {
-                    _player.StartCoroutine(_player.Attack.UseSkill(index + 1));
+                    _player.StartCoroutine(UseSkill(index + 1));
                 }
             };
         }

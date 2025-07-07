@@ -17,7 +17,6 @@ public class PlayerInventory : IComponent
         }
     }
     public event Action OnSlotChanged;
-    
     public IngredientConfig Get(int idx) => ingredients[idx];
 
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
@@ -25,22 +24,22 @@ public class PlayerInventory : IComponent
         _player = player;
     }
 
-    public void Pickup(IngredientController ingredient)
+    public bool Pickup(IngredientController ingredient)
     {
         bool isAdded = Add(ingredient.Config);
         if (isAdded)
         {
             IngredientPool.Instance.RemoveIngredient(ingredient);
         }
+        return isAdded;
     }
 
-    public void Drop()
+    public bool Drop()
     {
         if (_choosingSlot == -1 || ingredients[_choosingSlot] == null)
         {
             // Not choosing any ingredient
-            Debug.Log("No ingredient to drop");
-            return;
+            return false;
         }
         else
         {
@@ -52,29 +51,23 @@ public class PlayerInventory : IComponent
 
             // Remove from inventory
             ingredients[_choosingSlot] = null;
+            return true;
         }
     }
 
-    public void TransferToStation(StationController station)
+    public bool TransferToStation(StationController station)
     {
         if (_choosingSlot == -1 || ingredients[_choosingSlot] == null)
         {
             // Not choosing any ingredient
-            Debug.Log("No ingredient in slot to transfer");
+            return false;
         }
         else
         {
-            // Transfer the ingredient to the station if the station requires
-            if (station.RequireIngredient(ingredients[_choosingSlot]))
-            {
-                Debug.Log($"Transferred item {ingredients[_choosingSlot].Name} in slot {(ChoosingSlot + 1).ToString()} to station");
-                // TODO: add ingredient to the station
-                Remove(ChoosingSlot);
-            }
-            else
-            {
-                Debug.Log("This station does not require this ingredient");
-            }
+            // Transfer the ingredient to the station if the station 
+            // TODO: add ingredient to the station
+            Remove(ChoosingSlot);
+            return true;
         }
     }
 
@@ -88,14 +81,12 @@ public class PlayerInventory : IComponent
         // No empty slot, cannot add ingredient
         if (idx == -1)
         {
-            Debug.Log("Inventory is full");
             return false;
         }
 
         // Found an empty slot, put ingredient into that slot
         ChoosingSlot = idx;
         ingredients[idx] = ingredient;
-        Debug.Log($"Picked up item {ingredient.Name} to slot {(idx + 1).ToString()}");
         return true;
     }
 
