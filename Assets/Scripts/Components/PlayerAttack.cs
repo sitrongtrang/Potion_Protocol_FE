@@ -1,49 +1,57 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using static InputSystem_Actions;
 
 public class PlayerAttack : IComponent, IUpdatableComponent
 {
+    private PlayerInputManager _inputManager;
     private PlayerController _player;
     // bool _isAttacking = false;
-    bool _canAttack = true;
-    bool[] _canUseSkills = new bool[GameConstants.NumSkills];
-    bool _isInAction = false;
+    private bool _canAttack = true;
+    private bool[] _canUseSkills = new bool[GameConstants.NumSkills];
+    private bool _isInAction = false;
+    private InputAction[] _skillActions;
 
-    public void Initialize(PlayerController player)
+    public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
         for (int i = 0; i < 3; i++)
         {
             _canUseSkills[i] = true;
         }
+
         _player = player;
+        _inputManager = inputManager;
+        _skillActions = new InputAction[]
+        {
+            _inputManager.controls.Player.Skill1,
+            _inputManager.controls.Player.Skill2,
+            _inputManager.controls.Player.Skill3
+        };
+
+        for (int i = 0; i < _skillActions.Length; i++)
+        {
+            int index = i; // Bắt buộc tạo biến tạm, tránh lỗi closure
+            _skillActions[i].performed += ctx =>
+            {
+                if (_canUseSkills[index] && !_isInAction)
+                {
+                    _player.StartCoroutine(UseSkill(index + 1));
+                }
+            };
+        }
     }
 
     public void MyUpdate()
     {
         
-        if (!_isInAction)
-        {
-            
-            if (_canUseSkills[0] && Input.GetKeyDown(KeyCode.U))
-            {
-                _player.StartCoroutine(UseSkill(1));
-            }
-            if (_canUseSkills[1] && Input.GetKeyDown(KeyCode.I))
-            {
-                _player.StartCoroutine(UseSkill(2));
-            }
-            if (_canUseSkills[2] && Input.GetKeyDown(KeyCode.O))
-            {
-                _player.StartCoroutine(UseSkill(3));
-            }
-        }
     }
     
     // Can not perform any action when an action is active by variable _isInAction
     public IEnumerator Attack()
     {
-        if (_canAttack && !_isInAction && Input.GetKeyDown(KeyCode.J))
+        if (_canAttack && !_isInAction)
         {
             _canAttack = false;
             // _isInAction = true;
