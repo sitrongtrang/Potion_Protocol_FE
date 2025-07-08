@@ -6,32 +6,34 @@ using UnityEngine.InputSystem;
 
 public class PlayerInteraction : IComponent, IUpdatableComponent
 {
-    PlayerInputManager _inputManager;
+    private PlayerInputManager _inputManager;
     private PlayerController _player;
     [SerializeField] private List<GameObject> _objectInCollision = new List<GameObject>();
+    [SerializeField] private bool _isNearStation = false;
+    private PlayerInventory _inventory;
+    private StationController _nearStation;
+    private InputAction[] _inputAction;
 
-    [SerializeField] bool _isNearStation = false;
-    PlayerInventory _inventory;
-    StationController _nearStation;
-    InputAction[] _inputAction;
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
         _inventory = player.Inventory;
         _player = player;
         _inputManager = inputManager;
         // Choose slot
-        _inputAction = new InputAction[] {
+        _inputAction = new InputAction[GameConstants.MaxSlot] {
             _inputManager.controls.Player.ChooseSlot1,
             _inputManager.controls.Player.ChooseSlot2,
             _inputManager.controls.Player.ChooseSlot3,
             _inputManager.controls.Player.ChooseSlot4,
             _inputManager.controls.Player.ChooseSlot5
         };
-        for (int i = 0; i < 5; i++)
+
+        for (int i = 0; i < GameConstants.MaxSlot; i++)
         {
             int index = i;
             _inputAction[i].performed += ctx => ChooseSlot(index);
         }
+
         _inputManager.controls.Player.Nextslot.performed += ctx => NextSlot();
         _inputManager.controls.Player.Interact.performed += ctx =>
         {
@@ -64,20 +66,23 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
     {
 
     }
+
     void ChooseSlot(int slot)
     {
         _inventory.ChoosingSlot = slot;
         Debug.Log($"Choosing slot{_inventory.ChoosingSlot + 1}");
     }
+
     void NextSlot()
     {
-        _inventory.ChoosingSlot = (_inventory.ChoosingSlot + 1) % 5;
+        _inventory.ChoosingSlot = (_inventory.ChoosingSlot + 1) % GameConstants.MaxSlot;
         Debug.Log($"Choosing slot{_inventory.ChoosingSlot}");
     }
+
     void PickUpItem()
     {
         // pick up logic
-        float minDistance = 99999999f;
+        float minDistance = Mathf.Infinity;
         // find nearest object in list collision objects
         GameObject nearestIngredient = _objectInCollision[0];
         for (int i = 0; i < _objectInCollision.Count; i++)
@@ -90,20 +95,45 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
                 nearestIngredient = _objectInCollision[i];
             }
         }
-        Debug.Log($"Picked up ingredient: {nearestIngredient.name}");
-        _inventory.Pickup(nearestIngredient.GetComponent<IngredientController>());
+
+        bool pickedUp = _inventory.Pickup(nearestIngredient.GetComponent<IngredientController>());
+        if (pickedUp)
+        {
+            Debug.Log($"Picked up ingredient: {nearestIngredient.name}");
+        }
+        else
+        {
+            Debug.Log("Inventory is full");
+        }
     }
+
     void TransferToStation()
     {
-        Debug.Log($"Transferred ingredient slot {_inventory.ChoosingSlot} to station");
-        _inventory.TransferToStation(_nearStation);
+        bool transferred = _inventory.TransferToStation(_nearStation);
+        if (transferred)
+        {
+            Debug.Log($"Transferred {_inventory.Get(_inventory.ChoosingSlot).Name} in slot {_inventory.ChoosingSlot + 1} to station");
+        }
+        else
+        {
+            Debug.Log("No ingredient in slot to transfer");
+        }
+        
     }
+
     void DropItem()
     {
-        Debug.Log($"Drop item number {_inventory.ChoosingSlot + 1} is {_inventory.Get(_inventory.ChoosingSlot)}");
-        // Remove item at _ingredient.ChoosingSlot: 
-        _inventory.Drop();
+        bool dropped = _inventory.Drop();
+        if (dropped)
+        {
+            Debug.Log($"Drop ingredient in slot {_inventory.ChoosingSlot + 1}");
+        }
+        else
+        {
+            Debug.Log("No ingredient to drop");
+        }        
     }
+
     public void OnTriggerEnter2D(Collider2D collider)
     {
         Debug.Log(collider);

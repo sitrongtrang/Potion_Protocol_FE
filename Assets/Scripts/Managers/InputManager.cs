@@ -7,6 +7,7 @@ public class PlayerInputManager
         controls = new InputSystem_Actions();
         controls.Enable();
     }
+    
     public void OnEnable()
     {
         controls.Enable();
