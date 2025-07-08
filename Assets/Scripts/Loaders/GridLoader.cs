@@ -44,6 +44,8 @@ public class GridLoader : MonoBehaviour
 
         Vector2 bottomLeftWorldPos = grid.GetCellCenterWorld(globalMinCell);
 
+        _pathfinding = new Pathfinding(maxXLength, maxYLength, cellSize, bottomLeftWorldPos);
+
         GameObject gridmap = new("Grid Map");
         gridmap.transform.SetParent(mapGameobject.transform);
         gridmap.transform.localPosition = Vector2.zero;
@@ -53,12 +55,11 @@ public class GridLoader : MonoBehaviour
             {
                 GameObject gridGameObject = Instantiate(_gridObject.gameObject, gridmap.transform);
                 gridGameObject.transform.localPosition = bottomLeftWorldPos + new Vector2(x, y) * cellSize;
-                gridGameObject.GetComponent<GridObject>().SetXY(x, y);
-                BoxCollider2D collider = gridGameObject.GetComponent<BoxCollider2D>();
-                collider.size = new Vector2(cellSize, cellSize);
+
+                gridGameObject.GetComponent<GridObject>().InitializeNode(x, y, cellSize);
             }
         }
 
-        _pathfinding = new Pathfinding(maxXLength, maxYLength, cellSize, bottomLeftWorldPos);
+        
     }
 }

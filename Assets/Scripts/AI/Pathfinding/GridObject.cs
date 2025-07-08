@@ -1,51 +1,52 @@
+using System.Linq;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider2D))]
+// [RequireComponent(typeof(BoxCollider2D))]
 public class GridObject : MonoBehaviour
 {
-    [Header("Non Walkable Tags")]
+    [Header("Component")]
+    // [SerializeField] private BoxCollider2D _collider;
+    public bool NodeNeedUpdate = false;
+    [Header("Non Walkable Tags / Layers")]
+    [SerializeField] private LayerMask _nonWalkableLayers;
     [SerializeField] private string[] _nonWalkableTags;
     [Header("Node Preference")]
     private int _x;
     private int _y;
+    private float _cellSize;
     [Header("Cache")]
     private static Pathfinding _pathfindingInstance;
     private PathNode _cachedNode;
-    public void SetXY(int x, int y)
+
+    void Update() {
+        if (NodeNeedUpdate && Time.frameCount % 10 == 0) {
+            UpdateWalkability();
+        }
+    }
+    public void InitializeNode(int x, int y, float cellSize)
     {
         _x = x;
         _y = y;
+        _cellSize = cellSize;
+        // _collider.size = new(cellSize, cellSize);
 
         _pathfindingInstance ??= Pathfinding.Instance;
 
         _cachedNode = _pathfindingInstance?.GetNode(_x, _y);
+
+        UpdateWalkability();
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    private void UpdateWalkability()
     {
         if (_cachedNode == null) return;
 
-        foreach (var tag in _nonWalkableTags)
-        {
-            if (collision.gameObject.CompareTag(tag))
-            {
-                _cachedNode.IsWalkable = false;
-                return;
-            }
-        }
+        Collider2D hit = Physics2D.OverlapBox(
+            transform.position,
+            new(_cellSize, _cellSize),
+            0,
+            _nonWalkableLayers);
+
+        _cachedNode.IsWalkable = hit == null || !_nonWalkableTags.Contains(hit.tag);
     }
-    
-    // private void OnTriggerExit2D(Collision2D collision)
-    // {
-    //     if (_cachedNode == null) return;
-        
-    //     foreach (var tag in _nonWalkableTags)
-    //     {
-    //         if (collision.gameObject.CompareTag(tag))
-    //         {
-    //             _cachedNode.IsWalkable = true;
-    //             return;
-    //         }
-    //     }
-    // }
 }
