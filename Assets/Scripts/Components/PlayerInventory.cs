@@ -67,9 +67,31 @@ public class PlayerInventory : IComponent
         else
         {
             // Transfer the item to the station if the station 
-            // TODO: add item to the station
-            Remove(ChoosingSlot);
+            station.GetItem(items[_choosingSlot]);
+            Remove(_choosingSlot);
             return true;
+        }
+    }
+
+    public bool Submit(ItemConfig item)
+    {
+        if (_choosingSlot == -1 || items[_choosingSlot] == null)
+        {
+            // Not choosing any item
+            return false;
+        }
+        else
+        {
+            if (item is ProductConfig product)
+            {
+                // item is submissible
+                Remove(_choosingSlot);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 
