@@ -6,6 +6,7 @@ public class GridLoader : MonoBehaviour
     public static GridLoader Instance { get; private set; }
     private static readonly float CELL_SCALE = 0.5f;
     private Pathfinding _pathfinding;
+    [SerializeField] private GridObject _gridObject;
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -50,12 +51,10 @@ public class GridLoader : MonoBehaviour
         {
             for (int y = 0; y < maxYLength; y++)
             {
-                GameObject obj = new GameObject("Grid Cell");
-                obj.transform.SetParent(gridmap.transform);
-                obj.transform.localPosition = bottomLeftWorldPos + new Vector2(x, y) * cellSize;
-
-                obj.AddComponent<BoxCollider2D>();
-                BoxCollider2D collider = obj.GetComponent<BoxCollider2D>();
+                GameObject gridGameObject = Instantiate(_gridObject.gameObject, gridmap.transform);
+                gridGameObject.transform.localPosition = bottomLeftWorldPos + new Vector2(x, y) * cellSize;
+                gridGameObject.GetComponent<GridObject>().SetXY(x, y);
+                BoxCollider2D collider = gridGameObject.GetComponent<BoxCollider2D>();
                 collider.size = new Vector2(cellSize, cellSize);
             }
         }
