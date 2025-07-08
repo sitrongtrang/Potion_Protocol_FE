@@ -73,7 +73,7 @@ public class PlayerInventory : IComponent
         }
     }
 
-    public bool Submit(ItemConfig item)
+    public bool Submit()
     {
         if (_choosingSlot == -1 || items[_choosingSlot] == null)
         {
@@ -82,7 +82,7 @@ public class PlayerInventory : IComponent
         }
         else
         {
-            if (item is ProductConfig product)
+            if (items[_choosingSlot] is ProductConfig product)
             {
                 // item is submissible
                 Remove(_choosingSlot);
