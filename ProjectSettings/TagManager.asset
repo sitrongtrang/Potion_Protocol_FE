@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Station
   - Item
-  - Obstacle
+  - SubmissionPoint
   layers:
   - Default
   - TransparentFX

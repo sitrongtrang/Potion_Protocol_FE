@@ -797,6 +797,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 834618732}
+  - component: {fileID: 834618733}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -962,8 +963,8 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!58 &1161073838
 CircleCollider2D:
   m_ObjectHideFlags: 0
