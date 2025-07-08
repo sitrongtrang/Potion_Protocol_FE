@@ -27,7 +27,7 @@ public class EnemyController : MonoBehaviour
     {
 
     }
-    private void OisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
 
     }

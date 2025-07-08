@@ -35,15 +35,11 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
         _inputManager.controls.Player.Nextslot.performed += ctx => NextSlot();
         _inputManager.controls.Player.Interact.performed += ctx =>
         {
-            Debug.Log("J clicked!");
             // Action priority: Pickup > Transfer ingredient > Attack
             // Pickup ingredient logic
-            if (_objectInCollision.Count > 0)
-            {
-                PickUpItem();
-            }
+
             // Transfer ingredient to station logic
-            else if (_isNearStation)
+            if (_isNearStation)
             {
                 TransferToStation();
             }
@@ -54,6 +50,14 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
             }
         };
         inputManager.controls.Player.Drop.performed += ctx => DropItem();
+        inputManager.controls.Player.Pickup.performed += ctx =>
+        {
+            if (_objectInCollision.Count > 0) PickUpItem();
+            else
+            {
+                Debug.Log("Nothing to pick");
+            }
+        };
     }
     
     public void MyUpdate()

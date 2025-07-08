@@ -36,7 +36,7 @@ public class PlayerAttack : IComponent, IUpdatableComponent
             {
                 if (_canUseSkills[index] && !_isInAction)
                 {
-                    _player.StartCoroutine(_player.Attack.UseSkill(index + 1));
+                    _player.StartCoroutine(UseSkill(index + 1));
                 }
             };
         }
