@@ -41,7 +41,11 @@ public class PlayerMovement : IComponent, IUpdatableComponent
     public void MyUpdate()
     {
         if (_moveDir != Vector2.zero)
-            _player.gameObject.transform.Translate(_moveDir * _playerConfig.MoveSpeed * Time.deltaTime);
+        {
+            Vector2 newPos = _player.gameObject.GetComponent<Rigidbody2D>().position + _moveDir * _playerConfig.MoveSpeed * Time.fixedDeltaTime;
+            _player.gameObject.GetComponent<Rigidbody2D>().MovePosition(newPos);
+        }
+            //_player.gameObject.transform.Translate(_moveDir * _playerConfig.MoveSpeed * Time.deltaTime);
     }
 
     IEnumerator Dash()
