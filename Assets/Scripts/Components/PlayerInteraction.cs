@@ -37,15 +37,8 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
         _inputManager.controls.Player.Nextslot.performed += ctx => NextSlot();
         _inputManager.controls.Player.Interact.performed += ctx =>
         {
-            Debug.Log("J clicked!");
-            // Action priority: Pickup > Transfer item > Attack
-            // Pickup item logic
-            if (_objectInCollision.Count > 0)
-            {
-                PickUpItem();
-            }
             // Transfer item to station logic
-            else if (_isNearStation)
+            if (_isNearStation)
             {
                 TransferToStation();
             }
@@ -80,7 +73,7 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
     void NextSlot()
     {
         _inventory.ChoosingSlot = (_inventory.ChoosingSlot + 1) % GameConstants.MaxSlot;
-        Debug.Log($"Choosing slot{_inventory.ChoosingSlot}");
+        Debug.Log($"Choosing slot{_inventory.ChoosingSlot + 1}");
     }
 
     void PickUpItem()

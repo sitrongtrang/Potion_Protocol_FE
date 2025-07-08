@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -22,6 +23,9 @@ public class EnemyController : MonoBehaviour
     [Header("Enemy State")]
     public BasicStateMachine<EnemyController, EnemyState> BasicStateMachine { get; private set; }
     public EnemyState CurrentEnemyStateEnum => BasicStateMachine.CurrentStateEnum;
+    [Header("Pathfinding")]
+    public int CurrentPathIndex { get; private set; }
+    public List<Vector3> PathVectorList { get; private set; }
 
     #region UNITY_METHODS
     private void Update()
@@ -59,9 +63,23 @@ public class EnemyController : MonoBehaviour
     #endregion
 
     #region MOVEMENT
+    public void CurrentPathIndexIncrement()
+    {
+        CurrentPathIndex += 1;
+    }
+    public void StopMoving()
+    {
+        PathVectorList = null;
+    }
     public void SetTargetToMove(Vector2 position)
     {
         TargetToMove = position;
+        CurrentPathIndex = 0;
+        PathVectorList = Pathfinding.Instance?.FindPath(transform.position, position);
+        if (PathVectorList != null && PathVectorList.Count > 0)
+        {
+            PathVectorList.RemoveAt(0);
+        }
     }
     public bool IsTooFarFromPatrolCenter()
     {
