@@ -7,8 +7,8 @@ public class RecipeConfig : ScriptableObject
     [SerializeField] private float _craftingTime;
     public float TimeCrafting => _craftingTime;
 
-    [SerializeField] private GameObject _item;
-    public GameObject Item => _item;
+    [SerializeField] private ItemConfig _item;
+    public ItemConfig Item => _item;
 
     [SerializeField] private List<ItemConfig> _items;
     public List<ItemConfig> Items => _items;
