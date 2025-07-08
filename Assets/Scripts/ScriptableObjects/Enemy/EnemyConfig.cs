@@ -52,9 +52,9 @@ public abstract class EnemyConfig : ScriptableObject
     [Header("Component")]
     [SerializeField] private EnemyController _prefab;
     public EnemyController Prefab => _prefab;
-    public abstract void Move(EnemyController controller);
+    public abstract void HandleMove(EnemyController controller);
+    public abstract void HandleAttack(EnemyController controller);
     public abstract void OnDeath(EnemyController controller);
-    public abstract void Attack(EnemyController controller);
     public abstract void Initialize(EnemyController controller);
     private void OnValidate()
     {
