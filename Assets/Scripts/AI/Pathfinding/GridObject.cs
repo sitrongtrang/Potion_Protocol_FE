@@ -1,12 +1,11 @@
 using System.Linq;
 using UnityEngine;
 
-// [RequireComponent(typeof(BoxCollider2D))]
 public class GridObject : MonoBehaviour
 {
     [Header("Component")]
-    // [SerializeField] private BoxCollider2D _collider;
     public bool NodeNeedUpdate = false;
+    [SerializeField] private bool _debug = false;
     [Header("Non Walkable Tags / Layers")]
     [SerializeField] private LayerMask _nonWalkableLayers;
     [SerializeField] private string[] _nonWalkableTags;
@@ -18,8 +17,10 @@ public class GridObject : MonoBehaviour
     private static Pathfinding _pathfindingInstance;
     private PathNode _cachedNode;
 
-    void Update() {
-        if (NodeNeedUpdate && Time.frameCount % 10 == 0) {
+    void Update()
+    {
+        if (NodeNeedUpdate && Time.frameCount % 10 == 0)
+        {
             UpdateWalkability();
         }
     }
@@ -28,7 +29,6 @@ public class GridObject : MonoBehaviour
         _x = x;
         _y = y;
         _cellSize = cellSize;
-        // _collider.size = new(cellSize, cellSize);
 
         _pathfindingInstance ??= Pathfinding.Instance;
 
@@ -48,5 +48,13 @@ public class GridObject : MonoBehaviour
             _nonWalkableLayers);
 
         _cachedNode.IsWalkable = hit == null || !_nonWalkableTags.Contains(hit.tag);
+    }
+    
+    void OnDrawGizmos() {
+        if (_debug)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireCube(transform.position, new(_cellSize, _cellSize));
+        }
     }
 }
