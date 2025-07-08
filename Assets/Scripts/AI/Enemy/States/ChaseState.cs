@@ -33,7 +33,7 @@ public class ChaseState : IBasicState<EnemyController>
         }
 
         _owner.SetTargetToMove(_owner.LastSeenPlayerPosition);
-        _owner.EnemyConf.Move(_owner);
+        _owner.EnemyConf.HandleMove(_owner);
 
         if (!_owner.IsPlayerInRange)
         {
