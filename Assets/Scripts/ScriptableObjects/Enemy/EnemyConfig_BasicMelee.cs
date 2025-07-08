@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EnemyConfig", menuName = "Scriptable Objects/Enemy/BasicMeleeConfiguration")]
 public class EnemyConfig_BasicMelee : EnemyConfig
 {
-    public override void Attack(EnemyController controller)
+    public override void HandleAttack(EnemyController controller)
     {
         
     }
@@ -21,10 +21,31 @@ public class EnemyConfig_BasicMelee : EnemyConfig
         controller.BasicStateMachine.ChangeState(EnemyState.Return);
     }
 
-    public override void Move(EnemyController controller)
+    public override void HandleMove(EnemyController controller)
     {
-        Vector2 direction = (controller.TargetToMove - new Vector2(controller.transform.position.x, controller.transform.position.y)).normalized;
-        controller.transform.Translate(Speed * Time.deltaTime * direction);
+        if (controller.PathVectorList != null)
+        {
+            Vector3 targetPosition = controller.PathVectorList[controller.CurrentPathIndex];
+            if (Vector3.Distance(controller.transform.position, targetPosition) > 0.1f)
+            {
+                Vector3 moveDir = (targetPosition - controller.transform.position).normalized;
+                controller.transform.Translate(Speed * Time.deltaTime * moveDir);
+                // Set animation move here
+            }
+            else
+            {
+                controller.CurrentPathIndexIncrement();
+                if (controller.CurrentPathIndex >= controller.PathVectorList.Count)
+                {
+                    controller.StopMoving();
+                    // Set animation stop here
+                }
+            }
+        }
+        else
+        {
+            // Set animation stop here
+        }
     }
 
     public override void OnDeath(EnemyController controller)
