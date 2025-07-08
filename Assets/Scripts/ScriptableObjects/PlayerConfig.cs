@@ -3,11 +3,22 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerConfig", menuName = "Scriptable Objects/PlayerConfig")]
 public class PlayerConfig : ScriptableObject
 {
-    [field: SerializeField] public float MoveSpeed { get; private set; }
-    [field: SerializeField] public float DashCooldown { get; private set; }
-    [field: SerializeField] public float DashSpeed { get; private set; }
-    [field: SerializeField] public float DashTime { get; private set; }
-    [field: SerializeField] public float AttackCooldown { get; private set; }
-    [field: SerializeField] public float[] SkillsCoolDown { get; private set; }
+    [SerializeField] private float _moveSpeed;
+    public float MoveSpeed => _moveSpeed;
+
+    [SerializeField] private float _dashCooldown;
+    public float DashCooldown => _dashCooldown;
+
+    [SerializeField] private float _dashSpeed;
+    public float DashSpeed => _dashSpeed;
+
+    [SerializeField] private float _dashTime;
+    public float DashTime => _dashTime;
+
+    [SerializeField] private float _attackCooldown;
+    public float AttackCooldown => _attackCooldown;
+
+    [SerializeField] private float[] _skillsCooldown;
+    public float[] SkillsCoolDown => _skillsCooldown;
     
 }

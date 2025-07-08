@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerInventory : IComponent
 {
     private PlayerController _player;
-    private IngredientConfig[] ingredients = new IngredientConfig[GameConstants.MaxSlot];
+    private ItemConfig[] items = new ItemConfig[GameConstants.MaxSlot];
     private int _choosingSlot = 0;
     public int ChoosingSlot
     {
@@ -17,84 +17,84 @@ public class PlayerInventory : IComponent
         }
     }
     public event Action OnSlotChanged;
-    public IngredientConfig Get(int idx) => ingredients[idx];
+    public ItemConfig Get(int idx) => items[idx];
 
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
         _player = player;
     }
 
-    public bool Pickup(IngredientController ingredient)
+    public bool Pickup(ItemController item)
     {
-        bool isAdded = Add(ingredient.Config);
+        bool isAdded = Add(item.Config);
         if (isAdded)
         {
-            IngredientPool.Instance.RemoveIngredient(ingredient);
+            ItemPool.Instance.RemoveItem(item);
         }
         return isAdded;
     }
 
     public bool Drop()
     {
-        if (_choosingSlot == -1 || ingredients[_choosingSlot] == null)
+        if (_choosingSlot == -1 || items[_choosingSlot] == null)
         {
-            // Not choosing any ingredient
+            // Not choosing any item
             return false;
         }
         else
         {
-            // Drop the ingredient into the world at player's position
-            IngredientConfig configToDrop = ingredients[_choosingSlot];
+            // Drop the item into the world at player's position
+            ItemConfig configToDrop = items[_choosingSlot];
             Vector3 dropPosition = _player.transform.position + _player.transform.forward;
 
-            IngredientPool.Instance.SpawnIngredient(configToDrop, dropPosition);
+            ItemPool.Instance.SpawnItem(configToDrop, dropPosition);
 
             // Remove from inventory
-            ingredients[_choosingSlot] = null;
+            items[_choosingSlot] = null;
             return true;
         }
     }
 
     public bool TransferToStation(StationController station)
     {
-        if (_choosingSlot == -1 || ingredients[_choosingSlot] == null)
+        if (_choosingSlot == -1 || items[_choosingSlot] == null)
         {
-            // Not choosing any ingredient
+            // Not choosing any item
             return false;
         }
         else
         {
-            // Transfer the ingredient to the station if the station 
-            // TODO: add ingredient to the station
+            // Transfer the item to the station if the station 
+            // TODO: add item to the station
             Remove(ChoosingSlot);
             return true;
         }
     }
 
-    private bool Add(IngredientConfig ingredient)
+    private bool Add(ItemConfig item)
     {
         int idx;
-        // If choosing slot is empty, put the ingredient into that slot; else put in the first slot that is empty
-        if (ingredients[_choosingSlot] == null) idx = _choosingSlot;
+        // If choosing slot is empty, put the item into that slot; else put in the first slot that is empty
+        if (items[_choosingSlot] == null) idx = _choosingSlot;
         else idx = FindSlot();
 
-        // No empty slot, cannot add ingredient
+        // No empty slot, cannot add item
         if (idx == -1)
         {
             return false;
         }
 
-        // Found an empty slot, put ingredient into that slot
+        // Found an empty slot, put item into that slot
         ChoosingSlot = idx;
-        ingredients[idx] = ingredient;
+        items[idx] = item;
         return true;
     }
 
     private bool Remove(int idx)
     {
-        // If the slot has ingredient in it, remove the ingredient
-        if (ingredients[idx] == null) return false;
-        ingredients[idx] = null;
+        // If the slot has item in it, remove the item
+        if (items[idx] == null) return false;
+        items[idx] = null;
         return true;
     }
 
@@ -103,7 +103,7 @@ public class PlayerInventory : IComponent
         // Find the first empty slot
         for (int i = 0; i < GameConstants.MaxSlot; i++)
         {
-            if (ingredients[i] == null) return i;
+            if (items[i] == null) return i;
         }
 
         return -1;

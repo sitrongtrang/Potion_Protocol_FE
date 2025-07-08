@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IngredientManagerTest : MonoBehaviour
+public class ItemManagerTest : MonoBehaviour
 {
-    [SerializeField] private List<IngredientConfig> _ingredientTypes;
+    [SerializeField] private List<ItemConfig> _itemTypes;
     [SerializeField] private PlayerController _player;
 
-    private List<IngredientController> ingredients = new();
+    private List<ItemController> items = new();
     private float _spawnCooldown = 5;
 
     void Start()
@@ -17,8 +17,8 @@ public class IngredientManagerTest : MonoBehaviour
 
     private void Spawn()
     {
-        int ingredientIdx = Random.Range(0, _ingredientTypes.Count);
-        IngredientPool.Instance.SpawnIngredient(_ingredientTypes[ingredientIdx], new Vector3(Random.Range(-2, 2), Random.Range(-2, 2), 0));
+        int itemIdx = Random.Range(0, _itemTypes.Count);
+        ItemPool.Instance.SpawnItem(_itemTypes[itemIdx], new Vector3(Random.Range(-2, 2), Random.Range(-2, 2), 0));
     }
     
     private IEnumerator SpawnCoroutine()
