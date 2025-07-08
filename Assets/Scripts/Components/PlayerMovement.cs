@@ -7,6 +7,7 @@ public class PlayerMovement : IComponent, IUpdatableComponent
 {
     private PlayerController _player;
     private PlayerInputManager _inputManager;
+    private Rigidbody2D _rb;
     private Vector2 _moveDir;
     public Vector2 MoveDir => _moveDir;
     // private bool _isMoving = false;
@@ -17,11 +18,13 @@ public class PlayerMovement : IComponent, IUpdatableComponent
     private bool _isDashing = false;
     private bool _canDash = true;
 
+
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
         _player = player;
         _playerConfig = player.Config;
         _inputManager = inputManager;
+        _rb = _player.GetComponent<Rigidbody2D>();
 
         _inputManager.controls.Player.Move.performed += ctx =>
         {
@@ -42,13 +45,13 @@ public class PlayerMovement : IComponent, IUpdatableComponent
     {
         if (_moveDir != Vector2.zero)
         {
-            Vector2 newPos = _player.gameObject.GetComponent<Rigidbody2D>().position + _moveDir * _playerConfig.MoveSpeed * Time.fixedDeltaTime;
-            _player.gameObject.GetComponent<Rigidbody2D>().MovePosition(newPos);
+            Vector2 targetPos = _rb.position + _moveDir * _playerConfig.MoveSpeed * Time.fixedDeltaTime;
+            _rb.MovePosition(targetPos);
         }
-            //_player.gameObject.transform.Translate(_moveDir * _playerConfig.MoveSpeed * Time.deltaTime);
+        //_player.gameObject.transform.Translate(_moveDir * _playerConfig.MoveSpeed * Time.deltaTime);
     }
 
-    IEnumerator Dash()
+    private IEnumerator Dash()
     {
         _isDashing = true;
         _canDash = false;
@@ -56,12 +59,13 @@ public class PlayerMovement : IComponent, IUpdatableComponent
         float dashTime = 0f;
         while (dashTime < _playerConfig.DashTime)
         {
-            
-            _player.transform.Translate(_playerDir * _playerConfig.DashSpeed * Time.deltaTime);
+
+            Vector2 newPos = _rb.position + _playerDir * _playerConfig.DashSpeed * Time.fixedDeltaTime;
+            _rb.MovePosition(newPos);
+
             dashTime += Time.deltaTime;
             yield return null;
         }
-
         _isDashing = false;
 
         // Dash Cooldown

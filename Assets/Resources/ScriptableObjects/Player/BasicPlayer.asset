@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: BasicPlayer
   m_EditorClassIdentifier: 
   _moveSpeed: 5
-  _dashCooldown: 10
+  _dashCooldown: 1
   _dashSpeed: 20
-  _dashTime: 1
+  _dashTime: 0.1
   _attackCooldown: 1
   _skillsCooldown:
   - 2
