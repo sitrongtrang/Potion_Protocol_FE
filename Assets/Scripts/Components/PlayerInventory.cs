@@ -65,8 +65,8 @@ public class PlayerInventory : IComponent
         else
         {
             // Transfer the item to the station if the station 
-            // TODO: add item to the station
-            Remove(ChoosingSlot);
+            station.AddItem(items[_choosingSlot]);
+            Remove(_choosingSlot);
             return true;
         }
     }
