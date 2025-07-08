@@ -8,27 +8,46 @@ public class StationController : MonoBehaviour
     private List<RecipeConfig> _recipeList;
     private List<ItemConfig> _items;
 
-    public void GetRecipe()
+    public void AddItem(ItemConfig config)
+    {
+        _items.Add(config);
+    }
+
+    public void StartCrafting()
     {
 
         int recipeIndex = FindMatchingRecipe();
         if (recipeIndex != -1) StartCoroutine(WaitForCraft(_recipeList[recipeIndex]));
+        else
+        {
+            for (int i = 0; i < _items.Count; i++)
+            {
+                Vector3 dropPosition = transform.position + (i + 1) * transform.forward;
+                DropItem(_items[i], dropPosition);
+            }
+        }
+    }
+
+    public void DropItem(ItemConfig item, Vector3 dropPosition)
+    {
+        ItemPool.Instance.SpawnItem(item, dropPosition);
     }
 
     IEnumerator WaitForCraft(RecipeConfig recipe)
     {
         yield return new WaitForSeconds(recipe.TimeCrafting);
-        Instantiate(recipe.Item, transform.position, Quaternion.identity);
+        Vector3 dropPosition = transform.position + transform.forward;
+        DropItem(recipe.Item, dropPosition);
     }
 
-    public bool MatchRecipe(RecipeConfig recipe)
+    private bool MatchRecipe(RecipeConfig recipe)
     {
         var stationSet = new HashSet<string>(_items.Select(i => i.Id));
         var recipeSet = new HashSet<string>(recipe.Items.Select(i => i.Id));
         return stationSet.SetEquals(recipeSet);
     }
 
-    public int FindMatchingRecipe()
+    private int FindMatchingRecipe()
     {
         for (int i = 0; i < _recipeList.Count; i++)
         {
@@ -38,10 +57,5 @@ public class StationController : MonoBehaviour
             }
         }
         return -1;
-    }
-
-    public void GetItem(ItemConfig config)
-    {
-        _items.Add(config);
     }
 }
