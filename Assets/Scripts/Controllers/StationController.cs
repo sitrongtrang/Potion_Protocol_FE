@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class StationController : MonoBehaviour
 {
-    private List<CraftConfig> _recipeList;
-    private List<IngredientConfig> _ingredients;
+    private List<RecipeConfig> _recipeList;
+    private List<ItemConfig> _items;
 
     public void GetRecipe()
     {
@@ -15,16 +15,16 @@ public class StationController : MonoBehaviour
         if (recipeIndex != -1) StartCoroutine(WaitForCraft(_recipeList[recipeIndex]));
     }
 
-    IEnumerator WaitForCraft(CraftConfig recipe)
+    IEnumerator WaitForCraft(RecipeConfig recipe)
     {
         yield return new WaitForSeconds(recipe.TimeCrafting);
         Instantiate(recipe.Item, transform.position, Quaternion.identity);
     }
 
-    public bool MatchRecipe(CraftConfig recipe)
+    public bool MatchRecipe(RecipeConfig recipe)
     {
-        var stationSet = new HashSet<string>(_ingredients.Select(i => i.Id));
-        var recipeSet = new HashSet<string>(recipe.Ingredients.Select(i => i.Id));
+        var stationSet = new HashSet<string>(_items.Select(i => i.Id));
+        var recipeSet = new HashSet<string>(recipe.Items.Select(i => i.Id));
         return stationSet.SetEquals(recipeSet);
     }
 
@@ -40,13 +40,8 @@ public class StationController : MonoBehaviour
         return -1;
     }
 
-    public void GetIngredient(IngredientConfig config)
+    public void GetItem(ItemConfig config)
     {
-        _ingredients.Add(config);
-    }
-
-    public bool RequireIngredient(IngredientConfig config)
-    {
-        return true;
+        _items.Add(config);
     }
 }

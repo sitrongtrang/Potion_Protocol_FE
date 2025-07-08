@@ -29,6 +29,6 @@ public class EnemyConfig_BasicMelee : EnemyConfig
 
     public override void OnDeath(EnemyController controller)
     {
-        Debug.Log(Name + "died, dropping " + Ingredient.Name);
+        Debug.Log(Name + "died, dropping " + Item.Name);
     }
 }

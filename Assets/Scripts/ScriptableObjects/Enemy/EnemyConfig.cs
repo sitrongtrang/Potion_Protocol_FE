@@ -47,8 +47,8 @@ public abstract class EnemyConfig : ScriptableObject
     public float SearchInterval => _searchInterval;
 
     [Header("Drop")]
-    [SerializeField] private IngredientConfig _ingredient;
-    public IngredientConfig Ingredient => _ingredient;
+    [SerializeField] private ItemConfig _item;
+    public ItemConfig Item => _item;
     [Header("Component")]
     [SerializeField] private EnemyController _prefab;
     public EnemyController Prefab => _prefab;
