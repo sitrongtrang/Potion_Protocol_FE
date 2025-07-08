@@ -37,15 +37,8 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
         _inputManager.controls.Player.Nextslot.performed += ctx => NextSlot();
         _inputManager.controls.Player.Interact.performed += ctx =>
         {
-            Debug.Log("J clicked!");
-            // Action priority: Pickup > Transfer ingredient > Attack
-            // Pickup ingredient logic
-            if (_objectInCollision.Count > 0)
-            {
-                PickUpItem();
-            }
-            // Transfer ingredient to station logic
-            else if (_isNearStation)
+            // Transfer item to station logic
+            if (_isNearStation)
             {
                 TransferToStation();
             }
@@ -56,6 +49,14 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
             }
         };
         inputManager.controls.Player.Drop.performed += ctx => DropItem();
+        inputManager.controls.Player.Pickup.performed += ctx =>
+        {
+            if (_objectInCollision.Count > 0) PickUpItem();
+            else
+            {
+                Debug.Log("Nothing to pick");
+            }
+        };
     }
     
     public void MyUpdate()
@@ -72,7 +73,7 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
     void NextSlot()
     {
         _inventory.ChoosingSlot = (_inventory.ChoosingSlot + 1) % GameConstants.MaxSlot;
-        Debug.Log($"Choosing slot{_inventory.ChoosingSlot}");
+        Debug.Log($"Choosing slot{_inventory.ChoosingSlot + 1}");
     }
 
     void PickUpItem()
@@ -80,7 +81,7 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
         // pick up logic
         float minDistance = Mathf.Infinity;
         // find nearest object in list collision objects
-        GameObject nearestIngredient = _objectInCollision[0];
+        GameObject nearestItem = _objectInCollision[0];
         for (int i = 0; i < _objectInCollision.Count; i++)
         {
             Vector2 distanceVector = _player.gameObject.transform.position - _objectInCollision[i].transform.position;
@@ -88,14 +89,14 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
             float distance = (float)Math.Sqrt(distanceVector.x * distanceVector.x + distanceVector.y * distanceVector.y);
             if (distance < minDistance)
             {
-                nearestIngredient = _objectInCollision[i];
+                nearestItem = _objectInCollision[i];
             }
         }
 
-        bool pickedUp = _inventory.Pickup(nearestIngredient.GetComponent<IngredientController>());
+        bool pickedUp = _inventory.Pickup(nearestItem.GetComponent<ItemController>());
         if (pickedUp)
         {
-            Debug.Log($"Picked up ingredient: {nearestIngredient.name}");
+            Debug.Log($"Picked up item: {nearestItem.name}");
         }
         else
         {
@@ -112,7 +113,7 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
         }
         else
         {
-            Debug.Log("No ingredient in slot to transfer");
+            Debug.Log("No item in slot to transfer");
         }
         
     }
@@ -122,18 +123,18 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
         bool dropped = _inventory.Drop();
         if (dropped)
         {
-            Debug.Log($"Drop ingredient in slot {_inventory.ChoosingSlot + 1}");
+            Debug.Log($"Drop item in slot {_inventory.ChoosingSlot + 1}");
         }
         else
         {
-            Debug.Log("No ingredient to drop");
+            Debug.Log("No item to drop");
         }        
     }
 
     public void OnTriggerEnter2D(Collider2D collider)
     {
         Debug.Log(collider);
-        if (collider.gameObject.tag == "Ingredient")
+        if (collider.gameObject.tag == "Item")
         {
             _objectInCollision.Add(collider.gameObject);
             if (_objectInCollision.Count == 1)
@@ -151,7 +152,7 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
     }
     public void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Ingredient")
+        if (collider.gameObject.tag == "Item")
         {
             _objectInCollision.Remove(collider.gameObject);
             if (_objectInCollision.Count == 0)

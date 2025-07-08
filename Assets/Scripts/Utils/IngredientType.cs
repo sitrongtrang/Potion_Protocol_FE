@@ -1,4 +1,4 @@
-public enum IngredientType 
+public enum ItemType 
 {
     Monster,
     Plant,

@@ -769,7 +769,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c3c8da6d-1d1b-4dff-9a5b-ab81cf450bf8"",
-                    ""path"": ""<Keyboard>/j"",
+                    ""path"": ""<Keyboard>/k"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
@@ -780,7 +780,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""2f098d1c-5247-47ae-9e9e-5cd0952604c8"",
-                    ""path"": ""<Keyboard>/l"",
+                    ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
@@ -791,7 +791,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""5f15f758-fd31-485b-b038-8cb4d1630a25"",
-                    ""path"": ""<Keyboard>/k"",
+                    ""path"": ""<Keyboard>/n"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",

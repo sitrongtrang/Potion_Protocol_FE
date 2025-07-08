@@ -7,6 +7,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private EnemySpawnerConfig _enemySpawnerConfig;
     [SerializeField] private Transform[] _positionsToSpawn;
     private List<int> _unoccupiedIndices = new();
+    
     void Start()
     {
         for (int i = 0; i < _positionsToSpawn.Length; i++)
@@ -14,10 +15,12 @@ public class EnemySpawner : MonoBehaviour
             _unoccupiedIndices.Add(i);
         }
     }
+
     void Update()
     {
         Spawn();
     }
+
     void Spawn()
     {
         if (_currentCooldown > 0)

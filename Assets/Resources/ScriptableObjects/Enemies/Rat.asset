@@ -25,5 +25,5 @@ MonoBehaviour:
   _searchRadius: 5
   _searchDuration: 100
   _searchInterval: 1
-  _ingredient: {fileID: 11400000, guid: 11e6b186983da7542821215d78acc18c, type: 2}
+  _item: {fileID: 11400000, guid: 11e6b186983da7542821215d78acc18c, type: 2}
   _prefab: {fileID: 7341765061055309171, guid: 6f876ace08c51b7429681775649feb35, type: 3}

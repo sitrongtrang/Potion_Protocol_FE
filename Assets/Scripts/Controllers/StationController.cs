@@ -1,76 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class StationController : MonoBehaviour
 {
-    private List<CraftConfig> _recipeList;
-    private List<IngredientConfig> _ingredients;
+    private List<RecipeConfig> _recipeList;
+    private List<ItemConfig> _items;
 
-    public void GetRecipe()
+    public void AddItem(ItemConfig config)
     {
-
-        CraftConfig recipe = FindMatchingRecipe();
-        if (recipe != null) StartCoroutine(WaitForCraft(recipe));
+        _items.Add(config);
     }
 
-    IEnumerator WaitForCraft(CraftConfig recipe)
+    public void StartCrafting()
+    {
+
+        int recipeIndex = FindMatchingRecipe();
+        if (recipeIndex != -1) StartCoroutine(WaitForCraft(_recipeList[recipeIndex]));
+        else
+        {
+            for (int i = 0; i < _items.Count; i++)
+            {
+                Vector3 dropPosition = transform.position + (i + 1) * transform.forward;
+                DropItem(_items[i], dropPosition);
+            }
+        }
+    }
+
+    public void DropItem(ItemConfig item, Vector3 dropPosition)
+    {
+        ItemPool.Instance.SpawnItem(item, dropPosition);
+    }
+
+    IEnumerator WaitForCraft(RecipeConfig recipe)
     {
         yield return new WaitForSeconds(recipe.TimeCrafting);
-        Instantiate(recipe.Item, transform.position, Quaternion.identity);
+        Vector3 dropPosition = transform.position + transform.forward;
+        DropItem(recipe.Item, dropPosition);
     }
 
-    public bool MatchRecipeWithCounts(CraftConfig recipe)
+    private bool MatchRecipe(RecipeConfig recipe)
     {
-        if (_ingredients.Count != recipe.Ingredients.Count)
-            return false;
-
-        var stationDict = new Dictionary<string, int>();
-        var recipeDict = new Dictionary<string, int>();
-
-        foreach (var ing in _ingredients)
-        {
-            if (stationDict.ContainsKey(ing.Id))
-                stationDict[ing.Id]++;
-            else
-                stationDict[ing.Id] = 1;
-        }
-
-        foreach (var ing in recipe.Ingredients)
-        {
-            if (recipeDict.ContainsKey(ing.Id))
-                recipeDict[ing.Id]++;
-            else
-                recipeDict[ing.Id] = 1;
-        }
-
-        if (stationDict.Count != recipeDict.Count)
-            return false;
-
-        foreach (var kvp in stationDict)
-        {
-            if (!recipeDict.TryGetValue(kvp.Key, out int count) || count != kvp.Value)
-                return false;
-        }
-
-        return true;
+        var stationSet = new HashSet<string>(_items.Select(i => i.Id));
+        var recipeSet = new HashSet<string>(recipe.Items.Select(i => i.Id));
+        return stationSet.SetEquals(recipeSet);
     }
 
-    public CraftConfig FindMatchingRecipe()
+    private int FindMatchingRecipe()
     {
         for (int i = 0; i < _recipeList.Count; i++)
         {
-            if (MatchRecipeWithCounts(_recipeList[i]))
+            if (MatchRecipe(_recipeList[i]))
             {
-                return _recipeList[i];
+                return i;
             }
         }
-        return null;
-    }
-
-
-    public bool RequireIngredient(IngredientConfig config)
-    {
-        return true;
+        return -1;
     }
 }

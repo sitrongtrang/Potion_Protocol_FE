@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IngredientPool : MonoBehaviour
+public class ItemPool : MonoBehaviour
 {
-    private Queue<IngredientController> _activeIngredients = new Queue<IngredientController>();
-    private Dictionary<string, Queue<IngredientController>> _pooledObjects = new Dictionary<string, Queue<IngredientController>>();
-    public static IngredientPool Instance { get; private set; }
+    private Queue<ItemController> _activeItems = new Queue<ItemController>();
+    private Dictionary<string, Queue<ItemController>> _pooledObjects = new Dictionary<string, Queue<ItemController>>();
+    public static ItemPool Instance { get; private set; }
 
     private void Awake()
     {
@@ -18,64 +18,64 @@ public class IngredientPool : MonoBehaviour
         Instance = this;
     }
 
-    public IngredientController SpawnIngredient(IngredientConfig config, Vector3 position)
+    public ItemController SpawnItem(ItemConfig config, Vector3 position)
     {
         // Exceed cap
-        if (_activeIngredients.Count >= GameConstants.MaxIngredients)
+        if (_activeItems.Count >= GameConstants.MaxItems)
         {
-            IngredientController oldest = _activeIngredients.Dequeue();
+            ItemController oldest = _activeItems.Dequeue();
             ReturnToPool(oldest);
         }
 
         // Get from pool or instantiate
-        IngredientController ingredient = GetFromPool(config);
-        ingredient.transform.position = position;
-        ingredient.transform.rotation = Quaternion.identity;
-        ingredient.gameObject.SetActive(true);
-        ingredient.Initialize(config);
+        ItemController item = GetFromPool(config);
+        item.transform.position = position;
+        item.transform.rotation = Quaternion.identity;
+        item.gameObject.SetActive(true);
+        item.Initialize(config);
 
-        _activeIngredients.Enqueue(ingredient);
-        return ingredient;
+        _activeItems.Enqueue(item);
+        return item;
     }
 
-    public void RemoveIngredient(IngredientController ingredient)
+    public void RemoveItem(ItemController item)
     {
         // Remove from active queue
-        Queue<IngredientController> newQueue = new Queue<IngredientController>();
-        foreach (var ing in _activeIngredients)
+        Queue<ItemController> newQueue = new Queue<ItemController>();
+        foreach (var ing in _activeItems)
         {
-            if (ing != ingredient)
+            if (ing != item)
                 newQueue.Enqueue(ing);
         }
-        _activeIngredients = newQueue;
+        _activeItems = newQueue;
 
-        ReturnToPool(ingredient);
+        ReturnToPool(item);
     }
 
-    private void ReturnToPool(IngredientController ingredient)
+    private void ReturnToPool(ItemController item)
     {
-        ingredient.gameObject.SetActive(false);
+        item.gameObject.SetActive(false);
 
-        // Return ingredient to the appropriate pool
-        string name = ingredient.Config.Name;
+        // Return item to the appropriate pool
+        string name = item.Config.Name;
         if (!_pooledObjects.ContainsKey(name))
-            _pooledObjects[name] = new Queue<IngredientController>();
+            _pooledObjects[name] = new Queue<ItemController>();
 
-        _pooledObjects[name].Enqueue(ingredient);
+        _pooledObjects[name].Enqueue(item);
     }
 
-    private IngredientController GetFromPool(IngredientConfig config)
+    private ItemController GetFromPool(ItemConfig config)
     {
         string name = config.Name;
 
-        // Retrieve an ingredient from pool or instantiate a new one
+        // Retrieve an item from pool or instantiate a new one
         if (_pooledObjects.ContainsKey(name) && _pooledObjects[name].Count > 0)
         {
             return _pooledObjects[name].Dequeue();
         }
 
         // No available object in pool, instantiate a new one
-        IngredientController newObj = Instantiate(config.Prefab);
+        ItemController newObj = Instantiate(config.Prefab);
         return newObj;
     }
 }
