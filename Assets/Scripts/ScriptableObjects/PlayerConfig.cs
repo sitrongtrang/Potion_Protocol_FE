@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlayerConfig", menuName = "Scriptable Objects/PlayerConfig")]
-public class PlayerConfig : ScriptableObject, ISpawnConfig
+public class PlayerConfig : BaseSpawnConfig
 {
     [SerializeField] private float _moveSpeed;
     public float MoveSpeed => _moveSpeed;
@@ -22,6 +22,11 @@ public class PlayerConfig : ScriptableObject, ISpawnConfig
     public float[] SkillsCoolDown => _skillsCooldown;
 
     [SerializeField] private PlayerController _prefab;
-    public GameObject Prefab => _prefab.gameObject;
+    public PlayerController Prefab => _prefab;
     
+    public override void Spawn(Vector3 position)
+    {
+        PlayerController player = Instantiate(_prefab, position, Quaternion.identity);
+        player.Initialize(this);
+    } 
 }

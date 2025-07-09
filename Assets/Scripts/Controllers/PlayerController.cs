@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, ISpawnable
+public class PlayerController : MonoBehaviour
 {
     private PlayerConfig _config;
     // input manager (new input system)
@@ -15,14 +15,9 @@ public class PlayerController : MonoBehaviour, ISpawnable
     public PlayerInteraction Interaction { get; private set; }
     public PlayerMovement Movement { get; private set; }
 
-    public void Initialize(ISpawnConfig config)
+    public void Initialize(PlayerConfig config)
     {
-        _config = config as PlayerConfig;
-        if (_config == null)
-        {
-            Debug.LogWarning("Incorrect data type passed to Player");
-            return;
-        }
+        _config = config;
         _inputManager = new PlayerInputManager();
         Inventory = RegisterComponent(new PlayerInventory());
         Attack = RegisterComponent(new PlayerAttack());
