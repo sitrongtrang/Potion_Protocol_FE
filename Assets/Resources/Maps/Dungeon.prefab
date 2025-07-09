@@ -13317,7 +13317,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 902841808695636061, guid: 598abce43a90239469070ca01776172d, type: 3}
       propertyPath: m_Name
-      value: Station01
+      value: StationSpawner01
       objectReference: {fileID: 0}
     - target: {fileID: 3336841455241091957, guid: 598abce43a90239469070ca01776172d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13329,7 +13329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3336841455241091957, guid: 598abce43a90239469070ca01776172d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.047503762
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3336841455241091957, guid: 598abce43a90239469070ca01776172d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13362,8 +13362,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 902841808695636061, guid: 598abce43a90239469070ca01776172d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2258329727894075537}
   m_SourcePrefab: {fileID: 100100000, guid: 598abce43a90239469070ca01776172d, type: 3}
+--- !u!1 &399219727896804116 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 902841808695636061, guid: 598abce43a90239469070ca01776172d, type: 3}
+  m_PrefabInstance: {fileID: 652417134499023689}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2258329727894075537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399219727896804116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 478f64aea321c48498407b81ed63dac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: 6e98964e8a6b82b40acbf2707ea59b40, type: 2}
 --- !u!4 &2829120876127981628 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3336841455241091957, guid: 598abce43a90239469070ca01776172d, type: 3}
@@ -14313,11 +14334,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 83354509096497572, guid: 15179a63d55918745a8473d7c8d25e7d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.95
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 83354509096497572, guid: 15179a63d55918745a8473d7c8d25e7d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.047503762
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 83354509096497572, guid: 15179a63d55918745a8473d7c8d25e7d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -14349,13 +14370,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5333152255731081735, guid: 15179a63d55918745a8473d7c8d25e7d, type: 3}
       propertyPath: m_Name
-      value: Station02
+      value: StationSpawner02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5333152255731081735, guid: 15179a63d55918745a8473d7c8d25e7d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6166370195421803157}
   m_SourcePrefab: {fileID: 100100000, guid: 15179a63d55918745a8473d7c8d25e7d, type: 3}
+--- !u!1 &1108490016046569493 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5333152255731081735, guid: 15179a63d55918745a8473d7c8d25e7d, type: 3}
+  m_PrefabInstance: {fileID: 4999290751774456338}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6166370195421803157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108490016046569493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 478f64aea321c48498407b81ed63dac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: 6e98964e8a6b82b40acbf2707ea59b40, type: 2}
 --- !u!4 &4920514712211737526 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 83354509096497572, guid: 15179a63d55918745a8473d7c8d25e7d, type: 3}
@@ -14619,19 +14661,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 229833932312931694, guid: 1fe1286e189bc5046b4b349b0821c848, type: 3}
       propertyPath: m_Name
-      value: Station00
+      value: StationSpawner00
       objectReference: {fileID: 0}
     - target: {fileID: 2332240980546992020, guid: 1fe1286e189bc5046b4b349b0821c848, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.54
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 2332240980546992020, guid: 1fe1286e189bc5046b4b349b0821c848, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.24
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 2332240980546992020, guid: 1fe1286e189bc5046b4b349b0821c848, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.047503762
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2332240980546992020, guid: 1fe1286e189bc5046b4b349b0821c848, type: 3}
       propertyPath: m_LocalRotation.w
@@ -14664,13 +14706,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 229833932312931694, guid: 1fe1286e189bc5046b4b349b0821c848, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1246546954703343650}
   m_SourcePrefab: {fileID: 100100000, guid: 1fe1286e189bc5046b4b349b0821c848, type: 3}
 --- !u!4 &6333244741569414850 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2332240980546992020, guid: 1fe1286e189bc5046b4b349b0821c848, type: 3}
   m_PrefabInstance: {fileID: 8627204021205578070}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8397371517105626168 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 229833932312931694, guid: 1fe1286e189bc5046b4b349b0821c848, type: 3}
+  m_PrefabInstance: {fileID: 8627204021205578070}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1246546954703343650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8397371517105626168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 478f64aea321c48498407b81ed63dac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: 6e98964e8a6b82b40acbf2707ea59b40, type: 2}
 --- !u!1001 &8781159859421327218
 PrefabInstance:
   m_ObjectHideFlags: 0
