@@ -54,7 +54,10 @@ public abstract class EnemyConfig : ScriptableObject
     public EnemyController Prefab => _prefab;
     public abstract void HandleMove(EnemyController controller);
     public abstract void HandleAttack(EnemyController controller);
-    public abstract void OnDeath(EnemyController controller);
+    public virtual void OnDeath(EnemyController controller)
+    {
+        ItemPool.Instance.SpawnItem(_item, controller.transform.position);
+    }
     public abstract void Initialize(EnemyController controller);
     private void OnValidate()
     {
