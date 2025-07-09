@@ -20,12 +20,13 @@ public class ReturnState : IBasicState<EnemyController>
                 return;
         }
         
-        if (Vector2.Distance(_owner.transform.position, _owner.PatrolCenter) >= 0.1f)
+        if (_owner.PathVectorList != null)
         {
+            // Debug.Log(Vector2.Distance(_owner.transform.position, _owner.PatrolCenter));
             _owner.EnemyConf.HandleMove(_owner);
         }
         else
-        {
+        {   
             if (_owner.BasicStateMachine.ChangeState(EnemyState.Patrol))
                 return;
         }

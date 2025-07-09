@@ -32,7 +32,7 @@ public class SearchState : IBasicState<EnemyController>
             if (_owner.BasicStateMachine.ChangeState(EnemyState.Return))
                 return;
         }
-        if (Vector2.Distance(_owner.transform.position, _searchTarget) >= 0.1f)
+        if (_owner.PathVectorList != null)
         {
             _owner.EnemyConf.HandleMove(_owner);
         }
