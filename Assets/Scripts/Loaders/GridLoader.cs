@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -6,7 +7,11 @@ public class GridLoader : MonoBehaviour
     public static GridLoader Instance { get; private set; }
     private static readonly float CELL_SCALE = 0.5f;
     private Pathfinding _pathfinding;
-    [SerializeField] private GridObject _gridObject;
+    [SerializeField] private GridObject _gridCellObjectPrefab;
+    // [Header("Debug")]
+    [SerializeField] private bool _isDebug = false;
+    private bool _lastIsDebug = true;
+    public event System.Action<bool> OnDebugChanged;
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -16,6 +21,14 @@ public class GridLoader : MonoBehaviour
         }
 
         Instance = this;
+    }
+    private void OnValidate()
+    {
+        if (_lastIsDebug != _isDebug)
+        {
+            _lastIsDebug = _isDebug;
+            OnDebugChanged?.Invoke(_isDebug);
+        }
     }
     public void LoadGrid(GameObject mapGameobject)
     {
@@ -53,13 +66,16 @@ public class GridLoader : MonoBehaviour
         {
             for (int y = 0; y < maxYLength; y++)
             {
-                GameObject gridGameObject = Instantiate(_gridObject.gameObject, gridmap.transform);
+                GameObject gridGameObject = Instantiate(_gridCellObjectPrefab.gameObject, gridmap.transform);
                 gridGameObject.transform.localPosition = bottomLeftWorldPos + new Vector2(x, y) * cellSize;
 
-                gridGameObject.GetComponent<GridObject>().InitializeNode(x, y, cellSize);
+                GridObject gridObject = gridGameObject.GetComponent<GridObject>();
+                gridObject.InitializeNode(x, y, cellSize);
+
+                OnDebugChanged += gridObject.SetDebug;
             }
         }
 
-        
+
     }
 }

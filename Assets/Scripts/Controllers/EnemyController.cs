@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [Header("Component")]
-    public EnemyConfig EnemyConf { get; private set; }
+    public EnemyConfig EnemyConf;
     public EnemySpawner Spawner { get; private set; }
     public int IndexPosition { get; private set; }
     [Header("Movement")]
@@ -25,7 +25,7 @@ public class EnemyController : MonoBehaviour
     public EnemyState CurrentEnemyStateEnum => BasicStateMachine.CurrentStateEnum;
     [Header("Pathfinding")]
     public int CurrentPathIndex { get; private set; }
-    public List<Vector3> PathVectorList { get; private set; }
+    public List<Vector2> PathVectorList { get; private set; }
     [SerializeField] private bool _movementIgnoreObstacles;
 
     #region UNITY_METHODS
