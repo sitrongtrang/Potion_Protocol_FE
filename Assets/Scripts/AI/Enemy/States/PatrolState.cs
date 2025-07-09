@@ -24,7 +24,7 @@ public class PatrolState : IBasicState<EnemyController>
                 return;
         }
         
-        if (Vector2.Distance(_owner.transform.position, _patrolTarget) >= 0.1f)
+        if (_owner.PathVectorList != null)
         {
             _owner.EnemyConf.HandleMove(_owner);
         }
