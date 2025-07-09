@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NodeNeedUpdate: 0
-  _debug: 0
+  _debug: 1
   _nonWalkableLayers:
     serializedVersion: 2
     m_Bits: 128

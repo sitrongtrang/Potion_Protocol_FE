@@ -5,7 +5,7 @@ public class GridObject : MonoBehaviour
 {
     [Header("Component")]
     [HideInInspector] public bool NodeNeedUpdate = false;
-    [SerializeField] private bool _debug = false;
+    private bool _debug = false;
     [Header("Non Walkable Tags / Layers")]
     [SerializeField] private LayerMask _nonWalkableLayers;
     [SerializeField] private string[] _nonWalkableTags;
@@ -48,6 +48,11 @@ public class GridObject : MonoBehaviour
             _nonWalkableLayers);
 
         _cachedNode.IsWalkable = hit == null || !_nonWalkableTags.Contains(hit.tag);
+    }
+
+    public void SetDebug(bool debug)
+    {
+        _debug = debug;
     }
     
     void OnDrawGizmos() {
