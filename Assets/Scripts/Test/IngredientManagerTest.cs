@@ -5,9 +5,6 @@ using UnityEngine;
 public class ItemManagerTest : MonoBehaviour
 {
     [SerializeField] private List<ItemConfig> _itemTypes;
-    [SerializeField] private PlayerController _player;
-
-    private List<ItemController> items = new();
     private float _spawnCooldown = 5;
 
     void Start()
