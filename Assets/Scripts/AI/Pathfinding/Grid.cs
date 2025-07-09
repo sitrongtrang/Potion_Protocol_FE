@@ -26,10 +26,10 @@ public class Grid<TGridObject> {
     private int _width;
     private int _height;
     private float _cellSize;
-    private Vector3 _originPosition;
+    private Vector2 _originPosition;
     private TGridObject[,] _gridArray;
 
-    public Grid(int width, int height, float cellSize, Vector3 originPosition, Func<Grid<TGridObject>, int, int, TGridObject> createGridObject) {
+    public Grid(int width, int height, float cellSize, Vector2 originPosition, Func<Grid<TGridObject>, int, int, TGridObject> createGridObject) {
         this._width = width;
         this._height = height;
         this._cellSize = cellSize;
@@ -58,11 +58,11 @@ public class Grid<TGridObject> {
         return _cellSize;
     }
 
-    public Vector3 GetWorldPosition(int x, int y) {
-        return new Vector3(x, y) * _cellSize + _originPosition;
+    public Vector2 GetWorldPosition(int x, int y) {
+        return new Vector2(x, y) * _cellSize + _originPosition;
     }
 
-    public void GetXY(Vector3 worldPosition, out int x, out int y) {
+    public void GetXY(Vector2 worldPosition, out int x, out int y) {
         x = Mathf.FloorToInt((worldPosition - _originPosition).x / _cellSize);
         y = Mathf.FloorToInt((worldPosition - _originPosition).y / _cellSize);
     }
@@ -78,7 +78,7 @@ public class Grid<TGridObject> {
         OnGridObjectChanged?.Invoke(this, new OnGridObjectChangedEventArgs { x = x, y = y });
     }
 
-    public void SetGridObject(Vector3 worldPosition, TGridObject value) {
+    public void SetGridObject(Vector2 worldPosition, TGridObject value) {
         GetXY(worldPosition, out int x, out int y);
         SetGridObject(x, y, value);
     }
@@ -91,7 +91,7 @@ public class Grid<TGridObject> {
         }
     }
 
-    public TGridObject GetGridObject(Vector3 worldPosition) {
+    public TGridObject GetGridObject(Vector2 worldPosition) {
         GetXY(worldPosition, out int x, out int y);
         return GetGridObject(x, y);
     }
