@@ -1,4 +1,4 @@
-public interface ISpawnable<T> where T : ISpawnConfig
+public interface ISpawnable
 {
-    void Initialize(T config);
+    void Initialize(ISpawnConfig config);
 }
