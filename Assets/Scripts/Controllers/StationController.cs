@@ -8,6 +8,12 @@ public class StationController : MonoBehaviour
     private StationConfig _config;
     private List<ItemConfig> _items;
 
+    public void Initialize(StationConfig config)
+    {
+        _config = config;
+        _items = new();
+    }
+
     public void AddItem(ItemConfig config)
     {
         _items.Add(config);
