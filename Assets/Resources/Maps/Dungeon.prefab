@@ -386,9 +386,9 @@ GameObject:
   m_Component:
   - component: {fileID: 786194906683390072}
   - component: {fileID: 3468918226502934662}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trash2
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -468,9 +468,9 @@ GameObject:
   - component: {fileID: 1697609231785700926}
   - component: {fileID: 6394468745728605493}
   - component: {fileID: 9111728127844440477}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11479,9 +11479,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7338571158997160791}
   - component: {fileID: 8823239132572021666}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trash1
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13941,11 +13941,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639186808511199517, guid: ebf8425b5e84ecf48b1aa5084014fdcd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.25
+      value: 3.25
       objectReference: {fileID: 0}
     - target: {fileID: 5639186808511199517, guid: ebf8425b5e84ecf48b1aa5084014fdcd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.21
+      value: -1.25
       objectReference: {fileID: 0}
     - target: {fileID: 5639186808511199517, guid: ebf8425b5e84ecf48b1aa5084014fdcd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14251,7 +14251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639186808511199517, guid: ebf8425b5e84ecf48b1aa5084014fdcd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.23
+      value: 8.25
       objectReference: {fileID: 0}
     - target: {fileID: 5639186808511199517, guid: ebf8425b5e84ecf48b1aa5084014fdcd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14375,7 +14375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639186808511199517, guid: ebf8425b5e84ecf48b1aa5084014fdcd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.73
+      value: -3.75
       objectReference: {fileID: 0}
     - target: {fileID: 5639186808511199517, guid: ebf8425b5e84ecf48b1aa5084014fdcd, type: 3}
       propertyPath: m_LocalPosition.y
