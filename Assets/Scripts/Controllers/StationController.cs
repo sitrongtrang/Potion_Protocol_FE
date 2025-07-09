@@ -1,12 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.Search;
 using UnityEngine;
 
 public class StationController : MonoBehaviour
 {
     private List<RecipeConfig> _recipeList;
     private List<ItemConfig> _items;
+
+    public void Initialize(List<RecipeConfig> recipes)
+    {
+        _recipeList = recipes;
+        _items = new();
+    }
 
     public void AddItem(ItemConfig config)
     {
