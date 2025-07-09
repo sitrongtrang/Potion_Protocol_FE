@@ -8,8 +8,9 @@ public class EnemySpawnerConfig : ScriptableObject
     [field: SerializeField] public EnemyConfig[] EnemyConfigsToSpawn { get; private set; }
     public void Spawn(EnemySpawner spawner, Vector2 position, int indexPosition)
     {
-        int index = Random.Range(0, EnemyConfigsToSpawn.Length);
-        GameObject enemy = Instantiate(EnemyConfigsToSpawn[index].Prefab.gameObject, spawner.transform.position, Quaternion.identity);
-        enemy.GetComponent<EnemyController>().Initialize(EnemyConfigsToSpawn[index], spawner, position, indexPosition);
+        int randomIndex = Random.Range(0, EnemyConfigsToSpawn.Length);
+        EnemyConfig config = EnemyConfigsToSpawn[randomIndex];
+        EnemyController enemy = Instantiate(config.Prefab, spawner.transform.position, Quaternion.identity);
+        enemy.Initialize(config, spawner, position, indexPosition);
     }
 }
