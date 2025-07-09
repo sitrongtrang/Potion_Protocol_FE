@@ -3,15 +3,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public static GameManager Instance { get; private set; }
+    public bool IsAutoFocus; // placeholder for auto focus state of player inventory;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(this);
     }
 }

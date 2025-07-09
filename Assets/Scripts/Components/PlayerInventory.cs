@@ -16,12 +16,14 @@ public class PlayerInventory : IComponent
             if (oldSlot != value) OnSlotChanged?.Invoke();
         }
     }
+    private bool _isAutoFocus;
     public event Action OnSlotChanged;
     public ItemConfig Get(int idx) => items[idx];
 
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
         _player = player;
+        _isAutoFocus = GameManager.Instance.IsAutoFocus;
     }
 
     public bool Pickup(ItemController item)
@@ -71,6 +73,28 @@ public class PlayerInventory : IComponent
         }
     }
 
+    public bool Submit()
+    {
+        if (_choosingSlot == -1 || items[_choosingSlot] == null)
+        {
+            // Not choosing any item
+            return false;
+        }
+        else
+        {
+            if (items[_choosingSlot] is ProductConfig product)
+            {
+                // item is submissible
+                Remove(_choosingSlot);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
     private bool Add(ItemConfig item)
     {
         int idx;
@@ -85,7 +109,7 @@ public class PlayerInventory : IComponent
         }
 
         // Found an empty slot, put item into that slot
-        ChoosingSlot = idx;
+        if (_isAutoFocus) ChoosingSlot = idx; // choose the current slot if is in auto focus mode
         items[idx] = item;
         return true;
     }

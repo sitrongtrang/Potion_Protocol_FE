@@ -20,5 +20,8 @@ public class PlayerConfig : ScriptableObject
 
     [SerializeField] private float[] _skillsCooldown;
     public float[] SkillsCoolDown => _skillsCooldown;
+
+    [SerializeField] private PlayerController _prefab;
+    public PlayerController Prefab => _prefab;
     
 }
