@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 
 public class MapLoader : MonoBehaviour
@@ -27,5 +28,7 @@ public class MapLoader : MonoBehaviour
     {
         GameObject mapRes = Resources.Load<GameObject>("Maps/" + mapName);
         GameObject map = Instantiate(mapRes, position, Quaternion.identity);
+
+        GridLoader.Instance.LoadGrid(map);
     }
 }
