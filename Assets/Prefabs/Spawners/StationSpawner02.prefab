@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 83354509096497572}
   m_Layer: 0
-  m_Name: Station02
+  m_Name: StationSpawner02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

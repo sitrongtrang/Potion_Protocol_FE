@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private PlayerConfig _config;
+    private PlayerConfig _config;
     // input manager (new input system)
     private PlayerInputManager _inputManager;
     private List<IUpdatableComponent> _updatableComponents = new();
@@ -15,8 +15,9 @@ public class PlayerController : MonoBehaviour
     public PlayerInteraction Interaction { get; private set; }
     public PlayerMovement Movement { get; private set; }
 
-    void Awake()
+    public void Initialize(PlayerConfig config)
     {
+        _config = config;
         _inputManager = new PlayerInputManager();
         Inventory = RegisterComponent(new PlayerInventory());
         Attack = RegisterComponent(new PlayerAttack());

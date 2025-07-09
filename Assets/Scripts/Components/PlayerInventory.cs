@@ -26,71 +26,72 @@ public class PlayerInventory : IComponent
         _isAutoFocus = GameManager.Instance.IsAutoFocus;
     }
 
-    public bool Pickup(ItemController item)
+    public ItemConfig Pickup(ItemController item)
     {
         bool isAdded = Add(item.Config);
         if (isAdded)
         {
             ItemPool.Instance.RemoveItem(item);
         }
-        return isAdded;
+        return isAdded ? item.Config : null;
     }
 
-    public bool Drop()
+    public ItemConfig Drop()
     {
         if (_choosingSlot == -1 || items[_choosingSlot] == null)
         {
             // Not choosing any item
-            return false;
+            return null;
         }
         else
         {
             // Drop the item into the world at player's position
-            ItemConfig configToDrop = items[_choosingSlot];
+            ItemConfig itemToDrop = items[_choosingSlot];
             Vector3 dropPosition = _player.transform.position + _player.transform.forward;
 
-            ItemPool.Instance.SpawnItem(configToDrop, dropPosition);
+            ItemPool.Instance.SpawnItem(itemToDrop, dropPosition);
 
             // Remove from inventory
             items[_choosingSlot] = null;
-            return true;
+            return itemToDrop;
         }
     }
 
-    public bool TransferToStation(StationController station)
+    public ItemConfig TransferToStation(StationController station)
     {
         if (_choosingSlot == -1 || items[_choosingSlot] == null)
         {
             // Not choosing any item
-            return false;
+            return null;
         }
         else
         {
             // Transfer the item to the station if the station 
-            station.AddItem(items[_choosingSlot]);
+            ItemConfig itemToTransfer = items[_choosingSlot];
+            station.AddItem(itemToTransfer);
             Remove(_choosingSlot);
-            return true;
+            return itemToTransfer;
         }
     }
 
-    public bool Submit(ItemConfig item)
+    public ProductConfig Submit()
     {
         if (_choosingSlot == -1 || items[_choosingSlot] == null)
         {
             // Not choosing any item
-            return false;
+            return null;
         }
         else
         {
-            if (item is ProductConfig product)
+            if (items[_choosingSlot] is ProductConfig product)
             {
                 // item is submissible
                 Remove(_choosingSlot);
-                return true;
+                return product;
             }
             else
             {
-                return false;
+                return null;
             }
         }
     }

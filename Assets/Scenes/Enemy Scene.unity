@@ -490,9 +490,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 028e7218131d034458c17cff485d4414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyConf: {fileID: 11400000, guid: f1272f9173efc1f4d813f43fdd901af7, type: 2}
   _playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  _obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _debug: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

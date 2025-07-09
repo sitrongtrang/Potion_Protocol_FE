@@ -13,6 +13,7 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
     private PlayerInventory _inventory;
     private StationController _nearStation;
     private InputAction[] _inputAction;
+    [SerializeField] private bool _isNearSubmissionPoint = false;
 
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
@@ -37,7 +38,12 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
         _inputManager.controls.Player.Nextslot.performed += ctx => NextSlot();
         _inputManager.controls.Player.Interact.performed += ctx =>
         {
+
             // Transfer item to station logic
+            if (_isNearSubmissionPoint)
+            {
+                Submit();
+            }
             if (_isNearStation)
             {
                 TransferToStation();
@@ -93,10 +99,10 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
             }
         }
 
-        bool pickedUp = _inventory.Pickup(nearestItem.GetComponent<ItemController>());
-        if (pickedUp)
+        ItemConfig pickedUpItem = _inventory.Pickup(nearestItem.GetComponent<ItemController>());
+        if (pickedUpItem)
         {
-            Debug.Log($"Picked up item: {nearestItem.name}");
+            Debug.Log($"Picked up item: {pickedUpItem.Name}");
         }
         else
         {
@@ -106,10 +112,10 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
 
     void TransferToStation()
     {
-        bool transferred = _inventory.TransferToStation(_nearStation);
-        if (transferred)
+        ItemConfig transferredItem = _inventory.TransferToStation(_nearStation);
+        if (transferredItem)
         {
-            Debug.Log($"Transferred {_inventory.Get(_inventory.ChoosingSlot).Name} in slot {_inventory.ChoosingSlot + 1} to station");
+            Debug.Log($"Transferred {transferredItem.Name} in slot {_inventory.ChoosingSlot + 1} to station");
         }
         else
         {
@@ -117,13 +123,26 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
         }
         
     }
+    void Submit()
+    {
+        ProductConfig submittedProduct = _inventory.Submit();
+        if (submittedProduct)
+        {
+            Debug.Log($"Submitted {submittedProduct.Name} in slot {_inventory.ChoosingSlot + 1}");
+        }
+        else
+        {
+            Debug.Log("No item in slot to submit");
+        }
+        
+    }
 
     void DropItem()
     {
-        bool dropped = _inventory.Drop();
-        if (dropped)
+        ItemConfig droppedItem = _inventory.Drop();
+        if (droppedItem)
         {
-            Debug.Log($"Drop item in slot {_inventory.ChoosingSlot + 1}");
+            Debug.Log($"Drop {droppedItem.Name} in slot {_inventory.ChoosingSlot + 1}");
         }
         else
         {
@@ -141,7 +160,10 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
             {
                 // Trigger display UI to inform player to pick item (K)
             }
-
+        }
+        if (collider.gameObject.tag == "SubmissionPoint")
+        {
+            _isNearSubmissionPoint = true;
         }
         if (collider.gameObject.tag == "Station")
         {
