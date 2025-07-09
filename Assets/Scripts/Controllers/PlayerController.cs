@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, ISpawnable<PlayerConfig>
 {
     private PlayerConfig _config;
     // input manager (new input system)
