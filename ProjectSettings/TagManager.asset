@@ -7,6 +7,7 @@ TagManager:
   - Station
   - Item
   - SubmissionPoint
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
+  - Obstacle
   - 
   - 
   - 
@@ -44,11 +45,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Map
-    uniqueID: 2113903207
+  - name: Background
+    uniqueID: 391191967
     locked: 0
-  - name: Entities
-    uniqueID: 3929672519
+  - name: Foreground
+    uniqueID: 718545363
     locked: 0
   m_RenderingLayers:
   - Default

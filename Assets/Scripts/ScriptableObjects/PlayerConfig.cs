@@ -20,5 +20,13 @@ public class PlayerConfig : ScriptableObject
 
     [SerializeField] private float[] _skillsCooldown;
     public float[] SkillsCoolDown => _skillsCooldown;
+
+    [SerializeField] private PlayerController _prefab;
+    public PlayerController Prefab => _prefab;
     
+    public void Spawn(Vector3 position)
+    {
+        PlayerController player = Instantiate(_prefab, position, Quaternion.identity);
+        player.Initialize(this);
+    } 
 }

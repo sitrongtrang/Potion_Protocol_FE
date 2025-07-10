@@ -25,7 +25,8 @@ public class EnemyController : MonoBehaviour
     public EnemyState CurrentEnemyStateEnum => BasicStateMachine.CurrentStateEnum;
     [Header("Pathfinding")]
     public int CurrentPathIndex { get; private set; }
-    public List<Vector3> PathVectorList { get; private set; }
+    public List<Vector2> PathVectorList { get; private set; }
+    [SerializeField] private bool _movementIgnoreObstacles;
 
     #region UNITY_METHODS
     private void Update()
@@ -52,7 +53,7 @@ public class EnemyController : MonoBehaviour
         EnemyConf = config;
         Spawner = spawner;
         IndexPosition = indexPosition;
-        
+
         _currentHp = config.Hp;
 
         PatrolCenter = patrolCenter;
@@ -75,10 +76,17 @@ public class EnemyController : MonoBehaviour
     {
         TargetToMove = position;
         CurrentPathIndex = 0;
-        PathVectorList = Pathfinding.Instance?.FindPath(transform.position, position);
-        if (PathVectorList != null && PathVectorList.Count > 0)
+        if (!_movementIgnoreObstacles)
         {
-            PathVectorList.RemoveAt(0);
+            PathVectorList = Pathfinding.Instance?.FindPath(transform.position, position);
+            if (PathVectorList != null && PathVectorList.Count > 0)
+            {
+                PathVectorList.RemoveAt(0);
+            }
+        }
+        else
+        {
+            PathVectorList = new() { position };
         }
     }
     public bool IsTooFarFromPatrolCenter()

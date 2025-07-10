@@ -1,11 +1,12 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 
 public class MapLoader : MonoBehaviour
 {
     public static MapLoader Instance { get; private set; }
-    
 
     void Awake()
     {
@@ -18,14 +19,10 @@ public class MapLoader : MonoBehaviour
         Instance = this;
     }
 
-    void Start()
+    public GameObject RenderMap(GameObject mapPrefab, Vector3 position)
     {
-        RenderMap(Vector3.zero, "Dungeon");
-    }
-
-    private void RenderMap(Vector3 position, string mapName)
-    {
-        GameObject mapRes = Resources.Load<GameObject>("Maps/" + mapName);
-        GameObject map = Instantiate(mapRes, position, Quaternion.identity);
+        GameObject map = Instantiate(mapPrefab, position, Quaternion.identity);
+        GridLoader.Instance.LoadGrid(map);
+        return map;
     }
 }

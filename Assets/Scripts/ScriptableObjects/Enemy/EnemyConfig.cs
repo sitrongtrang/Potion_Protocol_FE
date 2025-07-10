@@ -6,6 +6,9 @@ public abstract class EnemyConfig : ScriptableObject
     [SerializeField] private string _name;
     public string Name => _name;
 
+    [SerializeField] private string _id;
+    public string Id => _id;
+
     [SerializeField] private float _hp;
     public float Hp => _hp;
 
@@ -52,10 +55,49 @@ public abstract class EnemyConfig : ScriptableObject
     [Header("Component")]
     [SerializeField] private EnemyController _prefab;
     public EnemyController Prefab => _prefab;
-    public abstract void HandleMove(EnemyController controller);
+    public virtual void HandleMove(EnemyController controller)
+    {
+        if (controller.PathVectorList != null)
+        {
+            Vector2 targetPosition = controller.PathVectorList[controller.CurrentPathIndex];
+            if (Vector2.Distance(controller.transform.position, targetPosition) > 0.1f)
+            {
+                Vector2 moveDir = (targetPosition - (Vector2)controller.transform.position).normalized;
+                controller.transform.Translate(Speed * Time.deltaTime * moveDir);
+                // Set animation move here
+            }
+            else
+            {
+                controller.CurrentPathIndexIncrement();
+                if (controller.CurrentPathIndex >= controller.PathVectorList.Count)
+                {
+                    controller.StopMoving();
+                    // Set animation stop here
+                }
+            }
+        }
+        else
+        {
+            // Set animation stop here
+        }
+    }
     public abstract void HandleAttack(EnemyController controller);
-    public abstract void OnDeath(EnemyController controller);
-    public abstract void Initialize(EnemyController controller);
+    public virtual void OnDeath(EnemyController controller)
+    {
+        ItemPool.Instance.SpawnItem(_item, controller.transform.position);
+    }
+    public virtual void Initialize(EnemyController controller)
+    {
+        IdleState idleState = new(controller);
+        PatrolState patrolState = new(controller);
+        ReturnState returnState = new(controller);
+
+        controller.BasicStateMachine.AddState(EnemyState.Idle, idleState);
+        controller.BasicStateMachine.AddState(EnemyState.Patrol, patrolState);
+        controller.BasicStateMachine.AddState(EnemyState.Return, returnState);
+        
+        controller.BasicStateMachine.ChangeState(EnemyState.Return);
+    }
     private void OnValidate()
     {
         // Ensure AttackRadius < VisionRadius < ChaseRadius
