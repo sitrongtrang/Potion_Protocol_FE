@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af21ffac3d2cd7468c79c0f75d3f2a5, type: 3}
   m_Name: Emerald Ingot
   m_EditorClassIdentifier: 
-  _name: Obsidian Ingot
-  _id: I21
+  _name: Emerald Ingot
+  _id: I29
   _type: 1
   _prefab: {fileID: 0}
   _expireTime: 0

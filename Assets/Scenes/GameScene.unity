@@ -1240,7 +1240,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemTypes:
-  - {fileID: 11400000, guid: 11e6b186983da7542821215d78acc18c, type: 2}
   - {fileID: 11400000, guid: 19ede4239ef0c564e8a32832f55edb58, type: 2}
 --- !u!1 &1844488767
 GameObject:

@@ -27,4 +27,4 @@ MonoBehaviour:
   _searchDuration: 100
   _searchInterval: 1
   _item: {fileID: 11400000, guid: 19ede4239ef0c564e8a32832f55edb58, type: 2}
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 3347175494363194931, guid: b54bd8bbe22ca404aa3ed3e1696ec7a8, type: 3}

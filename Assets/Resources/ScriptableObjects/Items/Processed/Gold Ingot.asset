@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af21ffac3d2cd7468c79c0f75d3f2a5, type: 3}
   m_Name: Gold Ingot
   m_EditorClassIdentifier: 
-  _name: Obsidian Ingot
-  _id: I21
+  _name: Gold Ingot
+  _id: I25
   _type: 1
   _prefab: {fileID: 0}
   _expireTime: 0
