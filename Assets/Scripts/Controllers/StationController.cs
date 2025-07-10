@@ -44,15 +44,15 @@ public class StationController : MonoBehaviour
 
     IEnumerator WaitForCraft(RecipeConfig recipe)
     {
-        yield return new WaitForSeconds(recipe.TimeCrafting);
+        yield return new WaitForSeconds(recipe.CraftingTime);
         Vector3 dropPosition = transform.position + transform.forward;
-        DropItem(recipe.Item, dropPosition);
+        DropItem(recipe.Product, dropPosition);
     }
 
     private bool MatchRecipe(RecipeConfig recipe)
     {
         var stationSet = new HashSet<string>(_items.Select(i => i.Id));
-        var recipeSet = new HashSet<string>(recipe.Items.Select(i => i.Id));
+        var recipeSet = new HashSet<string>(recipe.Inputs.Select(i => i.Id));
         return stationSet.SetEquals(recipeSet);
     }
 
