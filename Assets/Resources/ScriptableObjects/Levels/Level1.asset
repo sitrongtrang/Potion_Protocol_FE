@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd9e42f65a764b240a342aa1ef378ac6, type: 3}
-  m_Name: CraftingStation
+  m_Script: {fileID: 11500000, guid: 66142ef0fff78804d89db223cbe2d1b5, type: 3}
+  m_Name: Level1
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 458266666713682462, guid: 5d2119105a254cd41bb298ebb4a250d0, type: 3}
-  _recipes: []
+  _mapPrefab: {fileID: 4130166079983457268, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
+  _ores: []
+  _ingotRecipes: []
+  _finalRecipes: []

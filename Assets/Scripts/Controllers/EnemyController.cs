@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [Header("Component")]
-    public EnemyConfig EnemyConf;
+    public EnemyConfig EnemyConf { get; private set; }
     public EnemySpawner Spawner { get; private set; }
     public int IndexPosition { get; private set; }
     [Header("Movement")]

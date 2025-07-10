@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class PlayerSpawner : MonoBehaviour
 {
-    [SerializeField] private BaseSpawnConfig _config;
+    [SerializeField] private PlayerConfig _config;
 
-    void Awake()
+    void Start()
     {
         _config.Spawn(transform.position); 
     }

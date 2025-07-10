@@ -7,11 +7,13 @@ using UnityEngine;
 public class StationController : MonoBehaviour
 {
     private StationConfig _config;
+    private List<RecipeConfig> _recipes;
     private List<ItemConfig> _items;
 
-    public void Initialize(StationConfig config)
+    public void Initialize(StationConfig config, List<RecipeConfig> recipes)
     {
         _config = config;
+        _recipes = recipes;
         _items = new();
     }
 
@@ -24,7 +26,7 @@ public class StationController : MonoBehaviour
     {
 
         int recipeIndex = FindMatchingRecipe();
-        if (recipeIndex != -1) StartCoroutine(WaitForCraft(_config.Recipes[recipeIndex]));
+        if (recipeIndex != -1) StartCoroutine(WaitForCraft(_recipes[recipeIndex]));
         else
         {
             for (int i = 0; i < _items.Count; i++)
@@ -56,9 +58,9 @@ public class StationController : MonoBehaviour
 
     private int FindMatchingRecipe()
     {
-        for (int i = 0; i < _config.Recipes.Count; i++)
+        for (int i = 0; i < _recipes.Count; i++)
         {
-            if (MatchRecipe(_config.Recipes[i]))
+            if (MatchRecipe(_recipes[i]))
             {
                 return i;
             }

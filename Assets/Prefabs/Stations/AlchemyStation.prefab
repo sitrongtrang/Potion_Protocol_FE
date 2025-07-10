@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5332281164907277573}
   - component: {fileID: 458266666713682462}
   m_Layer: 0
-  m_Name: CraftingStation
+  m_Name: AlchemyStation
   m_TagString: Station
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
