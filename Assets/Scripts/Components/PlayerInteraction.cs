@@ -14,6 +14,7 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
     private StationController _nearStation;
     private InputAction[] _inputAction;
     [SerializeField] private bool _isNearSubmissionPoint = false;
+    private bool _isNearCraftPoint = false;
 
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
@@ -36,23 +37,32 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
         }
 
         _inputManager.controls.Player.Nextslot.performed += ctx => NextSlot();
-        _inputManager.controls.Player.Interact.performed += ctx =>
+        _inputManager.controls.Player.Submit.performed += ctx =>
         {
-
-            // Transfer item to station logic
             if (_isNearSubmissionPoint)
             {
                 Submit();
             }
+        };
+        _inputManager.controls.Player.Transfer.performed += ctx =>
+        {
             if (_isNearStation)
             {
                 TransferToStation();
             }
-            // Attack
-            else
-            {
-                _player.StartCoroutine(_player.Attack.Attack());
-            }
+        };
+        _inputManager.controls.Player.Attack.performed += ctx =>
+        {
+            if (!_isNearSubmissionPoint && !_isNearStation) _player.StartCoroutine(_player.Attack.Attack());
+        };
+        _inputManager.controls.Player.Exploit.performed += ctx =>
+        {
+            // exploit
+        };
+        _inputManager.controls.Player.Combine.performed += ctx =>
+        {
+            // combine & craft item
+            if (_isNearCraftPoint) EventBus.Craft();
         };
         inputManager.controls.Player.Drop.performed += ctx => DropItem();
         inputManager.controls.Player.Pickup.performed += ctx =>
@@ -170,6 +180,10 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
             _isNearStation = true;
             _nearStation = collider.gameObject.GetComponent<StationController>();
             // display UI to inform player to transfer item
+        }
+        if (collider.gameObject.tag == "CraftPoint")
+        {
+            _isNearCraftPoint = true;
         }
     }
     public void OnTriggerExit2D(Collider2D collider)
