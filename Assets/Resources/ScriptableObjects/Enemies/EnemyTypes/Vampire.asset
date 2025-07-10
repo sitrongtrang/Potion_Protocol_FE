@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 160db005b420e004ba7cb072d295092b, type: 3}
-  m_Name: Slime
+  m_Name: Vampire
   m_EditorClassIdentifier: 
-  _name: Mireblot
-  _id: M1
-  _hp: 50
+  _name: Dreadshade
+  _id: M4
+  _hp: 60
   _speed: 3
-  _damage: 5
+  _damage: 8
   _patrolRadius: 5.5
   _patrolInterval: 1
   _chaseRadius: 7
@@ -26,5 +26,5 @@ MonoBehaviour:
   _searchRadius: 5
   _searchDuration: 100
   _searchInterval: 1
-  _item: {fileID: 11400000, guid: 19ede4239ef0c564e8a32832f55edb58, type: 2}
+  _item: {fileID: 11400000, guid: ce5c9652b4edd714aafc3bb91804c39b, type: 2}
   _prefab: {fileID: 0}
