@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour
     public static LevelManager Instance { get; private set; }
     [SerializeField] LevelConfig _config;
     private int _score;
+    public bool IsPaused { get; private set; }
 
     private void Awake()
     {
@@ -57,7 +58,7 @@ public class LevelManager : MonoBehaviour
     {
         yield return new WaitForSeconds(_config.LevelTime);
         EvaluateResult();
-        SceneManager.LoadScene("LevelResultScene");
+        TogglePause();
     }
 
     private void EvaluateResult()
@@ -69,5 +70,11 @@ public class LevelManager : MonoBehaviour
             return;
         }
         stars = _config.ScoreThresholds.Length;
+    }
+
+    public void TogglePause()
+    {
+        IsPaused = !IsPaused;
+        Time.timeScale = IsPaused? 0f : 1f;
     }
 }
