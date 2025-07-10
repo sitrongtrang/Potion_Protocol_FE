@@ -877,6 +877,67 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsAutoFocus: 1
+--- !u!1001 &891328736
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3935734546950379814, guid: cb687b3f4ba4b0f4092b9deeb4da29b5, type: 3}
+      propertyPath: m_Radius
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948361605728094920, guid: cb687b3f4ba4b0f4092b9deeb4da29b5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948361605728094920, guid: cb687b3f4ba4b0f4092b9deeb4da29b5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948361605728094920, guid: cb687b3f4ba4b0f4092b9deeb4da29b5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948361605728094920, guid: cb687b3f4ba4b0f4092b9deeb4da29b5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948361605728094920, guid: cb687b3f4ba4b0f4092b9deeb4da29b5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948361605728094920, guid: cb687b3f4ba4b0f4092b9deeb4da29b5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948361605728094920, guid: cb687b3f4ba4b0f4092b9deeb4da29b5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948361605728094920, guid: cb687b3f4ba4b0f4092b9deeb4da29b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948361605728094920, guid: cb687b3f4ba4b0f4092b9deeb4da29b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948361605728094920, guid: cb687b3f4ba4b0f4092b9deeb4da29b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6779095460143926864, guid: cb687b3f4ba4b0f4092b9deeb4da29b5, type: 3}
+      propertyPath: m_Name
+      value: AlchemyStation
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cb687b3f4ba4b0f4092b9deeb4da29b5, type: 3}
 --- !u!1 &1147581133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1254,6 +1315,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 32c54409392bd134f88c7cc1f87804cb, type: 2}
   - {fileID: 11400000, guid: db5687697bc97e241b852ecbbf57c25b, type: 2}
   - {fileID: 11400000, guid: a430ab3b0bf4be74e8be1079f1908279, type: 2}
+  - {fileID: 11400000, guid: 3feaa63b66d55be49886d3ec5932cb56, type: 2}
+  - {fileID: 11400000, guid: beb25794779a99b4b91a16c504c21141, type: 2}
+  - {fileID: 11400000, guid: f328770432ef4884da308476bb83d8e2, type: 2}
+  - {fileID: 11400000, guid: 4531a1ebf57daf24da65a304c3defee6, type: 2}
+  - {fileID: 11400000, guid: 55d356bc87a2f9543a899388173566ab, type: 2}
+  - {fileID: 11400000, guid: 19ede4239ef0c564e8a32832f55edb58, type: 2}
+  - {fileID: 11400000, guid: c3bc7da12f0b7f843a16f7ea9c4e04bc, type: 2}
+  - {fileID: 11400000, guid: ce5c9652b4edd714aafc3bb91804c39b, type: 2}
+  - {fileID: 11400000, guid: c79f230495713e34ab15cf4a3b6b84c1, type: 2}
+  - {fileID: 11400000, guid: 634d9a3732390f64fa2d0aab041d951e, type: 2}
 --- !u!1 &1844488767
 GameObject:
   m_ObjectHideFlags: 0
@@ -1418,3 +1489,4 @@ SceneRoots:
   - {fileID: 1844488770}
   - {fileID: 834618732}
   - {fileID: 1227648934}
+  - {fileID: 891328736}
