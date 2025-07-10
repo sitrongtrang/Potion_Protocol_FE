@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6076914787498880550}
   - component: {fileID: -167328172387659873}
   m_Layer: 0
-  m_Name: FrostLeaf Crystal
+  m_Name: Rune of Tides
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,7 +89,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1854846835, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
+  m_Sprite: {fileID: -1783450677, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
