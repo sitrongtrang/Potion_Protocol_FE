@@ -348,7 +348,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 512
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -2622,7 +2622,107 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Ingot_Atlas_0: -7795363881259474946
+      Ingot_Atlas_1: -2643760491537033724
+      Ingot_Atlas_10: -2676273732821293987
+      Ingot_Atlas_11: 7100454657400318274
+      Ingot_Atlas_12: 9202590150349409189
+      Ingot_Atlas_13: -914523827995298538
+      Ingot_Atlas_14: 641274922336219866
+      Ingot_Atlas_15: -5377607013623847601
+      Ingot_Atlas_16: 4092093450455253871
+      Ingot_Atlas_17: 6574943494755698187
+      Ingot_Atlas_18: 4730399559925852662
+      Ingot_Atlas_19: 5671674673012459969
+      Ingot_Atlas_2: -1288240943580309901
+      Ingot_Atlas_20: 6706537656054524683
+      Ingot_Atlas_21: 8039230270470870807
+      Ingot_Atlas_22: 4471430952926370150
+      Ingot_Atlas_23: -5827613641321762814
+      Ingot_Atlas_24: 5875940012543247306
+      Ingot_Atlas_25: 8606800612008418105
+      Ingot_Atlas_26: 2724892669904641438
+      Ingot_Atlas_27: 2202237861632297118
+      Ingot_Atlas_28: 6656673129763904889
+      Ingot_Atlas_29: -3001616802563953934
+      Ingot_Atlas_3: -7150655590655086274
+      Ingot_Atlas_30: -3960478844305403194
+      Ingot_Atlas_31: -4745990332622288462
+      Ingot_Atlas_32: -5738027586760848597
+      Ingot_Atlas_33: 7692747651671993150
+      Ingot_Atlas_34: 897806953245178420
+      Ingot_Atlas_35: 715609470613263808
+      Ingot_Atlas_36: 3637924023692063238
+      Ingot_Atlas_37: -4486725582435810674
+      Ingot_Atlas_38: 9073585799300919509
+      Ingot_Atlas_39: -6491136850343446017
+      Ingot_Atlas_4: 7273804822521052303
+      Ingot_Atlas_40: -5005603782718153779
+      Ingot_Atlas_41: -8133222507851253824
+      Ingot_Atlas_42: -8886223022174076821
+      Ingot_Atlas_43: -44837147970486911
+      Ingot_Atlas_44: -6839715025890191947
+      Ingot_Atlas_45: -8141770314944011402
+      Ingot_Atlas_46: 8965230026742571895
+      Ingot_Atlas_47: -7388316349257353834
+      Ingot_Atlas_48: -4642953922209355708
+      Ingot_Atlas_49: 4341688398258309344
+      Ingot_Atlas_5: -7992450690253906582
+      Ingot_Atlas_50: -5033248969457000342
+      Ingot_Atlas_51: -2787204863317893763
+      Ingot_Atlas_52: 3007916528098025189
+      Ingot_Atlas_53: 1251817318341430424
+      Ingot_Atlas_54: -1693854309895157740
+      Ingot_Atlas_55: 2052497908721783972
+      Ingot_Atlas_56: -2474813432665220282
+      Ingot_Atlas_57: 276210340788394102
+      Ingot_Atlas_58: -6020565813267060414
+      Ingot_Atlas_59: -6987601508435498014
+      Ingot_Atlas_6: 6500151337436090292
+      Ingot_Atlas_60: 8284553751229417712
+      Ingot_Atlas_61: 5650557842257000780
+      Ingot_Atlas_62: -1309105207643035005
+      Ingot_Atlas_63: 1176178643506733927
+      Ingot_Atlas_64: 335686046116182385
+      Ingot_Atlas_65: 1072907929725041993
+      Ingot_Atlas_66: -5287322874083057732
+      Ingot_Atlas_67: -8107865947950105717
+      Ingot_Atlas_68: 4596421306410349869
+      Ingot_Atlas_69: -4396933727655739738
+      Ingot_Atlas_7: 2149103271335678714
+      Ingot_Atlas_70: -5600983848387610873
+      Ingot_Atlas_71: -5124042103270912958
+      Ingot_Atlas_72: -130745979038962972
+      Ingot_Atlas_73: -1951346035798833104
+      Ingot_Atlas_74: -7091133228211799866
+      Ingot_Atlas_75: -6325093569594332531
+      Ingot_Atlas_76: 7551787356816294189
+      Ingot_Atlas_77: 3107939649596071705
+      Ingot_Atlas_78: 564618793270469375
+      Ingot_Atlas_79: 4681109519962378840
+      Ingot_Atlas_8: 7562958788069766771
+      Ingot_Atlas_80: -2809354632032850348
+      Ingot_Atlas_81: 6903148619070198140
+      Ingot_Atlas_82: -502287462541595728
+      Ingot_Atlas_83: 2413865251447930725
+      Ingot_Atlas_84: 1643928909445589332
+      Ingot_Atlas_85: 5855017808838994028
+      Ingot_Atlas_86: 6521650510153518138
+      Ingot_Atlas_87: -3244055474091141759
+      Ingot_Atlas_88: -2773853046251727226
+      Ingot_Atlas_89: 8754726642871428155
+      Ingot_Atlas_9: 4329401428078364952
+      Ingot_Atlas_90: -2205791323983733037
+      Ingot_Atlas_91: 8056171305639465164
+      Ingot_Atlas_92: -8634218748196460195
+      Ingot_Atlas_93: 2878525554420929633
+      Ingot_Atlas_94: -3411078579403511844
+      Ingot_Atlas_95: -4542809236588552225
+      Ingot_Atlas_96: 264765396193749027
+      Ingot_Atlas_97: -9193486234585127154
+      Ingot_Atlas_98: -336876171817308987
+      Ingot_Atlas_99: -504650863741306893
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

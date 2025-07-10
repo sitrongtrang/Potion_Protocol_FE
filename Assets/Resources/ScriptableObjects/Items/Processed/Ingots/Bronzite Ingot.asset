@@ -15,5 +15,5 @@ MonoBehaviour:
   _name: Bronzite Ingot
   _id: I24
   _type: 1
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 7175423293597175683, guid: efadc095f3c2f0f43a9beec52516de3d, type: 3}
   _expireTime: 0

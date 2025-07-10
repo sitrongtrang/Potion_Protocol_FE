@@ -27,6 +27,14 @@ public class LevelManager : MonoBehaviour
         StartCoroutine(EndLevel());
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
+    }
+
     private void LoadLevel(LevelConfig config)
     {
         GameObject map = MapLoader.Instance.RenderMap(config.MapPrefab, Vector2.zero);

@@ -15,5 +15,5 @@ MonoBehaviour:
   _name: Emerald Ingot
   _id: I29
   _type: 1
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 7175423293597175683, guid: 586faabd433797a4ab659d5b938050ee, type: 3}
   _expireTime: 0

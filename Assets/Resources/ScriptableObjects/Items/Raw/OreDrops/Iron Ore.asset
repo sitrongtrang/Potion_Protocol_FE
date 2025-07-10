@@ -15,4 +15,4 @@ MonoBehaviour:
   _name: Iron Ore
   _id: I12
   _type: 0
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 2756712652034502478, guid: cec5cc8fa1d703d49882ab215b338ba5, type: 3}

@@ -15,5 +15,5 @@ MonoBehaviour:
   _name: Gold Ingot
   _id: I25
   _type: 1
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 7175423293597175683, guid: a9afe3c45c9e5cb44a7ca8fd82768bb1, type: 3}
   _expireTime: 0

@@ -15,5 +15,5 @@ MonoBehaviour:
   _name: Silver Ingot
   _id: I23
   _type: 1
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 7175423293597175683, guid: 7d5275e439e046045a85019967ac13da, type: 3}
   _expireTime: 0
