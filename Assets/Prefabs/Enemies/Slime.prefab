@@ -44,6 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 028e7218131d034458c17cff485d4414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <PlayerLayer>k__BackingField:
+  _playerLayer:
     serializedVersion: 2
     m_Bits: 0
+  _obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _movementIgnoreObstacles: 0
