@@ -15,5 +15,5 @@ MonoBehaviour:
   _name: Obsidian Ingot
   _id: I21
   _type: 1
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 7175423293597175683, guid: 0c129e7ffe3418043808f5176efc6bba, type: 3}
   _expireTime: 0

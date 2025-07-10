@@ -15,5 +15,5 @@ MonoBehaviour:
   _name: Iron Ingot
   _id: I22
   _type: 1
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 7175423293597175683, guid: 735984ead0898944a8fa957296492c11, type: 3}
   _expireTime: 0

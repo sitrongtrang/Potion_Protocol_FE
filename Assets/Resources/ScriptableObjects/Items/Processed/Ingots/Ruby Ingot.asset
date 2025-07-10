@@ -15,5 +15,5 @@ MonoBehaviour:
   _name: Ruby Ingot
   _id: I26
   _type: 1
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 7175423293597175683, guid: 8db51526096bdbb4bb95b2cdfa73a820, type: 3}
   _expireTime: 0
