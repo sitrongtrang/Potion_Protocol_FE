@@ -5,26 +5,27 @@ public class EnemySpawner : MonoBehaviour
 {
     private float _currentCooldown;
     [SerializeField] private EnemySpawnerConfig _enemySpawnerConfig;
-    [SerializeField] private Transform[] _positionsToSpawn;
+    private List<Transform> _positionsToSpawn;
     private List<EnemyConfig> _enemiesToSpawn;
     private List<int> _unspawnedEnemyIndices = new();
     private List<int> _unoccupiedPositionIndices = new();
 
-    public void Initialize(List<EnemyConfig> enemiesToSpawn)
+    public void Initialize(List<EnemyConfig> enemiesToSpawn, List<Transform> positionsToSpawn)
     {
         _enemiesToSpawn = enemiesToSpawn;
+        _positionsToSpawn = positionsToSpawn;
+
         for (int i = 0; i < enemiesToSpawn.Count; i++)
         {
             _unspawnedEnemyIndices.Add(i);
         }
-    }
 
-    void Start()
-    {
-        for (int i = 0; i < _positionsToSpawn.Length; i++)
+        for (int i = 0; i < positionsToSpawn.Count; i++)
         {
             _unoccupiedPositionIndices.Add(i);
         }
+
+        _currentCooldown = Random.Range(_enemySpawnerConfig.MinSpawnInterval, _enemySpawnerConfig.MaxSpawnInterval);
     }
 
     void Update()

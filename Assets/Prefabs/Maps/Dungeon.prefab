@@ -11567,7 +11567,7 @@ GameObject:
   - component: {fileID: 1148647011343841977}
   m_Layer: 0
   m_Name: PatrolCenter06
-  m_TagString: Untagged
+  m_TagString: PatrolCenter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11885,7 +11885,7 @@ GameObject:
   - component: {fileID: 4844413632682623016}
   m_Layer: 0
   m_Name: PatrolCenter02
-  m_TagString: Untagged
+  m_TagString: PatrolCenter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12072,7 +12072,7 @@ GameObject:
   - component: {fileID: 2719756614472013544}
   m_Layer: 0
   m_Name: PatrolCenter04
-  m_TagString: Untagged
+  m_TagString: PatrolCenter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12254,7 +12254,7 @@ GameObject:
   - component: {fileID: 6419960394749523110}
   m_Layer: 0
   m_Name: PatrolCenter05
-  m_TagString: Untagged
+  m_TagString: PatrolCenter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12285,7 +12285,7 @@ GameObject:
   - component: {fileID: 7923802780024211733}
   m_Layer: 0
   m_Name: PatrolCenter07
-  m_TagString: Untagged
+  m_TagString: PatrolCenter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12316,7 +12316,7 @@ GameObject:
   - component: {fileID: 4643810884956315191}
   m_Layer: 0
   m_Name: PatrolCenter00
-  m_TagString: Untagged
+  m_TagString: PatrolCenter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12629,7 +12629,7 @@ GameObject:
   - component: {fileID: 2851066750814555144}
   m_Layer: 0
   m_Name: PatrolCenter03
-  m_TagString: Untagged
+  m_TagString: PatrolCenter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12660,7 +12660,7 @@ GameObject:
   - component: {fileID: 1709332895861820104}
   m_Layer: 0
   m_Name: PatrolCenter01
-  m_TagString: Untagged
+  m_TagString: PatrolCenter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15498,15 +15498,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemySpawnerConfig: {fileID: 11400000, guid: 64788f8fc3a3639418e869c4e1f61c1e, type: 2}
-  _positionsToSpawn:
-  - {fileID: 4643810884956315191}
-  - {fileID: 1709332895861820104}
-  - {fileID: 4844413632682623016}
-  - {fileID: 2851066750814555144}
-  - {fileID: 2719756614472013544}
-  - {fileID: 6419960394749523110}
-  - {fileID: 1148647011343841977}
-  - {fileID: 7923802780024211733}
 --- !u!1001 &3590889479547894211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15881,15 +15872,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemySpawnerConfig: {fileID: 11400000, guid: 64788f8fc3a3639418e869c4e1f61c1e, type: 2}
-  _positionsToSpawn:
-  - {fileID: 4643810884956315191}
-  - {fileID: 1709332895861820104}
-  - {fileID: 4844413632682623016}
-  - {fileID: 2851066750814555144}
-  - {fileID: 2719756614472013544}
-  - {fileID: 6419960394749523110}
-  - {fileID: 1148647011343841977}
-  - {fileID: 7923802780024211733}
 --- !u!4 &788047963245185577 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5639186808511199517, guid: ebf8425b5e84ecf48b1aa5084014fdcd, type: 3}
@@ -16039,15 +16021,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemySpawnerConfig: {fileID: 11400000, guid: 64788f8fc3a3639418e869c4e1f61c1e, type: 2}
-  _positionsToSpawn:
-  - {fileID: 4643810884956315191}
-  - {fileID: 1709332895861820104}
-  - {fileID: 4844413632682623016}
-  - {fileID: 2851066750814555144}
-  - {fileID: 2719756614472013544}
-  - {fileID: 6419960394749523110}
-  - {fileID: 1148647011343841977}
-  - {fileID: 7923802780024211733}
 --- !u!4 &658072604229002915 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5639186808511199517, guid: ebf8425b5e84ecf48b1aa5084014fdcd, type: 3}
