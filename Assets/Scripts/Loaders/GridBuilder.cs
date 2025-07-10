@@ -33,7 +33,7 @@ public class GridBuilder : MonoBehaviour
             for (int y = 0; y < yDim; y++)
             {
                 GameObject gridGameObject = Instantiate(_gridCellObjectPrefab.gameObject, gridmap.transform);
-                gridGameObject.transform.localPosition = originPosition + new Vector2(x, y) * cellSize;
+                gridGameObject.transform.position = originPosition + new Vector2(x, y) * cellSize;
 
                 GridCellObject gridObject = gridGameObject.GetComponent<GridCellObject>();
                 gridObject.Initialize(x, y, cellSize, overlapTags, overlapLayerMasks, onOverlapBox);

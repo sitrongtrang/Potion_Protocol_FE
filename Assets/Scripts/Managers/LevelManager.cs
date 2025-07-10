@@ -27,11 +27,10 @@ public class LevelManager : MonoBehaviour
 
     private void LoadLevel(LevelConfig config)
     {
-        GameObject map = MapLoader.Instance.RenderMap(config.MapPrefab, Vector3.zero);
+        GameObject map = MapLoader.Instance.RenderMap(config.MapPrefab, Vector2.zero);
 
         (int width, int height, float cellSize, Vector2 origin) = GetMapParameters(map);
-
-        int a = 0;
+        
         _pathfinding = new Pathfinding(width, height, cellSize, origin);
         GridBuilderFactory.Instance.BuildGrid(
             width,
@@ -42,12 +41,10 @@ public class LevelManager : MonoBehaviour
             LayerMask.GetMask("Obstacle"),
             (x,y,isoverlap) =>
             {
-                if (isoverlap) a += 1;
-                Debug.Log(a);
                 PathNode pathNode = Pathfinding.Instance.GetNode(x, y);
                 pathNode.IsWalkable = !isoverlap;
             },
-            transform,
+            map.transform,
             "Pathfinding Grid"
         );
 
