@@ -6,6 +6,9 @@ public abstract class EnemyConfig : ScriptableObject
     [SerializeField] private string _name;
     public string Name => _name;
 
+    [SerializeField] private string _id;
+    public string Id => _id;
+
     [SerializeField] private float _hp;
     public float Hp => _hp;
 

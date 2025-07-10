@@ -125,7 +125,7 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
     }
     void Submit()
     {
-        ProductConfig submittedProduct = _inventory.Submit();
+        FinalProductConfig submittedProduct = _inventory.Submit();
         if (submittedProduct)
         {
             Debug.Log($"Submitted {submittedProduct.Name} in slot {_inventory.ChoosingSlot + 1}");

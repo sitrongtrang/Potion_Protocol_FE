@@ -74,7 +74,7 @@ public class PlayerInventory : IComponent
         }
     }
 
-    public ProductConfig Submit()
+    public FinalProductConfig Submit()
     {
         if (_choosingSlot == -1 || items[_choosingSlot] == null)
         {
@@ -83,7 +83,7 @@ public class PlayerInventory : IComponent
         }
         else
         {
-            if (items[_choosingSlot] is ProductConfig product)
+            if (items[_choosingSlot] is FinalProductConfig product)
             {
                 // item is submissible
                 Remove(_choosingSlot);

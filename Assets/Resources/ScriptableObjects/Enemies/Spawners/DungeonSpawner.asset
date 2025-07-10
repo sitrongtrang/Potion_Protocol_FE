@@ -15,5 +15,4 @@ MonoBehaviour:
   <MinSpawnInterval>k__BackingField: 5
   <MaxSpawnInterval>k__BackingField: 10
   <EnemyConfigsToSpawn>k__BackingField:
-  - {fileID: 11400000, guid: f1272f9173efc1f4d813f43fdd901af7, type: 2}
   - {fileID: 11400000, guid: 102769852e166fd4f8e5161856ae8051, type: 2}
