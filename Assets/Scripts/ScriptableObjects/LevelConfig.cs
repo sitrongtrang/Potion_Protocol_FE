@@ -7,6 +7,9 @@ public class LevelConfig : ScriptableObject
     [SerializeField] private GameObject _mapPrefab;
     public GameObject MapPrefab => _mapPrefab;
 
+    [SerializeField] private List<EnemyConfig> _enemies;
+    public List<EnemyConfig> Enemies => _enemies;
+
     [SerializeField] private List<OreConfig> _ores;
     public List<OreConfig> Ores => _ores;
 
@@ -15,4 +18,7 @@ public class LevelConfig : ScriptableObject
 
     [SerializeField] private List<RecipeConfig> _finalRecipes; // Recipes for final products to submit
     public List<RecipeConfig> FinalRecipes => _finalRecipes;
+
+    [SerializeField] private float _levelTime;
+    public float LevelTime => _levelTime;
 }

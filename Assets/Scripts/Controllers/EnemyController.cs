@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,8 @@ public class EnemyController : MonoBehaviour
     [Header("Component")]
     public EnemyConfig EnemyConf { get; private set; }
     public EnemySpawner Spawner { get; private set; }
-    public int IndexPosition { get; private set; }
+    public int PositionIndex { get; private set; }
+    public int TypeIndex { get; private set; }
     [Header("Movement")]
     public Vector2 TargetToMove { get; private set; }
     public Vector2 PatrolCenter { get; private set; }
@@ -48,11 +50,12 @@ public class EnemyController : MonoBehaviour
     #endregion
 
     #region STATE
-    public void Initialize(EnemyConfig config, EnemySpawner spawner, Vector2 patrolCenter, int indexPosition)
+    public void Initialize(EnemyConfig config, EnemySpawner spawner, Vector2 patrolCenter, int positionIndex, int typeIndex)
     {
         EnemyConf = config;
         Spawner = spawner;
-        IndexPosition = indexPosition;
+        PositionIndex = positionIndex;
+        TypeIndex = typeIndex;
 
         _currentHp = config.Hp;
 
@@ -137,7 +140,8 @@ public class EnemyController : MonoBehaviour
     private void Die()
     {
         EnemyConf.OnDeath(this);
-        Spawner.UnoccupiedSpace(IndexPosition);
+        Spawner.UnoccupiedSpace(PositionIndex);
+        Spawner.UnspawnedEnemy(TypeIndex);
         Destroy(gameObject);
     }
     #endregion
