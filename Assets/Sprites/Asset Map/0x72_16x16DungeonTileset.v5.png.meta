@@ -284,32 +284,6 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 0x72_16x16DungeonTileset.v5_1
-      rect:
-        serializedVersion: 2
-        x: 180
-        y: 93
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape:
-      - - {x: 8, y: -4}
-        - {x: -8, y: -4}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-      tessellationDetail: 0
-      bones: []
-      spriteID: a823f20f9cf1c74498484335ebf40b92
-      internalID: -1386885584
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: 0x72_16x16DungeonTileset.v5_2
       rect:
         serializedVersion: 2
@@ -1749,8 +1723,8 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape:
-      - - {x: 8, y: 8}
-        - {x: 3, y: 8}
+      - - {x: 8, y: -4}
+        - {x: 3, y: -4}
         - {x: 3, y: -8}
         - {x: 8, y: -8}
       tessellationDetail: 0
@@ -1775,8 +1749,8 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape:
-      - - {x: -3, y: 8}
-        - {x: -8, y: 8}
+      - - {x: -3, y: -4}
+        - {x: -8, y: -4}
         - {x: -8, y: -8}
         - {x: -3, y: -8}
       tessellationDetail: 0
@@ -2452,7 +2426,7 @@ TextureImporter:
       name: 0x72_16x16DungeonTileset.v5_94
       rect:
         serializedVersion: 2
-        x: 0
+        x: 80
         y: 176
         width: 16
         height: 16
@@ -2478,7 +2452,7 @@ TextureImporter:
       name: 0x72_16x16DungeonTileset.v5_95
       rect:
         serializedVersion: 2
-        x: 16
+        x: 64
         y: 176
         width: 16
         height: 16
@@ -2504,7 +2478,7 @@ TextureImporter:
       name: 0x72_16x16DungeonTileset.v5_96
       rect:
         serializedVersion: 2
-        x: 32
+        x: 48
         y: 176
         width: 16
         height: 16
@@ -2530,7 +2504,7 @@ TextureImporter:
       name: 0x72_16x16DungeonTileset.v5_97
       rect:
         serializedVersion: 2
-        x: 48
+        x: 32
         y: 176
         width: 16
         height: 16
@@ -2556,7 +2530,7 @@ TextureImporter:
       name: 0x72_16x16DungeonTileset.v5_98
       rect:
         serializedVersion: 2
-        x: 64
+        x: 16
         y: 176
         width: 16
         height: 16
@@ -2582,7 +2556,7 @@ TextureImporter:
       name: 0x72_16x16DungeonTileset.v5_99
       rect:
         serializedVersion: 2
-        x: 80
+        x: 0
         y: 176
         width: 16
         height: 16
@@ -3645,7 +3619,11 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 8, y: -7}
+        - {x: -8, y: -7}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
       tessellationDetail: 0
       bones: []
       spriteID: dbec1ed345427214da86757f1f81018c
@@ -3667,7 +3645,11 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 8, y: -7}
+        - {x: -8, y: -7}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
       tessellationDetail: 0
       bones: []
       spriteID: 0e980533872d6f041a9ff4bf3eac3200
@@ -4217,7 +4199,11 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 8, y: 8}
+        - {x: -8, y: 8}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
       tessellationDetail: 0
       bones: []
       spriteID: f673736477642c5428d13c78a333afd6
@@ -4239,7 +4225,11 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 8, y: 8}
+        - {x: -8, y: 8}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
       tessellationDetail: 0
       bones: []
       spriteID: f5fa99a0e7dd8244abc84a4ccf80c7c9
