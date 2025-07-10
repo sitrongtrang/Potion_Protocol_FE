@@ -62,7 +62,7 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
         _inputManager.controls.Player.Combine.performed += ctx =>
         {
             // combine & craft item
-            if (_isNearCraftPoint) EventBus.Craft();
+            if (_isNearCraftPoint) _nearStation.StartCrafting();
         };
         inputManager.controls.Player.Drop.performed += ctx => DropItem();
         inputManager.controls.Player.Pickup.performed += ctx =>
