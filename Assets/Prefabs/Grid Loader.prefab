@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c0dda2c1f6b7740a1cbfd7999c822d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gridObject: {fileID: 6427811005799040846, guid: 305aa880453a87e43b61a4ebccfbba38, type: 3}
+  _gridCellObjectPrefab: {fileID: 6427811005799040846, guid: 305aa880453a87e43b61a4ebccfbba38, type: 3}
+  _debug: 0

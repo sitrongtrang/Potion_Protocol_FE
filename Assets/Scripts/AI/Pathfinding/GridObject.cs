@@ -4,8 +4,8 @@ using UnityEngine;
 public class GridObject : MonoBehaviour
 {
     [Header("Component")]
-    public bool NodeNeedUpdate = false;
-    [SerializeField] private bool _debug = false;
+    [HideInInspector] public bool NodeNeedUpdate = false;
+    private bool _debug = false;
     [Header("Non Walkable Tags / Layers")]
     [SerializeField] private LayerMask _nonWalkableLayers;
     [SerializeField] private string[] _nonWalkableTags;
@@ -49,11 +49,19 @@ public class GridObject : MonoBehaviour
 
         _cachedNode.IsWalkable = hit == null || !_nonWalkableTags.Contains(hit.tag);
     }
+
+    public void SetDebug(bool debug)
+    {
+        _debug = debug;
+    }
     
     void OnDrawGizmos() {
         if (_debug)
         {
-            Gizmos.color = Color.green;
+            if (_cachedNode.IsWalkable)
+                Gizmos.color = Color.green;
+            else
+                Gizmos.color = Color.red;
             Gizmos.DrawWireCube(transform.position, new(_cellSize, _cellSize));
         }
     }

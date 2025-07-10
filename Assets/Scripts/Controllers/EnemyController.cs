@@ -25,7 +25,7 @@ public class EnemyController : MonoBehaviour
     public EnemyState CurrentEnemyStateEnum => BasicStateMachine.CurrentStateEnum;
     [Header("Pathfinding")]
     public int CurrentPathIndex { get; private set; }
-    public List<Vector3> PathVectorList { get; private set; }
+    public List<Vector2> PathVectorList { get; private set; }
     [SerializeField] private bool _movementIgnoreObstacles;
 
     #region UNITY_METHODS

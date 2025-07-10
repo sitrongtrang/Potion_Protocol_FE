@@ -5,11 +5,14 @@ using UnityEngine;
 public class RecipeConfig : ScriptableObject
 {
     [SerializeField] private float _craftingTime;
-    public float TimeCrafting => _craftingTime;
+    public float CraftingTime => _craftingTime;
 
-    [SerializeField] private ItemConfig _item;
-    public ItemConfig Item => _item;
+    [SerializeField] private RecipeType _type;
+    public RecipeType Type => _type;
 
-    [SerializeField] private List<ItemConfig> _items;
-    public List<ItemConfig> Items => _items;
+    [SerializeField] private ItemConfig _product;
+    public ItemConfig Product => _product;
+
+    [SerializeField] private List<ItemConfig> _inputs;
+    public List<ItemConfig> Inputs => _inputs;
 }
