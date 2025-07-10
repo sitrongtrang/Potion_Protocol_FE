@@ -1,11 +1,13 @@
 using System.Linq;
 using UnityEngine;
 
-public class GridObject : MonoBehaviour
+public class GridCellObject : MonoBehaviour
 {
     [Header("Component")]
-    [HideInInspector] public bool NodeNeedUpdate = false;
     private bool _debug = false;
+    private bool _isOverlaped = false;
+    public delegate void OnOverlapBox(int x, int y, bool overlaped);
+    private event OnOverlapBox OverlapBox;
     [Header("Non Walkable Tags / Layers")]
     [SerializeField] private LayerMask _nonWalkableLayers;
     [SerializeField] private string[] _nonWalkableTags;
@@ -13,41 +15,35 @@ public class GridObject : MonoBehaviour
     private int _x;
     private int _y;
     private float _cellSize;
-    [Header("Cache")]
-    private static Pathfinding _pathfindingInstance;
-    private PathNode _cachedNode;
-
-    void Update()
-    {
-        if (NodeNeedUpdate && Time.frameCount % 10 == 0)
-        {
-            UpdateWalkability();
-        }
-    }
-    public void InitializeNode(int x, int y, float cellSize)
+    public void Initialize(
+        int x,
+        int y,
+        float cellSize,
+        string[] overlapTags = null,
+        LayerMask overlapLayerMasks = default,
+        OnOverlapBox overlaped = null)
     {
         _x = x;
         _y = y;
         _cellSize = cellSize;
+        OverlapBox = overlaped;
+        _nonWalkableTags = overlapTags ?? _nonWalkableTags;
+        _nonWalkableLayers = overlapLayerMasks != default ? overlapLayerMasks : _nonWalkableLayers;
 
-        _pathfindingInstance ??= Pathfinding.Instance;
-
-        _cachedNode = _pathfindingInstance?.GetNode(_x, _y);
-
-        UpdateWalkability();
+        HandleOverlap();
     }
 
-    private void UpdateWalkability()
+    private void HandleOverlap()
     {
-        if (_cachedNode == null) return;
-
         Collider2D hit = Physics2D.OverlapBox(
             transform.position,
             new(_cellSize, _cellSize),
             0,
             _nonWalkableLayers);
 
-        _cachedNode.IsWalkable = hit == null || !_nonWalkableTags.Contains(hit.tag);
+        _isOverlaped = !(hit == null || !_nonWalkableTags.Contains(hit.tag));
+    
+        OverlapBox?.Invoke(_x, _y, _isOverlaped);
     }
 
     public void SetDebug(bool debug)
@@ -58,10 +54,10 @@ public class GridObject : MonoBehaviour
     void OnDrawGizmos() {
         if (_debug)
         {
-            if (_cachedNode.IsWalkable)
-                Gizmos.color = Color.green;
-            else
+            if (_isOverlaped)
                 Gizmos.color = Color.red;
+            else
+                Gizmos.color = Color.green;
             Gizmos.DrawWireCube(transform.position, new(_cellSize, _cellSize));
         }
     }

@@ -22,7 +22,6 @@ public class MapLoader : MonoBehaviour
     public GameObject RenderMap(GameObject mapPrefab, Vector3 position)
     {
         GameObject map = Instantiate(mapPrefab, position, Quaternion.identity);
-        GridLoader.Instance.LoadGrid(map);
         return map;
     }
 }
