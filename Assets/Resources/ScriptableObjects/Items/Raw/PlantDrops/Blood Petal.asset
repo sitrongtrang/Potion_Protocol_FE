@@ -15,4 +15,4 @@ MonoBehaviour:
   _name: Blood Petal
   _id: I9
   _type: 0
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 5381307877526851110, guid: ac5e8778a23d7354aab03a160980825a, type: 3}

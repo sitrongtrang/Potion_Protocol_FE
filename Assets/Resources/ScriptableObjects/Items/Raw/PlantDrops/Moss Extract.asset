@@ -15,4 +15,4 @@ MonoBehaviour:
   _name: Moss Extract
   _id: I8
   _type: 0
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 1583528358829491136, guid: 178bf8cb7dfc41740a1a94ee3d9da395, type: 3}
