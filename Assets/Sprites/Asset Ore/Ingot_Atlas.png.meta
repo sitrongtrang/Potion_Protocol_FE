@@ -1,0 +1,2630 @@
+fileFormatVersion: 2
+guid: a35bbe8aadba99f418111c1cf06a245a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7795363881259474946
+    second: Ingot_Atlas_0
+  - first:
+      213: -2643760491537033724
+    second: Ingot_Atlas_1
+  - first:
+      213: -1288240943580309901
+    second: Ingot_Atlas_2
+  - first:
+      213: -7150655590655086274
+    second: Ingot_Atlas_3
+  - first:
+      213: 7273804822521052303
+    second: Ingot_Atlas_4
+  - first:
+      213: -7992450690253906582
+    second: Ingot_Atlas_5
+  - first:
+      213: 6500151337436090292
+    second: Ingot_Atlas_6
+  - first:
+      213: 2149103271335678714
+    second: Ingot_Atlas_7
+  - first:
+      213: 7562958788069766771
+    second: Ingot_Atlas_8
+  - first:
+      213: 4329401428078364952
+    second: Ingot_Atlas_9
+  - first:
+      213: -2676273732821293987
+    second: Ingot_Atlas_10
+  - first:
+      213: 7100454657400318274
+    second: Ingot_Atlas_11
+  - first:
+      213: 9202590150349409189
+    second: Ingot_Atlas_12
+  - first:
+      213: -914523827995298538
+    second: Ingot_Atlas_13
+  - first:
+      213: 641274922336219866
+    second: Ingot_Atlas_14
+  - first:
+      213: -5377607013623847601
+    second: Ingot_Atlas_15
+  - first:
+      213: 4092093450455253871
+    second: Ingot_Atlas_16
+  - first:
+      213: 6574943494755698187
+    second: Ingot_Atlas_17
+  - first:
+      213: 4730399559925852662
+    second: Ingot_Atlas_18
+  - first:
+      213: 5671674673012459969
+    second: Ingot_Atlas_19
+  - first:
+      213: 6706537656054524683
+    second: Ingot_Atlas_20
+  - first:
+      213: 8039230270470870807
+    second: Ingot_Atlas_21
+  - first:
+      213: 4471430952926370150
+    second: Ingot_Atlas_22
+  - first:
+      213: -5827613641321762814
+    second: Ingot_Atlas_23
+  - first:
+      213: 5875940012543247306
+    second: Ingot_Atlas_24
+  - first:
+      213: 8606800612008418105
+    second: Ingot_Atlas_25
+  - first:
+      213: 2724892669904641438
+    second: Ingot_Atlas_26
+  - first:
+      213: 2202237861632297118
+    second: Ingot_Atlas_27
+  - first:
+      213: 6656673129763904889
+    second: Ingot_Atlas_28
+  - first:
+      213: -3001616802563953934
+    second: Ingot_Atlas_29
+  - first:
+      213: -3960478844305403194
+    second: Ingot_Atlas_30
+  - first:
+      213: -4745990332622288462
+    second: Ingot_Atlas_31
+  - first:
+      213: -5738027586760848597
+    second: Ingot_Atlas_32
+  - first:
+      213: 7692747651671993150
+    second: Ingot_Atlas_33
+  - first:
+      213: 897806953245178420
+    second: Ingot_Atlas_34
+  - first:
+      213: 715609470613263808
+    second: Ingot_Atlas_35
+  - first:
+      213: 3637924023692063238
+    second: Ingot_Atlas_36
+  - first:
+      213: -4486725582435810674
+    second: Ingot_Atlas_37
+  - first:
+      213: 9073585799300919509
+    second: Ingot_Atlas_38
+  - first:
+      213: -6491136850343446017
+    second: Ingot_Atlas_39
+  - first:
+      213: -5005603782718153779
+    second: Ingot_Atlas_40
+  - first:
+      213: -8133222507851253824
+    second: Ingot_Atlas_41
+  - first:
+      213: -8886223022174076821
+    second: Ingot_Atlas_42
+  - first:
+      213: -44837147970486911
+    second: Ingot_Atlas_43
+  - first:
+      213: -6839715025890191947
+    second: Ingot_Atlas_44
+  - first:
+      213: -8141770314944011402
+    second: Ingot_Atlas_45
+  - first:
+      213: 8965230026742571895
+    second: Ingot_Atlas_46
+  - first:
+      213: -7388316349257353834
+    second: Ingot_Atlas_47
+  - first:
+      213: -4642953922209355708
+    second: Ingot_Atlas_48
+  - first:
+      213: 4341688398258309344
+    second: Ingot_Atlas_49
+  - first:
+      213: -5033248969457000342
+    second: Ingot_Atlas_50
+  - first:
+      213: -2787204863317893763
+    second: Ingot_Atlas_51
+  - first:
+      213: 3007916528098025189
+    second: Ingot_Atlas_52
+  - first:
+      213: 1251817318341430424
+    second: Ingot_Atlas_53
+  - first:
+      213: -1693854309895157740
+    second: Ingot_Atlas_54
+  - first:
+      213: 2052497908721783972
+    second: Ingot_Atlas_55
+  - first:
+      213: -2474813432665220282
+    second: Ingot_Atlas_56
+  - first:
+      213: 276210340788394102
+    second: Ingot_Atlas_57
+  - first:
+      213: -6020565813267060414
+    second: Ingot_Atlas_58
+  - first:
+      213: -6987601508435498014
+    second: Ingot_Atlas_59
+  - first:
+      213: 8284553751229417712
+    second: Ingot_Atlas_60
+  - first:
+      213: 5650557842257000780
+    second: Ingot_Atlas_61
+  - first:
+      213: -1309105207643035005
+    second: Ingot_Atlas_62
+  - first:
+      213: 1176178643506733927
+    second: Ingot_Atlas_63
+  - first:
+      213: 335686046116182385
+    second: Ingot_Atlas_64
+  - first:
+      213: 1072907929725041993
+    second: Ingot_Atlas_65
+  - first:
+      213: -5287322874083057732
+    second: Ingot_Atlas_66
+  - first:
+      213: -8107865947950105717
+    second: Ingot_Atlas_67
+  - first:
+      213: 4596421306410349869
+    second: Ingot_Atlas_68
+  - first:
+      213: -4396933727655739738
+    second: Ingot_Atlas_69
+  - first:
+      213: -5600983848387610873
+    second: Ingot_Atlas_70
+  - first:
+      213: -5124042103270912958
+    second: Ingot_Atlas_71
+  - first:
+      213: -130745979038962972
+    second: Ingot_Atlas_72
+  - first:
+      213: -1951346035798833104
+    second: Ingot_Atlas_73
+  - first:
+      213: -7091133228211799866
+    second: Ingot_Atlas_74
+  - first:
+      213: -6325093569594332531
+    second: Ingot_Atlas_75
+  - first:
+      213: 7551787356816294189
+    second: Ingot_Atlas_76
+  - first:
+      213: 3107939649596071705
+    second: Ingot_Atlas_77
+  - first:
+      213: 564618793270469375
+    second: Ingot_Atlas_78
+  - first:
+      213: 4681109519962378840
+    second: Ingot_Atlas_79
+  - first:
+      213: -2809354632032850348
+    second: Ingot_Atlas_80
+  - first:
+      213: 6903148619070198140
+    second: Ingot_Atlas_81
+  - first:
+      213: -502287462541595728
+    second: Ingot_Atlas_82
+  - first:
+      213: 2413865251447930725
+    second: Ingot_Atlas_83
+  - first:
+      213: 1643928909445589332
+    second: Ingot_Atlas_84
+  - first:
+      213: 5855017808838994028
+    second: Ingot_Atlas_85
+  - first:
+      213: 6521650510153518138
+    second: Ingot_Atlas_86
+  - first:
+      213: -3244055474091141759
+    second: Ingot_Atlas_87
+  - first:
+      213: -2773853046251727226
+    second: Ingot_Atlas_88
+  - first:
+      213: 8754726642871428155
+    second: Ingot_Atlas_89
+  - first:
+      213: -2205791323983733037
+    second: Ingot_Atlas_90
+  - first:
+      213: 8056171305639465164
+    second: Ingot_Atlas_91
+  - first:
+      213: -8634218748196460195
+    second: Ingot_Atlas_92
+  - first:
+      213: 2878525554420929633
+    second: Ingot_Atlas_93
+  - first:
+      213: -3411078579403511844
+    second: Ingot_Atlas_94
+  - first:
+      213: -4542809236588552225
+    second: Ingot_Atlas_95
+  - first:
+      213: 264765396193749027
+    second: Ingot_Atlas_96
+  - first:
+      213: -9193486234585127154
+    second: Ingot_Atlas_97
+  - first:
+      213: -336876171817308987
+    second: Ingot_Atlas_98
+  - first:
+      213: -504650863741306893
+    second: Ingot_Atlas_99
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ingot_Atlas_0
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 4712
+        width: 459
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eff5e920add41d390800000000000000
+      internalID: -7795363881259474946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_1
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 4712
+        width: 459
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40619b617d97f4bd0800000000000000
+      internalID: -2643760491537033724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_2
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 4712
+        width: 459
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37618ccefaf3f1ee0800000000000000
+      internalID: -1288240943580309901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_3
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 4712
+        width: 459
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e31b7d740a4c3cc90800000000000000
+      internalID: -7150655590655086274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_4
+      rect:
+        serializedVersion: 2
+        x: 2075
+        y: 4712
+        width: 459
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8cf3e3a2feb1f460800000000000000
+      internalID: 7273804822521052303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_5
+      rect:
+        serializedVersion: 2
+        x: 2587
+        y: 4712
+        width: 459
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6d179a617c151190800000000000000
+      internalID: -7992450690253906582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_6
+      rect:
+        serializedVersion: 2
+        x: 3099
+        y: 4712
+        width: 459
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bf882eb33d253a50800000000000000
+      internalID: 6500151337436090292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_7
+      rect:
+        serializedVersion: 2
+        x: 3612
+        y: 4712
+        width: 459
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af2d791f90623dd10800000000000000
+      internalID: 2149103271335678714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_8
+      rect:
+        serializedVersion: 2
+        x: 4124
+        y: 4712
+        width: 459
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37631dd82f605f860800000000000000
+      internalID: 7562958788069766771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_9
+      rect:
+        serializedVersion: 2
+        x: 4636
+        y: 4712
+        width: 459
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8190ea229af151c30800000000000000
+      internalID: 4329401428078364952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_10
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 4113
+        width: 475
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d546a713837fbdad0800000000000000
+      internalID: -2676273732821293987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_11
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 4113
+        width: 475
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2492d1e14e1e98260800000000000000
+      internalID: 7100454657400318274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_12
+      rect:
+        serializedVersion: 2
+        x: 1043
+        y: 4113
+        width: 475
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5abc51dfbfa26bf70800000000000000
+      internalID: 9202590150349409189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_13
+      rect:
+        serializedVersion: 2
+        x: 1555
+        y: 4114
+        width: 475
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 615b5bd7c65fe43f0800000000000000
+      internalID: -914523827995298538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_14
+      rect:
+        serializedVersion: 2
+        x: 2066
+        y: 4113
+        width: 475
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad2773de42446e800800000000000000
+      internalID: 641274922336219866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_15
+      rect:
+        serializedVersion: 2
+        x: 2578
+        y: 4112
+        width: 475
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f452d43b9e6ee55b0800000000000000
+      internalID: -5377607013623847601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_16
+      rect:
+        serializedVersion: 2
+        x: 3091
+        y: 4113
+        width: 475
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f638616ff490ac830800000000000000
+      internalID: 4092093450455253871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_17
+      rect:
+        serializedVersion: 2
+        x: 3604
+        y: 4113
+        width: 475
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b06cd2fd544ee3b50800000000000000
+      internalID: 6574943494755698187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_18
+      rect:
+        serializedVersion: 2
+        x: 4116
+        y: 4113
+        width: 475
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f96b074651c5a140800000000000000
+      internalID: 4730399559925852662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_19
+      rect:
+        serializedVersion: 2
+        x: 4628
+        y: 4113
+        width: 475
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c9cc76b016d5be40800000000000000
+      internalID: 5671674673012459969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_20
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 3631
+        width: 472
+        height: 418
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0b29e52778621d50800000000000000
+      internalID: 6706537656054524683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_21
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 3631
+        width: 472
+        height: 418
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 717dbfa5655119f60800000000000000
+      internalID: 8039230270470870807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_22
+      rect:
+        serializedVersion: 2
+        x: 1045
+        y: 3631
+        width: 472
+        height: 418
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 669dcd2d2c6bd0e30800000000000000
+      internalID: 4471430952926370150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_23
+      rect:
+        serializedVersion: 2
+        x: 1557
+        y: 3631
+        width: 472
+        height: 418
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 200bbcce448202fa0800000000000000
+      internalID: -5827613641321762814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_24
+      rect:
+        serializedVersion: 2
+        x: 2068
+        y: 3631
+        width: 472
+        height: 418
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac305213f488b8150800000000000000
+      internalID: 5875940012543247306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_25
+      rect:
+        serializedVersion: 2
+        x: 2580
+        y: 3631
+        width: 472
+        height: 418
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93b506b4e8f717770800000000000000
+      internalID: 8606800612008418105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_26
+      rect:
+        serializedVersion: 2
+        x: 3093
+        y: 3631
+        width: 472
+        height: 418
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9d5bb83273c0d520800000000000000
+      internalID: 2724892669904641438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_27
+      rect:
+        serializedVersion: 2
+        x: 3605
+        y: 3631
+        width: 472
+        height: 418
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e98428dcaabef8e10800000000000000
+      internalID: 2202237861632297118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_28
+      rect:
+        serializedVersion: 2
+        x: 4118
+        y: 3631
+        width: 472
+        height: 418
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97d177561f0416c50800000000000000
+      internalID: 6656673129763904889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_29
+      rect:
+        serializedVersion: 2
+        x: 4630
+        y: 3631
+        width: 472
+        height: 418
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fae45bdb6d1856d0800000000000000
+      internalID: -3001616802563953934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_30
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 3129
+        width: 479
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c21ab0897d8909c0800000000000000
+      internalID: -3960478844305403194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_31
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 3129
+        width: 479
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b94c9410fad22eb0800000000000000
+      internalID: -4745990332622288462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_32
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 3129
+        width: 479
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2b4abbaf4e6e50b0800000000000000
+      internalID: -5738027586760848597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_33
+      rect:
+        serializedVersion: 2
+        x: 1553
+        y: 3129
+        width: 479
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3b21a43b3122ca60800000000000000
+      internalID: 7692747651671993150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_34
+      rect:
+        serializedVersion: 2
+        x: 2064
+        y: 3129
+        width: 479
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43afd0dcaa6a57c00800000000000000
+      internalID: 897806953245178420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_35
+      rect:
+        serializedVersion: 2
+        x: 2576
+        y: 3129
+        width: 479
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c51fc5a50b5ee900800000000000000
+      internalID: 715609470613263808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_36
+      rect:
+        serializedVersion: 2
+        x: 3089
+        y: 3129
+        width: 479
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 602760000a08c7230800000000000000
+      internalID: 3637924023692063238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_37
+      rect:
+        serializedVersion: 2
+        x: 3601
+        y: 3129
+        width: 479
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e82814ebad2fbb1c0800000000000000
+      internalID: -4486725582435810674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_38
+      rect:
+        serializedVersion: 2
+        x: 4114
+        y: 3129
+        width: 479
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d03c56e53adbed70800000000000000
+      internalID: 9073585799300919509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_39
+      rect:
+        serializedVersion: 2
+        x: 4626
+        y: 3129
+        width: 479
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff9b4d61d69dae5a0800000000000000
+      internalID: -6491136850343446017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_40
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 2600
+        width: 503
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcb9bb461e5888ab0800000000000000
+      internalID: -5005603782718153779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_41
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 2600
+        width: 503
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c77054883df02f80800000000000000
+      internalID: -8133222507851253824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_42
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 2600
+        width: 503
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b608a681e3bcda480800000000000000
+      internalID: -8886223022174076821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_43
+      rect:
+        serializedVersion: 2
+        x: 1541
+        y: 2600
+        width: 503
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18d3a7af9d4b06ff0800000000000000
+      internalID: -44837147970486911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_44
+      rect:
+        serializedVersion: 2
+        x: 2052
+        y: 2600
+        width: 503
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b5d9ec1c637411a0800000000000000
+      internalID: -6839715025890191947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_45
+      rect:
+        serializedVersion: 2
+        x: 2564
+        y: 2600
+        width: 503
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67321f6190f920f80800000000000000
+      internalID: -8141770314944011402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_46
+      rect:
+        serializedVersion: 2
+        x: 3077
+        y: 2600
+        width: 503
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77328a1a535ea6c70800000000000000
+      internalID: 8965230026742571895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_47
+      rect:
+        serializedVersion: 2
+        x: 3589
+        y: 2600
+        width: 503
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 695fd42ec6d677990800000000000000
+      internalID: -7388316349257353834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_48
+      rect:
+        serializedVersion: 2
+        x: 4102
+        y: 2600
+        width: 503
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4486436d10ae09fb0800000000000000
+      internalID: -4642953922209355708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_49
+      rect:
+        serializedVersion: 2
+        x: 4614
+        y: 2600
+        width: 503
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e80f9f4896c04c30800000000000000
+      internalID: 4341688398258309344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2070
+        width: 508
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a602a65cabe462ab0800000000000000
+      internalID: -5033248969457000342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_51
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 2070
+        width: 508
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7d12bda1fbd159d0800000000000000
+      internalID: -2787204863317893763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_52
+      rect:
+        serializedVersion: 2
+        x: 1025
+        y: 2070
+        width: 508
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ee1f4b45244eb920800000000000000
+      internalID: 3007916528098025189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_53
+      rect:
+        serializedVersion: 2
+        x: 1537
+        y: 2070
+        width: 508
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89c4c67f7395f5110800000000000000
+      internalID: 1251817318341430424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_54
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 2070
+        width: 508
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4184f65ca783e78e0800000000000000
+      internalID: -1693854309895157740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_55
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 2070
+        width: 508
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a4189f29ffeb7c10800000000000000
+      internalID: 2052497908721783972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_56
+      rect:
+        serializedVersion: 2
+        x: 3073
+        y: 2070
+        width: 508
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64bdf9c8b42b7add0800000000000000
+      internalID: -2474813432665220282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_57
+      rect:
+        serializedVersion: 2
+        x: 3585
+        y: 2070
+        width: 508
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6785bfd67db45d300800000000000000
+      internalID: 276210340788394102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_58
+      rect:
+        serializedVersion: 2
+        x: 4098
+        y: 2070
+        width: 508
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2492b598a47a27ca0800000000000000
+      internalID: -6020565813267060414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_59
+      rect:
+        serializedVersion: 2
+        x: 4610
+        y: 2070
+        width: 508
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ebe7b1337d070f90800000000000000
+      internalID: -6987601508435498014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_60
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 1568
+        width: 493
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f8c8a84eb5a8f270800000000000000
+      internalID: 8284553751229417712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_61
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 1568
+        width: 493
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c49b68a6b60da6e40800000000000000
+      internalID: 5650557842257000780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_62
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 1568
+        width: 493
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38aa2d4efbf15dde0800000000000000
+      internalID: -1309105207643035005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_63
+      rect:
+        serializedVersion: 2
+        x: 1544
+        y: 1568
+        width: 493
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 763ae9e9e30a25010800000000000000
+      internalID: 1176178643506733927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_64
+      rect:
+        serializedVersion: 2
+        x: 2055
+        y: 1568
+        width: 493
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1797fce2ea898a400800000000000000
+      internalID: 335686046116182385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_65
+      rect:
+        serializedVersion: 2
+        x: 2567
+        y: 1568
+        width: 493
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94df5fbd31cb3ee00800000000000000
+      internalID: 1072907929725041993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_66
+      rect:
+        serializedVersion: 2
+        x: 3080
+        y: 1568
+        width: 493
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbf5b750cd7af96b0800000000000000
+      internalID: -5287322874083057732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_67
+      rect:
+        serializedVersion: 2
+        x: 3592
+        y: 1567
+        width: 493
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8bb2fda0e21b7f80800000000000000
+      internalID: -8107865947950105717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_68
+      rect:
+        serializedVersion: 2
+        x: 4105
+        y: 1568
+        width: 493
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2530a643d4c9cf30800000000000000
+      internalID: 4596421306410349869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_69
+      rect:
+        serializedVersion: 2
+        x: 4617
+        y: 1568
+        width: 493
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ae35261214faf2c0800000000000000
+      internalID: -4396933727655739738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_70
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1036
+        width: 473
+        height: 489
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 707f72c7dde4542b0800000000000000
+      internalID: -5600983848387610873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_71
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 1036
+        width: 473
+        height: 489
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24c446cfadeb3e8b0800000000000000
+      internalID: -5124042103270912958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_72
+      rect:
+        serializedVersion: 2
+        x: 1042
+        y: 1036
+        width: 473
+        height: 489
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ea629b893f7f2ef0800000000000000
+      internalID: -130745979038962972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_73
+      rect:
+        serializedVersion: 2
+        x: 1554
+        y: 1036
+        width: 473
+        height: 489
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 038085e7e1d6be4e0800000000000000
+      internalID: -1951346035798833104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_74
+      rect:
+        serializedVersion: 2
+        x: 2065
+        y: 1036
+        width: 473
+        height: 489
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c8777d36eb379d90800000000000000
+      internalID: -7091133228211799866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_75
+      rect:
+        serializedVersion: 2
+        x: 2577
+        y: 1036
+        width: 473
+        height: 489
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8ae83509e0c838a0800000000000000
+      internalID: -6325093569594332531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_76
+      rect:
+        serializedVersion: 2
+        x: 3090
+        y: 1036
+        width: 473
+        height: 489
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d21425607965dc860800000000000000
+      internalID: 7551787356816294189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_77
+      rect:
+        serializedVersion: 2
+        x: 3602
+        y: 1036
+        width: 473
+        height: 489
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91f968d05ae912b20800000000000000
+      internalID: 3107939649596071705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_78
+      rect:
+        serializedVersion: 2
+        x: 4115
+        y: 1036
+        width: 473
+        height: 489
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff2656e0dcde5d700800000000000000
+      internalID: 564618793270469375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_79
+      rect:
+        serializedVersion: 2
+        x: 4627
+        y: 1036
+        width: 473
+        height: 489
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8529e0c8e44a6f040800000000000000
+      internalID: 4681109519962378840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_80
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 581
+        width: 481
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45e6595c8da2309d0800000000000000
+      internalID: -2809354632032850348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_81
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 581
+        width: 481
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7158673819eccf50800000000000000
+      internalID: 6903148619070198140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_82
+      rect:
+        serializedVersion: 2
+        x: 1038
+        y: 581
+        width: 481
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bb631cc6348709f0800000000000000
+      internalID: -502287462541595728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_83
+      rect:
+        serializedVersion: 2
+        x: 1550
+        y: 581
+        width: 481
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56f763038a5cf7120800000000000000
+      internalID: 2413865251447930725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_84
+      rect:
+        serializedVersion: 2
+        x: 2061
+        y: 581
+        width: 481
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 459ef7b12a860d610800000000000000
+      internalID: 1643928909445589332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_85
+      rect:
+        serializedVersion: 2
+        x: 2573
+        y: 581
+        width: 481
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c682f690da3314150800000000000000
+      internalID: 5855017808838994028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_86
+      rect:
+        serializedVersion: 2
+        x: 3086
+        y: 581
+        width: 481
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3c02f6f59e818a50800000000000000
+      internalID: 6521650510153518138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_87
+      rect:
+        serializedVersion: 2
+        x: 3598
+        y: 581
+        width: 481
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 185d22bebbccaf2d0800000000000000
+      internalID: -3244055474091141759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_88
+      rect:
+        serializedVersion: 2
+        x: 4111
+        y: 581
+        width: 481
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 686d707d95b4189d0800000000000000
+      internalID: -2773853046251727226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_89
+      rect:
+        serializedVersion: 2
+        x: 4623
+        y: 581
+        width: 481
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b34eff54f790f7970800000000000000
+      internalID: 8754726642871428155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_90
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 56
+        width: 503
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3de9f454a747361e0800000000000000
+      internalID: -2205791323983733037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_91
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 56
+        width: 503
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc0d55a7e154dcf60800000000000000
+      internalID: 8056171305639465164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_92
+      rect:
+        serializedVersion: 2
+        x: 1027
+        y: 56
+        width: 503
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d596bb86bc71d2880800000000000000
+      internalID: -8634218748196460195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_93
+      rect:
+        serializedVersion: 2
+        x: 1539
+        y: 56
+        width: 503
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 164d42c9db392f720800000000000000
+      internalID: 2878525554420929633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_94
+      rect:
+        serializedVersion: 2
+        x: 2050
+        y: 56
+        width: 503
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd7a5bdca1a69a0d0800000000000000
+      internalID: -3411078579403511844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_95
+      rect:
+        serializedVersion: 2
+        x: 2562
+        y: 56
+        width: 503
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdf96c27113b4f0c0800000000000000
+      internalID: -4542809236588552225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_96
+      rect:
+        serializedVersion: 2
+        x: 3075
+        y: 56
+        width: 503
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 328a1fc99b2aca300800000000000000
+      internalID: 264765396193749027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_97
+      rect:
+        serializedVersion: 2
+        x: 3587
+        y: 56
+        width: 503
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e072c149afc2a6080800000000000000
+      internalID: -9193486234585127154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_98
+      rect:
+        serializedVersion: 2
+        x: 4100
+        y: 56
+        width: 503
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cc298518ec235bf0800000000000000
+      internalID: -336876171817308987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_99
+      rect:
+        serializedVersion: 2
+        x: 4612
+        y: 56
+        width: 503
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f7fa1396be1ff8f0800000000000000
+      internalID: -504650863741306893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
