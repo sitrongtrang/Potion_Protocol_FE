@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Level1
   m_EditorClassIdentifier: 
   _mapPrefab: {fileID: 4130166079983457268, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
+  _enemies:
+  - {fileID: 11400000, guid: 102769852e166fd4f8e5161856ae8051, type: 2}
   _ores: []
   _ingotRecipes: []
   _finalRecipes: []
+  _levelTime: 300

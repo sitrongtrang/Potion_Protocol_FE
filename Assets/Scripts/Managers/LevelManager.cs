@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -19,12 +21,14 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         LoadLevel(_config);
+        StartCoroutine(EndLevel());
     }
 
     private void LoadLevel(LevelConfig config)
     {
         GameObject map = MapLoader.Instance.RenderMap(config.MapPrefab, Vector3.zero);
-        
+
+        // Spawn & initialize stations
         StationSpawner[] stationSpawners = map.GetComponentsInChildren<StationSpawner>(true);
         for (int i = 0; i < stationSpawners.Length; i++)
         {
@@ -37,5 +41,18 @@ public class LevelManager : MonoBehaviour
                 stationSpawners[i].Spawn(config.FinalRecipes);
             }
         }
+
+        // Initialize enemy spawners
+        EnemySpawner[] enemySpawners = map.GetComponentsInChildren<EnemySpawner>(true);
+        for (int i = 0; i < enemySpawners.Length; i++)
+        {
+            enemySpawners[i].Initialize(_config.Enemies);
+        }
+    }
+
+    private IEnumerator EndLevel()
+    {
+        yield return new WaitForSeconds(_config.LevelTime);
+        SceneManager.LoadScene("LevelResultScene");
     }
 }
