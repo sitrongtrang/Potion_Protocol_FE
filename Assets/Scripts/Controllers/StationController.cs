@@ -9,6 +9,10 @@ public class StationController : MonoBehaviour
     private StationConfig _config;
     private List<RecipeConfig> _recipes;
     private List<ItemConfig> _items;
+    void OnEnable()
+    {
+        EventBus.CraftItem += StartCrafting;
+    }
 
     public void Initialize(StationConfig config, List<RecipeConfig> recipes)
     {

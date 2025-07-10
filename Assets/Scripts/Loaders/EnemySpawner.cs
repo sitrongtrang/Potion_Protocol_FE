@@ -6,13 +6,24 @@ public class EnemySpawner : MonoBehaviour
     private float _currentCooldown;
     [SerializeField] private EnemySpawnerConfig _enemySpawnerConfig;
     [SerializeField] private Transform[] _positionsToSpawn;
-    private List<int> _unoccupiedIndices = new();
-    
+    private List<EnemyConfig> _enemiesToSpawn;
+    private List<int> _unspawnedEnemyIndices = new();
+    private List<int> _unoccupiedPositionIndices = new();
+
+    public void Initialize(List<EnemyConfig> enemiesToSpawn)
+    {
+        _enemiesToSpawn = enemiesToSpawn;
+        for (int i = 0; i < enemiesToSpawn.Count; i++)
+        {
+            _unspawnedEnemyIndices.Add(i);
+        }
+    }
+
     void Start()
     {
         for (int i = 0; i < _positionsToSpawn.Length; i++)
         {
-            _unoccupiedIndices.Add(i);
+            _unoccupiedPositionIndices.Add(i);
         }
     }
 
@@ -29,19 +40,28 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        if (_unoccupiedIndices.Count > 0)
+        if (_unoccupiedPositionIndices.Count > 0 && _unspawnedEnemyIndices.Count > 0)
         {
-            int randomIndex = Random.Range(0, _unoccupiedIndices.Count);
-            int selected = _unoccupiedIndices[randomIndex];
-            _unoccupiedIndices.RemoveAt(randomIndex);
-            _enemySpawnerConfig.Spawn(this, _positionsToSpawn[selected].position, selected);
+            int randomPositionIndex = Random.Range(0, _unoccupiedPositionIndices.Count);
+            int selectedPosition = _unoccupiedPositionIndices[randomPositionIndex];
+            _unoccupiedPositionIndices.RemoveAt(randomPositionIndex);
 
+            int randomEnemyIndex = Random.Range(0, _unspawnedEnemyIndices.Count);
+            int selectedEnemy = _unspawnedEnemyIndices[randomEnemyIndex];
+            _unspawnedEnemyIndices.RemoveAt(randomEnemyIndex);
+
+            _enemySpawnerConfig.Spawn(_enemiesToSpawn[selectedEnemy], this, _positionsToSpawn[selectedPosition].position, selectedPosition, selectedEnemy);
             _currentCooldown = Random.Range(_enemySpawnerConfig.MinSpawnInterval, _enemySpawnerConfig.MaxSpawnInterval);
         }
 
     }
     public void UnoccupiedSpace(int index)
     {
-        _unoccupiedIndices.Add(index);
+        _unoccupiedPositionIndices.Add(index);
+    }
+
+    public void UnspawnedEnemy(int index)
+    {
+        _unspawnedEnemyIndices.Add(index);
     }
 }
