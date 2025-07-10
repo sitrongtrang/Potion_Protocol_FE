@@ -119,7 +119,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &565255748
+--- !u!1001 &81793804
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -127,42 +127,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 197149611515688176, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 689257246045306772, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 818496386694829425, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1072608305858343664, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1206302686314848805, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1280776277388168332, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1706040366617357861, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767699158542847115, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998697318132695773, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2056131363973384503, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -203,53 +167,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3177487713983073340, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3205359348317516322, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3261280363518190808, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4006925616901003260, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064418099399491428, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4130166079983457268, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
       propertyPath: m_Name
       value: Dungeon
-      objectReference: {fileID: 0}
-    - target: {fileID: 4224519690210468668, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443902538649929904, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6308631709266544439, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7303965606624725487, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8061765604402139896, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8466587115368123934, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -485,5 +405,5 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 603408093}
-  - {fileID: 565255748}
   - {fileID: 1250309356}
+  - {fileID: 81793804}
