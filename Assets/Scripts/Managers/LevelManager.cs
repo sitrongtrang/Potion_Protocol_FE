@@ -6,6 +6,7 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
     [SerializeField] LevelConfig _config;
+    private int _score;
 
     private void Awake()
     {
@@ -48,11 +49,25 @@ public class LevelManager : MonoBehaviour
         {
             enemySpawners[i].Initialize(_config.Enemies);
         }
+
+        _score = 0;
     }
 
     private IEnumerator EndLevel()
     {
         yield return new WaitForSeconds(_config.LevelTime);
+        EvaluateResult();
         SceneManager.LoadScene("LevelResultScene");
+    }
+
+    private void EvaluateResult()
+    {
+        int stars = 0;
+        for (int i = 0; i < _config.ScoreThresholds.Length; i++)
+        {
+            if (_config.ScoreThresholds[i] > _score) stars = i;
+            return;
+        }
+        stars = _config.ScoreThresholds.Length;
     }
 }

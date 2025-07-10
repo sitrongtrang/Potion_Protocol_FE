@@ -21,4 +21,7 @@ public class LevelConfig : ScriptableObject
 
     [SerializeField] private float _levelTime;
     public float LevelTime => _levelTime;
+
+    [SerializeField] private int[] _scoreThresholds; // Thresholds for evaluating 1, 2, or 3 stars
+    public int[] ScoreThresholds => _scoreThresholds;
 }
