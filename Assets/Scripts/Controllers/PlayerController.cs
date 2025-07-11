@@ -8,12 +8,15 @@ public class PlayerController : MonoBehaviour
     // input manager (new input system)
     private PlayerInputManager _inputManager;
     private List<IUpdatableComponent> _updatableComponents = new();
-
+    [SerializeField] private Rigidbody2D _rb;
+    [SerializeField] private Animator _anim;
     public PlayerConfig Config => _config;
     public PlayerInventory Inventory { get; private set; }
     public PlayerAttack Attack { get; private set; }
     public PlayerInteraction Interaction { get; private set; }
     public PlayerMovement Movement { get; private set; }
+    public Rigidbody2D Rb => _rb;
+    public Animator Animatr => _anim;
 
     public void Initialize(PlayerConfig config)
     {

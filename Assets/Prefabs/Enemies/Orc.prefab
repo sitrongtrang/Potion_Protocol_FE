@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -1370842286182258998}
   - component: {fileID: 5247312739759181560}
   m_Layer: 0
-  m_Name: Slime
+  m_Name: Orc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ Animator:
   m_GameObject: {fileID: 1672900733462925250}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c856ae89116a89d459aed92e0859785d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9bd598c0027dd8a4a8d38e714e5ff185, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -120,7 +120,7 @@ SpriteRenderer:
   m_SortingLayerID: 718545363
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1290304706820135947, guid: 099b6c8147316e24db74a03cb90d36a9, type: 3}
+  m_Sprite: {fileID: 4074469027547599285, guid: e315fc5201234b442a889f44917c53a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
