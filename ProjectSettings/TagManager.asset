@@ -9,6 +9,7 @@ TagManager:
   - SubmissionPoint
   - Obstacle
   - PatrolCenter
+  - Ore
   layers:
   - Default
   - TransparentFX

@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gridCellObjectPrefab: {fileID: 6427811005799040846, guid: 305aa880453a87e43b61a4ebccfbba38, type: 3}
-  _isDebug: 0
+  _isDebug: 1

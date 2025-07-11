@@ -31,8 +31,9 @@ public class GridBuilderFactory : MonoBehaviour
     )
     {
         GridBuilder gridBuilder = Instantiate(_gridBuilder, transform);
+        gridBuilder.gameObject.name = objName + " Builder";
         GridBuilders ??= new();
         GridBuilders.Add(objName, gridBuilder);
-        gridBuilder.BuildGrid(objName, xDim, yDim, cellSize, originPosition, overlapTags, overlapLayerMasks, onOverlapBox, parent);
+        gridBuilder.BuildGridFirstCheck(objName, xDim, yDim, cellSize, originPosition, overlapTags, overlapLayerMasks, onOverlapBox, parent);
     }
 }

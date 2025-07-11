@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e24b283275af73a4ab4c7144cac466b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c50f606a67141046a9673499abb15d6, type: 3}
   m_Name: Emerald Ore
   m_EditorClassIdentifier: 
   _name: Emerald Ore
-  _id: I19
-  _type: 0
-  _prefab: {fileID: 2756712652034502478, guid: 2cace717be196dc45bdc3e3daf09929f, type: 3}
+  _id: O9
+  _prefab: {fileID: 0}
+  _droppedItem: {fileID: 11400000, guid: 7a7b0e41bc6e5c842b9038e06bb1ba53, type: 2}

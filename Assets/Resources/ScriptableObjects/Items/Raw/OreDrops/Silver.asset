@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e24b283275af73a4ab4c7144cac466b6, type: 3}
-  m_Name: Sapphire Ore
+  m_Name: Silver
   m_EditorClassIdentifier: 
-  _name: Sapphire Ore
-  _id: I18
+  _name: Silver
+  _id: I13
   _type: 0
-  _prefab: {fileID: 2756712652034502478, guid: 90ea72f2ddbd9f64bb75e19c02734df9, type: 3}
+  _prefab: {fileID: 2756712652034502478, guid: de454708fbdf26843a40916631fc8e69, type: 3}

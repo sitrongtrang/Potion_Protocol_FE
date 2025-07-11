@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e24b283275af73a4ab4c7144cac466b6, type: 3}
-  m_Name: Ruby Ore
+  m_Script: {fileID: 11500000, guid: 8c50f606a67141046a9673499abb15d6, type: 3}
+  m_Name: Obsidian Ore
   m_EditorClassIdentifier: 
-  _name: Ruby Ore
-  _id: I16
-  _type: 0
-  _prefab: {fileID: 2756712652034502478, guid: 14113b18831e102439ad7404b09fa43b, type: 3}
+  _name: Obsidian Ore
+  _id: O1
+  _prefab: {fileID: 0}
+  _droppedItem: {fileID: 11400000, guid: 14f09148e4a192944ad348f97b0018cc, type: 2}
