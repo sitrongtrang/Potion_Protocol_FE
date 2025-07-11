@@ -50,7 +50,7 @@ public class EnemySpawner : MonoBehaviour
             int selectedEnemy = _unspawnedEnemyIndices[randomEnemyIndex];
             _unspawnedEnemyIndices.RemoveAt(randomEnemyIndex);
 
-            _enemySpawnerConfig.Spawn(_enemiesToSpawn[selectedEnemy], this, _positionsToSpawn[selectedPosition].position, selectedPosition, selectedEnemy);
+            _enemySpawnerConfig.Spawn(this, _enemiesToSpawn[selectedEnemy], _positionsToSpawn[selectedPosition].position, selectedPosition, selectedEnemy);
             _currentCooldown = Random.Range(_enemySpawnerConfig.MinSpawnInterval, _enemySpawnerConfig.MaxSpawnInterval);
         }
 

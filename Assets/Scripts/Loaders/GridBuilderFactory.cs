@@ -15,9 +15,10 @@ public class GridBuilderFactory : MonoBehaviour
         Instance = this;
     }
     [SerializeField] private GridBuilder _gridBuilder;
-    private List<GridBuilder> _gridBuilders = new();
+    public Dictionary<string, GridBuilder> GridBuilders { get; private set; }
 
     public void BuildGrid(
+        string objName,
         int xDim,
         int yDim,
         float cellSize,
@@ -25,12 +26,13 @@ public class GridBuilderFactory : MonoBehaviour
         string[] overlapTags = null,
         LayerMask overlapLayerMasks = default,
         GridCellObject.OnOverlapBox onOverlapBox = null,
-        Transform parent = null,
-        string objName = "Grid"
+        Transform parent = null
+        
     )
     {
         GridBuilder gridBuilder = Instantiate(_gridBuilder, transform);
-        _gridBuilders.Add(gridBuilder);
-        gridBuilder.BuildGrid(xDim, yDim, cellSize, originPosition, overlapTags, overlapLayerMasks, onOverlapBox, parent, objName);
+        GridBuilders ??= new();
+        GridBuilders.Add(objName, gridBuilder);
+        gridBuilder.BuildGrid(objName, xDim, yDim, cellSize, originPosition, overlapTags, overlapLayerMasks, onOverlapBox, parent);
     }
 }

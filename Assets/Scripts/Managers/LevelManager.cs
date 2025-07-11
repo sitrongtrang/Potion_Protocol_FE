@@ -35,6 +35,7 @@ public class LevelManager : MonoBehaviour
         
         _pathfinding = new Pathfinding(width, height, cellSize, origin);
         GridBuilderFactory.Instance.BuildGrid(
+            "Pathfinding Grid",
             width,
             height,
             cellSize,
@@ -46,8 +47,7 @@ public class LevelManager : MonoBehaviour
                 PathNode pathNode = Pathfinding.Instance.GetNode(x, y);
                 pathNode.IsWalkable = !isoverlap;
             },
-            map.transform,
-            "Pathfinding Grid"
+            map.transform
         );
 
         // Spawn & initialize stations
