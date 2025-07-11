@@ -83,7 +83,11 @@ public class EnemyController : MonoBehaviour
         CurrentPathIndex = 0;
         if (!_movementIgnoreObstacles)
         {
-            PathVectorList = Pathfinding.Instance?.FindPath(transform.position, position);
+            Pathfinding.Instance?.FindPath(transform.position, position, (path) => {
+            if (path != null) {
+                PathVectorList = path;
+            }
+        });
             if (PathVectorList != null && PathVectorList.Count > 0)
             {
                 PathVectorList.RemoveAt(0);
