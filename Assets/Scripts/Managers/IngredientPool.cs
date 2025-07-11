@@ -18,7 +18,7 @@ public class ItemPool : MonoBehaviour
         Instance = this;
     }
 
-    public ItemController SpawnItem(ItemConfig config, Vector3 position)
+    public ItemController SpawnItem(ItemConfig config, Vector2 position)
     {
         // Exceed cap
         if (_activeItems.Count >= GameConstants.MaxItems)

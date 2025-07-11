@@ -25,7 +25,7 @@ public class PlayerConfig : ScriptableObject
     [SerializeField] private PlayerController _prefab;
     public PlayerController Prefab => _prefab;
     
-    public void Spawn(Vector3 position, InputActionAsset loadedInputAsset = null)
+    public void Spawn(Vector2 position, InputActionAsset loadedInputAsset = null)
     {
         PlayerController player = Instantiate(_prefab, position, Quaternion.identity);
         player.Initialize(this, loadedInputAsset);
