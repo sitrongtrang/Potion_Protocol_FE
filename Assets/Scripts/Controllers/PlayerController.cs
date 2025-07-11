@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,23 +9,29 @@ public class PlayerController : MonoBehaviour
     // input manager (new input system)
     private PlayerInputManager _inputManager;
     private List<IUpdatableComponent> _updatableComponents = new();
-
+    [SerializeField] private Rigidbody2D _rb;
+    [SerializeField] private Animator _anim;
     public PlayerConfig Config => _config;
     public PlayerInventory Inventory { get; private set; }
     public PlayerAttack Attack { get; private set; }
     public PlayerInteraction Interaction { get; private set; }
     public PlayerMovement Movement { get; private set; }
+    public Rigidbody2D Rb => _rb;
+    public Animator Animatr => _anim;
 
-    public void Initialize(PlayerConfig config)
+    public void Initialize(PlayerConfig config, InputActionAsset loadedAsset = null)
     {
         _config = config;
-        _inputManager = new PlayerInputManager();
+        _inputManager = loadedAsset != null
+            ? new PlayerInputManager(loadedAsset)
+            : new PlayerInputManager();
+
         Inventory = RegisterComponent(new PlayerInventory());
         Attack = RegisterComponent(new PlayerAttack());
         Interaction = RegisterComponent(new PlayerInteraction());
         Movement = RegisterComponent(new PlayerMovement());
     }
-
+    
     void Update()
     {
         for (int i = 0; i < _updatableComponents.Count; i++)
