@@ -11,14 +11,20 @@ public class GridBuilder : MonoBehaviour
     public event System.Action<bool> OnDebugChanged;
 
     [Header("Attributes")]
-    private Vector2 _originPosition;
-    private float _cellSize;
-    private int _xDim, _yDim;
     private GridCellObject[,] _gridCellObjects;
     private HashSet<int> _gridCellObjectIndicesOverlap = new();
     public HashSet<int> GridCellObjectIndicesOverlap => _gridCellObjectIndicesOverlap;
     private HashSet<int> _gridCellObjectIndicesNotOverlap = new();
     public HashSet<int> GridCellObjectIndicesNotOverlap => _gridCellObjectIndicesNotOverlap;
+
+    [Header("Cache")]
+    private int _xDim, _yDim;
+    private float _cellSize;
+    private Vector2 _originPosition;
+    private string[] _overlapTags;
+    private LayerMask _overlapLayerMasks;
+    private GridCellObject.OnOverlapBox _overlapBoxCache;
+    private GameObject _gridMap;
 
     private void OnValidate()
     {
@@ -28,7 +34,7 @@ public class GridBuilder : MonoBehaviour
             OnDebugChanged?.Invoke(_isDebug);
         }
     }
-    public void BuildGrid(
+    public void BuildGridFirstCheck(
         string objName,
         int xDim,
         int yDim,
@@ -44,7 +50,9 @@ public class GridBuilder : MonoBehaviour
         _cellSize = cellSize;
         _xDim = xDim;
         _yDim = yDim;
-
+        _overlapTags = overlapTags;
+        _overlapLayerMasks = overlapLayerMasks;
+        
         onOverlapBox += (ix, iy, isoverlap) =>
         {
             int index = ix * yDim + iy;
@@ -59,10 +67,11 @@ public class GridBuilder : MonoBehaviour
                 _gridCellObjectIndicesNotOverlap.Add(index);
             }
         };
+        _overlapBoxCache ??= onOverlapBox;
 
-        GameObject gridmap = new(objName);
-        gridmap.transform.SetParent(parent);
-        gridmap.transform.localPosition = Vector2.zero;
+        _gridMap = new(objName);
+        _gridMap.transform.SetParent(parent);
+        _gridMap.transform.localPosition = Vector2.zero;
 
         _gridCellObjects = new GridCellObject[xDim, yDim];
         OnDebugChanged = null;
@@ -70,16 +79,35 @@ public class GridBuilder : MonoBehaviour
         {
             for (int y = 0; y < yDim; y++)
             {
-                GridCellObject gridGameObject = Instantiate(_gridCellObjectPrefab, gridmap.transform);
+                GridCellObject gridGameObject = Instantiate(_gridCellObjectPrefab, _gridMap.transform);
                 gridGameObject.transform.position = originPosition + new Vector2(x, y) * cellSize;
 
-                gridGameObject.Initialize(x, y, cellSize, overlapTags, overlapLayerMasks, onOverlapBox);
+                gridGameObject.Initialize(this, x, y, cellSize, overlapTags, overlapLayerMasks, onOverlapBox);
 
-                _gridCellObjects[x, y] = gridGameObject;
+                // _gridCellObjects[x, y] = gridGameObject;
 
                 OnDebugChanged += gridGameObject.SetDebug;
             }
         }
+    }
+
+    public void SetCellNull(int x, int y)
+    {
+        _gridCellObjects[x, y] = null;
+    }
+    
+    private GridCellObject MakeGridCell(int x, int y)
+    {
+        if (_gridCellObjects[x, y] == null)
+        {
+            _gridCellObjects[x, y] = Instantiate(_gridCellObjectPrefab, _gridMap.transform);
+            _gridCellObjects[x, y].transform.position = _originPosition + new Vector2(x, y) * _cellSize;
+
+            _gridCellObjects[x, y].Initialize(this, x, y, _cellSize, _overlapTags, _overlapLayerMasks, _overlapBoxCache, 10f);
+
+            OnDebugChanged += _gridCellObjects[x, y].SetDebug;
+        }
+        return _gridCellObjects[x, y];
     }
 
     public List<GridCellObject> GetOverlapGridCellObjects(Vector2 centerWorldPosition, float xSizeInFloat = 0, float ySizeInFloat = 0)
@@ -91,16 +119,16 @@ public class GridBuilder : MonoBehaviour
         int yRadius = Mathf.CeilToInt(ySizeInFloat / (_cellSize * 2));
 
         int xMin = Mathf.Max(0, xCenter - xRadius);
-        int xMax = Mathf.Min(_gridCellObjects.GetLength(0) - 1, xCenter + xRadius);
+        int xMax = Mathf.Min(_xDim - 1, xCenter + xRadius);
         int yMin = Mathf.Max(0, yCenter - yRadius);
-        int yMax = Mathf.Min(_gridCellObjects.GetLength(1) - 1, yCenter + yRadius);
+        int yMax = Mathf.Min(_yDim - 1, yCenter + yRadius);
 
         var result = new List<GridCellObject>();
         for (int x = xMin; x <= xMax; x++)
         {
             for (int y = yMin; y <= yMax; y++)
             {
-                result.Add(_gridCellObjects[x, y]);
+                result.Add(MakeGridCell(x, y));
             }
         }
         return result;
@@ -109,7 +137,7 @@ public class GridBuilder : MonoBehaviour
     public GridCellObject GetCellObject(int x, int y)
     {
         if (x < 0 || y < 0 || x >= _xDim || y >= _yDim) return null;
-        return _gridCellObjects[x, y];
+        return MakeGridCell(x, y);
     }
 
     public GridCellObject GetRandomNotOverlapCell()
@@ -129,30 +157,4 @@ public class GridBuilder : MonoBehaviour
         return null;
     }
 
-    // public GridCellObject GetRandomGridCellObject(System.Predicate<GridCellObject> condition)
-    // {
-    //     if (_gridCellObjects == null) return null;
-
-    //     List<GridCellObject> candidates = new();
-
-    //     int width = _gridCellObjects.GetLength(0);
-    //     int height = _gridCellObjects.GetLength(1);
-
-    //     for (int x = 0; x < width; x++)
-    //     {
-    //         for (int y = 0; y < height; y++)
-    //         {
-    //             GridCellObject cell = _gridCellObjects[x, y];
-    //             if (condition == null || condition(cell))
-    //             {
-    //                 candidates.Add(cell);
-    //             }
-    //         }
-    //     }
-
-    //     if (candidates.Count == 0)
-    //         return null;
-
-    //     return candidates[Random.Range(0, candidates.Count)];
-    // }
 }

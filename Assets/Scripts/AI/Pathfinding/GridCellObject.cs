@@ -1,13 +1,16 @@
+using System.Collections;
 using System.Linq;
+using Unity.Collections;
 using UnityEngine;
 
 public class GridCellObject : MonoBehaviour
 {
-    [Header("Component")]
+    [Header("Attribute")]
     private bool _debug = false;
     private bool _isOverlaped = false;
     public bool IsOverlaped => _isOverlaped;
     public delegate void OnOverlapBox(int x, int y, bool overlaped);
+    private float _lifeTimeLeft = 0.1f;
     private event OnOverlapBox OverlapBox;
     [Header("Non Walkable Tags / Layers")]
     [SerializeField] private LayerMask _collisionLayers;
@@ -16,22 +19,29 @@ public class GridCellObject : MonoBehaviour
     private int _x;
     private int _y;
     private float _cellSize;
+    private GridBuilder _gridBuilder;
     public void Initialize(
+        GridBuilder gridBuilder,
         int x,
         int y,
         float cellSize,
         string[] overlapTags = null,
         LayerMask overlapLayerMasks = default,
-        OnOverlapBox overlaped = null)
+        OnOverlapBox overlaped = null,
+        float lifeTime = 0.1f
+    )
     {
+        _gridBuilder = gridBuilder;
         _x = x;
         _y = y;
         _cellSize = cellSize;
         OverlapBox = overlaped;
         _collisionTags = overlapTags ?? new string[0];
         _collisionLayers = overlapLayerMasks != default ? overlapLayerMasks : _collisionLayers;
+        _lifeTimeLeft = lifeTime;
 
         HandleOverlap();
+        StartCoroutine(KillSelfDelay());
     }
 
     public void HandleOverlap()
@@ -55,6 +65,14 @@ public class GridCellObject : MonoBehaviour
     public void SetDebug(bool debug)
     {
         _debug = debug;
+    }
+
+    IEnumerator KillSelfDelay()
+    {
+        yield return new WaitForSeconds(_lifeTimeLeft);
+        _gridBuilder.OnDebugChanged -= SetDebug;
+        _gridBuilder.SetCellNull(_x, _y);
+        Destroy(gameObject);
     }
     
     void OnDrawGizmos() {
