@@ -15,4 +15,4 @@ MonoBehaviour:
   _name: Gold Ore
   _id: I15
   _type: 0
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 2756712652034502478, guid: 2358e2fdfe4937e409c5c12ee3071259, type: 3}

@@ -15,5 +15,5 @@ MonoBehaviour:
   _name: Amethyst Ingot
   _id: I27
   _type: 1
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 7175423293597175683, guid: f2a773a2026b9974292e2ee9a8324645, type: 3}
   _expireTime: 0

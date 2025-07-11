@@ -8,6 +8,7 @@ TagManager:
   - Item
   - SubmissionPoint
   - Obstacle
+  - PatrolCenter
   layers:
   - Default
   - TransparentFX

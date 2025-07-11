@@ -15,5 +15,5 @@ MonoBehaviour:
   _name: Mythril Ingot
   _id: I30
   _type: 1
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 7175423293597175683, guid: 0b0238a09824ee44dbf988221f640360, type: 3}
   _expireTime: 0

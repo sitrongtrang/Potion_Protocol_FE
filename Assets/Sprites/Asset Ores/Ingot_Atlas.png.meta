@@ -1,307 +1,307 @@
 fileFormatVersion: 2
-guid: 05c5e734534090c45b3b7697b5450c26
+guid: a35bbe8aadba99f418111c1cf06a245a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7820905923391345545
-    second: Ore_Atlas_0
+      213: -7795363881259474946
+    second: Ingot_Atlas_0
   - first:
-      213: 3823796060889903524
-    second: Ore_Atlas_1
+      213: -2643760491537033724
+    second: Ingot_Atlas_1
   - first:
-      213: 8402997514552301460
-    second: Ore_Atlas_2
+      213: -1288240943580309901
+    second: Ingot_Atlas_2
   - first:
-      213: 7028327140335561317
-    second: Ore_Atlas_3
+      213: -7150655590655086274
+    second: Ingot_Atlas_3
   - first:
-      213: -874798224281671996
-    second: Ore_Atlas_4
+      213: 7273804822521052303
+    second: Ingot_Atlas_4
   - first:
-      213: -4318982718657834204
-    second: Ore_Atlas_5
+      213: -7992450690253906582
+    second: Ingot_Atlas_5
   - first:
-      213: -7037759193644218188
-    second: Ore_Atlas_6
+      213: 6500151337436090292
+    second: Ingot_Atlas_6
   - first:
-      213: -6420461093913611261
-    second: Ore_Atlas_7
+      213: 2149103271335678714
+    second: Ingot_Atlas_7
   - first:
-      213: 541167687739256220
-    second: Ore_Atlas_8
+      213: 7562958788069766771
+    second: Ingot_Atlas_8
   - first:
-      213: 833645633004685880
-    second: Ore_Atlas_9
+      213: 4329401428078364952
+    second: Ingot_Atlas_9
   - first:
-      213: 6630820732098305681
-    second: Ore_Atlas_10
+      213: -2676273732821293987
+    second: Ingot_Atlas_10
   - first:
-      213: 3134224210375033781
-    second: Ore_Atlas_11
+      213: 7100454657400318274
+    second: Ingot_Atlas_11
   - first:
-      213: 1160809305625320999
-    second: Ore_Atlas_12
+      213: 9202590150349409189
+    second: Ingot_Atlas_12
   - first:
-      213: -2378474063558198536
-    second: Ore_Atlas_13
+      213: -914523827995298538
+    second: Ingot_Atlas_13
   - first:
-      213: 5725364665942933221
-    second: Ore_Atlas_14
+      213: 641274922336219866
+    second: Ingot_Atlas_14
   - first:
-      213: 2688707185307781999
-    second: Ore_Atlas_15
+      213: -5377607013623847601
+    second: Ingot_Atlas_15
   - first:
-      213: -7019663373282665737
-    second: Ore_Atlas_16
+      213: 4092093450455253871
+    second: Ingot_Atlas_16
   - first:
-      213: 7596041989571635809
-    second: Ore_Atlas_17
+      213: 6574943494755698187
+    second: Ingot_Atlas_17
   - first:
-      213: -2187163401176150125
-    second: Ore_Atlas_18
+      213: 4730399559925852662
+    second: Ingot_Atlas_18
   - first:
-      213: -5457511684506822206
-    second: Ore_Atlas_19
+      213: 5671674673012459969
+    second: Ingot_Atlas_19
   - first:
-      213: -8896395025177074065
-    second: Ore_Atlas_20
+      213: 6706537656054524683
+    second: Ingot_Atlas_20
   - first:
-      213: 3265609578105065361
-    second: Ore_Atlas_21
+      213: 8039230270470870807
+    second: Ingot_Atlas_21
   - first:
-      213: 6829623539266100133
-    second: Ore_Atlas_22
+      213: 4471430952926370150
+    second: Ingot_Atlas_22
   - first:
-      213: -2624131149461154216
-    second: Ore_Atlas_23
+      213: -5827613641321762814
+    second: Ingot_Atlas_23
   - first:
-      213: 7954349266188795137
-    second: Ore_Atlas_24
+      213: 5875940012543247306
+    second: Ingot_Atlas_24
   - first:
-      213: -5642446695444474995
-    second: Ore_Atlas_25
+      213: 8606800612008418105
+    second: Ingot_Atlas_25
   - first:
-      213: -3391010415598755942
-    second: Ore_Atlas_26
+      213: 2724892669904641438
+    second: Ingot_Atlas_26
   - first:
-      213: 1407890035969995181
-    second: Ore_Atlas_27
+      213: 2202237861632297118
+    second: Ingot_Atlas_27
   - first:
-      213: -8556259462195262545
-    second: Ore_Atlas_28
+      213: 6656673129763904889
+    second: Ingot_Atlas_28
   - first:
-      213: 1086703527001717920
-    second: Ore_Atlas_29
+      213: -3001616802563953934
+    second: Ingot_Atlas_29
   - first:
-      213: 2684707666697233627
-    second: Ore_Atlas_30
+      213: -3960478844305403194
+    second: Ingot_Atlas_30
   - first:
-      213: 8184975792496011401
-    second: Ore_Atlas_31
+      213: -4745990332622288462
+    second: Ingot_Atlas_31
   - first:
-      213: -183302509978729899
-    second: Ore_Atlas_32
+      213: -5738027586760848597
+    second: Ingot_Atlas_32
   - first:
-      213: -3827159504219881934
-    second: Ore_Atlas_33
+      213: 7692747651671993150
+    second: Ingot_Atlas_33
   - first:
-      213: -2116503137660498378
-    second: Ore_Atlas_34
+      213: 897806953245178420
+    second: Ingot_Atlas_34
   - first:
-      213: 8226424972765110147
-    second: Ore_Atlas_35
+      213: 715609470613263808
+    second: Ingot_Atlas_35
   - first:
-      213: -6926982758031127732
-    second: Ore_Atlas_36
+      213: 3637924023692063238
+    second: Ingot_Atlas_36
   - first:
-      213: -7119355050831050826
-    second: Ore_Atlas_37
+      213: -4486725582435810674
+    second: Ingot_Atlas_37
   - first:
-      213: -8404957345055240986
-    second: Ore_Atlas_38
+      213: 9073585799300919509
+    second: Ingot_Atlas_38
   - first:
-      213: 411408940882930444
-    second: Ore_Atlas_39
+      213: -6491136850343446017
+    second: Ingot_Atlas_39
   - first:
-      213: 5843654083567054841
-    second: Ore_Atlas_40
+      213: -5005603782718153779
+    second: Ingot_Atlas_40
   - first:
-      213: -8420549028450856512
-    second: Ore_Atlas_41
+      213: -8133222507851253824
+    second: Ingot_Atlas_41
   - first:
-      213: -1710315339493669188
-    second: Ore_Atlas_42
+      213: -8886223022174076821
+    second: Ingot_Atlas_42
   - first:
-      213: 6965692655985278426
-    second: Ore_Atlas_43
+      213: -44837147970486911
+    second: Ingot_Atlas_43
   - first:
-      213: -5131001532064031433
-    second: Ore_Atlas_44
+      213: -6839715025890191947
+    second: Ingot_Atlas_44
   - first:
-      213: -5131825623253836381
-    second: Ore_Atlas_45
+      213: -8141770314944011402
+    second: Ingot_Atlas_45
   - first:
-      213: -297978522046505479
-    second: Ore_Atlas_46
+      213: 8965230026742571895
+    second: Ingot_Atlas_46
   - first:
-      213: 3685726826961632100
-    second: Ore_Atlas_47
+      213: -7388316349257353834
+    second: Ingot_Atlas_47
   - first:
-      213: 3796703817170755422
-    second: Ore_Atlas_48
+      213: -4642953922209355708
+    second: Ingot_Atlas_48
   - first:
-      213: -2880914640314003074
-    second: Ore_Atlas_49
+      213: 4341688398258309344
+    second: Ingot_Atlas_49
   - first:
-      213: -4977501901593438977
-    second: Ore_Atlas_50
+      213: -5033248969457000342
+    second: Ingot_Atlas_50
   - first:
-      213: 6774075122824636187
-    second: Ore_Atlas_51
+      213: -2787204863317893763
+    second: Ingot_Atlas_51
   - first:
-      213: 628163960137732175
-    second: Ore_Atlas_52
+      213: 3007916528098025189
+    second: Ingot_Atlas_52
   - first:
-      213: 1319500080119849915
-    second: Ore_Atlas_53
+      213: 1251817318341430424
+    second: Ingot_Atlas_53
   - first:
-      213: -4776603361698001056
-    second: Ore_Atlas_54
+      213: -1693854309895157740
+    second: Ingot_Atlas_54
   - first:
-      213: 4732754470058105594
-    second: Ore_Atlas_55
+      213: 2052497908721783972
+    second: Ingot_Atlas_55
   - first:
-      213: 8830342357203441880
-    second: Ore_Atlas_56
+      213: -2474813432665220282
+    second: Ingot_Atlas_56
   - first:
-      213: -8690150450816951
-    second: Ore_Atlas_57
+      213: 276210340788394102
+    second: Ingot_Atlas_57
   - first:
-      213: -5128706197151442148
-    second: Ore_Atlas_58
+      213: -6020565813267060414
+    second: Ingot_Atlas_58
   - first:
-      213: 5107808475001325960
-    second: Ore_Atlas_59
+      213: -6987601508435498014
+    second: Ingot_Atlas_59
   - first:
-      213: -1225381017117774966
-    second: Ore_Atlas_60
+      213: 8284553751229417712
+    second: Ingot_Atlas_60
   - first:
-      213: -1224212967245596215
-    second: Ore_Atlas_61
+      213: 5650557842257000780
+    second: Ingot_Atlas_61
   - first:
-      213: -5135639566118176967
-    second: Ore_Atlas_62
+      213: -1309105207643035005
+    second: Ingot_Atlas_62
   - first:
-      213: 429908192038164733
-    second: Ore_Atlas_63
+      213: 1176178643506733927
+    second: Ingot_Atlas_63
   - first:
-      213: -3534246742492817616
-    second: Ore_Atlas_64
+      213: 335686046116182385
+    second: Ingot_Atlas_64
   - first:
-      213: -287696239490090564
-    second: Ore_Atlas_65
+      213: 1072907929725041993
+    second: Ingot_Atlas_65
   - first:
-      213: -5020904675180267454
-    second: Ore_Atlas_66
+      213: -5287322874083057732
+    second: Ingot_Atlas_66
   - first:
-      213: -8886452502334146495
-    second: Ore_Atlas_67
+      213: -8107865947950105717
+    second: Ingot_Atlas_67
   - first:
-      213: -8519698736146741976
-    second: Ore_Atlas_68
+      213: 4596421306410349869
+    second: Ingot_Atlas_68
   - first:
-      213: 4982474576478820287
-    second: Ore_Atlas_69
+      213: -4396933727655739738
+    second: Ingot_Atlas_69
   - first:
-      213: 3060288345026808617
-    second: Ore_Atlas_70
+      213: -5600983848387610873
+    second: Ingot_Atlas_70
   - first:
-      213: 844424929814947808
-    second: Ore_Atlas_71
+      213: -5124042103270912958
+    second: Ingot_Atlas_71
   - first:
-      213: -1498216775752670402
-    second: Ore_Atlas_72
+      213: -130745979038962972
+    second: Ingot_Atlas_72
   - first:
-      213: 8222098807459140487
-    second: Ore_Atlas_73
+      213: -1951346035798833104
+    second: Ingot_Atlas_73
   - first:
-      213: 6505204049243151825
-    second: Ore_Atlas_74
+      213: -7091133228211799866
+    second: Ingot_Atlas_74
   - first:
-      213: 7896350174138757322
-    second: Ore_Atlas_75
+      213: -6325093569594332531
+    second: Ingot_Atlas_75
   - first:
-      213: -960480187234054452
-    second: Ore_Atlas_76
+      213: 7551787356816294189
+    second: Ingot_Atlas_76
   - first:
-      213: 1115120735357010717
-    second: Ore_Atlas_77
+      213: 3107939649596071705
+    second: Ingot_Atlas_77
   - first:
-      213: -3607684803747855342
-    second: Ore_Atlas_78
+      213: 564618793270469375
+    second: Ingot_Atlas_78
   - first:
-      213: 921421775831056904
-    second: Ore_Atlas_79
+      213: 4681109519962378840
+    second: Ingot_Atlas_79
   - first:
-      213: -5828149138432431194
-    second: Ore_Atlas_80
+      213: -2809354632032850348
+    second: Ingot_Atlas_80
   - first:
-      213: -3864166743285394546
-    second: Ore_Atlas_81
+      213: 6903148619070198140
+    second: Ingot_Atlas_81
   - first:
-      213: 4031754434908142565
-    second: Ore_Atlas_82
+      213: -502287462541595728
+    second: Ingot_Atlas_82
   - first:
-      213: 6385414964705648906
-    second: Ore_Atlas_83
+      213: 2413865251447930725
+    second: Ingot_Atlas_83
   - first:
-      213: 2509614402201193079
-    second: Ore_Atlas_84
+      213: 1643928909445589332
+    second: Ingot_Atlas_84
   - first:
-      213: 7497617675990213383
-    second: Ore_Atlas_85
+      213: 5855017808838994028
+    second: Ingot_Atlas_85
   - first:
-      213: -7544861496941972011
-    second: Ore_Atlas_86
+      213: 6521650510153518138
+    second: Ingot_Atlas_86
   - first:
-      213: -37629292676605824
-    second: Ore_Atlas_87
+      213: -3244055474091141759
+    second: Ingot_Atlas_87
   - first:
-      213: -812377983838643591
-    second: Ore_Atlas_88
+      213: -2773853046251727226
+    second: Ingot_Atlas_88
   - first:
-      213: -7852874422629484624
-    second: Ore_Atlas_89
+      213: 8754726642871428155
+    second: Ingot_Atlas_89
   - first:
-      213: -6557356658253220632
-    second: Ore_Atlas_90
+      213: -2205791323983733037
+    second: Ingot_Atlas_90
   - first:
-      213: 4408591337313570081
-    second: Ore_Atlas_91
+      213: 8056171305639465164
+    second: Ingot_Atlas_91
   - first:
-      213: -6703764884825196680
-    second: Ore_Atlas_92
+      213: -8634218748196460195
+    second: Ingot_Atlas_92
   - first:
-      213: -8560238766183359029
-    second: Ore_Atlas_93
+      213: 2878525554420929633
+    second: Ingot_Atlas_93
   - first:
-      213: -6118642715060822623
-    second: Ore_Atlas_94
+      213: -3411078579403511844
+    second: Ingot_Atlas_94
   - first:
-      213: 5435916023230937076
-    second: Ore_Atlas_95
+      213: -4542809236588552225
+    second: Ingot_Atlas_95
   - first:
-      213: 6505393061363512136
-    second: Ore_Atlas_96
+      213: 264765396193749027
+    second: Ingot_Atlas_96
   - first:
-      213: -7612451474578946298
-    second: Ore_Atlas_97
+      213: -9193486234585127154
+    second: Ingot_Atlas_97
   - first:
-      213: -7768580500876600764
-    second: Ore_Atlas_98
+      213: -336876171817308987
+    second: Ingot_Atlas_98
   - first:
-      213: 3660239333876410303
-    second: Ore_Atlas_99
+      213: -504650863741306893
+    second: Ingot_Atlas_99
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -348,7 +348,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 512
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -410,13 +410,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ore_Atlas_0
+      name: Ingot_Atlas_0
       rect:
         serializedVersion: 2
-        x: 61
-        y: 4643
-        width: 389
-        height: 442
+        x: 26
+        y: 4712
+        width: 459
+        height: 304
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -425,20 +425,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9835d791080798c60800000000000000
-      internalID: 7820905923391345545
+      spriteID: eff5e920add41d390800000000000000
+      internalID: -7795363881259474946
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_1
+      name: Ingot_Atlas_1
       rect:
         serializedVersion: 2
-        x: 571
-        y: 4643
-        width: 389
-        height: 442
+        x: 536
+        y: 4712
+        width: 459
+        height: 304
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -447,20 +447,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4a171ee024ad01530800000000000000
-      internalID: 3823796060889903524
+      spriteID: 40619b617d97f4bd0800000000000000
+      internalID: -2643760491537033724
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_2
+      name: Ingot_Atlas_2
       rect:
         serializedVersion: 2
-        x: 1086
-        y: 4643
-        width: 389
-        height: 442
+        x: 1051
+        y: 4712
+        width: 459
+        height: 304
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -469,20 +469,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 497516fe7b17d9470800000000000000
-      internalID: 8402997514552301460
+      spriteID: 37618ccefaf3f1ee0800000000000000
+      internalID: -1288240943580309901
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_3
+      name: Ingot_Atlas_3
       rect:
         serializedVersion: 2
-        x: 1595
-        y: 4643
-        width: 389
-        height: 442
+        x: 1560
+        y: 4712
+        width: 459
+        height: 304
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -491,20 +491,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 56a20f4eb42a98160800000000000000
-      internalID: 7028327140335561317
+      spriteID: e31b7d740a4c3cc90800000000000000
+      internalID: -7150655590655086274
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_4
+      name: Ingot_Atlas_4
       rect:
         serializedVersion: 2
-        x: 2110
-        y: 4643
-        width: 389
-        height: 442
+        x: 2075
+        y: 4712
+        width: 459
+        height: 304
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -513,20 +513,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4c66c8f56a71cd3f0800000000000000
-      internalID: -874798224281671996
+      spriteID: f8cf3e3a2feb1f460800000000000000
+      internalID: 7273804822521052303
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_5
+      name: Ingot_Atlas_5
       rect:
         serializedVersion: 2
-        x: 2622
-        y: 4643
-        width: 389
-        height: 442
+        x: 2587
+        y: 4712
+        width: 459
+        height: 304
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -535,20 +535,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 423595fa914ef04c0800000000000000
-      internalID: -4318982718657834204
+      spriteID: a6d179a617c151190800000000000000
+      internalID: -7992450690253906582
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_6
+      name: Ingot_Atlas_6
       rect:
         serializedVersion: 2
-        x: 3134
-        y: 4643
-        width: 389
-        height: 442
+        x: 3099
+        y: 4712
+        width: 459
+        height: 304
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -557,20 +557,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4b8c8101d4bd45e90800000000000000
-      internalID: -7037759193644218188
+      spriteID: 4bf882eb33d253a50800000000000000
+      internalID: 6500151337436090292
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_7
+      name: Ingot_Atlas_7
       rect:
         serializedVersion: 2
-        x: 3647
-        y: 4643
-        width: 389
-        height: 442
+        x: 3612
+        y: 4712
+        width: 459
+        height: 304
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -579,20 +579,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3043013f6a0f5e6a0800000000000000
-      internalID: -6420461093913611261
+      spriteID: af2d791f90623dd10800000000000000
+      internalID: 2149103271335678714
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_8
+      name: Ingot_Atlas_8
       rect:
         serializedVersion: 2
-        x: 4159
-        y: 4643
-        width: 389
-        height: 442
+        x: 4124
+        y: 4712
+        width: 459
+        height: 304
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -601,20 +601,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c9d2e9f052d928700800000000000000
-      internalID: 541167687739256220
+      spriteID: 37631dd82f605f860800000000000000
+      internalID: 7562958788069766771
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_9
+      name: Ingot_Atlas_9
       rect:
         serializedVersion: 2
-        x: 4671
-        y: 4643
-        width: 389
-        height: 442
+        x: 4636
+        y: 4712
+        width: 459
+        height: 304
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -623,20 +623,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 83acccf4944b19b00800000000000000
-      internalID: 833645633004685880
+      spriteID: 8190ea229af151c30800000000000000
+      internalID: 4329401428078364952
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_10
+      name: Ingot_Atlas_10
       rect:
         serializedVersion: 2
-        x: 28
+        x: 18
         y: 4113
-        width: 454
-        height: 480
+        width: 475
+        height: 478
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -645,20 +645,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 19ed3020358650c50800000000000000
-      internalID: 6630820732098305681
+      spriteID: d546a713837fbdad0800000000000000
+      internalID: -2676273732821293987
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_11
+      name: Ingot_Atlas_11
       rect:
         serializedVersion: 2
-        x: 540
+        x: 530
         y: 4113
-        width: 454
-        height: 480
+        width: 475
+        height: 478
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -667,20 +667,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5b345d140500f7b20800000000000000
-      internalID: 3134224210375033781
+      spriteID: 2492d1e14e1e98260800000000000000
+      internalID: 7100454657400318274
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_12
+      name: Ingot_Atlas_12
       rect:
         serializedVersion: 2
-        x: 1053
+        x: 1043
         y: 4113
-        width: 454
-        height: 480
+        width: 475
+        height: 478
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -689,20 +689,64 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 72ed3c9c9e50c1010800000000000000
-      internalID: 1160809305625320999
+      spriteID: 5abc51dfbfa26bf70800000000000000
+      internalID: 9202590150349409189
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_13
+      name: Ingot_Atlas_13
       rect:
         serializedVersion: 2
-        x: 1565
+        x: 1555
+        y: 4114
+        width: 475
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 615b5bd7c65fe43f0800000000000000
+      internalID: -914523827995298538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_14
+      rect:
+        serializedVersion: 2
+        x: 2066
+        y: 4113
+        width: 475
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad2773de42446e800800000000000000
+      internalID: 641274922336219866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ingot_Atlas_15
+      rect:
+        serializedVersion: 2
+        x: 2578
         y: 4112
-        width: 454
-        height: 480
+        width: 475
+        height: 478
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -711,20 +755,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8fa322ed076fdfed0800000000000000
-      internalID: -2378474063558198536
+      spriteID: f452d43b9e6ee55b0800000000000000
+      internalID: -5377607013623847601
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_14
+      name: Ingot_Atlas_16
       rect:
         serializedVersion: 2
-        x: 2076
+        x: 3091
         y: 4113
-        width: 454
-        height: 480
+        width: 475
+        height: 478
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -733,20 +777,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5eef91354d4947f40800000000000000
-      internalID: 5725364665942933221
+      spriteID: f638616ff490ac830800000000000000
+      internalID: 4092093450455253871
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_15
+      name: Ingot_Atlas_17
       rect:
         serializedVersion: 2
-        x: 2588
+        x: 3604
         y: 4113
-        width: 454
-        height: 480
+        width: 475
+        height: 478
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -755,20 +799,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f6b8f4d80f4305520800000000000000
-      internalID: 2688707185307781999
+      spriteID: b06cd2fd544ee3b50800000000000000
+      internalID: 6574943494755698187
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_16
+      name: Ingot_Atlas_18
       rect:
         serializedVersion: 2
-        x: 3101
+        x: 4116
         y: 4113
-        width: 454
-        height: 480
+        width: 475
+        height: 478
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -777,20 +821,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7fa9aa09a55259e90800000000000000
-      internalID: -7019663373282665737
+      spriteID: 6f96b074651c5a140800000000000000
+      internalID: 4730399559925852662
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_17
+      name: Ingot_Atlas_19
       rect:
         serializedVersion: 2
-        x: 3613
+        x: 4628
         y: 4113
-        width: 454
-        height: 480
+        width: 475
+        height: 478
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -799,20 +843,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 16a6e57a1ff8a6960800000000000000
-      internalID: 7596041989571635809
+      spriteID: 1c9cc76b016d5be40800000000000000
+      internalID: 5671674673012459969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_18
+      name: Ingot_Atlas_20
       rect:
         serializedVersion: 2
-        x: 4126
-        y: 4113
-        width: 454
-        height: 480
+        x: 20
+        y: 3631
+        width: 472
+        height: 418
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -821,20 +865,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 39f09278972a5a1e0800000000000000
-      internalID: -2187163401176150125
+      spriteID: b0b29e52778621d50800000000000000
+      internalID: 6706537656054524683
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_19
+      name: Ingot_Atlas_21
       rect:
         serializedVersion: 2
-        x: 4638
-        y: 4113
-        width: 454
-        height: 480
+        x: 532
+        y: 3631
+        width: 472
+        height: 418
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -843,20 +887,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2c95d6fb9060344b0800000000000000
-      internalID: -5457511684506822206
+      spriteID: 717dbfa5655119f60800000000000000
+      internalID: 8039230270470870807
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_20
+      name: Ingot_Atlas_22
       rect:
         serializedVersion: 2
-        x: 24
-        y: 3612
-        width: 462
-        height: 474
+        x: 1045
+        y: 3631
+        width: 472
+        height: 418
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -865,20 +909,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f66a4c61cd7a98480800000000000000
-      internalID: -8896395025177074065
+      spriteID: 669dcd2d2c6bd0e30800000000000000
+      internalID: 4471430952926370150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_21
+      name: Ingot_Atlas_23
       rect:
         serializedVersion: 2
-        x: 536
-        y: 3612
-        width: 462
-        height: 474
+        x: 1557
+        y: 3631
+        width: 472
+        height: 418
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -887,20 +931,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 19fc01efb96c15d20800000000000000
-      internalID: 3265609578105065361
+      spriteID: 200bbcce448202fa0800000000000000
+      internalID: -5827613641321762814
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_22
+      name: Ingot_Atlas_24
       rect:
         serializedVersion: 2
-        x: 1049
-        y: 3612
-        width: 462
-        height: 474
+        x: 2068
+        y: 3631
+        width: 472
+        height: 418
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -909,20 +953,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5ab1a9f8c62b7ce50800000000000000
-      internalID: 6829623539266100133
+      spriteID: ac305213f488b8150800000000000000
+      internalID: 5875940012543247306
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_23
+      name: Ingot_Atlas_25
       rect:
         serializedVersion: 2
-        x: 1561
-        y: 3612
-        width: 462
-        height: 474
+        x: 2580
+        y: 3631
+        width: 472
+        height: 418
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -931,20 +975,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 85694507f96359bd0800000000000000
-      internalID: -2624131149461154216
+      spriteID: 93b506b4e8f717770800000000000000
+      internalID: 8606800612008418105
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_24
+      name: Ingot_Atlas_26
       rect:
         serializedVersion: 2
-        x: 2072
-        y: 3612
-        width: 462
-        height: 474
+        x: 3093
+        y: 3631
+        width: 472
+        height: 418
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -953,20 +997,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 10d729e7386836e60800000000000000
-      internalID: 7954349266188795137
+      spriteID: e9d5bb83273c0d520800000000000000
+      internalID: 2724892669904641438
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_25
+      name: Ingot_Atlas_27
       rect:
         serializedVersion: 2
-        x: 2584
-        y: 3612
-        width: 462
-        height: 474
+        x: 3605
+        y: 3631
+        width: 472
+        height: 418
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -975,20 +1019,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d8394fd10a002b1b0800000000000000
-      internalID: -5642446695444474995
+      spriteID: e98428dcaabef8e10800000000000000
+      internalID: 2202237861632297118
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_26
+      name: Ingot_Atlas_28
       rect:
         serializedVersion: 2
-        x: 3097
-        y: 3612
-        width: 462
-        height: 474
+        x: 4118
+        y: 3631
+        width: 472
+        height: 418
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -997,20 +1041,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a9f169c4ef5b0f0d0800000000000000
-      internalID: -3391010415598755942
+      spriteID: 97d177561f0416c50800000000000000
+      internalID: 6656673129763904889
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_27
+      name: Ingot_Atlas_29
       rect:
         serializedVersion: 2
-        x: 3609
-        y: 3612
-        width: 462
-        height: 474
+        x: 4630
+        y: 3631
+        width: 472
+        height: 418
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1019,20 +1063,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: da1bdc44784d98310800000000000000
-      internalID: 1407890035969995181
+      spriteID: 2fae45bdb6d1856d0800000000000000
+      internalID: -3001616802563953934
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_28
+      name: Ingot_Atlas_30
       rect:
         serializedVersion: 2
-        x: 4122
-        y: 3612
-        width: 462
-        height: 474
+        x: 16
+        y: 3129
+        width: 479
+        height: 399
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1041,20 +1085,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fabc6c52a5f024980800000000000000
-      internalID: -8556259462195262545
+      spriteID: 6c21ab0897d8909c0800000000000000
+      internalID: -3960478844305403194
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_29
+      name: Ingot_Atlas_31
       rect:
         serializedVersion: 2
-        x: 4634
-        y: 3612
-        width: 462
-        height: 474
+        x: 528
+        y: 3129
+        width: 479
+        height: 399
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1063,20 +1107,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0acf917a91fb41f00800000000000000
-      internalID: 1086703527001717920
+      spriteID: 2b94c9410fad22eb0800000000000000
+      internalID: -4745990332622288462
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_30
+      name: Ingot_Atlas_32
       rect:
         serializedVersion: 2
-        x: 24
-        y: 3100
-        width: 431
-        height: 453
+        x: 1041
+        y: 3129
+        width: 479
+        height: 399
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1085,20 +1129,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bd4a14f066ff14520800000000000000
-      internalID: 2684707666697233627
+      spriteID: b2b4abbaf4e6e50b0800000000000000
+      internalID: -5738027586760848597
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_31
+      name: Ingot_Atlas_33
       rect:
         serializedVersion: 2
-        x: 536
-        y: 3100
-        width: 431
-        height: 453
+        x: 1553
+        y: 3129
+        width: 479
+        height: 399
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1107,20 +1151,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 98865ee0e10e69170800000000000000
-      internalID: 8184975792496011401
+      spriteID: e3b21a43b3122ca60800000000000000
+      internalID: 7692747651671993150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_32
+      name: Ingot_Atlas_34
       rect:
         serializedVersion: 2
-        x: 1049
-        y: 3100
-        width: 431
-        height: 453
+        x: 2064
+        y: 3129
+        width: 479
+        height: 399
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1129,20 +1173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 552c74e9657c47df0800000000000000
-      internalID: -183302509978729899
+      spriteID: 43afd0dcaa6a57c00800000000000000
+      internalID: 897806953245178420
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_33
+      name: Ingot_Atlas_35
       rect:
         serializedVersion: 2
-        x: 1561
-        y: 3100
-        width: 431
-        height: 453
+        x: 2576
+        y: 3129
+        width: 479
+        height: 399
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1151,20 +1195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 23eb63445b233eac0800000000000000
-      internalID: -3827159504219881934
+      spriteID: 0c51fc5a50b5ee900800000000000000
+      internalID: 715609470613263808
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_34
+      name: Ingot_Atlas_36
       rect:
         serializedVersion: 2
-        x: 2072
-        y: 3100
-        width: 431
-        height: 453
+        x: 3089
+        y: 3129
+        width: 479
+        height: 399
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1173,20 +1217,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 63e0fb92c9ba0a2e0800000000000000
-      internalID: -2116503137660498378
+      spriteID: 602760000a08c7230800000000000000
+      internalID: 3637924023692063238
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_35
+      name: Ingot_Atlas_37
       rect:
         serializedVersion: 2
-        x: 2584
-        y: 3100
-        width: 431
-        height: 453
+        x: 3601
+        y: 3129
+        width: 479
+        height: 399
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1195,20 +1239,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 38f11116de12a2270800000000000000
-      internalID: 8226424972765110147
+      spriteID: e82814ebad2fbb1c0800000000000000
+      internalID: -4486725582435810674
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_36
+      name: Ingot_Atlas_38
       rect:
         serializedVersion: 2
-        x: 3097
-        y: 3100
-        width: 431
-        height: 453
+        x: 4114
+        y: 3129
+        width: 479
+        height: 399
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1217,20 +1261,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c4b8c4ed1e96edf90800000000000000
-      internalID: -6926982758031127732
+      spriteID: 5d03c56e53adbed70800000000000000
+      internalID: 9073585799300919509
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_37
+      name: Ingot_Atlas_39
       rect:
         serializedVersion: 2
-        x: 3609
-        y: 3100
-        width: 431
-        height: 453
+        x: 4626
+        y: 3129
+        width: 479
+        height: 399
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1239,20 +1283,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6b7055d1d48f23d90800000000000000
-      internalID: -7119355050831050826
+      spriteID: ff9b4d61d69dae5a0800000000000000
+      internalID: -6491136850343446017
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_38
+      name: Ingot_Atlas_40
       rect:
         serializedVersion: 2
-        x: 4122
-        y: 3100
-        width: 431
-        height: 453
+        x: 4
+        y: 2600
+        width: 503
+        height: 432
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1261,20 +1305,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6ec0ca773d79b5b80800000000000000
-      internalID: -8404957345055240986
+      spriteID: dcb9bb461e5888ab0800000000000000
+      internalID: -5005603782718153779
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_39
+      name: Ingot_Atlas_41
       rect:
         serializedVersion: 2
-        x: 4634
-        y: 3100
-        width: 431
-        height: 453
+        x: 516
+        y: 2600
+        width: 503
+        height: 432
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1283,20 +1327,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c0b2fb2804e95b500800000000000000
-      internalID: 411408940882930444
+      spriteID: 0c77054883df02f80800000000000000
+      internalID: -8133222507851253824
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_40
+      name: Ingot_Atlas_42
       rect:
         serializedVersion: 2
-        x: 36
-        y: 2614
-        width: 439
-        height: 424
+        x: 1029
+        y: 2600
+        width: 503
+        height: 432
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1305,20 +1349,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9ff66419d64d81150800000000000000
-      internalID: 5843654083567054841
+      spriteID: b608a681e3bcda480800000000000000
+      internalID: -8886223022174076821
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_41
+      name: Ingot_Atlas_43
       rect:
         serializedVersion: 2
-        x: 548
-        y: 2614
-        width: 439
-        height: 424
+        x: 1541
+        y: 2600
+        width: 503
+        height: 432
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1327,20 +1371,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0c11d69c543342b80800000000000000
-      internalID: -8420549028450856512
+      spriteID: 18d3a7af9d4b06ff0800000000000000
+      internalID: -44837147970486911
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_42
+      name: Ingot_Atlas_44
       rect:
         serializedVersion: 2
-        x: 1061
-        y: 2614
-        width: 439
-        height: 424
+        x: 2052
+        y: 2600
+        width: 503
+        height: 432
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1349,20 +1393,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cb60497a24db348e0800000000000000
-      internalID: -1710315339493669188
+      spriteID: 5b5d9ec1c637411a0800000000000000
+      internalID: -6839715025890191947
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_43
+      name: Ingot_Atlas_45
       rect:
         serializedVersion: 2
-        x: 1573
-        y: 2614
-        width: 439
-        height: 424
+        x: 2564
+        y: 2600
+        width: 503
+        height: 432
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1371,20 +1415,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: addbc86909c1ba060800000000000000
-      internalID: 6965692655985278426
+      spriteID: 67321f6190f920f80800000000000000
+      internalID: -8141770314944011402
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_44
+      name: Ingot_Atlas_46
       rect:
         serializedVersion: 2
-        x: 2084
-        y: 2614
-        width: 439
-        height: 424
+        x: 3077
+        y: 2600
+        width: 503
+        height: 432
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1393,20 +1437,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 73d9653ba450bc8b0800000000000000
-      internalID: -5131001532064031433
+      spriteID: 77328a1a535ea6c70800000000000000
+      internalID: 8965230026742571895
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_45
+      name: Ingot_Atlas_47
       rect:
         serializedVersion: 2
-        x: 2596
-        y: 2614
-        width: 439
-        height: 424
+        x: 3589
+        y: 2600
+        width: 503
+        height: 432
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1415,20 +1459,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3ad15b409c718c8b0800000000000000
-      internalID: -5131825623253836381
+      spriteID: 695fd42ec6d677990800000000000000
+      internalID: -7388316349257353834
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_46
+      name: Ingot_Atlas_48
       rect:
         serializedVersion: 2
-        x: 3109
-        y: 2614
-        width: 439
-        height: 424
+        x: 4102
+        y: 2600
+        width: 503
+        height: 432
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1437,20 +1481,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9fdd8baec1e5ddbf0800000000000000
-      internalID: -297978522046505479
+      spriteID: 4486436d10ae09fb0800000000000000
+      internalID: -4642953922209355708
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_47
+      name: Ingot_Atlas_49
       rect:
         serializedVersion: 2
-        x: 3621
-        y: 2614
-        width: 439
-        height: 424
+        x: 4614
+        y: 2600
+        width: 503
+        height: 432
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1459,20 +1503,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 46bfc247505562330800000000000000
-      internalID: 3685726826961632100
+      spriteID: 0e80f9f4896c04c30800000000000000
+      internalID: 4341688398258309344
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_48
+      name: Ingot_Atlas_50
       rect:
         serializedVersion: 2
-        x: 4134
-        y: 2614
-        width: 439
-        height: 424
+        x: 0
+        y: 2070
+        width: 508
+        height: 468
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1481,20 +1525,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e5f15d3810a90b430800000000000000
-      internalID: 3796703817170755422
+      spriteID: a602a65cabe462ab0800000000000000
+      internalID: -5033248969457000342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_49
+      name: Ingot_Atlas_51
       rect:
         serializedVersion: 2
-        x: 4646
-        y: 2614
-        width: 439
-        height: 424
+        x: 512
+        y: 2070
+        width: 508
+        height: 468
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1503,20 +1547,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e719cdbf56fe408d0800000000000000
-      internalID: -2880914640314003074
+      spriteID: d7d12bda1fbd159d0800000000000000
+      internalID: -2787204863317893763
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_50
+      name: Ingot_Atlas_52
       rect:
         serializedVersion: 2
-        x: 50
-        y: 2104
-        width: 411
-        height: 406
+        x: 1025
+        y: 2070
+        width: 508
+        height: 468
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1525,20 +1569,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ff411b6746c5ceab0800000000000000
-      internalID: -4977501901593438977
+      spriteID: 5ee1f4b45244eb920800000000000000
+      internalID: 3007916528098025189
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_51
+      name: Ingot_Atlas_53
       rect:
         serializedVersion: 2
-        x: 562
-        y: 2104
-        width: 411
-        height: 406
+        x: 1537
+        y: 2070
+        width: 508
+        height: 468
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1547,20 +1591,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b17e5c10f69520e50800000000000000
-      internalID: 6774075122824636187
+      spriteID: 89c4c67f7395f5110800000000000000
+      internalID: 1251817318341430424
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_52
+      name: Ingot_Atlas_54
       rect:
         serializedVersion: 2
-        x: 1075
-        y: 2104
-        width: 411
-        height: 406
+        x: 2048
+        y: 2070
+        width: 508
+        height: 468
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1569,20 +1613,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f4056b82bcfa7b800800000000000000
-      internalID: 628163960137732175
+      spriteID: 4184f65ca783e78e0800000000000000
+      internalID: -1693854309895157740
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_53
+      name: Ingot_Atlas_55
       rect:
         serializedVersion: 2
-        x: 1587
-        y: 2104
-        width: 411
-        height: 406
+        x: 2560
+        y: 2070
+        width: 508
+        height: 468
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1591,20 +1635,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bb3a4a4f45ecf4210800000000000000
-      internalID: 1319500080119849915
+      spriteID: 4a4189f29ffeb7c10800000000000000
+      internalID: 2052497908721783972
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_54
+      name: Ingot_Atlas_56
       rect:
         serializedVersion: 2
-        x: 2098
-        y: 2104
-        width: 411
-        height: 406
+        x: 3073
+        y: 2070
+        width: 508
+        height: 468
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1613,20 +1657,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 06fcd01dc8816bdb0800000000000000
-      internalID: -4776603361698001056
+      spriteID: 64bdf9c8b42b7add0800000000000000
+      internalID: -2474813432665220282
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_55
+      name: Ingot_Atlas_57
       rect:
         serializedVersion: 2
-        x: 2610
-        y: 2104
-        width: 411
-        height: 406
+        x: 3585
+        y: 2070
+        width: 508
+        height: 468
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1635,20 +1679,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: afa94f48d1f1ea140800000000000000
-      internalID: 4732754470058105594
+      spriteID: 6785bfd67db45d300800000000000000
+      internalID: 276210340788394102
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_56
+      name: Ingot_Atlas_58
       rect:
         serializedVersion: 2
-        x: 3123
-        y: 2104
-        width: 411
-        height: 406
+        x: 4098
+        y: 2070
+        width: 508
+        height: 468
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1657,20 +1701,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8d85236b69dab8a70800000000000000
-      internalID: 8830342357203441880
+      spriteID: 2492b598a47a27ca0800000000000000
+      internalID: -6020565813267060414
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_57
+      name: Ingot_Atlas_59
       rect:
         serializedVersion: 2
-        x: 3635
-        y: 2104
-        width: 411
-        height: 406
+        x: 4610
+        y: 2070
+        width: 508
+        height: 468
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1679,20 +1723,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 948955daa5021eff0800000000000000
-      internalID: -8690150450816951
+      spriteID: 2ebe7b1337d070f90800000000000000
+      internalID: -6987601508435498014
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_58
+      name: Ingot_Atlas_60
       rect:
         serializedVersion: 2
-        x: 4148
-        y: 2104
-        width: 411
-        height: 406
+        x: 7
+        y: 1568
+        width: 493
+        height: 448
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1701,20 +1745,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c1b917103ec23d8b0800000000000000
-      internalID: -5128706197151442148
+      spriteID: 0f8c8a84eb5a8f270800000000000000
+      internalID: 8284553751229417712
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_59
+      name: Ingot_Atlas_61
       rect:
         serializedVersion: 2
-        x: 4660
-        y: 2104
-        width: 411
-        height: 406
+        x: 519
+        y: 1568
+        width: 493
+        height: 448
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1723,20 +1767,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8890f25eeb492e640800000000000000
-      internalID: 5107808475001325960
+      spriteID: c49b68a6b60da6e40800000000000000
+      internalID: 5650557842257000780
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_60
+      name: Ingot_Atlas_62
       rect:
         serializedVersion: 2
-        x: 83
-        y: 1577
-        width: 346
-        height: 423
+        x: 1032
+        y: 1568
+        width: 493
+        height: 448
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1745,20 +1789,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a8b203015729efee0800000000000000
-      internalID: -1225381017117774966
+      spriteID: 38aa2d4efbf15dde0800000000000000
+      internalID: -1309105207643035005
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_61
+      name: Ingot_Atlas_63
       rect:
         serializedVersion: 2
-        x: 595
-        y: 1577
-        width: 346
-        height: 423
+        x: 1544
+        y: 1568
+        width: 493
+        height: 448
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1767,20 +1811,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9c936eddac8b20fe0800000000000000
-      internalID: -1224212967245596215
+      spriteID: 763ae9e9e30a25010800000000000000
+      internalID: 1176178643506733927
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_62
+      name: Ingot_Atlas_64
       rect:
         serializedVersion: 2
-        x: 1108
-        y: 1577
-        width: 346
-        height: 423
+        x: 2055
+        y: 1568
+        width: 493
+        height: 448
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1789,20 +1833,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 937b51f360b8ab8b0800000000000000
-      internalID: -5135639566118176967
+      spriteID: 1797fce2ea898a400800000000000000
+      internalID: 335686046116182385
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_63
+      name: Ingot_Atlas_65
       rect:
         serializedVersion: 2
-        x: 1620
-        y: 1577
-        width: 346
-        height: 423
+        x: 2567
+        y: 1568
+        width: 493
+        height: 448
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1811,20 +1855,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: df81770193757f500800000000000000
-      internalID: 429908192038164733
+      spriteID: 94df5fbd31cb3ee00800000000000000
+      internalID: 1072907929725041993
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_64
+      name: Ingot_Atlas_66
       rect:
         serializedVersion: 2
-        x: 2131
-        y: 1577
-        width: 346
-        height: 423
+        x: 3080
+        y: 1568
+        width: 493
+        height: 448
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1833,20 +1877,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 037522d1055d3fec0800000000000000
-      internalID: -3534246742492817616
+      spriteID: cbf5b750cd7af96b0800000000000000
+      internalID: -5287322874083057732
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_65
+      name: Ingot_Atlas_67
       rect:
         serializedVersion: 2
-        x: 2643
-        y: 1577
-        width: 346
-        height: 423
+        x: 3592
+        y: 1567
+        width: 493
+        height: 448
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1855,20 +1899,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cb93af16bc5e10cf0800000000000000
-      internalID: -287696239490090564
+      spriteID: b8bb2fda0e21b7f80800000000000000
+      internalID: -8107865947950105717
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_66
+      name: Ingot_Atlas_68
       rect:
         serializedVersion: 2
-        x: 3156
-        y: 1577
-        width: 346
-        height: 423
+        x: 4105
+        y: 1568
+        width: 493
+        height: 448
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1877,20 +1921,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 24838c0ccc9225ab0800000000000000
-      internalID: -5020904675180267454
+      spriteID: d2530a643d4c9cf30800000000000000
+      internalID: 4596421306410349869
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_67
+      name: Ingot_Atlas_69
       rect:
         serializedVersion: 2
-        x: 3668
-        y: 1577
-        width: 346
-        height: 423
+        x: 4617
+        y: 1568
+        width: 493
+        height: 448
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1899,20 +1943,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 148fdf4188afca480800000000000000
-      internalID: -8886452502334146495
+      spriteID: 6ae35261214faf2c0800000000000000
+      internalID: -4396933727655739738
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_68
+      name: Ingot_Atlas_70
       rect:
         serializedVersion: 2
-        x: 4181
-        y: 1577
-        width: 346
-        height: 423
+        x: 17
+        y: 1036
+        width: 473
+        height: 489
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1921,20 +1965,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 82501a68323f3c980800000000000000
-      internalID: -8519698736146741976
+      spriteID: 707f72c7dde4542b0800000000000000
+      internalID: -5600983848387610873
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_69
+      name: Ingot_Atlas_71
       rect:
         serializedVersion: 2
-        x: 4693
-        y: 1577
-        width: 346
-        height: 423
+        x: 529
+        y: 1036
+        width: 473
+        height: 489
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1943,20 +1987,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fb75f61aa3e452540800000000000000
-      internalID: 4982474576478820287
+      spriteID: 24c446cfadeb3e8b0800000000000000
+      internalID: -5124042103270912958
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_70
+      name: Ingot_Atlas_72
       rect:
         serializedVersion: 2
-        x: 68
-        y: 1057
-        width: 376
-        height: 440
+        x: 1042
+        y: 1036
+        width: 473
+        height: 489
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1965,20 +2009,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 92b47932904587a20800000000000000
-      internalID: 3060288345026808617
+      spriteID: 4ea629b893f7f2ef0800000000000000
+      internalID: -130745979038962972
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_71
+      name: Ingot_Atlas_73
       rect:
         serializedVersion: 2
-        x: 580
-        y: 1057
-        width: 376
-        height: 440
+        x: 1554
+        y: 1036
+        width: 473
+        height: 489
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1987,20 +2031,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0e7aa1deffff7bb00800000000000000
-      internalID: 844424929814947808
+      spriteID: 038085e7e1d6be4e0800000000000000
+      internalID: -1951346035798833104
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_72
+      name: Ingot_Atlas_74
       rect:
         serializedVersion: 2
-        x: 1093
-        y: 1056
-        width: 376
-        height: 440
+        x: 2065
+        y: 1036
+        width: 473
+        height: 489
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2009,20 +2053,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e332bb4c7c3453be0800000000000000
-      internalID: -1498216775752670402
+      spriteID: 6c8777d36eb379d90800000000000000
+      internalID: -7091133228211799866
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_73
+      name: Ingot_Atlas_75
       rect:
         serializedVersion: 2
-        x: 1605
-        y: 1057
-        width: 376
-        height: 440
+        x: 2577
+        y: 1036
+        width: 473
+        height: 489
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2031,20 +2075,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 783d3c68d43ca1270800000000000000
-      internalID: 8222098807459140487
+      spriteID: d8ae83509e0c838a0800000000000000
+      internalID: -6325093569594332531
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_74
+      name: Ingot_Atlas_76
       rect:
         serializedVersion: 2
-        x: 2116
-        y: 1057
-        width: 376
-        height: 440
+        x: 3090
+        y: 1036
+        width: 473
+        height: 489
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2053,20 +2097,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1dd1292ed90274a50800000000000000
-      internalID: 6505204049243151825
+      spriteID: d21425607965dc860800000000000000
+      internalID: 7551787356816294189
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_75
+      name: Ingot_Atlas_77
       rect:
         serializedVersion: 2
-        x: 2628
-        y: 1057
-        width: 376
-        height: 440
+        x: 3602
+        y: 1036
+        width: 473
+        height: 489
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2075,20 +2119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ac072af85a8759d60800000000000000
-      internalID: 7896350174138757322
+      spriteID: 91f968d05ae912b20800000000000000
+      internalID: 3107939649596071705
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_76
+      name: Ingot_Atlas_78
       rect:
         serializedVersion: 2
-        x: 3141
-        y: 1057
-        width: 376
-        height: 440
+        x: 4115
+        y: 1036
+        width: 473
+        height: 489
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2097,20 +2141,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cce0d1acb50bba2f0800000000000000
-      internalID: -960480187234054452
+      spriteID: ff2656e0dcde5d700800000000000000
+      internalID: 564618793270469375
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_77
+      name: Ingot_Atlas_79
       rect:
         serializedVersion: 2
-        x: 3653
-        y: 1057
-        width: 376
-        height: 440
+        x: 4627
+        y: 1036
+        width: 473
+        height: 489
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2119,20 +2163,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d1380a09664b97f00800000000000000
-      internalID: 1115120735357010717
+      spriteID: 8529e0c8e44a6f040800000000000000
+      internalID: 4681109519962378840
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_78
+      name: Ingot_Atlas_80
       rect:
         serializedVersion: 2
-        x: 4166
-        y: 1057
-        width: 376
-        height: 440
+        x: 13
+        y: 581
+        width: 481
+        height: 375
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2141,20 +2185,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 214c80b09cdeeedc0800000000000000
-      internalID: -3607684803747855342
+      spriteID: 45e6595c8da2309d0800000000000000
+      internalID: -2809354632032850348
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_79
+      name: Ingot_Atlas_81
       rect:
         serializedVersion: 2
-        x: 4678
-        y: 1057
-        width: 376
-        height: 440
+        x: 525
+        y: 581
+        width: 481
+        height: 375
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2163,20 +2207,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 80248b4293c89cc00800000000000000
-      internalID: 921421775831056904
+      spriteID: c7158673819eccf50800000000000000
+      internalID: 6903148619070198140
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_80
+      name: Ingot_Atlas_82
       rect:
         serializedVersion: 2
-        x: 56
-        y: 551
-        width: 383
-        height: 430
+        x: 1038
+        y: 581
+        width: 481
+        height: 375
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2185,20 +2229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6ab6cb9cc314e1fa0800000000000000
-      internalID: -5828149138432431194
+      spriteID: 0bb631cc6348709f0800000000000000
+      internalID: -502287462541595728
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_81
+      name: Ingot_Atlas_83
       rect:
         serializedVersion: 2
-        x: 568
-        y: 551
-        width: 383
-        height: 430
+        x: 1550
+        y: 581
+        width: 481
+        height: 375
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2207,20 +2251,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e839899f1d8bf5ac0800000000000000
-      internalID: -3864166743285394546
+      spriteID: 56f763038a5cf7120800000000000000
+      internalID: 2413865251447930725
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_82
+      name: Ingot_Atlas_84
       rect:
         serializedVersion: 2
-        x: 1081
-        y: 551
-        width: 383
-        height: 430
+        x: 2061
+        y: 581
+        width: 481
+        height: 375
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2229,20 +2273,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5eb3e422c4ba3f730800000000000000
-      internalID: 4031754434908142565
+      spriteID: 459ef7b12a860d610800000000000000
+      internalID: 1643928909445589332
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_83
+      name: Ingot_Atlas_85
       rect:
         serializedVersion: 2
-        x: 1593
-        y: 551
-        width: 383
-        height: 430
+        x: 2573
+        y: 581
+        width: 481
+        height: 375
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2251,20 +2295,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a016eba341d8d9850800000000000000
-      internalID: 6385414964705648906
+      spriteID: c682f690da3314150800000000000000
+      internalID: 5855017808838994028
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_84
+      name: Ingot_Atlas_86
       rect:
         serializedVersion: 2
-        x: 2104
-        y: 551
-        width: 383
-        height: 430
+        x: 3086
+        y: 581
+        width: 481
+        height: 375
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2273,20 +2317,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 77a08669001f3d220800000000000000
-      internalID: 2509614402201193079
+      spriteID: a3c02f6f59e818a50800000000000000
+      internalID: 6521650510153518138
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_85
+      name: Ingot_Atlas_87
       rect:
         serializedVersion: 2
-        x: 2616
-        y: 551
-        width: 383
-        height: 430
+        x: 3598
+        y: 581
+        width: 481
+        height: 375
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2295,20 +2339,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 703261f5d83ec0860800000000000000
-      internalID: 7497617675990213383
+      spriteID: 185d22bebbccaf2d0800000000000000
+      internalID: -3244055474091141759
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_86
+      name: Ingot_Atlas_88
       rect:
         serializedVersion: 2
-        x: 3129
-        y: 551
-        width: 383
-        height: 430
+        x: 4111
+        y: 581
+        width: 481
+        height: 375
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2317,20 +2361,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5d5704361744b4790800000000000000
-      internalID: -7544861496941972011
+      spriteID: 686d707d95b4189d0800000000000000
+      internalID: -2773853046251727226
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_87
+      name: Ingot_Atlas_89
       rect:
         serializedVersion: 2
-        x: 3641
-        y: 551
-        width: 383
-        height: 430
+        x: 4623
+        y: 581
+        width: 481
+        height: 375
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2339,20 +2383,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0889cd09b505a7ff0800000000000000
-      internalID: -37629292676605824
+      spriteID: b34eff54f790f7970800000000000000
+      internalID: 8754726642871428155
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_88
+      name: Ingot_Atlas_90
       rect:
         serializedVersion: 2
-        x: 4154
-        y: 551
-        width: 383
-        height: 430
+        x: 2
+        y: 56
+        width: 503
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2361,20 +2405,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 97a13f1278ad9b4f0800000000000000
-      internalID: -812377983838643591
+      spriteID: 3de9f454a747361e0800000000000000
+      internalID: -2205791323983733037
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_89
+      name: Ingot_Atlas_91
       rect:
         serializedVersion: 2
-        x: 4666
-        y: 551
-        width: 383
-        height: 430
+        x: 514
+        y: 56
+        width: 503
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2383,20 +2427,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0b73b65a15cf40390800000000000000
-      internalID: -7852874422629484624
+      spriteID: cc0d55a7e154dcf60800000000000000
+      internalID: 8056171305639465164
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_90
+      name: Ingot_Atlas_92
       rect:
         serializedVersion: 2
-        x: 64
-        y: 95
-        width: 359
-        height: 370
+        x: 1027
+        y: 56
+        width: 503
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2405,20 +2449,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8e436479cd69ff4a0800000000000000
-      internalID: -6557356658253220632
+      spriteID: d596bb86bc71d2880800000000000000
+      internalID: -8634218748196460195
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_91
+      name: Ingot_Atlas_93
       rect:
         serializedVersion: 2
-        x: 576
-        y: 95
-        width: 359
-        height: 370
+        x: 1539
+        y: 56
+        width: 503
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2427,20 +2471,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 12d807ca6767e2d30800000000000000
-      internalID: 4408591337313570081
+      spriteID: 164d42c9db392f720800000000000000
+      internalID: 2878525554420929633
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_92
+      name: Ingot_Atlas_94
       rect:
         serializedVersion: 2
-        x: 1089
-        y: 95
-        width: 359
-        height: 370
+        x: 2050
+        y: 56
+        width: 503
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2449,20 +2493,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 877b146fa5177f2a0800000000000000
-      internalID: -6703764884825196680
+      spriteID: cd7a5bdca1a69a0d0800000000000000
+      internalID: -3411078579403511844
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_93
+      name: Ingot_Atlas_95
       rect:
         serializedVersion: 2
-        x: 1601
-        y: 95
-        width: 359
-        height: 370
+        x: 2562
+        y: 56
+        width: 503
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2471,20 +2515,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bcddc1d323ce33980800000000000000
-      internalID: -8560238766183359029
+      spriteID: fdf96c27113b4f0c0800000000000000
+      internalID: -4542809236588552225
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_94
+      name: Ingot_Atlas_96
       rect:
         serializedVersion: 2
-        x: 2112
-        y: 95
-        width: 359
-        height: 370
+        x: 3075
+        y: 56
+        width: 503
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2493,20 +2537,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1ad944d5ed6361ba0800000000000000
-      internalID: -6118642715060822623
+      spriteID: 328a1fc99b2aca300800000000000000
+      internalID: 264765396193749027
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_95
+      name: Ingot_Atlas_97
       rect:
         serializedVersion: 2
-        x: 2624
-        y: 95
-        width: 359
-        height: 370
+        x: 3587
+        y: 56
+        width: 503
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2515,20 +2559,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4f7b88982d0407b40800000000000000
-      internalID: 5435916023230937076
+      spriteID: e072c149afc2a6080800000000000000
+      internalID: -9193486234585127154
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_96
+      name: Ingot_Atlas_98
       rect:
         serializedVersion: 2
-        x: 3137
-        y: 95
-        width: 359
-        height: 370
+        x: 4100
+        y: 56
+        width: 503
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2537,20 +2581,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 843fcd2b58cc74a50800000000000000
-      internalID: 6505393061363512136
+      spriteID: 5cc298518ec235bf0800000000000000
+      internalID: -336876171817308987
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ore_Atlas_97
+      name: Ingot_Atlas_99
       rect:
         serializedVersion: 2
-        x: 3649
-        y: 95
-        width: 359
-        height: 370
+        x: 4612
+        y: 56
+        width: 503
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2559,52 +2603,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 607c2d367b32b5690800000000000000
-      internalID: -7612451474578946298
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ore_Atlas_98
-      rect:
-        serializedVersion: 2
-        x: 4162
-        y: 95
-        width: 359
-        height: 370
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 44a5934b135703490800000000000000
-      internalID: -7768580500876600764
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ore_Atlas_99
-      rect:
-        serializedVersion: 2
-        x: 4674
-        y: 95
-        width: 359
-        height: 370
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fb7ad980848cbc230800000000000000
-      internalID: 3660239333876410303
+      spriteID: 3f7fa1396be1ff8f0800000000000000
+      internalID: -504650863741306893
       vertices: []
       indices: 
       edges: []
@@ -2623,106 +2623,106 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Ore_Atlas_0: 7820905923391345545
-      Ore_Atlas_1: 3823796060889903524
-      Ore_Atlas_10: 6630820732098305681
-      Ore_Atlas_11: 3134224210375033781
-      Ore_Atlas_12: 1160809305625320999
-      Ore_Atlas_13: -2378474063558198536
-      Ore_Atlas_14: 5725364665942933221
-      Ore_Atlas_15: 2688707185307781999
-      Ore_Atlas_16: -7019663373282665737
-      Ore_Atlas_17: 7596041989571635809
-      Ore_Atlas_18: -2187163401176150125
-      Ore_Atlas_19: -5457511684506822206
-      Ore_Atlas_2: 8402997514552301460
-      Ore_Atlas_20: -8896395025177074065
-      Ore_Atlas_21: 3265609578105065361
-      Ore_Atlas_22: 6829623539266100133
-      Ore_Atlas_23: -2624131149461154216
-      Ore_Atlas_24: 7954349266188795137
-      Ore_Atlas_25: -5642446695444474995
-      Ore_Atlas_26: -3391010415598755942
-      Ore_Atlas_27: 1407890035969995181
-      Ore_Atlas_28: -8556259462195262545
-      Ore_Atlas_29: 1086703527001717920
-      Ore_Atlas_3: 7028327140335561317
-      Ore_Atlas_30: 2684707666697233627
-      Ore_Atlas_31: 8184975792496011401
-      Ore_Atlas_32: -183302509978729899
-      Ore_Atlas_33: -3827159504219881934
-      Ore_Atlas_34: -2116503137660498378
-      Ore_Atlas_35: 8226424972765110147
-      Ore_Atlas_36: -6926982758031127732
-      Ore_Atlas_37: -7119355050831050826
-      Ore_Atlas_38: -8404957345055240986
-      Ore_Atlas_39: 411408940882930444
-      Ore_Atlas_4: -874798224281671996
-      Ore_Atlas_40: 5843654083567054841
-      Ore_Atlas_41: -8420549028450856512
-      Ore_Atlas_42: -1710315339493669188
-      Ore_Atlas_43: 6965692655985278426
-      Ore_Atlas_44: -5131001532064031433
-      Ore_Atlas_45: -5131825623253836381
-      Ore_Atlas_46: -297978522046505479
-      Ore_Atlas_47: 3685726826961632100
-      Ore_Atlas_48: 3796703817170755422
-      Ore_Atlas_49: -2880914640314003074
-      Ore_Atlas_5: -4318982718657834204
-      Ore_Atlas_50: -4977501901593438977
-      Ore_Atlas_51: 6774075122824636187
-      Ore_Atlas_52: 628163960137732175
-      Ore_Atlas_53: 1319500080119849915
-      Ore_Atlas_54: -4776603361698001056
-      Ore_Atlas_55: 4732754470058105594
-      Ore_Atlas_56: 8830342357203441880
-      Ore_Atlas_57: -8690150450816951
-      Ore_Atlas_58: -5128706197151442148
-      Ore_Atlas_59: 5107808475001325960
-      Ore_Atlas_6: -7037759193644218188
-      Ore_Atlas_60: -1225381017117774966
-      Ore_Atlas_61: -1224212967245596215
-      Ore_Atlas_62: -5135639566118176967
-      Ore_Atlas_63: 429908192038164733
-      Ore_Atlas_64: -3534246742492817616
-      Ore_Atlas_65: -287696239490090564
-      Ore_Atlas_66: -5020904675180267454
-      Ore_Atlas_67: -8886452502334146495
-      Ore_Atlas_68: -8519698736146741976
-      Ore_Atlas_69: 4982474576478820287
-      Ore_Atlas_7: -6420461093913611261
-      Ore_Atlas_70: 3060288345026808617
-      Ore_Atlas_71: 844424929814947808
-      Ore_Atlas_72: -1498216775752670402
-      Ore_Atlas_73: 8222098807459140487
-      Ore_Atlas_74: 6505204049243151825
-      Ore_Atlas_75: 7896350174138757322
-      Ore_Atlas_76: -960480187234054452
-      Ore_Atlas_77: 1115120735357010717
-      Ore_Atlas_78: -3607684803747855342
-      Ore_Atlas_79: 921421775831056904
-      Ore_Atlas_8: 541167687739256220
-      Ore_Atlas_80: -5828149138432431194
-      Ore_Atlas_81: -3864166743285394546
-      Ore_Atlas_82: 4031754434908142565
-      Ore_Atlas_83: 6385414964705648906
-      Ore_Atlas_84: 2509614402201193079
-      Ore_Atlas_85: 7497617675990213383
-      Ore_Atlas_86: -7544861496941972011
-      Ore_Atlas_87: -37629292676605824
-      Ore_Atlas_88: -812377983838643591
-      Ore_Atlas_89: -7852874422629484624
-      Ore_Atlas_9: 833645633004685880
-      Ore_Atlas_90: -6557356658253220632
-      Ore_Atlas_91: 4408591337313570081
-      Ore_Atlas_92: -6703764884825196680
-      Ore_Atlas_93: -8560238766183359029
-      Ore_Atlas_94: -6118642715060822623
-      Ore_Atlas_95: 5435916023230937076
-      Ore_Atlas_96: 6505393061363512136
-      Ore_Atlas_97: -7612451474578946298
-      Ore_Atlas_98: -7768580500876600764
-      Ore_Atlas_99: 3660239333876410303
+      Ingot_Atlas_0: -7795363881259474946
+      Ingot_Atlas_1: -2643760491537033724
+      Ingot_Atlas_10: -2676273732821293987
+      Ingot_Atlas_11: 7100454657400318274
+      Ingot_Atlas_12: 9202590150349409189
+      Ingot_Atlas_13: -914523827995298538
+      Ingot_Atlas_14: 641274922336219866
+      Ingot_Atlas_15: -5377607013623847601
+      Ingot_Atlas_16: 4092093450455253871
+      Ingot_Atlas_17: 6574943494755698187
+      Ingot_Atlas_18: 4730399559925852662
+      Ingot_Atlas_19: 5671674673012459969
+      Ingot_Atlas_2: -1288240943580309901
+      Ingot_Atlas_20: 6706537656054524683
+      Ingot_Atlas_21: 8039230270470870807
+      Ingot_Atlas_22: 4471430952926370150
+      Ingot_Atlas_23: -5827613641321762814
+      Ingot_Atlas_24: 5875940012543247306
+      Ingot_Atlas_25: 8606800612008418105
+      Ingot_Atlas_26: 2724892669904641438
+      Ingot_Atlas_27: 2202237861632297118
+      Ingot_Atlas_28: 6656673129763904889
+      Ingot_Atlas_29: -3001616802563953934
+      Ingot_Atlas_3: -7150655590655086274
+      Ingot_Atlas_30: -3960478844305403194
+      Ingot_Atlas_31: -4745990332622288462
+      Ingot_Atlas_32: -5738027586760848597
+      Ingot_Atlas_33: 7692747651671993150
+      Ingot_Atlas_34: 897806953245178420
+      Ingot_Atlas_35: 715609470613263808
+      Ingot_Atlas_36: 3637924023692063238
+      Ingot_Atlas_37: -4486725582435810674
+      Ingot_Atlas_38: 9073585799300919509
+      Ingot_Atlas_39: -6491136850343446017
+      Ingot_Atlas_4: 7273804822521052303
+      Ingot_Atlas_40: -5005603782718153779
+      Ingot_Atlas_41: -8133222507851253824
+      Ingot_Atlas_42: -8886223022174076821
+      Ingot_Atlas_43: -44837147970486911
+      Ingot_Atlas_44: -6839715025890191947
+      Ingot_Atlas_45: -8141770314944011402
+      Ingot_Atlas_46: 8965230026742571895
+      Ingot_Atlas_47: -7388316349257353834
+      Ingot_Atlas_48: -4642953922209355708
+      Ingot_Atlas_49: 4341688398258309344
+      Ingot_Atlas_5: -7992450690253906582
+      Ingot_Atlas_50: -5033248969457000342
+      Ingot_Atlas_51: -2787204863317893763
+      Ingot_Atlas_52: 3007916528098025189
+      Ingot_Atlas_53: 1251817318341430424
+      Ingot_Atlas_54: -1693854309895157740
+      Ingot_Atlas_55: 2052497908721783972
+      Ingot_Atlas_56: -2474813432665220282
+      Ingot_Atlas_57: 276210340788394102
+      Ingot_Atlas_58: -6020565813267060414
+      Ingot_Atlas_59: -6987601508435498014
+      Ingot_Atlas_6: 6500151337436090292
+      Ingot_Atlas_60: 8284553751229417712
+      Ingot_Atlas_61: 5650557842257000780
+      Ingot_Atlas_62: -1309105207643035005
+      Ingot_Atlas_63: 1176178643506733927
+      Ingot_Atlas_64: 335686046116182385
+      Ingot_Atlas_65: 1072907929725041993
+      Ingot_Atlas_66: -5287322874083057732
+      Ingot_Atlas_67: -8107865947950105717
+      Ingot_Atlas_68: 4596421306410349869
+      Ingot_Atlas_69: -4396933727655739738
+      Ingot_Atlas_7: 2149103271335678714
+      Ingot_Atlas_70: -5600983848387610873
+      Ingot_Atlas_71: -5124042103270912958
+      Ingot_Atlas_72: -130745979038962972
+      Ingot_Atlas_73: -1951346035798833104
+      Ingot_Atlas_74: -7091133228211799866
+      Ingot_Atlas_75: -6325093569594332531
+      Ingot_Atlas_76: 7551787356816294189
+      Ingot_Atlas_77: 3107939649596071705
+      Ingot_Atlas_78: 564618793270469375
+      Ingot_Atlas_79: 4681109519962378840
+      Ingot_Atlas_8: 7562958788069766771
+      Ingot_Atlas_80: -2809354632032850348
+      Ingot_Atlas_81: 6903148619070198140
+      Ingot_Atlas_82: -502287462541595728
+      Ingot_Atlas_83: 2413865251447930725
+      Ingot_Atlas_84: 1643928909445589332
+      Ingot_Atlas_85: 5855017808838994028
+      Ingot_Atlas_86: 6521650510153518138
+      Ingot_Atlas_87: -3244055474091141759
+      Ingot_Atlas_88: -2773853046251727226
+      Ingot_Atlas_89: 8754726642871428155
+      Ingot_Atlas_9: 4329401428078364952
+      Ingot_Atlas_90: -2205791323983733037
+      Ingot_Atlas_91: 8056171305639465164
+      Ingot_Atlas_92: -8634218748196460195
+      Ingot_Atlas_93: 2878525554420929633
+      Ingot_Atlas_94: -3411078579403511844
+      Ingot_Atlas_95: -4542809236588552225
+      Ingot_Atlas_96: 264765396193749027
+      Ingot_Atlas_97: -9193486234585127154
+      Ingot_Atlas_98: -336876171817308987
+      Ingot_Atlas_99: -504650863741306893
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

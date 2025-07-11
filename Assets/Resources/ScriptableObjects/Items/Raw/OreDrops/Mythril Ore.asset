@@ -15,4 +15,4 @@ MonoBehaviour:
   _name: Mythril Ore
   _id: I20
   _type: 0
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 2756712652034502478, guid: dea98d5745efd1844b6112d4b468c90d, type: 3}

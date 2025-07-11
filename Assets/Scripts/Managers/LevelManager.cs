@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
@@ -25,6 +26,14 @@ public class LevelManager : MonoBehaviour
     {
         LoadLevel(_config);
         StartCoroutine(EndLevel());
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
     }
 
     private void LoadLevel(LevelConfig config)
@@ -66,9 +75,16 @@ public class LevelManager : MonoBehaviour
 
         // Initialize enemy spawners
         EnemySpawner[] enemySpawners = map.GetComponentsInChildren<EnemySpawner>(true);
+        GameObject[] patrolCenters = GameObject.FindGameObjectsWithTag("PatrolCenter");
+        List<Transform> positionsToSpawn = new();
+        for (int i = 0; i < patrolCenters.Length; i++)
+        {
+            positionsToSpawn.Add(patrolCenters[i].transform);
+        }
+
         for (int i = 0; i < enemySpawners.Length; i++)
         {
-            enemySpawners[i].Initialize(_config.Enemies);
+            enemySpawners[i].Initialize(_config.Enemies, positionsToSpawn);
         }
 
         _score = 0;
