@@ -6,11 +6,12 @@ public class GridCellObject : MonoBehaviour
     [Header("Component")]
     private bool _debug = false;
     private bool _isOverlaped = false;
+    public bool IsOverlaped => _isOverlaped;
     public delegate void OnOverlapBox(int x, int y, bool overlaped);
     private event OnOverlapBox OverlapBox;
     [Header("Non Walkable Tags / Layers")]
-    [SerializeField] private LayerMask _nonWalkableLayers;
-    [SerializeField] private string[] _nonWalkableTags;
+    [SerializeField] private LayerMask _collisionLayers;
+    [SerializeField] private string[] _collisionTags;
     [Header("Node Preference")]
     private int _x;
     private int _y;
@@ -27,8 +28,8 @@ public class GridCellObject : MonoBehaviour
         _y = y;
         _cellSize = cellSize;
         OverlapBox = overlaped;
-        _nonWalkableTags = overlapTags ?? new string[0];
-        _nonWalkableLayers = overlapLayerMasks != default ? overlapLayerMasks : _nonWalkableLayers;
+        _collisionTags = overlapTags ?? new string[0];
+        _collisionLayers = overlapLayerMasks != default ? overlapLayerMasks : _collisionLayers;
 
         HandleOverlap();
     }
@@ -39,11 +40,16 @@ public class GridCellObject : MonoBehaviour
             transform.position,
             new(_cellSize, _cellSize),
             0,
-            _nonWalkableLayers);
+            _collisionLayers);
 
-        _isOverlaped = !(hit == null || !_nonWalkableTags.Contains(hit.tag));
+        _isOverlaped = !(hit == null || !_collisionTags.Contains(hit.tag));
     
         OverlapBox?.Invoke(_x, _y, _isOverlaped);
+    }
+
+    public void RegisterOnOverlapBox(OnOverlapBox func)
+    {
+        OverlapBox += func;
     }
 
     public void SetDebug(bool debug)
