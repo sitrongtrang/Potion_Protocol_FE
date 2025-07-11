@@ -47,7 +47,8 @@ public class PlayerInventory : IComponent
         {
             // Drop the item into the world at player's position
             ItemConfig itemToDrop = items[_choosingSlot];
-            Vector3 dropPosition = _player.transform.position + _player.transform.forward;
+            Vector2 playerPos = _player.transform.position;
+            Vector2 dropPosition = playerPos + 0.5f * Vector2.down;
 
             ItemPool.Instance.SpawnItem(itemToDrop, dropPosition);
 
