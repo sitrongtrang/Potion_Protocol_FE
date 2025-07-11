@@ -3,158 +3,259 @@ using UnityEngine;
 
 public class GridBuilder : MonoBehaviour
 {
-
+    [Header("Settings")]
     [SerializeField] private GridCellObject _gridCellObjectPrefab;
-
-    [SerializeField] private bool _isDebug = false;
-    private bool _lastIsDebug = false;
-    public event System.Action<bool> OnDebugChanged;
-
-    [Header("Attributes")]
-    private GridCellObject[,] _gridCellObjects;
-    private HashSet<int> _gridCellObjectIndicesOverlap = new();
-    public HashSet<int> GridCellObjectIndicesOverlap => _gridCellObjectIndicesOverlap;
-    private HashSet<int> _gridCellObjectIndicesNotOverlap = new();
-    public HashSet<int> GridCellObjectIndicesNotOverlap => _gridCellObjectIndicesNotOverlap;
-
-    [Header("Cache")]
-    private int _xDim, _yDim;
-    private float _cellSize;
-    private Vector2 _originPosition;
-    private string[] _overlapTags;
-    private LayerMask _overlapLayerMasks;
-    private GridCellObject.OnOverlapBox _overlapBoxCache;
-    private GameObject _gridMap;
-
-    private void OnValidate()
-    {
-        if (_lastIsDebug != _isDebug)
-        {
-            _lastIsDebug = _isDebug;
-            OnDebugChanged?.Invoke(_isDebug);
-        }
-    }
-    public void BuildGridFirstCheck(
-        string objName,
-        int xDim,
-        int yDim,
-        float cellSize,
-        Vector2 originPosition,
-        string[] overlapTags,
-        LayerMask overlapLayerMasks,
-        GridCellObject.OnOverlapBox onOverlapBox = null,
-        Transform parent = null
-        )
-    {
-        _originPosition = originPosition;
-        _cellSize = cellSize;
-        _xDim = xDim;
-        _yDim = yDim;
-        _overlapTags = overlapTags;
-        _overlapLayerMasks = overlapLayerMasks;
-        
-        onOverlapBox += (ix, iy, isoverlap) =>
-        {
-            int index = ix * yDim + iy;
-            if (isoverlap)
-            {
-                _gridCellObjectIndicesOverlap.Add(index);
-                _gridCellObjectIndicesNotOverlap.Remove(index);
-            }
-            else
-            {
-                _gridCellObjectIndicesOverlap.Remove(index);
-                _gridCellObjectIndicesNotOverlap.Add(index);
-            }
-        };
-        _overlapBoxCache ??= onOverlapBox;
-
-        _gridMap = new(objName);
-        _gridMap.transform.SetParent(parent);
-        _gridMap.transform.localPosition = Vector2.zero;
-
-        _gridCellObjects = new GridCellObject[xDim, yDim];
-        OnDebugChanged = null;
-        for (int x = 0; x < xDim; x++)
-        {
-            for (int y = 0; y < yDim; y++)
-            {
-                GridCellObject gridGameObject = Instantiate(_gridCellObjectPrefab, _gridMap.transform);
-                gridGameObject.transform.position = originPosition + new Vector2(x, y) * cellSize;
-
-                gridGameObject.Initialize(this, x, y, cellSize, overlapTags, overlapLayerMasks, onOverlapBox);
-
-                // _gridCellObjects[x, y] = gridGameObject;
-
-                OnDebugChanged += gridGameObject.SetDebug;
-            }
-        }
-    }
-
-    public void SetCellNull(int x, int y)
-    {
-        _gridCellObjects[x, y] = null;
-    }
+    [SerializeField] private float _defaultCellLifetime = 10f;
+    [SerializeField] private bool _debug = false;
     
-    private GridCellObject MakeGridCell(int x, int y)
+    [Header("Pooling")]
+    [SerializeField] private int _initialPoolSize = 100;
+    [SerializeField] private int _poolExpandSize = 50;
+
+    // Public properties
+    public float DefaultCellLifetime => _defaultCellLifetime;
+    public HashSet<int> OverlappedCellIndices { get; } = new HashSet<int>();
+    public HashSet<int> WalkableCellIndices { get; } = new HashSet<int>();
+
+    // Private fields
+    private GridCellObject[,] _grid;
+    private int _width, _height;
+    private float _cellSize;
+    private Vector2 _origin;
+    private string[] _overlapTags;
+    private LayerMask _overlapLayers;
+    private GameObject _gridContainer;
+    private GridCellObject.OnOverlapBox _onOverlapBox;
+    private Queue<GridCellObject> _cellPool = new Queue<GridCellObject>();
+    private bool _lastDebugState;
+
+    #region INITIALIZATION
+    public void InitializeGrid(
+        string gridName,
+        int width, int height,
+        float cellSize,
+        Vector2 origin,
+        string[] overlapTags,
+        LayerMask overlapLayers,
+        GridCellObject.OnOverlapBox onOverlapBox,
+        Transform parent = null)
     {
-        if (_gridCellObjects[x, y] == null)
+        // Clear existing grid
+        ClearGrid();
+
+        // Store settings
+        _width = width;
+        _height = height;
+        _cellSize = cellSize;
+        _origin = origin;
+        _overlapTags = overlapTags;
+        _overlapLayers = overlapLayers;
+        if (_onOverlapBox == null)
         {
-            _gridCellObjects[x, y] = Instantiate(_gridCellObjectPrefab, _gridMap.transform);
-            _gridCellObjects[x, y].transform.position = _originPosition + new Vector2(x, y) * _cellSize;
-
-            _gridCellObjects[x, y].Initialize(this, x, y, _cellSize, _overlapTags, _overlapLayerMasks, _overlapBoxCache, 10f);
-
-            OnDebugChanged += _gridCellObjects[x, y].SetDebug;
+            _onOverlapBox = onOverlapBox;
+            _onOverlapBox += HandleCellOverlapChanged;
         }
-        return _gridCellObjects[x, y];
-    }
 
-    public List<GridCellObject> GetOverlapGridCellObjects(Vector2 centerWorldPosition, float xSizeInFloat = 0, float ySizeInFloat = 0)
-    {
-        int xCenter = Mathf.FloorToInt((centerWorldPosition.x - _originPosition.x) / _cellSize);
-        int yCenter = Mathf.FloorToInt((centerWorldPosition.y - _originPosition.y) / _cellSize);
+        // Create container
+        _gridContainer = new GameObject(gridName);
+        _gridContainer.transform.SetParent(parent);
+        _gridContainer.transform.position = Vector3.zero;
 
-        int xRadius = Mathf.CeilToInt(xSizeInFloat / (_cellSize * 2));
-        int yRadius = Mathf.CeilToInt(ySizeInFloat / (_cellSize * 2));
+        // Initialize grid and pool
+        _grid = new GridCellObject[width, height];
+        PrewarmPool(_initialPoolSize);
 
-        int xMin = Mathf.Max(0, xCenter - xRadius);
-        int xMax = Mathf.Min(_xDim - 1, xCenter + xRadius);
-        int yMin = Mathf.Max(0, yCenter - yRadius);
-        int yMax = Mathf.Min(_yDim - 1, yCenter + yRadius);
-
-        var result = new List<GridCellObject>();
-        for (int x = xMin; x <= xMax; x++)
+        // Create initial grid
+        for (int x = 0; x < width; x++)
         {
-            for (int y = yMin; y <= yMax; y++)
+            for (int y = 0; y < height; y++)
             {
-                result.Add(MakeGridCell(x, y));
+                GetCell(x, y);
             }
         }
-        return result;
     }
 
-    public GridCellObject GetCellObject(int x, int y)
+    private void PrewarmPool(int count)
     {
-        if (x < 0 || y < 0 || x >= _xDim || y >= _yDim) return null;
-        return MakeGridCell(x, y);
+        for (int i = 0; i < count; i++)
+        {
+            CreatePooledCell();
+        }
     }
 
-    public GridCellObject GetRandomNotOverlapCell()
+    private GridCellObject CreatePooledCell()
     {
-        int randIndex = Random.Range(0, _gridCellObjectIndicesNotOverlap.Count);
+        var cell = Instantiate(_gridCellObjectPrefab, _gridContainer.transform);
+        cell.gameObject.SetActive(false);
+        _cellPool.Enqueue(cell);
+        return cell;
+    }
+    #endregion
+
+    #region CELL MANAGEMENT
+    public GridCellObject GetCell(int x, int y)
+    {
+        if (!IsValidGridPosition(x, y)) return null;
+
+        // Return existing cell if available
+        if (_grid[x, y] != null)
+        {
+            _grid[x, y].SetAccessed(true);
+            return _grid[x, y];
+        }
+
+        // Get or create new cell
+        var cell = GetCellFromPool();
+        cell.Initialize(
+            this, x, y, _cellSize,
+            _overlapTags, _overlapLayers,
+            _onOverlapBox,
+            _defaultCellLifetime);
+        
+        _grid[x, y] = cell;
+        return cell;
+    }
+
+    private GridCellObject GetCellFromPool()
+    {
+        if (_cellPool.Count == 0)
+        {
+            PrewarmPool(_poolExpandSize);
+        }
+        
+        var cell = _cellPool.Dequeue();
+        cell.gameObject.SetActive(true);
+        return cell;
+    }
+
+    public void ReturnCellToPool(GridCellObject cell)
+    {
+        if (cell == null) return;
+
+        var pos = cell.GridPosition;
+        if (IsValidGridPosition(pos.x, pos.y))
+        {
+            _grid[pos.x, pos.y] = null;
+        }
+
+        cell.ResetCell();
+        _cellPool.Enqueue(cell);
+    }
+
+    private void HandleCellOverlapChanged(int x, int y, bool isOverlapped)
+    {
+        int index = x * _height + y;
+        
+        if (isOverlapped)
+        {
+            OverlappedCellIndices.Add(index);
+            WalkableCellIndices.Remove(index);
+        }
+        else
+        {
+            OverlappedCellIndices.Remove(index);
+            WalkableCellIndices.Add(index);
+        }
+    }
+    #endregion
+
+    #region GRID OPERATIONS
+    public Vector2 GetWorldPosition(int x, int y)
+    {
+        return _origin + new Vector2(x * _cellSize, y * _cellSize);
+    }
+
+    public List<GridCellObject> GetCellsInArea(Vector2 center, Vector2 size)
+    {
+        var results = new List<GridCellObject>();
+        
+        int minX = Mathf.FloorToInt((center.x - size.x/2 - _origin.x) / _cellSize);
+        int maxX = Mathf.CeilToInt((center.x + size.x/2 - _origin.x) / _cellSize);
+        int minY = Mathf.FloorToInt((center.y - size.y/2 - _origin.y) / _cellSize);
+        int maxY = Mathf.CeilToInt((center.y + size.y/2 - _origin.y) / _cellSize);
+
+        minX = Mathf.Max(0, minX);
+        maxX = Mathf.Min(_width - 1, maxX);
+        minY = Mathf.Max(0, minY);
+        maxY = Mathf.Min(_height - 1, maxY);
+
+        for (int x = minX; x <= maxX; x++)
+        {
+            for (int y = minY; y <= maxY; y++)
+            {
+                results.Add(GetCell(x, y));
+            }
+        }
+
+        return results;
+    }
+
+    public GridCellObject GetRandomWalkableCell()
+    {
+        if (WalkableCellIndices.Count == 0) return null;
+
+        int randomIndex = Random.Range(0, WalkableCellIndices.Count);
         int i = 0;
-        foreach (int index in _gridCellObjectIndicesNotOverlap)
+        
+        foreach (int index in WalkableCellIndices)
         {
-            if (i == randIndex)
+            if (i++ == randomIndex)
             {
-                int x = index / _yDim;
-                int y = index % _yDim;
-                return GetCellObject(x, y);
+                int x = index / _height;
+                int y = index % _height;
+                return GetCell(x, y);
             }
-            i++;
         }
+
         return null;
     }
 
+    public void ReleaseCell(GridCellObject cell)
+    {
+        if (cell != null)
+        {
+            cell.SetAccessed(false);
+        }
+    }
+
+    public void ClearGrid()
+    {
+        if (_grid == null) return;
+
+        for (int x = 0; x < _width; x++)
+        {
+            for (int y = 0; y < _height; y++)
+            {
+                if (_grid[x, y] != null)
+                {
+                    ReturnCellToPool(_grid[x, y]);
+                }
+            }
+        }
+
+        if (_gridContainer != null)
+        {
+            Destroy(_gridContainer);
+        }
+
+        OverlappedCellIndices.Clear();
+        WalkableCellIndices.Clear();
+    }
+    #endregion
+
+    #region UTILITY
+    private bool IsValidGridPosition(int x, int y)
+    {
+        return x >= 0 && x < _width && y >= 0 && y < _height;
+    }
+
+    private void OnValidate()
+    {
+        if (_lastDebugState != _debug)
+        {
+            _lastDebugState = _debug;
+            // Notify cells of debug state change
+        }
+    }
+    #endregion
 }
