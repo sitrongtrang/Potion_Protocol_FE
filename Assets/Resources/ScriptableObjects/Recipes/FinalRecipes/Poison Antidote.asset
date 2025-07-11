@@ -15,7 +15,7 @@ MonoBehaviour:
   _id: R2
   _craftingTime: 5
   _type: 1
-  _product: {fileID: 0}
+  _product: {fileID: 11400000, guid: fdbfe30952204114db6d9cae4a77463f, type: 2}
   _inputs:
   - {fileID: 11400000, guid: c3bc7da12f0b7f843a16f7ea9c4e04bc, type: 2}
   - {fileID: 11400000, guid: 4531a1ebf57daf24da65a304c3defee6, type: 2}
