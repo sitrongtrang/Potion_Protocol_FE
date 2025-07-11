@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,32 @@ public class LevelManager : MonoBehaviour
     public static LevelManager Instance { get; private set; }
     [SerializeField] LevelConfig _config;
     private static Pathfinding _pathfinding;
-    private int _score;
+    private int _score = 0;
+    public int Score
+    {
+        get => _score;
+        set
+        {
+            int oldScore = _score;
+            _score = value;
+            if (value != oldScore) OnScoreChanged?.Invoke();
+            if (value >= _config.ScoreThresholds[_stars]) Stars++;
+        }
+    }
+    private int _stars = 0;
+    public int Stars
+    {
+        get => _stars;
+        set
+        {
+            int oldStars = _stars;
+            _stars = value;
+            if (value != oldStars) OnStarGained?.Invoke();
+        }
+    }
+
+    public event Action OnScoreChanged;
+    public event Action OnStarGained;
     public bool IsPaused { get; private set; }
     private void Awake()
     {
@@ -86,32 +112,18 @@ public class LevelManager : MonoBehaviour
         {
             enemySpawners[i].Initialize(_config.Enemies, positionsToSpawn);
         }
-
-        _score = 0;
     }
 
     private IEnumerator EndLevel()
     {
         yield return new WaitForSeconds(_config.LevelTime);
-        EvaluateResult();
         TogglePause();
-    }
-
-    private void EvaluateResult()
-    {
-        int stars = 0;
-        for (int i = 0; i < _config.ScoreThresholds.Length; i++)
-        {
-            if (_config.ScoreThresholds[i] > _score) stars = i;
-            return;
-        }
-        stars = _config.ScoreThresholds.Length;
     }
 
     public void TogglePause()
     {
         IsPaused = !IsPaused;
-        Time.timeScale = IsPaused? 0f : 1f;
+        Time.timeScale = IsPaused ? 0f : 1f;
     }
 
     private (int, int, float, Vector2) GetMapParameters(GameObject mapGameobject)
