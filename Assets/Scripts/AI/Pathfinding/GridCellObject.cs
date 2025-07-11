@@ -27,7 +27,7 @@ public class GridCellObject : MonoBehaviour
         _y = y;
         _cellSize = cellSize;
         OverlapBox = overlaped;
-        _nonWalkableTags = overlapTags ?? _nonWalkableTags;
+        _nonWalkableTags = overlapTags ?? new string[0];
         _nonWalkableLayers = overlapLayerMasks != default ? overlapLayerMasks : _nonWalkableLayers;
 
         HandleOverlap();
