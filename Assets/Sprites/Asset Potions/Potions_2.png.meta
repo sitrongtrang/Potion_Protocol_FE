@@ -146,7 +146,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ChatGPT_Image_16_35_08_10_thg_7__2025-removebg-preview_0
+      name: Potions_2_0
       rect:
         serializedVersion: 2
         x: 38
@@ -161,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20eba5cfe6bbed647a7550112e9f3726
-      internalID: -825274363
+      spriteID: 6629de270985ed1408fe469cc8875bb0
+      internalID: -1193097374
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChatGPT_Image_16_35_08_10_thg_7__2025-removebg-preview_1
+      name: Potions_2_1
       rect:
         serializedVersion: 2
         x: 164
@@ -183,14 +183,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fdf552f4e6ed074a8db8ccfd4cef457
-      internalID: 561589390
+      spriteID: 47c7dfa3be5a051458f6b91bc3525a27
+      internalID: 1257661490
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChatGPT_Image_16_35_08_10_thg_7__2025-removebg-preview_2
+      name: Potions_2_2
       rect:
         serializedVersion: 2
         x: 286
@@ -205,14 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 828d72dcbfd9b7248a7f2c3d24a737f0
-      internalID: -1072779599
+      spriteID: 543c6daf1c54721439a391e5f57dc7e1
+      internalID: -2001813016
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChatGPT_Image_16_35_08_10_thg_7__2025-removebg-preview_3
+      name: Potions_2_3
       rect:
         serializedVersion: 2
         x: 37
@@ -227,14 +227,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a40baf3982d9a7b42ae10333d9422ffc
-      internalID: -485888291
+      spriteID: 3fab4ccac172e8147b77c02c383c6415
+      internalID: 1420443035
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChatGPT_Image_16_35_08_10_thg_7__2025-removebg-preview_4
+      name: Potions_2_4
       rect:
         serializedVersion: 2
         x: 165
@@ -249,14 +249,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4e80edcd32b2404cb99b0e566c45c2b
-      internalID: 1298278705
+      spriteID: 92179203534a5e340b980adb663de3e9
+      internalID: -1789503690
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChatGPT_Image_16_35_08_10_thg_7__2025-removebg-preview_5
+      name: Potions_2_5
       rect:
         serializedVersion: 2
         x: 286
@@ -271,14 +271,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cfa78c9598834f4449227277004a9b91
-      internalID: 450508817
+      spriteID: 13d780c04678cfe43b43b0e488bbdf14
+      internalID: -1180023050
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChatGPT_Image_16_35_08_10_thg_7__2025-removebg-preview_6
+      name: Potions_2_6
       rect:
         serializedVersion: 2
         x: 38
@@ -293,14 +293,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0162091e8f66eaf4c83e7f6f4c5769f8
-      internalID: 780161136
+      spriteID: daea7148aa82f2a498cc50a33d707ed7
+      internalID: 1367569893
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChatGPT_Image_16_35_08_10_thg_7__2025-removebg-preview_7
+      name: Potions_2_7
       rect:
         serializedVersion: 2
         x: 164
@@ -315,14 +315,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e21695402f1744f44a88980bf40ffa25
-      internalID: 808685439
+      spriteID: a8607ba00de426d4b8d85f2de16a6fe9
+      internalID: -1435176141
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChatGPT_Image_16_35_08_10_thg_7__2025-removebg-preview_8
+      name: Potions_2_8
       rect:
         serializedVersion: 2
         x: 286
@@ -331,20 +331,20 @@ TextureImporter:
         height: 124
       alignment: 0
       pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 1}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e31c66273486f8547be6f12c28832336
-      internalID: 96944540
+      spriteID: 2c9de36ea9dfbf14daccd0d02f551dc7
+      internalID: -1361308805
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChatGPT_Image_16_35_08_10_thg_7__2025-removebg-preview_9
+      name: Potions_2_9
       rect:
         serializedVersion: 2
         x: 38
@@ -359,14 +359,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0efa9d408ce13c74cab614dde816e752
-      internalID: 518445914
+      spriteID: fc620253ab3383f44a2bbc59a85be341
+      internalID: 1347979591
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChatGPT_Image_16_35_08_10_thg_7__2025-removebg-preview_10
+      name: Potions_2_10
       rect:
         serializedVersion: 2
         x: 162
@@ -381,14 +381,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 055073730bfd43d4eae6743972afb9b0
-      internalID: 2130620945
+      spriteID: 1a8be9a29956ad64c86d5689e9c3de77
+      internalID: -553204586
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChatGPT_Image_16_35_08_10_thg_7__2025-removebg-preview_11
+      name: Potions_2_11
       rect:
         serializedVersion: 2
         x: 286
@@ -403,8 +403,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2329b55b629d5d4f81cce29d38ea50a
-      internalID: -1786677975
+      spriteID: 5159d09fa20d25c4e9cd3b07a9e99e14
+      internalID: -490938633
       vertices: []
       indices: 
       edges: []
@@ -423,18 +423,18 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ChatGPT_Image_16_35_08_10_thg_7__2025-removebg-preview_0: -825274363
-      ChatGPT_Image_16_35_08_10_thg_7__2025-removebg-preview_1: 561589390
-      ChatGPT_Image_16_35_08_10_thg_7__2025-removebg-preview_10: 2130620945
-      ChatGPT_Image_16_35_08_10_thg_7__2025-removebg-preview_11: -1786677975
-      ChatGPT_Image_16_35_08_10_thg_7__2025-removebg-preview_2: -1072779599
-      ChatGPT_Image_16_35_08_10_thg_7__2025-removebg-preview_3: -485888291
-      ChatGPT_Image_16_35_08_10_thg_7__2025-removebg-preview_4: 1298278705
-      ChatGPT_Image_16_35_08_10_thg_7__2025-removebg-preview_5: 450508817
-      ChatGPT_Image_16_35_08_10_thg_7__2025-removebg-preview_6: 780161136
-      ChatGPT_Image_16_35_08_10_thg_7__2025-removebg-preview_7: 808685439
-      ChatGPT_Image_16_35_08_10_thg_7__2025-removebg-preview_8: 96944540
-      ChatGPT_Image_16_35_08_10_thg_7__2025-removebg-preview_9: 518445914
+      Potions_2_0: -1193097374
+      Potions_2_1: 1257661490
+      Potions_2_10: -553204586
+      Potions_2_11: -490938633
+      Potions_2_2: -2001813016
+      Potions_2_3: 1420443035
+      Potions_2_4: -1789503690
+      Potions_2_5: -1180023050
+      Potions_2_6: 1367569893
+      Potions_2_7: -1435176141
+      Potions_2_8: -1361308805
+      Potions_2_9: 1347979591
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

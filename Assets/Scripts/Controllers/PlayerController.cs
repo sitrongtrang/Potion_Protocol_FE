@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,16 +16,19 @@ public class PlayerController : MonoBehaviour
     public PlayerInteraction Interaction { get; private set; }
     public PlayerMovement Movement { get; private set; }
 
-    public void Initialize(PlayerConfig config)
+    public void Initialize(PlayerConfig config, InputActionAsset loadedAsset = null)
     {
         _config = config;
-        _inputManager = new PlayerInputManager();
+        _inputManager = loadedAsset != null
+            ? new PlayerInputManager(loadedAsset)
+            : new PlayerInputManager();
+
         Inventory = RegisterComponent(new PlayerInventory());
         Attack = RegisterComponent(new PlayerAttack());
         Interaction = RegisterComponent(new PlayerInteraction());
         Movement = RegisterComponent(new PlayerMovement());
     }
-
+    
     void Update()
     {
         for (int i = 0; i < _updatableComponents.Count; i++)
