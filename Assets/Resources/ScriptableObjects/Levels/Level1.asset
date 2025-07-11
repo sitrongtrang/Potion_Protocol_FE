@@ -19,3 +19,4 @@ MonoBehaviour:
   _ingotRecipes: []
   _finalRecipes: []
   _levelTime: 300
+  _scoreThresholds: 
