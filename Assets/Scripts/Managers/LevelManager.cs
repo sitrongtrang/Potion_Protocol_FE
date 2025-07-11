@@ -67,8 +67,8 @@ public class LevelManager : MonoBehaviour
         GameObject map = MapLoader.Instance.RenderMap(config.MapPrefab, Vector2.zero);
 
         (int width, int height, float cellSize, Vector2 origin) = GetMapParameters(map);
-        
-        _pathfinding = new Pathfinding(width, height, cellSize, origin);
+
+        Pathfinding.Instance.InitializeGrid(width, height, cellSize, origin);
         GridBuilderFactory.Instance.BuildGrid(
             "Pathfinding Grid",
             width,
