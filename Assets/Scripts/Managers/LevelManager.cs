@@ -9,7 +9,6 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
     [SerializeField] LevelConfig _config;
-    private static Pathfinding _pathfinding;
     private int _score = 0;
     public int Score
     {
