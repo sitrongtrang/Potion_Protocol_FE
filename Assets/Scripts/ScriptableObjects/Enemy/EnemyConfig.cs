@@ -65,6 +65,9 @@ public abstract class EnemyConfig : ScriptableObject
                 Vector2 moveDir = (targetPosition - (Vector2)controller.transform.position).normalized;
                 controller.transform.Translate(Speed * Time.deltaTime * moveDir);
                 // Set animation move here
+                controller.Animatr.SetBool("IsMoving", true);
+                controller.Animatr.SetFloat("MoveX", moveDir.x);
+                controller.Animatr.SetFloat("MoveY", moveDir.y);
             }
             else
             {
@@ -73,6 +76,7 @@ public abstract class EnemyConfig : ScriptableObject
                 {
                     controller.StopMoving();
                     // Set animation stop here
+                    controller.Animatr.SetBool("IsMoving", false);
                 }
             }
         }
