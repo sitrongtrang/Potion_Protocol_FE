@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e24b283275af73a4ab4c7144cac466b6, type: 3}
-  m_Name: Amethyst Ore
+  m_Name: Iron
   m_EditorClassIdentifier: 
-  _name: Amethyst Ore
-  _id: I17
+  _name: Iron
+  _id: I12
   _type: 0
-  _prefab: {fileID: 2756712652034502478, guid: fe8a95da60c5d134283e406f7a4edcbc, type: 3}
+  _prefab: {fileID: 2756712652034502478, guid: cec5cc8fa1d703d49882ab215b338ba5, type: 3}
