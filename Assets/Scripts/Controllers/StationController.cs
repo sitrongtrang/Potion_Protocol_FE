@@ -36,15 +36,15 @@ public class StationController : MonoBehaviour
             for (int i = 0; i < _items.Count; i++)
             {
                 Vector2 stationPos = transform.position;
-                Vector2 dropPosition =  stationPos + 0.5f * (i + 1) * Vector2.down;
+                Vector2 dropPosition = stationPos + 0.5f * (i + 1) * Vector2.down;
                 DropItem(_items[i], dropPosition);
+                _items.Remove(_items[i]);
             }
         }
     }
 
     public void DropItem(ItemConfig item, Vector2 dropPosition)
     {
-        _items.Remove(item);
         ItemPool.Instance.SpawnItem(item, dropPosition);
     }
 
@@ -57,6 +57,7 @@ public class StationController : MonoBehaviour
         {
             _items.RemoveAt(0);  
         }
+        Debug.Log(recipe);
         DropItem(recipe.Product, dropPosition);
     }
 
