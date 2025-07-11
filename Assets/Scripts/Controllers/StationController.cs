@@ -44,6 +44,7 @@ public class StationController : MonoBehaviour
 
     public void DropItem(ItemConfig item, Vector2 dropPosition)
     {
+        _items.Remove(item);
         ItemPool.Instance.SpawnItem(item, dropPosition);
     }
 
@@ -52,6 +53,10 @@ public class StationController : MonoBehaviour
         yield return new WaitForSeconds(recipe.CraftingTime);
         Vector2 stationPos = transform.position;
         Vector2 dropPosition = stationPos + 0.5f * Vector2.down;
+        while (_items.Count > 0)
+        {
+            _items.RemoveAt(0);  
+        }
         DropItem(recipe.Product, dropPosition);
     }
 
