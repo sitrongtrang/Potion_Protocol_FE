@@ -27,13 +27,13 @@ public class GridCellObject : MonoBehaviour
         _y = y;
         _cellSize = cellSize;
         OverlapBox = overlaped;
-        _nonWalkableTags = overlapTags ?? new string[0];
+        _nonWalkableTags = overlapTags ?? _nonWalkableTags;
         _nonWalkableLayers = overlapLayerMasks != default ? overlapLayerMasks : _nonWalkableLayers;
 
         HandleOverlap();
     }
 
-    public void HandleOverlap()
+    private void HandleOverlap()
     {
         Collider2D hit = Physics2D.OverlapBox(
             transform.position,

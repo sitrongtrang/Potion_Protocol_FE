@@ -6,7 +6,6 @@ public class GridBuilder : MonoBehaviour
     [SerializeField] private bool _isDebug = false;
     private bool _lastIsDebug = false;
     public event System.Action<bool> OnDebugChanged;
-    private GridCellObject[,] _gridCellObjects;
     private void OnValidate()
     {
         if (_lastIsDebug != _isDebug)
@@ -16,7 +15,6 @@ public class GridBuilder : MonoBehaviour
         }
     }
     public void BuildGrid(
-        string objName,
         int xDim,
         int yDim,
         float cellSize,
@@ -24,10 +22,9 @@ public class GridBuilder : MonoBehaviour
         string[] overlapTags,
         LayerMask overlapLayerMasks,
         GridCellObject.OnOverlapBox onOverlapBox = null,
-        Transform parent = null
-    )
+        Transform parent = null,
+        string objName = "Grid")
     {
-        _gridCellObjects = new GridCellObject[xDim, yDim];
         GameObject gridmap = new(objName);
         gridmap.transform.SetParent(parent);
         gridmap.transform.localPosition = Vector2.zero;
@@ -35,22 +32,14 @@ public class GridBuilder : MonoBehaviour
         {
             for (int y = 0; y < yDim; y++)
             {
-                GridCellObject gridGameObject = Instantiate(
-                    _gridCellObjectPrefab,
-                    originPosition + new Vector2(x, y) * cellSize,
-                    Quaternion.identity,
-                    gridmap.transform
-                );
+                GameObject gridGameObject = Instantiate(_gridCellObjectPrefab.gameObject, gridmap.transform);
+                gridGameObject.transform.position = originPosition + new Vector2(x, y) * cellSize;
 
-                _gridCellObjects[x, y] = gridGameObject;
-                gridGameObject.Initialize(x, y, cellSize, overlapTags, overlapLayerMasks, onOverlapBox);
+                GridCellObject gridObject = gridGameObject.GetComponent<GridCellObject>();
+                gridObject.Initialize(x, y, cellSize, overlapTags, overlapLayerMasks, onOverlapBox);
 
-                OnDebugChanged += gridGameObject.SetDebug;
+                OnDebugChanged += gridObject.SetDebug;
             }
         }
-    }
-    public void GetGridCell(Vector2 worldPosition)
-    {
-
     }
 }
