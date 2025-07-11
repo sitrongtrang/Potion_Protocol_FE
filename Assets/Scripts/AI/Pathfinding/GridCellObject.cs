@@ -33,7 +33,7 @@ public class GridCellObject : MonoBehaviour
         HandleOverlap();
     }
 
-    private void HandleOverlap()
+    public void HandleOverlap()
     {
         Collider2D hit = Physics2D.OverlapBox(
             transform.position,
