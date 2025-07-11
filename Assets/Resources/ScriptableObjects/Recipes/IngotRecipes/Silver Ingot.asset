@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66fc6c15e23d5c14ebe8c5270ee5fe6b, type: 3}
+  m_Name: Silver Ingot
+  m_EditorClassIdentifier: 
+  _id: R8
+  _craftingTime: 4
+  _type: 0
+  _product: {fileID: 11400000, guid: d8410495bd6119842916b4dab558a362, type: 2}
+  _inputs:
+  - {fileID: 11400000, guid: a430ab3b0bf4be74e8be1079f1908279, type: 2}

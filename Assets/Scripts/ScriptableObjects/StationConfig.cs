@@ -10,7 +10,7 @@ public class StationConfig : ScriptableObject
     [SerializeField] private StationController _prefab;
     public StationController Prefab => _prefab;
 
-    public void Spawn(Vector3 position, List<RecipeConfig> recipes)
+    public void Spawn(Vector2 position, List<RecipeConfig> recipes)
     {
         StationController station = Instantiate(_prefab, position, Quaternion.identity);
         station.Initialize(this, recipes);

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66fc6c15e23d5c14ebe8c5270ee5fe6b, type: 3}
+  m_Name: Obsidian Ingot
+  m_EditorClassIdentifier: 
+  _id: R6
+  _craftingTime: 5
+  _type: 0
+  _product: {fileID: 11400000, guid: e228a74a8068dca4fb4514ed8e96cd8d, type: 2}
+  _inputs:
+  - {fileID: 11400000, guid: 14f09148e4a192944ad348f97b0018cc, type: 2}

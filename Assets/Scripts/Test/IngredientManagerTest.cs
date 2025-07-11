@@ -15,7 +15,7 @@ public class ItemManagerTest : MonoBehaviour
     private void Spawn()
     {
         int itemIdx = Random.Range(0, _itemTypes.Count);
-        ItemPool.Instance.SpawnItem(_itemTypes[itemIdx], new Vector3(Random.Range(-2, 2), Random.Range(-2, 2), 0));
+        ItemPool.Instance.SpawnItem(_itemTypes[itemIdx], new Vector2(Random.Range(-2, 2), Random.Range(-2, 2)));
     }
     
     private IEnumerator SpawnCoroutine()
