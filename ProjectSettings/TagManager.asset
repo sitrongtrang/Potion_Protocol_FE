@@ -10,6 +10,7 @@ TagManager:
   - Obstacle
   - PatrolCenter
   - Ore
+  - CraftPoint
   layers:
   - Default
   - TransparentFX
