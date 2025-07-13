@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Sapphire Ore
   _id: O8
-  _prefab: {fileID: 0}
+  _prefab: {fileID: -8549960958713610796, guid: 0f9c16ab1060b5f4cbb75870c42f633c, type: 3}
   _droppedItem: {fileID: 11400000, guid: db5687697bc97e241b852ecbbf57c25b, type: 2}

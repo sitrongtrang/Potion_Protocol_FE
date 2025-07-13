@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Gold Ore
   _id: O5
-  _prefab: {fileID: 0}
+  _prefab: {fileID: -4070333702290590942, guid: 7d26a6e5de687454aa4be78c6f0946a0, type: 3}
   _droppedItem: {fileID: 11400000, guid: 59f0c497d6f4d8e46983734b82c83b70, type: 2}

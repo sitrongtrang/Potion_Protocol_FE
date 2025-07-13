@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Amethyst Ore
   _id: O7
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 57458570915865895, guid: 42da0349da0882845b4896e3848bf91b, type: 3}
   _droppedItem: {fileID: 11400000, guid: f28627cb24c0b1347b63ce31a2ca2a36, type: 2}

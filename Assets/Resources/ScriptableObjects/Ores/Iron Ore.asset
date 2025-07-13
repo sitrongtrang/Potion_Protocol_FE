@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Iron Ore
   _id: O2
-  _prefab: {fileID: 0}
+  _prefab: {fileID: -8290889436685581718, guid: ca5ee96493889de41bcec42fa6a9c9ae, type: 3}
   _droppedItem: {fileID: 11400000, guid: a8e7ecf9d5e10c94ab7a1ca6881cab78, type: 2}

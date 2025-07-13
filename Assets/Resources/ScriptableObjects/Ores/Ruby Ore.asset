@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Ruby Ore
   _id: O6
-  _prefab: {fileID: 0}
+  _prefab: {fileID: -5381856047087532958, guid: 5076e25edf82bb1439c64ded9ed46d01, type: 3}
   _droppedItem: {fileID: 11400000, guid: 32c54409392bd134f88c7cc1f87804cb, type: 2}

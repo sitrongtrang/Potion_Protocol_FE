@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Bronzite Ore
   _id: O4
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 4474446822330599031, guid: 4ded8bde164aa874c9dbf4baa484a668, type: 3}
   _droppedItem: {fileID: 11400000, guid: 76718f75d901c91408749306294912b9, type: 2}

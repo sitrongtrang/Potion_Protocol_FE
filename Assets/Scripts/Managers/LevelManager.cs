@@ -1,5 +1,4 @@
 using System;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -44,7 +43,7 @@ public class LevelManager : MonoBehaviour
 
     private float _timeLeft;
     [SerializeField] private TextMeshProUGUI _timeText;
-
+    [SerializeField] private OreSpawner _oreSpawner;
     public event Action OnScoreChanged;
     public event Action OnStarGained;
     public bool IsPaused { get; private set; }
@@ -76,7 +75,7 @@ public class LevelManager : MonoBehaviour
     private void LoadLevel(LevelConfig config)
     {
         _timeLeft = config.LevelTime;
-        
+
         GameObject map = MapLoader.Instance.RenderMap(config.MapPrefab, Vector2.zero);
 
         (int width, int height, float cellSize, Vector2 origin) = GetMapParameters(map);
@@ -88,9 +87,9 @@ public class LevelManager : MonoBehaviour
             height,
             cellSize,
             origin,
-            new string[]{"Obstacle"},
+            new string[] { "Obstacle" },
             LayerMask.GetMask("Obstacle"),
-            (x,y,isoverlap) =>
+            (x, y, isoverlap) =>
             {
                 PathNode pathNode = Pathfinding.Instance.GetNode(x, y);
                 pathNode.IsWalkable = !isoverlap;
@@ -125,6 +124,9 @@ public class LevelManager : MonoBehaviour
         {
             enemySpawners[i].Initialize(_config.Enemies, positionsToSpawn);
         }
+
+        // Initialize ore spawner
+        _oreSpawner.Initialize(_config.Ores);
     }
 
     private IEnumerator LevelTimer()
