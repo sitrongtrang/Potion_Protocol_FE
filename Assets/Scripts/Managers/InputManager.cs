@@ -1,3 +1,6 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+
 public class PlayerInputManager
 {
     public InputSystem_Actions controls { get; private set; }
@@ -7,7 +10,15 @@ public class PlayerInputManager
         controls = new InputSystem_Actions();
         controls.Enable();
     }
-    
+    public PlayerInputManager(InputActionAsset asset) // dùng asset từ file json
+    {
+        controls = new InputSystem_Actions();
+        Object.Destroy(controls.asset); // xóa asset mặc định (cũ)
+        controls = new InputSystem_Actions(); // tạo mới lại wrapper
+        controls.asset.LoadBindingOverridesFromJson(asset.SaveBindingOverridesAsJson());
+        controls.Enable();
+    }
+
     public void OnEnable()
     {
         controls.Enable();

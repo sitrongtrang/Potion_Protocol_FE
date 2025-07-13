@@ -1,50 +1,27 @@
-/* 
-    ------------------- Code Monkey -------------------
-
-    Thank you for downloading this package
-    I hope you find it useful in your projects
-    If you have any questions let me know
-    Cheers!
-
-               unitycodemonkey.com
-    --------------------------------------------------
- */
-
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class PathNode {
+public class PathNode : IHeapItem<PathNode> {
+    public int X { get; private set; }
+    public int Y { get; private set; }
+    public int GCost { get; set; }
+    public int HCost { get; set; }
+    public int FCost { get; private set; }
+    public bool IsWalkable { get; set; } = true;
+    public PathNode CameFromNode { get; set; }
+    public int HeapIndex { get; set; }
 
     private Grid<PathNode> _grid;
-    public int X;
-    public int Y;
-
-    public int GCost;
-    public int HCost;
-    public int FCost;
-
-    public bool IsWalkable;
-    public PathNode CameFromNode;
 
     public PathNode(Grid<PathNode> grid, int x, int y) {
-        this._grid = grid;
-        this.X = x;
-        this.Y = y;
-        IsWalkable = true;
+        _grid = grid;
+        X = x;
+        Y = y;
     }
 
-    public void CalculateFCost() {
-        FCost = GCost + HCost;
+    public void CalculateFCost() => FCost = GCost + HCost;
+
+    public int CompareTo(PathNode other) {
+        int compare = FCost.CompareTo(other.FCost);
+        return compare == 0 ? HCost.CompareTo(other.HCost) : -compare;
     }
 
-    public void SetIsWalkable(bool isWalkable) {
-        this.IsWalkable = isWalkable;
-        _grid.TriggerGridObjectChanged(X, Y);
-    }
-
-    public override string ToString() {
-        return X + "," + Y;
-    }
-
+    public override string ToString() => $"{X},{Y}";
 }

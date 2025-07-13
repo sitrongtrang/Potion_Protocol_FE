@@ -1,4 +1,5 @@
 using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -80,9 +81,10 @@ public class LevelManager : MonoBehaviour
         GameObject map = MapLoader.Instance.RenderMap(config.MapPrefab, Vector2.zero);
 
         (int width, int height, float cellSize, Vector2 origin) = GetMapParameters(map);
-        
-        _pathfinding = new Pathfinding(width, height, cellSize, origin);
+
+        Pathfinding.Instance.InitializeGrid(width, height, cellSize, origin);
         GridBuilderFactory.Instance.BuildGrid(
+            "Pathfinding Grid",
             width,
             height,
             cellSize,
@@ -94,8 +96,7 @@ public class LevelManager : MonoBehaviour
                 PathNode pathNode = Pathfinding.Instance.GetNode(x, y);
                 pathNode.IsWalkable = !isoverlap;
             },
-            map.transform,
-            "Pathfinding Grid"
+            map.transform
         );
 
         // Spawn & initialize stations
@@ -125,8 +126,6 @@ public class LevelManager : MonoBehaviour
         {
             enemySpawners[i].Initialize(_config.Enemies, positionsToSpawn);
         }
-
-        _score = 0;
     }
 
     private IEnumerator LevelTimer()
@@ -144,7 +143,7 @@ public class LevelManager : MonoBehaviour
     public void TogglePause()
     {
         IsPaused = !IsPaused;
-        Time.timeScale = IsPaused? 0f : 1f;
+        Time.timeScale = IsPaused ? 0f : 1f;
     }
 
     private (int, int, float, Vector2) GetMapParameters(GameObject mapGameobject)

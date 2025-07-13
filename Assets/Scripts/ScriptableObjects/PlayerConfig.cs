@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [CreateAssetMenu(fileName = "PlayerConfig", menuName = "Scriptable Objects/PlayerConfig")]
 public class PlayerConfig : ScriptableObject
@@ -24,9 +25,9 @@ public class PlayerConfig : ScriptableObject
     [SerializeField] private PlayerController _prefab;
     public PlayerController Prefab => _prefab;
     
-    public void Spawn(Vector3 position)
+    public void Spawn(Vector2 position, InputActionAsset loadedInputAsset = null)
     {
         PlayerController player = Instantiate(_prefab, position, Quaternion.identity);
-        player.Initialize(this);
+        player.Initialize(this, loadedInputAsset);
     } 
 }

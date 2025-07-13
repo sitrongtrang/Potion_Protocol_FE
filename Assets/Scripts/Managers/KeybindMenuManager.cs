@@ -4,23 +4,26 @@ using System.Collections.Generic;
 
 public class KeybindMenuManager : MonoBehaviour
 {
-    public List<Transform> contentParents;
-    public InputActionAsset inputActions;
+    [SerializeField] private List<Transform> _contentParents;
+    [SerializeField] private InputActionAsset _inputActions;
 
-    private InputActionRebindingExtensions.RebindingOperation currentRebinding = null;
-    private KeybindRowUI currentRow = null;
-    private List<KeybindRowUI> keybindRows = new(); // danh sách tất cả rows
-    string path;
-    string json;
+    private InputActionRebindingExtensions.RebindingOperation _currentRebinding = null;
+    private KeybindRowUI _currentRow = null;
+    private List<KeybindRowUI> _keybindRows = new(); // danh sách tất cả rows
+    string _path;
+    public InputActionAsset GetRebindedAsset()
+    {
+        return _inputActions;
+    }
     void Start()
     {
-        path = Application.persistentDataPath + "/rebinds.json";
+        _path = Application.persistentDataPath + "/rebinds.json";
         LoadRebindsFromFile();
         // Debug.Log("🔁 Loaded rebinds from file: " + path);
         
-        var map = inputActions.FindActionMap("Player");
+        var map = _inputActions.FindActionMap("Player");
 
-        foreach (var parent in contentParents)
+        foreach (var parent in _contentParents)
         {
             foreach (Transform child in parent)
             {
@@ -28,7 +31,7 @@ public class KeybindMenuManager : MonoBehaviour
                 if (row == null || string.IsNullOrEmpty(row.actionName)) continue;
                 row.Init(StartRebinding);
                 row.SetChangeButtonText("Change");
-                keybindRows.Add(row); // ⬅️ thêm dòng này để sau còn dùng
+                _keybindRows.Add(row); // ⬅️ thêm dòng này để sau còn dùng
                 var action = map.FindAction(row.actionName);
                 if (action == null) continue;
 
@@ -50,10 +53,10 @@ public class KeybindMenuManager : MonoBehaviour
     }
     private void RefreshAllKeyDisplays()
     {
-        Debug.Log(keybindRows.Count);
-        foreach (var row in keybindRows)
+        Debug.Log(_keybindRows.Count);
+        foreach (var row in _keybindRows)
         {
-            var action = inputActions.FindActionMap("Player").FindAction(row.actionName);
+            var action = _inputActions.FindActionMap("Player").FindAction(row.actionName);
             Debug.Log($"🔃 Refreshing {row.actionName}");
             if (action != null && row.bindingIndex >= 0 && row.bindingIndex < action.bindings.Count)
             {
@@ -78,26 +81,26 @@ public class KeybindMenuManager : MonoBehaviour
 
     void StartRebinding(KeybindRowUI row)
     {
-        var action = inputActions.FindActionMap("Player").FindAction(row.actionName);
+        var action = _inputActions.FindActionMap("Player").FindAction(row.actionName);
         if (action == null) return;
 
         // Nếu đang rebinding chính cái này → dừng lại
-        if (currentRebinding != null && currentRow == row)
+        if (_currentRebinding != null && _currentRow == row)
         {
             Debug.Log($"🛑 Stop rebinding for {row.actionName}");
-            currentRebinding.Cancel(); // Gọi OnCancel
+            _currentRebinding.Cancel(); // Gọi OnCancel
             return;
         }
 
         // Nếu đang rebinding cái khác → hủy luôn
-        if (currentRebinding != null)
+        if (_currentRebinding != null)
         {
-            currentRebinding.Cancel(); // Gọi OnCancel bên dưới
+            _currentRebinding.Cancel(); // Gọi OnCancel bên dưới
         }
 
         action.Disable();
 
-        currentRebinding = action.PerformInteractiveRebinding(row.bindingIndex)
+        _currentRebinding = action.PerformInteractiveRebinding(row.bindingIndex)
             .WithControlsExcluding("Mouse")
             .OnMatchWaitForAnother(0.1f)
             .OnComplete(op =>
@@ -110,8 +113,8 @@ public class KeybindMenuManager : MonoBehaviour
                 row.UpdateKeyDisplay(newKey);
                 SaveRebindsToFile();
                 // 👉 Cập nhật lại trạng thái trước khi gọi lại StartRebinding
-                currentRebinding = null;
-                currentRow = null;
+                _currentRebinding = null;
+                _currentRow = null;
 
                 // Gọi lại để cho phép đổi tiếp
                 StartRebinding(row);
@@ -121,38 +124,38 @@ public class KeybindMenuManager : MonoBehaviour
                 Debug.Log($"❌ Cancelled rebinding: {row.actionName}");
                 op.Dispose();
                 action.Enable();
-                currentRebinding = null;
-                currentRow = null;
+                _currentRebinding = null;
+                _currentRow = null;
                 row.SetChangeButtonText("Change");
             })
             .Start();
 
-        currentRow = row;
+        _currentRow = row;
         row.SetChangeButtonText("Stop");
     }
     public void SaveRebindsToFile()
     {
-        string json = inputActions.SaveBindingOverridesAsJson(); // 🔁 gọi lại mỗi lần lưu
-        System.IO.File.WriteAllText(path, json);
-        Debug.Log("💾 Saved rebinds to file: " + path);
+        string json = _inputActions.SaveBindingOverridesAsJson(); // 🔁 gọi lại mỗi lần lưu
+        System.IO.File.WriteAllText(_path, json);
+        Debug.Log("💾 Saved rebinds to file: " + _path);
     }
     public void LoadRebindsFromFile()
     {
-        if (System.IO.File.Exists(path))
+        if (System.IO.File.Exists(_path))
         {
-            string json = System.IO.File.ReadAllText(path);
-            inputActions.LoadBindingOverridesFromJson(json);
-            Debug.Log("🔁 Loaded rebinds from file: " + path);
+            string json = System.IO.File.ReadAllText(_path);
+            _inputActions.LoadBindingOverridesFromJson(json);
+            Debug.Log("🔁 Loaded rebinds from file: " + _path);
         }
         else
         {
-            Debug.Log("📁 No rebinds file found at: " + path);
+            Debug.Log("📁 No rebinds file found at: " + _path);
         }
         RefreshAllKeyDisplays(); // ⬅️ Cập nhật UI // gọi khi bắt đầu game
     }
     public void ResetRebindsFromFile()
     {
-        inputActions.RemoveAllBindingOverrides();
+        _inputActions.RemoveAllBindingOverrides();
 
         string path = Application.persistentDataPath + "/rebinds.json";
         if (System.IO.File.Exists(path))
