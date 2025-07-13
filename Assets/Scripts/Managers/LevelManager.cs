@@ -1,15 +1,52 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
     [SerializeField] LevelConfig _config;
     private static Pathfinding _pathfinding;
-    private int _score;
+    [SerializeField] private TextMeshProUGUI _scoreText;
+    private int _score = 0;
+    public int Score
+    {
+        get => _score;
+        set
+        {
+            int oldScore = _score;
+            _score = value;
+            if (value != oldScore)
+            {
+                _scoreText.text = value.ToString();
+                OnScoreChanged?.Invoke();
+            } 
+            if (value >= _config.ScoreThresholds[_stars]) Stars++;
+        }
+    }
+
+    private int _stars = 0;
+    public int Stars
+    {
+        get => _stars;
+        set
+        {
+            int oldStars = _stars;
+            _stars = value;
+            if (value != oldStars) OnStarGained?.Invoke();
+        }
+    }
+
+    private float _timeLeft;
+    [SerializeField] private TextMeshProUGUI _timeText;
+
+    public event Action OnScoreChanged;
+    public event Action OnStarGained;
     public bool IsPaused { get; private set; }
     private void Awake()
     {
@@ -25,7 +62,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         LoadLevel(_config);
-        StartCoroutine(EndLevel());
+        StartCoroutine(LevelTimer());
     }
 
     void Update()
@@ -38,6 +75,8 @@ public class LevelManager : MonoBehaviour
 
     private void LoadLevel(LevelConfig config)
     {
+        _timeLeft = config.LevelTime;
+        
         GameObject map = MapLoader.Instance.RenderMap(config.MapPrefab, Vector2.zero);
 
         (int width, int height, float cellSize, Vector2 origin) = GetMapParameters(map);
@@ -90,22 +129,16 @@ public class LevelManager : MonoBehaviour
         _score = 0;
     }
 
-    private IEnumerator EndLevel()
+    private IEnumerator LevelTimer()
     {
-        yield return new WaitForSeconds(_config.LevelTime);
-        EvaluateResult();
-        TogglePause();
-    }
-
-    private void EvaluateResult()
-    {
-        int stars = 0;
-        for (int i = 0; i < _config.ScoreThresholds.Length; i++)
+        while (_timeLeft > 0)
         {
-            if (_config.ScoreThresholds[i] > _score) stars = i;
-            return;
+            yield return new WaitForSeconds(1);
+            _timeLeft -= 1;
+            TimeSpan timeSpan = TimeSpan.FromSeconds(_timeLeft);
+            _timeText.text = string.Format("{0:mm}:{0:ss}", timeSpan);       
         }
-        stars = _config.ScoreThresholds.Length;
+        if (_timeLeft <= 0) TogglePause();
     }
 
     public void TogglePause()
