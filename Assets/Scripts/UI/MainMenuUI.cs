@@ -29,8 +29,9 @@ public class MainMenuUI : MonoBehaviour
         ShowNotImplemented();
     }
 
-    public void OnOptions()
+    public void OnSettings(int tab)
     {
+        SettingsSelection.SelectedTab = (SettingsSelection.Tab)tab;
         SceneManager.LoadScene("SettingsScene");
     }
 
