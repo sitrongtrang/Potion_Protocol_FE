@@ -15,13 +15,13 @@ public class LevelConfig : ScriptableObject
     // public List<OreConfig> Ores => _ores;
 
     [Serializable]
-    public class OrePerMap
+    public class OreSetting
     {
-        public OreConfig Ore;
-        public int MaxAmount;
+        public OreConfig Config;
+        public int MaxCapacity;
     }
-    [SerializeField] private List<OrePerMap> _ores;
-    public List<OrePerMap> Ores => _ores;
+    [SerializeField] private List<OreSetting> _ores;
+    public List<OreSetting> Ores => _ores;
 
     [SerializeField] private List<RecipeConfig> _ingotRecipes;
     public List<RecipeConfig> IngotRecipes => _ingotRecipes;

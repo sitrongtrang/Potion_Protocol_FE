@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pathfinding : MonoBehaviour {
+public class Pathfinding : MonoBehaviour 
+{
     private const int MOVE_STRAIGHT_COST = 10;
     private const int MOVE_DIAGONAL_COST = 14;
 
@@ -40,10 +41,10 @@ public class Pathfinding : MonoBehaviour {
         var endKey = new Vector2Int(endX, endY);
 
         // Check cache
-        if (_pathCache.TryGetValue((startKey, endKey), out var cachedPath)) {
-            callback?.Invoke(cachedPath);
-            yield break;
-        }
+        // if (_pathCache.TryGetValue((startKey, endKey), out var cachedPath)) {
+        //     callback?.Invoke(cachedPath);
+        //     yield break;
+        // }
 
         PathNode startNode = _grid.GetGridObject(startX, startY);
         PathNode endNode = _grid.GetGridObject(endX, endY);
@@ -83,7 +84,7 @@ public class Pathfinding : MonoBehaviour {
 
             if (currentNode == endNode) {
                 var path = CalculatePath(endNode);
-                _pathCache[(startKey, endKey)] = path;
+                // _pathCache[(startKey, endKey)] = path;
                 callback?.Invoke(path);
                 yield break;
             }
