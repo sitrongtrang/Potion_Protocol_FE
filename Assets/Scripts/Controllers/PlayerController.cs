@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
         Attack = RegisterComponent(new PlayerAttack());
         Interaction = RegisterComponent(new PlayerInteraction());
         Movement = RegisterComponent(new PlayerMovement());
+
+        AttackAnimationRelay relay = GetComponentInChildren<AttackAnimationRelay>();
+        relay.Initialize(this); 
     }
     
     void Update()

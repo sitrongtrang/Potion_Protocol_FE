@@ -8,12 +8,27 @@ public class OreController : MonoBehaviour
     public OreConfig Config => _config;
     private OreSpawner _oreSpawner;
     [SerializeField] private Collider2D _collider;
+
     public void Initialize(OreSpawner spawner, OreConfig config)
     {
         _oreSpawner = spawner;
         _config = config;
 
         CheckOverlapGrid();
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(collision.otherCollider);
+        if (collision.otherCollider.CompareTag("Weapon"))
+        {
+            Debug.Log("Colliding weapon");
+            PlayerController player = collision.transform.GetComponentInParent<PlayerController>();
+            if (player != null && player.Attack.IsAttacking)
+            {
+                OnFarmed();
+            }
+        }
     }
 
     public void OnFarmed()

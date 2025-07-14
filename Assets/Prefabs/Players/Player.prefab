@@ -205,9 +205,10 @@ GameObject:
   - component: {fileID: 4483685439520837621}
   - component: {fileID: 6287359909472308917}
   - component: {fileID: 8146794248231289773}
-  m_Layer: 7
-  m_Name: sword
-  m_TagString: Untagged
+  - component: {fileID: 5039642750443867035}
+  m_Layer: 0
+  m_Name: Weapon
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -350,3 +351,15 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.8333333, y: 1.8333334}
   m_EdgeRadius: 0
+--- !u!114 &5039642750443867035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4183103146376951692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2bd3d5112a4b164aa73d96d04a9492e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
