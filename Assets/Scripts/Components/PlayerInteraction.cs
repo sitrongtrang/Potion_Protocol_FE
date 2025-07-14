@@ -202,5 +202,13 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
             _isNearStation = false;
             // disable "inform player to transfer item"
         }
+        if (collider.gameObject.tag == "SubmissionPoint")
+        {
+            _isNearSubmissionPoint = false;
+        }
+        if (collider.gameObject.tag == "CraftPoint")
+        {
+            _isNearCraftPoint = false;
+        }
     }
 }
