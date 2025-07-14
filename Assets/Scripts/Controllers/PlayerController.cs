@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private List<IUpdatableComponent> _updatableComponents = new();
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Animator _anim;
+    [SerializeField] private Animator _swordAnim;
+
     public PlayerConfig Config => _config;
     public PlayerInventory Inventory { get; private set; }
     public PlayerAttack Attack { get; private set; }
@@ -18,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public PlayerMovement Movement { get; private set; }
     public Rigidbody2D Rb => _rb;
     public Animator Animatr => _anim;
+    public Animator SwordAnimatr => _swordAnim;
+
 
     public void Initialize(PlayerConfig config, InputActionAsset loadedAsset = null)
     {
@@ -30,6 +34,9 @@ public class PlayerController : MonoBehaviour
         Attack = RegisterComponent(new PlayerAttack());
         Interaction = RegisterComponent(new PlayerInteraction());
         Movement = RegisterComponent(new PlayerMovement());
+
+        AttackAnimationRelay relay = GetComponentInChildren<AttackAnimationRelay>();
+        relay.Initialize(this); 
     }
     
     void Update()

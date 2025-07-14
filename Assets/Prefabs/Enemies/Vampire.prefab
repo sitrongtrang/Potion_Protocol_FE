@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3347175494363194931}
   - component: {fileID: -1370842286182258998}
   - component: {fileID: 5247312739759181560}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Vampire
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

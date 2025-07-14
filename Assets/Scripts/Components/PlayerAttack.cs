@@ -10,12 +10,14 @@ public class PlayerAttack : IComponent, IUpdatableComponent
     private PlayerController _player;
     // bool _isAttacking = false;
     private bool _canAttack = true;
+    public bool IsAttacking { get; private set; }
     private bool[] _canUseSkills = new bool[GameConstants.NumSkills];
     private bool _isInAction = false;
     private InputAction[] _skillActions;
 
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
+        IsAttacking = false;
         for (int i = 0; i < 3; i++)
         {
             _canUseSkills[i] = true;
@@ -56,13 +58,26 @@ public class PlayerAttack : IComponent, IUpdatableComponent
             _canAttack = false;
             // _isInAction = true;
             Debug.Log("Player Attacked");
+            _player.SwordAnimatr.SetTrigger("Attack");
+            IsAttacking = true;
+            float playerX = _player.Movement.PlayerDir.x;
+            float playerY = _player.Movement.PlayerDir.y;
+            if (playerX != 0 || playerY != 0)
+            {
+                _player.SwordAnimatr.SetFloat("MoveX", playerX);
+                _player.SwordAnimatr.SetFloat("MoveY", playerY);
+            }
             yield return new WaitForSeconds(_player.Config.AttackCooldown);
             // _isInAction = false;
             _canAttack = true;
         }
-        
     }
-    
+
+    public void FinishAttack()
+    {
+        IsAttacking = false;
+    }
+
     private IEnumerator UseSkill(int skillNumber)
     {
         _canUseSkills[skillNumber - 1] = false;

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SettingsUI : MonoBehaviour
 {
@@ -26,6 +27,14 @@ public class SettingsUI : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Return();
+        }
+    }
+
     public void ShowControlsTab()
     {
         SettingsSelection.SelectedTab = SettingsSelection.Tab.Controls;
@@ -46,5 +55,10 @@ public class SettingsUI : MonoBehaviour
         controlsTab.SetActive(false);
         soundTab.SetActive(false);
         miscTab.SetActive(true);
+    }
+
+    public void Return()
+    {
+        SceneManager.UnloadSceneAsync("SettingsScene");
     }
 }

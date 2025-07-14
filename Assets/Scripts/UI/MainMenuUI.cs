@@ -32,7 +32,7 @@ public class MainMenuUI : MonoBehaviour
     public void OnSettings(int tab)
     {
         SettingsSelection.SelectedTab = (SettingsSelection.Tab)tab;
-        SceneManager.LoadScene("SettingsScene");
+        SceneManager.LoadScene("SettingsScene", LoadSceneMode.Additive);
     }
 
     public void OnQuit()

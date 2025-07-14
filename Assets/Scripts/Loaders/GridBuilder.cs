@@ -164,15 +164,20 @@ public class GridBuilder : MonoBehaviour
     {
         return _origin + new Vector2(x * _cellSize, y * _cellSize);
     }
+    
+    public Vector2 GetWorldPosition(GridCellObject gridCellObject)
+    {
+        return _origin + new Vector2(gridCellObject.GridPosition.x * _cellSize, gridCellObject.GridPosition.y * _cellSize);
+    }
 
     public List<GridCellObject> GetCellsInArea(Vector2 center, Vector2 size)
     {
         var results = new List<GridCellObject>();
-        
-        int minX = Mathf.FloorToInt((center.x - size.x/2 - _origin.x) / _cellSize);
-        int maxX = Mathf.CeilToInt((center.x + size.x/2 - _origin.x) / _cellSize);
-        int minY = Mathf.FloorToInt((center.y - size.y/2 - _origin.y) / _cellSize);
-        int maxY = Mathf.CeilToInt((center.y + size.y/2 - _origin.y) / _cellSize);
+
+        int minX = Mathf.FloorToInt((center.x - size.x / 2 - _origin.x) / _cellSize);
+        int maxX = Mathf.CeilToInt((center.x + size.x / 2 - _origin.x) / _cellSize);
+        int minY = Mathf.FloorToInt((center.y - size.y / 2 - _origin.y) / _cellSize);
+        int maxY = Mathf.CeilToInt((center.y + size.y / 2 - _origin.y) / _cellSize);
 
         minX = Mathf.Max(0, minX);
         maxX = Mathf.Min(_width - 1, maxX);
@@ -190,7 +195,7 @@ public class GridBuilder : MonoBehaviour
         return results;
     }
 
-    public GridCellObject GetRandomWalkableCell()
+    public GridCellObject GetRandomNonoverlapCell()
     {
         if (WalkableCellIndices.Count == 0) return null;
 
@@ -255,6 +260,15 @@ public class GridBuilder : MonoBehaviour
         {
             _lastDebugState = _debug;
             // Notify cells of debug state change
+            for (int x = 0; x < _width; x++)
+            {
+                for (int y = 0; y < _height; y++)
+                {
+                    GridCellObject gridCellObject = GetCell(x, y);
+                    gridCellObject.SetDebug(_debug);
+                    gridCellObject.SetAccessed(_debug);
+                }
+            }
         }
     }
     #endregion
