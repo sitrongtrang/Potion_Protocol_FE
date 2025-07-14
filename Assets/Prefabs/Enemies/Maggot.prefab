@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7341765061055309171}
   - component: {fileID: -1191432383781706749}
   - component: {fileID: 1526302737895782230}
+  - component: {fileID: 8537073205730602714}
   m_Layer: 7
   m_Name: Maggot
   m_TagString: Enemy
@@ -131,7 +132,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &-8153075816106429623
+--- !u!61 &8537073205730602714
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,11 +162,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.00040256977, y: 0.004581511}
+  m_Offset: {x: -0.0011283159, y: 0.0045134723}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -175,5 +176,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.44002318, y: 0.38589668}
+  m_Size: {x: 0.44809508, y: 0.39236516}
   m_EdgeRadius: 0

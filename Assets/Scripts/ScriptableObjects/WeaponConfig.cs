@@ -17,7 +17,6 @@ public class WeaponConfig : ScriptableObject
 
         for (int i = 0; i < hitEnemies.Length; i++)
         {
-            Debug.Log("ahha");
             EnemyController enemy = hitEnemies[i].GetComponent<EnemyController>();
             if (enemy != null)
             {
