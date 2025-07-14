@@ -71,7 +71,7 @@ public class OreSpawner : MonoBehaviour
 
             Vector2 worldPosition = oreGrid.GetWorldPosition(gridCell);
             OreController oreController = Instantiate(oreConfig.Prefab, worldPosition, Quaternion.identity);
-            oreController.Initialize(oreConfig);
+            oreController.Initialize(this, oreConfig);
 
             oreGrid.ReleaseCell(gridCell);
             _spawnInterval = UnityEngine.Random.Range(_minSpawnInterval, _maxSpawnInterval);

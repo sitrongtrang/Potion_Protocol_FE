@@ -266,6 +266,7 @@ public class GridBuilder : MonoBehaviour
                 {
                     GridCellObject gridCellObject = GetCell(x, y);
                     gridCellObject.SetDebug(_debug);
+                    gridCellObject.SetAccessed(_debug);
                 }
             }
         }
