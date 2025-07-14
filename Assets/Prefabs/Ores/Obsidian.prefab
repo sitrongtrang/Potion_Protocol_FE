@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 607686969274497787}
   - component: {fileID: -6760022776255000607}
   - component: {fileID: -4104132770440003182}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Obsidian
-  m_TagString: Ore
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad2ee1e386cf3845bdba19173ddb24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: {fileID: -4104132770440003182}
 --- !u!58 &-4104132770440003182
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ TagManager:
   - PatrolCenter
   - Ore
   - CraftPoint
+  - Spawn Ore Bounds
   layers:
   - Default
   - TransparentFX

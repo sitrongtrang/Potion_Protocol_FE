@@ -7,10 +7,6 @@ public class OreController : MonoBehaviour
     private OreConfig _config;
     public OreConfig Config => _config;
     [SerializeField] private Collider2D _collider;
-    void Start()
-    {
-        _collider = GetComponent<Collider2D>();
-    }
     public void Initialize(OreConfig config)
     {
         _config = config;

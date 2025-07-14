@@ -79,13 +79,14 @@ public class LevelManager : MonoBehaviour
         GameObject map = MapLoader.Instance.RenderMap(config.MapPrefab, Vector2.zero);
 
         (int width, int height, float cellSize, Vector2 origin) = GetMapParameters(map);
+        cellSize *= 0.5f;
 
-        Pathfinding.Instance.InitializeGrid(width * 2, height * 2, cellSize * 0.5f, origin);
+        Pathfinding.Instance.InitializeGrid(width * 2, height * 2, cellSize, origin);
         GridBuilderFactory.Instance.BuildGrid(
             GridBuilderFactory.BuilderNames[0],
             width * 2,
             height * 2,
-            cellSize * 0.5f,
+            cellSize,
             origin,
             new string[] { "Obstacle" },
             LayerMask.GetMask("Obstacle"),
@@ -97,10 +98,16 @@ public class LevelManager : MonoBehaviour
             map.transform
         );
 
+        GameObject spawnOreBounds = GameObject.FindGameObjectWithTag("Spawn Ore Bounds");
+
+        BoxCollider2D collider2D = spawnOreBounds.GetComponent<BoxCollider2D>();
+        float widthInF = collider2D.bounds.size.x;
+        float heightInF = collider2D.bounds.size.y;
+
         GridBuilderFactory.Instance.BuildGrid(
             GridBuilderFactory.BuilderNames[1],
-            width,
-            height,
+            Mathf.CeilToInt(widthInF / cellSize),
+            Mathf.CeilToInt(heightInF / cellSize),
             cellSize,
             origin,
             new string[]{"Obstacle", "Player", "Enemy"},
