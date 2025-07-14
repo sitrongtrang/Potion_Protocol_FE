@@ -6,13 +6,11 @@ public class OreController : MonoBehaviour
 {
     private OreConfig _config;
     public OreConfig Config => _config;
+    private OreSpawner _oreSpawner;
     [SerializeField] private Collider2D _collider;
-    void Start()
+    public void Initialize(OreSpawner spawner, OreConfig config)
     {
-        _collider = GetComponent<Collider2D>();
-    }
-    public void Initialize(OreConfig config)
-    {
+        _oreSpawner = spawner;
         _config = config;
 
         CheckOverlapGrid();
@@ -44,6 +42,7 @@ public class OreController : MonoBehaviour
     private void TrueDie()
     {
         CheckOverlapGrid();
+        _oreSpawner.NotifyOreRemoved(_config);
         Destroy(gameObject);
     }
 }

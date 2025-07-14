@@ -11,6 +11,7 @@ TagManager:
   - PatrolCenter
   - Ore
   - CraftPoint
+  - Enemy
   layers:
   - Default
   - TransparentFX

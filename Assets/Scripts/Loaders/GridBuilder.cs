@@ -260,6 +260,15 @@ public class GridBuilder : MonoBehaviour
         {
             _lastDebugState = _debug;
             // Notify cells of debug state change
+            for (int x = 0; x < _width; x++)
+            {
+                for (int y = 0; y < _height; y++)
+                {
+                    GridCellObject gridCellObject = GetCell(x, y);
+                    gridCellObject.SetDebug(_debug);
+                    gridCellObject.SetAccessed(_debug);
+                }
+            }
         }
     }
     #endregion
