@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Emerald Ore
   _id: O9
-  _prefab: {fileID: 0}
+  _prefab: {fileID: -8471841874738260667, guid: 19fff1933068f9148b24c7a349c6f9d3, type: 3}
   _droppedItem: {fileID: 11400000, guid: 7a7b0e41bc6e5c842b9038e06bb1ba53, type: 2}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 607686969274497787}
   - component: {fileID: 7879230659964989430}
   - component: {fileID: 8993344702190292528}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Silver
   m_TagString: Ore
   m_Icon: {fileID: 0}
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 718545363
-  m_SortingLayer: 2
+  m_SortingLayerID: -723122769
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 1160809305625320999, guid: 05c5e734534090c45b3b7697b5450c26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad2ee1e386cf3845bdba19173ddb24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: {fileID: 8993344702190292528}
 --- !u!58 &8993344702190292528
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -136,4 +137,4 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.1875
+  m_Radius: 0.2

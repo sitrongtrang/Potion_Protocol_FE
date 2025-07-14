@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Mythril Ore
   _id: O7
-  _prefab: {fileID: 0}
+  _prefab: {fileID: -7601033474094837564, guid: 8195302446a827040a62119d32bee1e7, type: 3}
   _droppedItem: {fileID: 11400000, guid: 5d56dd2512d68644596925a9e123dbe3, type: 2}

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Silver Ore
   _id: O3
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 7879230659964989430, guid: c9f5cb346a7142a47abaf037eb1d69ad, type: 3}
   _droppedItem: {fileID: 11400000, guid: a430ab3b0bf4be74e8be1079f1908279, type: 2}
