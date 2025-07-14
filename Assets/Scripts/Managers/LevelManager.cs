@@ -11,7 +11,6 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
     [SerializeField] LevelConfig _config;
-    [SerializeField] private TextMeshProUGUI _scoreText;
     private int _score = 0;
     public int Score
     {
@@ -22,8 +21,7 @@ public class LevelManager : MonoBehaviour
             _score = value;
             if (value != oldScore)
             {
-                _scoreText.text = value.ToString();
-                OnScoreChanged?.Invoke();
+                OnScoreChanged?.Invoke(value);
             } 
             if (value >= _config.ScoreThresholds[_stars]) Stars++;
         }
@@ -42,12 +40,14 @@ public class LevelManager : MonoBehaviour
     }
 
     private float _timeLeft;
-    [SerializeField] private TextMeshProUGUI _timeText;
-    [SerializeField] private OreSpawner _oreSpawner;
-    public event Action OnScoreChanged;
-    public event Action OnStarGained;
     public bool IsPaused { get; private set; }
-    private void Awake()
+    public event Action<int> OnScoreChanged;
+    public event Action<float> OnTimeChanged;
+    public event Action<bool> OnPauseToggled;
+    public event Action OnStarGained;
+    [SerializeField] private OreSpawner _oreSpawner;
+
+    void Awake()
     {
         if (Instance != null && Instance != this)
         {
@@ -135,8 +135,7 @@ public class LevelManager : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
             _timeLeft -= 1;
-            TimeSpan timeSpan = TimeSpan.FromSeconds(_timeLeft);
-            _timeText.text = string.Format("{0:mm}:{0:ss}", timeSpan);       
+            OnTimeChanged?.Invoke(_timeLeft);
         }
         if (_timeLeft <= 0) TogglePause();
     }
@@ -145,6 +144,7 @@ public class LevelManager : MonoBehaviour
     {
         IsPaused = !IsPaused;
         Time.timeScale = IsPaused ? 0f : 1f;
+        OnPauseToggled?.Invoke(IsPaused);
     }
 
     private (int, int, float, Vector2) GetMapParameters(GameObject mapGameobject)
