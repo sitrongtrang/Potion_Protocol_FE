@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -3601848984589778992}
   m_Layer: 7
   m_Name: Bronzite
-  m_TagString: Obstacle
+  m_TagString: Ore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

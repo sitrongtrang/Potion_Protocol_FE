@@ -12,6 +12,7 @@ TagManager:
   - Ore
   - CraftPoint
   - Spawn Ore Bounds
+  - Enemy
   layers:
   - Default
   - TransparentFX

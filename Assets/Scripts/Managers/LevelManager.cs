@@ -88,7 +88,7 @@ public class LevelManager : MonoBehaviour
             height * 2,
             cellSize,
             origin,
-            new string[] { "Obstacle" },
+            new string[] { "Obstacle" , "Ore"},
             LayerMask.GetMask("Obstacle"),
             (x, y, isoverlap) =>
             {
@@ -110,8 +110,8 @@ public class LevelManager : MonoBehaviour
             Mathf.CeilToInt(heightInF / cellSize),
             cellSize,
             origin,
-            new string[]{"Obstacle", "Player", "Enemy"},
-            LayerMask.GetMask("Obstacle", "Player", "Enemy"),
+            new string[]{"Obstacle", "Ore", "Enemy", "Player"},
+            LayerMask.GetMask("Obstacle"),
             (x,y,isoverlap) =>
             {
 
