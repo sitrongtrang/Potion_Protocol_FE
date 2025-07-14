@@ -19,7 +19,7 @@ public class MapLoader : MonoBehaviour
         Instance = this;
     }
 
-    public GameObject RenderMap(GameObject mapPrefab, Vector3 position)
+    public GameObject RenderMap(GameObject mapPrefab, Vector2 position)
     {
         GameObject map = Instantiate(mapPrefab, position, Quaternion.identity);
         return map;

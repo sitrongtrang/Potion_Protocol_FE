@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,8 +11,17 @@ public class LevelConfig : ScriptableObject
     [SerializeField] private List<EnemyConfig> _enemies;
     public List<EnemyConfig> Enemies => _enemies;
 
-    [SerializeField] private List<OreConfig> _ores;
-    public List<OreConfig> Ores => _ores;
+    // [SerializeField] private List<OreConfig> _ores;
+    // public List<OreConfig> Ores => _ores;
+
+    [Serializable]
+    public class OreSetting
+    {
+        public OreConfig Config;
+        public int MaxCapacity;
+    }
+    [SerializeField] private List<OreSetting> _ores;
+    public List<OreSetting> Ores => _ores;
 
     [SerializeField] private List<RecipeConfig> _ingotRecipes;
     public List<RecipeConfig> IngotRecipes => _ingotRecipes;

@@ -138,6 +138,7 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
         FinalProductConfig submittedProduct = _inventory.Submit();
         if (submittedProduct)
         {
+            LevelManager.Instance.Score += submittedProduct.Score;
             Debug.Log($"Submitted {submittedProduct.Name} in slot {_inventory.ChoosingSlot + 1}");
         }
         else
@@ -200,6 +201,14 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
         {
             _isNearStation = false;
             // disable "inform player to transfer item"
+        }
+        if (collider.gameObject.tag == "SubmissionPoint")
+        {
+            _isNearSubmissionPoint = false;
+        }
+        if (collider.gameObject.tag == "CraftPoint")
+        {
+            _isNearCraftPoint = false;
         }
     }
 }

@@ -56,6 +56,14 @@ public class PlayerAttack : IComponent, IUpdatableComponent
             _canAttack = false;
             // _isInAction = true;
             Debug.Log("Player Attacked");
+            _player.SwordAnimatr.SetTrigger("Attack");
+            float playerX = _player.Movement.PlayerDir.x;
+            float playerY = _player.Movement.PlayerDir.y;
+            if (playerX != 0 || playerY != 0)
+            {
+                _player.SwordAnimatr.SetFloat("MoveX", playerX);
+                _player.SwordAnimatr.SetFloat("MoveY", playerY);
+            }
             yield return new WaitForSeconds(_player.Config.AttackCooldown);
             // _isInAction = false;
             _canAttack = true;

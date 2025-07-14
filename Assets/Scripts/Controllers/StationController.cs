@@ -20,6 +20,10 @@ public class StationController : MonoBehaviour
     public void AddItem(ItemConfig config)
     {
         _items.Add(config);
+        if (_config.Type == StationType.Furnace)
+        {
+            StartCrafting();
+        }
     }
 
     public void StartCrafting()
@@ -31,13 +35,15 @@ public class StationController : MonoBehaviour
         {
             for (int i = 0; i < _items.Count; i++)
             {
-                Vector3 dropPosition = transform.position + (i + 1) * transform.forward;
+                Vector2 stationPos = transform.position;
+                Vector2 dropPosition = stationPos + 0.5f * (i + 1) * Vector2.down;
                 DropItem(_items[i], dropPosition);
+                _items.Remove(_items[i]);
             }
         }
     }
 
-    public void DropItem(ItemConfig item, Vector3 dropPosition)
+    public void DropItem(ItemConfig item, Vector2 dropPosition)
     {
         ItemPool.Instance.SpawnItem(item, dropPosition);
     }
@@ -45,7 +51,13 @@ public class StationController : MonoBehaviour
     IEnumerator WaitForCraft(RecipeConfig recipe)
     {
         yield return new WaitForSeconds(recipe.CraftingTime);
-        Vector3 dropPosition = transform.position + transform.forward;
+        Vector2 stationPos = transform.position;
+        Vector2 dropPosition = stationPos + 0.5f * Vector2.down;
+        while (_items.Count > 0)
+        {
+            _items.RemoveAt(0);  
+        }
+        Debug.Log(recipe);
         DropItem(recipe.Product, dropPosition);
     }
 

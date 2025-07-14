@@ -15,7 +15,36 @@ MonoBehaviour:
   _mapPrefab: {fileID: 4130166079983457268, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
   _enemies:
   - {fileID: 11400000, guid: 102769852e166fd4f8e5161856ae8051, type: 2}
-  _ores: []
-  _ingotRecipes: []
-  _finalRecipes: []
+  - {fileID: 11400000, guid: 633df65d44353ef4bae4a2d6e85e8b70, type: 2}
+  - {fileID: 11400000, guid: 25d56e5f71585b143812fbba8bd27b91, type: 2}
+  - {fileID: 11400000, guid: 99044dd267a0afa45b8b2c1b347cb735, type: 2}
+  _ores:
+  - Config: {fileID: 11400000, guid: 1623e473d2511cf47b1ce263c4225082, type: 2}
+    MaxCapacity: 2
+  - Config: {fileID: 11400000, guid: c490a37b7360618478d2152462ef8628, type: 2}
+    MaxCapacity: 2
+  - Config: {fileID: 11400000, guid: 7ace6de55cc71044b93dbb8ecf59a33b, type: 2}
+    MaxCapacity: 2
+  - Config: {fileID: 11400000, guid: 09f6c3a4b02011240af73deac06ca414, type: 2}
+    MaxCapacity: 2
+  - Config: {fileID: 11400000, guid: 6eed278b140c8294a9c6136299f89226, type: 2}
+    MaxCapacity: 2
+  _ingotRecipes:
+  - {fileID: 11400000, guid: 1a38560a20ee56949bb7a768307d3dcf, type: 2}
+  - {fileID: 11400000, guid: d0d5580a1c116594a8667944718e0b5d, type: 2}
+  - {fileID: 11400000, guid: 2a2283344bd67b742918d65976225e8c, type: 2}
+  - {fileID: 11400000, guid: 71139b813ca0bfc4898f3521d0a6e4de, type: 2}
+  - {fileID: 11400000, guid: f1bd6be02e680ca4d9a2d1d699a3f844, type: 2}
+  - {fileID: 11400000, guid: 9ae92e2c062f2bc4c8b38e166aef2d94, type: 2}
+  - {fileID: 11400000, guid: bd2c275b3a511c84293d4b8a9c968714, type: 2}
+  - {fileID: 11400000, guid: 3f925be79fe65fd4d8c469145cebcad6, type: 2}
+  - {fileID: 11400000, guid: 6d6cf08d4428bf24089184a8b2ebff84, type: 2}
+  - {fileID: 11400000, guid: eb22d81367eae7941a9b7fb72ab55321, type: 2}
+  _finalRecipes:
+  - {fileID: 11400000, guid: 681c9ef66958a6348add4549fb996f30, type: 2}
+  - {fileID: 11400000, guid: e46837390b24d6b4f994a000e883409b, type: 2}
+  - {fileID: 11400000, guid: 5dc6048ea1bd93d4b8f0a2a8e1fccdfd, type: 2}
+  - {fileID: 11400000, guid: e4214e99f307ee74b8d7a842eaa096ab, type: 2}
+  - {fileID: 11400000, guid: 1a7fdfc1366b6914ca8a5b494afdaf04, type: 2}
   _levelTime: 300
+  _scoreThresholds: 010000000200000003000000

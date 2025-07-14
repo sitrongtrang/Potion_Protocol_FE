@@ -1,17 +1,53 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
     [SerializeField] LevelConfig _config;
-    private static Pathfinding _pathfinding;
-    private int _score;
+    private int _score = 0;
+    public int Score
+    {
+        get => _score;
+        set
+        {
+            int oldScore = _score;
+            _score = value;
+            if (value != oldScore)
+            {
+                OnScoreChanged?.Invoke(value);
+            } 
+            if (value >= _config.ScoreThresholds[_stars]) Stars++;
+        }
+    }
+
+    private int _stars = 0;
+    public int Stars
+    {
+        get => _stars;
+        set
+        {
+            int oldStars = _stars;
+            _stars = value;
+            if (value != oldStars) OnStarGained?.Invoke();
+        }
+    }
+
+    private float _timeLeft;
     public bool IsPaused { get; private set; }
-    private void Awake()
+    public event Action<int> OnScoreChanged;
+    public event Action<float> OnTimeChanged;
+    public event Action<bool> OnPauseToggled;
+    public event Action OnStarGained;
+    [SerializeField] private OreSpawner _oreSpawner;
+
+    void Awake()
     {
         if (Instance != null && Instance != this)
         {
@@ -25,7 +61,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         LoadLevel(_config);
-        StartCoroutine(EndLevel());
+        StartCoroutine(LevelTimer());
     }
 
     void Update()
@@ -38,25 +74,27 @@ public class LevelManager : MonoBehaviour
 
     private void LoadLevel(LevelConfig config)
     {
+        _timeLeft = config.LevelTime;
+
         GameObject map = MapLoader.Instance.RenderMap(config.MapPrefab, Vector2.zero);
 
         (int width, int height, float cellSize, Vector2 origin) = GetMapParameters(map);
-        
-        _pathfinding = new Pathfinding(width, height, cellSize, origin);
+
+        Pathfinding.Instance.InitializeGrid(width, height, cellSize, origin);
         GridBuilderFactory.Instance.BuildGrid(
+            "Pathfinding Grid",
             width,
             height,
             cellSize,
             origin,
-            new string[]{"Obstacle"},
+            new string[] { "Obstacle" },
             LayerMask.GetMask("Obstacle"),
-            (x,y,isoverlap) =>
+            (x, y, isoverlap) =>
             {
                 PathNode pathNode = Pathfinding.Instance.GetNode(x, y);
                 pathNode.IsWalkable = !isoverlap;
             },
-            map.transform,
-            "Pathfinding Grid"
+            map.transform
         );
 
         // Spawn & initialize stations
@@ -87,31 +125,26 @@ public class LevelManager : MonoBehaviour
             enemySpawners[i].Initialize(_config.Enemies, positionsToSpawn);
         }
 
-        _score = 0;
+        // Initialize ore spawner
+        _oreSpawner.Initialize(_config.Ores);
     }
 
-    private IEnumerator EndLevel()
+    private IEnumerator LevelTimer()
     {
-        yield return new WaitForSeconds(_config.LevelTime);
-        EvaluateResult();
-        TogglePause();
-    }
-
-    private void EvaluateResult()
-    {
-        int stars = 0;
-        for (int i = 0; i < _config.ScoreThresholds.Length; i++)
+        while (_timeLeft > 0)
         {
-            if (_config.ScoreThresholds[i] > _score) stars = i;
-            return;
+            yield return new WaitForSeconds(1);
+            _timeLeft -= 1;
+            OnTimeChanged?.Invoke(_timeLeft);
         }
-        stars = _config.ScoreThresholds.Length;
+        if (_timeLeft <= 0) TogglePause();
     }
 
     public void TogglePause()
     {
         IsPaused = !IsPaused;
-        Time.timeScale = IsPaused? 0f : 1f;
+        Time.timeScale = IsPaused ? 0f : 1f;
+        OnPauseToggled?.Invoke(IsPaused);
     }
 
     private (int, int, float, Vector2) GetMapParameters(GameObject mapGameobject)

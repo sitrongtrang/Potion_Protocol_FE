@@ -59,12 +59,17 @@ public abstract class EnemyConfig : ScriptableObject
     {
         if (controller.PathVectorList != null)
         {
-            Vector2 targetPosition = controller.PathVectorList[controller.CurrentPathIndex];
+            Vector2 targetPosition =
+                controller.CurrentPathIndex < controller.PathVectorList.Count ?
+                controller.PathVectorList[controller.CurrentPathIndex] : controller.transform.position;
             if (Vector2.Distance(controller.transform.position, targetPosition) > 0.1f)
             {
                 Vector2 moveDir = (targetPosition - (Vector2)controller.transform.position).normalized;
                 controller.transform.Translate(Speed * Time.deltaTime * moveDir);
                 // Set animation move here
+                controller.Animatr.SetBool("IsMoving", true);
+                controller.Animatr.SetFloat("MoveX", moveDir.x);
+                controller.Animatr.SetFloat("MoveY", moveDir.y);
             }
             else
             {
@@ -73,6 +78,7 @@ public abstract class EnemyConfig : ScriptableObject
                 {
                     controller.StopMoving();
                     // Set animation stop here
+                    controller.Animatr.SetBool("IsMoving", false);
                 }
             }
         }

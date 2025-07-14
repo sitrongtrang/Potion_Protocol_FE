@@ -7,11 +7,11 @@ public class PlayerMovement : IComponent, IUpdatableComponent
 {
     private PlayerController _player;
     private PlayerInputManager _inputManager;
-    private Rigidbody2D _rb;
+    
     private Vector2 _moveDir;
     public Vector2 MoveDir => _moveDir;
-    // private bool _isMoving = false;
-    // public bool IsMoving => _isMoving;
+    //private bool _isMoving = false;
+    //public bool IsMoving => _isMoving;
     [SerializeField] private PlayerConfig _playerConfig; // player attribute from data asset
     private Vector2 _playerDir; // player direction
     public Vector2 PlayerDir => _playerDir;
@@ -24,16 +24,25 @@ public class PlayerMovement : IComponent, IUpdatableComponent
         _player = player;
         _playerConfig = player.Config;
         _inputManager = inputManager;
-        _rb = _player.GetComponent<Rigidbody2D>();
 
         _inputManager.controls.Player.Move.performed += ctx =>
         {
             _moveDir = ctx.ReadValue<Vector2>().normalized;
             _playerDir = _moveDir;
+            _player.Animatr.SetFloat("MoveX", _playerDir.x);
+            _player.Animatr.SetFloat("MoveY", _playerDir.y);
+            _player.SwordAnimatr.SetFloat("MoveX", _playerDir.x);
+            _player.SwordAnimatr.SetFloat("MoveY", _playerDir.y);
+            _player.Animatr.SetBool("IsMoving", true);
         };
         _inputManager.controls.Player.Move.canceled += ctx =>
         {
             _moveDir = Vector2.zero;
+            _player.Animatr.SetFloat("MoveX", _playerDir.x);
+            _player.Animatr.SetFloat("MoveY", _playerDir.y);
+            _player.SwordAnimatr.SetFloat("MoveX", _playerDir.x);
+            _player.SwordAnimatr.SetFloat("MoveY", _playerDir.y);
+            _player.Animatr.SetBool("IsMoving", false);
         };
         _inputManager.controls.Player.Dash.performed += ctx =>
         {
@@ -45,8 +54,8 @@ public class PlayerMovement : IComponent, IUpdatableComponent
     {
         if (_moveDir != Vector2.zero)
         {
-            Vector2 targetPos = _rb.position + _moveDir * _playerConfig.MoveSpeed * Time.fixedDeltaTime;
-            _rb.MovePosition(targetPos);
+            Vector2 targetPos = _player.Rb.position + _moveDir * _playerConfig.MoveSpeed * Time.fixedDeltaTime;
+            _player.Rb.MovePosition(targetPos);
         }
         //_player.gameObject.transform.Translate(_moveDir * _playerConfig.MoveSpeed * Time.deltaTime);
     }
@@ -60,13 +69,25 @@ public class PlayerMovement : IComponent, IUpdatableComponent
         while (dashTime < _playerConfig.DashTime)
         {
 
-            Vector2 newPos = _rb.position + _playerDir * _playerConfig.DashSpeed * Time.fixedDeltaTime;
-            _rb.MovePosition(newPos);
+            Vector2 newPos = _player.Rb.position + _playerDir * _playerConfig.DashSpeed * Time.fixedDeltaTime;
+            _player.Rb.MovePosition(newPos);
+
+            _player.Animatr.SetFloat("MoveX", _playerDir.x);
+            _player.Animatr.SetFloat("MoveY", _playerDir.y);
+            _player.SwordAnimatr.SetFloat("MoveX", _playerDir.x);
+            _player.SwordAnimatr.SetFloat("MoveY", _playerDir.y);
+            _player.Animatr.SetBool("IsMoving", true);
 
             dashTime += Time.deltaTime;
             yield return null;
         }
         _isDashing = false;
+
+        _player.Animatr.SetFloat("MoveX", _playerDir.x);
+        _player.Animatr.SetFloat("MoveY", _playerDir.y);
+        _player.SwordAnimatr.SetFloat("MoveX", _playerDir.x);
+        _player.SwordAnimatr.SetFloat("MoveY", _playerDir.y);
+        _player.Animatr.SetBool("IsMoving", false);
 
         // Dash Cooldown
         yield return new WaitForSeconds(_playerConfig.DashCooldown);

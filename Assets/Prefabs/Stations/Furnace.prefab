@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3935734546950379814}
   - component: {fileID: 5332281164907277573}
   - component: {fileID: 458266666713682462}
+  - component: {fileID: -8667639760541199081}
   m_Layer: 0
   m_Name: Furnace
   m_TagString: Station
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 718545363
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8142887963223585860, guid: 684fc6f7c36189c448a0c8bda50c5af0, type: 3}
+  m_Sprite: {fileID: -7750266274221971817, guid: 5da0603578617b443ad8708cdaf1febd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -174,3 +175,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c16f10e4f3f52d74a8086409c0157f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &-8667639760541199081
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6779095460143926864}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d16f25fd19424a044bdbf9e7c88f95cd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

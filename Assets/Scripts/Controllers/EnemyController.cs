@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [Header("Component")]
+    [SerializeField] private Animator _animator;
+    public Animator Animatr => _animator;
     public EnemyConfig EnemyConf { get; private set; }
     public EnemySpawner Spawner { get; private set; }
     public int PositionIndex { get; private set; }
@@ -81,7 +83,11 @@ public class EnemyController : MonoBehaviour
         CurrentPathIndex = 0;
         if (!_movementIgnoreObstacles)
         {
-            PathVectorList = Pathfinding.Instance?.FindPath(transform.position, position);
+            Pathfinding.Instance?.FindPath(transform.position, position, (path) => {
+            if (path != null) {
+                PathVectorList = path;
+            }
+        });
             if (PathVectorList != null && PathVectorList.Count > 0)
             {
                 PathVectorList.RemoveAt(0);
