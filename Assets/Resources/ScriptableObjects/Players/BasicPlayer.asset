@@ -17,6 +17,7 @@ MonoBehaviour:
   _dashSpeed: 20
   _dashTime: 0.1
   _attackCooldown: 1
+  _attackDelay: 0.5
   _skillsCooldown:
   - 2
   - 5

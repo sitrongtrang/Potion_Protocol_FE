@@ -64,7 +64,9 @@ public class PlayerAttack : IComponent, IUpdatableComponent
                 _player.SwordAnimatr.SetFloat("MoveX", playerX);
                 _player.SwordAnimatr.SetFloat("MoveY", playerY);
             }
-            yield return new WaitForSeconds(_player.Config.AttackCooldown);
+            yield return new WaitForSeconds(_player.Config.AttackDelay);
+            _player.Weapon.Attack(_player);
+            yield return new WaitForSeconds(_player.Config.AttackCooldown - _player.Config.AttackDelay);
             // _isInAction = false;
             _canAttack = true;
         }

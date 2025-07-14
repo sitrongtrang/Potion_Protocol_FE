@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5517552200255497154}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,7 +34,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 9040233741692579619}
+  - {fileID: 7817507709519470864}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5467732197492940489
@@ -134,6 +134,8 @@ MonoBehaviour:
   _rb: {fileID: 267156249908824472}
   _anim: {fileID: -4838168921377332254}
   _swordAnim: {fileID: 6287359909472308917}
+  _weapon: {fileID: 11400000, guid: 8254a7f3b589ea54890b2ffd8067927d, type: 2}
+  attackPoint: {fileID: 7817507709519470864}
 --- !u!95 &-4838168921377332254
 Animator:
   serializedVersion: 7
@@ -204,10 +206,10 @@ GameObject:
   - component: {fileID: 9040233741692579619}
   - component: {fileID: 4483685439520837621}
   - component: {fileID: 6287359909472308917}
-  - component: {fileID: 8146794248231289773}
+  - component: {fileID: 1267569494093220548}
   m_Layer: 0
-  m_Name: sword
-  m_TagString: Untagged
+  m_Name: Sword
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -222,10 +224,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.42, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5281950400656108509}
+  m_Father: {fileID: 7817507709519470864}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4483685439520837621
 SpriteRenderer:
@@ -304,7 +306,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &8146794248231289773
+--- !u!61 &1267569494093220548
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -334,7 +336,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -350,3 +352,35 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.8333333, y: 1.8333334}
   m_EdgeRadius: 0
+--- !u!1 &6526183477931888245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7817507709519470864}
+  m_Layer: 0
+  m_Name: Weapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7817507709519470864
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6526183477931888245}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 9040233741692579619}
+  m_Father: {fileID: 5281950400656108509}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
