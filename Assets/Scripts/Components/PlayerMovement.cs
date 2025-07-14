@@ -31,6 +31,8 @@ public class PlayerMovement : IComponent, IUpdatableComponent
             _playerDir = _moveDir;
             _player.Animatr.SetFloat("MoveX", _playerDir.x);
             _player.Animatr.SetFloat("MoveY", _playerDir.y);
+            _player.SwordAnimatr.SetFloat("MoveX", _playerDir.x);
+            _player.SwordAnimatr.SetFloat("MoveY", _playerDir.y);
             _player.Animatr.SetBool("IsMoving", true);
         };
         _inputManager.controls.Player.Move.canceled += ctx =>
@@ -38,6 +40,8 @@ public class PlayerMovement : IComponent, IUpdatableComponent
             _moveDir = Vector2.zero;
             _player.Animatr.SetFloat("MoveX", _playerDir.x);
             _player.Animatr.SetFloat("MoveY", _playerDir.y);
+            _player.SwordAnimatr.SetFloat("MoveX", _playerDir.x);
+            _player.SwordAnimatr.SetFloat("MoveY", _playerDir.y);
             _player.Animatr.SetBool("IsMoving", false);
         };
         _inputManager.controls.Player.Dash.performed += ctx =>
@@ -70,6 +74,8 @@ public class PlayerMovement : IComponent, IUpdatableComponent
 
             _player.Animatr.SetFloat("MoveX", _playerDir.x);
             _player.Animatr.SetFloat("MoveY", _playerDir.y);
+            _player.SwordAnimatr.SetFloat("MoveX", _playerDir.x);
+            _player.SwordAnimatr.SetFloat("MoveY", _playerDir.y);
             _player.Animatr.SetBool("IsMoving", true);
 
             dashTime += Time.deltaTime;
@@ -79,6 +85,8 @@ public class PlayerMovement : IComponent, IUpdatableComponent
 
         _player.Animatr.SetFloat("MoveX", _playerDir.x);
         _player.Animatr.SetFloat("MoveY", _playerDir.y);
+        _player.SwordAnimatr.SetFloat("MoveX", _playerDir.x);
+        _player.SwordAnimatr.SetFloat("MoveY", _playerDir.y);
         _player.Animatr.SetBool("IsMoving", false);
 
         // Dash Cooldown
