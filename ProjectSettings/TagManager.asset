@@ -11,7 +11,6 @@ TagManager:
   - PatrolCenter
   - Ore
   - CraftPoint
-  - Spawn Ore Bounds
   - Enemy
   layers:
   - Default

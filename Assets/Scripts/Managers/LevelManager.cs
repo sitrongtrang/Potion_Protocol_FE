@@ -98,7 +98,7 @@ public class LevelManager : MonoBehaviour
             map.transform
         );
 
-        GameObject spawnOreBounds = GameObject.FindGameObjectWithTag("Spawn Ore Bounds");
+        GameObject spawnOreBounds = GameObject.Find("Spawn Ore Bounds");
 
         BoxCollider2D collider2D = spawnOreBounds.GetComponent<BoxCollider2D>();
         float widthInF = collider2D.bounds.size.x;
