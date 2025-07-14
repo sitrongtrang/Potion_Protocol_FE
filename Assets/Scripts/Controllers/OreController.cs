@@ -9,7 +9,7 @@ public class OreController : MonoBehaviour
     [SerializeField] private Collider2D _collider;
     void Start()
     {
-        // _collider = GetComponent<Collider2D>();
+        _collider = GetComponent<Collider2D>();
     }
     public void Initialize(OreConfig config)
     {

@@ -80,7 +80,7 @@ public class LevelManager : MonoBehaviour
 
         (int width, int height, float cellSize, Vector2 origin) = GetMapParameters(map);
 
-        Pathfinding.Instance.InitializeGrid(width, height, cellSize, origin);
+        Pathfinding.Instance.InitializeGrid(width * 2, height * 2, cellSize * 0.5f, origin);
         GridBuilderFactory.Instance.BuildGrid(
             GridBuilderFactory.BuilderNames[0],
             width * 2,
