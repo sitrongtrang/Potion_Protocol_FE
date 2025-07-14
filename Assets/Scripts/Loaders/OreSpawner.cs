@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,10 +16,14 @@ public class OreSpawner : MonoBehaviour
     private int[] _maxCapacities;
     private int[] _currentAmounts;
 
+    [SerializeField] private float _maxSpawnInterval = 10f;
+    [SerializeField] private float _minSpawnInterval = 5f;
+    private float _spawnInterval = 5f;
+
     // Spawn strategy delegate - can be changed at runtime
     public delegate OreConfig GetOreConfig(OreConfig[] oreConfigs, int[] maxCapacities, int[] currentAmounts);
     private GetOreConfig _spawnStrategy;
-    
+
     /// <summary>
     /// Initialize the spawner with configuration data
     /// </summary>
@@ -27,26 +32,50 @@ public class OreSpawner : MonoBehaviour
     public void Initialize(IReadOnlyList<OreSetting> oreSettings, SpawnStrategy initialStrategy = SpawnStrategy.RandomAvailable)
     {
         ValidateOreSettings(oreSettings);
-        
+
         int count = oreSettings.Count;
         _oreConfigs = new OreConfig[count];
         _maxCapacities = new int[count];
         _currentAmounts = new int[count];
-        
+
         for (int i = 0; i < count; i++)
         {
             var setting = oreSettings[i];
             _oreConfigs[i] = setting.Config;
             _maxCapacities[i] = setting.MaxCapacity;
             _currentAmounts[i] = 0;
-            
+
             if (_debugLogsEnabled)
             {
                 Debug.Log($"Registered ore: {setting.Config.name} with max capacity {setting.MaxCapacity}");
             }
         }
-        
+
         SetDefaultSpawnStrategy(initialStrategy);
+
+        StartCoroutine(SpawnEnumerator());
+    }
+
+    private IEnumerator SpawnEnumerator()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(_spawnInterval);
+
+            OreConfig oreConfig = TrySpawnOre();
+            GridBuilder oreGrid = GridBuilderFactory.Instance.GetBuilder(GridBuilderFactory.BuilderNames[1]);
+            if (oreConfig == null || oreGrid == null) yield return null;
+
+            GridCellObject gridCell = oreGrid.GetRandomNonoverlapCell();
+            if (gridCell == null ) yield return null;
+
+            Vector2 worldPosition = oreGrid.GetWorldPosition(gridCell);
+            OreController oreController = Instantiate(oreConfig.Prefab, worldPosition, Quaternion.identity);
+            oreController.Initialize(oreConfig);
+
+            oreGrid.ReleaseCell(gridCell);
+            _spawnInterval = UnityEngine.Random.Range(_minSpawnInterval, _maxSpawnInterval);
+        }
     }
     
     /// <summary>
@@ -60,7 +89,7 @@ public class OreSpawner : MonoBehaviour
             Debug.LogWarning("Spawner not initialized or strategy not set");
             return null;
         }
-        
+
         var oreToSpawn = _spawnStrategy.Invoke(_oreConfigs, _maxCapacities, _currentAmounts);
         if (oreToSpawn != null)
         {
@@ -68,14 +97,14 @@ public class OreSpawner : MonoBehaviour
             if (index >= 0)
             {
                 _currentAmounts[index]++;
-                
+
                 if (_debugLogsEnabled)
                 {
                     Debug.Log($"Spawning ore: {oreToSpawn.name}. Current count: {_currentAmounts[index]}/{_maxCapacities[index]}");
                 }
             }
         }
-        
+
         return oreToSpawn;
     }
     
@@ -113,7 +142,7 @@ public class OreSpawner : MonoBehaviour
                 _spawnStrategy = GetRandomAvailableOre;
                 break;
             case SpawnStrategy.RoundRobin:
-                _spawnStrategy = GetRoundRobinOre;
+                _spawnStrategy = CreateRoundRobinStrategy();
                 break;
             // case SpawnStrategy.WeightedRandom:
             //     _spawnStrategy = GetWeightedRandomOre;
@@ -183,32 +212,61 @@ public class OreSpawner : MonoBehaviour
         return resultIndex >= 0 ? oreConfigs[resultIndex] : null;
     }
     
-    private int _roundRobinIndex = 0;
-    
-    private OreConfig GetRoundRobinOre(OreConfig[] oreConfigs, int[] maxCapacities, int[] currentAmounts)
+    private GetOreConfig CreateRoundRobinStrategy()
     {
-        int initialIndex = _roundRobinIndex;
-        bool found = false;
+        int roundRobinIndex = 0;
         
-        do
+        return (oreConfigs, maxCapacities, currentAmounts) =>
         {
-            if (currentAmounts[_roundRobinIndex] < maxCapacities[_roundRobinIndex])
-            {
-                found = true;
-                break;
-            }
+            int initialIndex = roundRobinIndex;
+            bool found = false;
             
-            _roundRobinIndex = (_roundRobinIndex + 1) % currentAmounts.Length;
-        } 
-        while (_roundRobinIndex != initialIndex);
-        
-        if (!found) return null;
-        
-        var result = oreConfigs[_roundRobinIndex];
-        _roundRobinIndex = (_roundRobinIndex + 1) % currentAmounts.Length;
-        
-        return result;
+            do
+            {
+                if (currentAmounts[roundRobinIndex] < maxCapacities[roundRobinIndex])
+                {
+                    found = true;
+                    break;
+                }
+                
+                roundRobinIndex = (roundRobinIndex + 1) % currentAmounts.Length;
+            } 
+            while (roundRobinIndex != initialIndex);
+            
+            if (!found) return null;
+            
+            var result = oreConfigs[roundRobinIndex];
+            roundRobinIndex = (roundRobinIndex + 1) % currentAmounts.Length;
+            
+            return result;
+        };
     }
+    
+    // private int _roundRobinIndex = 0;
+    // private OreConfig GetRoundRobinOre(OreConfig[] oreConfigs, int[] maxCapacities, int[] currentAmounts)
+    // {
+    //     int initialIndex = _roundRobinIndex;
+    //     bool found = false;
+
+    //     do
+    //     {
+    //         if (currentAmounts[_roundRobinIndex] < maxCapacities[_roundRobinIndex])
+    //         {
+    //             found = true;
+    //             break;
+    //         }
+
+    //         _roundRobinIndex = (_roundRobinIndex + 1) % currentAmounts.Length;
+    //     }
+    //     while (_roundRobinIndex != initialIndex);
+
+    //     if (!found) return null;
+
+    //     var result = oreConfigs[_roundRobinIndex];
+    //     _roundRobinIndex = (_roundRobinIndex + 1) % currentAmounts.Length;
+
+    //     return result;
+    // }
     
     // private OreConfig GetWeightedRandomOre(OreConfig[] _oreConfigs, int[] _maxCapacities, int[] _currentAmounts)
     // {
@@ -286,7 +344,7 @@ public class OreSpawner : MonoBehaviour
     {
         RandomAvailable,  // Random selection from available ores
         RoundRobin,       // Cycle through ores in order
-        WeightedRandom    // Random selection weighted by ore spawn weights
+        // WeightedRandom    // Random selection weighted by ore spawn weights
     }
     
     #endregion
