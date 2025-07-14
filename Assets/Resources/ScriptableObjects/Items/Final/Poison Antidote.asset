@@ -16,5 +16,5 @@ MonoBehaviour:
   _id: P2
   _type: 2
   _prefab: {fileID: 1942381613250348480, guid: b5ef4f9aa5c8fc847bea518000229ee4, type: 3}
-  _score: 0
+  _score: 1
   _expireTime: 0

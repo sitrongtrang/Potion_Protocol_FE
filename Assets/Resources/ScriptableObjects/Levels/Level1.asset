@@ -18,7 +18,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 633df65d44353ef4bae4a2d6e85e8b70, type: 2}
   - {fileID: 11400000, guid: 25d56e5f71585b143812fbba8bd27b91, type: 2}
   - {fileID: 11400000, guid: 99044dd267a0afa45b8b2c1b347cb735, type: 2}
-  _ores: []
+  _ores:
+  - Config: {fileID: 11400000, guid: 1623e473d2511cf47b1ce263c4225082, type: 2}
+    MaxCapacity: 2
+  - Config: {fileID: 11400000, guid: c490a37b7360618478d2152462ef8628, type: 2}
+    MaxCapacity: 2
+  - Config: {fileID: 11400000, guid: 7ace6de55cc71044b93dbb8ecf59a33b, type: 2}
+    MaxCapacity: 2
+  - Config: {fileID: 11400000, guid: 09f6c3a4b02011240af73deac06ca414, type: 2}
+    MaxCapacity: 2
+  - Config: {fileID: 11400000, guid: 6eed278b140c8294a9c6136299f89226, type: 2}
+    MaxCapacity: 2
   _ingotRecipes:
   - {fileID: 11400000, guid: 1a38560a20ee56949bb7a768307d3dcf, type: 2}
   - {fileID: 11400000, guid: d0d5580a1c116594a8667944718e0b5d, type: 2}
@@ -37,4 +47,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e4214e99f307ee74b8d7a842eaa096ab, type: 2}
   - {fileID: 11400000, guid: 1a7fdfc1366b6914ca8a5b494afdaf04, type: 2}
   _levelTime: 300
-  _scoreThresholds: 
+  _scoreThresholds: 010000000200000003000000

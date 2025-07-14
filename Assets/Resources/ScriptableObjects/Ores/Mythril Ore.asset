@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e24b283275af73a4ab4c7144cac466b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c50f606a67141046a9673499abb15d6, type: 3}
   m_Name: Mythril Ore
   m_EditorClassIdentifier: 
   _name: Mythril Ore
-  _id: I20
-  _type: 0
-  _prefab: {fileID: 2756712652034502478, guid: dea98d5745efd1844b6112d4b468c90d, type: 3}
+  _id: O7
+  _prefab: {fileID: -7601033474094837564, guid: 8195302446a827040a62119d32bee1e7, type: 3}
+  _droppedItem: {fileID: 11400000, guid: 5d56dd2512d68644596925a9e123dbe3, type: 2}

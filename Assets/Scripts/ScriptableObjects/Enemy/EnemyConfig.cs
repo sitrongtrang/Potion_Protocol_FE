@@ -59,7 +59,9 @@ public abstract class EnemyConfig : ScriptableObject
     {
         if (controller.PathVectorList != null)
         {
-            Vector2 targetPosition = controller.PathVectorList[controller.CurrentPathIndex];
+            Vector2 targetPosition =
+                controller.CurrentPathIndex < controller.PathVectorList.Count ?
+                controller.PathVectorList[controller.CurrentPathIndex] : controller.transform.position;
             if (Vector2.Distance(controller.transform.position, targetPosition) > 0.1f)
             {
                 Vector2 moveDir = (targetPosition - (Vector2)controller.transform.position).normalized;

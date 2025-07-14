@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e24b283275af73a4ab4c7144cac466b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c50f606a67141046a9673499abb15d6, type: 3}
   m_Name: Gold Ore
   m_EditorClassIdentifier: 
   _name: Gold Ore
-  _id: I15
-  _type: 0
-  _prefab: {fileID: 2756712652034502478, guid: 2358e2fdfe4937e409c5c12ee3071259, type: 3}
+  _id: O5
+  _prefab: {fileID: -4070333702290590942, guid: 7d26a6e5de687454aa4be78c6f0946a0, type: 3}
+  _droppedItem: {fileID: 11400000, guid: 59f0c497d6f4d8e46983734b82c83b70, type: 2}

@@ -36,8 +36,9 @@ public class StationController : MonoBehaviour
             for (int i = 0; i < _items.Count; i++)
             {
                 Vector2 stationPos = transform.position;
-                Vector2 dropPosition =  stationPos + 0.5f * (i + 1) * Vector2.down;
+                Vector2 dropPosition = stationPos + 0.5f * (i + 1) * Vector2.down;
                 DropItem(_items[i], dropPosition);
+                _items.Remove(_items[i]);
             }
         }
     }
@@ -52,6 +53,11 @@ public class StationController : MonoBehaviour
         yield return new WaitForSeconds(recipe.CraftingTime);
         Vector2 stationPos = transform.position;
         Vector2 dropPosition = stationPos + 0.5f * Vector2.down;
+        while (_items.Count > 0)
+        {
+            _items.RemoveAt(0);  
+        }
+        Debug.Log(recipe);
         DropItem(recipe.Product, dropPosition);
     }
 
