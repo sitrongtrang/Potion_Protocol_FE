@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class GridBuilderFactory : MonoBehaviour
 {
+    public static string[] BuilderNames = new string[]{
+        "Pathfinding Grid",
+        "Ore Spawn Grid"
+    };
     public static GridBuilderFactory Instance { get; private set; }
     void Awake()
     {
@@ -27,7 +31,6 @@ public class GridBuilderFactory : MonoBehaviour
         LayerMask overlapLayerMasks = default,
         GridCellObject.OnOverlapBox onOverlapBox = null,
         Transform parent = null
-        
     )
     {
         GridBuilder gridBuilder = Instantiate(_gridBuilder, transform);
@@ -35,5 +38,11 @@ public class GridBuilderFactory : MonoBehaviour
         GridBuilders ??= new();
         GridBuilders.Add(objName, gridBuilder);
         gridBuilder.InitializeGrid(objName, xDim, yDim, cellSize, originPosition, overlapTags, overlapLayerMasks, onOverlapBox, parent);
+    }
+
+    public GridBuilder GetBuilder(string name)
+    {
+        if (GridBuilders.TryGetValue(name, out GridBuilder gridBuilder)) return gridBuilder;
+        return null;
     }
 }

@@ -80,12 +80,12 @@ public class LevelManager : MonoBehaviour
 
         (int width, int height, float cellSize, Vector2 origin) = GetMapParameters(map);
 
-        Pathfinding.Instance.InitializeGrid(width, height, cellSize, origin);
+        Pathfinding.Instance.InitializeGrid(width * 2, height * 2, cellSize * 0.5f, origin);
         GridBuilderFactory.Instance.BuildGrid(
-            "Pathfinding Grid",
-            width,
-            height,
-            cellSize,
+            GridBuilderFactory.BuilderNames[0],
+            width * 2,
+            height * 2,
+            cellSize * 0.5f,
             origin,
             new string[] { "Obstacle" },
             LayerMask.GetMask("Obstacle"),
@@ -93,6 +93,21 @@ public class LevelManager : MonoBehaviour
             {
                 PathNode pathNode = Pathfinding.Instance.GetNode(x, y);
                 pathNode.IsWalkable = !isoverlap;
+            },
+            map.transform
+        );
+
+        GridBuilderFactory.Instance.BuildGrid(
+            GridBuilderFactory.BuilderNames[1],
+            width,
+            height,
+            cellSize,
+            origin,
+            new string[]{"Obstacle", "Player", "Enemy"},
+            LayerMask.GetMask("Obstacle", "Player", "Enemy"),
+            (x,y,isoverlap) =>
+            {
+
             },
             map.transform
         );
@@ -152,7 +167,7 @@ public class LevelManager : MonoBehaviour
         Grid grid = mapGameobject.GetComponent<Grid>();
         Vector2 tileSize = grid.cellSize;
 
-        float cellSize = Mathf.Min(tileSize.x, tileSize.y) * 0.5f;
+        float cellSize = Mathf.Min(tileSize.x, tileSize.y);
 
         Tilemap[] tilemaps = mapGameobject.GetComponentsInChildren<Tilemap>();
 
@@ -169,8 +184,6 @@ public class LevelManager : MonoBehaviour
             if (min.x < globalMinCell.x) globalMinCell.x = min.x;
             if (min.y < globalMinCell.y) globalMinCell.y = min.y;
         }
-        maxXLength = Mathf.CeilToInt((float)maxXLength / 0.5f);
-        maxYLength = Mathf.CeilToInt((float)maxYLength / 0.5f);
 
         Vector2 bottomLeftWorldPos = grid.GetCellCenterWorld(globalMinCell);
 
