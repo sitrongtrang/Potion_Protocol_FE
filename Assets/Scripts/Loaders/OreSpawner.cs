@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,11 +63,27 @@ public class OreSpawner : MonoBehaviour
             yield return new WaitForSeconds(_spawnInterval);
 
             OreConfig oreConfig = TrySpawnOre();
+            if (oreConfig == null)
+            {
+                if (_debugLogsEnabled)
+                    Debug.Log("Không có ore khả dụng để spawn");
+                continue;
+            }
+
             GridBuilder oreGrid = GridBuilderFactory.Instance.GetBuilder(GridBuilderFactory.BuilderNames[1]);
-            if (oreConfig == null || oreGrid == null) yield return null;
+            if (oreGrid == null)
+            {
+                Debug.LogWarning("Không lấy được GridBuilder cho ore");
+                continue;
+            }
 
             GridCellObject gridCell = oreGrid.GetRandomNonoverlapCell();
-            if (gridCell == null ) yield return null;
+            if (gridCell == null)
+            {
+                if (_debugLogsEnabled)
+                    Debug.Log("Không có ô trống để spawn ore");
+                continue;
+            }
 
             Vector2 worldPosition = oreGrid.GetWorldPosition(gridCell);
             OreController oreController = Instantiate(oreConfig.Prefab, worldPosition, Quaternion.identity);
