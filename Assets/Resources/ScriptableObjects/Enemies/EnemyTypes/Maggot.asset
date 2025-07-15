@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Filthgrub
   _id: M3
-  _hp: 80
+  _hp: 5
   _speed: 3
-  _damage: 3
+  _damage: 2
   _patrolRadius: 5.5
   _patrolInterval: 1
   _chaseRadius: 7

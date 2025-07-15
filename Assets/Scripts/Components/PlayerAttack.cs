@@ -60,8 +60,7 @@ public class PlayerAttack : IComponent, IUpdatableComponent
         Vector2 dir = _player.Movement.PlayerDir.normalized;
         // _isInAction = true;
         Debug.Log("Player Attacked");
-
-        yield return new WaitForSeconds(_player.Config.AttackDelay);
+        IsAttacking = true;
         // Check va chạm với tường
         float skinWidth = 0.2f;
         Vector2 origin = (Vector2)_player.AttackPoint.position + dir * skinWidth;
@@ -75,13 +74,12 @@ public class PlayerAttack : IComponent, IUpdatableComponent
         }
 
         // Chạy anim
-        IsAttacking = true;
         if (!PlayAnimation())
         {
             _canAttack = true;
             yield break;
         }
-
+        yield return new WaitForSeconds(_player.Config.AttackDelay);
         // Đánh quái
         HitEnemy(origin, dir);
         yield return new WaitForSeconds(_player.Config.AttackCooldown - _player.Config.AttackDelay);
