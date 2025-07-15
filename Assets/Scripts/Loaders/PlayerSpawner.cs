@@ -20,5 +20,6 @@ public class PlayerSpawner : MonoBehaviour
         }
 
         _config.Spawn(transform.position, _inputActions);
+        
     }
 }

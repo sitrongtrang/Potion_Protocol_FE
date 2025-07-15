@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
 
     public void Initialize(PlayerConfig config, InputActionAsset loadedAsset = null)
     {
+        EventBus.AddTargetToCamera(gameObject.transform);
         _config = config;
         _inputManager = loadedAsset != null
             ? new PlayerInputManager(loadedAsset)
