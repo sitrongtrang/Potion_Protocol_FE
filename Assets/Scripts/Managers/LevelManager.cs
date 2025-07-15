@@ -21,6 +21,7 @@ public class LevelManager : MonoBehaviour
             _score = value;
             if (value != oldScore)
             {
+                GameManager.Instance.Score = value;
                 OnScoreChanged?.Invoke(value);
             } 
             if (value >= _config.ScoreThresholds[_stars]) Stars++;
@@ -35,7 +36,11 @@ public class LevelManager : MonoBehaviour
         {
             int oldStars = _stars;
             _stars = value;
-            if (value != oldStars) OnStarGained?.Invoke();
+            if (value != oldStars)
+            {
+                GameManager.Instance.Star = value;
+                OnStarGained?.Invoke();
+            }
         }
     }
 
@@ -159,7 +164,10 @@ public class LevelManager : MonoBehaviour
             _timeLeft -= 1;
             OnTimeChanged?.Invoke(_timeLeft);
         }
-        if (_timeLeft <= 0) TogglePause();
+        if (_timeLeft <= 0)
+        {
+            SceneManager.LoadScene("LevelResultScene");
+        }
     }
 
     public void TogglePause()

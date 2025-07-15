@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Scarbrute
   _id: M2
-  _hp: 40
+  _hp: 8
   _speed: 3
-  _damage: 4
+  _damage: 3
   _patrolRadius: 5.5
   _patrolInterval: 1
   _chaseRadius: 7

@@ -30,7 +30,11 @@ public class StationController : MonoBehaviour
     {
 
         int recipeIndex = FindMatchingRecipe();
-        if (recipeIndex != -1) StartCoroutine(WaitForCraft(_recipes[recipeIndex]));
+        if (recipeIndex != -1)
+        {
+            _items.Clear();
+            StartCoroutine(WaitForCraft(_recipes[recipeIndex]));
+        }
         else
         {
             for (int i = 0; i < _items.Count; i++)
@@ -53,10 +57,6 @@ public class StationController : MonoBehaviour
         yield return new WaitForSeconds(recipe.CraftingTime);
         Vector2 stationPos = transform.position;
         Vector2 dropPosition = stationPos + 0.5f * Vector2.down;
-        while (_items.Count > 0)
-        {
-            _items.RemoveAt(0);  
-        }
         Debug.Log(recipe);
         DropItem(recipe.Product, dropPosition);
     }
