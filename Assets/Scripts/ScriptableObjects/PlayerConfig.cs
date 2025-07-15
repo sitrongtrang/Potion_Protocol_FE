@@ -19,12 +19,15 @@ public class PlayerConfig : ScriptableObject
     [SerializeField] private float _attackCooldown;
     public float AttackCooldown => _attackCooldown;
 
+    [SerializeField] private float _attackDelay;
+    public float AttackDelay => _attackDelay;
+
     [SerializeField] private float[] _skillsCooldown;
     public float[] SkillsCoolDown => _skillsCooldown;
 
     [SerializeField] private PlayerController _prefab;
     public PlayerController Prefab => _prefab;
-    
+
     public void Spawn(Vector2 position, InputActionAsset loadedInputAsset = null)
     {
         PlayerController player = Instantiate(_prefab, position, Quaternion.identity);

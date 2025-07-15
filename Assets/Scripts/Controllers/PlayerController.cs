@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Animator _anim;
     [SerializeField] private Animator _swordAnim;
+    [SerializeField] private WeaponConfig _weapon;
+    [SerializeField] private Transform _attackPoint;
 
     public PlayerConfig Config => _config;
     public PlayerInventory Inventory { get; private set; }
@@ -21,7 +23,8 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D Rb => _rb;
     public Animator Animatr => _anim;
     public Animator SwordAnimatr => _swordAnim;
-
+    public WeaponConfig Weapon => _weapon;
+    public Transform AttackPoint => _attackPoint;
 
     public void Initialize(PlayerConfig config, InputActionAsset loadedAsset = null)
     {
