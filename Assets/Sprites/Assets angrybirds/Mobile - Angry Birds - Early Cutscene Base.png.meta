@@ -1,10 +1,7 @@
 fileFormatVersion: 2
-guid: d603342f425a66d4fb1b6b7ef796f5de
+guid: 77f835dbc4e19b6449da7eb6c1a13459
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -2970073484504309273
-    second: BackButton_0
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,7 +94,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -110,7 +107,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -139,23 +136,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BackButton_0
+      name: Mobile - Angry Birds - Early Cutscene Base_0
       rect:
         serializedVersion: 2
-        x: 21
-        y: 117
-        width: 458
-        height: 265
+        x: 0
+        y: 0
+        width: 1000
+        height: 980
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 226a148b8eae8e846a6473bcef87149e
+      internalID: 925712098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Angry Birds - Early Cutscene Base_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 323
+        width: 1000
+        height: 332
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7e16057e6ed28c6d0800000000000000
-      internalID: -2970073484504309273
+      spriteID: e75d9feb16d238147a648429db2f531c
+      internalID: -1748064271
       vertices: []
       indices: 
       edges: []
@@ -164,7 +183,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -174,7 +193,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BackButton_0: -2970073484504309273
+      Mobile - Angry Birds - Early Cutscene Base_0: 925712098
+      Mobile - Angry Birds - Early Cutscene Base_1: -1748064271
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
