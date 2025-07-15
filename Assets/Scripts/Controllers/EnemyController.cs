@@ -138,6 +138,7 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(float amount)
     {
         _currentHp -= amount;
+        Debug.Log("Hp " + _currentHp);
         if (_currentHp <= 0)
         {
             Die();

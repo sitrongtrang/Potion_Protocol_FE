@@ -2958,8 +2958,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemTypes:
-  - {fileID: 11400000, guid: a8e7ecf9d5e10c94ab7a1ca6881cab78, type: 2}
-  - {fileID: 11400000, guid: a430ab3b0bf4be74e8be1079f1908279, type: 2}
   - {fileID: 11400000, guid: beb25794779a99b4b91a16c504c21141, type: 2}
   - {fileID: 11400000, guid: f328770432ef4884da308476bb83d8e2, type: 2}
 --- !u!1 &1812886605

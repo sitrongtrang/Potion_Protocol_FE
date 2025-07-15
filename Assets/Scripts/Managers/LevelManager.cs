@@ -79,20 +79,42 @@ public class LevelManager : MonoBehaviour
         GameObject map = MapLoader.Instance.RenderMap(config.MapPrefab, Vector2.zero);
 
         (int width, int height, float cellSize, Vector2 origin) = GetMapParameters(map);
+        cellSize *= 0.5f;
 
-        Pathfinding.Instance.InitializeGrid(width, height, cellSize, origin);
+        Pathfinding.Instance.InitializeGrid(width * 2, height * 2, cellSize, origin);
         GridBuilderFactory.Instance.BuildGrid(
-            "Pathfinding Grid",
-            width,
-            height,
+            GridBuilderFactory.BuilderNames[0],
+            width * 2,
+            height * 2,
             cellSize,
             origin,
-            new string[] { "Obstacle" },
+            new string[] { "Obstacle" , "Ore"},
             LayerMask.GetMask("Obstacle"),
             (x, y, isoverlap) =>
             {
                 PathNode pathNode = Pathfinding.Instance.GetNode(x, y);
                 pathNode.IsWalkable = !isoverlap;
+            },
+            map.transform
+        );
+
+        GameObject spawnOreBounds = GameObject.Find("Spawn Ore Bounds");
+
+        BoxCollider2D collider2D = spawnOreBounds.GetComponent<BoxCollider2D>();
+        float widthInF = collider2D.bounds.size.x;
+        float heightInF = collider2D.bounds.size.y;
+
+        GridBuilderFactory.Instance.BuildGrid(
+            GridBuilderFactory.BuilderNames[1],
+            Mathf.CeilToInt(widthInF / cellSize),
+            Mathf.CeilToInt(heightInF / cellSize),
+            cellSize,
+            origin,
+            new string[]{"Obstacle", "Ore", "Enemy", "Player"},
+            LayerMask.GetMask("Obstacle"),
+            (x,y,isoverlap) =>
+            {
+
             },
             map.transform
         );
@@ -152,7 +174,7 @@ public class LevelManager : MonoBehaviour
         Grid grid = mapGameobject.GetComponent<Grid>();
         Vector2 tileSize = grid.cellSize;
 
-        float cellSize = Mathf.Min(tileSize.x, tileSize.y) * 0.5f;
+        float cellSize = Mathf.Min(tileSize.x, tileSize.y);
 
         Tilemap[] tilemaps = mapGameobject.GetComponentsInChildren<Tilemap>();
 
@@ -169,8 +191,6 @@ public class LevelManager : MonoBehaviour
             if (min.x < globalMinCell.x) globalMinCell.x = min.x;
             if (min.y < globalMinCell.y) globalMinCell.y = min.y;
         }
-        maxXLength = Mathf.CeilToInt((float)maxXLength / 0.5f);
-        maxYLength = Mathf.CeilToInt((float)maxYLength / 0.5f);
 
         Vector2 bottomLeftWorldPos = grid.GetCellCenterWorld(globalMinCell);
 

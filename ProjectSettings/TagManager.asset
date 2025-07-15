@@ -7,10 +7,12 @@ TagManager:
   - Station
   - Item
   - SubmissionPoint
-  - Obstacle
   - PatrolCenter
-  - Ore
   - CraftPoint
+  - Enemy
+  - Weapon
+  - Ore
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - UI
   - Player
   - Obstacle
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -53,6 +55,9 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 718545363
+    locked: 0
+  - name: Obstacle
+    uniqueID: 3571844527
     locked: 0
   m_RenderingLayers:
   - Default
