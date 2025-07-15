@@ -135,7 +135,7 @@ MonoBehaviour:
   _anim: {fileID: -4838168921377332254}
   _swordAnim: {fileID: 2632989158722518406}
   _weapon: {fileID: 11400000, guid: 8254a7f3b589ea54890b2ffd8067927d, type: 2}
-  attackPoint: {fileID: 6906503070484043503}
+  _attackPoint: {fileID: 6906503070484043503}
 --- !u!95 &-4838168921377332254
 Animator:
   serializedVersion: 7

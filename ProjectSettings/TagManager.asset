@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - Weapon
   - Ore
+  - Obstacle
   layers:
   - Default
   - TransparentFX
