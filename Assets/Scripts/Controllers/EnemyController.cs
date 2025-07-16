@@ -1,6 +1,7 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -32,6 +33,12 @@ public class EnemyController : MonoBehaviour
     public List<Vector2> PathVectorList { get; private set; }
     [SerializeField] private bool _movementIgnoreObstacles;
 
+    [Header("Health Bar")]
+    [SerializeField] private EnemyHealthUI healthBarPrefab;
+    private EnemyHealthUI _healthBar;
+    public event Action<float> OnHpChanged;
+    public event Action OnDied;
+
     #region UNITY_METHODS
     private void Update()
     {
@@ -62,8 +69,24 @@ public class EnemyController : MonoBehaviour
         _currentHp = config.Hp;
 
         PatrolCenter = patrolCenter;
-        BasicStateMachine = new(this);
 
+        _healthBar = Instantiate(
+            healthBarPrefab,
+            FindFirstObjectByType<Canvas>().transform
+        );
+        Vector3 hpOffset = Vector3.up * 1.2f;
+        _healthBar.Initialize(
+            transform,
+            _currentHp,
+            hpOffset,
+            hp => OnHpChanged?.Invoke(hp),
+            () => OnDied?.Invoke()
+        );
+
+        OnHpChanged += _healthBar.SetHp;
+        OnDied += _healthBar.DestroySelf;
+
+        BasicStateMachine = new(this);
         config.Initialize(this);
     }
     #endregion
@@ -138,7 +161,8 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(float amount)
     {
         _currentHp -= amount;
-        Debug.Log("Hp " + _currentHp);
+        Debug.Log("Hp " +  _currentHp);
+        OnHpChanged?.Invoke(_currentHp);
         if (_currentHp <= 0)
         {
             Die();
@@ -146,7 +170,9 @@ public class EnemyController : MonoBehaviour
     }
     private void Die()
     {
+        OnDied?.Invoke();
         EnemyConf.OnDeath(this);
+        ItemPool.Instance.SpawnItem(EnemyConf.Item, transform.position);
         Spawner.UnoccupiedSpace(PositionIndex);
         Spawner.UnspawnedEnemy(TypeIndex);
         Destroy(gameObject);

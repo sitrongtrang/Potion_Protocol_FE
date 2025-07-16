@@ -13,6 +13,7 @@ TagManager:
   - Weapon
   - Ore
   - Obstacle
+  - MainCanvas
   layers:
   - Default
   - TransparentFX

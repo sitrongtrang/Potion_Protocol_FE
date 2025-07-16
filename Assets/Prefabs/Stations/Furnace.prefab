@@ -126,7 +126,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 1.5
+  m_Radius: 1
 --- !u!58 &5332281164907277573
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -162,7 +162,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.6
+  m_Radius: 0.5
 --- !u!114 &458266666713682462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,8 +175,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c16f10e4f3f52d74a8086409c0157f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressBarPrefab: {fileID: 7821405652491603802, guid: 9820ee527e88f234f9ef29f976945364, type: 3}
-  mainCanvas: {fileID: 0}
+  progressBarPrefab: {fileID: 7821405652491603802, guid: 04fbe1b63c5d3be4a8c0bb18af77e652, type: 3}
+  type: 2
 --- !u!95 &-8667639760541199081
 Animator:
   serializedVersion: 7

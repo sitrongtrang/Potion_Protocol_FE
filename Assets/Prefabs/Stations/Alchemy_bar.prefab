@@ -101,7 +101,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2271706521547825618, guid: e6e433933675bf64a9ad43bd5f635041, type: 3}
+  m_Sprite: {fileID: -1107611291158841297, guid: 63e889aa0aed5514d8a2639befb8ef5c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2438762673827339831, guid: 3b47dc8e3386beb409a10b6fc722ab61, type: 3}
+  m_Sprite: {fileID: 5586905256701855597, guid: c61b67c5e1a67a2498e378e43fe46d66, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 8726599006421714182}
   - component: {fileID: 7821405652491603802}
   m_Layer: 5
-  m_Name: Station_progress_bar
+  m_Name: Alchemy_bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -212,7 +212,7 @@ RectTransform:
   m_GameObject: {fileID: 7998990765783260335}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1135206, y: 0.96932554, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 537665380745670715}

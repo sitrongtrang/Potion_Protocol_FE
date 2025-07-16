@@ -55,6 +55,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _movementIgnoreObstacles: 0
+  healthBarPrefab: {fileID: -957368622642131315, guid: 67c66995c641fe64599726b5a9b2209e, type: 3}
 --- !u!212 &-1191432383781706749
 SpriteRenderer:
   m_ObjectHideFlags: 0
