@@ -10,7 +10,7 @@ public class EnemyHealthUI : MonoBehaviour
     private Vector3 _offset;
     private Camera _cam;
 
-    public void Initialize(Transform target, float maxHp, Vector3 offset, Action<float> onHpChanged, Action onDie)
+    public void Initialize(Transform target, float maxHp, Vector3 offset)
     {
         _target = target;
         _offset = offset;
@@ -18,10 +18,6 @@ public class EnemyHealthUI : MonoBehaviour
         _slider.value = maxHp;
         _rt = GetComponent<RectTransform>();
         _cam = Camera.main;
-
-        // Subscribe vào event
-        onHpChanged += SetHp;
-        onDie += DestroySelf;
     }
 
     private void LateUpdate()

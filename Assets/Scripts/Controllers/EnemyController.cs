@@ -36,8 +36,6 @@ public class EnemyController : MonoBehaviour
     [Header("Health Bar")]
     [SerializeField] private EnemyHealthUI healthBarPrefab;
     private EnemyHealthUI _healthBar;
-    public event Action<float> OnHpChanged;
-    public event Action OnDied;
 
     #region UNITY_METHODS
     private void Update()
@@ -78,13 +76,8 @@ public class EnemyController : MonoBehaviour
         _healthBar.Initialize(
             transform,
             _currentHp,
-            hpOffset,
-            hp => OnHpChanged?.Invoke(hp),
-            () => OnDied?.Invoke()
+            hpOffset
         );
-
-        OnHpChanged += _healthBar.SetHp;
-        OnDied += _healthBar.DestroySelf;
 
         BasicStateMachine = new(this);
         config.Initialize(this);
@@ -162,7 +155,7 @@ public class EnemyController : MonoBehaviour
     {
         _currentHp -= amount;
         Debug.Log("Hp " +  _currentHp);
-        OnHpChanged?.Invoke(_currentHp);
+        _healthBar.SetHp(_currentHp);
         if (_currentHp <= 0)
         {
             Die();
@@ -170,7 +163,7 @@ public class EnemyController : MonoBehaviour
     }
     private void Die()
     {
-        OnDied?.Invoke();
+        Destroy(_healthBar.gameObject);
         EnemyConf.OnDeath(this);
         ItemPool.Instance.SpawnItem(EnemyConf.Item, transform.position);
         Spawner.UnoccupiedSpace(PositionIndex);
