@@ -485,6 +485,8 @@ MonoBehaviour:
   _id: 2
   _item: {fileID: 0}
   _itemImagePrefab: {fileID: 8307450776545138349, guid: f5788c8d2078e634ab74155395580081, type: 3}
+  _choosingSlotImg: {fileID: 5216961189936626888, guid: a90b6c4d48ab4f045abb7f8d17521028, type: 3}
+  _unChoosingSlotImg: {fileID: 6250216199183075140, guid: 7a1d922428bf93644bf41586e0dc1c90, type: 3}
 --- !u!1 &379567003
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,7 +569,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1884120376}
   m_HandleRect: {fileID: 1884120375}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2437,6 +2439,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5551781747772589318, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6250216199183075140, guid: 7a1d922428bf93644bf41586e0dc1c90, type: 3}
+    - target: {fileID: 5551781747772589318, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551781747772589318, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551781747772589318, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7283019
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551781747772589318, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7598320282096580949, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
       propertyPath: m_Name
       value: InventorySlot
@@ -2767,7 +2789,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845228582}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -3397,6 +3419,22 @@ PrefabInstance:
     - target: {fileID: 872787535771123493, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551781747772589318, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6250216199183075140, guid: 7a1d922428bf93644bf41586e0dc1c90, type: 3}
+    - target: {fileID: 5551781747772589318, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551781747772589318, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551781747772589318, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7283019
       objectReference: {fileID: 0}
     - target: {fileID: 7598320282096580949, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
       propertyPath: m_Name
@@ -4243,6 +4281,8 @@ MonoBehaviour:
   _id: 0
   _item: {fileID: 0}
   _itemImagePrefab: {fileID: 8307450776545138349, guid: f5788c8d2078e634ab74155395580081, type: 3}
+  _choosingSlotImg: {fileID: 5216961189936626888, guid: a90b6c4d48ab4f045abb7f8d17521028, type: 3}
+  _unChoosingSlotImg: {fileID: 6250216199183075140, guid: 7a1d922428bf93644bf41586e0dc1c90, type: 3}
 --- !u!1001 &1679469803
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4369,6 +4409,8 @@ MonoBehaviour:
   _id: 4
   _item: {fileID: 0}
   _itemImagePrefab: {fileID: 8307450776545138349, guid: f5788c8d2078e634ab74155395580081, type: 3}
+  _choosingSlotImg: {fileID: 5216961189936626888, guid: a90b6c4d48ab4f045abb7f8d17521028, type: 3}
+  _unChoosingSlotImg: {fileID: 6250216199183075140, guid: 7a1d922428bf93644bf41586e0dc1c90, type: 3}
 --- !u!1001 &1810336762
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4456,6 +4498,22 @@ PrefabInstance:
     - target: {fileID: 872787535771123493, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551781747772589318, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6250216199183075140, guid: 7a1d922428bf93644bf41586e0dc1c90, type: 3}
+    - target: {fileID: 5551781747772589318, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551781747772589318, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551781747772589318, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7283019
       objectReference: {fileID: 0}
     - target: {fileID: 7598320282096580949, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
       propertyPath: m_Name
@@ -4918,6 +4976,8 @@ MonoBehaviour:
   _id: 3
   _item: {fileID: 0}
   _itemImagePrefab: {fileID: 8307450776545138349, guid: f5788c8d2078e634ab74155395580081, type: 3}
+  _choosingSlotImg: {fileID: 5216961189936626888, guid: a90b6c4d48ab4f045abb7f8d17521028, type: 3}
+  _unChoosingSlotImg: {fileID: 6250216199183075140, guid: 7a1d922428bf93644bf41586e0dc1c90, type: 3}
 --- !u!1 &1939499372
 GameObject:
   m_ObjectHideFlags: 0
@@ -5266,6 +5326,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5551781747772589318, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6250216199183075140, guid: 7a1d922428bf93644bf41586e0dc1c90, type: 3}
+    - target: {fileID: 5551781747772589318, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551781747772589318, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551781747772589318, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7283019
+      objectReference: {fileID: 0}
     - target: {fileID: 7598320282096580949, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
       propertyPath: m_Name
       value: InventorySlot (1)
@@ -5444,6 +5520,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5551781747772589318, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6250216199183075140, guid: 7a1d922428bf93644bf41586e0dc1c90, type: 3}
+    - target: {fileID: 5551781747772589318, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551781747772589318, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551781747772589318, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7283019
+      objectReference: {fileID: 0}
     - target: {fileID: 7598320282096580949, guid: cfbfb46e6671b59418fa5989823e2211, type: 3}
       propertyPath: m_Name
       value: InventorySlot (2)
@@ -5559,6 +5651,8 @@ MonoBehaviour:
   _id: 1
   _item: {fileID: 0}
   _itemImagePrefab: {fileID: 8307450776545138349, guid: f5788c8d2078e634ab74155395580081, type: 3}
+  _choosingSlotImg: {fileID: 5216961189936626888, guid: a90b6c4d48ab4f045abb7f8d17521028, type: 3}
+  _unChoosingSlotImg: {fileID: 6250216199183075140, guid: 7a1d922428bf93644bf41586e0dc1c90, type: 3}
 --- !u!1 &2133802629
 GameObject:
   m_ObjectHideFlags: 0
