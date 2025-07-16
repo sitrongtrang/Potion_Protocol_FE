@@ -8,7 +8,7 @@ public class StationController : MonoBehaviour
 {
     private StationConfig _config;
     private List<RecipeConfig> _recipes;
-    private List<ItemConfig> _items;
+    protected List<ItemConfig> _items;
 
     [SerializeField] private Slider progressBarPrefab;
     private Canvas mainCanvas;
@@ -20,23 +20,19 @@ public class StationController : MonoBehaviour
             mainCanvas = FindFirstObjectByType<Canvas>();
     }
 
-    public void Initialize(StationConfig config, List<RecipeConfig> recipes)
+    public virtual void Initialize(StationConfig config, List<RecipeConfig> recipes)
     {
         _config = config;
         _recipes = recipes;
         _items = new();
     }
 
-    public void AddItem(ItemConfig config)
+    public virtual void AddItem(ItemConfig config)
     {
         _items.Add(config);
-        if (_config.Type == StationType.Furnace)
-        {
-            StartCrafting();
-        }
     }
 
-    public void StartCrafting()
+    public virtual void StartCrafting()
     {
 
         int recipeIndex = FindMatchingRecipe();
@@ -48,19 +44,19 @@ public class StationController : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < _items.Count; i++)
+            for (int i = _items.Count - 1; i >= 0; i--)
             {
                 Vector2 stationPos = transform.position;
                 Vector2 dropPosition = stationPos + 0.5f * (i + 1) * Vector2.down;
-                DropItem(_items[i], dropPosition);
-                _items.Remove(_items[i]);
+                ItemPool.Instance.SpawnItem(_items[i], dropPosition);
+                RemoveItem(i);
             }
         }
     }
 
-    public void DropItem(ItemConfig item, Vector2 dropPosition)
+    public virtual void RemoveItem(int idx)
     {
-        ItemPool.Instance.SpawnItem(item, dropPosition);
+        _items.RemoveAt(idx);
     }
 
     IEnumerator WaitForCraft(RecipeConfig recipe)
@@ -90,8 +86,7 @@ public class StationController : MonoBehaviour
 
         Vector2 stationPos = transform.position;
         Vector2 dropPosition = stationPos + 0.5f * Vector2.down;
-        Debug.Log(recipe);
-        DropItem(recipe.Product, dropPosition);
+        ItemPool.Instance.SpawnItem(recipe.Product, dropPosition);
     }
 
     private bool MatchRecipe(RecipeConfig recipe)
