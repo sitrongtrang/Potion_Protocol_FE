@@ -23,7 +23,8 @@ public class LevelManager : MonoBehaviour
             {
                 GameManager.Instance.Score = value;
                 OnScoreChanged?.Invoke(value);
-            } 
+            }
+            if (Stars >= _config.ScoreThresholds.Length) return;
             if (value >= _config.ScoreThresholds[_stars]) Stars++;
         }
     }
@@ -35,7 +36,7 @@ public class LevelManager : MonoBehaviour
         set
         {
             int oldStars = _stars;
-            _stars = value;
+            _stars = Mathf.Min(value, _config.ScoreThresholds.Length);
             if (value != oldStars)
             {
                 GameManager.Instance.Star = value;

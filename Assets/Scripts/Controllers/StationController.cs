@@ -2,12 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StationController : MonoBehaviour
 {
     private StationConfig _config;
     private List<RecipeConfig> _recipes;
     private List<ItemConfig> _items;
+
+    [SerializeField] private Slider progressBarPrefab;
+    private Canvas mainCanvas;
+    private Slider _progressBarInstance;
+
+    private void Awake()
+    {
+        if (mainCanvas == null)
+#pragma warning disable CS0618 // Type or member is obsolete
+            mainCanvas = FindObjectOfType<Canvas>();
+#pragma warning restore CS0618 // Type or member is obsolete
+    }
 
     public void Initialize(StationConfig config, List<RecipeConfig> recipes)
     {
@@ -53,7 +66,36 @@ public class StationController : MonoBehaviour
 
     IEnumerator WaitForCraft(RecipeConfig recipe)
     {
-        yield return new WaitForSeconds(recipe.CraftingTime);
+        //yield return new WaitForSeconds(recipe.CraftingTime);
+
+        if (progressBarPrefab != null)
+        {
+            _progressBarInstance = Instantiate(
+                progressBarPrefab,
+                mainCanvas.transform
+            );
+
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position + Vector3.down * 0.8f);
+            _progressBarInstance.GetComponent<RectTransform>().position = screenPos;
+
+            Debug.Log("cook");
+            _progressBarInstance.maxValue = 1f;
+            _progressBarInstance.value = 0f;
+        }
+
+        float elapsed = 0f;
+        float total = recipe.CraftingTime;
+        while (elapsed < total)
+        {
+            elapsed += Time.deltaTime;
+            if (_progressBarInstance != null)
+                _progressBarInstance.value = Mathf.Clamp01(elapsed / total);
+            yield return null;
+        }
+
+        if (_progressBarInstance != null)
+            Destroy(_progressBarInstance.gameObject);
+
         Vector2 stationPos = transform.position;
         Vector2 dropPosition = stationPos + 0.5f * Vector2.down;
         Debug.Log(recipe);

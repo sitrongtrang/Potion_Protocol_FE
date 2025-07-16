@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4360740063140336629}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.626, y: -0.355, z: 0}
+  m_LocalPosition: {x: 1.626, y: -0.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 718545363
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -6922445159472252197, guid: 4631f01d9b5aaac4cbb0b2b1037dcfbc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -336,3 +336,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c16f10e4f3f52d74a8086409c0157f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  progressBarPrefab: {fileID: 7821405652491603802, guid: 9820ee527e88f234f9ef29f976945364, type: 3}
