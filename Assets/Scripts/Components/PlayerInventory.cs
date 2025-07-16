@@ -5,7 +5,7 @@ public class PlayerInventory : IComponent
 {
     private PlayerController _player;
     private ItemConfig[] items = new ItemConfig[GameConstants.MaxSlot];
-    private int _choosingSlot = 0;
+    private int _choosingSlot = -1;
     public int ChoosingSlot
     {
         get => _choosingSlot;
@@ -13,7 +13,11 @@ public class PlayerInventory : IComponent
         {
             int oldSlot = _choosingSlot;
             _choosingSlot = value;
-            if (oldSlot != value) OnSlotChanged?.Invoke();
+            if (oldSlot != value)
+            {
+                // OnSlotChanged?.Invoke();
+                EventBus.OnSlotChanged(value);
+            } 
         }
     }
     private bool _isAutoFocus;
@@ -22,6 +26,7 @@ public class PlayerInventory : IComponent
 
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
+        ChoosingSlot = 0;
         _player = player;
         _isAutoFocus = GameManager.Instance.IsAutoFocus;
     }
@@ -54,6 +59,7 @@ public class PlayerInventory : IComponent
 
             // Remove from inventory
             items[_choosingSlot] = null;
+            EventBus.UpdateInventoryUI(_choosingSlot, null); // Update invetory UI
             return itemToDrop;
         }
     }
@@ -109,7 +115,7 @@ public class PlayerInventory : IComponent
         {
             return false;
         }
-
+        EventBus.UpdateInventoryUI(idx, item.Prefab.gameObject); // Update invetory UI
         // Found an empty slot, put item into that slot
         if (_isAutoFocus) ChoosingSlot = idx; // choose the current slot if is in auto focus mode
         items[idx] = item;
@@ -121,6 +127,7 @@ public class PlayerInventory : IComponent
         // If the slot has item in it, remove the item
         if (items[idx] == null) return false;
         items[idx] = null;
+        EventBus.UpdateInventoryUI(idx, null); // Update invetory UI
         return true;
     }
 

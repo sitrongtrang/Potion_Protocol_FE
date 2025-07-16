@@ -8,4 +8,15 @@ public static class EventBus
     {
         UpdateTarget?.Invoke(transform);
     }
+    public static Action<int, GameObject> UpdateItem;
+    public static void UpdateInventoryUI(int id, GameObject item)
+    {
+        UpdateItem?.Invoke(id, item);
+    }
+    public static Action<int> UpdateChoosingSlot;
+    public static void OnSlotChanged(int idx)
+    {
+        UpdateChoosingSlot?.Invoke(idx);
+    }
+
 };
