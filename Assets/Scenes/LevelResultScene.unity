@@ -355,7 +355,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _brightStarSprite: {fileID: -4633452592181507936, guid: aedf257d1d9fd5e439d3f7c0b8deef0f, type: 3}
   _darkStarSprite: {fileID: 4439229904123982184, guid: c3e7d0e031fa39d4e9628b33d8720c1f, type: 3}
-  _scoreText: {fileID: 674090687}
   _container: {fileID: 415623713}
   _starImagePrefab: {fileID: 8865995780719418021, guid: ee078c1f1a1202245a6d09fee55aaffd, type: 3}
   _maxStars: 3
@@ -549,6 +548,7 @@ GameObject:
   - component: {fileID: 674090686}
   - component: {fileID: 674090688}
   - component: {fileID: 674090687}
+  - component: {fileID: 674090689}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -674,6 +674,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674090685}
   m_CullTransparentMesh: 1
+--- !u!114 &674090689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674090685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810ce78df1945794c9421733e5a2ae79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scoreText: {fileID: 674090687}
 --- !u!1 &807201885
 GameObject:
   m_ObjectHideFlags: 0
