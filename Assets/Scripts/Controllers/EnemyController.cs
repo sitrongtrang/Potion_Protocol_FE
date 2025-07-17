@@ -147,6 +147,7 @@ public class EnemyController : MonoBehaviour
     private void Die()
     {
         EnemyConf.OnDeath(this);
+        ItemPool.Instance.SpawnItem(EnemyConf.Item, transform.position);
         Spawner.UnoccupiedSpace(PositionIndex);
         Spawner.UnspawnedEnemy(TypeIndex);
         Destroy(gameObject);

@@ -16,6 +16,8 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
     [SerializeField] private bool _isNearSubmissionPoint = false;
     private bool _isNearCraftPoint = false;
 
+    public event Action OnProductSubmitted;
+
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
         _inventory = player.Inventory;
@@ -139,7 +141,6 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
         FinalProductConfig submittedProduct = _inventory.Submit();
         if (submittedProduct)
         {
-            LevelManager.Instance.Score += submittedProduct.Score;
             Debug.Log($"Submitted {submittedProduct.Name} in slot {_inventory.ChoosingSlot + 1}");
         }
         else

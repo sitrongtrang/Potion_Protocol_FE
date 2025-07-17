@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Dreadshade
   _id: M4
-  _hp: 60
+  _hp: 6
   _speed: 3
-  _damage: 8
+  _damage: 5
   _patrolRadius: 5.5
   _patrolInterval: 1
   _chaseRadius: 7

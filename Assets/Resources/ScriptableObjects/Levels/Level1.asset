@@ -16,8 +16,8 @@ MonoBehaviour:
   _enemies:
   - {fileID: 11400000, guid: 102769852e166fd4f8e5161856ae8051, type: 2}
   - {fileID: 11400000, guid: 633df65d44353ef4bae4a2d6e85e8b70, type: 2}
-  - {fileID: 11400000, guid: 25d56e5f71585b143812fbba8bd27b91, type: 2}
   - {fileID: 11400000, guid: 99044dd267a0afa45b8b2c1b347cb735, type: 2}
+  _recipeAddInterval: 15
   _ores:
   - Config: {fileID: 11400000, guid: 1623e473d2511cf47b1ce263c4225082, type: 2}
     MaxCapacity: 2

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator _swordAnim;
     [SerializeField] private WeaponConfig _weapon;
     [SerializeField] private Transform _attackPoint;
+    private InventoryUI _inventoryUI;
 
     public PlayerConfig Config => _config;
     public PlayerInventory Inventory { get; private set; }
@@ -28,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
     public void Initialize(PlayerConfig config, InputActionAsset loadedAsset = null)
     {
-        EventBus.AddTargetToCamera(gameObject.transform);
+        // EventBus.AddTargetToCamera(gameObject.transform);
         _config = config;
         _inputManager = loadedAsset != null
             ? new PlayerInputManager(loadedAsset)
@@ -41,6 +43,10 @@ public class PlayerController : MonoBehaviour
 
         AttackAnimationRelay relay = GetComponentInChildren<AttackAnimationRelay>();
         relay.Initialize(this); 
+
+        _inventoryUI = FindFirstObjectByType<InventoryUI>();
+        _inventoryUI.Initialize(this);
+        _inventoryUI.gameObject.SetActive(true);
     }
     
     void Update()
