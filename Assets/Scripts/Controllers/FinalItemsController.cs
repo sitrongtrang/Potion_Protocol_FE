@@ -75,17 +75,17 @@ public class FinalItemsController : MonoBehaviour
         }
     }
 
-    void RemoveItem()
+    void RemoveItem(int idx)
     {
         if (_recipeConfigs.Count == 0 || isDeleting) return;
 
         isDeleting = true;
 
         // Xoá phần tử đầu
-        _recipeConfigs.RemoveAt(0);
+        _recipeConfigs.RemoveAt(idx);
 
-        FinalRecipe removed = _finalRecipe[0];
-        _finalRecipe.RemoveAt(0);
+        FinalRecipe removed = _finalRecipe[idx];
+        _finalRecipe.RemoveAt(idx);
 
         // Huỷ các object liên quan
         Destroy(removed._recipeImagePrefab.transform.parent.gameObject); // huỷ toàn bộ UI cha chứa cả nguyên liệu
@@ -133,7 +133,7 @@ public class FinalItemsController : MonoBehaviour
     {
         if (!isDeleting)
         {
-            RemoveItem();
+            RemoveItem(0);
         }
     }
 }

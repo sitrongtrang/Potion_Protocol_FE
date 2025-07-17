@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
+        IsAutoFocus = PlayerPrefs.GetInt("IsAutoFocus") == 1; // load here
         DontDestroyOnLoad(this);
     }
 }

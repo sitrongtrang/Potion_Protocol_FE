@@ -18,5 +18,6 @@ public static class EventBus
     {
         UpdateChoosingSlot?.Invoke(idx);
     }
+    
 
 };
