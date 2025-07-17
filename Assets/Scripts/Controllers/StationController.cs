@@ -17,9 +17,7 @@ public class StationController : MonoBehaviour
     private void Awake()
     {
         if (mainCanvas == null)
-#pragma warning disable CS0618 // Type or member is obsolete
-            mainCanvas = FindObjectOfType<Canvas>();
-#pragma warning restore CS0618 // Type or member is obsolete
+            mainCanvas = FindFirstObjectByType<Canvas>();
     }
 
     public virtual void Initialize(StationConfig config, List<RecipeConfig> recipes)
@@ -40,10 +38,8 @@ public class StationController : MonoBehaviour
         int recipeIndex = FindMatchingRecipe();
         if (recipeIndex != -1)
         {
-            for (int i = _items.Count - 1; i >= 0; i--)
-            {
-                RemoveItem(i);
-            }
+            _items.Clear();
+            _progressBarInstance = Instantiate(progressBarPrefab, mainCanvas.transform);
             StartCoroutine(WaitForCraft(_recipes[recipeIndex]));
         }
         else
@@ -67,28 +63,21 @@ public class StationController : MonoBehaviour
     {
         //yield return new WaitForSeconds(recipe.CraftingTime);
 
-        if (progressBarPrefab != null)
-        {
-            _progressBarInstance = Instantiate(
-                progressBarPrefab,
-                mainCanvas.transform
-            );
-
-            Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position + Vector3.down * 0.8f);
-            _progressBarInstance.GetComponent<RectTransform>().position = screenPos;
-
-            Debug.Log("cook");
-            _progressBarInstance.maxValue = 1f;
-            _progressBarInstance.value = 0f;
-        }
+        var slider = _progressBarInstance;
+        slider.maxValue = 1f;
+        slider.value = 0f;
+        var rt = slider.GetComponent<RectTransform>();
+        Vector3 offset = Vector3.down * 0.8f
+        + (_config.Type == StationType.AlchemyStation ? Vector3.right * 0.4f : Vector3.zero);
 
         float elapsed = 0f;
         float total = recipe.CraftingTime;
         while (elapsed < total)
         {
             elapsed += Time.deltaTime;
-            if (_progressBarInstance != null)
-                _progressBarInstance.value = Mathf.Clamp01(elapsed / total);
+            slider.value = Mathf.Clamp01(elapsed / total);
+            Vector3 worldPos = transform.position + offset;
+            rt.position = Camera.main.WorldToScreenPoint(worldPos);
             yield return null;
         }
 

@@ -1,6 +1,7 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class EnemyController : MonoBehaviour
     public Vector2 LastSeenPlayerPosition { get; private set; }
     private bool _isPlayerInRange = false;
     public bool IsPlayerInRange => _isPlayerInRange;
+    [SerializeField] private EnemyImpactUI _enemyImpactUI;
     [Header("Enemy State")]
     public BasicStateMachine<EnemyController, EnemyState> BasicStateMachine { get; private set; }
     public EnemyState CurrentEnemyStateEnum => BasicStateMachine.CurrentStateEnum;
@@ -31,6 +33,10 @@ public class EnemyController : MonoBehaviour
     public int CurrentPathIndex { get; private set; }
     public List<Vector2> PathVectorList { get; private set; }
     [SerializeField] private bool _movementIgnoreObstacles;
+
+    [Header("Health Bar")]
+    [SerializeField] private EnemyHealthUI _healthBarPrefab;
+    private EnemyHealthUI _healthBar;
 
     #region UNITY_METHODS
     private void Update()
@@ -62,8 +68,19 @@ public class EnemyController : MonoBehaviour
         _currentHp = config.Hp;
 
         PatrolCenter = patrolCenter;
-        BasicStateMachine = new(this);
 
+        _healthBar = Instantiate(
+            _healthBarPrefab,
+            FindFirstObjectByType<Canvas>().transform
+        );
+        Vector3 hpOffset = Vector3.up * 1.2f;
+        _healthBar.Initialize(
+            transform,
+            _currentHp,
+            hpOffset
+        );
+
+        BasicStateMachine = new(this);
         config.Initialize(this);
     }
     #endregion
@@ -137,8 +154,10 @@ public class EnemyController : MonoBehaviour
     }
     public void TakeDamage(float amount)
     {
+        _enemyImpactUI.Flash();
         _currentHp -= amount;
-        Debug.Log("Hp " + _currentHp);
+        Debug.Log("Hp " +  _currentHp);
+        _healthBar.SetHp(_currentHp);
         if (_currentHp <= 0)
         {
             Die();
@@ -146,6 +165,7 @@ public class EnemyController : MonoBehaviour
     }
     private void Die()
     {
+        Destroy(_healthBar.gameObject);
         EnemyConf.OnDeath(this);
         ItemPool.Instance.SpawnItem(EnemyConf.Item, transform.position);
         Spawner.UnoccupiedSpace(PositionIndex);
