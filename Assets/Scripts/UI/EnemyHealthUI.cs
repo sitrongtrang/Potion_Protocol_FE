@@ -1,14 +1,24 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyHealthUI : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
+    [SerializeField] private float _timeHealth;
     private RectTransform _rt;
     private Transform _target;
     private Vector3 _offset;
     private Camera _cam;
+    private CanvasGroup _canvasGroup;
+    private Coroutine _hideCoroutine;
+
+    private void Awake()
+    {
+        _canvasGroup = gameObject.AddComponent<CanvasGroup>();
+        _canvasGroup.alpha = 0f;
+    }
 
     public void Initialize(Transform target, float maxHp, Vector3 offset)
     {
@@ -32,6 +42,23 @@ public class EnemyHealthUI : MonoBehaviour
     public void SetHp(float hp)
     {
         _slider.value = hp;
+        ShowAndScheduleHide();
+    }
+
+    private void ShowAndScheduleHide()
+    {
+        _canvasGroup.alpha = 1f;
+
+        if (_hideCoroutine != null)
+            StopCoroutine(_hideCoroutine);
+        _hideCoroutine = StartCoroutine(HideAfterDelay());
+    }
+
+    private IEnumerator HideAfterDelay()
+    {
+        yield return new WaitForSeconds(_timeHealth);
+        _canvasGroup.alpha = 0f;
+        _hideCoroutine = null;
     }
 
     public void DestroySelf()

@@ -25,6 +25,7 @@ public class EnemyController : MonoBehaviour
     public Vector2 LastSeenPlayerPosition { get; private set; }
     private bool _isPlayerInRange = false;
     public bool IsPlayerInRange => _isPlayerInRange;
+    [SerializeField] private EnemyImpactUI _enemyImpactUI;
     [Header("Enemy State")]
     public BasicStateMachine<EnemyController, EnemyState> BasicStateMachine { get; private set; }
     public EnemyState CurrentEnemyStateEnum => BasicStateMachine.CurrentStateEnum;
@@ -34,7 +35,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private bool _movementIgnoreObstacles;
 
     [Header("Health Bar")]
-    [SerializeField] private EnemyHealthUI healthBarPrefab;
+    [SerializeField] private EnemyHealthUI _healthBarPrefab;
     private EnemyHealthUI _healthBar;
 
     #region UNITY_METHODS
@@ -69,7 +70,7 @@ public class EnemyController : MonoBehaviour
         PatrolCenter = patrolCenter;
 
         _healthBar = Instantiate(
-            healthBarPrefab,
+            _healthBarPrefab,
             FindFirstObjectByType<Canvas>().transform
         );
         Vector3 hpOffset = Vector3.up * 1.2f;
@@ -153,6 +154,7 @@ public class EnemyController : MonoBehaviour
     }
     public void TakeDamage(float amount)
     {
+        _enemyImpactUI.Flash();
         _currentHp -= amount;
         Debug.Log("Hp " +  _currentHp);
         _healthBar.SetHp(_currentHp);

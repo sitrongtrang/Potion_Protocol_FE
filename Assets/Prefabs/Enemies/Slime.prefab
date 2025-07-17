@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -1370842286182258998}
   - component: {fileID: 5247312739759181560}
   - component: {fileID: 7579311357721353564}
+  - component: {fileID: 1403335354374388565}
   m_Layer: 7
   m_Name: Slime
   m_TagString: Enemy
@@ -54,8 +55,9 @@ MonoBehaviour:
   _obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
+  _enemyImpactUI: {fileID: 1403335354374388565}
   _movementIgnoreObstacles: 0
-  healthBarPrefab: {fileID: -957368622642131315, guid: 67c66995c641fe64599726b5a9b2209e, type: 3}
+  _healthBarPrefab: {fileID: -957368622642131315, guid: 67c66995c641fe64599726b5a9b2209e, type: 3}
 --- !u!95 &-1370842286182258998
 Animator:
   serializedVersion: 7
@@ -170,3 +172,17 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.6, y: 0.6}
   m_Direction: 0
+--- !u!114 &1403335354374388565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672900733462925250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e159eb6b6362ad4a877e4f21ddd829c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flashMaterial: {fileID: 2100000, guid: 8856b6ed434d02c499eb8b98d8e129f7, type: 2}
+  _duration: 0.125

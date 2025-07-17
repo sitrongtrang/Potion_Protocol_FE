@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slider: {fileID: 995890592411495760}
+  _timeHealth: 2
 --- !u!1 &4460620693658014491
 GameObject:
   m_ObjectHideFlags: 0
