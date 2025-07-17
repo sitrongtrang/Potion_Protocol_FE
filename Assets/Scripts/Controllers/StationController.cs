@@ -38,7 +38,10 @@ public class StationController : MonoBehaviour
         int recipeIndex = FindMatchingRecipe();
         if (recipeIndex != -1)
         {
-            _items.Clear();
+            for (int i = _items.Count - 1; i >= 0; i--)
+            {
+                RemoveItem(i);
+            }
             _progressBarInstance = Instantiate(progressBarPrefab, mainCanvas.transform);
             StartCoroutine(WaitForCraft(_recipes[recipeIndex]));
         }
