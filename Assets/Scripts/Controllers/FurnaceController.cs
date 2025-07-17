@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class FurnaceController : StationController
 {
-    public override void AddItem(ItemConfig config)
+    public override bool AddItem(ItemConfig config)
     {
-        base.AddItem(config);
-        StartCrafting();
+        bool added = base.AddItem(config);
+        if (added) StartCrafting();
+        return added;
     }
 }

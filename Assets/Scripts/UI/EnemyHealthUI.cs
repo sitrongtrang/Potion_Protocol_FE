@@ -30,7 +30,7 @@ public class EnemyHealthUI : MonoBehaviour
         _cam = Camera.main;
     }
 
-    private void LateUpdate()
+    void LateUpdate()
     {
         if (_target == null) return;
 

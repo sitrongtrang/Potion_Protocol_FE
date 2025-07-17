@@ -426,7 +426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d67914f576c52149a9cd324aaf6919a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressBarPrefab: {fileID: 7821405652491603802, guid: 9820ee527e88f234f9ef29f976945364, type: 3}
+  progressBarPrefab: {fileID: 4172215242974883266, guid: 9820ee527e88f234f9ef29f976945364, type: 3}
   itemsOnTable:
   - {fileID: 8862165679329802028}
   - {fileID: 5982052700094977542}

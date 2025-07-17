@@ -73,7 +73,7 @@ public class EnemyController : MonoBehaviour
             _healthBarPrefab,
             FindFirstObjectByType<Canvas>().transform
         );
-        Vector3 hpOffset = Vector3.up * 1.2f;
+        Vector2 hpOffset = Vector2.up * 1.2f;
         _healthBar.Initialize(
             transform,
             _currentHp,

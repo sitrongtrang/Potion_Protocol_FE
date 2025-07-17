@@ -196,8 +196,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8726599006421714182}
   - component: {fileID: 7821405652491603802}
+  - component: {fileID: 4172215242974883266}
   m_Layer: 5
-  m_Name: Alchemy_bar
+  m_Name: AlchemyProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -276,6 +277,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4172215242974883266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7998990765783260335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1820f9a1ac594048ac2cb9e82199804, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slider: {fileID: 7821405652491603802}
 --- !u!1 &8495782393880703725
 GameObject:
   m_ObjectHideFlags: 0
