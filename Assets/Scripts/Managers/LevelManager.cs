@@ -1,11 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
-using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -53,6 +51,11 @@ public class LevelManager : MonoBehaviour
     public event Action OnStarGained;
     [SerializeField] private OreSpawner _oreSpawner;
 
+    private List<RecipeConfig> _requiredRecipes = new List<RecipeConfig>();
+    public event Action<RecipeConfig> OnRequiredRecipeAdded;
+    public event Action<int> OnRequiredRecipeRemoved;
+    [SerializeField] private RequiredRecipeListUI _requiredRecipeListUI;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -66,8 +69,11 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        _requiredRecipeListUI.Initialize(_requiredRecipes);
+        _requiredRecipes.Clear();
         LoadLevel(_config);
         StartCoroutine(LevelTimer());
+        StartCoroutine(AddNewRequiredRecipe());
     }
 
     void Update()
@@ -94,7 +100,7 @@ public class LevelManager : MonoBehaviour
             height * 2,
             cellSize,
             origin,
-            new string[] { "Obstacle" , "Ore"},
+            new string[] { "Obstacle", "Ore" },
             LayerMask.GetMask("Obstacle"),
             (x, y, isoverlap) =>
             {
@@ -116,9 +122,9 @@ public class LevelManager : MonoBehaviour
             Mathf.CeilToInt(heightInF / cellSize),
             cellSize,
             origin,
-            new string[]{"Obstacle", "Ore", "Enemy", "Player"},
+            new string[] { "Obstacle", "Ore", "Enemy", "Player" },
             LayerMask.GetMask("Obstacle"),
-            (x,y,isoverlap) =>
+            (x, y, isoverlap) =>
             {
 
             },
@@ -204,5 +210,43 @@ public class LevelManager : MonoBehaviour
         Vector2 bottomLeftWorldPos = grid.GetCellCenterWorld(globalMinCell);
 
         return (maxXLength, maxYLength, cellSize, bottomLeftWorldPos);
+    }
+
+    private RecipeConfig GetNewRequiredRecipe()
+    {
+        int idx = _config.FinalRecipes.Count > 0 ? UnityEngine.Random.Range(0, _config.FinalRecipes.Count) : -1;
+        if (idx == -1) return null;
+        return _config.FinalRecipes[idx];
+    }
+
+    private IEnumerator AddNewRequiredRecipe()
+    {
+        while (true)
+        {
+            RecipeConfig newRecipe = GetNewRequiredRecipe();
+            if (newRecipe != null)
+            {
+                _requiredRecipes.Add(newRecipe);
+                OnRequiredRecipeAdded?.Invoke(newRecipe);
+                yield return new WaitForSeconds(_config.RecipeAddInterval);
+                yield return new WaitUntil(() => _requiredRecipes.Count < GameConstants.MaxRequiredRecipes);
+            }
+        }
+    }
+
+    public bool OnProductSubmitted(FinalProductConfig product)
+    {
+        for (int i = 0; i < _requiredRecipes.Count; i++)
+        {
+            if (_requiredRecipes[i].Product == product)
+            {
+                _requiredRecipes.RemoveAt(i);
+                OnRequiredRecipeRemoved?.Invoke(i);
+                Score += product.Score;
+                return true;
+            }
+        }
+        Debug.Log($"Submitted product {product.Name} is not in the required recipes list.");
+        return false;
     }
 }

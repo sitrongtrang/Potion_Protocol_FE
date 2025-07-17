@@ -5,7 +5,7 @@ public class PlayerInventory : IComponent
 {
     private PlayerController _player;
     private ItemConfig[] items = new ItemConfig[GameConstants.MaxSlot];
-    private int _choosingSlot = -1;
+    private int _choosingSlot = 0;
     public int ChoosingSlot
     {
         get => _choosingSlot;
@@ -92,14 +92,16 @@ public class PlayerInventory : IComponent
         {
             if (items[_choosingSlot] is FinalProductConfig product)
             {
-                // item is submissible
-                Remove(_choosingSlot);
-                return product;
+                // Item is submissible
+                bool submitted = LevelManager.Instance.OnProductSubmitted(product); // check if the product can be submitted
+                if (submitted)
+                {
+                    Remove(_choosingSlot);
+                    return product;
+                }
+                
             }
-            else
-            {
-                return null;
-            }
+            return null;
         }
     }
 

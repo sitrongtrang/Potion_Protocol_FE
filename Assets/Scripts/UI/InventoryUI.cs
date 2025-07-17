@@ -16,9 +16,12 @@ public class InventoryUI : MonoBehaviour
         // Initialize inventory UI
         for (int i = 0; i < GameConstants.MaxSlot; i++)
         {
-            _inventoryItemsUI[i].GetComponent<Image>().sprite = null; 
-            _inventoryItemsUI[i].SetActive(false); 
-            _inventorySlots[i].GetComponent<Image>().sprite = _unChoosingSlotImg; 
+            _inventoryItemsUI[i].GetComponent<Image>().sprite = null;
+            _inventoryItemsUI[i].SetActive(false);
+            if (i != player.Inventory.ChoosingSlot)
+                _inventorySlots[i].GetComponent<Image>().sprite = _unChoosingSlotImg;
+            else
+                _inventorySlots[i].GetComponent<Image>().sprite = _choosingSlotImg;
         }
 
         _playerInventory.OnSlotUpdated += UpdateInventoryUI;

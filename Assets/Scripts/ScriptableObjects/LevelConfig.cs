@@ -14,6 +14,9 @@ public class LevelConfig : ScriptableObject
     // [SerializeField] private List<OreConfig> _ores;
     // public List<OreConfig> Ores => _ores;
 
+    [SerializeField] private float _recipeAddInterval;
+    public float RecipeAddInterval => _recipeAddInterval;
+
     [Serializable]
     public class OreSetting
     {
