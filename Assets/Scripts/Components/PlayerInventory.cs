@@ -28,7 +28,7 @@ public class PlayerInventory : IComponent
     {
         ChoosingSlot = 0;
         _player = player;
-        _isAutoFocus = GameManager.Instance.IsAutoFocus;
+        _isAutoFocus = true;
     }
 
     public ItemConfig Pickup(ItemController item)
