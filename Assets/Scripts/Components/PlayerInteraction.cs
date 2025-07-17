@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class PlayerInteraction : IComponent, IUpdatableComponent
+public class PlayerInteraction
 {
     private PlayerInputManager _inputManager;
     private PlayerController _player;
@@ -15,8 +15,6 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
     private InputAction[] _inputAction;
     [SerializeField] private bool _isNearSubmissionPoint = false;
     private bool _isNearCraftPoint = false;
-
-    public event Action OnProductSubmitted;
 
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
@@ -75,11 +73,6 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
                 Debug.Log("Nothing to pick");
             }
         };
-    }
-    
-    public void MyUpdate()
-    {
-
     }
 
     void ChooseSlot(int slot)

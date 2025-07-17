@@ -2,10 +2,8 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static InputSystem_Actions;
-using static UnityEngine.UI.Image;
 
-public class PlayerAttack : IComponent, IUpdatableComponent
+public class PlayerAttack
 {
     private PlayerInputManager _inputManager;
     private PlayerController _player;
@@ -44,11 +42,6 @@ public class PlayerAttack : IComponent, IUpdatableComponent
                 }
             };
         }
-    }
-
-    public void MyUpdate()
-    {
-        
     }
     
     // Can not perform any action when an action is active by variable _isInAction

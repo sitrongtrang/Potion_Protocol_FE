@@ -50,7 +50,7 @@ public class StationController : MonoBehaviour
             for (int i = _items.Count - 1; i >= 0; i--)
             {
                 Vector2 stationPos = transform.position;
-                Vector2 dropPosition = stationPos + 0.5f * (i + 1) * Vector2.down;
+                Vector2 dropPosition = stationPos + GameConstants.DropItemSpacing * (i + 1) * Vector2.down;
                 ItemPool.Instance.SpawnItem(_items[i], dropPosition);
                 RemoveItem(i);
             }
@@ -88,7 +88,7 @@ public class StationController : MonoBehaviour
             Destroy(_progressBarInstance.gameObject);
 
         Vector2 stationPos = transform.position;
-        Vector2 dropPosition = stationPos + 0.5f * Vector2.down;
+        Vector2 dropPosition = stationPos + GameConstants.DropItemSpacing * Vector2.down;
         ItemPool.Instance.SpawnItem(recipe.Product, dropPosition);
     }
 
@@ -106,8 +106,6 @@ public class StationController : MonoBehaviour
             return false;
         }
         return true;
-        // var recipeSet = new HashSet<string>(recipe.Inputs.Select(i => i.Id));
-        // return stationSet.SetEquals(recipeSet);
     }
 
     private int FindMatchingRecipe()
