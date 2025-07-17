@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: AlchemyStation
   m_EditorClassIdentifier: 
   _type: 1
-  _prefab: {fileID: 458266666713682462, guid: cb687b3f4ba4b0f4092b9deeb4da29b5, type: 3}
+  _prefab: {fileID: 1034972948390943926, guid: cb687b3f4ba4b0f4092b9deeb4da29b5, type: 3}

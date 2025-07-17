@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd9e42f65a764b240a342aa1ef378ac6, type: 3}
   m_Name: Furnace
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 458266666713682462, guid: 5d2119105a254cd41bb298ebb4a250d0, type: 3}
-  _recipes: []
+  _type: 0
+  _prefab: {fileID: 1966998418185039277, guid: 5d2119105a254cd41bb298ebb4a250d0, type: 3}
