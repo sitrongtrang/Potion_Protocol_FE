@@ -106,6 +106,7 @@ public class PlayerInteraction : IComponent, IUpdatableComponent
             if (distance < minDistance)
             {
                 nearestItem = _objectInCollision[i];
+                minDistance = distance;
             }
         }
 
