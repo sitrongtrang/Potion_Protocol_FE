@@ -94,9 +94,20 @@ public class StationController : MonoBehaviour
 
     private bool MatchRecipe(RecipeConfig recipe)
     {
-        var stationSet = new HashSet<string>(_items.Select(i => i.Id));
-        var recipeSet = new HashSet<string>(recipe.Inputs.Select(i => i.Id));
-        return stationSet.SetEquals(recipeSet);
+        var stationCounts = _items.GroupBy(i => i.Id).ToDictionary(g => g.Key, g => g.Count());
+        var recipeCounts = recipe.Inputs.GroupBy(i => i.Id).ToDictionary(g => g.Key, g => g.Count());
+
+        if (stationCounts.Count != recipeCounts.Count)
+            return false;
+
+        foreach (var kvp in recipeCounts)
+        {
+            if (!stationCounts.TryGetValue(kvp.Key, out int count) || count != kvp.Value)
+            return false;
+        }
+        return true;
+        // var recipeSet = new HashSet<string>(recipe.Inputs.Select(i => i.Id));
+        // return stationSet.SetEquals(recipeSet);
     }
 
     private int FindMatchingRecipe()
