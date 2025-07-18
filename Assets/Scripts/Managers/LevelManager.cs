@@ -8,7 +8,8 @@ using UnityEngine.Tilemaps;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
-    [SerializeField] LevelConfig _config;
+    private LevelConfig _config;
+    [SerializeField] LoadingScreenUI _loadingScreen;
     private int _score = 0;
     public int Score
     {
@@ -65,9 +66,29 @@ public class LevelManager : MonoBehaviour
         }
 
         Instance = this;
+
+        // _config = Resources.Load<LevelConfig>($"ScriptableObjects/Levels/Level{GameManager.Instance.CurrentLevel + 1}");
     }
 
     void Start()
+    {
+        StartCoroutine(LoadLevelAsset());   
+    }
+
+    private IEnumerator LoadLevelAsset()
+    {
+        string levelPath = $"ScriptableObjects/Levels/Level{GameManager.Instance.CurrentLevel + 1}";
+        ResourceRequest request = Resources.LoadAsync<LevelConfig>(levelPath);
+        _loadingScreen.gameObject.SetActive(true);
+
+        yield return StartCoroutine(_loadingScreen.RenderLoadingScene(request));
+    
+        _config = request.asset as LevelConfig;
+        Initialize();
+        _loadingScreen.gameObject.SetActive(false);
+    }
+
+    void Initialize()
     {
         _requiredRecipeListUI.Initialize(_requiredRecipes);
         _requiredRecipes.Clear();

@@ -7,28 +7,20 @@ public class LoadingScreenUI : MonoBehaviour
     [SerializeField] private Scrollbar _progressBar;
     [SerializeField] private Text _progressText;
     private float _speed = 0.5f;
+    private float _currentProgress = 0f;
 
-    void OnEnable()
+    public IEnumerator RenderLoadingScene(AsyncOperation loadingOperation)
     {
-        StartCoroutine(RenderLoadingScene());
-    }
-
-    private IEnumerator RenderLoadingScene()
-    {
-        gameObject.SetActive(true);
-        _progressBar.value = 0f;
-        _progressText.text = "0%";
-
-        float displayProgress = 0f;
-
-        while (displayProgress < 1f)
+        while (!loadingOperation.isDone)
         {
-            displayProgress = Mathf.MoveTowards(displayProgress, 1f, _speed * Time.deltaTime);
-            _progressBar.value = displayProgress;
-            _progressText.text = Mathf.RoundToInt(displayProgress * 100f) + "%";
+            float targetProgress = Mathf.Clamp01(loadingOperation.progress / 0.9f);
+            _currentProgress = Mathf.MoveTowards(_currentProgress, targetProgress, _speed * Time.deltaTime);
+            _progressBar.value = _currentProgress;
+            _progressText.text = Mathf.RoundToInt(_currentProgress * 100f) + "%";
             yield return null;
         }
 
-        gameObject.SetActive(false);
+        _progressBar.value = 1f;
+        _progressText.text = "100%";
     }
 }

@@ -35,6 +35,7 @@ public class SelectingLevelUI : MonoBehaviour
     public void OnLevelSelected(int level)
     {
         GameManager.Instance.CurrentLevel = level;
+        SceneManager.LoadScene("GameScene");
     }
 
     public void OnNextPage()
@@ -65,14 +66,20 @@ public class SelectingLevelUI : MonoBehaviour
                 row.gameObject.SetActive(true);
                 for (int j = 0; j < _numLevelPerRow; j++)
                 {
+                    GameObject buttonObj;
                     if (j >= row.childCount)
                     {   // Create new button if it doesn't exist
-                        GameObject buttonObj = Instantiate(_levelButtonPrefab, row);
+                        buttonObj = Instantiate(_levelButtonPrefab, row);
                         buttonObj.transform.SetParent(row);
-                        Button button = buttonObj.GetComponent<Button>();
-                        button.onClick.RemoveAllListeners();
-                        button.onClick.AddListener(() => OnLevelSelected(startLevel + i * _numLevelPerRow + j));
                     }
+
+                    // Add the correct listener
+                    buttonObj = row.GetChild(j).gameObject;
+                    Button button = buttonObj.GetComponent<Button>();
+                    button.onClick.RemoveAllListeners();
+                    int rowNum = i;
+                    int levelNum = j;
+                    button.onClick.AddListener(() => OnLevelSelected(startLevel + rowNum * _numLevelPerRow + levelNum));
 
                     // Hide button if it exceeds the end level 
                     row.GetChild(j).gameObject.SetActive(startLevel + i * _numLevelPerRow + j < endLevel);
@@ -88,11 +95,14 @@ public class SelectingLevelUI : MonoBehaviour
                 row.transform.SetParent(_levelPanel.transform);
                 for (int j = 0; j < _numLevelPerRow; j++)
                 {
+                    // Add the correct listener
                     GameObject buttonObj = Instantiate(_levelButtonPrefab, row.transform);
                     buttonObj.transform.SetParent(row.transform);
                     Button button = buttonObj.GetComponent<Button>();
                     button.onClick.RemoveAllListeners();
-                    button.onClick.AddListener(() => OnLevelSelected(startLevel + i * _numLevelPerRow + j));
+                    int rowNum = i;
+                    int levelNum = j;
+                    button.onClick.AddListener(() => OnLevelSelected(startLevel + rowNum * _numLevelPerRow + levelNum));
 
                     // Hide button if it exceeds the end level 
                     row.transform.GetChild(j).gameObject.SetActive(startLevel + i * _numLevelPerRow + j < endLevel);
