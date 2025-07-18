@@ -17,18 +17,6 @@ public class OreController : MonoBehaviour
         CheckOverlapGrid();
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.CompareTag("Weapon"))
-        {
-            PlayerController player = collider.transform.GetComponentInParent<PlayerController>();
-            if (player != null && player.Attack.IsAttacking)
-            {
-                OnFarmed();
-            }
-        }
-    }
-
     public void OnFarmed()
     {
         ItemPool.Instance.SpawnItem(_config.DroppedItem, transform.position);

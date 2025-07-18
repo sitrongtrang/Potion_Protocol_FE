@@ -43,9 +43,6 @@ public class PlayerController : MonoBehaviour
         Interaction.Initialize(this, _inputManager);    
         Movement.Initialize(this, _inputManager);
 
-        AttackAnimationRelay relay = GetComponentInChildren<AttackAnimationRelay>();
-        relay.Initialize(this); 
-
         _inventoryUI = FindFirstObjectByType<InventoryUI>();
         _inventoryUI.Initialize(this);
         _inventoryUI.gameObject.SetActive(true);
