@@ -16,8 +16,8 @@ public class MainMenuUI : MonoBehaviour
 
     public void OnSoloPlay()
     {
-        // SceneManager.LoadScene("LevelSelectionScene");
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("LevelSelectionScene");
+        // SceneManager.LoadScene("GameScene");
     }
 
     public void OnCoopPlay()

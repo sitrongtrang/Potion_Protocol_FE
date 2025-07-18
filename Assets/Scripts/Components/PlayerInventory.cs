@@ -28,7 +28,7 @@ public class PlayerInventory
     {
         ChoosingSlot = 0;
         _player = player;
-        _isAutoFocus = true;
+        _isAutoFocus = PlayerPrefs.GetInt("IsAutoFocus") == 1;;
     }
 
     public ItemConfig Pickup(ItemController item)
