@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using static LevelConfig;
 
 /// <summary>
-/// Handles spawning of ore based on configurable parameters with support for different spawn strategies
+/// Handles spawning of item source based on configurable parameters with support for different spawn strategies
 /// </summary>
-public class OreSpawner : MonoBehaviour
+public class ItemSourceSpawner : MonoBehaviour
 {
     [SerializeField] private bool _debugLogsEnabled = false;
     
-    private OreConfig[] _oreConfigs;
+    private ItemSourceConfig[] _itemSourceConfigs;
     private int[] _maxCapacities;
     private int[] _currentAmounts;
 
@@ -21,33 +20,33 @@ public class OreSpawner : MonoBehaviour
     private float _spawnInterval = 5f;
 
     // Spawn strategy delegate - can be changed at runtime
-    public delegate OreConfig GetOreConfig(OreConfig[] oreConfigs, int[] maxCapacities, int[] currentAmounts);
-    private GetOreConfig _spawnStrategy;
+    public delegate ItemSourceConfig GetItemSourceConfig(ItemSourceConfig[] itemSourceConfigs, int[] maxCapacities, int[] currentAmounts);
+    private GetItemSourceConfig _spawnStrategy;
 
     /// <summary>
     /// Initialize the spawner with configuration data
     /// </summary>
-    /// <param name="oreSettings">List of ore configuration settings</param>
+    /// <param name="itemSourceSettings">List of item source configuration settings</param>
     /// <param name="initialStrategy">Optional initial spawn strategy</param>
-    public void Initialize(IReadOnlyList<OreSetting> oreSettings, SpawnStrategy initialStrategy = SpawnStrategy.RandomAvailable)
+    public void Initialize(IReadOnlyList<ItemSourceSetting> itemSourceSettings, SpawnStrategy initialStrategy = SpawnStrategy.RandomAvailable)
     {
-        ValidateOreSettings(oreSettings);
+        ValidateItemSourceSettings(itemSourceSettings);
 
-        int count = oreSettings.Count;
-        _oreConfigs = new OreConfig[count];
+        int count = itemSourceSettings.Count;
+        _itemSourceConfigs = new ItemSourceConfig[count];
         _maxCapacities = new int[count];
         _currentAmounts = new int[count];
 
         for (int i = 0; i < count; i++)
         {
-            var setting = oreSettings[i];
-            _oreConfigs[i] = setting.Config;
+            var setting = itemSourceSettings[i];
+            _itemSourceConfigs[i] = setting.Config;
             _maxCapacities[i] = setting.MaxCapacity;
             _currentAmounts[i] = 0;
 
             if (_debugLogsEnabled)
             {
-                Debug.Log($"Registered ore: {setting.Config.name} with max capacity {setting.MaxCapacity}");
+                Debug.Log($"Registered item source: {setting.Config.name} with max capacity {setting.MaxCapacity}");
             }
         }
 
@@ -62,43 +61,43 @@ public class OreSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(_spawnInterval);
 
-            OreConfig oreConfig = TrySpawnOre();
-            if (oreConfig == null)
+            ItemSourceConfig itemSourceConfig = TrySpawnItemSource();
+            if (itemSourceConfig == null)
             {
                 if (_debugLogsEnabled)
-                    Debug.Log("Không có ore khả dụng để spawn");
+                    Debug.Log("Không có item source khả dụng để spawn");
                 continue;
             }
 
-            GridBuilder oreGrid = GridBuilderFactory.Instance.GetBuilder(GridBuilderFactory.BuilderNames[1]);
-            if (oreGrid == null)
+            GridBuilder itemSourceGrid = GridBuilderFactory.Instance.GetBuilder(GridBuilderFactory.BuilderNames[1]);
+            if (itemSourceGrid == null)
             {
-                Debug.LogWarning("Không lấy được GridBuilder cho ore");
+                Debug.LogWarning("Không lấy được GridBuilder cho item source");
                 continue;
             }
 
-            GridCellObject gridCell = oreGrid.GetRandomNonoverlapCell();
+            GridCellObject gridCell = itemSourceGrid.GetRandomNonoverlapCell();
             if (gridCell == null)
             {
                 if (_debugLogsEnabled)
-                    Debug.Log("Không có ô trống để spawn ore");
+                    Debug.Log("Không có ô trống để spawn item source");
                 continue;
             }
 
-            Vector2 worldPosition = oreGrid.GetWorldPosition(gridCell);
-            OreController oreController = Instantiate(oreConfig.Prefab, worldPosition, Quaternion.identity);
-            oreController.Initialize(this, oreConfig);
+            Vector2 worldPosition = itemSourceGrid.GetWorldPosition(gridCell);
+            ItemSourceController itemSourceController = Instantiate(itemSourceConfig.Prefab, worldPosition, Quaternion.identity);
+            itemSourceController.Initialize(this, itemSourceConfig);
 
-            oreGrid.ReleaseCell(gridCell);
+            itemSourceGrid.ReleaseCell(gridCell);
             _spawnInterval = UnityEngine.Random.Range(_minSpawnInterval, _maxSpawnInterval);
         }
     }
     
     /// <summary>
-    /// Attempt to spawn an ore based on the current strategy
+    /// Attempt to spawn an item source based on the current strategy
     /// </summary>
-    /// <returns>The ore config to spawn, or null if no valid spawn</returns>
-    public OreConfig TrySpawnOre()
+    /// <returns>The item source config to spawn, or null if no valid spawn</returns>
+    public ItemSourceConfig TrySpawnItemSource()
     {
         if (_spawnStrategy == null)
         {
@@ -106,43 +105,43 @@ public class OreSpawner : MonoBehaviour
             return null;
         }
 
-        var oreToSpawn = _spawnStrategy.Invoke(_oreConfigs, _maxCapacities, _currentAmounts);
-        if (oreToSpawn != null)
+        var itemSourceToSpawn = _spawnStrategy.Invoke(_itemSourceConfigs, _maxCapacities, _currentAmounts);
+        if (itemSourceToSpawn != null)
         {
-            int index = Array.IndexOf(_oreConfigs, oreToSpawn);
+            int index = Array.IndexOf(_itemSourceConfigs, itemSourceToSpawn);
             if (index >= 0)
             {
                 _currentAmounts[index]++;
 
                 if (_debugLogsEnabled)
                 {
-                    Debug.Log($"Spawning ore: {oreToSpawn.name}. Current count: {_currentAmounts[index]}/{_maxCapacities[index]}");
+                    Debug.Log($"Spawning item source: {itemSourceToSpawn.name}. Current count: {_currentAmounts[index]}/{_maxCapacities[index]}");
                 }
             }
         }
 
-        return oreToSpawn;
+        return itemSourceToSpawn;
     }
     
     /// <summary>
-    /// Notify the spawner that an ore was destroyed/removed
+    /// Notify the spawner that an item source was destroyed/removed
     /// </summary>
-    /// <param name="oreConfig">Config of ore that was removed</param>
-    public void NotifyOreRemoved(OreConfig oreConfig)
+    /// <param name="itemSourceConfig">Config of item source that was removed</param>
+    public void NotifyItemSourceRemoved(ItemSourceConfig itemSourceConfig)
     {
-        int index = Array.IndexOf(_oreConfigs, oreConfig);
+        int index = Array.IndexOf(_itemSourceConfigs, itemSourceConfig);
         if (index >= 0)
         {
             _currentAmounts[index] = Mathf.Max(0, _currentAmounts[index] - 1);
             
             if (_debugLogsEnabled)
             {
-                Debug.Log($"Ore removed: {oreConfig.name}. Current count: {_currentAmounts[index]}/{_maxCapacities[index]}");
+                Debug.Log($"Item Source removed: {itemSourceConfig.name}. Current count: {_currentAmounts[index]}/{_maxCapacities[index]}");
             }
         }
         else
         {
-            Debug.LogWarning($"Attempted to remove unregistered ore: {oreConfig?.name}");
+            Debug.LogWarning($"Attempted to remove unregistered item source: {itemSourceConfig?.name}");
         }
     }
     
@@ -155,13 +154,13 @@ public class OreSpawner : MonoBehaviour
         switch (strategy)
         {
             case SpawnStrategy.RandomAvailable:
-                _spawnStrategy = GetRandomAvailableOre;
+                _spawnStrategy = GetRandomAvailableItemSource;
                 break;
             case SpawnStrategy.RoundRobin:
                 _spawnStrategy = CreateRoundRobinStrategy();
                 break;
             // case SpawnStrategy.WeightedRandom:
-            //     _spawnStrategy = GetWeightedRandomOre;
+            //     _spawnStrategy = GetWeightedRandomItemSource;
             //     break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(strategy), strategy, null);
@@ -177,7 +176,7 @@ public class OreSpawner : MonoBehaviour
     /// Register a custom spawn strategy
     /// </summary>
     /// <param name="customStrategy">Custom strategy function</param>
-    public void RegisterCustomStrategy(GetOreConfig customStrategy)
+    public void RegisterCustomStrategy(GetItemSourceConfig customStrategy)
     {
         _spawnStrategy = customStrategy;
         
@@ -188,26 +187,26 @@ public class OreSpawner : MonoBehaviour
     }
     
     /// <summary>
-    /// Get current count of a specific ore type
+    /// Get current count of a specific item source type
     /// </summary>
-    public int GetOreCount(OreConfig oreConfig)
+    public int GetItemSourceCount(ItemSourceConfig itemSourceConfig)
     {
-        int index = Array.IndexOf(_oreConfigs, oreConfig);
+        int index = Array.IndexOf(_itemSourceConfigs, itemSourceConfig);
         return index >= 0 ? _currentAmounts[index] : 0;
     }
     
     /// <summary>
-    /// Get maximum capacity for a specific ore type
+    /// Get maximum capacity for a specific item source type
     /// </summary>
-    public int GetOreCapacity(OreConfig oreConfig)
+    public int GetItemSourceCapacity(ItemSourceConfig itemSourceConfig)
     {
-        int index = Array.IndexOf(_oreConfigs, oreConfig);
+        int index = Array.IndexOf(_itemSourceConfigs, itemSourceConfig);
         return index >= 0 ? _maxCapacities[index] : 0;
     }
     
     #region DEFAULT SPAWN STRATEGIES
     
-    private OreConfig GetRandomAvailableOre(OreConfig[] oreConfigs, int[] maxCapacities, int[] currentAmounts)
+    private ItemSourceConfig GetRandomAvailableItemSource(ItemSourceConfig[] itemSourceConfigs, int[] maxCapacities, int[] currentAmounts)
     {
         int resultIndex = -1;
         int validOptionsCount = 0;
@@ -225,14 +224,14 @@ public class OreSpawner : MonoBehaviour
             }
         }
         
-        return resultIndex >= 0 ? oreConfigs[resultIndex] : null;
+        return resultIndex >= 0 ? itemSourceConfigs[resultIndex] : null;
     }
     
-    private GetOreConfig CreateRoundRobinStrategy()
+    private GetItemSourceConfig CreateRoundRobinStrategy()
     {
         int roundRobinIndex = 0;
         
-        return (oreConfigs, maxCapacities, currentAmounts) =>
+        return (itemSourceConfigs, maxCapacities, currentAmounts) =>
         {
             int initialIndex = roundRobinIndex;
             bool found = false;
@@ -251,7 +250,7 @@ public class OreSpawner : MonoBehaviour
             
             if (!found) return null;
             
-            var result = oreConfigs[roundRobinIndex];
+            var result = itemSourceConfigs[roundRobinIndex];
             roundRobinIndex = (roundRobinIndex + 1) % currentAmounts.Length;
             
             return result;
@@ -259,7 +258,7 @@ public class OreSpawner : MonoBehaviour
     }
     
     // private int _roundRobinIndex = 0;
-    // private OreConfig GetRoundRobinOre(OreConfig[] oreConfigs, int[] maxCapacities, int[] currentAmounts)
+    // private ItemSourceConfig GetRoundRobinItemSource(ItemSourceConfig[] itemSourceConfigs, int[] maxCapacities, int[] currentAmounts)
     // {
     //     int initialIndex = _roundRobinIndex;
     //     bool found = false;
@@ -278,73 +277,73 @@ public class OreSpawner : MonoBehaviour
 
     //     if (!found) return null;
 
-    //     var result = oreConfigs[_roundRobinIndex];
+    //     var result = itemSourceConfigs[_roundRobinIndex];
     //     _roundRobinIndex = (_roundRobinIndex + 1) % currentAmounts.Length;
 
     //     return result;
     // }
     
-    // private OreConfig GetWeightedRandomOre(OreConfig[] _oreConfigs, int[] _maxCapacities, int[] _currentAmounts)
+    // private ItemSourceConfig GetWeightedRandomItemSource(ItemSourceConfig[] _itemSourceConfigs, int[] _maxCapacities, int[] _currentAmounts)
     // {
-    //     // Calculate total weight of available ores
+    //     // Calculate total weight of available item sources
     //     float totalWeight = 0;
-    //     var availableOres = new List<(int index, float weight)>();
+    //     var availableItemSources = new List<(int index, float weight)>();
         
     //     for (int i = 0; i < _currentAmounts.Length; i++)
     //     {
     //         if (_currentAmounts[i] < _maxCapacities[i])
     //         {
-    //             float weight = _oreConfigs[i].SpawnWeight;
-    //             availableOres.Add((i, weight));
+    //             float weight = _itemSourceConfigs[i].SpawnWeight;
+    //             availableItemSources.Add((i, weight));
     //             totalWeight += weight;
     //         }
     //     }
         
-    //     if (availableOres.Count == 0) return null;
+    //     if (availableItemSources.Count == 0) return null;
         
     //     // Select based on weight
     //     float randomValue = UnityEngine.Random.Range(0f, totalWeight);
     //     float cumulativeWeight = 0;
         
-    //     foreach (var ore in availableOres)
+    //     foreach (var item source in availableItemSources)
     //     {
-    //         cumulativeWeight += ore.weight;
+    //         cumulativeWeight += item source.weight;
     //         if (randomValue <= cumulativeWeight)
     //         {
-    //             return _oreConfigs[ore.index];
+    //             return _itemSourceConfigs[item source.index];
     //         }
     //     }
         
-    //     return _oreConfigs[availableOres[^1].index]; // Fallback to last element
+    //     return _itemSourceConfigs[availableItemSources[^1].index]; // Fallback to last element
     // }
     
     #endregion
     
     #region VALIDATION
     
-    private void ValidateOreSettings(IReadOnlyList<OreSetting> oreSettings)
+    private void ValidateItemSourceSettings(IReadOnlyList<ItemSourceSetting> itemSourceSettings)
     {
-        if (oreSettings == null || oreSettings.Count == 0)
+        if (itemSourceSettings == null || itemSourceSettings.Count == 0)
         {
-            throw new ArgumentException("Ore settings cannot be null or empty", nameof(oreSettings));
+            throw new ArgumentException("Item Source settings cannot be null or empty", nameof(itemSourceSettings));
         }
         
-        var uniqueConfigs = new HashSet<OreConfig>();
-        foreach (var setting in oreSettings)
+        var uniqueConfigs = new HashSet<ItemSourceConfig>();
+        foreach (var setting in itemSourceSettings)
         {
             if (setting.Config == null)
             {
-                throw new ArgumentException("Ore config cannot be null");
+                throw new ArgumentException("Item Source config cannot be null");
             }
             
             if (!uniqueConfigs.Add(setting.Config))
             {
-                throw new ArgumentException($"Duplicate ore config detected: {setting.Config.name}");
+                throw new ArgumentException($"Duplicate item source config detected: {setting.Config.name}");
             }
             
             if (setting.MaxCapacity <= 0)
             {
-                throw new ArgumentException($"Max capacity must be positive for ore: {setting.Config.name}");
+                throw new ArgumentException($"Max capacity must be positive for item source: {setting.Config.name}");
             }
         }
     }
@@ -358,9 +357,9 @@ public class OreSpawner : MonoBehaviour
     /// </summary>
     public enum SpawnStrategy
     {
-        RandomAvailable,  // Random selection from available ores
-        RoundRobin,       // Cycle through ores in order
-        // WeightedRandom    // Random selection weighted by ore spawn weights
+        RandomAvailable,  // Random selection from available item sources
+        RoundRobin,       // Cycle through item sources in order
+        // WeightedRandom    // Random selection weighted by item source spawn weights
     }
     
     #endregion

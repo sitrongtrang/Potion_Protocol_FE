@@ -158,7 +158,6 @@ public class PlayerInteraction
 
     public void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log(collider);
         if (collider.gameObject.tag == "Item")
         {
             _objectInCollision.Add(collider.gameObject);

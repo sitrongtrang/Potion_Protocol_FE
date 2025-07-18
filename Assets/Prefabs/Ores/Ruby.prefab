@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7757927904572803458}
   m_Layer: 7
   m_Name: Ruby
-  m_TagString: Ore
+  m_TagString: ItemSource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

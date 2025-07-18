@@ -140,12 +140,12 @@ public class PlayerAttack
                     enemy.TakeDamage(_player.Weapon.AttackDamage);
                 }
             } 
-            if (hitTargets[i].collider.CompareTag("Ore"))
+            if (hitTargets[i].collider.CompareTag("ItemSource"))
             {
-                OreController ore = hitTargets[i].collider.GetComponent<OreController>();
-                if (ore != null)
+                ItemSourceController itemSource = hitTargets[i].collider.GetComponent<ItemSourceController>();
+                if (itemSource != null)
                 {
-                    ore.OnFarmed();
+                    itemSource.OnFarmed();
                 }
             }
         }

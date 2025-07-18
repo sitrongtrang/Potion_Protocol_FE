@@ -772,7 +772,7 @@ GameObject:
   - component: {fileID: 511538373}
   - component: {fileID: 511538374}
   m_Layer: 0
-  m_Name: OreSpawner
+  m_Name: ItemSourceSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2859,7 +2859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _config: {fileID: 11400000, guid: b1250c6ef026a4b46a37b004aa28025c, type: 2}
-  _oreSpawner: {fileID: 511538374}
+  _itemSourceSpawner: {fileID: 511538374}
   _requiredRecipeListUI: {fileID: 1503329698}
 --- !u!1 &1614171550
 GameObject:
@@ -2877,7 +2877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1614171551
 Transform:
   m_ObjectHideFlags: 0

@@ -11,9 +11,9 @@ TagManager:
   - CraftPoint
   - Enemy
   - Weapon
-  - Ore
   - Obstacle
   - MainCanvas
+  - ItemSource
   layers:
   - Default
   - TransparentFX

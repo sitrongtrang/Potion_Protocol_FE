@@ -1790,7 +1790,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 47
-      m_TileSpriteIndex: 26
+      m_TileSpriteIndex: 30
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1860,7 +1860,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 50
-      m_TileSpriteIndex: 25
+      m_TileSpriteIndex: 26
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2010,7 +2010,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 44
-      m_TileSpriteIndex: 11
+      m_TileSpriteIndex: 25
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3515,8 +3515,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 27
     m_Data: {fileID: 1756537963, guid: c94065db205b10e4383e0bc76ed7ebe4, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 479247607, guid: c94065db205b10e4383e0bc76ed7ebe4, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 4
     m_Data: {fileID: -90858148, guid: c94065db205b10e4383e0bc76ed7ebe4, type: 3}
   - m_RefCount: 4
@@ -3544,17 +3544,17 @@ Tilemap:
   - m_RefCount: 35
     m_Data: {fileID: -1902269730, guid: c94065db205b10e4383e0bc76ed7ebe4, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 1562039446, guid: c94065db205b10e4383e0bc76ed7ebe4, type: 3}
+    m_Data: {fileID: 479247607, guid: c94065db205b10e4383e0bc76ed7ebe4, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 870345342, guid: c94065db205b10e4383e0bc76ed7ebe4, type: 3}
+    m_Data: {fileID: 1562039446, guid: c94065db205b10e4383e0bc76ed7ebe4, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -961564723, guid: c94065db205b10e4383e0bc76ed7ebe4, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 1037840611, guid: c94065db205b10e4383e0bc76ed7ebe4, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 555667166, guid: c94065db205b10e4383e0bc76ed7ebe4, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 870345342, guid: c94065db205b10e4383e0bc76ed7ebe4, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: -1274948925, guid: c94065db205b10e4383e0bc76ed7ebe4, type: 3}
   - m_RefCount: 3
@@ -12476,7 +12476,7 @@ GameObject:
   - component: {fileID: 3415518205513369558}
   - component: {fileID: 6693763103245206028}
   m_Layer: 0
-  m_Name: Spawn Ore Bounds
+  m_Name: Spawn ItemSource Bounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

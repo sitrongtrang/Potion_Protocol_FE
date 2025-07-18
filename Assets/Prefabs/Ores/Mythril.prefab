@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5665067738871163239}
   m_Layer: 7
   m_Name: Mythril
-  m_TagString: Ore
+  m_TagString: ItemSource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

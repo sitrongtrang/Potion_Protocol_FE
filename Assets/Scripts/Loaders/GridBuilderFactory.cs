@@ -5,7 +5,7 @@ public class GridBuilderFactory : MonoBehaviour
 {
     public static string[] BuilderNames = new string[]{
         "Pathfinding Grid",
-        "Ore Spawn Grid"
+        "ItemSource Spawn Grid"
     };
     public static GridBuilderFactory Instance { get; private set; }
     void Awake()
