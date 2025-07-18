@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: aa269457f4fd2094fa6d29949579ad84
+guid: 997d665de400e4849a69f726d829c0bb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2867430767987968242
-    second: Screenshot 2025-07-17 134311_0
+      213: 285831371917872981
+    second: eye_open_0
+  - first:
+      213: 13094374694972094
+    second: eye_open_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +116,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Screenshot 2025-07-17 134311_0
+      name: eye_open_1
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 234
-        height: 165
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2f8c2f757192bc720800000000000000
-      internalID: 2867430767987968242
+      spriteID: ebaef30b3458e2000800000000000000
+      internalID: 13094374694972094
       vertices: []
       indices: 
       edges: []
@@ -138,7 +141,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 8b910cedd796674449ad05b93bf47cbc
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +151,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Screenshot 2025-07-17 134311_0: 2867430767987968242
+      eye_open_0: 285831371917872981
+      eye_open_1: 13094374694972094
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
