@@ -39,5 +39,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 681c9ef66958a6348add4549fb996f30, type: 2}
   - {fileID: 11400000, guid: e46837390b24d6b4f994a000e883409b, type: 2}
   - {fileID: 11400000, guid: 5dc6048ea1bd93d4b8f0a2a8e1fccdfd, type: 2}
-  _levelTime: 10
+  _levelTime: 300
   _scoreThresholds: 010000000200000003000000
