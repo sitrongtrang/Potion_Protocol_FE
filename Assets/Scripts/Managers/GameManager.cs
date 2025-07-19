@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public int CurrentLevel;
 
     [SerializeField] private int _playerScore;
-    [SerializeField] private int _playerStart;
+    [SerializeField] private int _playerStar;
 
     public int Score
     {
@@ -26,11 +26,11 @@ public class GameManager : MonoBehaviour
     {
         get
         {
-            return _playerStart;
+            return _playerStar;
         }
         set
         {
-            _playerStart = value;
+            _playerStar = value;
         }
     }
     
