@@ -8,7 +8,7 @@ public class AccordionController : MonoBehaviour
     public class AccordionSection
     {
         public GameObject button;         
-        public GameObject childContainer; 
+        public ExpandableContainer childContainer; 
     }
 
     public List<AccordionSection> sections;
@@ -41,7 +41,7 @@ public class AccordionController : MonoBehaviour
     {
         if (index < 0 || index >= sections.Count) return;
 
-        sections[index].childContainer.SetActive(active);
+        sections[index].childContainer.gameObject.SetActive(active);
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(transform.GetComponent<RectTransform>());
     }
