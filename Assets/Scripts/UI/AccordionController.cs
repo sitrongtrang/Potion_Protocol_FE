@@ -41,7 +41,10 @@ public class AccordionController : MonoBehaviour
     {
         if (index < 0 || index >= sections.Count) return;
 
-        sections[index].childContainer.gameObject.SetActive(active);
+        Button button = sections[index].button.GetComponent<Button>();
+
+        if (active) sections[index].childContainer.gameObject.SetActive(true);
+        sections[index].childContainer.ToggleExpanded(active, button);
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(transform.GetComponent<RectTransform>());
     }

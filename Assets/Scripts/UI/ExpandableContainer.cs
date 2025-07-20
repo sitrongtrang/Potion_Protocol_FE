@@ -11,59 +11,65 @@ public class ExpandableContainer : MonoBehaviour
 
     private VerticalLayoutGroup layoutGroup;
     private List<RectTransform> children = new();
+    private List<Vector2> expandedPositions = new();
+    private List<Vector2> collapsedPositions = new();
 
     void Awake()
     {
         layoutGroup = GetComponent<VerticalLayoutGroup>();
-    }
-
-    void OnEnable()
-    {
-        ExpandChildren();
-    }
-
-    public void ExpandChildren()
-    {
-        StartCoroutine(AnimateChildren(true));
-    }
-
-    IEnumerator AnimateChildren(bool isExpanded)
-    {
-        children.Clear();
         for (int i = 0; i < transform.childCount; i++)
         {
             RectTransform child = transform.GetChild(i) as RectTransform;
             children.Add(child);
+            expandedPositions.Add(child.anchoredPosition);
+            collapsedPositions.Add(new Vector2(child.anchoredPosition.x, 0));
         }
+    }
 
+    public void ToggleExpanded(bool isExpanded, Button button = null)
+    {
+        StartCoroutine(AnimateChildren(isExpanded));
+    }
+
+    private IEnumerator AnimateChildren(bool isExpanded, Button button = null)
+    {
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
 
         List<Vector2> targetPositions = new();
-        foreach (RectTransform child in children)
-        {
-            targetPositions.Add(child.anchoredPosition);
-        }
-            
-        Vector2 topAnchor = new Vector2(targetPositions[0].x, 0);
-        foreach (RectTransform child in children)
-        { 
-            child.anchoredPosition = topAnchor;
-        }
-
-        layoutGroup.enabled = false; 
-
         for (int i = 0; i < children.Count; i++)
         {
-            StartCoroutine(SlideToPosition(children[i], targetPositions[i]));
-            yield return new WaitForSeconds(delayBetween);
+            targetPositions.Add(isExpanded ? expandedPositions[i] : collapsedPositions[i]);
+            children[i].anchoredPosition = isExpanded ? collapsedPositions[i] : expandedPositions[i];
+        }
+
+        if (button) button.interactable = false;
+
+        if (isExpanded)
+        {
+            layoutGroup.enabled = false;
+            for (int i = 0; i < children.Count; i++)
+            {
+                StartCoroutine(SlideToPosition(children[i], targetPositions[i], isExpanded));
+                yield return new WaitForSeconds(delayBetween);
+            }
+        }
+        else
+        {
+            layoutGroup.enabled = false;
+            for (int i = children.Count - 1; i >= 0; i--)
+            {
+                StartCoroutine(SlideToPosition(children[i], targetPositions[i], isExpanded));
+                yield return new WaitForSeconds(delayBetween);
+            }
         }
 
         yield return new WaitForSeconds(slideDuration + delayBetween * children.Count);
+        if (button) button.interactable = true;
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 
-    IEnumerator SlideToPosition(RectTransform rect, Vector2 target)
+    IEnumerator SlideToPosition(RectTransform rect, Vector2 target, bool isExpanded = true)
     {
         Vector2 start = rect.anchoredPosition;
         float t = 0f;
@@ -76,8 +82,12 @@ public class ExpandableContainer : MonoBehaviour
             if (rect == transform.GetChild(transform.childCount - 1) as RectTransform)
             {
                 Vector2 currentSize = transform.GetComponent<RectTransform>().sizeDelta;
-                transform.GetComponent<RectTransform>().sizeDelta = new Vector2(currentSize.x, Mathf.Abs(rect.anchoredPosition.y) + rect.sizeDelta.y);
+                float height = Mathf.Abs(rect.anchoredPosition.y) + rect.sizeDelta.y;
+                transform.GetComponent<RectTransform>().sizeDelta = new Vector2(currentSize.x, height);
+
                 if (t >= slideDuration) layoutGroup.enabled = true;
+                
+                if (!isExpanded && t >= slideDuration) gameObject.SetActive(false);
             }
             yield return null;
         }
