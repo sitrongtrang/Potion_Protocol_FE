@@ -23,4 +23,3 @@
 ---
 
 Stay tuned for future updates with enhanced gameplay features, visual improvements, and multiplayer support!
-# Potion-Protocol
