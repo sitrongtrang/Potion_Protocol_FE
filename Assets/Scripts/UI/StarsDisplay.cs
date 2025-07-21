@@ -10,11 +10,11 @@ public class StarsDisplay : MonoBehaviour
     [SerializeField] private Sprite _darkStarSprite;
 
     [Header("References")]
-    [SerializeField] private RectTransform _container;    
+    [SerializeField] private RectTransform _container;
     [SerializeField] private GameObject _starImagePrefab;
 
     [Header("Config")]
-    [SerializeField] private int _maxStars = 3;               
+    [SerializeField] private int _maxStars = 3;
 
     private readonly List<Image> _starImages = new List<Image>();
 
