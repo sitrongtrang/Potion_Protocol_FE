@@ -18,9 +18,9 @@ public class KeybindMenuManager : MonoBehaviour
     void Start()
     {
         _path = Application.persistentDataPath + "/rebinds.json";
-        LoadRebindsFromFile();
+
         // Debug.Log("🔁 Loaded rebinds from file: " + path);
-        
+
         var map = _inputActions.FindActionMap("Player");
 
         foreach (var parent in _contentParents)
@@ -45,11 +45,13 @@ public class KeybindMenuManager : MonoBehaviour
                 if (bindingIdx < 0 || bindingIdx >= action.bindings.Count) continue;
 
                 row.bindingIndex = bindingIdx;
+                Debug.Log(action.GetBindingDisplayString(bindingIdx));
                 row.UpdateKeyDisplay(action.GetBindingDisplayString(bindingIdx));
                 row.Init(StartRebinding);
                 row.SetChangeButtonText("Change");
             }
         }
+        LoadRebindsFromFile();
     }
     private void RefreshAllKeyDisplays()
     {
