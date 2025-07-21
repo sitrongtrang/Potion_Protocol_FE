@@ -18,9 +18,9 @@ public class KeybindMenuManager : MonoBehaviour
     void Start()
     {
         _path = Application.persistentDataPath + "/rebinds.json";
-
+        LoadRebindsFromFile();
         // Debug.Log("🔁 Loaded rebinds from file: " + path);
-
+        
         var map = _inputActions.FindActionMap("Player");
 
         foreach (var parent in _contentParents)
@@ -51,7 +51,6 @@ public class KeybindMenuManager : MonoBehaviour
                 row.SetChangeButtonText("Change");
             }
         }
-        LoadRebindsFromFile();
     }
     private void RefreshAllKeyDisplays()
     {
