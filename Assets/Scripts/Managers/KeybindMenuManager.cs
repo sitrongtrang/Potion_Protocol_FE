@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 /// <summary>
 /// Quản lý UI rebinding + ràng buộc không trùng phím theo rule game.
@@ -267,27 +268,31 @@ public class KeybindMenuManager : MonoBehaviour
         // Chuẩn hoá so sánh
         string normNewPath = NormalizePath(newPath);
 
+        // Lấy tên của part nếu có
+        string changedPartName = _currentRow?.compositePartName?.ToLowerInvariant();
+        if (changedPartName != null) Debug.Log(changedPartName);
         // Lặp toàn bộ row & action tương ứng
         foreach (var row in _keybindRows)
         {
-            if (row.actionName == changedActionName)
-                continue; // bỏ chính nó
-
             var otherAction = _playerMap.FindAction(row.actionName);
             if (otherAction == null)
+                continue;
+
+            // Nếu là cùng action + cùng part → bỏ qua chính nó
+            bool isSameAction = row.actionName == changedActionName;
+            string otherPart = row.compositePartName?.ToLowerInvariant();
+            if (isSameAction && changedPartName == otherPart)
                 continue;
 
             string otherPath = GetEffectiveBindingPath(otherAction, row.bindingIndex);
             string normOtherPath = NormalizePath(otherPath);
 
             if (string.IsNullOrEmpty(normOtherPath))
-                continue; // đã rỗng
+                continue;
 
             if (!PathsEqual(normNewPath, normOtherPath))
-                continue; // khác phím
-
-            // Có trùng phím → kiểm tra rule xem có vi phạm không
-            if (IsConflict(changedActionName, row.actionName))
+                continue;
+            if (IsConflict(changedActionName, changedPartName, row.actionName, otherPart))
             {
                 Debug.Log($"⚠️ Conflict: {changedActionName} [{newPath}] vs {row.actionName} [{otherPath}] → clearing {row.actionName}.");
                 ClearBinding(otherAction, row.bindingIndex);
@@ -304,88 +309,80 @@ public class KeybindMenuManager : MonoBehaviour
     /// <summary>
     /// Quyết định 2 action có bị cấm dùng chung phím hay không theo rule.
     /// </summary>
-    private bool IsConflict(string a, string b)
+    private bool IsConflict(string aName, string aPart, string bName, string bPart)
     {
-        // Nếu a==b → false (same)
-        if (a == b) return false;
+        string Normalize(string s) => s?.Trim().ToLowerInvariant();
 
-        // Chuẩn tên về lower để so sánh case-insensitive
-        a = a.ToLowerInvariant();
-        b = b.ToLowerInvariant();
+        aName = Normalize(aName);
+        bName = Normalize(bName);
+        aPart = Normalize(aPart);
+        bPart = Normalize(bPart);
 
-        // Helper contains
-        bool In(string x, string[] arr) => arr != null && arr.Any(y => string.Equals(y, x, System.StringComparison.InvariantCultureIgnoreCase));
-        bool Eq(string x, string y) => string.Equals(x, y, System.StringComparison.InvariantCultureIgnoreCase);
-        string da = dashAction;
-        string pa = pickupAction;
-        string dra = dropAction;
-        string ta = transferAction;
-        string sa = submitAction;
-        string ea = exploitAction;
-        string ca = craftAction;
+        bool In(string target, string[] group) =>
+            group != null && group.Any(x => x.Equals(target, StringComparison.InvariantCultureIgnoreCase));
+        bool Eq(string x, string y) =>
+            string.Equals(x, y, StringComparison.InvariantCultureIgnoreCase);
 
-        // ----------------------------------------------------------
-        // Movement & Dash: global unique (không được trùng với ai)
-        // ----------------------------------------------------------
-        if (In(a, movementActions) || In(b, movementActions) || Eq(a, da) || Eq(b, da))
-            return true; // movement/dash trùng bất kỳ ai → conflict
+        // -------------------------
+        // Conflict trong nhóm Move
+        // -------------------------
+        bool aIsMove = Eq(aName, "move");
+        bool bIsMove = Eq(bName, "move");
 
-        // ----------------------------------------------------------
-        // Pickup global unique
-        // ----------------------------------------------------------
-        if (Eq(a, pa) || Eq(b, pa))
+        if (aIsMove && bIsMove && aPart != null && bPart != null && aPart == bPart)
             return true;
 
-        // ----------------------------------------------------------
-        // Drop global unique
-        // ----------------------------------------------------------
-        if (Eq(a, dra) || Eq(b, dra))
+        if ((aIsMove && bPart == null && In(bName, movementActions)) ||
+            (bIsMove && aPart == null && In(aName, movementActions)))
             return true;
 
-        // ----------------------------------------------------------
-        // Attack + Skills: unique nội bộ
-        // ----------------------------------------------------------
-        bool aAtkGrp = In(a, attackAndSkillActions);
-        bool bAtkGrp = In(b, attackAndSkillActions);
-        if (aAtkGrp && bAtkGrp)
+        // -------------------------
+        // Movement hoặc Dash trùng với bất kỳ ai → conflict
+        // -------------------------
+        if (In(aName, movementActions) || In(bName, movementActions) || Eq(aName, dashAction) || Eq(bName, dashAction))
             return true;
 
-        // ----------------------------------------------------------
-        // Transfer & Submit vs Attack/Exploit/Craft
-        // ----------------------------------------------------------
-        bool aTrans = Eq(a, ta);
-        bool bTrans = Eq(b, ta);
-        bool aSub = Eq(a, sa);
-        bool bSub = Eq(b, sa);
-
-        bool aAtk = Eq(a, attackAndSkillActions?.FirstOrDefault(x => x.Equals("Attack", System.StringComparison.InvariantCultureIgnoreCase)) ?? "Attack");
-        bool bAtk = Eq(b, attackAndSkillActions?.FirstOrDefault(x => x.Equals("Attack", System.StringComparison.InvariantCultureIgnoreCase)) ?? "Attack");
-
-        bool aExploit = Eq(a, ea);
-        bool bExploit = Eq(b, ea);
-        bool aCraft = Eq(a, ca);
-        bool bCraft = Eq(b, ca);
-
-        // Transfer vs Attack/Exploit/Craft
-        if (aTrans && (bAtk || bExploit || bCraft)) return true;
-        if (bTrans && (aAtk || aExploit || aCraft)) return true;
-
-        // Submit vs Attack/Exploit/Craft
-        if (aSub && (bAtk || bExploit || bCraft)) return true;
-        if (bSub && (aAtk || aExploit || aCraft)) return true;
-
-        // ----------------------------------------------------------
-        // Inventory unique nội bộ
-        // ----------------------------------------------------------
-        bool aInv = In(a, inventoryActions);
-        bool bInv = In(b, inventoryActions);
-        if (aInv && bInv)
+        // -------------------------
+        // Pickup / Drop: global unique
+        // -------------------------
+        if (Eq(aName, pickupAction) || Eq(bName, pickupAction))
             return true;
 
-        // No rule hit → không conflict
+        if (Eq(aName, dropAction) || Eq(bName, dropAction))
+            return true;
+
+        // -------------------------
+        // Attack + Skill: không trùng nhau trong nhóm
+        // -------------------------
+        bool aIsAtk = In(aName, attackAndSkillActions);
+        bool bIsAtk = In(bName, attackAndSkillActions);
+        if (aIsAtk && bIsAtk)
+            return true;
+
+        // -------------------------
+        // Inventory: không trùng trong nhóm
+        // -------------------------
+        bool aIsInv = In(aName, inventoryActions);
+        bool bIsInv = In(bName, inventoryActions);
+        if (aIsInv && bIsInv)
+            return true;
+
+        // -------------------------
+        // Transfer / Submit vs Attack / Exploit / Craft
+        // -------------------------
+        bool aIsTrans = Eq(aName, transferAction);
+        bool bIsTrans = Eq(bName, transferAction);
+        bool aIsSubmit = Eq(aName, submitAction);
+        bool bIsSubmit = Eq(bName, submitAction);
+
+        bool aIsAtkBase = Eq(aName, "attack") || Eq(aName, exploitAction) || Eq(aName, craftAction);
+        bool bIsAtkBase = Eq(bName, "attack") || Eq(bName, exploitAction) || Eq(bName, craftAction);
+
+        if ((aIsTrans && bIsAtkBase) || (bIsTrans && aIsAtkBase)) return true;
+        if ((aIsSubmit && bIsAtkBase) || (bIsSubmit && aIsAtkBase)) return true;
+
         return false;
     }
-
     // ----------------------------------------------------------------------
 
     private void ClearBinding(InputAction action, int bindingIndex)

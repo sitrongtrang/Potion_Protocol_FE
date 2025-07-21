@@ -173,7 +173,7 @@ public class PlayerInteraction
         if (collider.gameObject.tag == "Station")
         {
             _isNearStation = true;
-            _nearStation = collider.gameObject.GetComponent<StationController>();
+            _nearStation = collider.gameObject.GetComponentInParent<StationController>();
             // display UI to inform player to transfer item
         }
         if (collider.gameObject.tag == "CraftPoint")

@@ -6,34 +6,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     [SerializeField] public int PlayedLevels = 3;
     public int CurrentLevel;
-
-    [SerializeField] private int _playerScore;
-    [SerializeField] private int _playerStart;
-
-    public int Score
-    {
-        get
-        {
-            return _playerScore;
-        }
-        set
-        { 
-            _playerScore = value;
-        }
-    }
-
-    public int Star
-    {
-        get
-        {
-            return _playerStart;
-        }
-        set
-        {
-            _playerStart = value;
-        }
-    }
-    
+    public int Score;
+    public int Star;
 
     private void Awake()
     {

@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
+using static UnityEngine.Rendering.DebugUI;
 
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
-    [SerializeField] LevelConfig _config;
+    private LevelConfig _config;
+    [SerializeField] LoadingScreenUI _loadingScreen;
     private int _score = 0;
     public int Score
     {
@@ -19,7 +21,6 @@ public class LevelManager : MonoBehaviour
             _score = value;
             if (value != oldScore)
             {
-                GameManager.Instance.Score = value;
                 OnScoreChanged?.Invoke(value);
             }
             if (Stars >= _config.ScoreThresholds.Length) return;
@@ -37,7 +38,6 @@ public class LevelManager : MonoBehaviour
             _stars = Mathf.Min(value, _config.ScoreThresholds.Length);
             if (value != oldStars)
             {
-                GameManager.Instance.Star = value;
                 OnStarGained?.Invoke();
             }
         }
@@ -65,9 +65,29 @@ public class LevelManager : MonoBehaviour
         }
 
         Instance = this;
+
+        // _config = Resources.Load<LevelConfig>($"ScriptableObjects/Levels/Level{GameManager.Instance.CurrentLevel + 1}");
     }
 
     void Start()
+    {
+        StartCoroutine(LoadLevelAsset());   
+    }
+
+    private IEnumerator LoadLevelAsset()
+    {
+        string levelPath = $"ScriptableObjects/Levels/Level{GameManager.Instance.CurrentLevel + 1}";
+        ResourceRequest request = Resources.LoadAsync<LevelConfig>(levelPath);
+        _loadingScreen.gameObject.SetActive(true);
+
+        yield return StartCoroutine(_loadingScreen.RenderLoadingScene(request));
+    
+        _config = request.asset as LevelConfig;
+        Initialize();
+        _loadingScreen.gameObject.SetActive(false);
+    }
+
+    void Initialize()
     {
         _requiredRecipeListUI.Initialize(_requiredRecipes);
         _requiredRecipes.Clear();
@@ -173,6 +193,8 @@ public class LevelManager : MonoBehaviour
         }
         if (_timeLeft <= 0)
         {
+            GameManager.Instance.Star = _stars;
+            GameManager.Instance.Score = _score;
             SceneManager.LoadScene("LevelResultScene");
         }
     }

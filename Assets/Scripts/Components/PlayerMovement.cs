@@ -27,24 +27,39 @@ public class PlayerMovement
         {
             _moveDir = ctx.ReadValue<Vector2>().normalized;
             _playerDir = _moveDir;
-            _player.Animatr.SetFloat("MoveX", _playerDir.x);
-            _player.Animatr.SetFloat("MoveY", _playerDir.y);
-            _player.SwordAnimatr.SetFloat("MoveX", _playerDir.x);
-            _player.SwordAnimatr.SetFloat("MoveY", _playerDir.y);
-            _player.Animatr.SetBool("IsMoving", true);
+            if (!_player) return;
+            if (_player.Animatr)
+            {
+                _player.Animatr.SetFloat("MoveX", _playerDir.x);
+                _player.Animatr.SetFloat("MoveY", _playerDir.y);
+                _player.Animatr.SetBool("IsMoving", true);
+            }
+            if (_player.SwordAnimatr)
+            {
+                _player.SwordAnimatr.SetFloat("MoveX", _playerDir.x);
+                _player.SwordAnimatr.SetFloat("MoveY", _playerDir.y);
+            }
+            
         };
         _inputManager.controls.Player.Move.canceled += ctx =>
         {
             _moveDir = Vector2.zero;
-            _player.Animatr.SetFloat("MoveX", _playerDir.x);
-            _player.Animatr.SetFloat("MoveY", _playerDir.y);
-            _player.SwordAnimatr.SetFloat("MoveX", _playerDir.x);
-            _player.SwordAnimatr.SetFloat("MoveY", _playerDir.y);
-            _player.Animatr.SetBool("IsMoving", false);
+            if (!_player) return;
+            if (_player.Animatr)
+            {
+                _player.Animatr.SetFloat("MoveX", _playerDir.x);
+                _player.Animatr.SetFloat("MoveY", _playerDir.y);
+                _player.Animatr.SetBool("IsMoving", false);
+            }
+            if (_player.SwordAnimatr)
+            {
+                _player.SwordAnimatr.SetFloat("MoveX", _playerDir.x);
+                _player.SwordAnimatr.SetFloat("MoveY", _playerDir.y);
+            }
         };
         _inputManager.controls.Player.Dash.performed += ctx =>
         {
-            if (_canDash) _player.StartCoroutine(Dash());
+            if (_canDash && _player) _player.StartCoroutine(Dash());
         };
     }
     
@@ -70,22 +85,34 @@ public class PlayerMovement
             Vector2 newPos = _player.Rb.position + _playerDir * _playerConfig.DashSpeed * Time.fixedDeltaTime;
             _player.Rb.MovePosition(newPos);
 
-            _player.Animatr.SetFloat("MoveX", _playerDir.x);
-            _player.Animatr.SetFloat("MoveY", _playerDir.y);
-            _player.SwordAnimatr.SetFloat("MoveX", _playerDir.x);
-            _player.SwordAnimatr.SetFloat("MoveY", _playerDir.y);
-            _player.Animatr.SetBool("IsMoving", true);
+            if (_player.Animatr)
+            {
+                _player.Animatr.SetFloat("MoveX", _playerDir.x);
+                _player.Animatr.SetFloat("MoveY", _playerDir.y);
+                _player.Animatr.SetBool("IsMoving", true);
+            }
+            if (_player.SwordAnimatr)
+            {
+                _player.SwordAnimatr.SetFloat("MoveX", _playerDir.x);
+                _player.SwordAnimatr.SetFloat("MoveY", _playerDir.y);
+            }
 
             dashTime += Time.deltaTime;
             yield return null;
         }
         _isDashing = false;
 
-        _player.Animatr.SetFloat("MoveX", _playerDir.x);
-        _player.Animatr.SetFloat("MoveY", _playerDir.y);
-        _player.SwordAnimatr.SetFloat("MoveX", _playerDir.x);
-        _player.SwordAnimatr.SetFloat("MoveY", _playerDir.y);
-        _player.Animatr.SetBool("IsMoving", false);
+        if (_player.Animatr)
+        {
+            _player.Animatr.SetFloat("MoveX", _playerDir.x);
+            _player.Animatr.SetFloat("MoveY", _playerDir.y);
+            _player.Animatr.SetBool("IsMoving", false);
+        }
+        if (_player.SwordAnimatr)
+        {
+            _player.SwordAnimatr.SetFloat("MoveX", _playerDir.x);
+            _player.SwordAnimatr.SetFloat("MoveY", _playerDir.y);
+        }
 
         // Dash Cooldown
         yield return new WaitForSeconds(_playerConfig.DashCooldown);
