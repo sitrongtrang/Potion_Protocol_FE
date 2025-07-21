@@ -8,23 +8,12 @@ public class ScoreAnim : MonoBehaviour
     [SerializeField] private int maxDigits = 6;
     [SerializeField] private float digitFlipDuration = 0.3f;
     [SerializeField] private float delayBetweenDigits = 0.1f;
-    [SerializeField] private Transform digitsContainer; // đặt UI LayoutGroup vào đây
+    [SerializeField] private Transform digitsContainer;
 
-    private void Start()
+    public IEnumerator AnimateScore(int score)
     {
-        StartCoroutine(AnimateScore());
-    }
-
-    private IEnumerator AnimateScore()
-    {
-        // 1) Lấy điểm và format thành chuỗi có fixed length
-        int score = GameManager.Instance != null
-                    ? GameManager.Instance.Score
-                    : 0;
-
         string scoreStr = score.ToString().PadLeft(maxDigits, '0');
 
-        // 2) Xoá các con cũ (nếu có) rồi sinh lại đúng số lượng
         foreach (Transform child in digitsContainer)
             Destroy(child.gameObject);
 

@@ -890,6 +890,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainButton: {fileID: 2122194046}
   _playButton: {fileID: 807201887}
+  _scoreAnim: {fileID: 733836325}
+  _starAnim: {fileID: 415623717}
+  _levelConfig: {fileID: 11400000, guid: b1250c6ef026a4b46a37b004aa28025c, type: 2}
 --- !u!1 &1230859701
 GameObject:
   m_ObjectHideFlags: 0
