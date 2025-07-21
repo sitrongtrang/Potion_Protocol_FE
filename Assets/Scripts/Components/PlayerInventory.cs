@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PlayerInventory : IComponent
+public class PlayerInventory
 {
     private PlayerController _player;
     private ItemConfig[] items = new ItemConfig[GameConstants.MaxSlot];
@@ -28,7 +28,7 @@ public class PlayerInventory : IComponent
     {
         ChoosingSlot = 0;
         _player = player;
-        _isAutoFocus = true;
+        _isAutoFocus = PlayerPrefs.GetInt("IsAutoFocus") == 1;;
     }
 
     public ItemConfig Pickup(ItemController item)
@@ -53,7 +53,7 @@ public class PlayerInventory : IComponent
             // Drop the item into the world at player's position
             ItemConfig itemToDrop = items[_choosingSlot];
             Vector2 playerPos = _player.transform.position;
-            Vector2 dropPosition = playerPos + 0.5f * Vector2.down;
+            Vector2 dropPosition = playerPos + GameConstants.DropItemSpacing * Vector2.down;
 
             ItemPool.Instance.SpawnItem(itemToDrop, dropPosition);
 

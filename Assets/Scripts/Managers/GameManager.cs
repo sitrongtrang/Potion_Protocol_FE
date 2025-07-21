@@ -4,7 +4,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    public bool IsAutoFocus; // placeholder for auto focus state of player inventory;
+    [SerializeField] public int PlayedLevels = 3;
+    public int CurrentLevel;
 
     [SerializeField] private int _playerScore;
     [SerializeField] private int _playerStart;
@@ -43,7 +44,6 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
-        IsAutoFocus = PlayerPrefs.GetInt("IsAutoFocus") == 1; // load here
         DontDestroyOnLoad(this);
     }
 }

@@ -14,20 +14,23 @@ public class AlchemyStationController : StationController
         }
     }
 
-    public override void AddItem(ItemConfig config)
+    public override bool AddItem(ItemConfig config)
     {
         if (_items.Count < GameConstants.MaxItemsInAlchemyStation)
         {
-            base.AddItem(config);
-            itemsOnTable[_items.Count-1].SetActive(true);
-            itemsOnTable[_items.Count-1].GetComponent<SpriteRenderer>().sprite = config.Prefab.GetComponent<SpriteRenderer>().sprite; 
+            bool added = base.AddItem(config);
+            if (!added) return false;
+            itemsOnTable[_items.Count - 1].SetActive(true);
+            itemsOnTable[_items.Count - 1].GetComponent<SpriteRenderer>().sprite = config.Prefab.GetComponent<SpriteRenderer>().sprite;
+            return true;
         }
         else
         {
             Vector2 stationPos = transform.position;
-            Vector2 dropPosition = stationPos + 0.5f * Vector2.down;
+            Vector2 dropPosition = stationPos + GameConstants.DropItemSpacing * Vector2.down;
             ItemPool.Instance.SpawnItem(config, dropPosition);
             Debug.LogWarning("Cannot add more items to the Alchemy Station.");
+            return false;
         }
     }
 

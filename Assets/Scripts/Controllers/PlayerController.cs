@@ -7,9 +7,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     private PlayerConfig _config;
-    // input manager (new input system)
     private PlayerInputManager _inputManager;
-    private List<IUpdatableComponent> _updatableComponents = new();
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Animator _anim;
     [SerializeField] private Animator _swordAnim;
@@ -30,19 +28,20 @@ public class PlayerController : MonoBehaviour
 
     public void Initialize(PlayerConfig config, InputActionAsset loadedAsset = null)
     {
-        // EventBus.AddTargetToCamera(gameObject.transform);
         _config = config;
         _inputManager = loadedAsset != null
             ? new PlayerInputManager(loadedAsset)
             : new PlayerInputManager();
 
-        Inventory = RegisterComponent(new PlayerInventory());
-        Attack = RegisterComponent(new PlayerAttack());
-        Interaction = RegisterComponent(new PlayerInteraction());
-        Movement = RegisterComponent(new PlayerMovement());
+        Inventory = new PlayerInventory();
+        Attack = new PlayerAttack();
+        Interaction = new PlayerInteraction();
+        Movement = new PlayerMovement();
 
-        AttackAnimationRelay relay = GetComponentInChildren<AttackAnimationRelay>();
-        relay.Initialize(this); 
+        Inventory.Initialize(this, _inputManager);
+        Attack.Initialize(this, _inputManager);
+        Interaction.Initialize(this, _inputManager);    
+        Movement.Initialize(this, _inputManager);
 
         _inventoryUI = FindFirstObjectByType<InventoryUI>();
         _inventoryUI.Initialize(this);
@@ -51,10 +50,7 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        for (int i = 0; i < _updatableComponents.Count; i++)
-        {
-            _updatableComponents[i].MyUpdate();
-        }
+        Movement.MyUpdate();
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -67,20 +63,6 @@ public class PlayerController : MonoBehaviour
         Interaction.OnTriggerExit2D(collider);
     }
 
-    private T RegisterComponent<T>(T component) where T : class
-    {
-        if (component is IComponent playerComponent)
-        {
-            playerComponent.Initialize(this, _inputManager);
-        }
-
-        if (component is IUpdatableComponent updatable)
-        {
-            _updatableComponents.Add(updatable);
-        }
-
-        return component;
-    }
     void OnDestroy()
     {
         _inputManager.OnDestroy();

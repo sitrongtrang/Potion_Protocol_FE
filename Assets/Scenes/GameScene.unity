@@ -1372,7 +1372,7 @@ GameObject:
   - component: {fileID: 511538373}
   - component: {fileID: 511538374}
   m_Layer: 0
-  m_Name: OreSpawner
+  m_Name: ItemSourceSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4240,7 +4240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1614171551
 Transform:
   m_ObjectHideFlags: 0

@@ -49,7 +49,7 @@ public class LevelManager : MonoBehaviour
     public event Action<float> OnTimeChanged;
     public event Action<bool> OnPauseToggled;
     public event Action OnStarGained;
-    [SerializeField] private OreSpawner _oreSpawner;
+    [SerializeField] private ItemSourceSpawner _itemSourceSpawner;
 
     private List<RecipeConfig> _requiredRecipes = new List<RecipeConfig>();
     public event Action<RecipeConfig> OnRequiredRecipeAdded;
@@ -100,7 +100,7 @@ public class LevelManager : MonoBehaviour
             height * 2,
             cellSize,
             origin,
-            new string[] { "Obstacle", "Ore" },
+            new string[] { "Obstacle", "ItemSource" },
             LayerMask.GetMask("Obstacle"),
             (x, y, isoverlap) =>
             {
@@ -110,9 +110,9 @@ public class LevelManager : MonoBehaviour
             map.transform
         );
 
-        GameObject spawnOreBounds = GameObject.Find("Spawn Ore Bounds");
+        GameObject spawnItemSourceBounds = GameObject.Find("Spawn ItemSource Bounds");
 
-        BoxCollider2D collider2D = spawnOreBounds.GetComponent<BoxCollider2D>();
+        BoxCollider2D collider2D = spawnItemSourceBounds.GetComponent<BoxCollider2D>();
         float widthInF = collider2D.bounds.size.x;
         float heightInF = collider2D.bounds.size.y;
 
@@ -122,7 +122,7 @@ public class LevelManager : MonoBehaviour
             Mathf.CeilToInt(heightInF / cellSize),
             cellSize,
             origin,
-            new string[] { "Obstacle", "Ore", "Enemy", "Player" },
+            new string[] { "Obstacle", "ItemSource", "Enemy", "Player" },
             LayerMask.GetMask("Obstacle"),
             (x, y, isoverlap) =>
             {
@@ -159,8 +159,8 @@ public class LevelManager : MonoBehaviour
             enemySpawners[i].Initialize(_config.Enemies, positionsToSpawn);
         }
 
-        // Initialize ore spawner
-        _oreSpawner.Initialize(_config.Ores);
+        // Initialize item source spawner
+        _itemSourceSpawner.Initialize(_config.ItemSources);
     }
 
     private IEnumerator LevelTimer()

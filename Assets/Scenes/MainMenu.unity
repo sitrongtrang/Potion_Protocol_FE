@@ -2254,7 +2254,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793a8fe90179d7c45a893b3248293935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsAutoFocus: 1
+  PlayedLevels: 0
+  CurrentLevel: 0
   _playerScore: 0
   _playerStart: 0
 --- !u!4 &1362240175

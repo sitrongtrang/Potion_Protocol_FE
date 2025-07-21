@@ -17,5 +17,5 @@ MonoBehaviour:
   _type: 1
   _product: {fileID: 11400000, guid: 516f0ae27076c86448fa182bed2e8071, type: 2}
   _inputs:
-  - {fileID: 11400000, guid: f328770432ef4884da308476bb83d8e2, type: 2}
   - {fileID: 11400000, guid: beb25794779a99b4b91a16c504c21141, type: 2}
+  - {fileID: 11400000, guid: b4dcb6d71dec80745b28f474daef8c6c, type: 2}

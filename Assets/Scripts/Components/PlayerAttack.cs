@@ -2,23 +2,19 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static InputSystem_Actions;
-using static UnityEngine.UI.Image;
 
-public class PlayerAttack : IComponent, IUpdatableComponent
+public class PlayerAttack
 {
     private PlayerInputManager _inputManager;
     private PlayerController _player;
     // bool _isAttacking = false;
     private bool _canAttack = true;
-    public bool IsAttacking { get; private set; }
     private bool[] _canUseSkills = new bool[GameConstants.NumSkills];
     private bool _isInAction = false;
     private InputAction[] _skillActions;
 
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
-        IsAttacking = false;
         for (int i = 0; i < 3; i++)
         {
             _canUseSkills[i] = true;
@@ -45,11 +41,6 @@ public class PlayerAttack : IComponent, IUpdatableComponent
             };
         }
     }
-
-    public void MyUpdate()
-    {
-        
-    }
     
     // Can not perform any action when an action is active by variable _isInAction
     public IEnumerator Attack()
@@ -60,7 +51,6 @@ public class PlayerAttack : IComponent, IUpdatableComponent
         Vector2 dir = _player.Movement.PlayerDir.normalized;
         // _isInAction = true;
         Debug.Log("Player Attacked");
-        IsAttacking = true;
         // Check va chạm với tường
         float skinWidth = 0.2f;
         Vector2 origin = (Vector2)_player.AttackPoint.position + dir * skinWidth;
@@ -85,11 +75,6 @@ public class PlayerAttack : IComponent, IUpdatableComponent
         yield return new WaitForSeconds(_player.Config.AttackCooldown - _player.Config.AttackDelay);
         // _isInAction = false;
         _canAttack = true;
-    }
-
-    public void FinishAttack()
-    {
-        IsAttacking = false;
     }
 
     private IEnumerator UseSkill(int skillNumber)
@@ -141,18 +126,26 @@ public class PlayerAttack : IComponent, IUpdatableComponent
         RaycastHit2D hitWallFar = Physics2D.Raycast(origin, dir, _player.Weapon.AttackRange);
         float maxReach = (hitWallFar.collider != null && hitWallFar.collider.CompareTag("Obstacle")) ? hitWallFar.distance : _player.Weapon.AttackRange;
 
-        RaycastHit2D[] hitEnemies = Physics2D.RaycastAll(origin, dir, maxReach);
-        for (int i = 0; i < hitEnemies.Length; i++)
+        RaycastHit2D[] hitTargets = Physics2D.RaycastAll(origin, dir, maxReach);
+        for (int i = 0; i < hitTargets.Length; i++)
         {
-            if (hitEnemies[i].collider.CompareTag("Player"))
+            if (hitTargets[i].collider.CompareTag("Player"))
                 continue;
 
-            if (hitEnemies[i].collider.CompareTag("Enemy"))
+            if (hitTargets[i].collider.CompareTag("Enemy"))
             {
-                EnemyController enemy = hitEnemies[i].collider.GetComponent<EnemyController>();
+                EnemyController enemy = hitTargets[i].collider.GetComponent<EnemyController>();
                 if (enemy != null)
                 {
                     enemy.TakeDamage(_player.Weapon.AttackDamage);
+                }
+            } 
+            if (hitTargets[i].collider.CompareTag("ItemSource"))
+            {
+                ItemSourceController itemSource = hitTargets[i].collider.GetComponent<ItemSourceController>();
+                if (itemSource != null)
+                {
+                    itemSource.OnFarmed();
                 }
             }
         }

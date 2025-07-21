@@ -11,20 +11,17 @@ public class LevelConfig : ScriptableObject
     [SerializeField] private List<EnemyConfig> _enemies;
     public List<EnemyConfig> Enemies => _enemies;
 
-    // [SerializeField] private List<OreConfig> _ores;
-    // public List<OreConfig> Ores => _ores;
-
     [SerializeField] private float _recipeAddInterval;
     public float RecipeAddInterval => _recipeAddInterval;
 
     [Serializable]
-    public class OreSetting
+    public class ItemSourceSetting
     {
-        public OreConfig Config;
+        public ItemSourceConfig Config;
         public int MaxCapacity;
     }
-    [SerializeField] private List<OreSetting> _ores;
-    public List<OreSetting> Ores => _ores;
+    [SerializeField] private List<ItemSourceSetting> _itemSources;
+    public List<ItemSourceSetting> ItemSources => _itemSources;
 
     [SerializeField] private List<RecipeConfig> _ingotRecipes;
     public List<RecipeConfig> IngotRecipes => _ingotRecipes;

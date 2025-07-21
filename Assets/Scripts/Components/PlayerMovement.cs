@@ -1,9 +1,7 @@
 using System.Collections;
-using NUnit.Framework;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerMovement : IComponent, IUpdatableComponent
+public class PlayerMovement
 {
     private PlayerController _player;
     private PlayerInputManager _inputManager;

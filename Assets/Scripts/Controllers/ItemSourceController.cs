@@ -2,31 +2,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class OreController : MonoBehaviour
+public class ItemSourceController : MonoBehaviour
 {
-    private OreConfig _config;
-    public OreConfig Config => _config;
-    private OreSpawner _oreSpawner;
+    private ItemSourceConfig _config;
+    public ItemSourceConfig Config => _config;
+    private ItemSourceSpawner _itemSourceSpawner;
     [SerializeField] private Collider2D _collider;
 
-    public void Initialize(OreSpawner spawner, OreConfig config)
+    public void Initialize(ItemSourceSpawner spawner, ItemSourceConfig config)
     {
-        _oreSpawner = spawner;
+        _itemSourceSpawner = spawner;
         _config = config;
 
         CheckOverlapGrid();
-    }
-
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.CompareTag("Weapon"))
-        {
-            PlayerController player = collider.transform.GetComponentInParent<PlayerController>();
-            if (player != null && player.Attack.IsAttacking)
-            {
-                OnFarmed();
-            }
-        }
     }
 
     public void OnFarmed()
@@ -55,7 +43,7 @@ public class OreController : MonoBehaviour
     private void TrueDie()
     {
         CheckOverlapGrid();
-        _oreSpawner.NotifyOreRemoved(_config);
+        _itemSourceSpawner.NotifyItemSourceRemoved(_config);
         Destroy(gameObject);
     }
 }

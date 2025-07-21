@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -1191432383781706749}
   - component: {fileID: 1526302737895782230}
   - component: {fileID: 8537073205730602714}
+  - component: {fileID: -3333667109501207409}
   m_Layer: 7
   m_Name: Maggot
   m_TagString: Enemy
@@ -54,7 +55,9 @@ MonoBehaviour:
   _obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
+  _enemyImpactUI: {fileID: -3333667109501207409}
   _movementIgnoreObstacles: 0
+  _healthBarPrefab: {fileID: -957368622642131315, guid: 67c66995c641fe64599726b5a9b2209e, type: 3}
 --- !u!212 &-1191432383781706749
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -178,3 +181,17 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.44809508, y: 0.39236516}
   m_EdgeRadius: 0
+--- !u!114 &-3333667109501207409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584530381803052231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e159eb6b6362ad4a877e4f21ddd829c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flashMaterial: {fileID: 2100000, guid: 8856b6ed434d02c499eb8b98d8e129f7, type: 2}
+  _duration: 0.125

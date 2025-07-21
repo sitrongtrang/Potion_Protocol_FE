@@ -10,9 +10,8 @@ public class StarsDisplay : MonoBehaviour
     [SerializeField] private Sprite _darkStarSprite;
 
     [Header("References")]
-    [SerializeField] private TMP_Text _scoreText;
-    [SerializeField] private RectTransform _container;      
-    [SerializeField] private GameObject _starImagePrefab;    
+    [SerializeField] private RectTransform _container;    
+    [SerializeField] private GameObject _starImagePrefab;
 
     [Header("Config")]
     [SerializeField] private int _maxStars = 3;               
@@ -32,15 +31,6 @@ public class StarsDisplay : MonoBehaviour
     private void Start()
     {
         RenderStars();
-        RenderScore();
-    }
-
-    private void RenderScore()
-    {
-        int score = GameManager.Instance != null
-                    ? GameManager.Instance.Score
-                    : 0;
-        _scoreText.text = "Score: " + score.ToString();
     }
 
     private void RenderStars()
@@ -48,6 +38,7 @@ public class StarsDisplay : MonoBehaviour
         int stars = GameManager.Instance != null
                     ? GameManager.Instance.Star
                     : 0;
+
         for (int i = 0; i < _starImages.Count; i++)
         {
             _starImages[i].sprite = (i < stars)
