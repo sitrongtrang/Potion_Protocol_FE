@@ -13,8 +13,6 @@ public class StarAnim : MonoBehaviour
     [Header("References")]
     [SerializeField] private RectTransform _container;
     [SerializeField] private GameObject _starImagePrefab;
-
-    [Header("Config")]
     [SerializeField] private int _maxStars = 3;
 
     private readonly List<Image> _starImages = new List<Image>();
@@ -36,13 +34,8 @@ public class StarAnim : MonoBehaviour
             _targetPositions.Add(img.rectTransform.anchoredPosition);
     }
 
-    private void Start()
+    public IEnumerator AnimateStar(int starsCount)
     {
-        int starsCount = GameManager.Instance != null
-                         ? GameManager.Instance.Star
-                         : 0;
-
-        // Gán sprite trước khi animate
         for (int i = 0; i < _starImages.Count; i++)
         {
             _starImages[i].sprite = (i < starsCount)
@@ -50,11 +43,6 @@ public class StarAnim : MonoBehaviour
                                      : _darkStarSprite;
         }
 
-        StartCoroutine(AnimateStarsSequentially(starsCount));
-    }
-
-    private IEnumerator AnimateStarsSequentially(int starsCount)
-    {
         for (int i = 0; i < _starImages.Count; i++)
         {
             Image img = _starImages[i];
