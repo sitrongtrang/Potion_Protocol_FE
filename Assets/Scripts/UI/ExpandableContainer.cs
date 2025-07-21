@@ -33,8 +33,6 @@ public class ExpandableContainer : MonoBehaviour
 
     private IEnumerator AnimateChildren(bool isExpanded, Button button = null)
     {
-        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
-
         List<Vector2> targetPositions = new();
         for (int i = 0; i < children.Count; i++)
         {
@@ -43,24 +41,11 @@ public class ExpandableContainer : MonoBehaviour
         }
 
         if (button) button.interactable = false;
-
-        if (isExpanded)
+        layoutGroup.enabled = false;
+        for (int i = children.Count - 1; i >= 0; i--)
         {
-            layoutGroup.enabled = false;
-            for (int i = 0; i < children.Count; i++)
-            {
-                StartCoroutine(SlideToPosition(children[i], targetPositions[i], isExpanded));
-                yield return new WaitForSeconds(delayBetween);
-            }
-        }
-        else
-        {
-            layoutGroup.enabled = false;
-            for (int i = children.Count - 1; i >= 0; i--)
-            {
-                StartCoroutine(SlideToPosition(children[i], targetPositions[i], isExpanded));
-                yield return new WaitForSeconds(delayBetween);
-            }
+            StartCoroutine(SlideToPosition(children[i], targetPositions[i], isExpanded));
+            yield return new WaitForSeconds(delayBetween);
         }
 
         yield return new WaitForSeconds(slideDuration + delayBetween * children.Count);

@@ -130,10 +130,10 @@ public class SelectingLevelUI : MonoBehaviour
         {
             lockImage.SetActive(isLocked);
         }
-        // Button button = levelButton.GetComponent<Button>();
-        // if (button != null)
-        // {
-        //     button.interactable = !isLocked;
-        // }
+        Button button = levelButton.GetComponent<Button>();
+        if (button != null)
+        {
+            button.interactable = !isLocked;
+        }
     }
 }
