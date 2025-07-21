@@ -12,6 +12,8 @@ public class ResultUI : MonoBehaviour
     [Header("Animation Controllers")]
     [SerializeField] private ScoreAnim _scoreAnim;
     [SerializeField] private StarAnim _starAnim;
+    [SerializeField] private StarDropper _starDrop;
+
 
     [Header("Level Config")]
     [SerializeField] private LevelConfig _levelConfig;
@@ -25,7 +27,7 @@ public class ResultUI : MonoBehaviour
     {
         int score = GameManager.Instance != null
             ? GameManager.Instance.Score
-            : 2;
+            : 3;
         int[] thresholds = _levelConfig.ScoreThresholds;
         int starsEarned = 3;
 
@@ -36,10 +38,13 @@ public class ResultUI : MonoBehaviour
         }
 
         bool scoreDone = false, starDone = false;
-        //if (starsEarned == 3) StartCoroutine(SpawnStars());
 
         StartCoroutine(_scoreAnim.AnimateScore(score));
         StartCoroutine(_starAnim.AnimateStar(starsEarned));
+        if (starsEarned == 3)
+        {
+            _starDrop.SpawnStars();
+        }
 
         while (!scoreDone || !starDone)
             yield return null;
