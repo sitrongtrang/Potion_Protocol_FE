@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
+using static UnityEngine.Rendering.DebugUI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -20,7 +21,6 @@ public class LevelManager : MonoBehaviour
             _score = value;
             if (value != oldScore)
             {
-                GameManager.Instance.Score = value;
                 OnScoreChanged?.Invoke(value);
             }
             if (Stars >= _config.ScoreThresholds.Length) return;
@@ -194,6 +194,7 @@ public class LevelManager : MonoBehaviour
         if (_timeLeft <= 0)
         {
             GameManager.Instance.Star = _stars;
+            GameManager.Instance.Score = _score;
             SceneManager.LoadScene("LevelResultScene");
         }
     }

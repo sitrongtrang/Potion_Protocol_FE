@@ -7,33 +7,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] public int PlayedLevels = 3;
     public int CurrentLevel;
 
-    [SerializeField] private int _playerScore;
-    [SerializeField] private int _playerStar;
+    public int Score;
 
-    public int Score
-    {
-        get
-        {
-            return _playerScore;
-        }
-        set
-        { 
-            _playerScore = value;
-        }
-    }
-
-    public int Star
-    {
-        get
-        {
-            return _playerStar;
-        }
-        set
-        {
-            _playerStar = value;
-        }
-    }
-    
+    public int Star;
 
     private void Awake()
     {
