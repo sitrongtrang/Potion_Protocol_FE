@@ -1,25 +1,10 @@
 fileFormatVersion: 2
-guid: bbc590f18e9eb2845947c67d398876e4
+guid: 9662b40dda78467468a03936c1364db2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5983464753211335511
-    second: AncientBookBackground_0
-  - first:
-      213: -4813432981175600298
-    second: AncientBookBackground_1
-  - first:
-      213: 6982036982491199136
-    second: AncientBookBackground_2
-  - first:
-      213: 433546814158624835
-    second: AncientBookBackground_3
-  - first:
-      213: -7613433517895887747
-    second: AncientBookBackground_4
-  - first:
-      213: 2565130318866435763
-    second: AncientBookBackground_5
+      213: 7072305112769007677
+    second: WoodenTabletop_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -128,12 +113,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AncientBookBackground_0
+      name: WoodenTabletop_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1536
+        width: 1024
         height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -143,118 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9ac94ca328676fca0800000000000000
-      internalID: -5983464753211335511
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AncientBookBackground_1
-      rect:
-        serializedVersion: 2
-        x: 1282
-        y: 655
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 65bf0eec430433db0800000000000000
-      internalID: -4813432981175600298
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AncientBookBackground_2
-      rect:
-        serializedVersion: 2
-        x: 1282
-        y: 480
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0a63706a4ad25e060800000000000000
-      internalID: 6982036982491199136
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AncientBookBackground_3
-      rect:
-        serializedVersion: 2
-        x: 1282
-        y: 384
-        width: 6
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3485d6bc784440600800000000000000
-      internalID: 433546814158624835
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AncientBookBackground_4
-      rect:
-        serializedVersion: 2
-        x: 1282
-        y: 307
-        width: 6
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d7453cc9d86a75690800000000000000
-      internalID: -7613433517895887747
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AncientBookBackground_5
-      rect:
-        serializedVersion: 2
-        x: 1282
-        y: 299
-        width: 6
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3be4e923f6c299320800000000000000
-      internalID: 2565130318866435763
+      spriteID: d3096c58700e52260800000000000000
+      internalID: 7072305112769007677
       vertices: []
       indices: 
       edges: []
@@ -272,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      WoodenTabletop_0: 7072305112769007677
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

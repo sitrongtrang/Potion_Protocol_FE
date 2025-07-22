@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Sapphire
   m_EditorClassIdentifier: 
   _name: Sapphire
+  _icon: {fileID: 1407890035969995181, guid: 05c5e734534090c45b3b7697b5450c26, type: 3}
   _id: I18
   _type: 0
   _prefab: {fileID: 2756712652034502478, guid: 90ea72f2ddbd9f64bb75e19c02734df9, type: 3}
+  _droppedBy: {fileID: 11400000, guid: 6800a01810a828743ab58d16796e2caa, type: 2}

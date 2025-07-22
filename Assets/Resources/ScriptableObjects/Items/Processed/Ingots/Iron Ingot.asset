@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Iron Ingot
   m_EditorClassIdentifier: 
   _name: Iron Ingot
+  _icon: {fileID: -2643760491537033724, guid: a35bbe8aadba99f418111c1cf06a245a, type: 3}
   _id: I22
   _type: 1
   _prefab: {fileID: 7175423293597175683, guid: 735984ead0898944a8fa957296492c11, type: 3}
+  _droppedBy: {fileID: 11400000, guid: f1bd6be02e680ca4d9a2d1d699a3f844, type: 2}
   _expireTime: 0
+  _craftPlace: {fileID: -302608151, guid: 5da0603578617b443ad8708cdaf1febd, type: 3}

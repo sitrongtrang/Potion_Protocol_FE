@@ -1,11 +1,8 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ItemSourceConfig", menuName = "Scriptable Objects/ItemSourceConfig")]
-public class ItemSourceConfig : ScriptableObject
+public class ItemSourceConfig : EntityConfig
 {
-    [SerializeField] private string _name;
-    public string Name => _name;
-
     [SerializeField] private string _id;
     public string Id => _id;
 

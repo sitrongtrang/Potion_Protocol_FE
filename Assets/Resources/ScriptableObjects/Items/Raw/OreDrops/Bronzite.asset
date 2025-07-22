@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Bronzite
   m_EditorClassIdentifier: 
   _name: Bronzite
+  _icon: {fileID: -2624131149461154216, guid: 05c5e734534090c45b3b7697b5450c26, type: 3}
   _id: I14
   _type: 0
   _prefab: {fileID: 2756712652034502478, guid: 9959a97c56a0bec428932c552a5b4121, type: 3}
+  _droppedBy: {fileID: 11400000, guid: 7ace6de55cc71044b93dbb8ecf59a33b, type: 2}

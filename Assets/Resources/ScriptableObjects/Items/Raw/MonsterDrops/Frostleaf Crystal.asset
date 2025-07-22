@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Frostleaf Crystal
   m_EditorClassIdentifier: 
   _name: Frostleaf Crystal
+  _icon: {fileID: 1854846835, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
   _id: I1
   _type: 0
   _prefab: {fileID: 2756712652034502478, guid: 150e3c512c6635a4d9f552e4c1b19356, type: 3}
+  _droppedBy: {fileID: 11400000, guid: 102769852e166fd4f8e5161856ae8051, type: 2}

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "RecipeConfig", menuName = "Scriptable Objects/RecipeConfig")]
-public class RecipeConfig : ScriptableObject
+public class RecipeConfig : EntityConfig
 {
     [SerializeField] private string _id;
     public string Id => _id;

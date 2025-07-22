@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c50f606a67141046a9673499abb15d6, type: 3}
   m_Name: Gold Ore
   m_EditorClassIdentifier: 
+  _icon: {fileID: 5725364665942933221, guid: 05c5e734534090c45b3b7697b5450c26, type: 3}
   _name: Gold Ore
   _id: O5
   _prefab: {fileID: -4070333702290590942, guid: 7d26a6e5de687454aa4be78c6f0946a0, type: 3}

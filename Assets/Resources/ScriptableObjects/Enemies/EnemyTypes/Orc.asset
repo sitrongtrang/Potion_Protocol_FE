@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 160db005b420e004ba7cb072d295092b, type: 3}
   m_Name: Orc
   m_EditorClassIdentifier: 
+  _icon: {fileID: 4074469027547599285, guid: e315fc5201234b442a889f44917c53a3, type: 3}
   _name: Scarbrute
   _id: M2
   _hp: 8

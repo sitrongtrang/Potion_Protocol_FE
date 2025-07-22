@@ -1,11 +1,8 @@
 using UnityEngine;
 
-public abstract class EnemyConfig : ScriptableObject
+public abstract class EnemyConfig : EntityConfig
 {
     [Header("Basic Stats")]
-    [SerializeField] private string _name;
-    public string Name => _name;
-
     [SerializeField] private string _id;
     public string Id => _id;
 

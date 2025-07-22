@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 160db005b420e004ba7cb072d295092b, type: 3}
   m_Name: Maggot
   m_EditorClassIdentifier: 
+  _icon: {fileID: 7987292474849564794, guid: cc15e917504e7854abca1e54d991edb7, type: 3}
   _name: Filthgrub
   _id: M3
   _hp: 5

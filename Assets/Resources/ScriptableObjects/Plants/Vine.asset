@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c50f606a67141046a9673499abb15d6, type: 3}
   m_Name: Vine
   m_EditorClassIdentifier: 
+  _icon: {fileID: 1180080827, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
   _name: Nightshade Vine
   _id: P1
   _prefab: {fileID: 4386955713575216677, guid: 68fcd2b97e656b84f883910796036bbe, type: 3}

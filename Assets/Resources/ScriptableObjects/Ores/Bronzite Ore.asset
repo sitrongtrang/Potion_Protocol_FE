@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c50f606a67141046a9673499abb15d6, type: 3}
   m_Name: Bronzite Ore
   m_EditorClassIdentifier: 
+  _icon: {fileID: -2378474063558198536, guid: 05c5e734534090c45b3b7697b5450c26, type: 3}
   _name: Bronzite Ore
   _id: O4
   _prefab: {fileID: 4474446822330599031, guid: 4ded8bde164aa874c9dbf4baa484a668, type: 3}
