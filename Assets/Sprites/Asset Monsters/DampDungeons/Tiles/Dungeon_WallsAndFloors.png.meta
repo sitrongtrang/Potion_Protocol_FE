@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Dungeon_WallsAndFloors_0: -5830817282678925048
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

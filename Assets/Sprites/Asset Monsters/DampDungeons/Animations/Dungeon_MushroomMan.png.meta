@@ -422,7 +422,19 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Dungeon_MushroomMan_0: -1466729276366552842
+      Dungeon_MushroomMan_1: 1856897823792836795
+      Dungeon_MushroomMan_10: 2384038399770743518
+      Dungeon_MushroomMan_11: 1037160141528150093
+      Dungeon_MushroomMan_2: 7948421534080809308
+      Dungeon_MushroomMan_3: 3591319664286230903
+      Dungeon_MushroomMan_4: 882954110271220346
+      Dungeon_MushroomMan_5: 9159838197912734346
+      Dungeon_MushroomMan_6: -8202515100838452131
+      Dungeon_MushroomMan_7: -8221721271758964398
+      Dungeon_MushroomMan_8: 3534937678039838755
+      Dungeon_MushroomMan_9: -1229006545297154751
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

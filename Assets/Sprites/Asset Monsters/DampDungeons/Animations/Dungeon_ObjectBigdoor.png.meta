@@ -297,7 +297,14 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Dungeon_ObjectBigdoor_0: -4378603698065952284
+      Dungeon_ObjectBigdoor_1: 112898723683833185
+      Dungeon_ObjectBigdoor_2: -7591672925248015471
+      Dungeon_ObjectBigdoor_3: -6804990757359285767
+      Dungeon_ObjectBigdoor_4: -6313002145045996436
+      Dungeon_ObjectBigdoor_5: 8543674169556072623
+      Dungeon_ObjectBigdoor_6: 6605867954127445668
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
