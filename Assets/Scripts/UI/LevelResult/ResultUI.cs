@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -27,7 +28,7 @@ public class ResultUI : MonoBehaviour
     {
         int score = GameManager.Instance != null
             ? GameManager.Instance.Score
-            : 3;
+            : 0;
         int[] thresholds = _levelConfig.ScoreThresholds;
         int starsEarned = 3;
 
@@ -39,15 +40,21 @@ public class ResultUI : MonoBehaviour
 
         bool scoreDone = false, starDone = false;
 
-        StartCoroutine(_scoreAnim.AnimateScore(score));
-        StartCoroutine(_starAnim.AnimateStar(starsEarned));
+        StartCoroutine(Wrap(_scoreAnim.AnimateScore(score), () => scoreDone = true));
+        StartCoroutine(Wrap(_starAnim.AnimateStar(starsEarned), () => starDone = true));
+
+        yield return new WaitUntil(() => scoreDone && starDone);
+
         if (starsEarned == 3)
         {
             _starDrop.SpawnStars();
         }
+    }
 
-        while (!scoreDone || !starDone)
-            yield return null;
+    private IEnumerator Wrap(IEnumerator inner, Action onComplete)
+    {
+        yield return StartCoroutine(inner);
+        onComplete?.Invoke();
     }
 
     public void OnMainMenu()
