@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,6 +13,8 @@ public class ResultUI : MonoBehaviour
     [Header("Animation Controllers")]
     [SerializeField] private ScoreAnim _scoreAnim;
     [SerializeField] private StarAnim _starAnim;
+    [SerializeField] private StarDropper _starDrop;
+
 
     [Header("Level Config")]
     [SerializeField] private LevelConfig _levelConfig;
@@ -25,7 +28,7 @@ public class ResultUI : MonoBehaviour
     {
         int score = GameManager.Instance != null
             ? GameManager.Instance.Score
-            : 2;
+            : 0;
         int[] thresholds = _levelConfig.ScoreThresholds;
         int starsEarned = 3;
 
@@ -36,13 +39,22 @@ public class ResultUI : MonoBehaviour
         }
 
         bool scoreDone = false, starDone = false;
-        //if (starsEarned == 3) StartCoroutine(SpawnStars());
 
-        StartCoroutine(_scoreAnim.AnimateScore(score));
-        StartCoroutine(_starAnim.AnimateStar(starsEarned));
+        StartCoroutine(Wrap(_scoreAnim.AnimateScore(score), () => scoreDone = true));
+        StartCoroutine(Wrap(_starAnim.AnimateStar(starsEarned), () => starDone = true));
 
-        while (!scoreDone || !starDone)
-            yield return null;
+        yield return new WaitUntil(() => scoreDone && starDone);
+
+        if (starsEarned == 3)
+        {
+            _starDrop.SpawnStars();
+        }
+    }
+
+    private IEnumerator Wrap(IEnumerator inner, Action onComplete)
+    {
+        yield return StartCoroutine(inner);
+        onComplete?.Invoke();
     }
 
     public void OnMainMenu()

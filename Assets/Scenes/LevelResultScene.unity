@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 415623715}
   - component: {fileID: 415623717}
   m_Layer: 5
-  m_Name: Result
+  m_Name: Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -338,7 +338,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 129}
+  m_AnchoredPosition: {x: 0, y: 130}
   m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &415623715
@@ -892,6 +892,7 @@ MonoBehaviour:
   _playButton: {fileID: 807201887}
   _scoreAnim: {fileID: 733836325}
   _starAnim: {fileID: 415623717}
+  _starDrop: {fileID: 1663168488}
   _levelConfig: {fileID: 11400000, guid: b1250c6ef026a4b46a37b004aa28025c, type: 2}
 --- !u!1 &1230859701
 GameObject:
@@ -1104,6 +1105,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603207260}
   m_CullTransparentMesh: 1
+--- !u!1 &1663168486
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1663168487}
+  - component: {fileID: 1663168488}
+  m_Layer: 5
+  m_Name: StarDropper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1663168487
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663168486}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1962076721}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 131}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1663168488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663168486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c267337f73a7594b933a5b1c58e8ef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  starPrefab: {fileID: 4145300453341605960, guid: 866378209a02a3142864fcb59b36bf16, type: 3}
+  parentContainer: {fileID: 1663168487}
+  starsToSpawn: 35
+  sizeRange: {x: 30, y: 30}
+  minAngle: 30
+  maxAngle: 150
+  minSpeed: 300
+  maxSpeed: 400
+  gravity: {x: 0, y: -500}
+  duration: 2
 --- !u!1 &1783291412
 GameObject:
   m_ObjectHideFlags: 0
@@ -1476,6 +1535,7 @@ RectTransform:
   - {fileID: 23175060}
   - {fileID: 415623713}
   - {fileID: 733836324}
+  - {fileID: 1663168487}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
