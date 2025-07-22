@@ -2292,8 +2292,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayedLevels: 0
   CurrentLevel: 0
-  _playerScore: 0
-  _playerStar: 0
+  Score: 0
+  Star: 0
 --- !u!4 &1362240175
 Transform:
   m_ObjectHideFlags: 0
