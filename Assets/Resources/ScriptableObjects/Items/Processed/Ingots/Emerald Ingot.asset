@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af21ffac3d2cd7468c79c0f75d3f2a5, type: 3}
   m_Name: Emerald Ingot
   m_EditorClassIdentifier: 
-  _icon: {fileID: 7562958788069766771, guid: a35bbe8aadba99f418111c1cf06a245a, type: 3}
   _name: Emerald Ingot
+  _icon: {fileID: 7562958788069766771, guid: a35bbe8aadba99f418111c1cf06a245a, type: 3}
   _id: I29
   _type: 1
   _prefab: {fileID: 7175423293597175683, guid: 586faabd433797a4ab659d5b938050ee, type: 3}
+  _droppedBy: {fileID: 11400000, guid: 2a2283344bd67b742918d65976225e8c, type: 2}
   _expireTime: 0
+  _craftPlace: {fileID: -302608151, guid: 5da0603578617b443ad8708cdaf1febd, type: 3}

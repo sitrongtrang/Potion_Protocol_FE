@@ -522,7 +522,23 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Dungeon_HeroManSword1_0: 8230088770977781029
+      Dungeon_HeroManSword1_1: -7560580014326917437
+      Dungeon_HeroManSword1_10: -6316193639153064719
+      Dungeon_HeroManSword1_11: 1165112709796666162
+      Dungeon_HeroManSword1_12: -1397776073543094225
+      Dungeon_HeroManSword1_13: 6077611880919073418
+      Dungeon_HeroManSword1_14: 1953012890811150063
+      Dungeon_HeroManSword1_15: 8361186192195909380
+      Dungeon_HeroManSword1_2: -6890038422029055839
+      Dungeon_HeroManSword1_3: 7274853545204353610
+      Dungeon_HeroManSword1_4: -625729732830946376
+      Dungeon_HeroManSword1_5: -1745996581656868220
+      Dungeon_HeroManSword1_6: -5890994797968259468
+      Dungeon_HeroManSword1_7: 6517561237614852604
+      Dungeon_HeroManSword1_8: 1735685684776610637
+      Dungeon_HeroManSword1_9: -6193416239611473508
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

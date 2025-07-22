@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af21ffac3d2cd7468c79c0f75d3f2a5, type: 3}
   m_Name: Ruby Ingot
   m_EditorClassIdentifier: 
-  _icon: {fileID: -7992450690253906582, guid: a35bbe8aadba99f418111c1cf06a245a, type: 3}
   _name: Ruby Ingot
+  _icon: {fileID: -7992450690253906582, guid: a35bbe8aadba99f418111c1cf06a245a, type: 3}
   _id: I26
   _type: 1
   _prefab: {fileID: 7175423293597175683, guid: 8db51526096bdbb4bb95b2cdfa73a820, type: 3}
+  _droppedBy: {fileID: 11400000, guid: 3f925be79fe65fd4d8c469145cebcad6, type: 2}
   _expireTime: 0
+  _craftPlace: {fileID: -302608151, guid: 5da0603578617b443ad8708cdaf1febd, type: 3}

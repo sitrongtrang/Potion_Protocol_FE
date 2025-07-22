@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24b283275af73a4ab4c7144cac466b6, type: 3}
   m_Name: Prismwing
   m_EditorClassIdentifier: 
-  _icon: {fileID: -1240918863, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
   _name: Prismwing
+  _icon: {fileID: -1240918863, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
   _id: I4
   _type: 0
   _prefab: {fileID: 2756712652034502478, guid: 84b4fd6743eb11940aac2456dcde35a4, type: 3}
+  _droppedBy: {fileID: 11400000, guid: 99044dd267a0afa45b8b2c1b347cb735, type: 2}

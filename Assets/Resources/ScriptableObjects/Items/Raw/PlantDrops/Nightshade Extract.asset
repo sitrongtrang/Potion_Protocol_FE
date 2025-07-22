@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24b283275af73a4ab4c7144cac466b6, type: 3}
   m_Name: Nightshade Extract
   m_EditorClassIdentifier: 
-  _icon: {fileID: 1452377935, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
   _name: Nightshade Extract
+  _icon: {fileID: 1452377935, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
   _id: I6
   _type: 0
   _prefab: {fileID: 4275254444242072738, guid: 87f78349ce53cda4ea5abaf450f10949, type: 3}
+  _droppedBy: {fileID: 11400000, guid: 83d8ef65d45d0c74e821d0d5428171a6, type: 2}

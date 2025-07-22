@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24b283275af73a4ab4c7144cac466b6, type: 3}
   m_Name: Blood Petal
   m_EditorClassIdentifier: 
-  _icon: {fileID: -1743477566, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
   _name: Blood Petal
+  _icon: {fileID: -1743477566, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
   _id: I9
   _type: 0
   _prefab: {fileID: 5381307877526851110, guid: ac5e8778a23d7354aab03a160980825a, type: 3}
+  _droppedBy: {fileID: 11400000, guid: 1c1e53c524551c3499025e47be50af82, type: 2}

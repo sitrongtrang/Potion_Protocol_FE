@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc943880f59c2e04d9c5ea1a67f8b740, type: 3}
   m_Name: Strength Potion
   m_EditorClassIdentifier: 
-  _icon: {fileID: 1420443035, guid: d5a6f9f3be75895469f10de63796f616, type: 3}
   _name: Strength Potion
+  _icon: {fileID: 1420443035, guid: d5a6f9f3be75895469f10de63796f616, type: 3}
   _id: P4
   _type: 2
   _prefab: {fileID: -1203563165102619955, guid: 4ca06558b57f16344b90587a2e062f9f, type: 3}
-  _score: 1
+  _droppedBy: {fileID: 11400000, guid: 1a7fdfc1366b6914ca8a5b494afdaf04, type: 2}
   _expireTime: 0
+  _craftPlace: {fileID: 8142887963223585860, guid: 684fc6f7c36189c448a0c8bda50c5af0, type: 3}
+  _score: 1

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Dungeon_WaterAnimation_0: 7518249293787468812
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -33,7 +33,7 @@ public class EnemyInfoPage : InfoPage
         {
             _hpText.text = "HP: N/A";
             _speedText.text = "Speed: N/A";
-             _dropItemText.text = $"Drop: N/A";
+            _dropItemText.text = $"Drop: N/A";
             _dropItemIcon.sprite = null;
             _dropItemIcon.gameObject.SetActive(false);
         }

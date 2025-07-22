@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af21ffac3d2cd7468c79c0f75d3f2a5, type: 3}
   m_Name: Bronzite Ingot
   m_EditorClassIdentifier: 
-  _icon: {fileID: -7150655590655086274, guid: a35bbe8aadba99f418111c1cf06a245a, type: 3}
   _name: Bronzite Ingot
+  _icon: {fileID: -7150655590655086274, guid: a35bbe8aadba99f418111c1cf06a245a, type: 3}
   _id: I24
   _type: 1
   _prefab: {fileID: 7175423293597175683, guid: efadc095f3c2f0f43a9beec52516de3d, type: 3}
+  _droppedBy: {fileID: 11400000, guid: d0d5580a1c116594a8667944718e0b5d, type: 2}
   _expireTime: 0
+  _craftPlace: {fileID: -302608151, guid: 5da0603578617b443ad8708cdaf1febd, type: 3}

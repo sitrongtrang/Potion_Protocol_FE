@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24b283275af73a4ab4c7144cac466b6, type: 3}
   m_Name: Emerald
   m_EditorClassIdentifier: 
-  _icon: {fileID: -8556259462195262545, guid: 05c5e734534090c45b3b7697b5450c26, type: 3}
   _name: Emerald
+  _icon: {fileID: -8556259462195262545, guid: 05c5e734534090c45b3b7697b5450c26, type: 3}
   _id: I19
   _type: 0
   _prefab: {fileID: 2756712652034502478, guid: 2cace717be196dc45bdc3e3daf09929f, type: 3}
+  _droppedBy: {fileID: 11400000, guid: 810c57fed3f5e924b98d2b6749d89a8d, type: 2}
