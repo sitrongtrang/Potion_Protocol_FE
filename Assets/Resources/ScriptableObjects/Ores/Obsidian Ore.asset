@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c50f606a67141046a9673499abb15d6, type: 3}
   m_Name: Obsidian Ore
   m_EditorClassIdentifier: 
+  _icon: {fileID: 6630820732098305681, guid: 05c5e734534090c45b3b7697b5450c26, type: 3}
   _name: Obsidian Ore
   _id: O1
   _prefab: {fileID: -6760022776255000607, guid: 2ee49ea80d72648428e9f0e27bd70e21, type: 3}

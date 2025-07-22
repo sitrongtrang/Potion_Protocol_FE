@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24b283275af73a4ab4c7144cac466b6, type: 3}
   m_Name: Ruby
   m_EditorClassIdentifier: 
+  _icon: {fileID: -5642446695444474995, guid: 05c5e734534090c45b3b7697b5450c26, type: 3}
   _name: Ruby
   _id: I16
   _type: 0

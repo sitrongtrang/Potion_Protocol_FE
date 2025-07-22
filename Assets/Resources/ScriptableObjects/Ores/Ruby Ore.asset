@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c50f606a67141046a9673499abb15d6, type: 3}
   m_Name: Ruby Ore
   m_EditorClassIdentifier: 
+  _icon: {fileID: 2688707185307781999, guid: 05c5e734534090c45b3b7697b5450c26, type: 3}
   _name: Ruby Ore
   _id: O6
   _prefab: {fileID: -5381856047087532958, guid: 5076e25edf82bb1439c64ded9ed46d01, type: 3}

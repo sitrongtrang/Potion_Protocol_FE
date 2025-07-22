@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc943880f59c2e04d9c5ea1a67f8b740, type: 3}
   m_Name: Strength Potion
   m_EditorClassIdentifier: 
+  _icon: {fileID: 1420443035, guid: d5a6f9f3be75895469f10de63796f616, type: 3}
   _name: Strength Potion
   _id: P4
   _type: 2

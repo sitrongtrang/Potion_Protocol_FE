@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af21ffac3d2cd7468c79c0f75d3f2a5, type: 3}
   m_Name: Amethyst Ingot
   m_EditorClassIdentifier: 
+  _icon: {fileID: 6500151337436090292, guid: a35bbe8aadba99f418111c1cf06a245a, type: 3}
   _name: Amethyst Ingot
   _id: I27
   _type: 1

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c50f606a67141046a9673499abb15d6, type: 3}
   m_Name: Flower
   m_EditorClassIdentifier: 
+  _icon: {fileID: -1473506108, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
   _name: Bloodroot Flower
   _id: P4
   _prefab: {fileID: 5121789824500213990, guid: b99f9c7a1ed4a1a4eb9b866eafbff8fb, type: 3}

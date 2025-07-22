@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24b283275af73a4ab4c7144cac466b6, type: 3}
   m_Name: Pure Dewdrop
   m_EditorClassIdentifier: 
+  _icon: {fileID: 1520227872, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
   _name: Pure Dewdrop
   _id: I3
   _type: 0

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c50f606a67141046a9673499abb15d6, type: 3}
   m_Name: Ivy
   m_EditorClassIdentifier: 
+  _icon: {fileID: -800452992, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
   _name: Witch's Ivy
   _id: P5
   _prefab: {fileID: -4348472964636526714, guid: 15841aa6110b19d4b8b45b525b5f1c3a, type: 3}

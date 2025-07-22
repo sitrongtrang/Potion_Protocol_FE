@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,12 +7,13 @@ public class SelectingLevelUI : MonoBehaviour
     [SerializeField] private int _numLevelPerRow = 2;
     [SerializeField] private int _numLevelRows = 2;
     [SerializeField] private int _numLevels = 10;
-    [SerializeField] private int _currentPage = 0;
-    [SerializeField] private Button _nextPageButton;
-    [SerializeField] private Button _previousPageButton;
     [SerializeField] private GameObject _levelPanel;
     [SerializeField] private GameObject _levelRowPrefab;
     [SerializeField] private GameObject _levelButtonPrefab;
+    [SerializeField] private Button _nextPageButton;
+    [SerializeField] private Button _previousPageButton;
+
+    private int _currentPage = 0;
 
     private int _numLevelPerPage;
     private int _totalPages;

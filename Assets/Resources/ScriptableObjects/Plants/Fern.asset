@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c50f606a67141046a9673499abb15d6, type: 3}
   m_Name: Fern
   m_EditorClassIdentifier: 
+  _icon: {fileID: 366094697, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
   _name: Glowing Fern
   _id: P2
   _prefab: {fileID: 2482611874433873224, guid: 456cdbfbed7ce784280ee6c88f7b1413, type: 3}

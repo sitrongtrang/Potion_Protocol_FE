@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af21ffac3d2cd7468c79c0f75d3f2a5, type: 3}
   m_Name: Iron Ingot
   m_EditorClassIdentifier: 
+  _icon: {fileID: -2643760491537033724, guid: a35bbe8aadba99f418111c1cf06a245a, type: 3}
   _name: Iron Ingot
   _id: I22
   _type: 1
