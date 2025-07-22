@@ -12,6 +12,7 @@ public class EntitiesPage : MonoBehaviour
     [SerializeField] private GameObject _entityButtonPrefab;
     [SerializeField] private Button _nextPageButton;
     [SerializeField] private Button _previousPageButton;
+    [SerializeField] private InfoPage _infoPage;
     private int _currentPage = 0;
     private List<EntityConfig> _entityConfigs = new();
     private int _numEntities = 0;
@@ -43,6 +44,7 @@ public class EntitiesPage : MonoBehaviour
 
     void OnDisable()
     {
+        _infoPage.gameObject.SetActive(false);
         _nextPageButton.onClick.RemoveListener(OnNextPage);
         _previousPageButton.onClick.RemoveListener(OnPreviousPage); 
     }
@@ -139,14 +141,14 @@ public class EntitiesPage : MonoBehaviour
             row.gameObject.SetActive(false);
         }
 
+        OnEntitySelected(_entityConfigs[startEntity]); // Display the first entity of the current page by default
         _nextPageButton.gameObject.SetActive(_currentPage < _totalPages - 1);
         _previousPageButton.gameObject.SetActive(_currentPage > 0);
     }
 
     private void OnEntitySelected(EntityConfig entityConfig)
     {
-        // Handle entity selection logic here
-        Debug.Log($"Selected Entity");
-        // For example, you could load a scene or display entity details
+        _infoPage.gameObject.SetActive(true);
+        _infoPage.DisplayInfo(entityConfig);
     }
 }
