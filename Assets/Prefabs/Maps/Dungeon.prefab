@@ -12388,6 +12388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2056131363973384503}
   - component: {fileID: 6498544884791936806}
+  - component: {fileID: 4686971054152860097}
   m_Layer: 0
   m_Name: Dungeon
   m_TagString: Untagged
@@ -12434,6 +12435,22 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &4686971054152860097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4130166079983457268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d634d208b70e1704bab280f69af81000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapGameObject: {fileID: 4130166079983457268}
+  tilemaps:
+  - {fileID: 5606802352922682915}
+  gizmoColor: {r: 1, g: 0, b: 0.083291054, a: 1}
 --- !u!1 &4149918817601353991
 GameObject:
   m_ObjectHideFlags: 0
