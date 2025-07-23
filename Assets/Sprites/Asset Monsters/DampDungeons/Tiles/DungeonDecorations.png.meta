@@ -205,6 +205,32 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -947,7 +973,40 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      DungeonDecorations_0: 2922208148363707222
+      DungeonDecorations_1: 7676151197350310623
+      DungeonDecorations_10: -7176581747616158790
+      DungeonDecorations_11: 8612690116748166765
+      DungeonDecorations_12: 2476935465167361680
+      DungeonDecorations_13: 2130015336135642419
+      DungeonDecorations_14: 4555270523052163074
+      DungeonDecorations_15: -8525419763863702540
+      DungeonDecorations_16: 3285934926477040335
+      DungeonDecorations_17: 2242254803180199885
+      DungeonDecorations_18: 8583074334413758108
+      DungeonDecorations_19: 1371438582834251091
+      DungeonDecorations_2: 2258972296830979408
+      DungeonDecorations_20: -4870682235481108259
+      DungeonDecorations_21: -723697959196565717
+      DungeonDecorations_22: -2313815680374771773
+      DungeonDecorations_23: 392124602909486083
+      DungeonDecorations_24: -2247382947815227014
+      DungeonDecorations_25: 98549805865116324
+      DungeonDecorations_26: 6821593713133419594
+      DungeonDecorations_27: 2128087893478609115
+      DungeonDecorations_28: 189859842232694801
+      DungeonDecorations_29: -8941226998409759926
+      DungeonDecorations_3: -2157185902389528620
+      DungeonDecorations_30: -746076429960933181
+      DungeonDecorations_31: 2851943693863325427
+      DungeonDecorations_32: -6821276908839889815
+      DungeonDecorations_4: 6129786654299071108
+      DungeonDecorations_5: 7824893386731304380
+      DungeonDecorations_6: -5658075339274682307
+      DungeonDecorations_7: 4157763735468344278
+      DungeonDecorations_8: -7350987825450332176
+      DungeonDecorations_9: -8441983182818315289
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

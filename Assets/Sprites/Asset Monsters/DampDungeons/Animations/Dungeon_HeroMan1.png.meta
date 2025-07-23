@@ -322,6 +322,32 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1922,7 +1948,79 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Dungeon_HeroMan1_0: 4827772175416074793
+      Dungeon_HeroMan1_1: 356873946747716391
+      Dungeon_HeroMan1_10: -2490278944048052405
+      Dungeon_HeroMan1_11: 3148945809434543024
+      Dungeon_HeroMan1_12: -7120808336981635762
+      Dungeon_HeroMan1_13: -4708561291691386943
+      Dungeon_HeroMan1_14: -366297159443876649
+      Dungeon_HeroMan1_15: 4690799696738100761
+      Dungeon_HeroMan1_16: -8491605770029637001
+      Dungeon_HeroMan1_17: 4725898094189568782
+      Dungeon_HeroMan1_18: -3265060582160880247
+      Dungeon_HeroMan1_19: 6498108889186229131
+      Dungeon_HeroMan1_2: -4936696846326947108
+      Dungeon_HeroMan1_20: 8578291657998713653
+      Dungeon_HeroMan1_21: -4670867789786432192
+      Dungeon_HeroMan1_22: 5700912895797003345
+      Dungeon_HeroMan1_23: 3597578333311568336
+      Dungeon_HeroMan1_24: -4800379098833675120
+      Dungeon_HeroMan1_25: 8149738207719039688
+      Dungeon_HeroMan1_26: -1397103001700162290
+      Dungeon_HeroMan1_27: -7298777598282318252
+      Dungeon_HeroMan1_28: -7075750359831068066
+      Dungeon_HeroMan1_29: 1021183788270946500
+      Dungeon_HeroMan1_3: -3586968031649441427
+      Dungeon_HeroMan1_30: 8832430904651254018
+      Dungeon_HeroMan1_31: 1503657370932928949
+      Dungeon_HeroMan1_32: -3611956063971636917
+      Dungeon_HeroMan1_33: 7314279213336138454
+      Dungeon_HeroMan1_34: 1888982583205752359
+      Dungeon_HeroMan1_35: -1106097554569477038
+      Dungeon_HeroMan1_36: -754729768204599744
+      Dungeon_HeroMan1_37: -2544832896365081284
+      Dungeon_HeroMan1_38: 429179344091803689
+      Dungeon_HeroMan1_39: -5695371935942228339
+      Dungeon_HeroMan1_4: 6611323383972767689
+      Dungeon_HeroMan1_40: -6335990036038296179
+      Dungeon_HeroMan1_41: 8971042310223261441
+      Dungeon_HeroMan1_42: -8667210387524073736
+      Dungeon_HeroMan1_43: 5940162859899609784
+      Dungeon_HeroMan1_44: -587213647590516965
+      Dungeon_HeroMan1_45: -6380623865372947262
+      Dungeon_HeroMan1_46: -1107938785342832187
+      Dungeon_HeroMan1_47: -1923912539769616729
+      Dungeon_HeroMan1_48: 6400379957528584357
+      Dungeon_HeroMan1_49: 3351095987300383582
+      Dungeon_HeroMan1_5: 5655044042930451466
+      Dungeon_HeroMan1_50: -6480277134457200154
+      Dungeon_HeroMan1_51: -2633704037207649568
+      Dungeon_HeroMan1_52: 84715023321451819
+      Dungeon_HeroMan1_53: -8681022600284164400
+      Dungeon_HeroMan1_54: -2541318021061053033
+      Dungeon_HeroMan1_55: 1006570281767440972
+      Dungeon_HeroMan1_56: 4505326848024841978
+      Dungeon_HeroMan1_57: 3873050434100162906
+      Dungeon_HeroMan1_58: 8724343613977972601
+      Dungeon_HeroMan1_59: 8877047709043872634
+      Dungeon_HeroMan1_6: -3775553002910470878
+      Dungeon_HeroMan1_60: -7185364123950385099
+      Dungeon_HeroMan1_61: 3003468439834946050
+      Dungeon_HeroMan1_62: 8723216905756233655
+      Dungeon_HeroMan1_63: 1668458961634020926
+      Dungeon_HeroMan1_64: -4137292965820788238
+      Dungeon_HeroMan1_65: -528311280223229279
+      Dungeon_HeroMan1_66: 2783355745536684063
+      Dungeon_HeroMan1_67: 7574289546730207359
+      Dungeon_HeroMan1_68: -5273860652396253822
+      Dungeon_HeroMan1_69: 6679163224386586480
+      Dungeon_HeroMan1_7: -451724312317236098
+      Dungeon_HeroMan1_70: 1927384276486972371
+      Dungeon_HeroMan1_71: 9526868000999388
+      Dungeon_HeroMan1_8: 1739982141995795574
+      Dungeon_HeroMan1_9: 5799045249576912115
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
