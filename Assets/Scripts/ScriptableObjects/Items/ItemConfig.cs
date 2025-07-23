@@ -11,4 +11,8 @@ public class ItemConfig : EntityConfig
 
     [SerializeField] private EntityConfig _droppedBy;
     public EntityConfig DroppedBy => _droppedBy;
+
+    [SerializeField] private float _expireTime;
+    public float ExpireTime => _expireTime;
+
 }
