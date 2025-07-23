@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: -1370842286182258998}
+  _config: {fileID: 11400000, guid: 633df65d44353ef4bae4a2d6e85e8b70, type: 2}
   _playerLayer:
     serializedVersion: 2
     m_Bits: 0

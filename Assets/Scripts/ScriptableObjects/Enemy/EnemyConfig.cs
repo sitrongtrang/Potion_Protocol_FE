@@ -49,9 +49,7 @@ public abstract class EnemyConfig : EntityConfig
     [Header("Drop")]
     [SerializeField] private ItemConfig _item;
     public ItemConfig Item => _item;
-    [Header("Component")]
-    [SerializeField] private EnemyController _prefab;
-    public EnemyController Prefab => _prefab;
+
     public virtual void HandleMove(EnemyController controller)
     {
         if (controller.PathVectorList != null)

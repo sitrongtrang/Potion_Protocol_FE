@@ -8,7 +8,8 @@ public class EnemyController : MonoBehaviour
     [Header("Component")]
     [SerializeField] private Animator _animator;
     public Animator Animatr => _animator;
-    public EnemyConfig EnemyConf { get; private set; }
+    [SerializeField] private EnemyConfig _config;
+    public EnemyConfig EnemyConf => _config;
     public EnemySpawner Spawner { get; private set; }
     public int PositionIndex { get; private set; }
     public int TypeIndex { get; private set; }
@@ -58,14 +59,13 @@ public class EnemyController : MonoBehaviour
     #endregion
 
     #region STATE
-    public void Initialize(EnemyConfig config, EnemySpawner spawner, Vector2 patrolCenter, int positionIndex, int typeIndex)
+    public void Initialize(EnemySpawner spawner, Vector2 patrolCenter, int positionIndex, int typeIndex)
     {
-        EnemyConf = config;
         Spawner = spawner;
         PositionIndex = positionIndex;
         TypeIndex = typeIndex;
 
-        _currentHp = config.Hp;
+        _currentHp = _config.Hp;
 
         PatrolCenter = patrolCenter;
 
@@ -81,7 +81,7 @@ public class EnemyController : MonoBehaviour
         );
 
         BasicStateMachine = new(this);
-        config.Initialize(this);
+        _config.Initialize(this);
     }
     #endregion
 

@@ -8,8 +8,8 @@ public class LevelConfig : ScriptableObject
     [SerializeField] private GameObject _mapPrefab;
     public GameObject MapPrefab => _mapPrefab;
 
-    [SerializeField] private List<EnemyConfig> _enemies;
-    public List<EnemyConfig> Enemies => _enemies;
+    [SerializeField] private List<EnemyController> _enemies;
+    public List<EnemyController> Enemies => _enemies;
 
     [SerializeField] private float _recipeAddInterval;
     public float RecipeAddInterval => _recipeAddInterval;
