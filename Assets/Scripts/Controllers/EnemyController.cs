@@ -27,6 +27,7 @@ public class EnemyController : MonoBehaviour
     private bool _isPlayerInRange = false;
     public bool IsPlayerInRange => _isPlayerInRange;
     [SerializeField] private EnemyImpactUI _enemyImpactUI;
+    [SerializeField] private float heightHealthBar;
     [Header("Enemy State")]
     public BasicStateMachine<EnemyController, EnemyState> BasicStateMachine { get; private set; }
     public EnemyState CurrentEnemyStateEnum => BasicStateMachine.CurrentStateEnum;
@@ -73,7 +74,7 @@ public class EnemyController : MonoBehaviour
             _healthBarPrefab,
             FindFirstObjectByType<Canvas>().transform
         );
-        Vector2 hpOffset = Vector2.up * 1.2f;
+        Vector2 hpOffset = Vector2.up * heightHealthBar;
         _healthBar.Initialize(
             transform,
             _currentHp,
