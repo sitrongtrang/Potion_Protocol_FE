@@ -117,7 +117,7 @@ public class PlayerInventory
         {
             return false;
         }
-        OnSlotUpdated?.Invoke(idx, item.Prefab.GetComponent<SpriteRenderer>().sprite); // Update inventory UI with the new item sprite
+        OnSlotUpdated?.Invoke(idx, item.Icon); // Update inventory UI with the new item sprite
         // Found an empty slot, put item into that slot
         if (_isAutoFocus) ChoosingSlot = idx; // choose the current slot if is in auto focus mode
         items[idx] = item;

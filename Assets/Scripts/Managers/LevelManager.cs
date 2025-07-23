@@ -154,11 +154,11 @@ public class LevelManager : MonoBehaviour
         StationSpawner[] stationSpawners = map.GetComponentsInChildren<StationSpawner>(true);
         for (int i = 0; i < stationSpawners.Length; i++)
         {
-            if (stationSpawners[i].Config.Type == StationType.Furnace)
+            if (stationSpawners[i].Prefab.Config.Type == StationType.Furnace)
             {
                 stationSpawners[i].Spawn(config.IngotRecipes);
             }
-            else if (stationSpawners[i].Config.Type == StationType.AlchemyStation)
+            else if (stationSpawners[i].Prefab.Config.Type == StationType.AlchemyStation)
             {
                 stationSpawners[i].Spawn(config.FinalRecipes);
             }

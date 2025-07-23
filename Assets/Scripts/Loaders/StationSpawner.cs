@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class StationSpawner : MonoBehaviour
 {
-    [SerializeField] private StationConfig _config;
-    public StationConfig Config => _config;
+    [SerializeField] private StationController _stationPrefab;
+    public StationController Prefab => _stationPrefab;
 
     public void Spawn(List<RecipeConfig> recipes)
     {
-        Config.Spawn(transform.position, recipes);
+        StationController station = Instantiate(_stationPrefab, transform.position, Quaternion.identity);
+        station.Initialize(recipes);
     }
 }

@@ -5,17 +5,16 @@ using UnityEngine;
 
 public class StationController : MonoBehaviour
 {
-    private StationConfig _config;
+    [SerializeField] private StationConfig _config;
+    public StationConfig Config => _config;
     private List<RecipeConfig> _recipes;
     protected List<ItemConfig> _items;
-
     [SerializeField] private ProgressBarUI progressBarPrefab;
     private ProgressBarUI _progressBar;
     protected bool _isCrafting = false;   
 
-    public virtual void Initialize(StationConfig config, List<RecipeConfig> recipes)
+    public virtual void Initialize(List<RecipeConfig> recipes)
     {
-        _config = config;
         _recipes = recipes;
         _items = new();
     }

@@ -490,6 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d67914f576c52149a9cd324aaf6919a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: 2814ce3f46aa1c8468a0e77c771abbdc, type: 2}
   progressBarPrefab: {fileID: 4172215242974883266, guid: 9820ee527e88f234f9ef29f976945364, type: 3}
   itemsOnTable:
   - {fileID: 8862165679329802028}

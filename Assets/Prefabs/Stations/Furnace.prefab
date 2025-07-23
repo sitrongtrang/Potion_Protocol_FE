@@ -229,4 +229,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71cff6e7db69bd418bded2f8f727dac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: 6e98964e8a6b82b40acbf2707ea59b40, type: 2}
   progressBarPrefab: {fileID: 1548859400771833277, guid: 04fbe1b63c5d3be4a8c0bb18af77e652, type: 3}

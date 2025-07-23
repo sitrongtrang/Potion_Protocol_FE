@@ -5,9 +5,9 @@ public class AlchemyStationController : StationController
 {
     [SerializeField] private GameObject[] itemsOnTable;
 
-    public override void Initialize(StationConfig config, List<RecipeConfig> recipes)
+    public override void Initialize(List<RecipeConfig> recipes)
     {
-        base.Initialize(config, recipes);
+        base.Initialize(recipes);
         for (int i = 0; i < itemsOnTable.Length; i++)
         {
             itemsOnTable[i].SetActive(false);
@@ -21,7 +21,7 @@ public class AlchemyStationController : StationController
             bool added = base.AddItem(config);
             if (!added) return false;
             itemsOnTable[_items.Count - 1].SetActive(true);
-            itemsOnTable[_items.Count - 1].GetComponent<SpriteRenderer>().sprite = config.Prefab.GetComponent<SpriteRenderer>().sprite;
+            itemsOnTable[_items.Count - 1].GetComponent<SpriteRenderer>().sprite = config.Icon;
             return true;
         }
         else

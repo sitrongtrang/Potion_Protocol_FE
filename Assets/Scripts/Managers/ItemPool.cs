@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class ItemPool : MonoBehaviour
 {
+    [SerializeField] private List<ItemController> _itemPrefabs;
+    private Dictionary<ItemConfig, ItemController> _itemPrefabMap;
     private Queue<ItemController> _activeItems = new Queue<ItemController>();
     private Dictionary<string, Queue<ItemController>> _pooledObjects = new Dictionary<string, Queue<ItemController>>();
     public static ItemPool Instance { get; private set; }
@@ -32,7 +34,6 @@ public class ItemPool : MonoBehaviour
         item.transform.position = position;
         item.transform.rotation = Quaternion.identity;
         item.gameObject.SetActive(true);
-        item.Initialize(config);
 
         _activeItems.Enqueue(item);
         return item;
@@ -75,7 +76,28 @@ public class ItemPool : MonoBehaviour
         }
 
         // No available object in pool, instantiate a new one
-        ItemController newObj = Instantiate(config.Prefab);
+        ItemController newObj = null;
+        if (_itemPrefabMap == null)
+        {
+            _itemPrefabMap = new Dictionary<ItemConfig, ItemController>();  
+        }
+        if (_itemPrefabMap.ContainsKey(config))
+        {
+            newObj = Instantiate(_itemPrefabMap[config]);
+        }
+        else 
+        {
+            for (int i = 0; i < _itemPrefabs.Count; i++)
+            {
+                if (_itemPrefabs[i].Config == config)
+                {
+                    newObj = Instantiate(_itemPrefabs[i]);
+                    _itemPrefabMap[config] = newObj;
+                    break;
+                }
+            }
+        }
+        
         return newObj;
     }
 }
