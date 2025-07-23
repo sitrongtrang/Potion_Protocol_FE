@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Custom_RingOnlyGlow
-  m_Shader: {fileID: 4800000, guid: 732d0f5389b462846af07e2b337366fc, type: 3}
+  m_Name: Custom_SpriteSoftCircleGlow
+  m_Shader: {fileID: 4800000, guid: aeb59b62c5845d04298f9113a7c4ee1b, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -29,15 +29,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CircleRadius: 0.368
-    - _GlowIntensity: 0.2
-    - _GlowRange: 0.114
-    - _GlowSoftness: 0.011
-    - _GlowStrength: 3.05
-    - _GlowWidth: 0
-    - _RingRadius: 0.48
+    - _CircleRadius: 0.721
+    - _GlowCenterRadius: 0
+    - _GlowIntensity: 5
+    - _GlowRadius: 0.513
+    - _GlowRange: 0.01
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _GlowColor: {r: 1, g: 0.9, b: 0.19999996, a: 1}
+    - _GlowColor: {r: 1, g: 1, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
