@@ -56,6 +56,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _enemyImpactUI: {fileID: 1403335354374388565}
+  heightHealthBar: 0.6
   _movementIgnoreObstacles: 0
   _healthBarPrefab: {fileID: -957368622642131315, guid: 67c66995c641fe64599726b5a9b2209e, type: 3}
 --- !u!95 &-1370842286182258998
