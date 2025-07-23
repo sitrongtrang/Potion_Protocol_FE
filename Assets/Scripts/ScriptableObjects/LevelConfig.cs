@@ -17,7 +17,7 @@ public class LevelConfig : ScriptableObject
     [Serializable]
     public class ItemSourceSetting
     {
-        public ItemSourceConfig Config;
+        public ItemSourceController Prefab;
         public int MaxCapacity;
     }
     [SerializeField] private List<ItemSourceSetting> _itemSources;
