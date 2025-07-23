@@ -8,6 +8,7 @@ public class EntitiesPanel : MonoBehaviour
     [SerializeField] private GameObject _plantsTab;
     [SerializeField] private GameObject _metalsTab;
     [SerializeField] private GameObject _itemsTab;
+    [SerializeField] private GameObject _recipesTab;
 
     void Start()
     {
@@ -32,6 +33,7 @@ public class EntitiesPanel : MonoBehaviour
         _plantsTab.SetActive(tab == CodexTabSelection.Tab.Plants);
         _metalsTab.SetActive(tab == CodexTabSelection.Tab.Metals);
         _itemsTab.SetActive(tab == CodexTabSelection.Tab.Items);
+        _recipesTab.SetActive(tab == CodexTabSelection.Tab.Recipes);
     }
 
 

@@ -25,9 +25,7 @@ public class EntitiesPage : MonoBehaviour
 
         for (int i = 0; i < _entites.Length; i++)
         {
-            Debug.Log($"Entity Config: {_entites[i].name}");
             _entityConfigs.Add(_entites[i]);
-
         }
         _numEntitiesPerPage = _numEntitiesPerRow * _numEntityRows;
         _numEntities = _entityConfigs.Count;

@@ -6,6 +6,7 @@ public static class CodexTabSelection
         Plants,
         Metals,
         Items,
+        Recipes,
     }
 
     public static Tab SelectedTab = Tab.Monsters;
