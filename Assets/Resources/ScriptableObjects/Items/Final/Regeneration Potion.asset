@@ -16,8 +16,7 @@ MonoBehaviour:
   _icon: {fileID: -1361308805, guid: d5a6f9f3be75895469f10de63796f616, type: 3}
   _id: P5
   _type: 2
-  _prefab: {fileID: -6951219262986538773, guid: 04a717f440d79da488248fb4ab024639, type: 3}
   _droppedBy: {fileID: 11400000, guid: e4214e99f307ee74b8d7a842eaa096ab, type: 2}
-  _expireTime: 0
+  _expireTime: 30
   _craftPlace: {fileID: 8142887963223585860, guid: 684fc6f7c36189c448a0c8bda50c5af0, type: 3}
   _score: 1

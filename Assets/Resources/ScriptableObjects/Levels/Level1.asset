@@ -14,22 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mapPrefab: {fileID: 4130166079983457268, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
   _enemies:
-  - {fileID: 11400000, guid: 102769852e166fd4f8e5161856ae8051, type: 2}
-  - {fileID: 11400000, guid: 633df65d44353ef4bae4a2d6e85e8b70, type: 2}
-  - {fileID: 11400000, guid: 99044dd267a0afa45b8b2c1b347cb735, type: 2}
+  - {fileID: 3347175494363194931, guid: de680205cfc6b854caba0af3193e40da, type: 3}
+  - {fileID: 3347175494363194931, guid: b54bd8bbe22ca404aa3ed3e1696ec7a8, type: 3}
   _recipeAddInterval: 15
   _itemSources:
-  - Config: {fileID: 11400000, guid: 356e1f12f7c5491468b866d63b0ef2d6, type: 2}
+  - Prefab: {fileID: 5121789824500213990, guid: b99f9c7a1ed4a1a4eb9b866eafbff8fb, type: 3}
     MaxCapacity: 2
-  - Config: {fileID: 11400000, guid: 810c57fed3f5e924b98d2b6749d89a8d, type: 2}
+  - Prefab: {fileID: 7305391699311526871, guid: 7d2e114a78c03d94b900be3a727059fc, type: 3}
     MaxCapacity: 2
-  - Config: {fileID: 11400000, guid: 6800a01810a828743ab58d16796e2caa, type: 2}
+  - Prefab: {fileID: 4386955713575216677, guid: 68fcd2b97e656b84f883910796036bbe, type: 3}
     MaxCapacity: 2
-  - Config: {fileID: 11400000, guid: 42ddefbe5ba35b642a6e6da55faf364f, type: 2}
+  - Prefab: {fileID: -8471841874738260667, guid: 19fff1933068f9148b24c7a349c6f9d3, type: 3}
     MaxCapacity: 2
-  - Config: {fileID: 11400000, guid: 1c1e53c524551c3499025e47be50af82, type: 2}
+  - Prefab: {fileID: -5381856047087532958, guid: 5076e25edf82bb1439c64ded9ed46d01, type: 3}
     MaxCapacity: 2
-  - Config: {fileID: 11400000, guid: 83d8ef65d45d0c74e821d0d5428171a6, type: 2}
+  - Prefab: {fileID: -8549960958713610796, guid: 0f9c16ab1060b5f4cbb75870c42f633c, type: 3}
     MaxCapacity: 2
   _ingotRecipes:
   - {fileID: 11400000, guid: 2a2283344bd67b742918d65976225e8c, type: 2}
