@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 160db005b420e004ba7cb072d295092b, type: 3}
   m_Name: Vampire
   m_EditorClassIdentifier: 
+  _icon: {fileID: -2314506720581648914, guid: 46eb8fff8ee503447bacaad9ebb1b8e7, type: 3}
   _name: Dreadshade
   _id: M4
   _hp: 6

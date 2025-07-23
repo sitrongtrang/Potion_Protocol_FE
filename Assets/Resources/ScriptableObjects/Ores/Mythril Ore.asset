@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c50f606a67141046a9673499abb15d6, type: 3}
   m_Name: Mythril Ore
   m_EditorClassIdentifier: 
+  _icon: {fileID: -5457511684506822206, guid: 05c5e734534090c45b3b7697b5450c26, type: 3}
   _name: Mythril Ore
   _id: O7
   _prefab: {fileID: -7601033474094837564, guid: 8195302446a827040a62119d32bee1e7, type: 3}

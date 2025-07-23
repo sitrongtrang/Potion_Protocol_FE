@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Healing Potion
   m_EditorClassIdentifier: 
   _name: Healing Potion
+  _icon: {fileID: -1193097374, guid: d5a6f9f3be75895469f10de63796f616, type: 3}
   _id: P1
   _type: 2
   _prefab: {fileID: 5547307445403690835, guid: 17dc06bae1915824c8ccb7807dadbeb7, type: 3}
-  _score: 1
+  _droppedBy: {fileID: 11400000, guid: 681c9ef66958a6348add4549fb996f30, type: 2}
   _expireTime: 0
+  _craftPlace: {fileID: 8142887963223585860, guid: 684fc6f7c36189c448a0c8bda50c5af0, type: 3}
+  _score: 1

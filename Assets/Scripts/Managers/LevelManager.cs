@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
-using static UnityEngine.Rendering.DebugUI;
 
 public class LevelManager : MonoBehaviour
 {

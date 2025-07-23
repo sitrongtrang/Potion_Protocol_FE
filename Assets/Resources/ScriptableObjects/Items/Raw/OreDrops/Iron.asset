@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Iron
   m_EditorClassIdentifier: 
   _name: Iron
+  _icon: {fileID: 3265609578105065361, guid: 05c5e734534090c45b3b7697b5450c26, type: 3}
   _id: I12
   _type: 0
   _prefab: {fileID: 2756712652034502478, guid: cec5cc8fa1d703d49882ab215b338ba5, type: 3}
+  _droppedBy: {fileID: 11400000, guid: 1623e473d2511cf47b1ce263c4225082, type: 2}

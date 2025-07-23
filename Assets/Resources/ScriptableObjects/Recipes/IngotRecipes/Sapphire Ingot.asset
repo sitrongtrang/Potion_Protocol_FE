@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66fc6c15e23d5c14ebe8c5270ee5fe6b, type: 3}
   m_Name: Sapphire Ingot
   m_EditorClassIdentifier: 
-  _id: R13
+  _name: 
+  _icon: {fileID: 0}
+  _id: R20
   _craftingTime: 6
   _type: 0
   _product: {fileID: 11400000, guid: 889b6640fd071c9498946da00a8837bd, type: 2}

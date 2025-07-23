@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Amethyst Ingot
   m_EditorClassIdentifier: 
   _name: Amethyst Ingot
+  _icon: {fileID: 6500151337436090292, guid: a35bbe8aadba99f418111c1cf06a245a, type: 3}
   _id: I27
   _type: 1
   _prefab: {fileID: 7175423293597175683, guid: f2a773a2026b9974292e2ee9a8324645, type: 3}
+  _droppedBy: {fileID: 11400000, guid: 1a38560a20ee56949bb7a768307d3dcf, type: 2}
   _expireTime: 0
+  _craftPlace: {fileID: -302608151, guid: 5da0603578617b443ad8708cdaf1febd, type: 3}

@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Mana Potion
   m_EditorClassIdentifier: 
   _name: Mana Potion
+  _icon: {fileID: -2001813016, guid: d5a6f9f3be75895469f10de63796f616, type: 3}
   _id: P3
   _type: 2
   _prefab: {fileID: 570049434322015153, guid: 8456b3fd643358941ac28a689e2637b4, type: 3}
-  _score: 1
+  _droppedBy: {fileID: 11400000, guid: e46837390b24d6b4f994a000e883409b, type: 2}
   _expireTime: 0
+  _craftPlace: {fileID: 8142887963223585860, guid: 684fc6f7c36189c448a0c8bda50c5af0, type: 3}
+  _score: 1

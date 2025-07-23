@@ -3,28 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class SettingsUI : MonoBehaviour
 {
-    public GameObject controlsTab;
-    public GameObject soundTab;
-    public GameObject miscTab;
+    [SerializeField] private GameObject _controlsTab;
+    [SerializeField] private GameObject _soundTab;
+    [SerializeField] private GameObject _miscTab;
 
     void Start()
     {
-        controlsTab.SetActive(false);
-        soundTab.SetActive(false);
-        miscTab.SetActive(false);
-
-        switch (SettingsSelection.SelectedTab)
-        {
-            case SettingsSelection.Tab.Controls:
-                controlsTab.SetActive(true);
-                break;
-            case SettingsSelection.Tab.Sound:
-                soundTab.SetActive(true);
-                break;
-            case SettingsSelection.Tab.Miscellaneous:
-                miscTab.SetActive(true);
-                break;
-        }
+        ShowSelectedTab((int)SettingsSelection.SelectedTab);
     }
 
     void Update()
@@ -35,26 +20,15 @@ public class SettingsUI : MonoBehaviour
         }
     }
 
-    public void ShowControlsTab()
+    public void ShowSelectedTab(int tabIndex)
     {
-        SettingsSelection.SelectedTab = SettingsSelection.Tab.Controls;
-        controlsTab.SetActive(true);
-        soundTab.SetActive(false);
-        miscTab.SetActive(false);
-    }
-    public void ShowSoundTab()
-    {
-        SettingsSelection.SelectedTab = SettingsSelection.Tab.Sound;
-        controlsTab.SetActive(false);
-        soundTab.SetActive(true);
-        miscTab.SetActive(false);
-    }
-    public void ShowMiscTab()
-    {
-        SettingsSelection.SelectedTab = SettingsSelection.Tab.Miscellaneous;
-        controlsTab.SetActive(false);
-        soundTab.SetActive(false);
-        miscTab.SetActive(true);
+        SettingsSelection.Tab tab = (SettingsSelection.Tab)tabIndex;
+
+        SettingsSelection.SelectedTab = tab;
+
+        _controlsTab.SetActive(tab == SettingsSelection.Tab.Controls);
+        _soundTab.SetActive(tab == SettingsSelection.Tab.Sound);
+        _miscTab.SetActive(tab == SettingsSelection.Tab.Miscellaneous);
     }
 
     public void Return()

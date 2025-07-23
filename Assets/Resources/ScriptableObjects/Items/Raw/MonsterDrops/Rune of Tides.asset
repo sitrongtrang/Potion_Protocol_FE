@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Rune of Tides
   m_EditorClassIdentifier: 
   _name: Rune of Tides
+  _icon: {fileID: -1783450677, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
   _id: I2
   _type: 0
   _prefab: {fileID: 2756712652034502478, guid: 478bdb1c18c640749aa51cfd39457d8a, type: 3}
+  _droppedBy: {fileID: 11400000, guid: 633df65d44353ef4bae4a2d6e85e8b70, type: 2}

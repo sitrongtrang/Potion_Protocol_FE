@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c50f606a67141046a9673499abb15d6, type: 3}
   m_Name: Silver Ore
   m_EditorClassIdentifier: 
+  _icon: {fileID: 1160809305625320999, guid: 05c5e734534090c45b3b7697b5450c26, type: 3}
   _name: Silver Ore
   _id: O3
   _prefab: {fileID: 7879230659964989430, guid: c9f5cb346a7142a47abaf037eb1d69ad, type: 3}
