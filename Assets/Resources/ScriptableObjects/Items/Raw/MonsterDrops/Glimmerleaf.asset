@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24b283275af73a4ab4c7144cac466b6, type: 3}
   m_Name: Glimmerleaf
   m_EditorClassIdentifier: 
-  _icon: {fileID: 542309916, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
   _name: Glimmerleaf
+  _icon: {fileID: 542309916, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
   _id: I5
   _type: 0
-  _prefab: {fileID: 2756712652034502478, guid: 4341458c8f982374bb6cce19c3a10e47, type: 3}
+  _droppedBy: {fileID: 0}
+  _expireTime: 30
