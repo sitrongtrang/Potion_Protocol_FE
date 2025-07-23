@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66fc6c15e23d5c14ebe8c5270ee5fe6b, type: 3}
   m_Name: Gold Ingot
   m_EditorClassIdentifier: 
-  _id: R10
+  _name: 
+  _icon: {fileID: 0}
+  _id: R17
   _craftingTime: 8
   _type: 0
   _product: {fileID: 11400000, guid: 7228cf32e209f5247b6735162c92e2ba, type: 2}

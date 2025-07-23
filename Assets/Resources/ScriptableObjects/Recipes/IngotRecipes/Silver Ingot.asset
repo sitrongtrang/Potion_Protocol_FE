@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66fc6c15e23d5c14ebe8c5270ee5fe6b, type: 3}
   m_Name: Silver Ingot
   m_EditorClassIdentifier: 
-  _id: R8
+  _name: 
+  _icon: {fileID: 0}
+  _id: R15
   _craftingTime: 4
   _type: 0
   _product: {fileID: 11400000, guid: d8410495bd6119842916b4dab558a362, type: 2}

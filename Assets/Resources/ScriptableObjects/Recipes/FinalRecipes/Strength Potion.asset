@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66fc6c15e23d5c14ebe8c5270ee5fe6b, type: 3}
   m_Name: Strength Potion
   m_EditorClassIdentifier: 
+  _name: 
+  _icon: {fileID: 91793580574289886, guid: 9c43bd373420dd642bdfdde9096c3d02, type: 3}
   _id: R4
   _craftingTime: 8
   _type: 1

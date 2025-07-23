@@ -39,6 +39,6 @@ public class EntitiesPanel : MonoBehaviour
 
     public void Return()
     {
-        SceneManager.UnloadSceneAsync("MainMenu");
+        SceneManager.UnloadSceneAsync("CodexScene");
     }
 }

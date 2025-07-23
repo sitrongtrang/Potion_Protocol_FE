@@ -12,6 +12,7 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private Button _soundOptionsButton;
     [SerializeField] private Button _miscOptionsButton;
     [SerializeField] private Button _quitButton;
+    [SerializeField] private Button _codexButton;
 
 
     public void OnSoloPlay()
@@ -34,6 +35,11 @@ public class MainMenuUI : MonoBehaviour
     {
         SettingsSelection.SelectedTab = (SettingsSelection.Tab)tab;
         SceneManager.LoadScene("SettingsScene", LoadSceneMode.Additive);
+    }
+
+    public void OnCodex()
+    {
+        SceneManager.LoadScene("CodexScene", LoadSceneMode.Additive);
     }
 
     public void OnQuit()

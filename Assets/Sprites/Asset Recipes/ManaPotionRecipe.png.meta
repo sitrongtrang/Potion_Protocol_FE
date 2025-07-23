@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 97e78315b29f31f4e996f025485b8c6c
+guid: 61cecfeead935044788a7acef5503b23
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6539229133321497733
-    second: PoisionAntidoteRecipe_0
+      213: -5471252648029590292
+    second: ManaPotionRecipe_0
   - first:
-      213: 1112298955882123973
-    second: PoisionAntidoteRecipe_1
+      213: -3871303921505492243
+    second: ManaPotionRecipe_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PoisionAntidoteRecipe_0
+      name: ManaPotionRecipe_0
       rect:
         serializedVersion: 2
         x: 19
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b739c73efbdff35a0800000000000000
-      internalID: -6539229133321497733
+      spriteID: cece7cd54b43214b0800000000000000
+      internalID: -5471252648029590292
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PoisionAntidoteRecipe_1
+      name: ManaPotionRecipe_1
       rect:
         serializedVersion: 2
         x: 246
-        y: 106
+        y: 107
         width: 145
-        height: 182
+        height: 181
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5c25465d10eaf6f00800000000000000
-      internalID: 1112298955882123973
+      spriteID: de2a61d289d564ac0800000000000000
+      internalID: -3871303921505492243
       vertices: []
       indices: 
       edges: []

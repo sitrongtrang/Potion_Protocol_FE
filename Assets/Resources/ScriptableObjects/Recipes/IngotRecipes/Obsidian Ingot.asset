@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66fc6c15e23d5c14ebe8c5270ee5fe6b, type: 3}
   m_Name: Obsidian Ingot
   m_EditorClassIdentifier: 
-  _id: R6
+  _name: 
+  _icon: {fileID: 0}
+  _id: R13
   _craftingTime: 5
   _type: 0
   _product: {fileID: 11400000, guid: e228a74a8068dca4fb4514ed8e96cd8d, type: 2}

@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: b7b48a56d23bf1d4d8fa1266e001a69a
+guid: 97e78315b29f31f4e996f025485b8c6c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -375399813576748506
-    second: HealingPotionRecipe 1_0
+      213: -6539229133321497733
+    second: PoisionAntidoteRecipe_0
   - first:
-      213: -2775955805475125585
-    second: HealingPotionRecipe 1_1
+      213: 1112298955882123973
+    second: PoisionAntidoteRecipe_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,45 +116,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HealingPotionRecipe 1_0
+      name: PoisionAntidoteRecipe_0
       rect:
         serializedVersion: 2
-        x: 19
-        y: 124
-        width: 363
-        height: 391
+        x: 20
+        y: 125
+        width: 361
+        height: 389
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6229207cbdf4acaf0800000000000000
-      internalID: -375399813576748506
+      spriteID: 18eef850a9314c5468b507ff50c88cfe
+      internalID: -342788020
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HealingPotionRecipe 1_1
+      name: PoisionAntidoteRecipe_1
       rect:
         serializedVersion: 2
         x: 246
         y: 107
-        width: 145
-        height: 181
+        width: 143
+        height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: fa6c87e07e2d979d0800000000000000
-      internalID: -2775955805475125585
+      spriteID: 8b1e39e7873de794aaad93379e8280ca
+      internalID: 633185131
       vertices: []
       indices: 
       edges: []
@@ -163,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 959fbc46ecb0a7845a6cbb54d71f76c7
     internalID: 0
     vertices: []
     indices: 
@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PoisionAntidoteRecipe_0: -342788020
+      PoisionAntidoteRecipe_1: 633185131
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

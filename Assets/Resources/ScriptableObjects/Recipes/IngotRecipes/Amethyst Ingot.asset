@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66fc6c15e23d5c14ebe8c5270ee5fe6b, type: 3}
   m_Name: Amethyst Ingot
   m_EditorClassIdentifier: 
-  _id: R12
+  _name: 
+  _icon: {fileID: 0}
+  _id: R19
   _craftingTime: 7
   _type: 0
   _product: {fileID: 11400000, guid: ac226eb1a68d4c74ab7944595baddefd, type: 2}
