@@ -129,11 +129,19 @@ public class ItemSourceSpawner : MonoBehaviour
     /// <param name="itemSourceController">Controller of item source that was removed</param>
     public void NotifyItemSourceRemoved(ItemSourceController itemSourceController)
     {
-        int index = Array.IndexOf(_itemSourcePrefabs, itemSourceController);
+        int index = -1;
+        for (int i = 0; i < _itemSourcePrefabs.Length; i++)
+        {
+            if (_itemSourcePrefabs[i].Config == itemSourceController.Config)
+            {
+                index = i;
+                break;
+            }
+        }
         if (index >= 0)
         {
             _currentAmounts[index] = Mathf.Max(0, _currentAmounts[index] - 1);
-            
+
             if (_debugLogsEnabled)
             {
                 Debug.Log($"Item Source removed: {itemSourceController.Config.name}. Current count: {_currentAmounts[index]}/{_maxCapacities[index]}");
