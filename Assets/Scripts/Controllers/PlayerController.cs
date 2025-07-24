@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        Movement.MyUpdate();
+        Movement.Update();
     }
 
     void OnTriggerEnter2D(Collider2D collider)
