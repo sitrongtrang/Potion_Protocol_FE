@@ -2016,7 +2016,7 @@ TextureImporter:
       name: furnace_01_0
       rect:
         serializedVersion: 2
-        x: 193
+        x: 194
         y: 0
         width: 63
         height: 98
@@ -2038,7 +2038,7 @@ TextureImporter:
       name: furnace_01_1
       rect:
         serializedVersion: 2
-        x: 129
+        x: 130
         y: 0
         width: 62
         height: 98
