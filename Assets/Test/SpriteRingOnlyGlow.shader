@@ -1,12 +1,14 @@
-Shader "Custom/SpriteWithRingGlow"
+Shader "Custom/SpriteWithRingAndCenterGlow"
 {
     Properties
     {
         _MainTex("Sprite", 2D) = "white" {}
         _GlowColor("Glow Color", Color) = (1,1,0,1)
-        _GlowRadius("Glow Radius", Range(0, 1)) = 0.2
-        _GlowIntensity("Glow Intensity", Range(0.1, 5)) = 2.0
-        _GlowCenterRadius("Glow Center Radius", Range(0, 1)) = 0.5
+        _GlowRadius("Glow Radius", Range(0, 1)) = 0.15
+        _GlowIntensity("Glow Intensity", Range(0.1, 10)) = 3.0
+        _GlowCenterRadius("Center Radius", Range(0, 1)) = 0.4
+        _GlowCenterStrength("Center Strength", Range(0.1, 10)) = 4.0
+        _RingPosition("Ring Position (0=center)", Range(0, 1)) = 0.5
     }
 
     SubShader
@@ -32,6 +34,8 @@ Shader "Custom/SpriteWithRingGlow"
             float _GlowRadius;
             float _GlowIntensity;
             float _GlowCenterRadius;
+            float _GlowCenterStrength;
+            float _RingPosition;
 
             struct appdata_t
             {
@@ -58,19 +62,27 @@ Shader "Custom/SpriteWithRingGlow"
                 float2 centeredUV = i.uv * 2.0 - 1.0;
                 float dist = length(centeredUV);
 
-                // Ring glow centered at _GlowCenterRadius
-                float ring = abs(dist - _GlowCenterRadius);
-                float glowAlpha = saturate(1.0 - ring / _GlowRadius);
-                glowAlpha = pow(glowAlpha, _GlowIntensity);
-
                 fixed4 col = tex2D(_MainTex, i.uv);
+                float spriteAlpha = col.a;
 
-                // Chỉ hiển thị glow khi pixel thực sự nằm ngoài sprite (alpha = 0)
-                float mask = step(0.001, col.a); // 0 nếu alpha gần 0, 1 nếu có nội dung
-                glowAlpha *= (1.0 - mask); // Loại glow ở vùng sprite (mask = 1 → glowAlpha = 0)
+                // Loại bỏ glow ở vùng sprite thật (alpha > threshold)
+                float mask = smoothstep(0.03, 0.1, spriteAlpha);
 
-                fixed3 finalRGB = col.rgb + _GlowColor.rgb * glowAlpha;
-                float finalA = max(col.a, glowAlpha * _GlowColor.a);
+                // ==== Glow Viền ====
+                float ring = abs(dist - _RingPosition);
+                float ringGlow = saturate(1.0 - ring / _GlowRadius);
+                ringGlow = pow(ringGlow, _GlowIntensity);
+                ringGlow *= (1.0 - mask);
+
+                // ==== Glow Tâm ====
+                float centerGlow = saturate(1.0 - dist / _GlowCenterRadius);
+                centerGlow = pow(centerGlow, _GlowCenterStrength);
+                centerGlow *= (1.0 - mask);
+
+                float totalGlow = ringGlow + centerGlow;
+
+                fixed3 finalRGB = col.rgb + _GlowColor.rgb * totalGlow;
+                float finalA = max(spriteAlpha, totalGlow * _GlowColor.a);
 
                 return fixed4(finalRGB, finalA);
             }

@@ -24,16 +24,18 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 58edd348c913c8445b67154ec1e9bab0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 31f62a5487482b04f895eef181af0796, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _CircleRadius: 0.721
-    - _GlowCenterRadius: 1
-    - _GlowIntensity: 5
-    - _GlowRadius: 1
+    - _GlowCenterRadius: 0.744
+    - _GlowCenterStrength: 3.66
+    - _GlowIntensity: 8.73
+    - _GlowRadius: 0
     - _GlowRange: 0.01
+    - _RingPosition: 0
     m_Colors:
     - _GlowColor: {r: 1, g: 1, b: 0, a: 1}
   m_BuildTextureStacks: []

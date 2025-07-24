@@ -62,7 +62,7 @@ public class PlayerMovement
             if (_canDash && _player) _player.StartCoroutine(Dash());
         };
     }
-    
+
     public void MyUpdate()
     {
         if (_moveDir != Vector2.zero)

@@ -56,7 +56,10 @@ public class PlayerController : MonoBehaviour
     {
         Interaction.OnTriggerEnter2D(collider);
     }
-
+    void OnColliderEnter2D(Collider2D collider)
+    {
+        Debug.Log("Collider with: " + collider.gameObject.name);
+    }
     void OnTriggerExit2D(Collider2D collider)
     {
         Interaction.OnTriggerExit2D(collider);
