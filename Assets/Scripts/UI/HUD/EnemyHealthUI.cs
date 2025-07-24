@@ -7,6 +7,8 @@ public class EnemyHealthUI : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
     [SerializeField] private float _timeHealth;
+    [SerializeField] private Image _fillImage;
+    [SerializeField] private Gradient _healthGradient;
     private RectTransform _rt;
     private Transform _target;
     private Vector3 _offset;
@@ -42,6 +44,9 @@ public class EnemyHealthUI : MonoBehaviour
     public void SetHp(float hp)
     {
         _slider.value = hp;
+        float percent = hp / _slider.maxValue;
+        Color col = _healthGradient.Evaluate(percent);
+        _fillImage.color = col;
         ShowAndScheduleHide();
     }
 
