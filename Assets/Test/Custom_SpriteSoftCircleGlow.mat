@@ -30,9 +30,9 @@ Material:
     m_Ints: []
     m_Floats:
     - _CircleRadius: 0.721
-    - _GlowCenterRadius: 0
+    - _GlowCenterRadius: 1
     - _GlowIntensity: 5
-    - _GlowRadius: 0.513
+    - _GlowRadius: 1
     - _GlowRange: 0.01
     m_Colors:
     - _GlowColor: {r: 1, g: 1, b: 0, a: 1}
