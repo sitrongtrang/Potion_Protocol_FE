@@ -1,11 +1,12 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LoadingScreenUI : MonoBehaviour
 {
     [SerializeField] private Scrollbar _progressBar;
-    [SerializeField] private Text _progressText;
+    [SerializeField] private TextMeshProUGUI _progressText;
     private float _speed = 0.5f;
     private float _currentProgress = 0f;
 

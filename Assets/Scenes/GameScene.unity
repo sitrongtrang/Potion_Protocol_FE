@@ -2363,7 +2363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _progressBar: {fileID: 261702763}
-  _progressText: {fileID: 0}
+  _progressText: {fileID: 1524157095}
 --- !u!114 &1521748852
 MonoBehaviour:
   m_ObjectHideFlags: 0
