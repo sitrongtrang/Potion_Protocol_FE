@@ -4,9 +4,9 @@ using System;
 public enum EnemyStt
 {
     None = 0,
-    Idle = 1 << 0,
-    Move = 1 << 1,
-
+    Return = 1 << 0,
+    Patrol = 1 << 1,
+    Idle = 1 << 2,
 }
 public class EnemyStateServer
 {

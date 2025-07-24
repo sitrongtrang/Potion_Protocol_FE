@@ -17,9 +17,9 @@ public enum InputFlags
 public class PlayerInputMessage : ClientMessage, IInputSnapshot
 {
     public int InputSequence;
+    public int Flags;
     public float MoveDirX;
     public float MoveDirY;
-    public int Flags;
     public int SelectedSlot;
     public PlayerInputMessage(PlayerInputSnapshot playerInputSnapshot) : base(NetworkMessageTypes.Client.Ingame.Input)
     {
