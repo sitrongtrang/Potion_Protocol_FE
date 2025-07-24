@@ -179,6 +179,7 @@ public class PlayerInteraction
         if (collider.gameObject.tag == "CraftPoint")
         {
             _isNearCraftPoint = true;
+            _nearStation = collider.gameObject.GetComponentInParent<StationController>();
         }
     }
     public void OnTriggerExit2D(Collider2D collider)

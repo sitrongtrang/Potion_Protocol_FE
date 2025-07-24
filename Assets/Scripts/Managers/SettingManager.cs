@@ -9,7 +9,7 @@ using System;
 /// Chính sách: khi user rebinding 1 action, ta giữ action đó; mọi action khác vi phạm rule & dùng cùng phím sẽ bị clear.
 /// Không cho đóng menu nếu còn action bắt buộc bị rỗng.
 /// </summary>
-public class KeybindMenuManager : MonoBehaviour
+public class SettingManager : MonoBehaviour
 {
     [Header("UI Parents chứa các KeybindRowUI children")]
     [SerializeField] private List<Transform> _contentParents;
@@ -51,9 +51,17 @@ public class KeybindMenuManager : MonoBehaviour
     // ======================================================================
 
     public InputActionAsset GetRebindedAsset() => _inputActions;
+    private bool _hasPendingChanges = false;
+    [SerializeField] private UnityEngine.UI.Button _applyButton;
+    [SerializeField] private UnityEngine.UI.Button _revertButton;
+    [SerializeField] private UnityEngine.UI.Button _resetButton;
 
     void Start()
     {
+        _applyButton.onClick.AddListener(ApplyChanges);
+        _revertButton.onClick.AddListener(DiscardChanges);
+        _resetButton.onClick.AddListener(ResetRebindsFromFile);
+
         _path = System.IO.Path.Combine(Application.persistentDataPath, "rebinds.json");
         _playerMap = _inputActions.FindActionMap("Player", throwIfNotFound: false);
 
@@ -207,12 +215,10 @@ public class KeybindMenuManager : MonoBehaviour
                 // Áp dụng rule xung đột → clear các action khác
                 ResolveConflictsAfterRebind(row.actionName, row.bindingIndex, newPath);
 
-                // Lưu file
-                SaveRebindsToFile();
-
                 // Reset trạng thái rebinding
                 _currentRebinding = null;
                 _currentRow = null;
+                _hasPendingChanges = true; // <-- ADD THIS
                 // Gọi lại để cho phép đổi tiếp
                 StartRebinding(row);
             })
@@ -449,6 +455,7 @@ public class KeybindMenuManager : MonoBehaviour
             Debug.Log("🗑️ Deleted rebind file: " + _path);
         }
         RefreshAllKeyDisplays();
+        GetComponent<MiscSetting>().ResetToDefault();
     }
 
     // ======================================================================
@@ -508,5 +515,27 @@ public class KeybindMenuManager : MonoBehaviour
                 return i;
         }
         return -1;
+    }
+
+    public void ApplyChanges()
+    {
+        if (_hasPendingChanges)
+        {
+            SaveRebindsToFile();
+            _hasPendingChanges = false;
+            Debug.Log("✅ Applied pending keybind changes.");
+        }
+        else
+        {
+            Debug.Log("⚠️ No changes to apply.");
+        }
+        PlayerPrefs.SetInt("IsAutoFocus", GetComponent<MiscSetting>().AutoFocusValue == true ? 1 : 0);
+        PlayerPrefs.SetString("Language", GetComponent<MiscSetting>().LanguageValue);
+    }
+    public void DiscardChanges()
+    {
+        LoadRebindsFromFile(); // Revert lại
+        _hasPendingChanges = false;
+        GetComponent<MiscSetting>().LoadSettings();
     }
 }

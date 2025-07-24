@@ -9,9 +9,10 @@ public class ItemConfig : EntityConfig
     [SerializeField] private ItemType _type;
     public ItemType Type => _type;
 
-    [SerializeField] private ItemController _prefab;
-    public ItemController Prefab => _prefab;
-
     [SerializeField] private EntityConfig _droppedBy;
     public EntityConfig DroppedBy => _droppedBy;
+
+    [SerializeField] private float _expireTime;
+    public float ExpireTime => _expireTime;
+
 }

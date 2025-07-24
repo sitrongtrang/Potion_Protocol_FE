@@ -1960,7 +1960,7 @@ GameObject:
   - component: {fileID: 628804332170386581}
   - component: {fileID: 6342484676097932507}
   m_Layer: 0
-  m_Name: New Palette
+  m_Name: forest_map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

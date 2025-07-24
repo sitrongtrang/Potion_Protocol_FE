@@ -16,5 +16,5 @@ MonoBehaviour:
   _icon: {fileID: 746823278, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
   _id: I7
   _type: 0
-  _prefab: {fileID: -3995435561193561851, guid: 5e1b6634c8fdfe54fa159f27fd6e32e0, type: 3}
   _droppedBy: {fileID: 11400000, guid: 7da77574c7d8d43489715c6bb2dbfaf5, type: 2}
+  _expireTime: 30

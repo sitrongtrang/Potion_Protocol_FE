@@ -11,7 +11,7 @@ public class RecipeUI : MonoBehaviour
     {
         if (recipe == null) return;
 
-        _productImage.sprite = recipe.Product.Prefab.GetComponent<SpriteRenderer>().sprite;
+        _productImage.sprite = recipe.Product.Icon;
 
         foreach (Transform child in _ingredientList.transform)
         {
@@ -23,7 +23,7 @@ public class RecipeUI : MonoBehaviour
             ItemConfig ingredient = recipe.Inputs[i];
             GameObject ingredientImageObj = Instantiate(_ingredientImagePrefab, _ingredientList.transform);
             Image ingredientImage = ingredientImageObj.GetComponent<Image>();
-            ingredientImage.sprite = ingredient.Prefab.GetComponent<SpriteRenderer>().sprite;
+            ingredientImage.sprite = ingredient.Icon;
             ingredientImageObj.transform.SetParent(_ingredientList.transform);
         }
     }

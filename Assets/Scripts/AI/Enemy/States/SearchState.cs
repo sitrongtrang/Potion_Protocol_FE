@@ -22,14 +22,14 @@ public class SearchState : IBasicState<EnemyController>
     {
         if (_owner.IsPlayerInRange)
         {
-            if (_owner.BasicStateMachine.ChangeState(EnemyState.Chase))
+            if (_owner.BasicStateMachine.ChangeState(EnemyActionEnum.Chase))
                 return;
         }
         
         _searchRemaining -= Time.deltaTime;
         if (_searchRemaining <= 0)
         {
-            if (_owner.BasicStateMachine.ChangeState(EnemyState.Return))
+            if (_owner.BasicStateMachine.ChangeState(EnemyActionEnum.Return))
                 return;
         }
         if (_owner.PathVectorList != null)
@@ -39,8 +39,8 @@ public class SearchState : IBasicState<EnemyController>
         else
         {
             if (
-                _owner.BasicStateMachine.ChangeState(EnemyState.Idle, new object[]{
-                    EnemyState.Search, _owner.EnemyConf.SearchInterval, _searchRemaining
+                _owner.BasicStateMachine.ChangeState(EnemyActionEnum.Idle, new object[]{
+                    EnemyActionEnum.Search, _owner.EnemyConf.SearchInterval, _searchRemaining
                 })
             ) return;
         }

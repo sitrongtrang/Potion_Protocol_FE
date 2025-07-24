@@ -49,9 +49,7 @@ public abstract class EnemyConfig : EntityConfig
     [Header("Drop")]
     [SerializeField] private ItemConfig _item;
     public ItemConfig Item => _item;
-    [Header("Component")]
-    [SerializeField] private EnemyController _prefab;
-    public EnemyController Prefab => _prefab;
+
     public virtual void HandleMove(EnemyController controller)
     {
         if (controller.PathVectorList != null)
@@ -97,11 +95,11 @@ public abstract class EnemyConfig : EntityConfig
         PatrolState patrolState = new(controller);
         ReturnState returnState = new(controller);
 
-        controller.BasicStateMachine.AddState(EnemyState.Idle, idleState);
-        controller.BasicStateMachine.AddState(EnemyState.Patrol, patrolState);
-        controller.BasicStateMachine.AddState(EnemyState.Return, returnState);
+        controller.BasicStateMachine.AddState(EnemyActionEnum.Idle, idleState);
+        controller.BasicStateMachine.AddState(EnemyActionEnum.Patrol, patrolState);
+        controller.BasicStateMachine.AddState(EnemyActionEnum.Return, returnState);
         
-        controller.BasicStateMachine.ChangeState(EnemyState.Return);
+        controller.BasicStateMachine.ChangeState(EnemyActionEnum.Return);
     }
     private void OnValidate()
     {

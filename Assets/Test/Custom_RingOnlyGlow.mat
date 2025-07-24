@@ -29,9 +29,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CircleRadius: 0.352
+    - _CircleRadius: 0.368
     - _GlowIntensity: 0.2
-    - _GlowRange: 0.064
+    - _GlowRange: 0.114
     - _GlowSoftness: 0.011
     - _GlowStrength: 3.05
     - _GlowWidth: 0

@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8f3278400377b4880c6bca9a3d7fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: a7df0d474df11194e9a81497ceca8fdf, type: 2}
   _rb: {fileID: 267156249908824472}
   _anim: {fileID: -4838168921377332254}
   _swordAnim: {fileID: 2632989158722518406}

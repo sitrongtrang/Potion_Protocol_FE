@@ -29,8 +29,9 @@ public class ColliderSaver : MonoBehaviour
 
     public GameObject mapGameObject;
     public List<Tilemap> tilemaps;
-    public Color gizmoColor = Color.red;
-    private ColliderDataList loadedList;
+
+    private ColliderDataList nonTriggerList;
+    private ColliderDataList triggerList;
 
     private void Start()
     {
@@ -39,15 +40,17 @@ public class ColliderSaver : MonoBehaviour
 
     public void SaveColliders()
     {
-        var list = new ColliderDataList { colliders = new List<ColliderData>() };
-        var all = mapGameObject.GetComponentsInChildren<Collider2D>();
+        nonTriggerList = new ColliderDataList { colliders = new List<ColliderData>() };
+        triggerList = new ColliderDataList { colliders = new List<ColliderData>() };
+        var all = mapGameObject.GetComponentsInChildren<Collider2D>(true);
         foreach (var col in all)
         {
             if (col is TilemapCollider2D || col is CompositeCollider2D)
                 continue;
 
+            var targetList = col.isTrigger ? triggerList : nonTriggerList;
             var b = col.bounds;
-            list.colliders.Add(new ColliderData
+            targetList.colliders.Add(new ColliderData
             {
                 centerX = b.center.x,
                 centerY = b.center.y,
@@ -65,6 +68,7 @@ public class ColliderSaver : MonoBehaviour
             var comp = tm.GetComponent<CompositeCollider2D>();
             if (comp == null) continue;
 
+            var targetList = comp.isTrigger ? triggerList : nonTriggerList;
             for (int i = 0; i < comp.pathCount; i++)
             {
                 int pointCount = comp.GetPathPointCount(i);
@@ -85,23 +89,44 @@ public class ColliderSaver : MonoBehaviour
                 data.centerX = sumX / pointCount;
                 data.centerY = sumY / pointCount;
 
-                list.colliders.Add(data);
+                targetList.colliders.Add(data);
             }
         }
 
-        string json = JsonUtility.ToJson(list, prettyPrint: true);
-        string path = Path.Combine(Application.persistentDataPath, "colliders.json");
-        File.WriteAllText(path, json);
-        Debug.Log($"Saved {list.colliders.Count} total colliders to:\n{path}");
-        loadedList = list;
+        string basePath = Application.persistentDataPath;
+        string jsonNonTrigger = JsonUtility.ToJson(nonTriggerList, prettyPrint: true);
+        string pathNon = Path.Combine(basePath, "colliders_nonTrigger.json");
+        File.WriteAllText(pathNon, jsonNonTrigger);
+
+        string jsonTrigger = JsonUtility.ToJson(triggerList, prettyPrint: true);
+        string pathTrig = Path.Combine(basePath, "colliders_trigger.json");
+        File.WriteAllText(pathTrig, jsonTrigger);
+
+        Debug.Log($"Saved {nonTriggerList.colliders.Count} non-trigger colliders to: {pathNon}");
+        Debug.Log($"Saved {triggerList.colliders.Count} trigger colliders to: {pathTrig}");
     }
 
     private void OnDrawGizmos()
     {
-        if (loadedList == null) return;
+        if (nonTriggerList == null && triggerList == null) return;
 
-        Gizmos.color = gizmoColor;
-        foreach (var c in loadedList.colliders)
+        // draw non-trigger
+        if (nonTriggerList != null)
+        {
+            Gizmos.color = Color.red;
+            DrawList(nonTriggerList);
+        }
+
+        if (triggerList != null)
+        {
+            Gizmos.color = Color.yellow;
+            DrawList(triggerList);
+        }
+    }
+
+    private void DrawList(ColliderDataList list)
+    {
+        foreach (var c in list.colliders)
         {
             var verts = c.vertices;
             int n = verts.Count;
@@ -110,10 +135,7 @@ public class ColliderSaver : MonoBehaviour
             {
                 var a = verts[i];
                 var b = verts[(i + 1) % n];
-                Gizmos.DrawLine(
-                    new Vector3(a.x, a.y, 0f),
-                    new Vector3(b.x, b.y, 0f)
-                );
+                Gizmos.DrawLine(new Vector3(a.x, a.y, 0f), new Vector3(b.x, b.y, 0f));
             }
         }
     }
