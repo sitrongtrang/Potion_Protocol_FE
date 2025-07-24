@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: 31f62a5487482b04f895eef181af0796
+guid: 7c70c0886599fac498ed5ef0c1aa6dee
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7406991634428072577
-    second: "20250723_1130_V\xF2ng s\xE1ng ph\xE1t quang_remix_01k0trjqz0fp4thq41y1jb1ksp_0"
+      213: 4424549499668064748
+    second: character skill effect 1_0
+  - first:
+      213: -8800332805381886634
+    second: character skill effect 1_1
+  - first:
+      213: 1789478209761048371
+    second: character skill effect 1_2
+  - first:
+      213: -5688427470374776240
+    second: character skill effect 1_3
+  - first:
+      213: 2780785601327326878
+    second: character skill effect 1_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,10 +61,10 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
-  spritePivot: {x: 0.501665, y: 0.51887006}
-  spritePixelsToUnits: 640
-  spriteBorder: {x: 163, y: 450, z: 168, w: 392}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -139,23 +151,111 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "20250723_1130_V\xF2ng s\xE1ng ph\xE1t quang_remix_01k0trjqz0fp4thq41y1jb1ksp_0"
+      name: character skill effect 1_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 290
-        width: 1014
-        height: 1014
+        x: 0
+        y: 0
+        width: 1024
+        height: 1536
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1821068c5abeac660800000000000000
-      internalID: 7406991634428072577
+      spriteID: ce9e8d2e358276d30800000000000000
+      internalID: 4424549499668064748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character skill effect 1_1
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 444
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65deefd80ffeed580800000000000000
+      internalID: -8800332805381886634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character skill effect 1_2
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 391
+        width: 26
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 337fb1263f085d810800000000000000
+      internalID: 1789478209761048371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character skill effect 1_3
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 367
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 052dcb1ba55ae01b0800000000000000
+      internalID: -5688427470374776240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character skill effect 1_4
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 335
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e96e2ab65c5579620800000000000000
+      internalID: 2780785601327326878
       vertices: []
       indices: 
       edges: []
@@ -164,8 +264,8 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 752f546144c5c8649a1d46ef2fd315cb
-    internalID: -1639459152
+    spriteID: 
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -174,7 +274,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "20250723_1130_V\xF2ng s\xE1ng ph\xE1t quang_remix_01k0trjqz0fp4thq41y1jb1ksp_0": 7406991634428072577
+      character skill effect 1_0: 4424549499668064748
+      character skill effect 1_1: -8800332805381886634
+      character skill effect 1_2: 1789478209761048371
+      character skill effect 1_3: -5688427470374776240
+      character skill effect 1_4: 2780785601327326878
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
