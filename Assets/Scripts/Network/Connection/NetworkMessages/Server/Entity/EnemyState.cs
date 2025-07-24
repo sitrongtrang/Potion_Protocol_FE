@@ -1,14 +1,14 @@
 using System;
 
 [Flags]
-public enum EnemyStt
+public enum EnemyStateFlags
 {
     None = 0,
-    Idle = 1 << 0,
-    Move = 1 << 1,
-
+    Return = 1 << 0,
+    Patrol = 1 << 1,
+    Idle = 1 << 2,
 }
-public class EnemyStateServer
+public class EnemyState
 {
     public string EnemyId;
     public float PositionX;

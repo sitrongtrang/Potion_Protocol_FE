@@ -15,7 +15,7 @@ public class GameStateUpdate : IStateSnapshot, IServerStateSnapshot
     public int ProcessedInputSequence;
     public PlayerState[] PlayerStates;
     public StationState[] StationStates;
-    public EnemyStateServer[] EnemyStates;
+    public EnemyState[] EnemyStates;
     public ItemState[] ItemStates;
     public int CurrentGameTime;
     public int CurrentScore;

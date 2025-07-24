@@ -20,7 +20,7 @@ public class PatrolState : IBasicState<EnemyController>
     {
         if (_owner.IsPlayerInRange)
         {
-            if (_owner.BasicStateMachine.ChangeState(EnemyState.Chase))
+            if (_owner.BasicStateMachine.ChangeState(EnemyActionEnum.Chase))
                 return;
         }
         
@@ -31,8 +31,8 @@ public class PatrolState : IBasicState<EnemyController>
         else
         {
             if (
-                _owner.BasicStateMachine.ChangeState(EnemyState.Idle, new object[]{
-                    EnemyState.Patrol, _owner.EnemyConf.PatrolInterval
+                _owner.BasicStateMachine.ChangeState(EnemyActionEnum.Idle, new object[]{
+                    EnemyActionEnum.Patrol, _owner.EnemyConf.PatrolInterval
                 })
             ) return;
         }
