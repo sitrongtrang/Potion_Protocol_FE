@@ -4,7 +4,7 @@ public class ChaseState : IBasicState<EnemyController>
 {
     private EnemyController _owner;
     private float _attackCooldown;
-    private EnemyState _previousState;
+    private EnemyActionEnum _previousState;
     public ChaseState(EnemyController controller)
     {
         _owner = controller;
@@ -12,8 +12,8 @@ public class ChaseState : IBasicState<EnemyController>
     public void Enter(EnemyController owner, object[] enterParameters)
     {
         if (enterParameters != null)
-            _previousState = (EnemyState)enterParameters[0];
-        if (_previousState == EnemyState.Attack)
+            _previousState = (EnemyActionEnum)enterParameters[0];
+        if (_previousState == EnemyActionEnum.Attack)
         {
             _attackCooldown = (float)enterParameters[1];
         }
@@ -28,7 +28,7 @@ public class ChaseState : IBasicState<EnemyController>
         if (_owner.IsTooFarFromPatrolCenter())
         {
             if (
-                _owner.BasicStateMachine.ChangeState(EnemyState.Return)
+                _owner.BasicStateMachine.ChangeState(EnemyActionEnum.Return)
             ) return;
         }
 
@@ -38,7 +38,7 @@ public class ChaseState : IBasicState<EnemyController>
         if (!_owner.IsPlayerInRange)
         {
             if (
-                _owner.BasicStateMachine.ChangeState(EnemyState.Search, new object[]{
+                _owner.BasicStateMachine.ChangeState(EnemyActionEnum.Search, new object[]{
                     _owner.EnemyConf.SearchDuration
                 })  
             ) return;
@@ -48,7 +48,7 @@ public class ChaseState : IBasicState<EnemyController>
         if (_owner.DistanceToPlayer() <= _owner.EnemyConf.AttackRadius)
         {
             if (
-                _owner.BasicStateMachine.ChangeState(EnemyState.Attack, new object[]{
+                _owner.BasicStateMachine.ChangeState(EnemyActionEnum.Attack, new object[]{
                     _attackCooldown
                 })
             ) return;

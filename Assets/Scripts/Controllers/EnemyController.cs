@@ -27,8 +27,8 @@ public class EnemyController : MonoBehaviour
     public bool IsPlayerInRange => _isPlayerInRange;
     [SerializeField] private EnemyImpactUI _enemyImpactUI;
     [Header("Enemy State")]
-    public BasicStateMachine<EnemyController, EnemyState> BasicStateMachine { get; private set; }
-    public EnemyState CurrentEnemyStateEnum => BasicStateMachine.CurrentStateEnum;
+    public BasicStateMachine<EnemyController, EnemyActionEnum> BasicStateMachine { get; private set; }
+    public EnemyActionEnum CurrentEnemyStateEnum => BasicStateMachine.CurrentStateEnum;
     [Header("Pathfinding")]
     public int CurrentPathIndex { get; private set; }
     public List<Vector2> PathVectorList { get; private set; }

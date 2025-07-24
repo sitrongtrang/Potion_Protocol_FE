@@ -1,7 +1,7 @@
 using System;
 
 [Serializable]
-public enum EnemyState
+public enum EnemyActionEnum
 {
     // MOVEMENT
     Idle,

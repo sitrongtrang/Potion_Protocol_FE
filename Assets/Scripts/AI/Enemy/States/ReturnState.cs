@@ -16,7 +16,7 @@ public class ReturnState : IBasicState<EnemyController>
     {
         if (_owner.IsPlayerInRange && !_owner.IsTooFarFromPatrolCenter())
         {
-            if (_owner.BasicStateMachine.ChangeState(EnemyState.Chase))
+            if (_owner.BasicStateMachine.ChangeState(EnemyActionEnum.Chase))
                 return;
         }
         
@@ -27,7 +27,7 @@ public class ReturnState : IBasicState<EnemyController>
         }
         else
         {   
-            if (_owner.BasicStateMachine.ChangeState(EnemyState.Patrol))
+            if (_owner.BasicStateMachine.ChangeState(EnemyActionEnum.Patrol))
                 return;
         }
     }
