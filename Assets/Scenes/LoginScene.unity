@@ -626,8 +626,8 @@ MonoBehaviour:
 
     PROTOCOL'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6bbfcc8052fedb64189e401f243702b9, type: 2}
-  m_sharedMaterial: {fileID: -5105215184730629317, guid: 6bbfcc8052fedb64189e401f243702b9, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cdcf458907e9dd24b8f4dfbcb0fa24c0, type: 2}
+  m_sharedMaterial: {fileID: 3065943202285688174, guid: cdcf458907e9dd24b8f4dfbcb0fa24c0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
