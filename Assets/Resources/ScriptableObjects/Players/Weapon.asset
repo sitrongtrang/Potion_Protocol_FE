@@ -12,11 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97329eacfdb3fa24193ef3709532944f, type: 3}
   m_Name: Weapon
   m_EditorClassIdentifier: 
-  _attackRange: 0.7
+  _attackRange: 0.3
   _attackDamage: 2
-  _enemyLayers:
-    serializedVersion: 2
-    m_Bits: 256
-  _wallLayer:
-    serializedVersion: 2
-    m_Bits: 128

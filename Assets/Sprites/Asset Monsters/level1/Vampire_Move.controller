@@ -65,8 +65,8 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
-  m_BlendParameter: Blend
-  m_BlendParameterY: Blend
+  m_BlendParameter: MoveX
+  m_BlendParameterY: MoveY
   m_MinThreshold: 0
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 1
@@ -233,7 +233,7 @@ AnimatorStateMachine:
     m_Position: {x: 444.13586, y: 11.543198, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4180229002348157687}
-    m_Position: {x: 450, y: 190, z: 0}
+    m_Position: {x: 440, y: 220, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

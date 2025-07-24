@@ -60,7 +60,7 @@ public class PlayerAttack
         {
             Debug.Log("Vướng tường nè má.");
             _canAttack = true;
-            yield break;
+            //yield break;
         }
 
         // Chạy anim
