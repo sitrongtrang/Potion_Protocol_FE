@@ -5,9 +5,10 @@ using UnityEngine;
 public class ItemSourceController : MonoBehaviour
 {
     [SerializeField] private ItemSourceConfig _config;
-    public ItemSourceConfig Config => _config;
-    private ItemSourceSpawner _itemSourceSpawner;
     [SerializeField] private Collider2D _collider;
+    private ItemSourceSpawner _itemSourceSpawner;
+
+    public ItemSourceConfig Config => _config;
 
     public void Initialize(ItemSourceSpawner spawner)
     {

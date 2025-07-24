@@ -9,6 +9,10 @@ public class PlayerInventory
     private InputAction[] _inputAction;
     private ItemConfig[] items = new ItemConfig[GameConstants.MaxSlot];
     private int _choosingSlot = 0;
+    private bool _isAutoFocus;
+
+    public event Action<int, int> OnChoosingSlotChanged;
+    public event Action<int, Sprite> OnSlotUpdated;
     public int ChoosingSlot
     {
         get => _choosingSlot;
@@ -19,12 +23,19 @@ public class PlayerInventory
             if (oldSlot != value)
             {
                 OnChoosingSlotChanged?.Invoke(oldSlot, value);
-            } 
+            }
         }
     }
-    private bool _isAutoFocus;
-    public event Action<int, int> OnChoosingSlotChanged;
-    public event Action<int, Sprite> OnSlotUpdated;
+
+    public ItemConfig Get(int index) 
+    {
+        if (index < 0 || index >= GameConstants.MaxSlot)
+        {
+            Debug.LogWarning("Invalid slot index.");
+            return null;
+        }
+        return items[index];
+    }
 
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {

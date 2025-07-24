@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class PlayerInteraction
 {
-    private PlayerInputManager _inputManager;
     private PlayerController _player;
     private PlayerInventory _inventory;
-    [SerializeField] private List<GameObject> _itemsInCollision = new List<GameObject>();
+    private PlayerInputManager _inputManager;
+    private List<GameObject> _itemsInCollision = new List<GameObject>();
     private StationController _nearStation;
-    private GameObject _nearSubmissionPoint;
-    private GameObject _nearCraftPoint;
+    private bool _isNearStation = false;
+    private bool _isNearSubmissionPoint = false;
+    private bool _isNearCraftPoint = false;
 
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
@@ -22,13 +23,13 @@ public class PlayerInteraction
         _inputManager.controls.Player.Transfer.performed += ctx => TransferToStation();
         _inputManager.controls.Player.Attack.performed += ctx =>
         {
-            if (_nearSubmissionPoint == null && _nearStation == null) _player.StartCoroutine(_player.Attack.Attack());
+            if (!_isNearSubmissionPoint && !_isNearStation) _player.StartCoroutine(_player.Attack.Attack());
         };
         _inputManager.controls.Player.Exploit.performed += ctx => { };
         _inputManager.controls.Player.Combine.performed += ctx =>
         {
             // combine & craft item
-            if (_nearCraftPoint) _nearStation.StartCrafting();
+            if (_isNearCraftPoint) _nearStation.StartCrafting();
         };
         inputManager.controls.Player.Drop.performed += ctx => DropItem();
         inputManager.controls.Player.Pickup.performed += ctx => PickUpItem();
@@ -71,7 +72,7 @@ public class PlayerInteraction
 
     void TransferToStation()
     {
-        if (_nearStation == null)
+        if (!_isNearStation || _nearStation == null)
         {
             Debug.Log("No station nearby to transfer item");
             return;
@@ -91,16 +92,19 @@ public class PlayerInteraction
 
     void Submit()
     {
-        if (_nearSubmissionPoint == null)
+        if (!_isNearSubmissionPoint)
         {
             Debug.Log("No submission point nearby to submit item");
             return;
         }
         
-        FinalProductConfig submittedProduct = _inventory.Remove() as FinalProductConfig;
-        if (submittedProduct)
+        ItemConfig submittedItem = _inventory.Get(_inventory.ChoosingSlot);
+        if (submittedItem.Type == ItemType.Potion)
         {
-            Debug.Log($"Submitted {submittedProduct.Name} in slot {_inventory.ChoosingSlot + 1}");
+            bool submitted = LevelManager.Instance.OnProductSubmitted(submittedItem);  
+            if (submitted) _inventory.Remove();
+            // Handle submission logic, e.g., update score, etc.  
+            Debug.Log($"Submitted {submittedItem.Name} in slot {_inventory.ChoosingSlot + 1}");
         }
         else
         {
@@ -135,19 +139,21 @@ public class PlayerInteraction
         }
         if (collider.gameObject.tag == "SubmissionPoint")
         {
-            _nearSubmissionPoint = collider.gameObject;
+            _isNearSubmissionPoint = true;
         }
         if (collider.gameObject.tag == "Station")
         {
+            _isNearStation = true;
             _nearStation = collider.gameObject.GetComponentInParent<StationController>();
             // display UI to inform player to transfer item
         }
         if (collider.gameObject.tag == "CraftPoint")
         {
-            _nearCraftPoint = collider.gameObject;
+            _isNearCraftPoint = true;
             _nearStation = collider.gameObject.GetComponentInParent<StationController>();
         }
     }
+
     public void OnTriggerExit2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Item")
@@ -160,16 +166,16 @@ public class PlayerInteraction
         }
         if (collider.gameObject.tag == "Station")
         {
-            _nearStation = null;
+            _isNearStation = false;
             // disable "inform player to transfer item"
         }
         if (collider.gameObject.tag == "SubmissionPoint")
         {
-            _nearSubmissionPoint = null;
+            _isNearSubmissionPoint = false;
         }
         if (collider.gameObject.tag == "CraftPoint")
         {
-            _nearCraftPoint = null;
+            _isNearCraftPoint = false;
         }
     }
 }

@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    private float _currentCooldown;
     [SerializeField] private EnemySpawnerConfig _enemySpawnerConfig;
+    private float _currentCooldown;
     private List<Transform> _positionsToSpawn;
     private List<EnemyController> _enemiesToSpawn;
     private List<int> _unspawnedEnemyIndices = new();

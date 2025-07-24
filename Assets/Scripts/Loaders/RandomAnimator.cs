@@ -3,6 +3,7 @@
 public class RandomAnimator : MonoBehaviour
 {
     public AnimatorOverrideController[] OverrideControllers;
+    
     void Awake()
     {
         if (OverrideControllers == null || OverrideControllers.Length == 0)
