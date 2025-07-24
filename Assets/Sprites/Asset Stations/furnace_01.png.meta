@@ -1994,9 +1994,9 @@ TextureImporter:
       name: ore_75
       rect:
         serializedVersion: 2
-        x: 2
+        x: 1
         y: 0
-        width: 61
+        width: 62
         height: 98
       alignment: 9
       pivot: {x: 0.5, y: 0.2}
@@ -2016,9 +2016,9 @@ TextureImporter:
       name: furnace_01_0
       rect:
         serializedVersion: 2
-        x: 194
+        x: 193
         y: 0
-        width: 63
+        width: 62
         height: 98
       alignment: 9
       pivot: {x: 0.5, y: 0.2}
@@ -2038,7 +2038,7 @@ TextureImporter:
       name: furnace_01_1
       rect:
         serializedVersion: 2
-        x: 130
+        x: 129
         y: 0
         width: 62
         height: 98
@@ -2060,7 +2060,7 @@ TextureImporter:
       name: furnace_01_2
       rect:
         serializedVersion: 2
-        x: 66
+        x: 65
         y: 0
         width: 62
         height: 98
