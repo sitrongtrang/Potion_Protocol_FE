@@ -1,0 +1,98 @@
+[
+    {
+        "id": "Le1",
+        "monters": [
+            {
+                "$binary": {
+                    "base64": "5aIeT2ZiQB+MLbYoPWujoQ==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "48ZDhG7hRFit4qLkFpACOg==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "ll7x2EjISBu+koeZvj8StA==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "ores": [
+            {
+                "$binary": {
+                    "base64": "QT4xI05nQeaygCKyojAvxQ==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "Y6rdL2yHRxeAp86ZXfS+NQ==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "Tx+BCkpFSiCZsYj5T8nYrw==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "plants": [
+            {
+                "$binary": {
+                    "base64": "37KJtzntQGe8z6ZYkNBLew==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "mxuA+pw9TCa8T3xUjy4shQ==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "MVptJlxxRwm24o66cyrHlg==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "/or8UqRuReiZhUUtoXYWpA==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "A/CKGH55TdWHnJyOVu5stw==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "products": [
+            {
+                "$binary": {
+                    "base64": "MrgglPfRSv6+v8ZBPfjNqQ==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "R6LSWciWQr6XSUY84+l62g==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "5b3f8k2eQOqq3UEZPuwwCA==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "map": "M1"
+    }
+]
