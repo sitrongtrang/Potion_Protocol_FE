@@ -164,9 +164,11 @@ public class NetworkManager : MonoBehaviour
                         ServerMessage message = Serialization.DeserializeMessage(buffer);
                         if (message != null)
                         {
+                            if (HandleSystemMessage(message))
+                                return;
                             UnityMainThreadDispatcher.Instance.Enqueue(() =>
                             {
-                                ProcessIncomingMessage(message);
+                                NetworkEvents.InvokeMessageReceived(message);
                             });
                         }
 
@@ -192,16 +194,6 @@ public class NetworkManager : MonoBehaviour
                 break;
             }
         }
-    }
-
-    private void ProcessIncomingMessage(ServerMessage message)
-    {
-        // First handle system messages
-        if (HandleSystemMessage(message))
-            return;
-
-        // Then dispatch to game systems
-        NetworkEvents.InvokeMessageReceived(message);
     }
 
     public void SendMessage(ClientMessage message)
