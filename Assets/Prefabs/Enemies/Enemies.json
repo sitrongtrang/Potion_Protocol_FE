@@ -1,0 +1,102 @@
+[
+    {
+        "_id": {
+            "$binary": {
+                "base64": "5aIeT2ZiQB+MLbYoPWujoQ==",
+                "subType": "04"
+            }
+        },
+        "id": "Mo1",
+        "name": "Mireblot",
+        "dropped_item_id": {
+            "$binary": {
+                "base64": "YZazkO1SQm208Vb3kQwbag==",
+                "subType": "04"
+            }
+        },
+        "type": "Slime",
+        "map": "M1",
+        "hp": 4,
+        "attack_damage": 1
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "48ZDhG7hRFit4qLkFpACOg==",
+                "subType": "04"
+            }
+        },
+        "id": "Mo2",
+        "name": "Scarbrute",
+        "dropped_item_id": {
+            "$binary": {
+                "base64": "UFRn/c5VSHyICT2AzwKzwg==",
+                "subType": "04"
+            }
+        },
+        "type": "Orc",
+        "map": "M1",
+        "hp": 8,
+        "attack_damage": 3
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "yOMDDWZkSTK+WAg4RXynOg==",
+                "subType": "04"
+            }
+        },
+        "id": "Mo3",
+        "name": "Filthgrub",
+        "dropped_item_id": {
+            "$binary": {
+                "base64": "TB1C8Me1TaKF+cCjparOmg==",
+                "subType": "04"
+            }
+        },
+        "type": "Maggot",
+        "map": "M1",
+        "hp": 5,
+        "attack_damage": 2
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "ll7x2EjISBu+koeZvj8StA==",
+                "subType": "04"
+            }
+        },
+        "id": "Mo4",
+        "name": "Dreadshade",
+        "dropped_item_id": {
+            "$binary": {
+                "base64": "YCbzyWdJTfi3unpLaE2iOA==",
+                "subType": "04"
+            }
+        },
+        "type": "Vampire",
+        "map": "M1",
+        "hp": 6,
+        "attack_damage": 5
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "NEr4cuFxTa60ryp1P1zSzg==",
+                "subType": "04"
+            }
+        },
+        "id": "Mo5",
+        "name": "Webspinner",
+        "dropped_item_id": {
+            "$binary": {
+                "base64": "FdRVM9t7SZOnPN3JCLTMyw==",
+                "subType": "04"
+            }
+        },
+        "type": "Spider",
+        "map": "M1",
+        "hp": 4,
+        "attack_damage": 4
+    }
+]

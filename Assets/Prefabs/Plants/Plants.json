@@ -1,0 +1,92 @@
+[
+    {
+        "_id": {
+            "$binary": {
+                "base64": "37KJtzntQGe8z6ZYkNBLew==",
+                "subType": "04"
+            }
+        },
+        "id": "P1",
+        "name": "Nightshade Vine",
+        "dropped_item_id": {
+            "$binary": {
+                "base64": "bVf9Lr3NS4ObsdgkYeuaIQ==",
+                "subType": "04"
+            }
+        },
+        "type": "Vine",
+        "map": "M1"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "mxuA+pw9TCa8T3xUjy4shQ==",
+                "subType": "04"
+            }
+        },
+        "id": "P2",
+        "name": "Glowing Fern",
+        "dropped_item_id": {
+            "$binary": {
+                "base64": "qanQTQSoR92JuHfqm3mHOw==",
+                "subType": "04"
+            }
+        },
+        "type": "Fern",
+        "map": "M1"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "MVptJlxxRwm24o66cyrHlg==",
+                "subType": "04"
+            }
+        },
+        "id": "P3",
+        "name": "Moss Herb",
+        "dropped_item_id": {
+            "$binary": {
+                "base64": "+8PxH/bbQuW1FkUSTeQipg==",
+                "subType": "04"
+            }
+        },
+        "type": "Herb",
+        "map": "M1"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "/or8UqRuReiZhUUtoXYWpA==",
+                "subType": "04"
+            }
+        },
+        "id": "P4",
+        "name": "Bloodroot Flower",
+        "dropped_item_id": {
+            "$binary": {
+                "base64": "5bho7pcBS+uplQkbnHvd",
+                "subType": "04"
+            }
+        },
+        "type": "Flower",
+        "map": "M1"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "A/CKGH55TdWHnJyOVu5stw==",
+                "subType": "04"
+            }
+        },
+        "id": "P5",
+        "name": "Witch's Ivy",
+        "dropped_item_id": {
+            "$binary": {
+                "base64": "0su3Z+P1QBiTdM0Mi8ny0w==",
+                "subType": "04"
+            }
+        },
+        "type": "Ivy",
+        "map": "M1"
+    }
+]
