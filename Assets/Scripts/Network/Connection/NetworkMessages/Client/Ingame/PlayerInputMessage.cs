@@ -5,12 +5,14 @@ public enum InputFlags
 {
     None = 0,
     Dash = 1 << 0,
-    Attack = 1 << 1,
-    Pickup = 1 << 2,
-    Drop = 1 << 3,
-    Transfer = 1 << 4,
-    Craft = 1 << 5,
-    Submit = 1 << 6,
+    Move = 1 << 1,
+    Attack = 1 << 2,
+    Pickup = 1 << 3,
+    Drop = 1 << 4,
+    Transfer = 1 << 5,
+    Craft = 1 << 6,
+    Submit = 1 << 7,
+    UseAbility = 1 << 8,
 }
 
 [Serializable]
@@ -26,15 +28,15 @@ public class PlayerInputMessage : ClientMessage, IInputSnapshot
         MoveDirX = playerInputSnapshot.MoveDir.x;
         MoveDirY = playerInputSnapshot.MoveDir.y;
 
-        Flags = playerInputSnapshot.DashPressed ? Flags |= (int)InputFlags.Dash : Flags ;
+        Flags = playerInputSnapshot.DashPressed ? Flags |= (int)InputFlags.Dash : Flags;
 
-        Flags = playerInputSnapshot.AttackPressed ? Flags |= (int)InputFlags.Attack : Flags ;
+        Flags = playerInputSnapshot.AttackPressed ? Flags |= (int)InputFlags.Attack : Flags;
 
-        Flags = playerInputSnapshot.PickupPressed ? Flags |= (int)InputFlags.Pickup : Flags ;
-        Flags = playerInputSnapshot.DropPressed ? Flags |= (int)InputFlags.Drop : Flags ;
-        Flags = playerInputSnapshot.TransferPressed ? Flags |= (int)InputFlags.Transfer : Flags ;
-        Flags = playerInputSnapshot.CombinePressed ? Flags |= (int)InputFlags.Craft : Flags ;
-        Flags = playerInputSnapshot.SubmitPressed ? Flags |= (int)InputFlags.Submit : Flags ;
+        Flags = playerInputSnapshot.PickupPressed ? Flags |= (int)InputFlags.Pickup : Flags;
+        Flags = playerInputSnapshot.DropPressed ? Flags |= (int)InputFlags.Drop : Flags;
+        Flags = playerInputSnapshot.TransferPressed ? Flags |= (int)InputFlags.Transfer : Flags;
+        Flags = playerInputSnapshot.CombinePressed ? Flags |= (int)InputFlags.Craft : Flags;
+        Flags = playerInputSnapshot.SubmitPressed ? Flags |= (int)InputFlags.Submit : Flags;
 
     }
 
