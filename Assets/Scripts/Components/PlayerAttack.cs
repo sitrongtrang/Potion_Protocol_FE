@@ -7,7 +7,6 @@ public class PlayerAttack
 {
     private float _damageMutiplayer = 1;
     private PlayerInputManager _inputManager;
-    private InputAction[] _skillActions;
     // bool _isAttacking = false;
     private bool _canAttack = true;
     private bool[] _canUseSkills = new bool[GameConstants.NumSkills];
