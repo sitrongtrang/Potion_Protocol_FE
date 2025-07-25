@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 957831578644686149}
   - component: {fileID: 2756712652034502478}
   m_Layer: 0
-  m_Name: Rune of Tides
+  m_Name: Orc Tusk
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 718545363
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1783450677, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
+  m_Sprite: {fileID: 6003512801403458610, guid: 5baadef4b57a8ab42838bad96b712f13, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

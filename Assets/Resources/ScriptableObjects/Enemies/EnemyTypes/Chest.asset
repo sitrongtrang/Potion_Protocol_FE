@@ -27,4 +27,4 @@ MonoBehaviour:
   _searchRadius: 5
   _searchDuration: 100
   _searchInterval: 1
-  _item: {fileID: 0}
+  _item: {fileID: 11400000, guid: c3bc7da12f0b7f843a16f7ea9c4e04bc, type: 2}

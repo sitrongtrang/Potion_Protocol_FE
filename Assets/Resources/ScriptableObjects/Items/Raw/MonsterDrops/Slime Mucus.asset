@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e24b283275af73a4ab4c7144cac466b6, type: 3}
-  m_Name: Prismwing
+  m_Name: Slime Mucus
   m_EditorClassIdentifier: 
-  _name: Prismwing
-  _icon: {fileID: -1240918863, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
-  _id: I4
+  _name: Slime Mucus
+  _icon: {fileID: 3560892536975691000, guid: 043c01b7f571aa74d9d7adb39303ddb8, type: 3}
+  _id: I1
   _type: 0
-  _droppedBy: {fileID: 11400000, guid: 99044dd267a0afa45b8b2c1b347cb735, type: 2}
+  _droppedBy: {fileID: 11400000, guid: 102769852e166fd4f8e5161856ae8051, type: 2}
   _expireTime: 30

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e24b283275af73a4ab4c7144cac466b6, type: 3}
-  m_Name: Rune of Tides
+  m_Name: Vampire Wing
   m_EditorClassIdentifier: 
-  _name: Rune of Tides
-  _icon: {fileID: -1783450677, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
-  _id: I2
+  _name: Vampire Wing
+  _icon: {fileID: -8574869354052386629, guid: 11cd5328e2a295b47ba3598be320b9eb, type: 3}
+  _id: I4
   _type: 0
-  _droppedBy: {fileID: 11400000, guid: 633df65d44353ef4bae4a2d6e85e8b70, type: 2}
+  _droppedBy: {fileID: 11400000, guid: 99044dd267a0afa45b8b2c1b347cb735, type: 2}
   _expireTime: 30

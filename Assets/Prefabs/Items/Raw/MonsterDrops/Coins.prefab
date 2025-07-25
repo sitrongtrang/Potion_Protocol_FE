@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 957831578644686149}
   - component: {fileID: 2756712652034502478}
   m_Layer: 0
-  m_Name: Glimmerleaf
+  m_Name: Coins
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 718545363
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 542309916, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
+  m_Sprite: {fileID: 3659094839734951899, guid: 754ed49a3daa03e48af644ea09e5c3be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
