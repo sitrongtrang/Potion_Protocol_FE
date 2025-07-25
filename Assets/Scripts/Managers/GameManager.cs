@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     [SerializeField] public int PlayedLevels = 3;
     public int CurrentLevel;
+    public LevelConfig CurrentLevelConfig;
     public int Score;
     public int Star;
 

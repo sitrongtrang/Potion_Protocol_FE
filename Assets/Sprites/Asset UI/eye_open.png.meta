@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 997d665de400e4849a69f726d829c0bb
+guid: a5369683e363bed48aebb43301aac0e0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 285831371917872981
-    second: eye_open_0
-  - first:
-      213: 13094374694972094
-    second: eye_open_1
+      213: -3683519701644557706
+    second: icons8-eye-50_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -54,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 120
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -116,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: eye_open_1
+      name: icons8-eye-50_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 48
-        height: 48
+        y: 11
+        width: 50
+        height: 28
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ebaef30b3458e2000800000000000000
-      internalID: 13094374694972094
+      spriteID: 672c254f85281ecc0800000000000000
+      internalID: -3683519701644557706
       vertices: []
       indices: 
       edges: []
@@ -141,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 8b910cedd796674449ad05b93bf47cbc
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -151,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      eye_open_0: 285831371917872981
-      eye_open_1: 13094374694972094
+      icons8-eye-50_0: -3683519701644557706
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
