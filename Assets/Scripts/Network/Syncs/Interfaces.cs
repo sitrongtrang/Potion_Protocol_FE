@@ -13,11 +13,17 @@ public interface IServerStateSnapshot
 {
     public int ServerSequence { get; }
 }
-public interface INetworkSimulator<TInputListener, TInputMessage, TSnapshot>
-    where TInputMessage : IInputSnapshot
+public interface INetworkSimulator<TInputListener, TSnapshot>
     where TSnapshot : IStateSnapshot
 {
     void Simulate(TInputListener input, Func<TInputListener, TSnapshot> simulateAndReturnSnapshot);
+    void Reset();
+}
+
+public interface INetworkReconcilor<TInputMessage, TSnapshot>
+    where TInputMessage : IInputSnapshot
+    where TSnapshot : IStateSnapshot
+{
     void Reconcile(
         TSnapshot serverSnapshot,
         Action<TSnapshot> resolveCannotReconcile,
@@ -27,6 +33,7 @@ public interface INetworkSimulator<TInputListener, TInputMessage, TSnapshot>
     );
     void Reset();
 }
+
 public interface INetworkInterpolator<TClientState, TServerState>
     where TClientState : IServerStateSnapshot
     where TServerState : IServerStateSnapshot
