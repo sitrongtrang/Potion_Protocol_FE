@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 577ab485cb38b0b45b0317a97d72eab5
+guid: 3da72ad25e51f3c499eb0e4a923eac1f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7140839936942803760
-    second: PoisonAntidote_0
+      213: -5476297248594744157
+    second: RegenerationPotion_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PoisonAntidote_0
+      name: RegenerationPotion_0
       rect:
         serializedVersion: 2
-        x: 64
-        y: 105
-        width: 281
-        height: 345
+        x: 70
+        y: 146
+        width: 271
+        height: 340
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0d4f99049e3a6ec90800000000000000
-      internalID: -7140839936942803760
+      spriteID: 3acaf05caa84004b0800000000000000
+      internalID: -5476297248594744157
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      PoisonAntidote_0: -7140839936942803760
+      RegenerationPotion_0: -5476297248594744157
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
