@@ -1,22 +1,13 @@
 fileFormatVersion: 2
-guid: 7c70c0886599fac498ed5ef0c1aa6dee
+guid: fd08155fed173dc499a1db73d56ed0fa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4424549499668064748
-    second: character skill effect 1_0
+      213: 3506888837531777672
+    second: 96be1c65-fd34-4895-8b6d-01b579af60bd-size-400x400-removebg-preview_0
   - first:
-      213: -8800332805381886634
-    second: character skill effect 1_1
-  - first:
-      213: 1789478209761048371
-    second: character skill effect 1_2
-  - first:
-      213: -5688427470374776240
-    second: character skill effect 1_3
-  - first:
-      213: 2780785601327326878
-    second: character skill effect 1_4
+      213: 8407386630318336861
+    second: 96be1c65-fd34-4895-8b6d-01b579af60bd-size-400x400-removebg-preview_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -151,13 +142,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: character skill effect 1_0
+      name: 96be1c65-fd34-4895-8b6d-01b579af60bd-size-400x400-removebg-preview_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1024
-        height: 1536
+        x: 29
+        y: 25
+        width: 350
+        height: 360
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +157,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ce9e8d2e358276d30800000000000000
-      internalID: 4424549499668064748
+      spriteID: 88a3dd341d8faa030800000000000000
+      internalID: 3506888837531777672
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character skill effect 1_1
+      name: 96be1c65-fd34-4895-8b6d-01b579af60bd-size-400x400-removebg-preview_1
       rect:
         serializedVersion: 2
-        x: 129
-        y: 444
-        width: 16
-        height: 29
+        x: 224
+        y: 24
+        width: 49
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,74 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 65deefd80ffeed580800000000000000
-      internalID: -8800332805381886634
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character skill effect 1_2
-      rect:
-        serializedVersion: 2
-        x: 881
-        y: 391
-        width: 26
-        height: 76
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 337fb1263f085d810800000000000000
-      internalID: 1789478209761048371
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character skill effect 1_3
-      rect:
-        serializedVersion: 2
-        x: 692
-        y: 367
-        width: 12
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 052dcb1ba55ae01b0800000000000000
-      internalID: -5688427470374776240
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character skill effect 1_4
-      rect:
-        serializedVersion: 2
-        x: 359
-        y: 335
-        width: 9
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e96e2ab65c5579620800000000000000
-      internalID: 2780785601327326878
+      spriteID: d5b2e7598990da470800000000000000
+      internalID: 8407386630318336861
       vertices: []
       indices: 
       edges: []
@@ -274,11 +199,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      character skill effect 1_0: 4424549499668064748
-      character skill effect 1_1: -8800332805381886634
-      character skill effect 1_2: 1789478209761048371
-      character skill effect 1_3: -5688427470374776240
-      character skill effect 1_4: 2780785601327326878
+      96be1c65-fd34-4895-8b6d-01b579af60bd-size-400x400-removebg-preview_0: 3506888837531777672
+      96be1c65-fd34-4895-8b6d-01b579af60bd-size-400x400-removebg-preview_1: 8407386630318336861
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

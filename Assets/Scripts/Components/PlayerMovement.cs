@@ -13,6 +13,11 @@ public class PlayerMovement
     private Vector2 _playerDir;
     private bool _isDashing = false;
     private bool _canDash = true;
+    private float _speedMultiplier = 1;
+    public void SetSpeedMultiplier(float multiplier)
+    {
+        _speedMultiplier *= multiplier;
+    }
 
     public Vector2 MoveDir => _moveDir;
     public Vector2 PlayerDir => _playerDir;
@@ -23,16 +28,51 @@ public class PlayerMovement
         _playerConfig = player.Config;
         _inputManager = inputManager;
 
-        _inputManager.controls.Player.Move.performed += ctx => Move(ctx);
-        _inputManager.controls.Player.Move.canceled += ctx => CancelMove();
-        _inputManager.controls.Player.Dash.performed += ctx => Dash();
+        _inputManager.controls.Player.Move.performed += ctx =>
+        {
+            _moveDir = ctx.ReadValue<Vector2>().normalized;
+            _playerDir = _moveDir;
+            if (!_player) return;
+            if (_player.Animatr)
+            {
+                _player.Animatr.SetFloat("MoveX", _playerDir.x);
+                _player.Animatr.SetFloat("MoveY", _playerDir.y);
+                _player.Animatr.SetBool("IsMoving", true);
+            }
+            if (_player.SwordAnimatr)
+            {
+                _player.SwordAnimatr.SetFloat("MoveX", _playerDir.x);
+                _player.SwordAnimatr.SetFloat("MoveY", _playerDir.y);
+            }
+
+        };
+        _inputManager.controls.Player.Move.canceled += ctx =>
+        {
+            _moveDir = Vector2.zero;
+            if (!_player) return;
+            if (_player.Animatr)
+            {
+                _player.Animatr.SetFloat("MoveX", _playerDir.x);
+                _player.Animatr.SetFloat("MoveY", _playerDir.y);
+                _player.Animatr.SetBool("IsMoving", false);
+            }
+            if (_player.SwordAnimatr)
+            {
+                _player.SwordAnimatr.SetFloat("MoveX", _playerDir.x);
+                _player.SwordAnimatr.SetFloat("MoveY", _playerDir.y);
+            }
+        };
+        _inputManager.controls.Player.Dash.performed += ctx =>
+        {
+            if (_canDash && _player) _player.StartCoroutine(Dash());
+        };
     }
 
     public void Update()
     {
         if (_moveDir != Vector2.zero)
         {
-            Vector2 targetPos = _player.Rb.position + _moveDir * _playerConfig.MoveSpeed * Time.fixedDeltaTime;
+            Vector2 targetPos = _playerConfig.MoveSpeed * Time.fixedDeltaTime * _speedMultiplier * _moveDir + _player.Rb.position;
             _player.Rb.MovePosition(targetPos);
         }
     }

@@ -5,15 +5,18 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttack
 {
-    private PlayerController _player;
-    private GameObject _weapon;
+    private float _damageMutiplayer = 1;
     private PlayerInputManager _inputManager;
     private InputAction[] _skillActions;
     // bool _isAttacking = false;
     private bool _canAttack = true;
     private bool[] _canUseSkills = new bool[GameConstants.NumSkills];
     private bool _isInAction = false;
-
+    private InputAction[] _skillActions;
+    public void SetDamageMultiplier(float multiplier)
+    {
+        _damageMutiplayer *= multiplier;
+    }
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
         for (int i = 0; i < 3; i++)
@@ -143,7 +146,7 @@ public class PlayerAttack
                 EnemyController enemy = hitTargets[i].collider.GetComponent<EnemyController>();
                 if (enemy != null)
                 {
-                    enemy.TakeDamage(_player.Weapon.AttackDamage);
+                    enemy.TakeDamage(_damageMutiplayer * _player.Weapon.AttackDamage);
                 }
             } 
             if (hitTargets[i].collider.CompareTag("ItemSource"))

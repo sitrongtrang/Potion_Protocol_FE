@@ -1,0 +1,27 @@
+[33mf7ca67c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop/Settings[m[33m)[m HEAD@{0}: reset: moving to HEAD~1
+[33m4deb57b[m HEAD@{1}: reset: moving to HEAD~1
+[33mab51b81[m HEAD@{2}: reset: moving to HEAD~1
+[33mc91a085[m[33m ([m[1;31morigin/develop/Settings[m[33m)[m HEAD@{3}: commit: Update from main
+[33mab51b81[m HEAD@{4}: commit (merge): Merge branch 'main' of https://github.com/sitrongtrang/Potion_Protocol_FE into develop/Settings
+[33m4deb57b[m HEAD@{5}: commit: Add skill animation
+[33mf7ca67c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop/Settings[m[33m)[m HEAD@{6}: pull: Merge made by the 'ort' strategy.
+[33mbefd822[m HEAD@{7}: commit: Update from main
+[33m57b2841[m[33m ([m[1;31morigin/develop/refactor[m[33m)[m HEAD@{8}: pull origin main: Fast-forward
+[33m6b5f056[m HEAD@{9}: reset: moving to HEAD~1
+[33ma715bc5[m HEAD@{10}: reset: moving to HEAD~1
+[33m2532af5[m HEAD@{11}: reset: moving to HEAD~1
+[33m3c1cdc6[m HEAD@{12}: reset: moving to HEAD~1
+[33m57b2841[m[33m ([m[1;31morigin/develop/refactor[m[33m)[m HEAD@{13}: reset: moving to HEAD~1
+[33m8bff9bf[m HEAD@{14}: reset: moving to HEAD
+[33m8bff9bf[m HEAD@{15}: reset: moving to HEAD
+[33m8bff9bf[m HEAD@{16}: commit: Update from main
+[33m57b2841[m[33m ([m[1;31morigin/develop/refactor[m[33m)[m HEAD@{17}: pull origin main: Fast-forward
+[33md7fdd02[m HEAD@{18}: commit: Add light for the ring
+[33m8beec69[m HEAD@{19}: commit: Update setting logic
+[33m8250377[m HEAD@{20}: commit: Merge main into this branch
+[33m4f2de00[m HEAD@{21}: commit (merge): Merge branch 'main' of https://github.com/sitrongtrang/Potion_Protocol_FE into develop/Settings
+[33m1a45f4d[m HEAD@{22}: commit: Add friend list scene
+[33m476229b[m[33m ([m[1;32mdevelop/UI[m[33m)[m HEAD@{23}: checkout: moving from develop/UI to develop/Settings
+[33m476229b[m[33m ([m[1;32mdevelop/UI[m[33m)[m HEAD@{24}: commit: Check movement button constraint
+[33mc09a4f0[m[33m ([m[1;32mmain[m[33m)[m HEAD@{25}: checkout: moving from main to develop/UI
+[33mc09a4f0[m[33m ([m[1;32mmain[m[33m)[m HEAD@{26}: clone: from https://github.com/sitrongtrang/Potion_Protocol_FE.git
