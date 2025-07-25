@@ -348,7 +348,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Underground character when using skill_0: 2668488969043331318
+      Underground character when using skill_1: 4981149467117923727
+      Underground character when using skill_2: -3931357203908763101
+      Underground character when using skill_3: 2329733967326720424
+      Underground character when using skill_4: -3630821081553775947
+      Underground character when using skill_5: 4491810170834862968
+      Underground character when using skill_6: -1227465300140890860
+      Underground character when using skill_7: 2683415405452600387
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

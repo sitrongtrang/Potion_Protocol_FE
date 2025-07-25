@@ -198,7 +198,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      character skill effect 2_0: 6733825367254450231
+      character skill effect 2_1: 8946639095580153410
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
