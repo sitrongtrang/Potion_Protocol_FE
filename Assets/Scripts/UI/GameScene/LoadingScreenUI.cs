@@ -53,7 +53,6 @@ public class LoadingScreenUI : MonoBehaviour
 
     public async Task RenderFinish()
     {
-        Debug.Log("hihi");
         while (_currentProgress < 1f)
         {
             _currentProgress = Mathf.MoveTowards(_currentProgress, 1f, _speed * Time.deltaTime);
