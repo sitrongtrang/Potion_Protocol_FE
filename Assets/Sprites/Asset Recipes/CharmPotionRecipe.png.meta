@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      CharmPotionRecipe_0: 7325254680612163781
+      CharmPotionRecipe_1: 7844329783338211239
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

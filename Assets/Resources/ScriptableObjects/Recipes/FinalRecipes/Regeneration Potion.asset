@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66fc6c15e23d5c14ebe8c5270ee5fe6b, type: 3}
   m_Name: Regeneration Potion
   m_EditorClassIdentifier: 
+  _name: 
+  _icon: {fileID: 2327156432000647105, guid: 9a63cf6990f5576448e108a8c4c97aee, type: 3}
   _id: R5
   _craftingTime: 5
   _type: 1

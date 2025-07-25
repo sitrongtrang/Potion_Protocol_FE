@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Orc Tusk_0: 6003512801403458610
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
