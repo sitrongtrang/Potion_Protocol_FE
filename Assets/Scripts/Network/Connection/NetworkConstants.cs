@@ -5,6 +5,6 @@ public class NetworkConstants
     public const float NET_TICK_INTERVAL = NET_TICK_MS / 1000f;
     public const float SIM_TICK_INTERVAL = SIM_TICK_MS / 1000f;
     
-    public const int NET_PRED_BUFFER_SIZE = 8;
-    public const int NET_INTERPOLATION_BUFFER_SIZE = 5;
+    public const int NET_PRED_BUFFER_SIZE = 12;
+    public const int NET_INTERPOLATION_BUFFER_SIZE = 12;
 }

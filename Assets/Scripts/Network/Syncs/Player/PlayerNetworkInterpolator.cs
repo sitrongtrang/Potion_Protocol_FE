@@ -27,7 +27,7 @@ public class PlayerNetworkInterpolator : INetworkInterpolator<PlayerStateInterpo
                 }
                 else // THIS PART IS A LITTLE IFFY
                 {
-                    if (update.ServerSequence - _serverSequence > _buffer.Capacity)
+                    if (update.ServerSequence - _serverSequence > _buffer.Capacity && _buffer.IsEmpty())
                     {
                         _serverSequence = update.ServerSequence - 1;
                     }
@@ -47,6 +47,7 @@ public class PlayerNetworkInterpolator : INetworkInterpolator<PlayerStateInterpo
     public void IncrementAndInterpolate(Action<PlayerStateInterpolateData> applyState)
     {
         _serverSequence += 1;
+        _buffer.SetMinTickToKeep(_serverSequence);
         if (_buffer.Poll(_serverSequence, out PlayerStateInterpolateData result))
         {
             applyState(result);
