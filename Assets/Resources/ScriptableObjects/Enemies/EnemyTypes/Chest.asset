@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 160db005b420e004ba7cb072d295092b, type: 3}
-  m_Name: Maggot
+  m_Name: Chest
   m_EditorClassIdentifier: 
-  _name: Maggot
-  _icon: {fileID: 7987292474849564794, guid: cc15e917504e7854abca1e54d991edb7, type: 3}
-  _id: M3
-  _hp: 5
-  _speed: 3
-  _damage: 2
+  _name: Chest
+  _icon: {fileID: 4827292053532166141, guid: f113fd8b4ca73ea4999955efa48a190d, type: 3}
+  _id: M5
+  _hp: 3
+  _speed: 5
+  _damage: 0
   _patrolRadius: 5.5
   _patrolInterval: 1
   _chaseRadius: 7
@@ -27,4 +27,4 @@ MonoBehaviour:
   _searchRadius: 5
   _searchDuration: 100
   _searchInterval: 1
-  _item: {fileID: 11400000, guid: c79f230495713e34ab15cf4a3b6b84c1, type: 2}
+  _item: {fileID: 0}

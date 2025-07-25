@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 160db005b420e004ba7cb072d295092b, type: 3}
   m_Name: Orc
   m_EditorClassIdentifier: 
+  _name: Orc
   _icon: {fileID: 4074469027547599285, guid: e315fc5201234b442a889f44917c53a3, type: 3}
-  _name: Scarbrute
   _id: M2
   _hp: 8
   _speed: 3
@@ -28,4 +28,3 @@ MonoBehaviour:
   _searchDuration: 100
   _searchInterval: 1
   _item: {fileID: 11400000, guid: 634d9a3732390f64fa2d0aab041d951e, type: 2}
-  _prefab: {fileID: 3347175494363194931, guid: 604d482598379384189795c63feb0a67, type: 3}

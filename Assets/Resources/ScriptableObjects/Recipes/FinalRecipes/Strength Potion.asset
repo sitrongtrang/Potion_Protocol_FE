@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Strength Potion
   m_EditorClassIdentifier: 
   _name: 
-  _icon: {fileID: 91793580574289886, guid: 9c43bd373420dd642bdfdde9096c3d02, type: 3}
+  _icon: {fileID: 91793580574289886, guid: bd2695ac966031b45b86dcb6ec4a6513, type: 3}
   _id: R4
   _craftingTime: 8
   _type: 1

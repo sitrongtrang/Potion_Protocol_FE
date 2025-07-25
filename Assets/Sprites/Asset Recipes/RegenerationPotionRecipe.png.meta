@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: bd2695ac966031b45b86dcb6ec4a6513
+guid: 9a63cf6990f5576448e108a8c4c97aee
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 91793580574289886
-    second: StrengthPotionRecipe_0
+      213: 2327156432000647105
+    second: RegenerationPotionRecipe_0
   - first:
-      213: 6157815725087752549
-    second: StrengthPotionRecipe_1
+      213: 1567563730377289761
+    second: RegenerationPotionRecipe_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: StrengthPotionRecipe_0
+      name: RegenerationPotionRecipe_0
       rect:
         serializedVersion: 2
         x: 19
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: edfaac276cd164100800000000000000
-      internalID: 91793580574289886
+      spriteID: 1cff922f178bb4020800000000000000
+      internalID: 2327156432000647105
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: StrengthPotionRecipe_1
+      name: RegenerationPotionRecipe_1
       rect:
         serializedVersion: 2
         x: 246
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5618b26c6c4f47550800000000000000
-      internalID: 6157815725087752549
+      spriteID: 120bcef48ea11c510800000000000000
+      internalID: 1567563730377289761
       vertices: []
       indices: 
       edges: []
@@ -172,9 +172,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      StrengthPotionRecipe_0: 91793580574289886
-      StrengthPotionRecipe_1: 6157815725087752549
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
