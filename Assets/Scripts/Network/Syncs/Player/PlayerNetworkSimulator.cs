@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PlayerNetworkSimulator : INetworkSimulator<PlayerInputSnapshot, PlayerInputMessage, PlayerSnapshot>
+public class PlayerNetworkSimulator : INetworkSimulator<PlayerInputSnapshot, PlayerSnapshot>, INetworkReconcilor<PlayerInputMessage, PlayerSnapshot>
 {
     private readonly NetworkPredictionBuffer<PlayerInputMessage, PlayerSnapshot> _buffer;
     private bool _isReconciling = false;
