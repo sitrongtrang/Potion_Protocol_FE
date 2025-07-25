@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -35,7 +38,45 @@ public class SelectingLevelUI : MonoBehaviour
     public void OnLevelSelected(int level)
     {
         GameManager.Instance.CurrentLevel = level;
-        SceneManager.LoadScene("GameScene");
+        StartCoroutine(LoadGameScene());
+    }
+
+    private IEnumerator LoadGameScene()
+    {
+        List<AsyncOperation> opList = new List<AsyncOperation>();
+        AsyncOperation loadSceneRequest = SceneManager.LoadSceneAsync("GameScene");
+        opList.Add(loadSceneRequest);
+
+        string levelPath = $"ScriptableObjects/Levels/Level{GameManager.Instance.CurrentLevel + 1}";
+        ResourceRequest loadLevelRequest = Resources.LoadAsync<LevelConfig>(levelPath);
+        opList.Add(loadLevelRequest);
+
+        loadSceneRequest.completed += async (op) => 
+        {
+            Scene loadedScene = SceneManager.GetSceneByName("GameScene");
+
+            while (!loadLevelRequest.isDone)
+            {
+                await Task.Yield();
+            }
+
+            GameObject[] rootObjects = loadedScene.GetRootGameObjects();
+            LevelManager levelManager = null;
+            for (int i = 0; i < rootObjects.Length; i++)
+            {
+                levelManager = rootObjects[i].GetComponentInChildren<LevelManager>();
+                if (levelManager)
+                {
+                    levelManager.Initialize(loadLevelRequest.asset as LevelConfig);
+                    break;
+                }
+            }
+
+            await LoadingScreenUI.Instance.RenderFinish();
+        };
+
+        LoadingScreenUI.Instance.gameObject.SetActive(true);
+        yield return StartCoroutine(LoadingScreenUI.Instance.RenderLoadingScene(opList));
     }
 
     public void OnNextPage()
