@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: -1370842286182258998}
+  _config: {fileID: 11400000, guid: 99044dd267a0afa45b8b2c1b347cb735, type: 2}
   _playerLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -56,6 +57,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _enemyImpactUI: {fileID: -2667262709698504437}
+  heightHealthBar: 0.8
   _movementIgnoreObstacles: 0
   _healthBarPrefab: {fileID: -957368622642131315, guid: 67c66995c641fe64599726b5a9b2209e, type: 3}
 --- !u!95 &-1370842286182258998

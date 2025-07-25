@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
@@ -154,11 +155,11 @@ public class LevelManager : MonoBehaviour
         StationSpawner[] stationSpawners = map.GetComponentsInChildren<StationSpawner>(true);
         for (int i = 0; i < stationSpawners.Length; i++)
         {
-            if (stationSpawners[i].Config.Type == StationType.Furnace)
+            if (stationSpawners[i].Prefab.Config.Type == StationType.Furnace)
             {
                 stationSpawners[i].Spawn(config.IngotRecipes);
             }
-            else if (stationSpawners[i].Config.Type == StationType.AlchemyStation)
+            else if (stationSpawners[i].Prefab.Config.Type == StationType.AlchemyStation)
             {
                 stationSpawners[i].Spawn(config.FinalRecipes);
             }
@@ -255,7 +256,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public bool OnProductSubmitted(FinalProductConfig product)
+    public bool OnProductSubmitted(ItemConfig product)
     {
         for (int i = 0; i < _requiredRecipes.Count; i++)
         {
@@ -263,7 +264,7 @@ public class LevelManager : MonoBehaviour
             {
                 _requiredRecipes.RemoveAt(i);
                 OnRequiredRecipeRemoved?.Invoke(i);
-                Score += product.Score;
+                Score += FormulaeCalculator.CalculateScore(_requiredRecipes[i]);
                 return true;
             }
         }

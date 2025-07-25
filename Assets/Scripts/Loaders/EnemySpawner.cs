@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    private float _currentCooldown;
     [SerializeField] private EnemySpawnerConfig _enemySpawnerConfig;
+    private float _currentCooldown;
     private List<Transform> _positionsToSpawn;
-    private List<EnemyConfig> _enemiesToSpawn;
+    private List<EnemyController> _enemiesToSpawn;
     private List<int> _unspawnedEnemyIndices = new();
     private List<int> _unoccupiedPositionIndices = new();
 
-    public void Initialize(List<EnemyConfig> enemiesToSpawn, List<Transform> positionsToSpawn)
+    public void Initialize(List<EnemyController> enemiesToSpawn, List<Transform> positionsToSpawn)
     {
         _enemiesToSpawn = enemiesToSpawn;
         _positionsToSpawn = positionsToSpawn;
@@ -51,7 +51,7 @@ public class EnemySpawner : MonoBehaviour
             int selectedEnemy = _unspawnedEnemyIndices[randomEnemyIndex];
             _unspawnedEnemyIndices.RemoveAt(randomEnemyIndex);
 
-            _enemySpawnerConfig.Spawn(this, _enemiesToSpawn[selectedEnemy], _positionsToSpawn[selectedPosition].position, selectedPosition, selectedEnemy);
+            Spawn(this, _enemiesToSpawn[selectedEnemy], _positionsToSpawn[selectedPosition].position, selectedPosition, selectedEnemy);
             _currentCooldown = Random.Range(_enemySpawnerConfig.MinSpawnInterval, _enemySpawnerConfig.MaxSpawnInterval);
         }
 
@@ -64,5 +64,11 @@ public class EnemySpawner : MonoBehaviour
     public void UnspawnedEnemy(int index)
     {
         _unspawnedEnemyIndices.Add(index);
+    }
+
+    public void Spawn(EnemySpawner spawner, EnemyController prefab, Vector2 position, int positionIndex, int typeIndex)
+    {
+        EnemyController enemy = Instantiate(prefab, spawner.transform.position, Quaternion.identity);
+        enemy.Initialize(spawner, position, positionIndex, typeIndex);
     }
 }

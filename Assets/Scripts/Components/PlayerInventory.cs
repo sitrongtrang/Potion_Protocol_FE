@@ -1,11 +1,18 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInventory
 {
     private PlayerController _player;
+    private PlayerInputManager _inputManager;
+    private InputAction[] _inputAction;
     private ItemConfig[] items = new ItemConfig[GameConstants.MaxSlot];
     private int _choosingSlot = 0;
+    private bool _isAutoFocus;
+
+    public event Action<int, int> OnChoosingSlotChanged;
+    public event Action<int, Sprite> OnSlotUpdated;
     public int ChoosingSlot
     {
         get => _choosingSlot;
@@ -15,125 +22,112 @@ public class PlayerInventory
             _choosingSlot = value;
             if (oldSlot != value)
             {
-                OnChoosingSlotChanged?.Invoke(oldSlot, value); // Highlight the new slot in UI
-            } 
+                OnChoosingSlotChanged?.Invoke(oldSlot, value);
+            }
         }
     }
-    private bool _isAutoFocus;
-    public event Action<int, int> OnChoosingSlotChanged;
-    public event Action<int, Sprite> OnSlotUpdated;
-    public ItemConfig Get(int idx) => items[idx];
+
+    public ItemConfig Get(int index) 
+    {
+        if (index < 0 || index >= GameConstants.MaxSlot)
+        {
+            Debug.LogWarning("Invalid slot index.");
+            return null;
+        }
+        return items[index];
+    }
 
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
         ChoosingSlot = 0;
         _player = player;
-        _isAutoFocus = PlayerPrefs.GetInt("IsAutoFocus") == 1;;
-    }
+        _inputManager = inputManager;
 
-    public ItemConfig Pickup(ItemController item)
-    {
-        bool isAdded = Add(item.Config);
-        if (isAdded)
+        _inputAction = new InputAction[GameConstants.MaxSlot] {
+            _inputManager.controls.Player.ChooseSlot1,
+            _inputManager.controls.Player.ChooseSlot2,
+            _inputManager.controls.Player.ChooseSlot3,
+            _inputManager.controls.Player.ChooseSlot4,
+            _inputManager.controls.Player.ChooseSlot5
+        };
+
+        for (int i = 0; i < GameConstants.MaxSlot; i++)
         {
-            ItemPool.Instance.RemoveItem(item);
+            int index = i;
+            _inputAction[i].performed += ctx => ChooseSlot(index);
         }
-        return isAdded ? item.Config : null;
+
+        _inputManager.controls.Player.Nextslot.performed += ctx => NextSlot();
+
+        _isAutoFocus = PlayerPrefs.GetInt("IsAutoFocus") == 1;
     }
 
-    public ItemConfig Drop()
+    private void ChooseSlot(int index)
     {
-        if (_choosingSlot == -1 || items[_choosingSlot] == null)
+        if (index < 0 || index >= GameConstants.MaxSlot) return;
+        ChoosingSlot = index;
+        Debug.Log($"Slot {index + 1} chosen.");
+    }
+
+    private void NextSlot()
+    {
+        ChoosingSlot = (_choosingSlot + 1) % GameConstants.MaxSlot;
+        Debug.Log($"Next slot chosen: {_choosingSlot + 1}");
+    }
+
+    public ItemConfig Add(ItemConfig item)
+    {
+        int slotIndex = GetAddSlot();
+        if (slotIndex < 0 || slotIndex >= GameConstants.MaxSlot)
         {
-            // Not choosing any item
+            Debug.LogWarning("Invalid slot index to add.");
             return null;
         }
-        else
+
+        if (item == null)
         {
-            // Drop the item into the world at player's position
-            ItemConfig itemToDrop = items[_choosingSlot];
-            Vector2 playerPos = _player.transform.position;
-            Vector2 dropPosition = playerPos + GameConstants.DropItemSpacing * Vector2.down;
-
-            ItemPool.Instance.SpawnItem(itemToDrop, dropPosition);
-
-            // Remove from inventory
-            items[_choosingSlot] = null;
-            OnSlotUpdated?.Invoke(_choosingSlot, null); // Update inventory UI
-            return itemToDrop;
-        }
-    }
-
-    public ItemConfig TransferToStation(StationController station)
-    {
-        if (_choosingSlot == -1 || items[_choosingSlot] == null)
-        {
-            // Not choosing any item
+            Debug.LogWarning($"Item not found.");
             return null;
         }
-        else
-        {
-            // Transfer the item to the station if the station 
-            ItemConfig itemToTransfer = items[_choosingSlot];
-            station.AddItem(itemToTransfer);
-            Remove(_choosingSlot);
-            return itemToTransfer;
-        }
-    }
 
-    public FinalProductConfig Submit()
-    {
-        if (_choosingSlot == -1 || items[_choosingSlot] == null)
+        if (items[slotIndex] != null)
         {
-            // Not choosing any item
+            Debug.LogWarning($"Slot {slotIndex + 1} is already occupied. Cannot add item {item.Name}.");
             return null;
         }
-        else
-        {
-            if (items[_choosingSlot] is FinalProductConfig product)
-            {
-                // Item is submissible
-                bool submitted = LevelManager.Instance.OnProductSubmitted(product); // check if the product can be submitted
-                if (submitted)
-                {
-                    Remove(_choosingSlot);
-                    return product;
-                }
-                
-            }
-            return null;
-        }
+
+        items[slotIndex] = item;
+        OnSlotUpdated?.Invoke(slotIndex, item.Icon);
+        if (_isAutoFocus) ChoosingSlot = slotIndex;
+        Debug.Log($"Added up item {item.Name} into slot {slotIndex + 1}");
+        return item;
     }
 
-    private bool Add(ItemConfig item)
+    public ItemConfig Remove()
     {
-        int idx;
-        // If choosing slot is empty, put the item into that slot; else put in the first slot that is empty
+        if (_choosingSlot < 0 || _choosingSlot >= GameConstants.MaxSlot || items[_choosingSlot] == null)
+        {
+            Debug.LogWarning("Invalid slot for drop.");
+            return null;
+        }
+
+        ItemConfig item = items[_choosingSlot];
+        items[_choosingSlot] = null; 
+        OnSlotUpdated?.Invoke(_choosingSlot, null);
+        Debug.Log($"Removed up item {item.Name} in slot {_choosingSlot + 1}");
+        return item;
+    }
+
+    private int GetAddSlot()
+    {
+        int idx = -1;
+        // If choosing slot is empty, choose that slot to add; else find another empty slot
         if (items[_choosingSlot] == null) idx = _choosingSlot;
-        else idx = FindSlot();
-
-        // No empty slot, cannot add item
-        if (idx == -1)
-        {
-            return false;
-        }
-        OnSlotUpdated?.Invoke(idx, item.Prefab.GetComponent<SpriteRenderer>().sprite); // Update inventory UI with the new item sprite
-        // Found an empty slot, put item into that slot
-        if (_isAutoFocus) ChoosingSlot = idx; // choose the current slot if is in auto focus mode
-        items[idx] = item;
-        return true;
+        else idx = FindEmptySlot();
+        return idx;
     }
 
-    private bool Remove(int idx)
-    {
-        // If the slot has item in it, remove the item
-        if (items[idx] == null) return false;
-        items[idx] = null;
-        OnSlotUpdated?.Invoke(idx, null); // Update inventory UI to remove the item sprite
-        return true;
-    }
-
-    private int FindSlot()
+    private int FindEmptySlot()
     {
         // Find the first empty slot
         for (int i = 0; i < GameConstants.MaxSlot; i++)

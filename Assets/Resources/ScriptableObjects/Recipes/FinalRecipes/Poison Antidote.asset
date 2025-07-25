@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Poison Antidote
   m_EditorClassIdentifier: 
   _name: 
-  _icon: {fileID: -6539229133321497733, guid: 97e78315b29f31f4e996f025485b8c6c, type: 3}
+  _icon: {fileID: -342788020, guid: 97e78315b29f31f4e996f025485b8c6c, type: 3}
   _id: R2
   _craftingTime: 5
   _type: 1

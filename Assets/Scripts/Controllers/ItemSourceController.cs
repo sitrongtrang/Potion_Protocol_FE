@@ -4,15 +4,15 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class ItemSourceController : MonoBehaviour
 {
-    private ItemSourceConfig _config;
-    public ItemSourceConfig Config => _config;
-    private ItemSourceSpawner _itemSourceSpawner;
+    [SerializeField] private ItemSourceConfig _config;
     [SerializeField] private Collider2D _collider;
+    private ItemSourceSpawner _itemSourceSpawner;
 
-    public void Initialize(ItemSourceSpawner spawner, ItemSourceConfig config)
+    public ItemSourceConfig Config => _config;
+
+    public void Initialize(ItemSourceSpawner spawner)
     {
         _itemSourceSpawner = spawner;
-        _config = config;
 
         CheckOverlapGrid();
     }
@@ -43,7 +43,7 @@ public class ItemSourceController : MonoBehaviour
     private void TrueDie()
     {
         CheckOverlapGrid();
-        _itemSourceSpawner.NotifyItemSourceRemoved(_config);
+        _itemSourceSpawner.NotifyItemSourceRemoved(this);
         Destroy(gameObject);
     }
 }

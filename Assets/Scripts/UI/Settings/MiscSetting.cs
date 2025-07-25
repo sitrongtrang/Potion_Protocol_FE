@@ -7,8 +7,8 @@ public class MiscSetting : MonoBehaviour
     [SerializeField] Toggle _isAutoFocus;
     [SerializeField] TMP_Dropdown _language;
 
-    private const string AutoFocusKey = "IsAutoFocus";
-    private const string LanguageKey = "Language";
+    public bool AutoFocusValue;
+    public string LanguageValue;
 
     void OnEnable()
     {
@@ -18,38 +18,35 @@ public class MiscSetting : MonoBehaviour
         _language.onValueChanged.AddListener(OnLanguageChanged);
     }
 
-    void LoadSettings()
+    public void LoadSettings()
     {
-        bool isAutoFocus = PlayerPrefs.GetInt(AutoFocusKey, 1) == 1;
-        string lang = PlayerPrefs.GetString(LanguageKey, "en");
+        AutoFocusValue = PlayerPrefs.GetInt("IsAutoFocus", 1) == 1;
+        string LanguageValue = PlayerPrefs.GetString("Language", "en");
 
-        _isAutoFocus.isOn = isAutoFocus;
+        _isAutoFocus.isOn = AutoFocusValue;
 
-        int langIndex = System.Array.IndexOf(supportedLanguages, lang);
+        int langIndex = System.Array.IndexOf(supportedLanguages, LanguageValue);
         _language.value = langIndex >= 0 ? langIndex : 0;
     }
 
     void OnAutoFocusChanged(bool value)
     {
-        PlayerPrefs.SetInt(AutoFocusKey, value ? 1 : 0);
-        PlayerPrefs.Save();
+        AutoFocusValue = value ? true : false;
     }
 
     void OnLanguageChanged(int index)
     {
         if (index >= 0 && index < supportedLanguages.Length)
         {
-            string selectedLang = supportedLanguages[index];
-            PlayerPrefs.SetString(LanguageKey, selectedLang);
-            PlayerPrefs.Save();
+            LanguageValue = supportedLanguages[index];
         }
     }
 
     public void ResetToDefault()
     {
         // Xóa key hoặc đặt lại giá trị mặc định
-        PlayerPrefs.SetInt(AutoFocusKey, 1);
-        PlayerPrefs.SetString(LanguageKey, "en");
+        PlayerPrefs.SetInt("IsAutoFocus", 1);
+        PlayerPrefs.SetString("Language", "en");
         PlayerPrefs.Save();
 
         LoadSettings(); // cập nhật lại UI

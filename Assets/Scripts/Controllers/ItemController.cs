@@ -1,13 +1,25 @@
+using System.Collections;
 using UnityEngine;
 
 public class ItemController : MonoBehaviour
 {
-    private ItemConfig _config;
+    [SerializeField] private ItemConfig _config;
 
     public ItemConfig Config => _config;
 
-    public void Initialize(ItemConfig config)
+    void OnEnable()
     {
-        _config = config;
+        StartCoroutine(Disappear(_config.ExpireTime));
+    }
+
+    void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
+    private IEnumerator Disappear(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ItemPool.Instance.RemoveItem(this);
     }
 }

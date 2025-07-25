@@ -5,13 +5,14 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttack
 {
-    private PlayerInputManager _inputManager;
     private PlayerController _player;
+    private GameObject _weapon;
+    private PlayerInputManager _inputManager;
+    private InputAction[] _skillActions;
     // bool _isAttacking = false;
     private bool _canAttack = true;
     private bool[] _canUseSkills = new bool[GameConstants.NumSkills];
     private bool _isInAction = false;
-    private InputAction[] _skillActions;
 
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
@@ -21,6 +22,9 @@ public class PlayerAttack
         }
 
         _player = player;
+        _weapon = _player.transform.Find("Weapons").gameObject;
+        // if (_weapon) _weapon.SetActive(false);
+
         _inputManager = inputManager;
         _skillActions = new InputAction[]
         {
@@ -60,7 +64,7 @@ public class PlayerAttack
         {
             Debug.Log("Vướng tường nè má.");
             _canAttack = true;
-            yield break;
+            //yield break;
         }
 
         // Chạy anim
@@ -72,6 +76,7 @@ public class PlayerAttack
         yield return new WaitForSeconds(_player.Config.AttackDelay);
         // Đánh quái
         HitEnemy(origin, dir);
+        // _weapon.SetActive(false);
         yield return new WaitForSeconds(_player.Config.AttackCooldown - _player.Config.AttackDelay);
         // _isInAction = false;
         _canAttack = true;
@@ -109,6 +114,7 @@ public class PlayerAttack
 
     private bool PlayAnimation()
     {
+        // if (_weapon) _weapon.SetActive(true);
         _player.SwordAnimatr.SetTrigger("Attack");
         float playerX = _player.Movement.PlayerDir.x;
         float playerY = _player.Movement.PlayerDir.y;

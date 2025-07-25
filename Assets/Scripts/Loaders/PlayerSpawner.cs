@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerSpawner : MonoBehaviour
 {
-    [SerializeField] private PlayerConfig _config;
+    [SerializeField] private PlayerController _playerPrefab;
 
     [SerializeField] private InputActionAsset _inputActions;
 
@@ -19,7 +19,12 @@ public class PlayerSpawner : MonoBehaviour
             Debug.Log("🔁 Loaded rebinds in PlayerSpawner");
         }
 
-        _config.Spawn(transform.position, _inputActions);
-        
+        SpawnPlayer(transform.position, _inputActions);
+    }
+
+    void SpawnPlayer(Vector2 position, InputActionAsset loadedInputAsset = null)
+    {
+        PlayerController player = Instantiate(_playerPrefab, position, Quaternion.identity);
+        player.Initialize(loadedInputAsset);
     }
 }

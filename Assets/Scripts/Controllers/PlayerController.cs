@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    private PlayerConfig _config;
+    [SerializeField] private PlayerConfig _config;
     private PlayerInputManager _inputManager;
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Animator _anim;
@@ -26,9 +26,8 @@ public class PlayerController : MonoBehaviour
     public WeaponConfig Weapon => _weapon;
     public Transform AttackPoint => _attackPoint;
 
-    public void Initialize(PlayerConfig config, InputActionAsset loadedAsset = null)
+    public void Initialize(InputActionAsset loadedAsset = null)
     {
-        _config = config;
         _inputManager = loadedAsset != null
             ? new PlayerInputManager(loadedAsset)
             : new PlayerInputManager();
@@ -50,7 +49,7 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        Movement.MyUpdate();
+        Movement.Update();
     }
 
     void OnTriggerEnter2D(Collider2D collider)
