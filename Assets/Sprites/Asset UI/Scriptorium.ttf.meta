@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b7cbdae947ef385498355489e8df0f61
+guid: eb4c61b6b7da18442a3e2798924c1bbe
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Kingthings Petrock Light
+  - Scriptorium
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

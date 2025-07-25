@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4b4531d4162f2214fa26ac3f742ea5d8
+guid: b8ad1401342212a46bb60c6d3f11d867
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Medieval Pixel
+  - Uncial Antiqua
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
