@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Healing Potion
   m_EditorClassIdentifier: 
   _name: Healing Potion
-  _icon: {fileID: -1193097374, guid: d5a6f9f3be75895469f10de63796f616, type: 3}
+  _icon: {fileID: -1333086307896101198, guid: bee4c87a1960b104e9124cacaeeff62d, type: 3}
   _id: P1
   _type: 2
   _droppedBy: {fileID: 11400000, guid: 681c9ef66958a6348add4549fb996f30, type: 2}

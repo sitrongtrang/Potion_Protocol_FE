@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0af21ffac3d2cd7468c79c0f75d3f2a5, type: 3}
-  m_Name: Mana Potion
+  m_Name: Luck Potion
   m_EditorClassIdentifier: 
-  _name: Mana Potion
-  _icon: {fileID: 1352937985377501293, guid: 95c944f5aff0d404cafcbaf7de5ac44c, type: 3}
-  _id: P3
+  _name: Luck Potion
+  _icon: {fileID: 1730548010129319703, guid: ba9e5352ecd25644db2e4b2f0a4511e6, type: 3}
+  _id: 
   _type: 2
-  _droppedBy: {fileID: 11400000, guid: e46837390b24d6b4f994a000e883409b, type: 2}
-  _expireTime: 30
+  _droppedBy: {fileID: 11400000, guid: 28d6fb0daa84a844ca9eeb2c48bbe42d, type: 2}
+  _expireTime: 0
   _craftPlace: {fileID: 8142887963223585860, guid: 684fc6f7c36189c448a0c8bda50c5af0, type: 3}
