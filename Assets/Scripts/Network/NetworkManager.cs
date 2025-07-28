@@ -50,7 +50,8 @@ public class NetworkManager : MonoBehaviour
     {
         // Load saved session token if exists
         // _sessionToken = PlayerPrefs.GetString("SessionToken");
-        // if (!string.IsNullOrEmpty(_sessionToken)) _isAuthenticated = true;
+        // if (string.IsNullOrEmpty(_sessionToken)) return;
+        // _isAuthenticated = true;
         // _authToken = PlayerPrefs.GetString("Token");
 
     }
@@ -109,7 +110,6 @@ public class NetworkManager : MonoBehaviour
         {
             // New authentication
             // PlayerPrefs.SetString("Token", _authToken);
-            // PlayerPrefs.Save();
             SendMessage(new AuthMessage
             {
                 Token = _authToken,
@@ -121,7 +121,18 @@ public class NetworkManager : MonoBehaviour
     {
         _isConnected = false;
         _isAuthenticated = false;
-        _receiveThread?.Abort();
+        
+        try
+        {
+            if (_receiveThread != null && _receiveThread.IsAlive)
+            {
+                _receiveThread.Join(1000); // Waits for ReceiveData() to exit
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning($"Thread join failed: {e.Message}");
+        }
 
         try
         {
@@ -165,10 +176,10 @@ public class NetworkManager : MonoBehaviour
                     try
                     {
                         ServerMessage message = Serialization.DeserializeMessage(buffer);
+                        if (HandleSystemMessage(message))
+                            continue;
                         if (message != null)
                         {
-                            if (HandleSystemMessage(message))
-                                return;
                             UnityMainThreadDispatcher.Instance.Enqueue(() =>
                             {
                                 NetworkEvents.InvokeMessageReceived(message);
@@ -247,7 +258,6 @@ public class NetworkManager : MonoBehaviour
         _isAuthenticated = true;
         _sessionToken = message.ReconnectToken;
         // PlayerPrefs.SetString("SessionToken", _sessionToken);
-        // PlayerPrefs.Save();
         Debug.Log("Authentication successful");
 
         SendMessage(new GetUserInfoClient());
