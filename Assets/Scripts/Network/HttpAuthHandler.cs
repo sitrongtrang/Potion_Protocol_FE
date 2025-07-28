@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic; // optional, if using TextMeshPro UI
 
-public class HttpAuthManager : MonoBehaviour
+public class HttpAuthHandler : MonoBehaviour
 {
     [Header("Login")]
     public TMP_InputField usernameField;

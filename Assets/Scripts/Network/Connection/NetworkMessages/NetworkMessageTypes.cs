@@ -12,6 +12,8 @@ public static class NetworkMessageTypes
         public static class Pregame
         {
             public const short CreateRoom = 12;
+            public const short JoinRoom = 13;
+            public const short StartGame = 17;
             public const short RequestSpawn = 23;
         }
 
@@ -34,6 +36,11 @@ public static class NetworkMessageTypes
             public const short AuthSuccess = 0;
             public const short Pong = 20;
             public const short GetUserInfo = 4;
+        }
+        public static class Pregame
+        {
+            public const short StartGame = 26;
+            public const short GetPlayerId = 31;
         }
         public static class Player
         {

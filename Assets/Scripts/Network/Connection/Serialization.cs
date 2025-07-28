@@ -43,8 +43,10 @@ public static class Serialization
         {
             NetworkMessageTypes.Client.Authentication.TryAuth => BinarySerializer.SerializeToBytes((AuthMessage)message),
             NetworkMessageTypes.Client.Authentication.TryReconnect => BinarySerializer.SerializeToBytes((ReconnectMessage)message),
-
-            NetworkMessageTypes.Client.Pregame.CreateRoom => BinarySerializer.SerializeToBytes((PlayerSpawnRequest)message),
+            
+            NetworkMessageTypes.Client.Pregame.CreateRoom => BinarySerializer.SerializeToBytes((PlayerCreateRoomRequest)message),
+            NetworkMessageTypes.Client.Pregame.JoinRoom => BinarySerializer.SerializeToBytes((PlayerJoinRoomRequest)message),
+            NetworkMessageTypes.Client.Pregame.StartGame => BinarySerializer.SerializeToBytes((PlayerStartGameRequest)message),
             NetworkMessageTypes.Client.Pregame.RequestSpawn => BinarySerializer.SerializeToBytes((PlayerSpawnRequest)message),
 
             NetworkMessageTypes.Client.Ingame.Input => BinarySerializer.SerializeToBytes((PlayerInputMessage)message),
@@ -96,6 +98,9 @@ public static class Serialization
             NetworkMessageTypes.Server.System.Pong => BinarySerializer.DeserializeFromBytes<PongMessage>(payloadBytes),
             NetworkMessageTypes.Server.System.GetUserInfo => BinarySerializer.DeserializeFromBytes<GetUserInfoServer>(payloadBytes),
             // NetworkMessageTypes.System.Kick => BinarySerializer.DeserializeFromBytes<KickMessage>(payloadBytes)
+
+            NetworkMessageTypes.Server.Pregame.StartGame => BinarySerializer.DeserializeFromBytes<ServerStartGame>(payloadBytes),
+            NetworkMessageTypes.Server.Pregame.GetPlayerId => BinarySerializer.DeserializeFromBytes<GetPlayerId>(payloadBytes),
 
             NetworkMessageTypes.Server.Player.Spawn => BinarySerializer.DeserializeFromBytes<PlayerSpawnMessage>(payloadBytes),
             NetworkMessageTypes.Server.Player.Connected => BinarySerializer.DeserializeFromBytes<PlayerConnectedMessage>(payloadBytes),

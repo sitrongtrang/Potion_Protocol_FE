@@ -6,6 +6,8 @@ public class TestTcP : MonoBehaviour
     public string RoomName;
     public short RoomType;
     public int MaxPlayers;
+    [Header("Join Room")]
+    public string JoinRoomName;
 
     [ContextMenu("Create Room")]
     public void CreateRoom()
@@ -19,4 +21,27 @@ public class TestTcP : MonoBehaviour
             }
         );
     }
+
+    [ContextMenu("Join Room")]
+    public void JoinRoom()
+    {
+        NetworkManager.Instance.SendMessage(
+            new PlayerJoinRoomRequest
+            {
+
+            }
+        );
+    }
+
+    [ContextMenu("Start Game")]
+    public void StartGame()
+    {
+        NetworkManager.Instance.SendMessage(
+            new PlayerStartGameRequest
+            {
+                
+            }
+        );
+    }
+
 }
