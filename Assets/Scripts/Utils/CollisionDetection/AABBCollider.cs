@@ -1,12 +1,10 @@
 using UnityEngine;
 
-public class AABBCollider
+public class AABBCollider : CustomCollider
 {
     private Vector2 _bottomLeft;
     private Vector2 _size;
-
-    public CustomLayerMask Mask = new CustomLayerMask();
-    public int Layer;
+    public override ColliderType Type => ColliderType.AABB;
 
     public AABBCollider(Vector2 bottomLeft, Vector2 size)
     {
@@ -22,12 +20,31 @@ public class AABBCollider
         Mask = other.Mask;
 
     }
-    public Rect Bounds => new Rect(_bottomLeft, _size);
+    public override Rect Bounds => new Rect(_bottomLeft, _size);
 
-    public bool IsColliding(AABBCollider other)
+    public override bool IsColliding(CustomCollider other)
     {
-        return Bounds.Overlaps(other.Bounds);
+        if (other.Type == ColliderType.AABB)
+        {
+            AABBCollider aabb = (AABBCollider)other;
+            // AABB vs AABB
+            return Bounds.Overlaps(aabb.Bounds);
+        }
+        else if (other.Type == ColliderType.Circle)
+        {
+            CircleCollider circle = (CircleCollider)other;
+            // AABB vs Circle
+            Vector2 closestPoint = new Vector2(
+                Mathf.Clamp(circle.Center.x, Bounds.xMin, Bounds.xMax),
+                Mathf.Clamp(circle.Center.y, Bounds.yMin, Bounds.yMax)
+            );
+            float distSq = (closestPoint - circle.Center).sqrMagnitude;
+            return distSq <= circle.Radius * circle.Radius;
+        }
+
+        return false; // Unknown collider type
     }
+
     public void SetBottomLeft(Vector2 newBottomLeft)
     {
         _bottomLeft = newBottomLeft;

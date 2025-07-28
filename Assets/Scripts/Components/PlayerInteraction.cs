@@ -7,55 +7,43 @@ public class PlayerInteraction
     private PlayerController _player;
     private PlayerInventory _inventory;
     private PlayerInputManager _inputManager;
-    private List<GameObject> _itemsInCollision = new List<GameObject>();
-    private StationController _nearStation;
-    private bool _isNearStation = false;
-    private bool _isNearSubmissionPoint = false;
-    private bool _isNearCraftPoint = false;
+    private float _interactDistance;
 
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
-        _inventory = player.Inventory;
         _player = player;
+        _inventory = player.Inventory;
+        _interactDistance = player.InteractionDistance;
         _inputManager = inputManager;
 
         _inputManager.controls.Player.Submit.performed += ctx => Submit();
-        _inputManager.controls.Player.Transfer.performed += ctx => TransferToStation();
-        _inputManager.controls.Player.Attack.performed += ctx =>
-        {
-            if (!_isNearSubmissionPoint && !_isNearStation) _player.StartCoroutine(_player.Attack.Attack());
-        };
-        _inputManager.controls.Player.Exploit.performed += ctx => { };
-        _inputManager.controls.Player.Combine.performed += ctx =>
-        {
-            // combine & craft item
-            if (_isNearCraftPoint) _nearStation.StartCrafting();
-        };
+        _inputManager.controls.Player.Transfer.performed += ctx => Transfer();
+        _inputManager.controls.Player.Combine.performed += ctx => Craft();
         inputManager.controls.Player.Drop.performed += ctx => DropItem();
         inputManager.controls.Player.Pickup.performed += ctx => PickUpItem();
     }
 
     void PickUpItem()
     {
-        if (_itemsInCollision.Count <= 0)
-        {
-            Debug.Log("No items nearby to pick up");
-            return;
-        }
-
+        ItemController[] itemsInCollision = ItemPool.Instance.ActiveItems;
         // Find nearest item
         float minDistance = Mathf.Infinity;
-        GameObject nearestItem = _itemsInCollision[0];
-        for (int i = 0; i < _itemsInCollision.Count; i++)
+        ItemController nearestItem = itemsInCollision[0];
+        for (int i = 0; i < itemsInCollision.Length; i++)
         {
-            Vector2 distanceVector = _player.gameObject.transform.position - _itemsInCollision[i].transform.position;
-            Debug.Log(distanceVector);
+            Vector2 distanceVector = _player.gameObject.transform.position - itemsInCollision[i].transform.position;
             float distance = (float)Math.Sqrt(distanceVector.x * distanceVector.x + distanceVector.y * distanceVector.y);
             if (distance < minDistance)
             {
-                nearestItem = _itemsInCollision[i];
+                nearestItem = itemsInCollision[i];
                 minDistance = distance;
             }
+        }
+
+        if (minDistance > _interactDistance || nearestItem == null)
+        {
+            Debug.Log("No item nearby to pick up");
+            return;
         }
 
         ItemConfig pickedUpItem = _inventory.Add(nearestItem.GetComponent<ItemController>().Config);
@@ -70,9 +58,23 @@ public class PlayerInteraction
         }
     }
 
-    void TransferToStation()
+    void Transfer()
     {
-        if (!_isNearStation || _nearStation == null)
+        // Find nearest station
+        float minDistance = Mathf.Infinity;
+        StationController nearStation = null;
+        for (int i = 0; i < LevelManager.Instance.Stations.Count; i++)
+        {
+            Vector2 distanceVector = _player.gameObject.transform.position - LevelManager.Instance.Stations[i].transform.position;
+            float distance = (float)Math.Sqrt(distanceVector.x * distanceVector.x + distanceVector.y * distanceVector.y);
+            if (distance < minDistance)
+            {
+                nearStation = LevelManager.Instance.Stations[i];
+                minDistance = distance;
+            }
+        }
+
+        if (minDistance > _interactDistance || nearStation == null)
         {
             Debug.Log("No station nearby to transfer item");
             return;
@@ -81,7 +83,7 @@ public class PlayerInteraction
         ItemConfig transferredItem = _inventory.Remove();
         if (transferredItem)
         {
-            _nearStation.AddItem(transferredItem);
+            nearStation.AddItem(transferredItem);
             Debug.Log($"Transferred {transferredItem.Name} in slot {_inventory.ChoosingSlot + 1} to station");
         }
         else
@@ -90,12 +92,49 @@ public class PlayerInteraction
         }
     }
 
+    void Craft()
+    {
+        // Find nearest alchemy station
+        float minDistance = Mathf.Infinity;
+        StationController nearStation = null;
+        for (int i = 0; i < LevelManager.Instance.Stations.Count; i++)
+        {
+            if (LevelManager.Instance.Stations[i].Config.Type != StationType.AlchemyStation) continue;
+            Vector2 distanceVector = _player.gameObject.transform.position - LevelManager.Instance.Stations[i].transform.position;
+            float distance = (float)Math.Sqrt(distanceVector.x * distanceVector.x + distanceVector.y * distanceVector.y);
+            if (distance < minDistance)
+            {
+                nearStation = LevelManager.Instance.Stations[i];
+                minDistance = distance;
+            }
+        }
+        if (minDistance > _interactDistance || nearStation == null)
+        {
+            Debug.Log("No alchemy station nearby to craft item");
+            _player.StartCoroutine(_player.Attack.Attack()); // Trigger attack animation as feedback
+            return;
+        }
+
+        nearStation.StartCrafting();
+    }
+
     void Submit()
     {
-        if (!_isNearSubmissionPoint)
+        GameObject submissionPoint = GameObject.FindGameObjectWithTag("SubmissionPoint");
+        if (submissionPoint == null)
         {
-            Debug.Log("No submission point nearby to submit item");
+            Debug.Log("No submission point found");
             return;
+        }
+        else
+        {
+            Vector2 distanceVector = _player.gameObject.transform.position - submissionPoint.transform.position;
+            float distance = (float)Math.Sqrt(distanceVector.x * distanceVector.x + distanceVector.y * distanceVector.y);
+            if (distance > _interactDistance)
+            {
+                Debug.Log("No submission point nearby to submit item");
+                return;
+            }
         }
         
         ItemConfig submittedItem = _inventory.Get(_inventory.ChoosingSlot);
@@ -125,57 +164,5 @@ public class PlayerInteraction
         {
             Debug.Log("No item to drop");
         }        
-    }
-
-    public void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.gameObject.tag == "Item")
-        {
-            _itemsInCollision.Add(collider.gameObject);
-            if (_itemsInCollision.Count == 1)
-            {
-                // Trigger display UI to inform player to pick item (K)
-            }
-        }
-        if (collider.gameObject.tag == "SubmissionPoint")
-        {
-            _isNearSubmissionPoint = true;
-        }
-        if (collider.gameObject.tag == "Station")
-        {
-            _isNearStation = true;
-            _nearStation = collider.gameObject.GetComponentInParent<StationController>();
-            // display UI to inform player to transfer item
-        }
-        if (collider.gameObject.tag == "CraftPoint")
-        {
-            _isNearCraftPoint = true;
-            _nearStation = collider.gameObject.GetComponentInParent<StationController>();
-        }
-    }
-
-    public void OnTriggerExit2D(Collider2D collider)
-    {
-        if (collider.gameObject.tag == "Item")
-        {
-            _itemsInCollision.Remove(collider.gameObject);
-            if (_itemsInCollision.Count == 0)
-            {
-                // set UI inform player to pick item into inActive
-            }
-        }
-        if (collider.gameObject.tag == "Station")
-        {
-            _isNearStation = false;
-            // disable "inform player to transfer item"
-        }
-        if (collider.gameObject.tag == "SubmissionPoint")
-        {
-            _isNearSubmissionPoint = false;
-        }
-        if (collider.gameObject.tag == "CraftPoint")
-        {
-            _isNearCraftPoint = false;
-        }
     }
 }

@@ -55,6 +55,8 @@ public class LevelManager : MonoBehaviour
     public event Action<int> OnRequiredRecipeRemoved;
     [SerializeField] private RequiredRecipeListUI _requiredRecipeListUI;
 
+    public List<StationController> Stations { get; private set; } = new List<StationController>();
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -145,11 +147,11 @@ public class LevelManager : MonoBehaviour
         {
             if (stationSpawners[i].Prefab.Config.Type == StationType.Furnace)
             {
-                stationSpawners[i].Spawn(config.IngotRecipes);
+                Stations.Add(stationSpawners[i].Spawn(config.IngotRecipes));
             }
             else if (stationSpawners[i].Prefab.Config.Type == StationType.AlchemyStation)
             {
-                stationSpawners[i].Spawn(config.FinalRecipes);
+                Stations.Add(stationSpawners[i].Spawn(config.FinalRecipes));
             }
         }
 

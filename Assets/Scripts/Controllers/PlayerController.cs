@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private WeaponConfig _weapon;
     [SerializeField] private Transform _attackPoint;
     private InventoryUI _inventoryUI;
-
+    
     public PlayerConfig Config => _config;
     public PlayerInventory Inventory { get; private set; }
     public PlayerAttack Attack { get; private set; }
@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public Animator SwordAnimatr => _swordAnim;
     public WeaponConfig Weapon => _weapon;
     public Transform AttackPoint => _attackPoint;
+    public float InteractionDistance = 1f;
 
     public void Initialize(InputActionAsset loadedAsset = null)
     {
@@ -39,7 +40,7 @@ public class PlayerController : MonoBehaviour
 
         Inventory.Initialize(this, _inputManager);
         Attack.Initialize(this, _inputManager);
-        Interaction.Initialize(this, _inputManager);    
+        Interaction.Initialize(this, _inputManager);
         Movement.Initialize(this, _inputManager);
 
         _inventoryUI = FindFirstObjectByType<InventoryUI>();
@@ -50,16 +51,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Movement.Update();
-    }
-
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        Interaction.OnTriggerEnter2D(collider);
-    }
-
-    void OnTriggerExit2D(Collider2D collider)
-    {
-        Interaction.OnTriggerExit2D(collider);
     }
 
     void OnDestroy()
