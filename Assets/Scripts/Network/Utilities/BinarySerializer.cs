@@ -38,10 +38,10 @@ public static class BinarySerializer
         T obj = new();
         var fields = GetOrderedSerializableFields(typeof(T));
         foreach (var field in fields)
-            {
-                object value = ReadValue(reader, field.FieldType);
-                field.SetValue(obj, value);
-            }
+        {
+            object value = ReadValue(reader, field.FieldType);
+            field.SetValue(obj, value);
+        }
 
         return obj;
     }
@@ -88,13 +88,19 @@ public static class BinarySerializer
         }
         else if (type == typeof(string))
         {
-            string str = (string)value;
-            WriteInt16BigEndian(writer, (short)(str?.Length ?? 0));
-            if (str != null)
-            {
-                foreach (char c in str)
-                    WriteInt16BigEndian(writer, (short)c);
-            }
+            string str = (string)value ?? string.Empty;
+            // Encode using Java-compatible Modified UTF-8
+            byte[] utf8Bytes = EncodeModifiedUtf8(str);
+            
+            if (utf8Bytes.Length > 65535)
+                throw new InvalidOperationException("String too long for writeUTF (max 65535 bytes)");
+
+            // Write 2-byte length prefix (big-endian)
+            writer.Write((byte)((utf8Bytes.Length >> 8) & 0xFF));
+            writer.Write((byte)(utf8Bytes.Length & 0xFF));
+
+            // Write UTF-8 bytes
+            writer.Write(utf8Bytes);
         }
         else if (type.IsArray)
         {
@@ -211,6 +217,36 @@ public static class BinarySerializer
         if (BitConverter.IsLittleEndian)
             Array.Reverse(bytes);
         return BitConverter.ToSingle(bytes, 0);
+    }
+    
+    private static byte[] EncodeModifiedUtf8(string str)
+    {
+        using var ms = new MemoryStream();
+        foreach (char c in str)
+        {
+            if (c == 0x0000)
+            {
+                // Null char = 2 bytes: 0xC0 0x80
+                ms.WriteByte(0xC0);
+                ms.WriteByte(0x80);
+            }
+            else if (c >= 0x0001 && c <= 0x007F)
+            {
+                ms.WriteByte((byte)c);
+            }
+            else if (c <= 0x07FF)
+            {
+                ms.WriteByte((byte)(0xC0 | ((c >> 6) & 0x1F)));
+                ms.WriteByte((byte)(0x80 | (c & 0x3F)));
+            }
+            else
+            {
+                ms.WriteByte((byte)(0xE0 | ((c >> 12) & 0x0F)));
+                ms.WriteByte((byte)(0x80 | ((c >> 6) & 0x3F)));
+                ms.WriteByte((byte)(0x80 | (c & 0x3F)));
+            }
+        }
+        return ms.ToArray();
     }
 }
 
