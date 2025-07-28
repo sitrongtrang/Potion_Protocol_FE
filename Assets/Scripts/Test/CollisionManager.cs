@@ -38,11 +38,9 @@ public class CollisionManager : MonoBehaviour
             nonTriggerList = JsonUtility.FromJson<ColliderSaver.ColliderDataList>(json);
             foreach (var colData in nonTriggerList.colliders)
             {
-                float colWidth = colData.vertices[2].x - colData.vertices[0].x;
-                float colHeight = colData.vertices[2].y - colData.vertices[0].y;
                 AABBCollider collider = new AABBCollider(
-                    new Vector2(colData.centerX - colWidth / 2, colData.centerY - colHeight / 2),
-                    new Vector2(colWidth, colHeight)
+                    new Vector2(colData.centerX - colData.width / 2, colData.centerY - colData.height / 2),
+                    new Vector2(colData.width, colData.height)
                 )
                 { Layer = (int)EntityLayer.Obstacle };
                 CollisionSystem.InsertCollider(collider);
@@ -60,15 +58,18 @@ public class CollisionManager : MonoBehaviour
         Gizmos.color = Color.red;
         foreach (var c in nonTriggerList.colliders)
         {
-            var verts = c.vertices;
-            int n = verts.Count;
-            if (n < 2) continue;
-            for (int i = 0; i < n; i++)
-            {
-                var a = verts[i];
-                var b = verts[(i + 1) % n];
-                Gizmos.DrawLine(new Vector3(a.x, a.y, 0f), new Vector3(b.x, b.y, 0f));
-            }
+            float halfW = c.width / 2f;
+            float halfH = c.height / 2f;
+
+            Vector3 bottomLeft = new Vector3(c.centerX - halfW, c.centerY - halfH, 0);
+            Vector3 bottomRight = new Vector3(c.centerX + halfW, c.centerY - halfH, 0);
+            Vector3 topRight = new Vector3(c.centerX + halfW, c.centerY + halfH, 0);
+            Vector3 topLeft = new Vector3(c.centerX - halfW, c.centerY + halfH, 0);
+
+            Gizmos.DrawLine(bottomLeft, bottomRight);
+            Gizmos.DrawLine(bottomRight, topRight);
+            Gizmos.DrawLine(topRight, topLeft);
+            Gizmos.DrawLine(topLeft, bottomLeft);
         }
     }
 
