@@ -9,9 +9,9 @@ public class AABBCollider : CustomCollider
     public AABBCollider(Vector2 bottomLeft, Vector2 size)
     {
         _bottomLeft = bottomLeft;
-        _size = size; 
+        _size = size;
     }
-    
+
     public AABBCollider(AABBCollider other)
     {
         _bottomLeft = other._bottomLeft;
@@ -48,5 +48,26 @@ public class AABBCollider : CustomCollider
     public void SetBottomLeft(Vector2 newBottomLeft)
     {
         _bottomLeft = newBottomLeft;
+    }
+    
+    public bool Raycast(CustomRay ray, out float distance)
+    {
+        distance = float.MaxValue;
+
+        Vector2 invDir = new Vector2(1f / ray.Direction.x, 1f / ray.Direction.y);
+        Vector2 tMin = (_bottomLeft - ray.Origin) * invDir;
+        Vector2 tMax = (_bottomLeft + _size - ray.Origin) * invDir;
+
+        Vector2 t1 = Vector2.Min(tMin, tMax);
+        Vector2 t2 = Vector2.Max(tMin, tMax);
+
+        float tNear = Mathf.Max(t1.x, t1.y);
+        float tFar = Mathf.Min(t2.x, t2.y);
+
+        if (tNear > tFar || tFar < 0)
+            return false;
+
+        distance = tNear > 0 ? tNear : tFar;
+        return true;
     }
 }

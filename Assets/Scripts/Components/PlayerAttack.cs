@@ -1,5 +1,5 @@
-using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -124,26 +124,86 @@ public class PlayerAttack
 
     private void HitEnemy(Vector2 origin, Vector2 dir)
     {
-        RaycastHit2D hitWallFar = Physics2D.Raycast(origin, dir, _player.Weapon.AttackRange);
-        float maxReach = (hitWallFar.collider != null && hitWallFar.collider.CompareTag("Obstacle")) ? hitWallFar.distance : _player.Weapon.AttackRange;
-
-        RaycastHit2D[] hitTargets = Physics2D.RaycastAll(origin, dir, maxReach);
-        for (int i = 0; i < hitTargets.Length; i++)
+        CustomRay ray = new CustomRay(origin, dir);
+        float attackRange = _player.Weapon.AttackRange;
+        Vector2 end = origin + dir.normalized * attackRange;
+        float minX = Mathf.Min(origin.x, end.x);
+        float minY = Mathf.Min(origin.y, end.y);
+        float maxX = Mathf.Max(origin.x, end.x);
+        float maxY = Mathf.Max(origin.y, end.y);
+        AABBCollider rayCollider = new AABBCollider(new Vector2(minX, minY), new Vector2(maxX - minX, maxY - minY))
         {
-            if (hitTargets[i].collider.CompareTag("Player"))
+            Layer = (int)EntityLayer.Player
+        };
+        rayCollider.Mask.SetLayer((int)EntityLayer.Obstacle);
+
+        List<AABBCollider> walls = CollisionSystem.RetrieveCollided(rayCollider);
+
+        float maxReach = attackRange;
+
+        for (int i = 0; i < walls.Count; i++)
+        {
+            AABBCollider col = walls[i];
+            if (col.Raycast(ray, out float dist))
+            {
+                if (dist < maxReach)
+                    maxReach = dist;
+            }
+        }
+
+        Vector2 bottomLeft = Vector2.zero;
+        Vector2 size = Vector2.zero;
+        if (dir.x < 0)
+        {
+            bottomLeft = new Vector2(origin.x - maxReach, origin.y);
+            size = new Vector2(-dir.x * maxReach, _player.GetComponent<SpriteRenderer>().bounds.size.y * 0.5f);
+        }
+        else if (dir.x > 0)
+        {
+            bottomLeft = new Vector2(origin.x, origin.y);
+            size = new Vector2(dir.x * maxReach, _player.GetComponent<SpriteRenderer>().bounds.size.y * 0.5f);
+        }
+        else
+        {
+            if (dir.y < 0)
+            {
+                bottomLeft = new Vector2(origin.x, origin.y - maxReach);
+                size = new Vector2(_player.GetComponent<SpriteRenderer>().bounds.size.x, -dir.y * maxReach);
+            }
+            else if (dir.y > 0)
+            {
+                bottomLeft = new Vector2(origin.x - _player.GetComponent<SpriteRenderer>().bounds.size.x, origin.y);
+                size = new Vector2(_player.GetComponent<SpriteRenderer>().bounds.size.x, dir.y * maxReach);
+            }
+        }
+
+        Debug.Log("Hitbox size: " + size);
+        rayCollider = new AABBCollider(bottomLeft, size)
+        {
+            Layer = (int)EntityLayer.Player
+        };
+        rayCollider.Mask.SetLayer((int)EntityLayer.Enemy);
+        List<AABBCollider> hitTargets = CollisionSystem.RetrieveCollided(rayCollider);
+
+        List<EnemyController> hitEnemies = new List<EnemyController>();
+
+        for (int i = 0; i < hitTargets.Count; i++)
+        {
+            if (hitTargets[i].Owner.CompareTag("Player"))
                 continue;
 
-            if (hitTargets[i].collider.CompareTag("Enemy"))
+            if (hitTargets[i].Owner.CompareTag("Enemy"))
             {
-                EnemyController enemy = hitTargets[i].collider.GetComponent<EnemyController>();
+                EnemyController enemy = hitTargets[i].Owner.GetComponent<EnemyController>();
                 if (enemy != null)
                 {
                     enemy.TakeDamage(_player.Weapon.AttackDamage);
                 }
             } 
-            if (hitTargets[i].collider.CompareTag("ItemSource"))
+
+            if (hitTargets[i].Owner.CompareTag("ItemSource"))
             {
-                ItemSourceController itemSource = hitTargets[i].collider.GetComponent<ItemSourceController>();
+                ItemSourceController itemSource = hitTargets[i].Owner.GetComponent<ItemSourceController>();
                 if (itemSource != null)
                 {
                     itemSource.OnFarmed();
@@ -151,6 +211,13 @@ public class PlayerAttack
             }
         }
 
-        Debug.DrawRay(origin, dir * maxReach, Color.red, 2f);
+        Debug.DrawLine(new Vector2(rayCollider.Bounds.xMin, rayCollider.Bounds.yMin),
+                        new Vector2(rayCollider.Bounds.xMax, rayCollider.Bounds.yMin));
+        Debug.DrawLine(new Vector2(rayCollider.Bounds.xMax, rayCollider.Bounds.yMin),
+                        new Vector2(rayCollider.Bounds.xMax, rayCollider.Bounds.yMax));
+        Debug.DrawLine(new Vector2(rayCollider.Bounds.xMax, rayCollider.Bounds.yMax),
+                        new Vector2(rayCollider.Bounds.xMin, rayCollider.Bounds.yMax));
+        Debug.DrawLine(new Vector2(rayCollider.Bounds.xMin, rayCollider.Bounds.yMax),
+                        new Vector2(rayCollider.Bounds.xMin, rayCollider.Bounds.yMin));
     }
 }

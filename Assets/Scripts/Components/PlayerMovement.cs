@@ -35,10 +35,12 @@ public class PlayerMovement
 
         _spriteRenderer = _player.GetComponent<SpriteRenderer>();
         if (_spriteRenderer) _size = _spriteRenderer.bounds.size;
-        _collider = new AABBCollider(new Vector2(_transform.position.x - _size.x / 2, _transform.position.y - _size.y / 2), _size);
-        _collider.Layer = (int)EntityLayer.Player;
+        _collider = new AABBCollider(new Vector2(_transform.position.x - _size.x / 2, _transform.position.y - _size.y / 2), _size)
+        {
+            Layer = (int)EntityLayer.Player,
+            Owner = _player.gameObject
+        };
         _collider.Mask.SetLayer((int)EntityLayer.Obstacle);
-        _collider.Mask.SetLayer((int)EntityLayer.Player);
     }
 
     public void Update()

@@ -43,7 +43,7 @@ public class CollisionManager : MonoBehaviour
                     new Vector2(colData.width, colData.height)
                 )
                 { Layer = (int)EntityLayer.Obstacle };
-                CollisionSystem.InsertCollider(collider);
+                CollisionSystem.InsertStaticCollider(collider);
             }
 
         }
@@ -52,7 +52,7 @@ public class CollisionManager : MonoBehaviour
             Debug.LogWarning($"Non-trigger collider file not found at {pathNon}");
         }
     }
-    
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -71,6 +71,9 @@ public class CollisionManager : MonoBehaviour
             Gizmos.DrawLine(topRight, topLeft);
             Gizmos.DrawLine(topLeft, bottomLeft);
         }
+        
+        Gizmos.color = Color.green;
+        CollisionSystem.OnDrawGizmos();
     }
 
 }

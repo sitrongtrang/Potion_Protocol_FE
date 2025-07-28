@@ -12,6 +12,6 @@ public class BasicObstacle : MonoBehaviour
         if (_spriteRenderer) _size = _spriteRenderer.bounds.size;
         _collider = new AABBCollider(new Vector2(transform.position.x - _size.x / 2, transform.position.y - _size.y / 2), _size);
         _collider.Layer = (int)EntityLayer.Obstacle;
-        CollisionSystem.InsertCollider(_collider);
+        CollisionSystem.InsertStaticCollider(_collider);
     }
 }

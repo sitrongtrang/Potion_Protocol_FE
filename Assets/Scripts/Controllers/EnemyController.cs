@@ -40,6 +40,13 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private EnemyHealthUI _healthBarPrefab;
     private EnemyHealthUI _healthBar;
 
+    [Header("Collision")]
+    private SpriteRenderer _spriteRenderer;
+    private AABBCollider _collider;
+    public AABBCollider Collider => _collider;
+    private Vector2 _size = Vector2.zero;
+    public Vector2 Size => _size;
+
     #region UNITY_METHODS
     private void Update()
     {
@@ -83,6 +90,16 @@ public class EnemyController : MonoBehaviour
 
         BasicStateMachine = new(this);
         _config.Initialize(this);
+
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        if (_spriteRenderer) _size = _spriteRenderer.bounds.size;
+        _collider = new AABBCollider(new Vector2(transform.position.x - _size.x / 2, transform.position.y - _size.y / 2), _size)
+        {
+            Layer = (int)EntityLayer.Enemy,
+            Owner = gameObject
+        };
+        _collider.Mask.SetLayer((int)EntityLayer.Obstacle);
+        CollisionSystem.InsertDynamicCollider(_collider);
     }
     #endregion
 
@@ -166,6 +183,7 @@ public class EnemyController : MonoBehaviour
     }
     private void Die()
     {
+        CollisionSystem.RemoveDynamicCollider(_collider);
         Destroy(_healthBar.gameObject);
         EnemyConf.OnDeath(this);
         ItemPool.Instance.SpawnItem(EnemyConf.Item, transform.position);
@@ -200,5 +218,11 @@ public class EnemyController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(LastSeenPlayerPosition, EnemyConf.SearchRadius);
     }
+
+    // void OnDrawGizmos()
+    // {
+    //     Gizmos.color = Color.green;
+    //     Gizmos.DrawWireCube(_collider.Bounds.center, _collider.Bounds.size);
+    // }
     #endregion
 }
