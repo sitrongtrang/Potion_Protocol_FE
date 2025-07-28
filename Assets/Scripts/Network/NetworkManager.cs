@@ -250,7 +250,7 @@ public class NetworkManager : MonoBehaviour
         // PlayerPrefs.Save();
         Debug.Log("Authentication successful");
 
-        SendMessage(new GetUserInfoClient());
+        // SendMessage(new GetUserInfoClient());
 
     }
 

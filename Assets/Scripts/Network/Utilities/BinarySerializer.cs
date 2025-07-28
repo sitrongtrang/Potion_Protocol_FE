@@ -89,18 +89,12 @@ public static class BinarySerializer
         else if (type == typeof(string))
         {
             string str = (string)value ?? string.Empty;
-            // Encode using Java-compatible Modified UTF-8
-            byte[] utf8Bytes = EncodeModifiedUtf8(str);
-            
-            if (utf8Bytes.Length > 65535)
-                throw new InvalidOperationException("String too long for writeUTF (max 65535 bytes)");
-
-            // Write 2-byte length prefix (big-endian)
-            writer.Write((byte)((utf8Bytes.Length >> 8) & 0xFF));
-            writer.Write((byte)(utf8Bytes.Length & 0xFF));
-
-            // Write UTF-8 bytes
-            writer.Write(utf8Bytes);
+            WriteInt16BigEndian(writer, (short)(str?.Length ?? 0));
+            if (str != null)
+            {
+                foreach (char c in str)
+                    WriteInt16BigEndian(writer, (short)c);
+            }
         }
         else if (type.IsArray)
         {
