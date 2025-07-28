@@ -11,6 +11,7 @@ public static class NetworkMessageTypes
 
         public static class Pregame
         {
+            public const short CreateRoom = 12;
             public const short RequestSpawn = 23;
         }
 

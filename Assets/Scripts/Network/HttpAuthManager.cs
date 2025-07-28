@@ -24,6 +24,15 @@ public class HttpAuthManager : MonoBehaviour
     [SerializeField] private float _disableAfterSeconds;
     private Coroutine _loginErrorDisable;
 
+    void Start()
+    {
+        // if (NetworkManager.Instance.IsAuthenticated)
+        // {
+        //     NetworkManager.Instance.Authenticate();
+        //     StartCoroutine(LoadMainMenu());
+        // }
+    }
+
     public void OnLoginButtonPressed()
     {
         StartCoroutine(SendLoginRequest(usernameField.text, passwordField.text));
@@ -54,9 +63,10 @@ public class HttpAuthManager : MonoBehaviour
 
             LoginSuccess loginSuccess = JsonConvert.DeserializeObject<LoginSuccess>(request.downloadHandler.text);
             NetworkManager.Instance.SetAuthenToken(loginSuccess.LoginSuccessDat.Token);
-            // NetworkManager.Instance.Authenticate();
+            NetworkManager.Instance.Authenticate();
 
-            StartCoroutine(LoadMainMenu());
+            // StartCoroutine(LoadMainMenu());
+            LoadTestScene();
         }
         else
         {
@@ -64,16 +74,22 @@ public class HttpAuthManager : MonoBehaviour
             if (_loginErrorDisable != null) StopCoroutine(_loginErrorDisable);
             _loginError.SetActive(true);
             _loginErrorDisable = StartCoroutine(DisableLoginError());
+            // LoadTestScene();
         }
+    }
+
+    private void LoadTestScene()
+    {
+        SceneManager.LoadSceneAsync("TestTcp");
     }
 
     private IEnumerator LoadMainMenu()
     {
         AsyncOperation request = SceneManager.LoadSceneAsync("MainMenu");
-        request.completed += async (op) => 
+        request.completed += async (op) =>
         {
             await LoadingScreenUI.Instance.RenderFinish();
-        }; 
+        };
         LoadingScreenUI.Instance.gameObject.SetActive(true);
         List<AsyncOperation> opList = new List<AsyncOperation>();
         opList.Add(request);

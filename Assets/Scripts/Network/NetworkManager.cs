@@ -25,6 +25,7 @@ public class NetworkManager : MonoBehaviour
     private string _sessionToken; // For reconnection
     private string _authToken;
     private bool _isAuthenticated;
+    public bool IsAuthenticated => _isAuthenticated;
 
     #region Unity Lifecycle
     private void Awake()
@@ -47,9 +48,10 @@ public class NetworkManager : MonoBehaviour
 
     private void Initialize()
     {
-        // PlayerPrefs.DeleteAll();
         // Load saved session token if exists
         // _sessionToken = PlayerPrefs.GetString("SessionToken");
+        // if (!string.IsNullOrEmpty(_sessionToken)) _isAuthenticated = true;
+        // _authToken = PlayerPrefs.GetString("Token");
 
     }
 
@@ -99,7 +101,7 @@ public class NetworkManager : MonoBehaviour
             // Try to reconnect with existing session
             SendMessage(new ReconnectMessage
             {
-                Token = PlayerPrefs.GetString("Token"),
+                Token = _authToken,
                 SessionToken = _sessionToken
             });
         }
@@ -107,6 +109,7 @@ public class NetworkManager : MonoBehaviour
         {
             // New authentication
             // PlayerPrefs.SetString("Token", _authToken);
+            // PlayerPrefs.Save();
             SendMessage(new AuthMessage
             {
                 Token = _authToken,
@@ -244,6 +247,7 @@ public class NetworkManager : MonoBehaviour
         _isAuthenticated = true;
         _sessionToken = message.ReconnectToken;
         // PlayerPrefs.SetString("SessionToken", _sessionToken);
+        // PlayerPrefs.Save();
         Debug.Log("Authentication successful");
 
         SendMessage(new GetUserInfoClient());
