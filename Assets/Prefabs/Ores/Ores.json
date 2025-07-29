@@ -1,0 +1,173 @@
+[
+    {
+        "_id": {
+            "$binary": {
+                "base64": "1xgLcD86Q9qzMfkafMfcqw==",
+                "subType": "04"
+            }
+        },
+        "id": "O1",
+        "name": "Obsidian Ore",
+        "dropped_item_id": {
+            "$binary": {
+                "base64": "zHArboHQQ5WOzOwNNakqMg==",
+                "subType": "04"
+            }
+        },
+        "map": "M2"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "pouvzc1ZRFu3VJciVyVnJQ==",
+                "subType": "04"
+            }
+        },
+        "id": "O2", 
+        "name": "Iron Ore",
+        "dropped_item_id": {
+            "$binary": {
+                "base64": "Pmq5v5WiSgCk76Cbc2suCQ==",
+                "subType": "04"
+            }
+        },
+        "map": "M1"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "UY+QEpV1QGOl7O8hx0N5cw==",
+                "subType": "04"
+            }
+        },
+        "id": "O3",
+        "name": "Silver Ore",
+        "dropped_item_id": {
+            "$binary": {
+                "base64": "kNW7V2AEQOqq3UEZPuwwCA==",
+                "subType": "04"
+            }
+        },
+        "map": "M1"
+
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "yrPXKF6BS8mWQFHxVKjHcw==",
+                "subType": "04"
+            }
+        },
+        "id": "O4",
+        "name": "Bronzite Ore",
+        "dropped_item_id": {
+            "$binary": {
+                "base64": "uHvLRCIxTpi9BfDq1pc19w==",
+                "subType": "04"
+            }
+        },
+        "map": "M1"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "EZR7pmysT+ul74dVIe/Bqg==",
+                "subType": "04"
+            }
+        },
+        "id": "O5",
+        "name": "Gold Ore",
+        "dropped_item_id": {
+            "$binary": {
+                "base64": "V/g3vcSzT3SeQekB+zNX2w==",
+                "subType": "04"
+            }
+        },
+        "map": "M1"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "QT4xI05nQeaygCKyojAvxQ==",
+                "subType": "04"
+            }
+        },
+        "id": "O6",
+        "name": "Ruby Ore",
+        "dropped_item_id": {
+            "$binary": {
+                "base64": "vkigITYjT9eLw0HORT/93w==",
+                "subType": "04"
+            }
+        },
+        "map": "M2"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "+72pZ5BnT4mb+hhma/0iAw==",
+                "subType": "04"
+            }
+        },
+        "id": "O7",
+        "name": "Amethyst Ore",
+        "dropped_item_id": {
+            "$binary": {
+                "base64": "/1WXOnBgRz+sK+4rh31CAg==",
+                "subType": "04"
+            }
+        },
+        "map": "M2"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "Y6rdL2yHRxeAp86ZXfS+NQ==",
+                "subType": "04"
+            }
+        },
+        "id": "O8",
+        "name": "Sapphire Ore",
+        "dropped_item_id": {
+            "$binary": {
+                "base64": "fAGxS6VhSrWLtgK937xh2Q==",
+                "subType": "04"
+            }
+        },
+        "map": "M2"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "Tx+BCkpFSiCZsYj5T8nYrw==",
+                "subType": "04"
+            }
+        },
+        "id": "O9",
+        "name": "Emerald Ore",
+        "dropped_item_id": {
+            "$binary": {
+                "base64": "71toWgtaSQOqV9VhFNfztQ==",
+                "subType": "04"
+            }
+        },
+        "map": "M2"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "cp91tI8rSEKRbi9poaEEAQ==",
+                "subType": "04"
+            }
+        },
+        "id": "O10",
+        "name": "Mythril Ore",
+        "dropped_item_id": {
+            "$binary": {
+                "base64": "CPLKRnwuROu9Ssl3tJdPjQ==",
+                "subType": "04"
+            }
+        },
+        "map": "M1"
+    }
+]

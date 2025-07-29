@@ -16,6 +16,7 @@ MonoBehaviour:
   _enemies:
   - {fileID: 3347175494363194931, guid: de680205cfc6b854caba0af3193e40da, type: 3}
   - {fileID: 3347175494363194931, guid: b54bd8bbe22ca404aa3ed3e1696ec7a8, type: 3}
+  - {fileID: 3347175494363194931, guid: 702c9c998fa896a4590f1f4f20770197, type: 3}
   _recipeAddInterval: 15
   _itemSources:
   - Prefab: {fileID: 5121789824500213990, guid: b99f9c7a1ed4a1a4eb9b866eafbff8fb, type: 3}

@@ -1,0 +1,574 @@
+[
+    {
+        "_id": {
+            "$binary": {
+                "base64": "YZazkO1SQm208Vb3kQwbag==",
+                "subType": "04"
+            }
+        },
+        "id": "I1",
+        "name": "Vampire Wing",
+        "type": "Raw"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "UFRn/c5VSHyICT2AzwKzwg==",
+                "subType": "04"
+            }
+        },
+        "id": "I2",
+        "name": "Bone",
+        "type": "Raw"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "TB1C8Me1TaKF+cCjparOmg==",
+                "subType": "04"
+            }
+        },
+        "id": "I3",
+        "name": "Pile of Coins",
+        "type": "Raw"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "YCbzyWdJTfi3unpLaE2iOA==",
+                "subType": "04"
+            }
+        },
+        "id": "I4",
+        "name": "Orc Tusk",
+        "type": "Raw"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "FdRVM9t7SZOnPN3JCLTMyw==",
+                "subType": "04"
+            }
+        },
+        "id": "I5",
+        "name": "Mushroom cap",
+        "type": "Raw"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "bVf9Lr3NS4ObsdgkYeuaIQ==",
+                "subType": "04"
+            }
+        },
+        "id": "I6",
+        "name": "Slime Mucus",
+        "type": "Raw"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "qanQTQSoR92JuHfqm3mHOw==",
+                "subType": "04"
+            }
+        },
+        "id": "I7",
+        "name": "Bioluminescent Leaf",
+        "type": "Raw"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "+8PxH/bbQuW1FkUSTeQipg==",
+                "subType": "04"
+            }
+        },
+        "id": "I8",
+        "name": "Moss Extract",
+        "type": "Raw"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "5bho7pcBS+uplQkbnHvd",
+                "subType": "04"
+            }
+        },
+        "id": "I9",
+        "name": "Blood Petal",
+        "type": "Raw"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "0su3Z+P1QBiTdM0Mi8ny0w==",
+                "subType": "04"
+            }
+        },
+        "id": "I10",
+        "name": "Witch's Vine",
+        "type": "Raw"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "zHArboHQQ5WOzOwNNakqMg==",
+                "subType": "04"
+            }
+        },
+        "id": "I11",
+        "name": "Obsidian Ore",
+        "type": "Raw"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "Pmq5v5WiSgCk76Cbc2suCQ==",
+                "subType": "04"
+            }
+        },
+        "id": "I12",
+        "name": "Iron Ore",
+        "type": "Raw"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "kNW7V2AEQOqq3UEZPuwwCA==",
+                "subType": "04"
+            }
+        },
+        "id": "I13",
+        "name": "Silver Ore",
+        "type": "Raw"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "uHvLRCIxTpi9BfDq1pc19w==",
+                "subType": "04"
+            }
+        },
+        "id": "I14",
+        "name": "Bronzite Ore",
+        "type": "Raw"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "V/g3vcSzT3SeQekB+zNX2w==",
+                "subType": "04"
+            }
+        },
+        "id": "I15",
+        "name": "Gold Ore",
+        "type": "Raw"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "vkigITYjT9eLw0HORT/93w==",
+                "subType": "04"
+            }
+        },
+        "id": "I16",
+        "name": "Ruby Ore",
+        "type": "Raw"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "/1WXOnBgRz+sK+4rh31CAg==",
+                "subType": "04"
+            }
+        },
+        "id": "I17",
+        "name": "Amethyst Ore",
+        "type": "Raw"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "fAGxS6VhSrWLtgK937xh2Q==",
+                "subType": "04"
+            }
+        },
+        "id": "I18",
+        "name": "Sapphire Ore",
+        "type": "Raw"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "71toWgtaSQOqV9VhFNfztQ==",
+                "subType": "04"
+            }
+        },
+        "id": "I19",
+        "name": "Emerald Ore",
+        "type": "Raw"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "CPLKRnwuROu9Ssl3tJdPjQ==",
+                "subType": "04"
+            }
+        },
+        "id": "I20",
+        "name": "Mythril Ore",
+        "type": "Raw"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "Q2gMMDQiTuGzjIZPr8f0aw==",
+                "subType": "04"
+            }
+        },
+        "id": "I21",
+        "name": "Obsidian Ingot",
+        "type": "Processed"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "0a0gx5WTQjej3+LCbqfvOg==",
+                "subType": "04"
+            }
+        },
+        "id": "I22",
+        "name": "Iron Ingot",
+        "type": "Processed"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "jxZGe7ntQjW+NqMUaf91oA==",
+                "subType": "04"
+            }
+        },
+        "id": "I23",
+        "name": "Silver Ingot",
+        "type": "Processed"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "CvNH1WC/RNyKmh47KMgIJQ==",
+                "subType": "04"
+            }
+        },
+        "id": "I24",
+        "name": "Bronzite Ingot",
+        "type": "Processed"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "YUm3fOvrQtGbe/Fy5LyudQ==",
+                "subType": "04"
+            }
+        },
+        "id": "I25",
+        "name": "Gold Ingot",
+        "type": "Processed"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "R/3Tl/OfQqKtzqRGgY4puA==",
+                "subType": "04"
+            }
+        },
+        "id": "I26",
+        "name": "Ruby Ingot",
+        "type": "Processed"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "cSvXRZgJS7eDQVsGMMGOAw==",
+                "subType": "04"
+            }
+        },
+        "id": "I27",
+        "name": "Amethyst Ingot",
+        "type": "Processed"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "NDYP9pGMS0SGh8hzqQzIqg==",
+                "subType": "04"
+            }
+        },
+        "id": "I28",
+        "name": "Sapphire Ingot",
+        "type": "Processed"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "mxE1+h/QQUWNEUyWNQa98Q==",
+                "subType": "04"
+            }
+        },
+        "id": "I29",
+        "name": "Emerald Ingot",
+        "type": "Processed"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "N74hjnAtQYmWfw/Hw5ILnA==",
+                "subType": "04"
+            }
+        },
+        "id": "I30",
+        "name": "Mythril Ingot",
+        "type": "Processed"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "MrgglPfRSv6+v8ZBPfjNqQ==",
+                "subType": "04"
+            }
+        },
+        "id": "I31",
+        "name": "Healing Potion",
+        "type": "Potion"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "R6LSWciWQr6XSUY84+l62g==",
+                "subType": "04"
+            }
+        },
+        "id": "I32",
+        "name": "Poison Antidote",
+        "type": "Potion"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "5b3f8k2eQOqq3UEZPuwwCA==",
+                "subType": "04"
+            }
+        },
+        "id": "I33",
+        "name": "Mana Potion",
+        "type": "Potion"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "IN/kL5Z4S1CSada+cBybLw==",
+                "subType": "04"
+            }
+        },
+        "id": "I34",
+        "name": "Strength Potion",
+        "type": "Potion"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "NmzQOc+GRj2aQFNcHDB45g==",
+                "subType": "04"
+            }
+        },
+        "id": "I35",
+        "name": "Regeneration Potion",
+        "type": "Potion"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "CeLdGYTEROKGGNcSktDOAw==",
+                "subType": "04"
+            }
+        },
+        "id": "I36",
+        "name": "Charm Potion",
+        "type": "Potion"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "rwvAA3OLSaqHm78XQ/fFAg==",
+                "subType": "04"
+            }
+        },
+        "id": "I37",
+        "name": "Invisible Potion",
+        "type": "Potion"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "wxlrSTIcTfS7lRSXcAkBWg==",
+                "subType": "04"
+            }
+        },
+        "id": "I38",
+        "name": "Defense Potion",
+        "type": "Potion"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "pNupewYqSoe/GZjPlgfViQ==",
+                "subType": "04"
+            }
+        },
+        "id": "I39",
+        "name": "Curse Potion",
+        "type": "Potion"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "4/FHcRJZRuiNzBSNibq1aQ==",
+                "subType": "04"
+            }
+        },
+        "id": "I40",
+        "name": "Luck Potion",
+        "type": "Potion"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "IkX7POIZRYmT/w5h/76ZEQ==",
+                "subType": "04"
+            }
+        },
+        "id": "I41",
+        "name": "Speed Potion",
+        "type": "Potion"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "H2ujrBWqTgyCqRU8kVtjdQ==",
+                "subType": "04"
+            }
+        },
+        "id": "I42",
+        "name": "Purification Potion",
+        "type": "Potion"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "I3kEfaBVTYKBD+rEaH7UuQ==",
+                "subType": "04"
+            }
+        },
+        "id": "I43",
+        "name": "Obsidian Ingot",
+        "type": "Ingot"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "Ugo8CZGiQ3+FCNI/WBkw3Q==",
+                "subType": "04"
+            }
+        },
+        "id": "I44",
+        "name": "Iron Ingot",
+        "type": "Ingot"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "vLR7B5RGS5+eZwEDSoQqHA==",
+                "subType": "04"
+            }
+        },
+        "id": "I45",
+        "name": "Silver Ingot",
+        "type": "Ingot"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "OhU4KflsQUu6XsCUlnIsXg==",
+                "subType": "04"
+            }
+        },
+        "id": "I46",
+        "name": "Bronzite Ingot",
+        "type": "Ingot"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "ijL7KETfSpW1ZjOUst586g==",
+                "subType": "04"
+            }
+        },
+        "id": "I47",
+        "name": "Gold Ingot",
+        "type": "Ingot"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "l3uryKQ5QIu+m0x8Iw8v6g==",
+                "subType": "04"
+            }
+        },
+        "id": "I48",
+        "name": "Ruby Ingot",
+        "type": "Ingot"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "msXS+gkVSou7JBSYZBs+cQ==",
+                "subType": "04"
+            }
+        },
+        "id": "I49",
+        "name": "Amethyst Ingot",
+        "type": "Ingot"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "gTsWaJFyRseJgCLSBQZa5g==",
+                "subType": "04"
+            }
+        },
+        "id": "I50",
+        "name": "Sapphire Ingot",
+        "type": "Ingot"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "aCST4MXCS2alinIWGZ0dig==",
+                "subType": "04"
+            }
+        },
+        "id": "I51",
+        "name": "Emerald Ingot",
+        "type": "Ingot"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "XtnIWYmyQ3WYKQ9Z5EjTWw==",
+                "subType": "04"
+            }
+        },
+        "id": "I52",
+        "name": "Mythril Ingot",
+        "type": "Ingot"
+    }
+]

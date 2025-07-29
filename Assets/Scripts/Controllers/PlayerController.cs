@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     public Animator SwordAnimatr => _swordAnim;
     public WeaponConfig Weapon => _weapon;
     public Transform AttackPoint => _attackPoint;
-
+    [SerializeField] private Skill[] _skills = new Skill[GameConstants.NumSkills];
     public void Initialize(InputActionAsset loadedAsset = null)
     {
         _inputManager = loadedAsset != null
@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
 
         Inventory.Initialize(this, _inputManager);
         Attack.Initialize(this, _inputManager);
+        Attack.Initialize(_skills);
         Interaction.Initialize(this, _inputManager);    
         Movement.Initialize(this, _inputManager);
 
@@ -49,7 +50,7 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        Movement.MyUpdate();
+        Movement.Update();
     }
 
     void OnTriggerEnter2D(Collider2D collider)

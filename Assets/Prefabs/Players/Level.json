@@ -1,0 +1,206 @@
+[
+    {
+        "_id": {
+            "$binary": {
+                "base64": "36D0Rt0XTcKbG1+41oOUSg==",
+                "subType": "04"
+            }
+        },
+        "id": "Le1",
+        "monters": [
+            {
+                "$binary": {
+                    "base64": "5aIeT2ZiQB+MLbYoPWujoQ==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "48ZDhG7hRFit4qLkFpACOg==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "yOMDDWZkSTK+WAg4RXynOg==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "ores": [
+            {
+                "$binary": {
+                    "base64": "yrPXKF6BS8mWQFHxVKjHcw==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "UY+QEpV1QGOl7O8hx0N5cw==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "EZR7pmysT+ul74dVIe/Bqg==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "plants": [
+            {
+                "$binary": {
+                    "base64": "37KJtzntQGe8z6ZYkNBLew==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "mxuA+pw9TCa8T3xUjy4shQ==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "MVptJlxxRwm24o66cyrHlg==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "/or8UqRuReiZhUUtoXYWpA==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "A/CKGH55TdWHnJyOVu5stw==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "products": [
+            {
+                "$binary": {
+                    "base64": "IN/kL5Z4S1CSada+cBybLw==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "4/FHcRJZRuiNzBSNibq1aQ==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "H2ujrBWqTgyCqRU8kVtjdQ==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "map": "M1"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "p1/Jk8p0SWqVVd01DqnYOg==",
+                "subType": "04"
+            }
+        },
+        "id": "Le2",
+        "monters": [
+            {
+                "$binary": {
+                    "base64": "ll7x2EjISBu+koeZvj8StA==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "NEr4cuFxTa60ryp1P1zSzg==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "8ej+JhbXR/aFwZJkapCVQw==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "ores": [
+            {
+                "$binary": {
+                    "base64": "QT4xI05nQeaygCKyojAvxQ==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "Y6rdL2yHRxeAp86ZXfS+NQ==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "Tx+BCkpFSiCZsYj5T8nYrw==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "plants": [
+            {
+                "$binary": {
+                    "base64": "37KJtzntQGe8z6ZYkNBLew==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "mxuA+pw9TCa8T3xUjy4shQ==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "MVptJlxxRwm24o66cyrHlg==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "/or8UqRuReiZhUUtoXYWpA==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "A/CKGH55TdWHnJyOVu5stw==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "products": [
+            {
+                "$binary": {
+                    "base64": "MrgglPfRSv6+v8ZBPfjNqQ==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "R6LSWciWQr6XSUY84+l62g==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "5b3f8k2eQOqq3UEZPuwwCA==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "map": "M2"
+    }
+]

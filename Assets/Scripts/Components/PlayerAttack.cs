@@ -5,14 +5,26 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttack
 {
-    private PlayerInputManager _inputManager;
     private PlayerController _player;
+    private GameObject _weapon;
+    private PlayerInputManager _inputManager;
+    private InputAction[] _skillActions;
     // bool _isAttacking = false;
     private bool _canAttack = true;
     private bool[] _canUseSkills = new bool[GameConstants.NumSkills];
+    [SerializeField] private Skill[] _skills = new Skill[GameConstants.NumSkills];
     private bool _isInAction = false;
-    private InputAction[] _skillActions;
+    private float _damageMutiplayer = 1;
 
+    public void SetDamageMultiplier(float multiplier)
+    {
+        _damageMutiplayer *= multiplier;
+    }
+
+    public void Initialize(Skill[] skills)
+    {
+        _skills = skills;
+    }
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
         for (int i = 0; i < 3; i++)
@@ -21,6 +33,9 @@ public class PlayerAttack
         }
 
         _player = player;
+        _weapon = _player.transform.Find("Weapons").gameObject;
+        // if (_weapon) _weapon.SetActive(false);
+
         _inputManager = inputManager;
         _skillActions = new InputAction[]
         {
@@ -60,7 +75,7 @@ public class PlayerAttack
         {
             Debug.Log("Vướng tường nè má.");
             _canAttack = true;
-            yield break;
+            //yield break;
         }
 
         // Chạy anim
@@ -72,6 +87,7 @@ public class PlayerAttack
         yield return new WaitForSeconds(_player.Config.AttackDelay);
         // Đánh quái
         HitEnemy(origin, dir);
+        // _weapon.SetActive(false);
         yield return new WaitForSeconds(_player.Config.AttackCooldown - _player.Config.AttackDelay);
         // _isInAction = false;
         _canAttack = true;
@@ -80,10 +96,14 @@ public class PlayerAttack
     private IEnumerator UseSkill(int skillNumber)
     {
         _canUseSkills[skillNumber - 1] = false;
+        _skills[skillNumber - 1].Activate(_player.gameObject);
+        yield return new WaitForSeconds(_skills[skillNumber - 1].TimeAlive);
+        _skills[skillNumber - 1].Deactivate(_player.gameObject);
         // _isInAction = true;
         Debug.Log($"Using ability {skillNumber}");
         yield return new WaitForSeconds(_player.Config.SkillsCoolDown[skillNumber - 1]);
         // _isInAction = false;
+        
         _canUseSkills[skillNumber - 1] = true;
     }
 
@@ -109,6 +129,7 @@ public class PlayerAttack
 
     private bool PlayAnimation()
     {
+        // if (_weapon) _weapon.SetActive(true);
         _player.SwordAnimatr.SetTrigger("Attack");
         float playerX = _player.Movement.PlayerDir.x;
         float playerY = _player.Movement.PlayerDir.y;
@@ -137,7 +158,7 @@ public class PlayerAttack
                 EnemyController enemy = hitTargets[i].collider.GetComponent<EnemyController>();
                 if (enemy != null)
                 {
-                    enemy.TakeDamage(_player.Weapon.AttackDamage);
+                    enemy.TakeDamage(_damageMutiplayer * _player.Weapon.AttackDamage);
                 }
             } 
             if (hitTargets[i].collider.CompareTag("ItemSource"))

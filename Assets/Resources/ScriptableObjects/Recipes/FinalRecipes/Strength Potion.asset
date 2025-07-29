@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: Strength Potion
   m_EditorClassIdentifier: 
   _name: 
-  _icon: {fileID: 91793580574289886, guid: 9c43bd373420dd642bdfdde9096c3d02, type: 3}
+  _icon: {fileID: 91793580574289886, guid: bd2695ac966031b45b86dcb6ec4a6513, type: 3}
   _id: R4
   _craftingTime: 8
   _type: 1
   _product: {fileID: 11400000, guid: 656f792f17be1fd46a6b61b497d97c34, type: 2}
   _inputs:
-  - {fileID: 11400000, guid: 3feaa63b66d55be49886d3ec5932cb56, type: 2}
-  - {fileID: 11400000, guid: f328770432ef4884da308476bb83d8e2, type: 2}
-  - {fileID: 11400000, guid: beb25794779a99b4b91a16c504c21141, type: 2}
+  - {fileID: 11400000, guid: 2153b500a333a9946b03b2d149e8d79e, type: 2}
+  - {fileID: 11400000, guid: 9b108dc601cc8ff478486c2b2094a23d, type: 2}

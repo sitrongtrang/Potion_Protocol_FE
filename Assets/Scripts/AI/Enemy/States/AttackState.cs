@@ -16,7 +16,7 @@ public class AttackState : IBasicState<EnemyController>
         if (!_owner.IsPlayerInRange)
         {
             if (
-                _owner.BasicStateMachine.ChangeState(EnemyState.Search, new object[]{
+                _owner.BasicStateMachine.ChangeState(EnemyActionEnum.Search, new object[]{
                     _owner.EnemyConf.SearchDuration
                 })
             ) return;

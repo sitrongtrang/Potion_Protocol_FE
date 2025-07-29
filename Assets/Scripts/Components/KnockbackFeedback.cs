@@ -6,6 +6,7 @@ public class KnockbackFeedback : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rb2d;
     [SerializeField] private float strength = 16, delay = 0.15f;
+    
     public UnityEvent OnBegin, OnDone;
 
     public void PlayFeedBack(GameObject sender)
