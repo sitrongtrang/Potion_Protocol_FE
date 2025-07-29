@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 160db005b420e004ba7cb072d295092b, type: 3}
+  m_Name: Skeleton
+  m_EditorClassIdentifier: 
+  _name: Skeleton
+  _icon: {fileID: 8190107228005013420, guid: f113fd8b4ca73ea4999955efa48a190d, type: 3}
+  _id: M1
+  _hp: 4
+  _speed: 3
+  _damage: 1
+  _patrolRadius: 5.5
+  _patrolInterval: 1
+  _chaseRadius: 7
+  _visionRadius: 6
+  _attackRadius: 1
+  _attackInterval: 1
+  _searchRadius: 5
+  _searchDuration: 100
+  _searchInterval: 1
+  _item: {fileID: 11400000, guid: 2153b500a333a9946b03b2d149e8d79e, type: 2}

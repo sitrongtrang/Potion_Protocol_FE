@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24b283275af73a4ab4c7144cac466b6, type: 3}
+  m_Name: Orc Tusk
+  m_EditorClassIdentifier: 
+  _name: Orc Tusk
+  _icon: {fileID: 6003512801403458610, guid: 5baadef4b57a8ab42838bad96b712f13, type: 3}
+  _id: I2
+  _type: 0
+  _droppedBy: {fileID: 11400000, guid: 633df65d44353ef4bae4a2d6e85e8b70, type: 2}
+  _expireTime: 30
