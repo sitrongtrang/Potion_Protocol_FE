@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 160db005b420e004ba7cb072d295092b, type: 3}
   m_Name: Slime
   m_EditorClassIdentifier: 
+  _name: Slime
   _icon: {fileID: 1290304706820135947, guid: 099b6c8147316e24db74a03cb90d36a9, type: 3}
-  _name: Mireblot
   _id: M1
   _hp: 4
   _speed: 3
@@ -28,4 +28,3 @@ MonoBehaviour:
   _searchDuration: 100
   _searchInterval: 1
   _item: {fileID: 11400000, guid: 19ede4239ef0c564e8a32832f55edb58, type: 2}
-  _prefab: {fileID: 3347175494363194931, guid: b54bd8bbe22ca404aa3ed3e1696ec7a8, type: 3}

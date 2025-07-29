@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
@@ -9,7 +10,6 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
     private LevelConfig _config;
-    [SerializeField] LoadingScreenUI _loadingScreen;
     private int _score = 0;
     public int Score
     {
@@ -68,26 +68,15 @@ public class LevelManager : MonoBehaviour
         // _config = Resources.Load<LevelConfig>($"ScriptableObjects/Levels/Level{GameManager.Instance.CurrentLevel + 1}");
     }
 
-    void Start()
-    {
-        StartCoroutine(LoadLevelAsset());   
-    }
+    //void Start()
+    //{
+    //    _config = GameManager.Instance.CurrentLevelConfig;
+    //    Initialize(_config);
+    //}
 
-    private IEnumerator LoadLevelAsset()
+    public void Initialize(LevelConfig config)
     {
-        string levelPath = $"ScriptableObjects/Levels/Level{GameManager.Instance.CurrentLevel + 1}";
-        ResourceRequest request = Resources.LoadAsync<LevelConfig>(levelPath);
-        _loadingScreen.gameObject.SetActive(true);
-
-        yield return StartCoroutine(_loadingScreen.RenderLoadingScene(request));
-    
-        _config = request.asset as LevelConfig;
-        Initialize();
-        _loadingScreen.gameObject.SetActive(false);
-    }
-
-    void Initialize()
-    {
+        _config = config;
         _requiredRecipeListUI.Initialize(_requiredRecipes);
         _requiredRecipes.Clear();
         LoadLevel(_config);
@@ -255,7 +244,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public bool OnProductSubmitted(FinalProductConfig product)
+    public bool OnProductSubmitted(ItemConfig product, float multiplier)
     {
         for (int i = 0; i < _requiredRecipes.Count; i++)
         {
@@ -263,7 +252,7 @@ public class LevelManager : MonoBehaviour
             {
                 _requiredRecipes.RemoveAt(i);
                 OnRequiredRecipeRemoved?.Invoke(i);
-                Score += product.Score;
+                Score += FormulaeCalculator.CalculateScore(_requiredRecipes[i], multiplier);
                 return true;
             }
         }

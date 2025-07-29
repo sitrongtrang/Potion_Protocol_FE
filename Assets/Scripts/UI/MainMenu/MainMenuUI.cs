@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -17,8 +19,20 @@ public class MainMenuUI : MonoBehaviour
 
     public void OnSoloPlay()
     {
-        SceneManager.LoadScene("LevelSelectionScene");
-        // SceneManager.LoadScene("GameScene");
+        StartCoroutine(LoadSelectLevel());
+    }
+
+    private IEnumerator LoadSelectLevel()
+    {
+        AsyncOperation request = SceneManager.LoadSceneAsync("LevelSelectionScene");
+        request.completed += async (op) =>
+        {
+            await LoadingScreenUI.Instance.RenderFinish();
+        };
+        LoadingScreenUI.Instance.gameObject.SetActive(true);
+        List<AsyncOperation> opList = new List<AsyncOperation>();
+        opList.Add(request);
+        yield return StartCoroutine(LoadingScreenUI.Instance.RenderLoadingScene(opList));
     }
 
     public void OnCoopPlay()

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9c43bd373420dd642bdfdde9096c3d02
+guid: bd2695ac966031b45b86dcb6ec4a6513
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -119,10 +119,10 @@ TextureImporter:
       name: StrengthPotionRecipe_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 132
-        width: 369
-        height: 387
+        x: 19
+        y: 124
+        width: 363
+        height: 391
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,10 +141,10 @@ TextureImporter:
       name: StrengthPotionRecipe_1
       rect:
         serializedVersion: 2
-        x: 250
-        y: 117
-        width: 148
-        height: 180
+        x: 246
+        y: 107
+        width: 145
+        height: 181
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

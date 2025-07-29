@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 160db005b420e004ba7cb072d295092b, type: 3}
+  m_Name: Chest
+  m_EditorClassIdentifier: 
+  _name: Chest
+  _icon: {fileID: 4827292053532166141, guid: f113fd8b4ca73ea4999955efa48a190d, type: 3}
+  _id: M5
+  _hp: 3
+  _speed: 5
+  _damage: 0
+  _patrolRadius: 5.5
+  _patrolInterval: 1
+  _chaseRadius: 7
+  _visionRadius: 6
+  _attackRadius: 1
+  _attackInterval: 1
+  _searchRadius: 5
+  _searchDuration: 100
+  _searchInterval: 1
+  _item: {fileID: 11400000, guid: c3bc7da12f0b7f843a16f7ea9c4e04bc, type: 2}

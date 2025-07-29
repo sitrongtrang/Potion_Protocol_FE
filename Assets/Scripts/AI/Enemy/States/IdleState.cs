@@ -4,7 +4,7 @@ public class IdleState : IBasicState<EnemyController>
 {
     private EnemyController _owner;
     private float _idleTime;
-    private EnemyState _previousState;
+    private EnemyActionEnum _previousState;
     private float _searchRemaining;
     public IdleState(EnemyController controller)
     {
@@ -12,10 +12,10 @@ public class IdleState : IBasicState<EnemyController>
     }
     public void Enter(EnemyController owner, object[] enterParameters = null)
     {
-        _previousState = (EnemyState)enterParameters[0];
+        _previousState = (EnemyActionEnum)enterParameters[0];
         _idleTime = (float)enterParameters[1];
 
-        if (_previousState == EnemyState.Search)
+        if (_previousState == EnemyActionEnum.Search)
             _searchRemaining = (float)enterParameters[2];
     }
 
@@ -23,22 +23,22 @@ public class IdleState : IBasicState<EnemyController>
     {
         if (_owner.IsPlayerInRange)
         {
-            if (_owner.BasicStateMachine.ChangeState(EnemyState.Chase))
+            if (_owner.BasicStateMachine.ChangeState(EnemyActionEnum.Chase))
                 return;
         }
         
         _idleTime -= Time.deltaTime;
         if (_idleTime < 0)
         {
-            if (_previousState == EnemyState.Patrol)
+            if (_previousState == EnemyActionEnum.Patrol)
             {
-                if (_owner.BasicStateMachine.ChangeState(EnemyState.Patrol))
+                if (_owner.BasicStateMachine.ChangeState(EnemyActionEnum.Patrol))
                     return;
             }
-            else if (_previousState == EnemyState.Search)
+            else if (_previousState == EnemyActionEnum.Search)
             {
                 if (
-                    _owner.BasicStateMachine.ChangeState(EnemyState.Search, new object[]{
+                    _owner.BasicStateMachine.ChangeState(EnemyActionEnum.Search, new object[]{
                         _searchRemaining
                     })
                 ) return;

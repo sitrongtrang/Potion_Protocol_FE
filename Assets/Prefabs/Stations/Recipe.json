@@ -1,0 +1,588 @@
+[
+    {
+        "_id": {
+            "$binary": {
+                "base64": "VRmvXDW3S0aXm8pUNTbjiA==",
+                "subType": "04"
+            }
+        },
+        "id": "C1",
+        "crafting_formula": [
+            {
+                "$binary": {
+                    "base64": "5bho7pcBS+uplQkbnHvd",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "R/3Tl/OfQqKtzqRGgY4puA==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "crafting_time": 4,
+        "crafting_item": {
+            "$binary": {
+                "base64": "MrgglPfRSv6+v8ZBPfjNqQ==",
+                "subType": "04"
+            }
+        },
+        "station_type": "Alchemy"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "JIT8AV1kTmadAybTIXzQaw==",
+                "subType": "04"
+            }
+        },
+        "id": "C2",
+        "crafting_formula": [
+            {
+                "$binary": {
+                    "base64": "qanQTQSoR92JuHfqm3mHOw==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "mxE1+h/QQUWNEUyWNQa98Q==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "crafting_time": 5,
+        "crafting_item": {
+            "$binary": {
+                "base64": "R6LSWciWQr6XSUY84+l62g==",
+                "subType": "04"
+            }
+        },
+        "station_type": "Alchemy"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "MbFFP893S82fH8mV1fo1bg==",
+                "subType": "04"
+            }
+        },
+        "id": "C3",
+        "crafting_formula":[
+            {
+                "$binary": {
+                    "base64": "+8PxH/bbQuW1FkUSTeQipg==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "NDYP9pGMS0SGh8hzqQzIqg==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "crafting_time": 6,
+        "crafting_item": {
+            "$binary": {
+                "base64": "5b3f8k2eQOqq3UEZPuwwCA==",
+                "subType": "04"
+            }
+        },
+        "station_type": "Alchemy"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "CfH0J7ygS0ubWYHBF9AV6w==",
+                "subType": "04"
+            }
+        },
+        "id": "C4",
+        "crafting_formula":[
+            {
+                "$binary": {
+                    "base64": "UFRn/c5VSHyICT2AzwKzwg==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "CvNH1WC/RNyKmh47KMgIJQ==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "crafting_time": 8,
+        "crafting_item": {
+            "$binary": {
+                "base64": "IN/kL5Z4S1CSada+cBybLw==",
+                "subType": "04"
+            }
+        },
+        "station_type": "Alchemy"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "MMR0d7rvTLGucSP876gyoQ==",
+                "subType": "04"
+            }
+        },
+        "id": "C5",
+        "crafting_formula":[
+            {
+                "$binary": {
+                    "base64": "YZazkO1SQm208Vb3kQwbag==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "FdRVM9t7SZOnPN3JCLTMyw==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "crafting_time": 5,
+        "crafting_item": {
+            "$binary": {
+                "base64": "NmzQOc+GRj2aQFNcHDB45g==",
+                "subType": "04"
+            }
+        },
+        "station_type": "Alchemy"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "mn3OfOhQSmeGaB7r/46vvg==",
+                "subType": "04"
+            }
+        },
+        "id": "C6",
+        "crafting_formula":[
+            {
+                "$binary": {
+                    "base64": "YZazkO1SQm208Vb3kQwbag==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "crafting_time": 7,
+        "crafting_item": {
+            "$binary": {
+                "base64": "CeLdGYTEROKGGNcSktDOAw==",
+                "subType": "04"
+            }
+        },
+        "station_type": "Alchemy"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "p04sW4cLT3aZ7ak0YUK9Ag==",
+                "subType": "04"
+            }
+        },
+        "id": "C7",
+        "crafting_formula":[
+            {
+                "$binary": {
+                    "base64": "UFRn/c5VSHyICT2AzwKzwg==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "crafting_time": 5,
+        "crafting_item": {
+            "$binary": {
+                "base64": "rwvAA3OLSaqHm78XQ/fFAg==",
+                "subType": "04"
+            }
+        },
+        "station_type": "Alchemy"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "0mIRSHT8SXyjIShtPZ0Tkw==",
+                "subType": "04"
+            }
+        },
+        "id": "C8",
+        "crafting_formula":[
+            {
+                "$binary": {
+                    "base64": "TB1C8Me1TaKF+cCjparOmg==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "crafting_time": 5,
+        "crafting_item": {
+            "$binary": {
+                "base64": "wxlrSTIcTfS7lRSXcAkBWg==",
+                "subType": "04"
+            }
+        },
+        "station_type": "Alchemy"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "XupXJ9DJSEGEZinFIu8/Vg==",
+                "subType": "04"
+            }
+        },
+        "id": "C9",
+        "crafting_formula":[
+            {
+                "$binary": {
+                    "base64": "YCbzyWdJTfi3unpLaE2iOA==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "crafting_time": 4,
+        "crafting_item": {
+            "$binary": {
+                "base64": "pNupewYqSoe/GZjPlgfViQ==",
+                "subType": "04"
+            }
+        },
+        "station_type": "Alchemy"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "KBUQmcevSiWJWZGHG8ZKIQ==",
+                "subType": "04"
+            }
+        },
+        "id": "C10",
+        "crafting_formula":[
+            {
+                "$binary": {
+                    "base64": "TB1C8Me1TaKF+cCjparOmg==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "YUm3fOvrQtGbe/Fy5LyudQ==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "crafting_time": 5,
+        "crafting_item": {
+            "$binary": {
+                "base64": "4/FHcRJZRuiNzBSNibq1aQ==",
+                "subType": "04"
+            }
+        },
+        "station_type": "Alchemy"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "Exb5uqpgSKq2WHP9MRnsiw==",
+                "subType": "04"
+            }
+        },
+        "id": "C11",
+        "crafting_formula":[
+            {
+                "$binary": {
+                    "base64": "bVf9Lr3NS4ObsdgkYeuaIQ==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "crafting_time": 5,
+        "crafting_item": {
+            "$binary": {
+                "base64": "IkX7POIZRYmT/w5h/76ZEQ==",
+                "subType": "04"
+            }
+        },
+        "station_type": "Alchemy"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "EOgv4PsuQmWgf6s4hX7D3Q==",
+                "subType": "04"
+            }
+        },
+        "id": "C12",
+        "crafting_formula":[
+            {
+                "$binary": {
+                    "base64": "qanQTQSoR92JuHfqm3mHOw==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "crafting_time": 5,
+        "crafting_item": {
+            "$binary": {
+                "base64": "H2ujrBWqTgyCqRU8kVtjdQ==",
+                "subType": "04"
+            }
+        },
+        "station_type": "Alchemy"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "gfTUQf0lR8WbDtPBkAxgAA==",
+                "subType": "04"
+            }
+        },
+        "id": "C13",
+        "crafting_formula":[
+            {
+                "$binary": {
+                    "base64": "zHArboHQQ5WOzOwNNakqMg==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "crafting_time": 5,
+        "crafting_item": {
+            "$binary": {
+                "base64": "Q2gMMDQiTuGzjIZPr8f0aw==",
+                "subType": "04"
+            }
+        },
+        "station_type": "Furnace"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "97ye4lF0QZ+2YxkKoyOTTg==",
+                "subType": "04"
+            }
+        },
+        "id": "C14",
+        "crafting_formula":[
+            {
+                "$binary": {
+                    "base64": "Pmq5v5WiSgCk76Cbc2suCQ==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "crafting_time": 6,
+        "crafting_item": {
+            "$binary": {
+                "base64": "0a0gx5WTQjej3+LCbqfvOg==",
+                "subType": "04"
+            }
+        },
+        "station_type": "Furnace"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "/cxgeNNzQrqjSLuVaLVhMA==",
+                "subType": "04"
+            }
+        },
+        "id": "C15",
+        "crafting_formula":[
+            {
+                "$binary": {
+                    "base64": "kNW7V2AEQOqq3UEZPuwwCA==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "crafting_time": 4,
+        "crafting_item": {
+            "$binary": {
+                "base64": "jxZGe7ntQjW+NqMUaf91oA==",
+                "subType": "04"
+            }
+        },
+        "station_type": "Furnace"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "HBVgNhQVRA2dPObMj3nSEA==",
+                "subType": "04"
+            }
+        },
+        "id": "C16",
+        "crafting_formula":[
+            {
+                "$binary": {
+                    "base64": "uHvLRCIxTpi9BfDq1pc19w==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "crafting_time": 6,
+        "crafting_item": {
+            "$binary": {
+                "base64": "CvNH1WC/RNyKmh47KMgIJQ==",
+                "subType": "04"
+            }
+        },
+        "station_type": "Furnace"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "d+Q/7S/ZQHWkMVceAUFjiA==",
+                "subType": "04"
+            }
+        },
+        "id": "C17",
+        "crafting_formula":[
+            {
+                "$binary": {
+                    "base64": "V/g3vcSzT3SeQekB+zNX2w==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "crafting_time": 8,
+        "crafting_item": {
+            "$binary": {
+                "base64": "YUm3fOvrQtGbe/Fy5LyudQ==",
+                "subType": "04"
+            }
+        },
+        "station_type": "Furnace"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "FF9W0XChQuC+8p6MUIWHmw==",
+                "subType": "04"
+            }
+        },
+        "id": "C18",
+        "crafting_formula":[
+            {
+                "$binary": {
+                    "base64": "vkigITYjT9eLw0HORT/93w==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "crafting_time": 6,
+        "crafting_item": {
+            "$binary": {
+                "base64": "R/3Tl/OfQqKtzqRGgY4puA==",
+                "subType": "04"
+            }
+        },
+        "station_type": "Furnace"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "BNieV8gdTKGM8HSQZzFQqg==",
+                "subType": "04"
+            }
+        },
+        "id": "C19",
+        "crafting_formula":[
+            {
+                "$binary": {
+                    "base64": "/1WXOnBgRz+sK+4rh31CAg==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "crafting_time": 7,
+        "crafting_item": {
+            "$binary": {
+                "base64": "cSvXRZgJS7eDQVsGMMGOAw==",
+                "subType": "04"
+            }
+        },
+        "station_type": "Furnace"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "5jHRG9emQViKEQ9q3BfSKg==",
+                "subType": "04"
+            }
+        },
+        "id": "C20",
+        "crafting_formula":[
+            {
+                "$binary": {
+                    "base64": "fAGxS6VhSrWLtgK937xh2Q==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "crafting_time": 6,
+        "crafting_item": {
+            "$binary": {
+                "base64": "NDYP9pGMS0SGh8hzqQzIqg==",
+                "subType": "04"
+            }
+        },
+        "station_type": "Furnace"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "DPyNF5c6RhWx8Lpi1b1BGg==",
+                "subType": "04"
+            }
+        },
+        "id": "C21",
+        "crafting_formula":[
+            {
+                "$binary": {
+                    "base64": "71toWgtaSQOqV9VhFNfztQ==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "crafting_time": 8,
+        "crafting_item": {
+            "$binary": {
+                "base64": "mxE1+h/QQUWNEUyWNQa98Q==",
+                "subType": "04"
+            }
+        },
+        "station_type": "Furnace"
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "hULwFHJgShalBWn3cxY/Sg==",
+                "subType": "04"
+            }
+        },
+        "id": "C22",
+        "crafting_formula":[
+            {
+                "$binary": {
+                    "base64": "CPLKRnwuROu9Ssl3tJdPjQ==",
+                    "subType": "04"
+                }
+            }
+        ],
+        "crafting_time": 7,
+        "crafting_item": {
+            "$binary": {
+                "base64": "N74hjnAtQYmWfw/Hw5ILnA==",
+                "subType": "04"
+            }
+        },
+        "station_type": "Furnace"
+    }
+]

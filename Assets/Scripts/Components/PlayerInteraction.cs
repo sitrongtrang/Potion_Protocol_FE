@@ -1,113 +1,71 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-
 
 public class PlayerInteraction
 {
-    private PlayerInputManager _inputManager;
     private PlayerController _player;
-    [SerializeField] private List<GameObject> _objectInCollision = new List<GameObject>();
-    [SerializeField] private bool _isNearStation = false;
     private PlayerInventory _inventory;
+    private PlayerInputManager _inputManager;
+    private List<GameObject> _itemsInCollision = new List<GameObject>();
     private StationController _nearStation;
-    private InputAction[] _inputAction;
-    [SerializeField] private bool _isNearSubmissionPoint = false;
+    private bool _isNearStation = false;
+    private bool _isNearSubmissionPoint = false;
     private bool _isNearCraftPoint = false;
-
+    private float _multiplier = 1;
+    public void SetPointMultiplier(float multiplier)
+    {
+        _multiplier = multiplier;
+    }
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
         _inventory = player.Inventory;
         _player = player;
         _inputManager = inputManager;
-        // Choose slot
-        _inputAction = new InputAction[GameConstants.MaxSlot] {
-            _inputManager.controls.Player.ChooseSlot1,
-            _inputManager.controls.Player.ChooseSlot2,
-            _inputManager.controls.Player.ChooseSlot3,
-            _inputManager.controls.Player.ChooseSlot4,
-            _inputManager.controls.Player.ChooseSlot5
-        };
 
-        for (int i = 0; i < GameConstants.MaxSlot; i++)
-        {
-            int index = i;
-            _inputAction[i].performed += ctx => ChooseSlot(index);
-        }
-
-        _inputManager.controls.Player.Nextslot.performed += ctx => NextSlot();
-        _inputManager.controls.Player.Submit.performed += ctx =>
-        {
-            if (_isNearSubmissionPoint)
-            {
-                Submit();
-            }
-        };
-        _inputManager.controls.Player.Transfer.performed += ctx =>
-        {
-            if (_isNearStation)
-            {
-                TransferToStation();
-            }
-        };
+        _inputManager.controls.Player.Submit.performed += ctx => Submit();
+        _inputManager.controls.Player.Transfer.performed += ctx => TransferToStation();
         _inputManager.controls.Player.Attack.performed += ctx =>
         {
             if (!_isNearSubmissionPoint && !_isNearStation) _player.StartCoroutine(_player.Attack.Attack());
         };
-        _inputManager.controls.Player.Exploit.performed += ctx =>
-        {
-            // exploit
-        };
+        _inputManager.controls.Player.Exploit.performed += ctx => { };
         _inputManager.controls.Player.Combine.performed += ctx =>
         {
             // combine & craft item
             if (_isNearCraftPoint) _nearStation.StartCrafting();
         };
         inputManager.controls.Player.Drop.performed += ctx => DropItem();
-        inputManager.controls.Player.Pickup.performed += ctx =>
-        {
-            if (_objectInCollision.Count > 0) PickUpItem();
-            else
-            {
-                Debug.Log("Nothing to pick");
-            }
-        };
-    }
-
-    void ChooseSlot(int slot)
-    {
-        _inventory.ChoosingSlot = slot;
-        Debug.Log($"Choosing slot{_inventory.ChoosingSlot + 1}");
-    }
-
-    void NextSlot()
-    {
-        _inventory.ChoosingSlot = (_inventory.ChoosingSlot + 1) % GameConstants.MaxSlot;
-        Debug.Log($"Choosing slot{_inventory.ChoosingSlot + 1}");
+        inputManager.controls.Player.Pickup.performed += ctx => PickUpItem();
     }
 
     void PickUpItem()
     {
-        // pick up logic
-        float minDistance = Mathf.Infinity;
-        // find nearest object in list collision objects
-        GameObject nearestItem = _objectInCollision[0];
-        for (int i = 0; i < _objectInCollision.Count; i++)
+        if (_itemsInCollision.Count <= 0)
         {
-            Vector2 distanceVector = _player.gameObject.transform.position - _objectInCollision[i].transform.position;
+            Debug.Log("No items nearby to pick up");
+            return;
+        }
+
+        // Find nearest item
+        float minDistance = Mathf.Infinity;
+        GameObject nearestItem = _itemsInCollision[0];
+        for (int i = 0; i < _itemsInCollision.Count; i++)
+        {
+            Vector2 distanceVector = _player.gameObject.transform.position - _itemsInCollision[i].transform.position;
             Debug.Log(distanceVector);
             float distance = (float)Math.Sqrt(distanceVector.x * distanceVector.x + distanceVector.y * distanceVector.y);
             if (distance < minDistance)
             {
-                nearestItem = _objectInCollision[i];
+                nearestItem = _itemsInCollision[i];
                 minDistance = distance;
             }
         }
 
-        ItemConfig pickedUpItem = _inventory.Pickup(nearestItem.GetComponent<ItemController>());
+        ItemConfig pickedUpItem = _inventory.Add(nearestItem.GetComponent<ItemController>().Config);
         if (pickedUpItem)
         {
+            ItemPool.Instance.RemoveItem(nearestItem.GetComponent<ItemController>());
             Debug.Log($"Picked up item: {pickedUpItem.Name}");
         }
         else
@@ -118,23 +76,39 @@ public class PlayerInteraction
 
     void TransferToStation()
     {
-        ItemConfig transferredItem = _inventory.TransferToStation(_nearStation);
+        if (!_isNearStation || _nearStation == null)
+        {
+            Debug.Log("No station nearby to transfer item");
+            return;
+        }
+
+        ItemConfig transferredItem = _inventory.Remove();
         if (transferredItem)
         {
+            _nearStation.AddItem(transferredItem);
             Debug.Log($"Transferred {transferredItem.Name} in slot {_inventory.ChoosingSlot + 1} to station");
         }
         else
         {
             Debug.Log("No item in slot to transfer");
         }
-        
     }
+
     void Submit()
     {
-        FinalProductConfig submittedProduct = _inventory.Submit();
-        if (submittedProduct)
+        if (!_isNearSubmissionPoint)
         {
-            Debug.Log($"Submitted {submittedProduct.Name} in slot {_inventory.ChoosingSlot + 1}");
+            Debug.Log("No submission point nearby to submit item");
+            return;
+        }
+        
+        ItemConfig submittedItem = _inventory.Get(_inventory.ChoosingSlot);
+        if (submittedItem.Type == ItemType.Potion)
+        {
+            bool submitted = LevelManager.Instance.OnProductSubmitted(submittedItem, _multiplier);  
+            if (submitted) _inventory.Remove();
+            // Handle submission logic, e.g., update score, etc.  
+            Debug.Log($"Submitted {submittedItem.Name} in slot {_inventory.ChoosingSlot + 1}");
         }
         else
         {
@@ -145,9 +119,10 @@ public class PlayerInteraction
 
     void DropItem()
     {
-        ItemConfig droppedItem = _inventory.Drop();
+        ItemConfig droppedItem = _inventory.Remove();
         if (droppedItem)
         {
+            ItemPool.Instance.SpawnItem(droppedItem, _player.transform.position);
             Debug.Log($"Drop {droppedItem.Name} in slot {_inventory.ChoosingSlot + 1}");
         }
         else
@@ -160,8 +135,8 @@ public class PlayerInteraction
     {
         if (collider.gameObject.tag == "Item")
         {
-            _objectInCollision.Add(collider.gameObject);
-            if (_objectInCollision.Count == 1)
+            _itemsInCollision.Add(collider.gameObject);
+            if (_itemsInCollision.Count == 1)
             {
                 // Trigger display UI to inform player to pick item (K)
             }
@@ -179,14 +154,16 @@ public class PlayerInteraction
         if (collider.gameObject.tag == "CraftPoint")
         {
             _isNearCraftPoint = true;
+            _nearStation = collider.gameObject.GetComponentInParent<StationController>();
         }
     }
+
     public void OnTriggerExit2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Item")
         {
-            _objectInCollision.Remove(collider.gameObject);
-            if (_objectInCollision.Count == 0)
+            _itemsInCollision.Remove(collider.gameObject);
+            if (_itemsInCollision.Count == 0)
             {
                 // set UI inform player to pick item into inActive
             }
