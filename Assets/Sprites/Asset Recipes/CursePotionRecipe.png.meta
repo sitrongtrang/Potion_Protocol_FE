@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      CursePotionRecipe_0: 7674601254519103300
+      CursePotionRecipe_1: 3214955857949199622
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
