@@ -17,6 +17,13 @@ public class PlayerMovement
     public Vector2 MoveDir => _moveDir;
     public Vector2 PlayerDir => _playerDir;
 
+    private float _speedMultiplier = 1;
+    public void SetSpeedMultiplier(float multiplier)
+    {
+        _speedMultiplier *= multiplier;
+        Debug.Log("Set speed multiplier");
+    }
+
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
         _player = player;
@@ -32,7 +39,8 @@ public class PlayerMovement
     {
         if (_moveDir != Vector2.zero)
         {
-            Vector2 targetPos = _player.Rb.position + _moveDir * _playerConfig.MoveSpeed * Time.fixedDeltaTime;
+            Vector2 targetPos = _player.Rb.position + _moveDir * _playerConfig.MoveSpeed * Time.fixedDeltaTime * _speedMultiplier;
+            Debug.Log(_speedMultiplier);
             _player.Rb.MovePosition(targetPos);
         }
     }
@@ -66,7 +74,8 @@ public class PlayerMovement
         float dashTime = 0f;
         while (dashTime < _playerConfig.DashTime)
         {
-            Vector2 newPos = _player.Rb.position + _playerDir * _playerConfig.DashSpeed * Time.fixedDeltaTime;
+            Vector2 newPos = _playerConfig.MoveSpeed * Time.fixedDeltaTime * _moveDir + _player.Rb.position;
+            
             _player.Rb.MovePosition(newPos);
 
             TriggerMoveAnimation(true);

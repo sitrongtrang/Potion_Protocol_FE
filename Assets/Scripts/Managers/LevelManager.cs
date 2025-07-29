@@ -244,7 +244,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public bool OnProductSubmitted(ItemConfig product)
+    public bool OnProductSubmitted(ItemConfig product, float multiplier)
     {
         for (int i = 0; i < _requiredRecipes.Count; i++)
         {
@@ -252,7 +252,7 @@ public class LevelManager : MonoBehaviour
             {
                 _requiredRecipes.RemoveAt(i);
                 OnRequiredRecipeRemoved?.Invoke(i);
-                Score += FormulaeCalculator.CalculateScore(_requiredRecipes[i]);
+                Score += FormulaeCalculator.CalculateScore(_requiredRecipes[i], multiplier);
                 return true;
             }
         }

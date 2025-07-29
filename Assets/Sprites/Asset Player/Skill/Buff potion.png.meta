@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 0c3fd859b32c8894eb9de6e636e06a18
+guid: 15525043f17813a43b26883126c8f337
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6733825367254450231
-    second: character skill effect 2_0
-  - first:
-      213: 8946639095580153410
-    second: character skill effect 2_1
+      213: 2883733834278827710
+    second: Buff potion_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -142,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: character skill effect 2_0
+      name: Buff potion_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 8
-        width: 1024
-        height: 1469
+        x: 56
+        y: 55
+        width: 288
+        height: 290
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,30 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 73047b28e7a537d50800000000000000
-      internalID: 6733825367254450231
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character skill effect 2_1
-      rect:
-        serializedVersion: 2
-        x: 172
-        y: 1018
-        width: 462
-        height: 507
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2465da92bd8d82c70800000000000000
-      internalID: 8946639095580153410
+      spriteID: eb6f6f2c4a4150820800000000000000
+      internalID: 2883733834278827710
       vertices: []
       indices: 
       edges: []
@@ -198,9 +173,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      character skill effect 2_0: 6733825367254450231
-      character skill effect 2_1: 8946639095580153410
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
