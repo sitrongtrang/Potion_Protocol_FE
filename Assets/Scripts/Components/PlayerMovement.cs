@@ -40,7 +40,6 @@ public class PlayerMovement
         if (_moveDir != Vector2.zero)
         {
             Vector2 targetPos = _player.Rb.position + _moveDir * _playerConfig.MoveSpeed * Time.fixedDeltaTime * _speedMultiplier;
-            Debug.Log(_speedMultiplier);
             _player.Rb.MovePosition(targetPos);
         }
     }
