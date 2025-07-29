@@ -56,7 +56,7 @@ public class EnemyHealthUI : MonoBehaviour
 
         if (_hideCoroutine != null)
             StopCoroutine(_hideCoroutine);
-        _hideCoroutine = StartCoroutine(HideAfterDelay());
+        //_hideCoroutine = StartCoroutine(HideAfterDelay());
     }
 
     private IEnumerator HideAfterDelay()

@@ -7,7 +7,7 @@
             }
         },
         "id": "I1",
-        "name": "Frostleaf Crystal",
+        "name": "Vampire Wing",
         "type": "Raw"
     },
     {
@@ -18,7 +18,7 @@
             }
         },
         "id": "I2",
-        "name": "Rune of Tides",
+        "name": "Bone",
         "type": "Raw"
     },
     {
@@ -29,7 +29,7 @@
             }
         },
         "id": "I3",
-        "name": "Pure Dewdrop",
+        "name": "Pile of Coins",
         "type": "Raw"
     },
     {
@@ -40,7 +40,7 @@
             }
         },
         "id": "I4",
-        "name": "Prismwing",
+        "name": "Orc Tusk",
         "type": "Raw"
     },
     {
@@ -51,7 +51,7 @@
             }
         },
         "id": "I5",
-        "name": "Glimmerleaf",
+        "name": "Mushroom cap",
         "type": "Raw"
     },
     {
@@ -62,7 +62,7 @@
             }
         },
         "id": "I6",
-        "name": "Nightshade Extract",
+        "name": "Slime Mucus",
         "type": "Raw"
     },
     {
@@ -282,7 +282,7 @@
             }
         },
         "id": "I26",
-        "name": "Ruby Gem",
+        "name": "Ruby Ingot",
         "type": "Processed"
     },
     {
@@ -293,7 +293,7 @@
             }
         },
         "id": "I27",
-        "name": "Amethyst Gem",
+        "name": "Amethyst Ingot",
         "type": "Processed"
     },
     {
@@ -304,7 +304,7 @@
             }
         },
         "id": "I28",
-        "name": "Sapphire Gem",
+        "name": "Sapphire Ingot",
         "type": "Processed"
     },
     {
@@ -315,7 +315,7 @@
             }
         },
         "id": "I29",
-        "name": "Emerald Gem",
+        "name": "Emerald Ingot",
         "type": "Processed"
     },
     {
