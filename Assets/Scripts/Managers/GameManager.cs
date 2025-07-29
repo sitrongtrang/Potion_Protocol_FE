@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -21,4 +22,6 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(this);
     }
+    public Action<Sprite, float> InitSkillUI;
+    public Func<int, IEnumerator> StartCoolDown;
 }

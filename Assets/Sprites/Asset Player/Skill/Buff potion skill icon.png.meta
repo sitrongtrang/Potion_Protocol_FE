@@ -1,0 +1,1378 @@
+fileFormatVersion: 2
+guid: a03c69998475c7747b4c7b509b2fa5ee
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1763803543702495257
+    second: Buff potion skill icon_0
+  - first:
+      213: -4777894864561394742
+    second: Buff potion skill icon_1
+  - first:
+      213: -4739082257986524212
+    second: Buff potion skill icon_2
+  - first:
+      213: -7200684978070142615
+    second: Buff potion skill icon_3
+  - first:
+      213: 1223168580210659778
+    second: Buff potion skill icon_4
+  - first:
+      213: -8750540674788349676
+    second: Buff potion skill icon_5
+  - first:
+      213: -5434724683511155331
+    second: Buff potion skill icon_6
+  - first:
+      213: 5399594785831542367
+    second: Buff potion skill icon_7
+  - first:
+      213: 2338181174998106159
+    second: Buff potion skill icon_8
+  - first:
+      213: 3757702834547840765
+    second: Buff potion skill icon_9
+  - first:
+      213: -6682608725729362487
+    second: Buff potion skill icon_10
+  - first:
+      213: -3581429573671698647
+    second: Buff potion skill icon_11
+  - first:
+      213: -5803529763394031522
+    second: Buff potion skill icon_12
+  - first:
+      213: -8077957112809049053
+    second: Buff potion skill icon_13
+  - first:
+      213: -1466661374684140241
+    second: Buff potion skill icon_14
+  - first:
+      213: -4969795493868266366
+    second: Buff potion skill icon_15
+  - first:
+      213: -6063012903488358771
+    second: Buff potion skill icon_16
+  - first:
+      213: -439638897148197654
+    second: Buff potion skill icon_17
+  - first:
+      213: 1416235968354917232
+    second: Buff potion skill icon_18
+  - first:
+      213: 1091278911795496058
+    second: Buff potion skill icon_19
+  - first:
+      213: 6886335642623956576
+    second: Buff potion skill icon_20
+  - first:
+      213: 6605968799010512763
+    second: Buff potion skill icon_21
+  - first:
+      213: 74371701021273448
+    second: Buff potion skill icon_22
+  - first:
+      213: 2874938237354374760
+    second: Buff potion skill icon_23
+  - first:
+      213: 7188938984541160695
+    second: Buff potion skill icon_24
+  - first:
+      213: -965145862415084069
+    second: Buff potion skill icon_25
+  - first:
+      213: 1284975008411894981
+    second: Buff potion skill icon_26
+  - first:
+      213: -2646962389168850017
+    second: Buff potion skill icon_27
+  - first:
+      213: 3134656726393833861
+    second: Buff potion skill icon_28
+  - first:
+      213: 4163180250983824108
+    second: Buff potion skill icon_29
+  - first:
+      213: -2042543829023452326
+    second: Buff potion skill icon_30
+  - first:
+      213: 3873101250118368460
+    second: Buff potion skill icon_31
+  - first:
+      213: 2907769486680674071
+    second: Buff potion skill icon_32
+  - first:
+      213: 95470287391895692
+    second: Buff potion skill icon_33
+  - first:
+      213: 4865703144636335489
+    second: Buff potion skill icon_34
+  - first:
+      213: -6949440705972248613
+    second: Buff potion skill icon_35
+  - first:
+      213: -6218253640642969161
+    second: Buff potion skill icon_36
+  - first:
+      213: 5898386492668772451
+    second: Buff potion skill icon_37
+  - first:
+      213: -8137620693080594312
+    second: Buff potion skill icon_38
+  - first:
+      213: -2961527575818490100
+    second: Buff potion skill icon_39
+  - first:
+      213: 5223779204292981966
+    second: Buff potion skill icon_40
+  - first:
+      213: -1488381581865225973
+    second: Buff potion skill icon_41
+  - first:
+      213: 3148750535084259542
+    second: Buff potion skill icon_42
+  - first:
+      213: 6990481275236595163
+    second: Buff potion skill icon_43
+  - first:
+      213: 6386950015868372186
+    second: Buff potion skill icon_44
+  - first:
+      213: -4692478352509733060
+    second: Buff potion skill icon_45
+  - first:
+      213: -5533791631685773332
+    second: Buff potion skill icon_46
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Buff potion skill icon_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1259
+        width: 379
+        height: 266
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91066fb5af94a7810800000000000000
+      internalID: 1763803543702495257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_1
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 1327
+        width: 283
+        height: 198
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acba7af5fe181bdb0800000000000000
+      internalID: -4777894864561394742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_2
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 1351
+        width: 11
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccb6b5b8bc56b3eb0800000000000000
+      internalID: -4739082257986524212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_3
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 871
+        width: 355
+        height: 654
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96143aec927021c90800000000000000
+      internalID: -7200684978070142615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_4
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 1297
+        width: 12
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c110e3d75199f010800000000000000
+      internalID: 1223168580210659778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_5
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 162
+        width: 873
+        height: 1131
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41922ae5e95df8680800000000000000
+      internalID: -8750540674788349676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 871
+        width: 182
+        height: 370
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d75354bd1baf394b0800000000000000
+      internalID: -5434724683511155331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_7
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1001
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5e5a8479d63fea40800000000000000
+      internalID: 5399594785831542367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_8
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 1082
+        width: 37
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f208444f363e27020800000000000000
+      internalID: 2338181174998106159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_9
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 986
+        width: 10
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df6d3b0a1da062430800000000000000
+      internalID: 3757702834547840765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_10
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 755
+        width: 100
+        height: 139
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cdb9f915ca9243a0800000000000000
+      internalID: -6682608725729362487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_11
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 968
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92f383927c43c4ec0800000000000000
+      internalID: -3581429573671698647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_12
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 1007
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e50fd79bd68b57fa0800000000000000
+      internalID: -5803529763394031522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_13
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 1209
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3243d240ec455ef80800000000000000
+      internalID: -8077957112809049053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_14
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 1031
+        width: 33
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2d6a2c104f55abe0800000000000000
+      internalID: -1466661374684140241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_15
+      rect:
+        serializedVersion: 2
+        x: 866
+        y: 888
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28c15a5545db70bb0800000000000000
+      internalID: -4969795493868266366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_16
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 966
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8677f233e9dbdba0800000000000000
+      internalID: -6063012903488358771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_17
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 823
+        width: 26
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae4890a90c616e9f0800000000000000
+      internalID: -439638897148197654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_18
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 818
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07b1de31c1b77a310800000000000000
+      internalID: 1416235968354917232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_19
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 801
+        width: 83
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7402707360052f00800000000000000
+      internalID: 1091278911795496058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_20
+      rect:
+        serializedVersion: 2
+        x: 822
+        y: 735
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06656b618cd219f50800000000000000
+      internalID: 6886335642623956576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_21
+      rect:
+        serializedVersion: 2
+        x: 899
+        y: 700
+        width: 99
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7fd55e6f9d1dab50800000000000000
+      internalID: 6605968799010512763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_22
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 663
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86de6b40ba8380100800000000000000
+      internalID: 74371701021273448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_23
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 8
+        width: 187
+        height: 668
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 866f1b44815d5e720800000000000000
+      internalID: 2874938237354374760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_24
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 650
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f48885faed34c360800000000000000
+      internalID: 7188938984541160695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_25
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 463
+        width: 80
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd59f42a3fc1b92f0800000000000000
+      internalID: -965145862415084069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_26
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 600
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c445a946f525d110800000000000000
+      internalID: 1284975008411894981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_27
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 519
+        width: 17
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9b75c33bb9144bd0800000000000000
+      internalID: -2646962389168850017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_28
+      rect:
+        serializedVersion: 2
+        x: 822
+        y: 487
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5894e7d3fa9808b20800000000000000
+      internalID: 3134656726393833861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_29
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 407
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ceaffcb716696c930800000000000000
+      internalID: 4163180250983824108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_30
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 415
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5314e8953d67a3e0800000000000000
+      internalID: -2042543829023452326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_31
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 384
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccc3d60011500c530800000000000000
+      internalID: 3873101250118368460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_32
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 256
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71f425e21f87a5820800000000000000
+      internalID: 2907769486680674071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_33
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 258
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c80399678bd235100800000000000000
+      internalID: 95470287391895692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_34
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 224
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 185cc8efa33768340800000000000000
+      internalID: 4865703144636335489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_35
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 103
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdf52e46f70ae8f90800000000000000
+      internalID: -6949440705972248613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_36
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 107
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b14232724354b9a0800000000000000
+      internalID: -6218253640642969161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_37
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 107
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3600c7b93474bd150800000000000000
+      internalID: 5898386492668772451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_38
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 107
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8782018381d511f80800000000000000
+      internalID: -8137620693080594312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_39
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 103
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0fa0d25c5a86e6d0800000000000000
+      internalID: -2961527575818490100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_40
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 107
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec4b4f072879e7840800000000000000
+      internalID: 5223779204292981966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_41
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 107
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0170ba46d4385be0800000000000000
+      internalID: -1488381581865225973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_42
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 107
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d8b40acdeb92bb20800000000000000
+      internalID: 3148750535084259542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_43
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 95
+        width: 25
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd53f73cead230160800000000000000
+      internalID: 6990481275236595163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_44
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 107
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad4820e233103a850800000000000000
+      internalID: 6386950015868372186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_45
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 107
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c37727adcc7f0eeb0800000000000000
+      internalID: -4692478352509733060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buff potion skill icon_46
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 107
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce7175c84d50433b0800000000000000
+      internalID: -5533791631685773332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: cbe7ecb92a2ff4042806d4a41fc716e8
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Buff potion skill icon_0: 1763803543702495257
+      Buff potion skill icon_1: -4777894864561394742
+      Buff potion skill icon_10: -6682608725729362487
+      Buff potion skill icon_11: -3581429573671698647
+      Buff potion skill icon_12: -5803529763394031522
+      Buff potion skill icon_13: -8077957112809049053
+      Buff potion skill icon_14: -1466661374684140241
+      Buff potion skill icon_15: -4969795493868266366
+      Buff potion skill icon_16: -6063012903488358771
+      Buff potion skill icon_17: -439638897148197654
+      Buff potion skill icon_18: 1416235968354917232
+      Buff potion skill icon_19: 1091278911795496058
+      Buff potion skill icon_2: -4739082257986524212
+      Buff potion skill icon_20: 6886335642623956576
+      Buff potion skill icon_21: 6605968799010512763
+      Buff potion skill icon_22: 74371701021273448
+      Buff potion skill icon_23: 2874938237354374760
+      Buff potion skill icon_24: 7188938984541160695
+      Buff potion skill icon_25: -965145862415084069
+      Buff potion skill icon_26: 1284975008411894981
+      Buff potion skill icon_27: -2646962389168850017
+      Buff potion skill icon_28: 3134656726393833861
+      Buff potion skill icon_29: 4163180250983824108
+      Buff potion skill icon_3: -7200684978070142615
+      Buff potion skill icon_30: -2042543829023452326
+      Buff potion skill icon_31: 3873101250118368460
+      Buff potion skill icon_32: 2907769486680674071
+      Buff potion skill icon_33: 95470287391895692
+      Buff potion skill icon_34: 4865703144636335489
+      Buff potion skill icon_35: -6949440705972248613
+      Buff potion skill icon_36: -6218253640642969161
+      Buff potion skill icon_37: 5898386492668772451
+      Buff potion skill icon_38: -8137620693080594312
+      Buff potion skill icon_39: -2961527575818490100
+      Buff potion skill icon_4: 1223168580210659778
+      Buff potion skill icon_40: 5223779204292981966
+      Buff potion skill icon_41: -1488381581865225973
+      Buff potion skill icon_42: 3148750535084259542
+      Buff potion skill icon_43: 6990481275236595163
+      Buff potion skill icon_44: 6386950015868372186
+      Buff potion skill icon_45: -4692478352509733060
+      Buff potion skill icon_46: -5533791631685773332
+      Buff potion skill icon_5: -8750540674788349676
+      Buff potion skill icon_6: -5434724683511155331
+      Buff potion skill icon_7: 5399594785831542367
+      Buff potion skill icon_8: 2338181174998106159
+      Buff potion skill icon_9: 3757702834547840765
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

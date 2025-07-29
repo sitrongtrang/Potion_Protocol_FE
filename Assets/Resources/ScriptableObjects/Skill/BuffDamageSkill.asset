@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: BuffDamageSkill
   m_EditorClassIdentifier: 
   SkillName: Damage boost
-  SkillIcon: {fileID: 0}
+  SkillIcon: {fileID: 6246629989107300884, guid: 4158488395f3f9e4589a78bb24b39cbf, type: 3}
   SkillVFX: {fileID: 5984587584322874292, guid: cce284eecd7464047bbcd3dea839e2da, type: 3}
   TimeAlive: 5
+  SkillUIObject: {fileID: 6345603219535058894, guid: e0c9a361f6c309341830dbad1547720d, type: 3}
   buffRatio: 0.5
