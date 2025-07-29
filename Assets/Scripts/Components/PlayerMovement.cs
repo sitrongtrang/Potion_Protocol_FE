@@ -19,6 +19,7 @@ public class PlayerMovement
     private AABBCollider _collider;
     private Vector2 _size = Vector2.zero;
 
+    public AABBCollider Collider => _collider;
     public Vector2 MoveDir => _moveDir;
     public Vector2 PlayerDir => _playerDir;
 
@@ -34,13 +35,11 @@ public class PlayerMovement
         _inputManager.controls.Player.Dash.performed += ctx => Dash();
 
         _spriteRenderer = _player.GetComponent<SpriteRenderer>();
-        if (_spriteRenderer) _size = _spriteRenderer.bounds.size;
-        _collider = new AABBCollider(new Vector2(_transform.position.x - _size.x / 2, _transform.position.y - _size.y / 2), _size)
+
+        if (_spriteRenderer)
         {
-            Layer = (int)EntityLayer.Player,
-            Owner = _player.gameObject
-        };
-        _collider.Mask.SetLayer((int)EntityLayer.Obstacle);
+            SetCollider();
+        }
     }
 
     public void Update()
@@ -116,7 +115,7 @@ public class PlayerMovement
         if (collided.Count == 0)
         {
             _player.transform.position = newPos;
-            _collider.SetBottomLeft(newPos - _size / 2);
+            SetCollider();
         }
         else
         {
@@ -129,7 +128,7 @@ public class PlayerMovement
             if (CollisionSystem.RetrieveCollided(xCollider).Count == 0)
             {
                 _player.transform.position = xPos;
-                _collider.SetBottomLeft(xPos - _size / 2);
+                SetCollider();
                 return;
             }
 
@@ -141,8 +140,8 @@ public class PlayerMovement
             yCollider.Mask = _collider.Mask;
             if (CollisionSystem.RetrieveCollided(yCollider).Count == 0)
             {
-                _player.transform.position = yPos;
-                _collider.SetBottomLeft(xPos - _size / 2);
+                _player.transform.position = newPos;
+                SetCollider();
                 return;
             }
 
@@ -163,5 +162,40 @@ public class PlayerMovement
             _player.SwordAnimatr.SetFloat("MoveX", _playerDir.x);
             _player.SwordAnimatr.SetFloat("MoveY", _playerDir.y);
         }
+    }
+
+    private void SetCollider()
+    {
+        Sprite sprite = _spriteRenderer.sprite;
+
+        float pivotY = sprite.pivot.y;
+
+        float pivotToBottom = pivotY / sprite.rect.height * _spriteRenderer.bounds.size.y;
+
+        float colliderWidth = _spriteRenderer.bounds.size.x;
+        float colliderHeight = 2f * pivotToBottom;
+
+        _size = new Vector2(colliderWidth, colliderHeight);
+        Vector2 colliderBottomLeft = new Vector2(
+            _transform.position.x - colliderWidth / 2f,
+            _transform.position.y - pivotToBottom
+        );
+
+        if (_collider == null)
+        {
+            _collider = new AABBCollider(colliderBottomLeft, _size)
+            {
+                Layer = (int)EntityLayer.Player,
+                Owner = _player.gameObject
+            };
+            _collider.Mask.SetLayer((int)EntityLayer.Obstacle);
+        }
+        else
+        {
+            _collider.SetSize(_size);
+            Vector2 center = _transform.position;
+            _collider.SetBottomLeft(center - _size / 2f);
+        }
+        
     }
 }

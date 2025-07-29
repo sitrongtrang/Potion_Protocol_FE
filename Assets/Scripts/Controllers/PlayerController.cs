@@ -5,19 +5,17 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerConfig _config;
     private PlayerInputManager _inputManager;
-    [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Animator _anim;
     [SerializeField] private Animator _swordAnim;
     [SerializeField] private WeaponConfig _weapon;
     [SerializeField] private Transform _attackPoint;
     private InventoryUI _inventoryUI;
-    
+
     public PlayerConfig Config => _config;
     public PlayerInventory Inventory { get; private set; }
     public PlayerAttack Attack { get; private set; }
     public PlayerInteraction Interaction { get; private set; }
     public PlayerMovement Movement { get; private set; }
-    public Rigidbody2D Rb => _rb;
     public Animator Animatr => _anim;
     public Animator SwordAnimatr => _swordAnim;
     public WeaponConfig Weapon => _weapon;
@@ -44,7 +42,7 @@ public class PlayerController : MonoBehaviour
         _inventoryUI.Initialize(this);
         _inventoryUI.gameObject.SetActive(true);
     }
-    
+
     void Update()
     {
         Movement.Update();
@@ -53,5 +51,11 @@ public class PlayerController : MonoBehaviour
     void OnDestroy()
     {
         _inputManager.OnDestroy();
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(Movement.Collider.Bounds.center, Movement.Collider.Bounds.size);
     }
 }

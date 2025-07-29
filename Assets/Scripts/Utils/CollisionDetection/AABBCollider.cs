@@ -49,6 +49,11 @@ public class AABBCollider : CustomCollider
     {
         _bottomLeft = newBottomLeft;
     }
+
+    public void SetSize(Vector2 newSize)
+    {
+        _size = newSize;
+    }
     
     public bool Raycast(CustomRay ray, out float distance)
     {
