@@ -13,6 +13,8 @@ public class PlayerMovement
     //private bool _isMoving = false;
     //public bool IsMoving => _isMoving;
     private Vector2 _playerDir;
+    private float _directionChangeInterval;
+    private bool _moveCancelled;
     private bool _isDashing = false;
     private bool _canDash = true;
     private SpriteRenderer _spriteRenderer;
@@ -29,6 +31,7 @@ public class PlayerMovement
         _transform = player.transform;
         _playerConfig = player.Config;
         _inputManager = inputManager;
+        _directionChangeInterval = 1 * Time.deltaTime;
 
         _inputManager.controls.Player.Move.performed += ctx => Move(ctx);
         _inputManager.controls.Player.Move.canceled += ctx => CancelMove();
@@ -53,14 +56,32 @@ public class PlayerMovement
     private void Move(CallbackContext ctx)
     {
         if (_isDashing) return;
-        _moveDir = ctx.ReadValue<Vector2>().normalized;
-        _playerDir = _moveDir;
+        _moveCancelled = false;
+        Vector2 oldDir = _playerDir;
+        _playerDir = ctx.ReadValue<Vector2>().normalized;
+        if (oldDir == _playerDir || _moveDir != Vector2.zero)
+        {
+            _moveDir = _playerDir;
+        }
+        else
+        {
+            _moveDir = Vector2.zero;
+            _player.StartCoroutine(StartMoving());
+        }
         if (!_player) return;
         TriggerMoveAnimation(true);
     }
 
+    private IEnumerator StartMoving()
+    {
+        // If user hold the move button for shorter than this amount of time, the player will just turn without moving
+        yield return new WaitForSeconds(_directionChangeInterval);
+        if (!_moveCancelled) _moveDir = _playerDir;
+    }
+
     private void CancelMove()
     {
+        _moveCancelled = true;
         _moveDir = Vector2.zero;
         if (!_player) return;
         TriggerMoveAnimation(false);
