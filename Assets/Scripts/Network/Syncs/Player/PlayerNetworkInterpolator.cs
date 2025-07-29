@@ -44,7 +44,7 @@ public class PlayerNetworkInterpolator : INetworkInterpolator<PlayerStateInterpo
             }
         }
     }
-    public void IncrementAndInterpolate(Action<PlayerStateInterpolateData> applyState)
+    public void IncrementAndInterpolate(Action<PlayerStateInterpolateData> applyState, Action<bool> acceptingThreshold = null)
     {
         _serverSequence += 1;
         _buffer.SetMinTickToKeep(_serverSequence);
