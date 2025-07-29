@@ -92,14 +92,10 @@ public class EnemyController : MonoBehaviour
         _config.Initialize(this);
 
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        if (_spriteRenderer) _size = _spriteRenderer.bounds.size;
-        _collider = new AABBCollider(new Vector2(transform.position.x - _size.x / 2, transform.position.y - _size.y / 2), _size)
+        if (_spriteRenderer)
         {
-            Layer = (int)EntityLayer.Enemy,
-            Owner = gameObject
-        };
-        _collider.Mask.SetLayer((int)EntityLayer.Obstacle);
-        CollisionSystem.InsertDynamicCollider(_collider);
+            SetCollider();
+        }
     }
     #endregion
 
@@ -136,6 +132,42 @@ public class EnemyController : MonoBehaviour
     public bool IsTooFarFromPatrolCenter()
     {
         return Vector2.Distance(transform.position, PatrolCenter) > EnemyConf.ChaseRadius;
+    }
+
+    public void SetCollider()
+    {
+        Sprite sprite = _spriteRenderer.sprite;
+
+        float pivotY = sprite.pivot.y;
+
+        float pivotToBottom = pivotY / sprite.rect.height * _spriteRenderer.bounds.size.y;
+
+        float colliderWidth = _spriteRenderer.bounds.size.x;
+        float colliderHeight = 2f * pivotToBottom;
+
+        _size = new Vector2(colliderWidth, colliderHeight);
+        Vector2 colliderBottomLeft = new Vector2(
+            transform.position.x - colliderWidth / 2f,
+            transform.position.y - pivotToBottom
+        );
+
+        if (_collider == null)
+        {
+            _collider = new AABBCollider(colliderBottomLeft, _size)
+            {
+                Layer = (int)EntityLayer.Enemy,
+                Owner = gameObject
+            };
+            _collider.Mask.SetLayer((int)EntityLayer.Obstacle);
+            CollisionSystem.InsertDynamicCollider(_collider);
+        }
+        else
+        {
+            _collider.SetSize(_size);
+            Vector2 center = transform.position;
+            _collider.SetBottomLeft(center - _size / 2f);
+        }
+        
     }
     #endregion
 

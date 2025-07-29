@@ -61,10 +61,7 @@ public abstract class EnemyConfig : EntityConfig
             {
                 Vector2 moveDir = (targetPosition - (Vector2)controller.transform.position).normalized;
                 controller.transform.Translate(Speed * Time.deltaTime * moveDir);
-                //Vector2 targetPos = controller.Rb.position + moveDir * Speed * Time.fixedDeltaTime;
-                //controller.Rb.MovePosition(targetPos);
-                Vector2 position = controller.transform.position;
-                controller.Collider.SetBottomLeft(position - controller.Size / 2);
+                controller.SetCollider();
                 // Set animation move here
                 controller.Animatr.SetBool("IsMoving", true);
                 controller.Animatr.SetFloat("MoveX", moveDir.x);
