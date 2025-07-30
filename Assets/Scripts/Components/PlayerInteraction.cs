@@ -12,7 +12,11 @@ public class PlayerInteraction
     private bool _isNearStation = false;
     private bool _isNearSubmissionPoint = false;
     private bool _isNearCraftPoint = false;
-
+    private float _multiplier = 1;
+    public void SetPointMultiplier(float multiplier)
+    {
+        _multiplier = multiplier;
+    }
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
         _inventory = player.Inventory;
@@ -101,7 +105,7 @@ public class PlayerInteraction
         ItemConfig submittedItem = _inventory.Get(_inventory.ChoosingSlot);
         if (submittedItem.Type == ItemType.Potion)
         {
-            bool submitted = LevelManager.Instance.OnProductSubmitted(submittedItem);  
+            bool submitted = LevelManager.Instance.OnProductSubmitted(submittedItem, _multiplier);  
             if (submitted) _inventory.Remove();
             // Handle submission logic, e.g., update score, etc.  
             Debug.Log($"Submitted {submittedItem.Name} in slot {_inventory.ChoosingSlot + 1}");

@@ -25,9 +25,16 @@ public class PlayerController : MonoBehaviour
     public Animator SwordAnimatr => _swordAnim;
     public WeaponConfig Weapon => _weapon;
     public Transform AttackPoint => _attackPoint;
-
+    [SerializeField] private Skill[] _skills = new Skill[GameConstants.NumSkills];
+    [SerializeField] private Transform _skillUIParent;
     public void Initialize(InputActionAsset loadedAsset = null)
     {
+
+        for (int i = 0; i < GameConstants.NumSkills; i++)
+        {
+            GameManager.Instance.InitSkillUI?.Invoke(_skills[i].SkillIcon, Config.SkillsCoolDown[i]);
+            // Instantiate(_skills[i].SkillUIObject, _skillUIParent);
+        }
         _inputManager = loadedAsset != null
             ? new PlayerInputManager(loadedAsset)
             : new PlayerInputManager();
@@ -39,7 +46,8 @@ public class PlayerController : MonoBehaviour
 
         Inventory.Initialize(this, _inputManager);
         Attack.Initialize(this, _inputManager);
-        Interaction.Initialize(this, _inputManager);    
+        Attack.Initialize(_skills);
+        Interaction.Initialize(this, _inputManager);
         Movement.Initialize(this, _inputManager);
 
         _inventoryUI = FindFirstObjectByType<InventoryUI>();

@@ -12,8 +12,20 @@ public class PlayerAttack
     // bool _isAttacking = false;
     private bool _canAttack = true;
     private bool[] _canUseSkills = new bool[GameConstants.NumSkills];
+    [SerializeField] private Skill[] _skills = new Skill[GameConstants.NumSkills];
     private bool _isInAction = false;
+    private float _damageMutiplayer = 1;
+    private int[] _timeRemaining;
 
+    public void SetDamageMultiplier(float multiplier)
+    {
+        _damageMutiplayer *= multiplier;
+    }
+
+    public void Initialize(Skill[] skills)
+    {
+        _skills = skills;
+    }
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
         for (int i = 0; i < 3; i++)
@@ -85,10 +97,15 @@ public class PlayerAttack
     private IEnumerator UseSkill(int skillNumber)
     {
         _canUseSkills[skillNumber - 1] = false;
+        _skills[skillNumber - 1].Activate(_player.gameObject);
+        yield return new WaitForSeconds(_skills[skillNumber - 1].TimeAlive);
+        _skills[skillNumber - 1].Deactivate(_player.gameObject);
         // _isInAction = true;
         Debug.Log($"Using ability {skillNumber}");
+        _player.StartCoroutine(GameManager.Instance.StartCoolDown(skillNumber - 1));
         yield return new WaitForSeconds(_player.Config.SkillsCoolDown[skillNumber - 1]);
         // _isInAction = false;
+        
         _canUseSkills[skillNumber - 1] = true;
     }
 
@@ -143,7 +160,7 @@ public class PlayerAttack
                 EnemyController enemy = hitTargets[i].collider.GetComponent<EnemyController>();
                 if (enemy != null)
                 {
-                    enemy.TakeDamage(_player.Weapon.AttackDamage);
+                    enemy.TakeDamage(_damageMutiplayer * _player.Weapon.AttackDamage);
                 }
             } 
             if (hitTargets[i].collider.CompareTag("ItemSource"))
