@@ -3,9 +3,6 @@ using UnityEngine;
 public abstract class EnemyConfig : EntityConfig
 {
     [Header("Basic Stats")]
-    [SerializeField] private string _id;
-    public string Id => _id;
-
     [SerializeField] private float _hp;
     public float Hp => _hp;
 
