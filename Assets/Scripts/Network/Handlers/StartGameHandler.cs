@@ -6,7 +6,6 @@ public class StartGameHandler : MonoBehaviour
     [Header("Prefab")]
     [SerializeField] private GameObject _playerPrefab;
     [SerializeField] private InputActionAsset _inputActionAsset;
-    private string[] _playerIds;
     private void OnEnable()
     {
         NetworkEvents.OnMessageReceived += HandleNetworkMessage;
@@ -51,30 +50,20 @@ public class StartGameHandler : MonoBehaviour
             case NetworkMessageTypes.Server.Pregame.StartGame:
                 HandlePlayerSpawn((ServerStartGame)message);
                 break;
-            case NetworkMessageTypes.Server.Pregame.GetPlayerId:
-                HandleGetPlayerId((GetPlayerId)message);
+            default:
                 break;
         }
     }
 
     private void HandlePlayerSpawn(ServerStartGame message)
     {
-        // _playerIds = new string[message.PlayerDTOs.Length];
-        // for (int i = 0; i < _playerIds.Length; i++)
-        // {
-        //     _playerIds[i] = message.PlayerDTOs[i].PlayerId;
-        // }
-    }
-
-    private void HandleGetPlayerId(GetPlayerId message)
-    {
-        string localPlayerId = message.PlayerId;
-        for (int i = 0; i < message.AllPlayerIds.Length; i++)
+        string thisPlayerId = message.PlayerId;
+        for (int i = 0; i < message.PlayerIds.Length; i++)
         {
             TrySpawnPlayer(
-                message.AllPlayerIds[i],
+                message.PlayerIds[i],
                 Vector2.zero,
-                message.AllPlayerIds[i] == localPlayerId
+                thisPlayerId == message.PlayerIds[i]
             );
         }
     }

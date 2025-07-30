@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(NetworkIdentity))]
 public class TstController : MonoBehaviour
 {
     [Header("Components")]
@@ -171,7 +172,7 @@ public class TstController : MonoBehaviour
                                 playerSnapshot.ProcessedInputSequence < playerState.ProcessedInputSequence)
                             {
                                 playerSnapshot.ProcessedInputSequence = playerState.ProcessedInputSequence;
-                                playerSnapshot.Position = new(playerState.PositionX, playerState.PositionY);
+                                playerSnapshot.Position = new(playerState.Position.x, playerState.Position.y);
                                 break;
                             }
                         }
@@ -193,7 +194,7 @@ public class TstController : MonoBehaviour
                     });
                 }
                 break;
-                    
+
         }
     }
 
@@ -202,7 +203,7 @@ public class TstController : MonoBehaviour
         _simulator.Reconcile(state,
             (serverSnapshot) =>
             {
-                
+
             },
             (serverSnapshot, historySnapshot) =>
             {

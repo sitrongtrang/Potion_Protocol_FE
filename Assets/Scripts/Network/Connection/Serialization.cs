@@ -49,7 +49,7 @@ public static class Serialization
             NetworkMessageTypes.Client.Pregame.StartGame => BinarySerializer.SerializeToBytes((PlayerStartGameRequest)message),
             NetworkMessageTypes.Client.Pregame.RequestSpawn => BinarySerializer.SerializeToBytes((PlayerSpawnRequest)message),
 
-            NetworkMessageTypes.Client.Ingame.Input => BinarySerializer.SerializeToBytes((PlayerInputMessage)message),
+            NetworkMessageTypes.Client.Ingame.Input => BinarySerializer.SerializeToBytes((BatchPlayerInputMessage)message),
 
             NetworkMessageTypes.Client.System.Ping => BinarySerializer.SerializeToBytes((PingMessage)message),
             NetworkMessageTypes.Client.System.GetUserInfo => BinarySerializer.SerializeToBytes((GetUserInfoClient)message),
@@ -100,7 +100,6 @@ public static class Serialization
             // NetworkMessageTypes.System.Kick => BinarySerializer.DeserializeFromBytes<KickMessage>(payloadBytes)
 
             NetworkMessageTypes.Server.Pregame.StartGame => BinarySerializer.DeserializeFromBytes<ServerStartGame>(payloadBytes),
-            NetworkMessageTypes.Server.Pregame.GetPlayerId => BinarySerializer.DeserializeFromBytes<GetPlayerId>(payloadBytes),
 
             NetworkMessageTypes.Server.Player.Spawn => BinarySerializer.DeserializeFromBytes<PlayerSpawnMessage>(payloadBytes),
             NetworkMessageTypes.Server.Player.Connected => BinarySerializer.DeserializeFromBytes<PlayerConnectedMessage>(payloadBytes),

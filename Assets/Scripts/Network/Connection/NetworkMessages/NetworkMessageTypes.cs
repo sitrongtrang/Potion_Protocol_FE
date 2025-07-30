@@ -19,7 +19,7 @@ public static class NetworkMessageTypes
 
         public static class Ingame
         {
-            public const short Input = 299;
+            public const short Input = 27;
         }
 
         public static class System
@@ -40,7 +40,6 @@ public static class NetworkMessageTypes
         public static class Pregame
         {
             public const short StartGame = 26;
-            public const short GetPlayerId = 31;
         }
         public static class Player
         {

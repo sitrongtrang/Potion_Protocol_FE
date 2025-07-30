@@ -176,10 +176,10 @@ public class NetworkManager : MonoBehaviour
                     try
                     {
                         ServerMessage message = Serialization.DeserializeMessage(buffer);
-                        if (HandleSystemMessage(message))
-                            continue;
                         if (message != null)
                         {
+                            if (HandleSystemMessage(message))
+                                continue;
                             UnityMainThreadDispatcher.Instance.Enqueue(() =>
                             {
                                 NetworkEvents.InvokeMessageReceived(message);
@@ -189,7 +189,7 @@ public class NetworkManager : MonoBehaviour
                     }
                     catch (Exception ex)
                     {
-                        Debug.LogError($"Deserialization error: {ex}");
+                        Debug.LogError($"Deserialization error: {ex.Message}");
                     }
                 }
             }

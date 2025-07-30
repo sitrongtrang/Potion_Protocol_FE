@@ -3,7 +3,12 @@ using System;
 [Serializable]
 public class ServerStartGame : ServerMessage
 {
+    [FieldOrder(0)]
     public PlayerDTO[] PlayerDTOs;
+    [FieldOrder(1)]
+    public string PlayerId;
+    [FieldOrder(2)]
+    public string[] PlayerIds;
     public ServerStartGame() : base(NetworkMessageTypes.Server.Pregame.StartGame) { }
 }
 

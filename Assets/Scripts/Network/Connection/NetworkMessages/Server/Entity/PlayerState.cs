@@ -1,10 +1,18 @@
+using UnityEngine;
+
 public class PlayerState : IStateSnapshot
 {
-    public int ProcessedInputSequence;
+    [FieldOrder(0)]
     public string PlayerId;
+    [FieldOrder(1)]
     public float MoveSpeed;
-    public float PositionX;
-    public float PositionY;
+    [FieldOrder(2)]
+    public Vector2 Position;
+    [FieldOrder(3)]
+    public bool IsDashing;
+    [FieldOrder(4)]
+    public int ProcessedInputSequence;
+    // public ItemState[] Inventory;
 
     int IStateSnapshot.ProcessedInputSequence => ProcessedInputSequence;
 }
