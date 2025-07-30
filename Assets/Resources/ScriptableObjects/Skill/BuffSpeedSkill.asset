@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: BuffSpeedSkill
   m_EditorClassIdentifier: 
   SkillName: Speed boost
-  SkillIcon: {fileID: 0}
+  SkillIcon: {fileID: -6643884872124919590, guid: 6260fd3de8606e84897cd870936f70e6, type: 3}
   SkillVFX: {fileID: 8539654604072314155, guid: 4727653c206610f4a83e92679a5d5d3d, type: 3}
   TimeAlive: 5
+  SkillUIObject: {fileID: 6345603219535058894, guid: e0c9a361f6c309341830dbad1547720d, type: 3}
   buffRatio: 0.5

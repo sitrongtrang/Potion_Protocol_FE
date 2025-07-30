@@ -6,7 +6,6 @@ public class BuffSpeedSkill : Skill
     public float buffRatio;
     public override void Activate(GameObject player)
     {
-        Debug.Log(player);
         player.GetComponent<PlayerController>().Movement.SetSpeedMultiplier(buffRatio + 1);
         player.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().sprite = SkillVFX;
         player.transform.GetChild(1).gameObject.GetComponent<SkillRingController>().enabled = true;
