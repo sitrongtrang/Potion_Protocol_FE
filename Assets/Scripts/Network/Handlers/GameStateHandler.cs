@@ -10,6 +10,8 @@ public class GameStateHandler : MonoBehaviour
     [SerializeField] private GameObject _itemSourcePrefab;
     [SerializeField] private GameObject _itemPrefab;
     [SerializeField] private GameObject _stationPrefab;
+
+    private GameStateNetworkInterpolator _interpolator = new(NetworkConstants.NET_INTERPOLATION_BUFFER_SIZE);
     
     private Dictionary<string, GameObject> _enemyMap = new();
     private Dictionary<string, GameObject> _itemSourceMap = new();
