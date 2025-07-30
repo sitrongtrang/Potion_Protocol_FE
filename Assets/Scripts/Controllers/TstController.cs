@@ -101,26 +101,38 @@ public class TstController : MonoBehaviour
     {
         PlayerInputSnapshot cpy = new(inputSnapshot);
 
-        // if (cpy.PickupPressed && TryPickup())
-        //     return;
+        if (cpy.MoveDir != Vector2.zero && cpy.DashPressed)
+        {
 
-        // if (cpy.DropPressed && TryDrop())
-        //     return;
+        }
 
-        // if (cpy.CombinePressed && TryCraft())
-        //     return;
+        if (cpy.PickupPressed)
+        {
 
-        // if (cpy.TransferPressed && TryTransfer())
-        //     return;
+        }
 
-        // if (cpy.SubmitPressed && TrySubmit())
-        //     return;
+        if (cpy.DropPressed)
+        {
 
-        // if (cpy.MoveDir != Vector2.zero && TryDash(cpy))
-        //     return;
+        }
 
-        if (cpy.MoveDir != Vector2.zero && TryMove(cpy))
-            return;
+        if (cpy.CombinePressed)
+        {
+
+        }
+
+        if (cpy.TransferPressed)
+        {
+
+        }
+
+        if (cpy.SubmitPressed)
+        {
+
+        }
+
+        if (cpy.MoveDir != Vector2.zero)
+            TryMove(cpy);
     }
 
     private bool TryMove(PlayerInputSnapshot inputSnapshot)
@@ -213,19 +225,6 @@ public class TstController : MonoBehaviour
     #endregion
 
     #region Utilities
-    // private int FindServerLastProcessedInputIndex(GameStatesUpdate gameStatesUpdate)
-    // {
-    //     int index = 0;
-    //     int lastProcessedInputIndex = int.MinValue;
-    //     for (int i = 0; i < gameStatesUpdate.GameStates.Length; i++)
-    //     {
-    //         if (gameStatesUpdate.GameStates[i].ProcessedInputSequence > lastProcessedInputIndex)
-    //         {
-    //             lastProcessedInputIndex = gameStatesUpdate.GameStates[i].ProcessedInputSequence;
-    //             index = i;
-    //         }
-    //     }
-    //     return index;
-    // }
+
     #endregion
 }
