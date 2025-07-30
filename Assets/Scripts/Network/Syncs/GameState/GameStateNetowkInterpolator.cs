@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class GameStateNetworkInterpolator : INetworkInterpolator<GameStateInterpolateData, GameStateUpdate>
 {
-    public void IncrementAndInterpolate(Action<GameStateInterpolateData> applyState, Action<bool> acceptingThreshold = null)
+    public void IncrementAndInterpolate(Action<GameStateInterpolateData> applyState, Func<bool> notInAcceptingThreshold = null)
     {
         throw new NotImplementedException();
     }
