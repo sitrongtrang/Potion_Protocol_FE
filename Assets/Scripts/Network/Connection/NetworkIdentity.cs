@@ -5,12 +5,12 @@ public class NetworkIdentity : MonoBehaviour
 {
     private static readonly Dictionary<string, NetworkIdentity> _allClients = new();
     
-    public string ClientId { get; private set; }
+    public string PlayerId { get; private set; }
     public bool IsLocalPlayer { get; private set; }
 
     public void Initialize(string clientId, bool isLocal)
     {
-        ClientId = clientId;
+        PlayerId = clientId;
         IsLocalPlayer = isLocal;
         
         if (_allClients.ContainsKey(clientId))
@@ -29,6 +29,6 @@ public class NetworkIdentity : MonoBehaviour
 
     void OnDestroy()
     {
-        _allClients.Remove(ClientId);
+        _allClients.Remove(PlayerId);
     }
 }

@@ -423,7 +423,18 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Buff speed skill icon_0: -6643884872124919590
+      Buff speed skill icon_1: 5326035062571986191
+      Buff speed skill icon_10: -8433790424124496636
+      Buff speed skill icon_2: 1844520592475927900
+      Buff speed skill icon_3: -5820918337002758966
+      Buff speed skill icon_4: 96011864243295493
+      Buff speed skill icon_5: 2244735701643573947
+      Buff speed skill icon_6: -2458114661504586892
+      Buff speed skill icon_7: -6768955709737644185
+      Buff speed skill icon_8: -725697209940448932
+      Buff speed skill icon_9: -560791716669788926
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

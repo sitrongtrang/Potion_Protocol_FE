@@ -148,18 +148,23 @@ public class TstController : MonoBehaviour
                 GameStatesUpdate gameStatesUpdate = (GameStatesUpdate)message;
                 if (Identity.IsLocalPlayer)
                 {
-                    GameStateUpdate gameStateUpdate = gameStatesUpdate.GameStates[FindServerLastProcessedInputIndex(gameStatesUpdate)];
-                    foreach (PlayerState playerState in gameStateUpdate.PlayerStates)
-                        if (playerState.PlayerId == Identity.ClientId)
+                    PlayerSnapshot playerSnapshot = new();
+                    for (int i = 0; i < gameStatesUpdate.GameStates.Length; i++)
+                    {
+                        GameStateUpdate gameState = gameStatesUpdate.GameStates[i];
+                        for (int j = 0; j < gameState.PlayerStates.Length; j++)
                         {
-                            TryReconcileServer(new PlayerSnapshot()
+                            PlayerState playerState = gameState.PlayerStates[j];
+                            if (playerState.PlayerId == Identity.PlayerId &&
+                                playerSnapshot.ProcessedInputSequence < playerState.ProcessedInputSequence)
                             {
-                                ProcessedInputSequence = gameStateUpdate.ProcessedInputSequence,
-                                Position = new(playerState.PositionX, playerState.PositionY),
-                            });
-                            break;
+                                playerSnapshot.ProcessedInputSequence = playerState.ProcessedInputSequence;
+                                playerSnapshot.Position = new(playerState.PositionX, playerState.PositionY);
+                                break;
+                            }
                         }
-
+                    }
+                    TryReconcileServer(playerSnapshot);
                 }
                 else
                 {
@@ -167,7 +172,7 @@ public class TstController : MonoBehaviour
                     {
                         for (int i = 0; i < gameStates.PlayerStates.Length; i++)
                         {
-                            if (gameStates.PlayerStates[i].PlayerId == Identity.ClientId)
+                            if (gameStates.PlayerStates[i].PlayerId == Identity.PlayerId)
                             {
                                 return i;
                             }
@@ -208,19 +213,19 @@ public class TstController : MonoBehaviour
     #endregion
 
     #region Utilities
-    private int FindServerLastProcessedInputIndex(GameStatesUpdate gameStatesUpdate)
-    {
-        int index = 0;
-        int lastProcessedInputIndex = int.MinValue;
-        for (int i = 0; i < gameStatesUpdate.GameStates.Length; i++)
-        {
-            if (gameStatesUpdate.GameStates[i].ProcessedInputSequence > lastProcessedInputIndex)
-            {
-                lastProcessedInputIndex = gameStatesUpdate.GameStates[i].ProcessedInputSequence;
-                index = i;
-            }
-        }
-        return index;
-    }
+    // private int FindServerLastProcessedInputIndex(GameStatesUpdate gameStatesUpdate)
+    // {
+    //     int index = 0;
+    //     int lastProcessedInputIndex = int.MinValue;
+    //     for (int i = 0; i < gameStatesUpdate.GameStates.Length; i++)
+    //     {
+    //         if (gameStatesUpdate.GameStates[i].ProcessedInputSequence > lastProcessedInputIndex)
+    //         {
+    //             lastProcessedInputIndex = gameStatesUpdate.GameStates[i].ProcessedInputSequence;
+    //             index = i;
+    //         }
+    //     }
+    //     return index;
+    // }
     #endregion
 }
