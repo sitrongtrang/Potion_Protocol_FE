@@ -18,10 +18,19 @@ public enum InputFlags
 [Serializable]
 public class PlayerInputMessage : ClientMessage, IInputSnapshot
 {
+    [FieldOrder(0)]
+    public long ClientSendTime;
+    [FieldOrder(1)]
+    public long ClientEstimatedServerTime;
+    [FieldOrder(2)]
     public int InputSequence;
+    [FieldOrder(3)]
     public int Flags;
+    [FieldOrder(4)]
     public float MoveDirX;
+    [FieldOrder(5)]
     public float MoveDirY;
+    [FieldOrder(6)]
     public int SelectedSlot;
     public PlayerInputMessage(PlayerInputSnapshot playerInputSnapshot) : base(NetworkMessageTypes.Client.Ingame.Input)
     {
@@ -29,6 +38,7 @@ public class PlayerInputMessage : ClientMessage, IInputSnapshot
         MoveDirY = playerInputSnapshot.MoveDir.y;
 
         Flags = playerInputSnapshot.DashPressed ? Flags |= (int)InputFlags.Dash : Flags;
+        Flags = MoveDirX != 0 || MoveDirY != 0 ? Flags |= (int)InputFlags.Move : Flags;
 
         Flags = playerInputSnapshot.AttackPressed ? Flags |= (int)InputFlags.Attack : Flags;
 
@@ -37,6 +47,9 @@ public class PlayerInputMessage : ClientMessage, IInputSnapshot
         Flags = playerInputSnapshot.TransferPressed ? Flags |= (int)InputFlags.Transfer : Flags;
         Flags = playerInputSnapshot.CombinePressed ? Flags |= (int)InputFlags.Craft : Flags;
         Flags = playerInputSnapshot.SubmitPressed ? Flags |= (int)InputFlags.Submit : Flags;
+
+        ClientSendTime = TimeSyncUtils.GetUnixTimeMilliseconds();
+        ClientEstimatedServerTime = 0;
 
     }
 

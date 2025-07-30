@@ -7,10 +7,12 @@ public class PlayerState : IStateSnapshot
     [FieldOrder(1)]
     public float MoveSpeed;
     [FieldOrder(2)]
-    public Vector2 Position;
+    public float PositionX;
     [FieldOrder(3)]
-    public bool IsDashing;
+    public float PositionY;
     [FieldOrder(4)]
+    public bool IsDashing;
+    [FieldOrder(5)]
     public int ProcessedInputSequence;
     // public ItemState[] Inventory;
 

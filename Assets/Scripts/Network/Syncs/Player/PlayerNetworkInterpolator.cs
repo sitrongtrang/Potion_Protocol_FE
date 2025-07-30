@@ -37,8 +37,8 @@ public class PlayerNetworkInterpolator : INetworkInterpolator<PlayerStateInterpo
                     _buffer.Add(new PlayerStateInterpolateData()
                     {
                         ServerSequence = update.ServerSequence,
-                        PositionX = update.PlayerStates[idx].Position.x,
-                        PositionY = update.PlayerStates[idx].Position.y
+                        PositionX = update.PlayerStates[idx].PositionX,
+                        PositionY = update.PlayerStates[idx].PositionY
                     });
                 }
             }

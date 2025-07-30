@@ -62,6 +62,7 @@ public class TstController : MonoBehaviour
 
             NetworkManager.Instance.SendMessage(new BatchPlayerInputMessage
             {
+                PlayerId = Identity.PlayerId,
                 PlayerInputMessages = _simulator.InputBufferAsArray
             });
         }
@@ -172,11 +173,13 @@ public class TstController : MonoBehaviour
                                 playerSnapshot.ProcessedInputSequence < playerState.ProcessedInputSequence)
                             {
                                 playerSnapshot.ProcessedInputSequence = playerState.ProcessedInputSequence;
-                                playerSnapshot.Position = new(playerState.Position.x, playerState.Position.y);
+                                playerSnapshot.Position = new(playerState.PositionX, playerState.PositionY);
                                 break;
                             }
                         }
                     }
+                    Debug.Log(playerSnapshot.ProcessedInputSequence);
+                    Debug.Log(playerSnapshot.Position);
                     TryReconcileServer(playerSnapshot);
                 }
                 else

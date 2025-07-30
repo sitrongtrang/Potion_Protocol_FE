@@ -18,7 +18,7 @@ public static class BinarySerializer
 
     public static void Serialize<T>(BinaryWriter writer, T obj)
     {
-        var fields = GetOrderedSerializableFields(typeof(T));
+        var fields = GetOrderedSerializableFields(obj.GetType());
         foreach (var field in fields)
         {
             object value = field.GetValue(obj);
@@ -82,6 +82,10 @@ public static class BinarySerializer
         {
             WriteFloat32BigEndian(writer, (float)value);
         }
+        else if (type == typeof(long))
+        {
+            WriteInt64BigEndian(writer, (long)value);
+        }
         else if (type == typeof(bool))
         {
             writer.Write((byte)((bool)value ? 1 : 0));
@@ -99,14 +103,14 @@ public static class BinarySerializer
         else if (type.IsArray)
         {
             Array array = (Array)value;
-            writer.Write((short)(array?.Length ?? 0));
+            WriteInt16BigEndian(writer, (short)(array?.Length ?? 0));
             foreach (var item in array)
                 WriteValue(writer, item, type.GetElementType());
         }
         else if (typeof(IList).IsAssignableFrom(type))
         {
             var list = (IList)value;
-            writer.Write((short)(list?.Count ?? 0));
+            WriteInt16BigEndian(writer, (short)(list?.Count ?? 0));
             Type elementType = type.IsGenericType ? type.GetGenericArguments()[0] : typeof(object);
             foreach (var item in list)
                 WriteValue(writer, item, elementType);
@@ -125,6 +129,8 @@ public static class BinarySerializer
             return ReadInt16BigEndian(reader);
         if (type == typeof(float))
             return ReadFloat32BigEndian(reader);
+        if (type == typeof(long))
+            return ReadInt64BigEndian(reader);
         if (type == typeof(bool))
             return reader.ReadByte() != 0;
 
@@ -188,6 +194,18 @@ public static class BinarySerializer
         writer.Write((byte)(intValue & 0xFF));
     }
 
+    public static void WriteInt64BigEndian(BinaryWriter writer, long value)
+    {
+        writer.Write((byte)((value >> 56) & 0xFF));
+        writer.Write((byte)((value >> 48) & 0xFF));
+        writer.Write((byte)((value >> 40) & 0xFF));
+        writer.Write((byte)((value >> 32) & 0xFF));
+        writer.Write((byte)((value >> 24) & 0xFF));
+        writer.Write((byte)((value >> 16) & 0xFF));
+        writer.Write((byte)((value >> 8) & 0xFF));
+        writer.Write((byte)(value & 0xFF));
+    }
+
     public static short ReadInt16BigEndian(BinaryReader reader)
     {
         return (short)((reader.ReadByte() << 8) | reader.ReadByte());
@@ -211,6 +229,18 @@ public static class BinarySerializer
         if (BitConverter.IsLittleEndian)
             Array.Reverse(bytes);
         return BitConverter.ToSingle(bytes, 0);
+    }
+
+    public static long ReadInt64BigEndian(BinaryReader reader)
+    {
+        return ((long)reader.ReadByte() << 56) |
+            ((long)reader.ReadByte() << 48) |
+            ((long)reader.ReadByte() << 40) |
+            ((long)reader.ReadByte() << 32) |
+            ((long)reader.ReadByte() << 24) |
+            ((long)reader.ReadByte() << 16) |
+            ((long)reader.ReadByte() << 8) |
+            reader.ReadByte();
     }
     
     private static byte[] EncodeModifiedUtf8(string str)

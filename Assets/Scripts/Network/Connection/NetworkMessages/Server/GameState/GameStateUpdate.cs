@@ -3,6 +3,7 @@ using System;
 [Serializable]
 public class GameStatesUpdate : ServerMessage
 {
+    [FieldOrder(0)]
     public GameStateUpdate[] GameStates;
     public GameStatesUpdate() : base(NetworkMessageTypes.Server.GameState.StateUpdate) { }
 

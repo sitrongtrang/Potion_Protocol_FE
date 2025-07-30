@@ -50,7 +50,7 @@ public static class NetworkMessageTypes
 
         public static class GameState
         {
-            public const short StateUpdate = 5;
+            public const short StateUpdate = 7;
             public const short ScoreUpdate = 1501;
             public const short TimeUpdate = 1502;
         }
