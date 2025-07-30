@@ -24,6 +24,11 @@ public static class NetworkMessageTypes
             public const short GetUserInfo = 5;
             public const short Ping = 4;
         }
+
+        public static class FriendSystem
+        {
+            public const short GetFriendList = 26;
+        }
     }
 
     public static class Server
@@ -31,8 +36,13 @@ public static class NetworkMessageTypes
         public static class System
         {
             public const short AuthSuccess = 0;
+            public const short AuthFail = 1;
             public const short Pong = 20;
             public const short GetUserInfo = 4;
+        }
+        public static class FriendSystem
+        {
+            public const short GetFriendList = 23;
         }
         public static class Player
         {

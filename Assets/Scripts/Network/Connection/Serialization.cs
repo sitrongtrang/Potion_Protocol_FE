@@ -17,8 +17,9 @@ public static class Serialization
     {
         try
         {
+            // Debug.Log("Message send: " + message);
             byte[] payloadBytes = CreateByteFromType(message);
-
+            // Debug.Log(payloadBytes);
             short messageLength = (short)(2 + payloadBytes.Length);
 
             using MemoryStream stream = new();
@@ -43,7 +44,7 @@ public static class Serialization
         {
             NetworkMessageTypes.Client.Authentication.TryAuth => BinarySerializer.SerializeToBytes((AuthMessage)message),
             NetworkMessageTypes.Client.Authentication.TryReconnect => BinarySerializer.SerializeToBytes((ReconnectMessage)message),
-
+            NetworkMessageTypes.Client.FriendSystem.GetFriendList => BinarySerializer.SerializeToBytes((GetFriendListMessage)message), // get friend list
             NetworkMessageTypes.Client.Pregame.RequestSpawn => BinarySerializer.SerializeToBytes((PlayerSpawnRequest)message),
 
             NetworkMessageTypes.Client.Ingame.Input => BinarySerializer.SerializeToBytes((PlayerInputMessage)message),
@@ -68,10 +69,13 @@ public static class Serialization
             short messageLength = BinarySerializer.ReadInt16BigEndian(reader);
 
             short messageType = BinarySerializer.ReadInt16BigEndian(reader);
-
+            Debug.Log($"📩 Received messageType: {messageType}");
             short statusCode = BinarySerializer.ReadInt16BigEndian(reader);
-
+            
             byte[] payloadBytes = reader.ReadBytes(messageLength - (2 + 2));
+            // 🔍 In thử raw string nếu là dạng chuỗi
+            string s = Encoding.BigEndianUnicode.GetString(payloadBytes);
+            Debug.Log("📦 Raw payload string (BigEndianUnicode): " + s);
 
             return CreateMessageFromType(messageType, payloadBytes);
         }
@@ -90,18 +94,18 @@ public static class Serialization
     {
         return messageType switch
         {
-            // Only have cases for server broadcast json
-            NetworkMessageTypes.Server.System.AuthSuccess => BinarySerializer.DeserializeFromBytes<AuthSuccessMessage>(payloadBytes),
-            NetworkMessageTypes.Server.System.Pong => BinarySerializer.DeserializeFromBytes<PongMessage>(payloadBytes),
-            NetworkMessageTypes.Server.System.GetUserInfo => BinarySerializer.DeserializeFromBytes<GetUserInfoServer>(payloadBytes),
-            // NetworkMessageTypes.System.Kick => BinarySerializer.DeserializeFromBytes<KickMessage>(payloadBytes)
+        // Only have cases for server broadcast json
+        NetworkMessageTypes.Server.System.AuthSuccess => BinarySerializer.DeserializeFromBytes<AuthSuccessMessage>(payloadBytes),
+        NetworkMessageTypes.Server.System.Pong => BinarySerializer.DeserializeFromBytes<PongMessage>(payloadBytes),
+        NetworkMessageTypes.Server.System.GetUserInfo => BinarySerializer.DeserializeFromBytes<GetUserInfoServer>(payloadBytes),
+        // NetworkMessageTypes.System.Kick => BinarySerializer.DeserializeFromBytes<KickMessage>(payloadBytes)
+        NetworkMessageTypes.Server.FriendSystem.GetFriendList => BinarySerializer.DeserializeFromBytes<FriendListServerMessage>(payloadBytes),
+        NetworkMessageTypes.Server.Player.Spawn => BinarySerializer.DeserializeFromBytes<PlayerSpawnMessage>(payloadBytes),
+        NetworkMessageTypes.Server.Player.Connected => BinarySerializer.DeserializeFromBytes<PlayerConnectedMessage>(payloadBytes),
+        NetworkMessageTypes.Server.Player.Disconnected => BinarySerializer.DeserializeFromBytes<PlayerDisconnectedMessage>(payloadBytes),
 
-            NetworkMessageTypes.Server.Player.Spawn => BinarySerializer.DeserializeFromBytes<PlayerSpawnMessage>(payloadBytes),
-            NetworkMessageTypes.Server.Player.Connected => BinarySerializer.DeserializeFromBytes<PlayerConnectedMessage>(payloadBytes),
-            NetworkMessageTypes.Server.Player.Disconnected => BinarySerializer.DeserializeFromBytes<PlayerDisconnectedMessage>(payloadBytes),
-
-            NetworkMessageTypes.Server.GameState.StateUpdate => BinarySerializer.DeserializeFromBytes<GameStatesUpdate>(payloadBytes),
-            _ => null
+        NetworkMessageTypes.Server.GameState.StateUpdate => BinarySerializer.DeserializeFromBytes<GameStatesUpdate>(payloadBytes),
+        _ => null
         };
     }
     #endregion
