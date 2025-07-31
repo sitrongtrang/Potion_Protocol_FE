@@ -74,14 +74,15 @@ public static class Serialization
             
             byte[] payloadBytes = reader.ReadBytes(messageLength - (2 + 2));
             // 🔍 In thử raw string nếu là dạng chuỗi
-            string s = Encoding.BigEndianUnicode.GetString(payloadBytes);
-            Debug.Log("📦 Raw payload string (BigEndianUnicode): " + s);
+            string hex = BitConverter.ToString(payloadBytes).Replace("-", " ");
+            Debug.Log($"📦 Raw payload (Hex): {hex}");
 
             return CreateMessageFromType(messageType, payloadBytes);
         }
         catch (Exception e)
         {
             Debug.LogError($"[Deserialization Error] {e.Message}");
+            Debug.LogError($"[Deserialization Error] {e.Message}\nInner: {e.InnerException?.Message}");
             return null;
         }
     }

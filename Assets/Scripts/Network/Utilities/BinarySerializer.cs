@@ -117,6 +117,8 @@ public static class BinarySerializer
         }
     }
 
+    
+
     private static object ReadValue(BinaryReader reader, Type type)
     {
         if (type == typeof(int))
