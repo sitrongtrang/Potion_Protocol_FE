@@ -8,9 +8,11 @@ public class PlayerCreateRoomRequest : ClientMessage
     public string RoomName;
 
     [FieldOrder(1)]
-    public short RoomType;
+    public short GameMode;
 
     [FieldOrder(2)]
-    public int MaxPlayers;
+    public short RoomType;
+    [FieldOrder(3)]
+    public string Password;
     public PlayerCreateRoomRequest() : base(NetworkMessageTypes.Client.Pregame.CreateRoom) { }
 }

@@ -9,12 +9,12 @@ using System.Collections.Generic; // optional, if using TextMeshPro UI
 public class HttpAuthHandler : MonoBehaviour
 {
     [Header("Login")]
-    public TMP_InputField usernameField;
-    public TMP_InputField passwordField;
+    [SerializeField] private TMP_InputField usernameField;
+    [SerializeField] private TMP_InputField passwordField;
 
     [Header("Register")]
-    public TMP_InputField confirmpasswordField;
-    public TMP_InputField displaynameField;
+    [SerializeField] private TMP_InputField confirmpasswordField;
+    [SerializeField] private TMP_InputField displaynameField;
 
     [Header("URLs")]
     [SerializeField] private StaticURLSO _loginUrl;

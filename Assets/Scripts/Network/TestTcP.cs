@@ -5,7 +5,7 @@ public class TestTcP : MonoBehaviour
     [Header("Create Room")]
     public string RoomName;
     public short RoomType;
-    public int MaxPlayers;
+    public short GameMode;
     [Header("Join Room")]
     public string JoinRoomName;
 
@@ -17,7 +17,7 @@ public class TestTcP : MonoBehaviour
             {
                 RoomName = RoomName,
                 RoomType = RoomType,
-                MaxPlayers = MaxPlayers
+                GameMode = GameMode
             }
         );
     }

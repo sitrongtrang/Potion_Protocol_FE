@@ -267,7 +267,7 @@ public class NetworkManager : MonoBehaviour
     private void SetUserInfo(GetUserInfoServer getUserInfoServer)
     {
         _clientId = getUserInfoServer.ClientId;
-    }
+    } 
 
     #endregion
 
