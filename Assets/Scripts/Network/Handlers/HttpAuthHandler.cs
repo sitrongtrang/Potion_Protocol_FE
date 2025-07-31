@@ -62,6 +62,8 @@ public class HttpAuthHandler : MonoBehaviour
             // Parse token or user info if needed
 
             LoginSuccess loginSuccess = JsonConvert.DeserializeObject<LoginSuccess>(request.downloadHandler.text);
+            // GameObject networkManager = new GameObject("Network Manager");
+            // networkManager.AddComponent<NetworkManager>();
             NetworkManager.Instance.SetAuthenToken(loginSuccess.LoginSuccessDat.Token);
             NetworkManager.Instance.Authenticate();
 
