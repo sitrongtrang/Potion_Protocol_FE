@@ -7,14 +7,14 @@
             }
         },
         "id": "Mo1",
-        "name": "Mireblot",
+        "name": "Vampire",
         "dropped_item_id": {
             "$binary": {
                 "base64": "YZazkO1SQm208Vb3kQwbag==",
                 "subType": "04"
             }
         },
-        "type": "Slime",
+        "type": "Vampire",
         "map": "M1",
         "hp": 4,
         "attack_damage": 1
@@ -27,14 +27,14 @@
             }
         },
         "id": "Mo2",
-        "name": "Scarbrute",
+        "name": "Skeleton",
         "dropped_item_id": {
             "$binary": {
                 "base64": "UFRn/c5VSHyICT2AzwKzwg==",
                 "subType": "04"
             }
         },
-        "type": "Orc",
+        "type": "Skeleton",
         "map": "M1",
         "hp": 8,
         "attack_damage": 3
@@ -47,14 +47,14 @@
             }
         },
         "id": "Mo3",
-        "name": "Filthgrub",
+        "name": "Chest",
         "dropped_item_id": {
             "$binary": {
                 "base64": "TB1C8Me1TaKF+cCjparOmg==",
                 "subType": "04"
             }
         },
-        "type": "Maggot",
+        "type": "Chest",
         "map": "M1",
         "hp": 5,
         "attack_damage": 2
@@ -67,15 +67,15 @@
             }
         },
         "id": "Mo4",
-        "name": "Dreadshade",
+        "name": "Orc",
         "dropped_item_id": {
             "$binary": {
                 "base64": "YCbzyWdJTfi3unpLaE2iOA==",
                 "subType": "04"
             }
         },
-        "type": "Vampire",
-        "map": "M1",
+        "type": "Orc",
+        "map": "M2",
         "hp": 6,
         "attack_damage": 5
     },
@@ -87,16 +87,36 @@
             }
         },
         "id": "Mo5",
-        "name": "Webspinner",
+        "name": "Fungoid",
         "dropped_item_id": {
             "$binary": {
                 "base64": "FdRVM9t7SZOnPN3JCLTMyw==",
                 "subType": "04"
             }
         },
-        "type": "Spider",
-        "map": "M1",
+        "type": "Fungoid",
+        "map": "M2",
         "hp": 4,
         "attack_damage": 4
+    },
+    {
+        "_id": {
+            "$binary": {
+                "base64": "8ej+JhbXR/aFwZJkapCVQw==",
+                "subType": "04"
+            }
+        },
+        "id": "Mo6",
+        "name": "Slime",
+        "dropped_item_id": {
+            "$binary": {
+                "base64": "bVf9Lr3NS4ObsdgkYeuaIQ==",
+                "subType": "04"
+            }
+        },
+        "type": "Slime",
+        "map": "M2",
+        "hp": 3,
+        "attack_damage": 2
     }
 ]

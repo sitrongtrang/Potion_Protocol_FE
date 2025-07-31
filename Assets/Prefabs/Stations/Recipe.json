@@ -10,7 +10,7 @@
         "crafting_formula": [
             {
                 "$binary": {
-                    "base64": "+8PxH/bbQuW1FkUSTeQipg==",
+                    "base64": "5bho7pcBS+uplQkbnHvd",
                     "subType": "04"
                 }
             },
@@ -265,7 +265,13 @@
         "crafting_formula":[
             {
                 "$binary": {
-                    "base64": "FdRVM9t7SZOnPN3JCLTMyw==",
+                    "base64": "TB1C8Me1TaKF+cCjparOmg==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
+                    "base64": "YUm3fOvrQtGbe/Fy5LyudQ==",
                     "subType": "04"
                 }
             }
@@ -348,7 +354,7 @@
         "crafting_time": 5,
         "crafting_item": {
             "$binary": {
-                "base64": "I3kEfaBVTYKBD+rEaH7UuQ==",
+                "base64": "Q2gMMDQiTuGzjIZPr8f0aw==",
                 "subType": "04"
             }
         },
@@ -373,7 +379,7 @@
         "crafting_time": 6,
         "crafting_item": {
             "$binary": {
-                "base64": "Ugo8CZGiQ3+FCNI/WBkw3Q==",
+                "base64": "0a0gx5WTQjej3+LCbqfvOg==",
                 "subType": "04"
             }
         },
@@ -398,7 +404,7 @@
         "crafting_time": 4,
         "crafting_item": {
             "$binary": {
-                "base64": "vLR7B5RGS5+eZwEDSoQqHA==",
+                "base64": "jxZGe7ntQjW+NqMUaf91oA==",
                 "subType": "04"
             }
         },
@@ -423,7 +429,7 @@
         "crafting_time": 6,
         "crafting_item": {
             "$binary": {
-                "base64": "OhU4KflsQUu6XsCUlnIsXg==",
+                "base64": "CvNH1WC/RNyKmh47KMgIJQ==",
                 "subType": "04"
             }
         },
@@ -448,7 +454,7 @@
         "crafting_time": 8,
         "crafting_item": {
             "$binary": {
-                "base64": "ijL7KETfSpW1ZjOUst586g==",
+                "base64": "YUm3fOvrQtGbe/Fy5LyudQ==",
                 "subType": "04"
             }
         },
@@ -473,7 +479,7 @@
         "crafting_time": 6,
         "crafting_item": {
             "$binary": {
-                "base64": "l3uryKQ5QIu+m0x8Iw8v6g==",
+                "base64": "R/3Tl/OfQqKtzqRGgY4puA==",
                 "subType": "04"
             }
         },
@@ -498,7 +504,7 @@
         "crafting_time": 7,
         "crafting_item": {
             "$binary": {
-                "base64": "msXS+gkVSou7JBSYZBs+cQ==",
+                "base64": "cSvXRZgJS7eDQVsGMMGOAw==",
                 "subType": "04"
             }
         },
@@ -523,7 +529,7 @@
         "crafting_time": 6,
         "crafting_item": {
             "$binary": {
-                "base64": "gTsWaJFyRseJgCLSBQZa5g==",
+                "base64": "NDYP9pGMS0SGh8hzqQzIqg==",
                 "subType": "04"
             }
         },
@@ -548,7 +554,7 @@
         "crafting_time": 8,
         "crafting_item": {
             "$binary": {
-                "base64": "aCST4MXCS2alinIWGZ0dig==",
+                "base64": "mxE1+h/QQUWNEUyWNQa98Q==",
                 "subType": "04"
             }
         },
@@ -573,7 +579,7 @@
         "crafting_time": 7,
         "crafting_item": {
             "$binary": {
-                "base64": "XtnIWYmyQ3WYKQ9Z5EjTWw==",
+                "base64": "N74hjnAtQYmWfw/Hw5ILnA==",
                 "subType": "04"
             }
         },

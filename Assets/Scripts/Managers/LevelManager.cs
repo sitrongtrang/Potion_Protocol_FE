@@ -48,12 +48,14 @@ public class LevelManager : MonoBehaviour
     public event Action<float> OnTimeChanged;
     public event Action<bool> OnPauseToggled;
     public event Action OnStarGained;
+    public LevelConfig Config => _config;
     [SerializeField] private ItemSourceSpawner _itemSourceSpawner;
 
     private List<RecipeConfig> _requiredRecipes = new List<RecipeConfig>();
     public event Action<RecipeConfig> OnRequiredRecipeAdded;
     public event Action<int> OnRequiredRecipeRemoved;
     [SerializeField] private RequiredRecipeListUI _requiredRecipeListUI;
+    public event Action<LevelConfig, GameObject> OnLevelInitialized;
 
     public List<StationController> Stations { get; private set; } = new List<StationController>();
 
@@ -66,15 +68,7 @@ public class LevelManager : MonoBehaviour
         }
 
         Instance = this;
-
-        // _config = Resources.Load<LevelConfig>($"ScriptableObjects/Levels/Level{GameManager.Instance.CurrentLevel + 1}");
     }
-
-    //void Start()
-    //{
-    //    _config = GameManager.Instance.CurrentLevelConfig;
-    //    Initialize(_config);
-    //}
 
     public void Initialize(LevelConfig config)
     {
@@ -171,6 +165,8 @@ public class LevelManager : MonoBehaviour
 
         // Initialize item source spawner
         _itemSourceSpawner.Initialize(_config.ItemSources);
+
+        OnLevelInitialized?.Invoke(_config, map);
     }
 
     private IEnumerator LevelTimer()
@@ -246,7 +242,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public bool OnProductSubmitted(ItemConfig product)
+    public bool OnProductSubmitted(ItemConfig product, float multiplier)
     {
         for (int i = 0; i < _requiredRecipes.Count; i++)
         {
@@ -254,7 +250,7 @@ public class LevelManager : MonoBehaviour
             {
                 _requiredRecipes.RemoveAt(i);
                 OnRequiredRecipeRemoved?.Invoke(i);
-                Score += FormulaeCalculator.CalculateScore(_requiredRecipes[i]);
+                Score += FormulaeCalculator.CalculateScore(_requiredRecipes[i], multiplier);
                 return true;
             }
         }

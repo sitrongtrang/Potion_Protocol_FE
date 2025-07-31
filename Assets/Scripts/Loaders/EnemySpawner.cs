@@ -10,6 +10,8 @@ public class EnemySpawner : MonoBehaviour
     private List<int> _unspawnedEnemyIndices = new();
     private List<int> _unoccupiedPositionIndices = new();
 
+    public EnemySpawnerConfig Config => _enemySpawnerConfig;
+
     public void Initialize(List<EnemyController> enemiesToSpawn, List<Transform> positionsToSpawn)
     {
         _enemiesToSpawn = enemiesToSpawn;

@@ -8,6 +8,13 @@ public class PlayerInteraction
     private PlayerInventory _inventory;
     private PlayerInputManager _inputManager;
     private float _interactDistance;
+    private float _scoreMultiplier = 1;
+
+    public float ScoreMultiplier
+    {
+        get => _scoreMultiplier;
+        set => _scoreMultiplier = value;
+    }
 
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
@@ -136,11 +143,11 @@ public class PlayerInteraction
                 return;
             }
         }
-        
+
         ItemConfig submittedItem = _inventory.Get(_inventory.ChoosingSlot);
         if (submittedItem.Type == ItemType.Potion)
         {
-            bool submitted = LevelManager.Instance.OnProductSubmitted(submittedItem);  
+            bool submitted = LevelManager.Instance.OnProductSubmitted(submittedItem, _scoreMultiplier);
             if (submitted) _inventory.Remove();
             // Handle submission logic, e.g., update score, etc.  
             Debug.Log($"Submitted {submittedItem.Name} in slot {_inventory.ChoosingSlot + 1}");
@@ -149,7 +156,7 @@ public class PlayerInteraction
         {
             Debug.Log("No item in slot to submit");
         }
-        
+
     }
 
     void DropItem()
@@ -163,6 +170,6 @@ public class PlayerInteraction
         else
         {
             Debug.Log("No item to drop");
-        }        
+        }
     }
 }

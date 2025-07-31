@@ -20,10 +20,16 @@ public class PlayerMovement
     private SpriteRenderer _spriteRenderer;
     private AABBCollider _collider;
     private Vector2 _size = Vector2.zero;
+    private float _speedMultiplier = 1;
 
     public AABBCollider Collider => _collider;
     public Vector2 MoveDir => _moveDir;
     public Vector2 PlayerDir => _playerDir;
+    public float SpeedMultiplier
+    {
+        get => _speedMultiplier;
+        set => _speedMultiplier = value;
+    }
 
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
@@ -47,9 +53,9 @@ public class PlayerMovement
 
     public void Update()
     {
-        if (_moveDir != Vector2.zero)
+        if (_moveDir != Vector2.zero && !_isDashing)
         {
-            SimulateMove(_moveDir, _playerConfig.MoveSpeed);
+            SimulateMove(_moveDir, _playerConfig.MoveSpeed * _speedMultiplier);
         }
     }
 

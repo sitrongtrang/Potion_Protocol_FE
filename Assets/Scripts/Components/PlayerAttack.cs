@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,16 @@ public class PlayerAttack
     // bool _isAttacking = false;
     private bool _canAttack = true;
     private bool[] _canUseSkills = new bool[GameConstants.NumSkills];
+    private SkillConfig[] _skills = new SkillConfig[GameConstants.NumSkills];
     private bool _isInAction = false;
+    private float _damageMultiplier = 1;
+
+    public event Action<int> OnSkillUsed;
+    public float DamageMultiplier
+    {
+        get => _damageMultiplier;
+        set => _damageMultiplier = value;
+    }
 
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
@@ -21,6 +31,7 @@ public class PlayerAttack
         }
 
         _player = player;
+        _skills = player.Config.Skills;
 
         _inputManager = inputManager;
         _skillActions = new InputAction[]
@@ -81,9 +92,12 @@ public class PlayerAttack
     private IEnumerator UseSkill(int skillNumber)
     {
         _canUseSkills[skillNumber - 1] = false;
+        _skills[skillNumber - 1].Activate(_player);
+        yield return new WaitForSeconds(_skills[skillNumber - 1].TimeAlive);
+        _skills[skillNumber - 1].Deactivate(_player);
         // _isInAction = true;
         Debug.Log($"Using ability {skillNumber}");
-        yield return new WaitForSeconds(_player.Config.SkillsCoolDown[skillNumber - 1]);
+        OnSkillUsed?.Invoke(skillNumber);
         // _isInAction = false;
         _canUseSkills[skillNumber - 1] = true;
     }
@@ -197,7 +211,7 @@ public class PlayerAttack
                 EnemyController enemy = hitTargets[i].Owner.GetComponent<EnemyController>();
                 if (enemy != null)
                 {
-                    enemy.TakeDamage(_player.Weapon.AttackDamage);
+                    enemy.TakeDamage(_damageMultiplier * _player.Weapon.AttackDamage);
                 }
             } 
 

@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private WeaponConfig _weapon;
     [SerializeField] private Transform _attackPoint;
     private InventoryUI _inventoryUI;
+    private SkillContainerUI _skillContainerUI;
 
     public PlayerConfig Config => _config;
     public PlayerInventory Inventory { get; private set; }
@@ -41,6 +42,10 @@ public class PlayerController : MonoBehaviour
         _inventoryUI = FindFirstObjectByType<InventoryUI>();
         _inventoryUI.Initialize(this);
         _inventoryUI.gameObject.SetActive(true);
+
+        _skillContainerUI = FindFirstObjectByType<SkillContainerUI>();
+        _skillContainerUI.Initialize(this);
+
     }
 
     void Update()
