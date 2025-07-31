@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor.XR;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RoomHandler : MonoBehaviour
 {
@@ -64,7 +65,7 @@ public class RoomHandler : MonoBehaviour
     {
         Debug.Log($"Server đã tạo phòng: {msg.RoomID}");
         // Load create room scene
-
+        SceneManager.LoadSceneAsync("RoomScene");
     }
 
     private void OnJoinRoomResponse(ServerInRoom msg)

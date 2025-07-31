@@ -3746,8 +3746,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 957d1a16c65d11347ab3b4aaf472ebab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pvp: 0
-  inputField: {fileID: 0}
+  RoomName: {fileID: 0}
+  Password: {fileID: 0}
   error: {fileID: 0}
 --- !u!1 &1808497603
 GameObject:

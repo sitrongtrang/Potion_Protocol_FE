@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,9 +11,11 @@ public class CreateRoom : MonoBehaviour
 {
     private static List<SelectableImage> allImages = new List<SelectableImage>();
     private static SelectableImage currentSelected = null;
-    public bool pvp;
-    public TMP_InputField inputField;
+    public TMP_InputField RoomName;
+    public TMP_InputField Password;
     public GameObject error;
+    private short GameMode;
+    private short RoomType;
 
     public static void Register(SelectableImage img)
     {
@@ -41,11 +44,25 @@ public class CreateRoom : MonoBehaviour
 
     public void OnRoomScene()
     {
-        if (string.IsNullOrEmpty(inputField.text))
+        if (string.IsNullOrEmpty(RoomName.text))
         {
             StartCoroutine(ShowError());
         }
-        else SceneManager.LoadSceneAsync("RoomScene");
+        else
+        {
+            if (Password.text != null) RoomType = 0;
+            else RoomType = 1;
+            Debug.Log("hihi");
+            NetworkManager.Instance.SendMessage(
+                new PlayerCreateRoomRequest
+                {
+                    RoomName = RoomName.text,
+                    GameMode = GameMode,
+                    RoomType = RoomType,
+                    Password = Password.text,
+                }
+            );
+        }
     }
 
     public IEnumerator ShowError()
@@ -57,12 +74,11 @@ public class CreateRoom : MonoBehaviour
 
     public void OnPvP()
     {
-        pvp = true;
-
+        GameMode = 1;
     }
 
     public void OnCoop()
     {
-        pvp = false;
+        GameMode = 0;
     }
 }
