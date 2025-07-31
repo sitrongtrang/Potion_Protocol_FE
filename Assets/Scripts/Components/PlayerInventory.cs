@@ -109,7 +109,7 @@ public class PlayerInventory
     private ItemConfig SimulateAdd(ItemConfig item, int slotIndex)
     {
         _items[slotIndex] = item;
-        OnSlotUpdated?.Invoke(slotIndex, item.Icon);
+        OnSlotUpdated?.Invoke(slotIndex, item.Icon); // Update UI
         if (_isAutoFocus) ChoosingSlot = slotIndex;
         Debug.Log($"Added up item {item.Name} into slot {slotIndex + 1}");
         return item;
@@ -131,7 +131,7 @@ public class PlayerInventory
     {
         ItemConfig item = _items[slotIndex];
         _items[slotIndex] = null;
-        OnSlotUpdated?.Invoke(slotIndex, null);
+        OnSlotUpdated?.Invoke(slotIndex, null); // Update UI
         Debug.Log($"Removed up item {item.Name} in slot {slotIndex + 1}");
         return item;
     }

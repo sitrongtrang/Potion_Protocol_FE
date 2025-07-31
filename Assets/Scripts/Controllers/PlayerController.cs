@@ -45,7 +45,6 @@ public class PlayerController : MonoBehaviour
 
         _skillContainerUI = FindFirstObjectByType<SkillContainerUI>();
         _skillContainerUI.Initialize(this);
-
     }
 
     void Update()
