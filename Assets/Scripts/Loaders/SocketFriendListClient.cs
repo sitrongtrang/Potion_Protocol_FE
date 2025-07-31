@@ -9,39 +9,6 @@ using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
 
-
-[Serializable]
-public class GetFriendListMessage : ClientMessage
-{
-    [FieldOrder(0)]
-    public string UserId; // vẫn là string để BinarySerializer xử lý đúng
-
-    public GetFriendListMessage(Guid userId)
-        : base(NetworkMessageTypes.Client.FriendSystem.GetFriendList)
-    {
-        // Convert GUID thành 16 byte, rồi base64 để giữ đúng byte khi serialize
-        UserId = Convert.ToBase64String(userId.ToByteArray());
-        Debug.Log("🔹 Encoded UserId: " + UserId);
-        Debug.Log("🔹 MessageType: " + NetworkMessageTypes.Client.FriendSystem.GetFriendList);
-    }
-}
-
-[Serializable]
-public class Friend
-{
-    [FieldOrder(0)] public string id;
-    [FieldOrder(1)] public string friendId;
-    [FieldOrder(2)] public string friendDisplayName;
-}
-
-[Serializable]
-public class FriendListServerMessage : ServerMessage
-{
-    [FieldOrder(0)]
-    public List<Friend> friendList;
-
-    public FriendListServerMessage() : base(NetworkMessageTypes.Server.FriendSystem.GetFriendList) { }
-}
 public class SocketFriendListClient : MonoBehaviour
 {
     private const string ServerIP = "10.7.1.166";
@@ -133,7 +100,7 @@ public class SocketFriendListClient : MonoBehaviour
     {
         try
         {
-            var message = new GetFriendListMessage(userId);
+            var message = new FriendListClientMessage(userId);
             byte[] data = Serialization.SerializeMessage(message);
             Debug.Log(data);
             socket.Send(data);

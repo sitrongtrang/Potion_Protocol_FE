@@ -44,7 +44,7 @@ public static class Serialization
         {
             NetworkMessageTypes.Client.Authentication.TryAuth => BinarySerializer.SerializeToBytes((AuthMessage)message),
             NetworkMessageTypes.Client.Authentication.TryReconnect => BinarySerializer.SerializeToBytes((ReconnectMessage)message),
-            NetworkMessageTypes.Client.FriendSystem.GetFriendList => BinarySerializer.SerializeToBytes((GetFriendListMessage)message), // get friend list
+            NetworkMessageTypes.Client.FriendSystem.GetFriendList => BinarySerializer.SerializeToBytes((FriendListClientMessage)message), // get friend list
             NetworkMessageTypes.Client.Pregame.RequestSpawn => BinarySerializer.SerializeToBytes((PlayerSpawnRequest)message),
 
             NetworkMessageTypes.Client.Ingame.Input => BinarySerializer.SerializeToBytes((PlayerInputMessage)message),
