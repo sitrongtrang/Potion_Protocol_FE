@@ -13,10 +13,10 @@ public class GameStateHandler : MonoBehaviour
 
     private GameStateNetworkInterpolator _interpolator = new(NetworkConstants.NET_INTERPOLATION_BUFFER_SIZE);
     
+    private Dictionary<string, GameObject> _playerMap = new();
     private Dictionary<string, GameObject> _enemyMap = new();
     private Dictionary<string, GameObject> _itemSourceMap = new();
     private Dictionary<string, GameObject> _itemMap = new();
-    private Dictionary<string, GameObject> _playerMap = new();
     private Dictionary<string, GameObject> _stationMap = new();
     void FixedUpdate()
     {

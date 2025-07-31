@@ -1,14 +1,15 @@
 using System;
+using System.Collections.Generic;
 
 public class GameStateInterpolateData : IServerStateSnapshot, IComparable<GameStateInterpolateData>
 {
     public int ServerSequence;
     int IServerStateSnapshot.ServerSequence => ServerSequence;
-    public string[] PlayerIds;
-    public string[] ItemIds;
-    public string[] EnemyIds;
-    public string[] ItemSourceIds;
-    public string[] StationIds;
+    public Dictionary<string, string> PlayerIds; // Ingame Id -> Type Id
+    public Dictionary<string, string> ItemIds;
+    public Dictionary<string, string> EnemyIds;
+    public Dictionary<string, string> ItemSourceIds;
+    public Dictionary<string, string> StationIds;
 
     public int CompareTo(GameStateInterpolateData other)
     {
