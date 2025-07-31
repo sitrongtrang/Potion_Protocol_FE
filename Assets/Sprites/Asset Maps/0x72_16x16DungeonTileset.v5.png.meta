@@ -1984,10 +1984,10 @@ TextureImporter:
       name: 0x72_16x16DungeonTileset.v5_75
       rect:
         serializedVersion: 2
-        x: 21
-        y: 195
-        width: 6
-        height: 6
+        x: 16
+        y: 192
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

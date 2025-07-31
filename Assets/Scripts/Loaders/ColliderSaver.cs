@@ -32,8 +32,13 @@ public class ColliderSaver : MonoBehaviour
     public GameObject mapGameObject;
     public List<Tilemap> tilemaps;
 
-    public ColliderDataList nonTriggerList;
-    public ColliderDataList triggerList;
+    private ColliderDataList nonTriggerList;
+    private ColliderDataList triggerList;
+
+    private void Start()
+    {
+        SaveColliders();
+    }
 
     public void SaveColliders()
     {
@@ -62,17 +67,17 @@ public class ColliderSaver : MonoBehaviour
             ExtractTileColliders(tm, tilemapCollider);
         }
 
-        // string basePath = Application.persistentDataPath;
-        // string jsonNonTrigger = JsonUtility.ToJson(nonTriggerList, prettyPrint: true);
-        // string pathNon = Path.Combine(basePath, "colliders_map.json");
-        // File.WriteAllText(pathNon, jsonNonTrigger);
+        string basePath = Application.persistentDataPath;
+        string jsonNonTrigger = JsonUtility.ToJson(nonTriggerList, prettyPrint: true);
+        string pathNon = Path.Combine(basePath, "colliders_map.json");
+        File.WriteAllText(pathNon, jsonNonTrigger);
 
-        // string jsonTrigger = JsonUtility.ToJson(triggerList, prettyPrint: true);
-        // string pathTrig = Path.Combine(basePath, "colliders_station.json");
-        // File.WriteAllText(pathTrig, jsonTrigger);
+        string jsonTrigger = JsonUtility.ToJson(triggerList, prettyPrint: true);
+        string pathTrig = Path.Combine(basePath, "colliders_station.json");
+        File.WriteAllText(pathTrig, jsonTrigger);
 
-        // Debug.Log($"Saved {nonTriggerList.colliders.Count} colliders_map to: {pathNon}");
-        // Debug.Log($"Saved {triggerList.colliders.Count} colliders_station to: {pathTrig}");
+        Debug.Log($"Saved {nonTriggerList.colliders.Count} colliders_map to: {pathNon}");
+        Debug.Log($"Saved {triggerList.colliders.Count} colliders_station to: {pathTrig}");
     }
 
     private void ExtractTileColliders(Tilemap tm, TilemapCollider2D tilemapCollider)

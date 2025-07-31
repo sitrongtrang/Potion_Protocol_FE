@@ -50,11 +50,9 @@ public class LevelInfoSaver : MonoBehaviour
         public List<int> ScoreThresholds;
         public Location PlayerSpawnLocation;
         public List<StationData> Stations;
-        public List<EnemySpawnerData> EnemySpawners;
+        public List<EnemySpawnerData> EnemySpawners; 
         public List<Location> PatrolCenters;
         public Location SubmissionPoint;
-        public ColliderSaver.ColliderDataList MapColliders;
-        public ColliderSaver.ColliderDataList StationProtections;
     }
 
     private LevelData _levelData;
@@ -190,12 +188,6 @@ public class LevelInfoSaver : MonoBehaviour
             LocationY = submissionPoint.transform.position.y
         };
 
-        // Save collider data
-        ColliderSaver colliderSaver = mapObject.GetComponentInChildren<ColliderSaver>();
-        colliderSaver.SaveColliders();
-        ColliderSaver.ColliderDataList MapColliders = colliderSaver.nonTriggerList;
-        ColliderSaver.ColliderDataList StationProtections = colliderSaver.triggerList;
-
         // Save whole level data
         _levelData = new LevelData()
         {
@@ -209,20 +201,13 @@ public class LevelInfoSaver : MonoBehaviour
             Stations = Stations,
             EnemySpawners = EnemySpawners,
             PatrolCenters = PatrolCenters,
-            SubmissionPoint = SubmissionPoint,
-            MapColliders = MapColliders,
-            StationProtections = StationProtections
+            SubmissionPoint = SubmissionPoint
         };
 
         string basePath = Application.persistentDataPath;
-        string folderPath = Path.Combine(basePath, "Levels"); 
-        string filePath = Path.Combine(folderPath, $"level{LevelNumber}.json");
-        if (!Directory.Exists(folderPath))
-        {
-            Directory.CreateDirectory(folderPath);
-        }
         string json = JsonUtility.ToJson(_levelData, prettyPrint: true);
-        File.WriteAllText(filePath, json);
+        string path = Path.Combine(basePath, $"Levels/level{LevelNumber}.json");
+        File.WriteAllText(path, json);
     } 
 
 }

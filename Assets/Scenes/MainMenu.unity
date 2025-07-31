@@ -2429,7 +2429,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayedLevels: 0
   CurrentLevel: 0
-  CurrentLevelConfig: {fileID: 0}
   Score: 0
   Star: 0
 --- !u!4 &1362240175
@@ -3609,7 +3608,7 @@ MonoBehaviour:
   _soundOptionsButton: {fileID: 1801727952}
   _miscOptionsButton: {fileID: 319183162}
   _quitButton: {fileID: 293831330}
-  _codexButton: {fileID: 1644194479}
+  _codexButton: {fileID: 0}
 --- !u!4 &1784847385
 Transform:
   m_ObjectHideFlags: 0
