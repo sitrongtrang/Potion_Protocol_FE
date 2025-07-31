@@ -22,12 +22,12 @@ public class SkillContainerUI : MonoBehaviour
             }
         }
 
-        player.Attack.OnSkillUsed += UseSkill;
+        player.Attack.OnSkillDeactivated += StartCooldown;
     }
 
-    private void UseSkill(int skillNumber)
+    private void StartCooldown(int skillNumber)
     {
         if (skillNumber < 0 || skillNumber >= GameConstants.NumSkills) return;
-        skillSlots[skillNumber].Use();
+        skillSlots[skillNumber].OnDeactivated();
     }
 }

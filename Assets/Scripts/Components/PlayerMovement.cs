@@ -31,25 +31,25 @@ public class PlayerMovement
         set => _speedMultiplier = value;
     }
 
+    #region Initialization
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
         _player = player;
         _transform = player.transform;
         _playerConfig = player.Config;
         _inputManager = inputManager;
-        _directionChangeInterval = 1 * Time.deltaTime;
+        _playerDir = Vector2.down;
+        _directionChangeInterval = 1f * Time.deltaTime;
 
-        _inputManager.controls.Player.Move.performed += ctx => Move(ctx);
+        _inputManager.controls.Player.Move.performed += ctx => TryMove(ctx);
         _inputManager.controls.Player.Move.canceled += ctx => CancelMove();
-        _inputManager.controls.Player.Dash.performed += ctx => Dash();
+        _inputManager.controls.Player.Dash.performed += ctx => TryDash();
 
         _spriteRenderer = _player.GetComponent<SpriteRenderer>();
 
-        if (_spriteRenderer)
-        {
-            SetCollider();
-        }
+        if (_spriteRenderer) SetCollider();
     }
+    #endregion
 
     public void Update()
     {
@@ -59,7 +59,8 @@ public class PlayerMovement
         }
     }
 
-    private void Move(CallbackContext ctx)
+    #region Movement
+    private void TryMove(CallbackContext ctx)
     {
         if (_isDashing) return;
         _moveCancelled = false;
@@ -93,12 +94,12 @@ public class PlayerMovement
         TriggerMoveAnimation(false);
     }
 
-    private void Dash()
+    private void TryDash()
     {
-        if (_canDash && _player) _player.StartCoroutine(DashCoroutine());
+        if (_canDash && _player) _player.StartCoroutine(SimulateDash());
     }
 
-    private IEnumerator DashCoroutine()
+    private IEnumerator SimulateDash()
     {
         _isDashing = true;
         _canDash = false;
@@ -126,19 +127,19 @@ public class PlayerMovement
         float deltaTime = Time.deltaTime;
         Vector2 desiredMove = moveDirection * speed * deltaTime;
 
-        // Step 1: Predict future position
+        // Predict future position
         Vector2 currentPos = new Vector2(_transform.position.x, _transform.position.y);
         Vector2 newPos = currentPos + desiredMove;
 
-        // Step 2: Create a temp collider at the new position
+        // Create a temp collider at the new position
         AABBCollider tempCollider = new AABBCollider(newPos - _size / 2, _size);
         tempCollider.Layer = _collider.Layer;
         tempCollider.Mask = _collider.Mask;
 
-        // Step 3: Check collisions at the new position
+        // Check collisions at the new position
         List<AABBCollider> collided = CollisionSystem.RetrieveCollided(tempCollider);
 
-        // Step 4: If no collision, move freely
+        // If no collision, move freely
         if (collided.Count == 0)
         {
             _player.transform.position = newPos;
@@ -223,6 +224,7 @@ public class PlayerMovement
             Vector2 center = _transform.position;
             _collider.SetBottomLeft(center - _size / 2f);
         }
-        
+
     }
+    #endregion
 }

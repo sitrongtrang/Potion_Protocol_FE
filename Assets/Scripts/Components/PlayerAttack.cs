@@ -9,31 +9,31 @@ public class PlayerAttack
     private PlayerController _player;
     private PlayerInputManager _inputManager;
     private InputAction[] _skillActions;
-    // bool _isAttacking = false;
     private bool _canAttack = true;
     private bool[] _canUseSkills = new bool[GameConstants.NumSkills];
     private SkillConfig[] _skills = new SkillConfig[GameConstants.NumSkills];
-    private bool _isInAction = false;
     private float _damageMultiplier = 1;
 
-    public event Action<int> OnSkillUsed;
+    public event Action<int> OnSkillDeactivated;
     public float DamageMultiplier
     {
         get => _damageMultiplier;
         set => _damageMultiplier = value;
     }
 
+    #region Initilization
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
+        _player = player;
+        _skills = player.Config.Skills;
+
+        _inputManager = inputManager;
+
         for (int i = 0; i < 3; i++)
         {
             _canUseSkills[i] = true;
         }
 
-        _player = player;
-        _skills = player.Config.Skills;
-
-        _inputManager = inputManager;
         _skillActions = new InputAction[]
         {
             _inputManager.controls.Player.Skill1,
@@ -41,29 +41,21 @@ public class PlayerAttack
             _inputManager.controls.Player.Skill3
         };
 
-        for (int i = 0; i < _skillActions.Length; i++)
-        {
-            int index = i; // Bắt buộc tạo biến tạm, tránh lỗi closure
-            _skillActions[i].performed += ctx =>
-            {
-                if (_canUseSkills[index] && !_isInAction)
-                {
-                    _player.StartCoroutine(UseSkill(index + 1));
-                }
-            };
-        }
+        // for (int i = 0; i < _skillActions.Length; i++)
+        // {
+        //     int index = i;
+        //     _skillActions[i].performed += ctx => ActivateSkill(index);
+        // }
     }
-    
-    // Can not perform any action when an action is active by variable _isInAction
-    public IEnumerator Attack()
-    {
-        if (!_canAttack || _isInAction) yield break;
-        _canAttack = false;
+    #endregion
 
+    #region Attack
+    public void TryAttack()
+    {
+        if (!_canAttack) return;
+
+        // Check wall hit
         Vector2 dir = _player.Movement.PlayerDir.normalized;
-        // _isInAction = true;
-        Debug.Log("Player Attacked");
-        // Check va chạm với tường
         float skinWidth = 0.2f;
         Vector2 origin = (Vector2)_player.AttackPoint.position + dir * skinWidth;
         bool hitObstacle = CheckWall(origin, dir);
@@ -71,97 +63,63 @@ public class PlayerAttack
         if (hitObstacle)
         {
             Debug.Log("Vướng tường nè má.");
-            _canAttack = true;
-            //yield break;
+            return;
         }
 
-        // Chạy anim
-        if (!PlayAnimation())
+        // Simulate attack logic
+        _player.StartCoroutine(SimulateAttack(origin, dir));
+    }
+
+    public IEnumerator SimulateAttack(Vector2 origin, Vector2 dir)
+    {
+        if (!PlayAnimation(dir))
         {
-            _canAttack = true;
             yield break;
         }
+
+        _canAttack = false;
         yield return new WaitForSeconds(_player.Config.AttackDelay);
-        // Đánh quái
         HitEnemy(origin, dir);
         yield return new WaitForSeconds(_player.Config.AttackCooldown - _player.Config.AttackDelay);
-        // _isInAction = false;
         _canAttack = true;
     }
 
-    private IEnumerator UseSkill(int skillNumber)
-    {
-        _canUseSkills[skillNumber - 1] = false;
-        _skills[skillNumber - 1].Activate(_player);
-        yield return new WaitForSeconds(_skills[skillNumber - 1].TimeAlive);
-        _skills[skillNumber - 1].Deactivate(_player);
-        // _isInAction = true;
-        Debug.Log($"Using ability {skillNumber}");
-        OnSkillUsed?.Invoke(skillNumber);
-        // _isInAction = false;
-        _canUseSkills[skillNumber - 1] = true;
-    }
-
-    private bool CheckWall(Vector2 origin, Vector2 dir)
-    {
-        float minDistanceToWall = 0.25f;
-
-        RaycastHit2D[] nearWallHit = Physics2D.RaycastAll(origin, dir, minDistanceToWall);
-        bool hitObstacle = false;
-
-        for (int i = 0; i < nearWallHit.Length; i++)
-        {
-            if (nearWallHit[i].collider.CompareTag("Obstacle"))
-            {
-                hitObstacle = true;
-                break;
-            }
-        }
-
-        Debug.DrawRay(origin, dir * minDistanceToWall, Color.cyan, 2f);
-        return hitObstacle;
-    }
-
-    private bool PlayAnimation()
+    private bool PlayAnimation(Vector2 dir)
     {
         _player.SwordAnimatr.SetTrigger("Attack");
-        float playerX = _player.Movement.PlayerDir.x;
-        float playerY = _player.Movement.PlayerDir.y;
-        if (playerX != 0 || playerY != 0)
+        if (dir.x != 0 || dir.y != 0)
         {
-            _player.SwordAnimatr.SetFloat("MoveX", playerX);
-            _player.SwordAnimatr.SetFloat("MoveY", playerY);
+            _player.SwordAnimatr.SetFloat("MoveX", dir.x);
+            _player.SwordAnimatr.SetFloat("MoveY", dir.y);
             return true;
         }
         return false;
     }
 
+    private bool CheckWall(Vector2 origin, Vector2 dir)
+    {
+        float minDistanceToWall = 0.25f;
+        List<AABBCollider> walls = CollisionSystem.RayCast(origin, dir, minDistanceToWall, EntityLayer.Obstacle);
+
+        Debug.DrawRay(origin, dir.normalized * minDistanceToWall, Color.cyan, 2f);
+
+        if (walls.Count > 0) return true;
+        else return false;
+    }
+
     private void HitEnemy(Vector2 origin, Vector2 dir)
     {
-        CustomRay ray = new CustomRay(origin, dir);
         float attackRange = _player.Weapon.AttackRange;
-        Vector2 end = origin + dir.normalized * attackRange;
-        float minX = Mathf.Min(origin.x, end.x);
-        float minY = Mathf.Min(origin.y, end.y);
-        float maxX = Mathf.Max(origin.x, end.x);
-        float maxY = Mathf.Max(origin.y, end.y);
-        AABBCollider rayCollider = new AABBCollider(new Vector2(minX, minY), new Vector2(maxX - minX, maxY - minY))
-        {
-            Layer = (int)EntityLayer.Player
-        };
-        rayCollider.Mask.SetLayer((int)EntityLayer.Obstacle);
-
-        List<AABBCollider> walls = CollisionSystem.RetrieveCollided(rayCollider);
+        List<AABBCollider> walls = CollisionSystem.RayCast(origin, dir, attackRange, EntityLayer.Obstacle);
 
         float maxReach = attackRange;
-
+        CustomRay ray = new CustomRay(origin, dir);
         for (int i = 0; i < walls.Count; i++)
         {
             AABBCollider col = walls[i];
             if (col.Raycast(ray, out float dist))
             {
-                if (dist < maxReach)
-                    maxReach = dist;
+                if (dist < maxReach) maxReach = dist;
             }
         }
 
@@ -191,15 +149,12 @@ public class PlayerAttack
             }
         }
 
-        Debug.Log("Hitbox size: " + size);
-        rayCollider = new AABBCollider(bottomLeft, size)
+        AABBCollider hitbox = new AABBCollider(bottomLeft, size)
         {
             Layer = (int)EntityLayer.Player
         };
-        rayCollider.Mask.SetLayer((int)EntityLayer.Enemy);
-        List<AABBCollider> hitTargets = CollisionSystem.RetrieveCollided(rayCollider);
-
-        List<EnemyController> hitEnemies = new List<EnemyController>();
+        hitbox.Mask.SetLayer((int)EntityLayer.Enemy);
+        List<AABBCollider> hitTargets = CollisionSystem.RetrieveCollided(hitbox);
 
         for (int i = 0; i < hitTargets.Count; i++)
         {
@@ -213,7 +168,7 @@ public class PlayerAttack
                 {
                     enemy.TakeDamage(_damageMultiplier * _player.Weapon.AttackDamage);
                 }
-            } 
+            }
 
             if (hitTargets[i].Owner.CompareTag("ItemSource"))
             {
@@ -224,14 +179,38 @@ public class PlayerAttack
                 }
             }
         }
-
-        Debug.DrawLine(new Vector2(rayCollider.Bounds.xMin, rayCollider.Bounds.yMin),
-                        new Vector2(rayCollider.Bounds.xMax, rayCollider.Bounds.yMin));
-        Debug.DrawLine(new Vector2(rayCollider.Bounds.xMax, rayCollider.Bounds.yMin),
-                        new Vector2(rayCollider.Bounds.xMax, rayCollider.Bounds.yMax));
-        Debug.DrawLine(new Vector2(rayCollider.Bounds.xMax, rayCollider.Bounds.yMax),
-                        new Vector2(rayCollider.Bounds.xMin, rayCollider.Bounds.yMax));
-        Debug.DrawLine(new Vector2(rayCollider.Bounds.xMin, rayCollider.Bounds.yMax),
-                        new Vector2(rayCollider.Bounds.xMin, rayCollider.Bounds.yMin));
     }
+    #endregion
+
+    #region Skills
+    private void ActivateSkill(int skillNumber)
+    {
+        _canUseSkills[skillNumber] = false;
+        _skills[skillNumber].Activate(_player);
+        Debug.Log($"Using ability {skillNumber}");
+
+        // Start skill effect timer
+        _player.StartCoroutine(SkillTimer(_skills[skillNumber].TimeAlive, skillNumber, DeactivateSkill));
+    }
+
+    private void DeactivateSkill(int skillNumber)
+    {
+        _skills[skillNumber].Deactivate(_player);
+        OnSkillDeactivated?.Invoke(skillNumber);
+
+        // Start skill cooldown timer
+        _player.StartCoroutine(SkillTimer(_skills[skillNumber].Cooldown, skillNumber, ResetSkill));
+    }
+
+    private void ResetSkill(int skillNumber)
+    {
+        _canUseSkills[skillNumber] = false;
+    }
+
+    private IEnumerator SkillTimer(float duration, int skillNumber, Action<int> callback)
+    {
+        yield return new WaitForSeconds(duration);
+        if (callback != null) callback(skillNumber);
+    }
+    #endregion
 }

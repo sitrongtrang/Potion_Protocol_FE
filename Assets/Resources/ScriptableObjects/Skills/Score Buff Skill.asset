@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 513b701a24f962648b0507bf9632c79c, type: 3}
   m_Name: Score Buff Skill
   m_EditorClassIdentifier: 
-  SkillName: Potion boost
-  SkillIcon: {fileID: -8750540674788349676, guid: a03c69998475c7747b4c7b509b2fa5ee, type: 3}
-  SkillVFX: {fileID: 2883733834278827710, guid: 15525043f17813a43b26883126c8f337, type: 3}
-  TimeAlive: 5
-  buffRatio: 0.2
+  _skillName: Score Buff
+  _skillIcon: {fileID: -8750540674788349676, guid: a03c69998475c7747b4c7b509b2fa5ee, type: 3}
+  _skillVFX: {fileID: 2883733834278827710, guid: 15525043f17813a43b26883126c8f337, type: 3}
+  _timeAlive: 5
+  _cooldown: 0
+  _buffMultiplier: 1.2

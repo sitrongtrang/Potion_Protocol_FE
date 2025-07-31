@@ -4,10 +4,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerInventory
 {
-    private PlayerController _player;
     private PlayerInputManager _inputManager;
     private InputAction[] _inputAction;
-    private ItemConfig[] items = new ItemConfig[GameConstants.MaxSlot];
+    private ItemConfig[] _items = new ItemConfig[GameConstants.MaxSlot];
     private int _choosingSlot = 0;
     private bool _isAutoFocus;
 
@@ -26,21 +25,24 @@ public class PlayerInventory
             }
         }
     }
-
-    public ItemConfig Get(int index) 
+    public ItemConfig this[int index]
     {
-        if (index < 0 || index >= GameConstants.MaxSlot)
+        get
         {
-            Debug.LogWarning("Invalid slot index.");
-            return null;
+            if (index < 0 || index >= GameConstants.MaxSlot) return null;
+            return _items[index];
         }
-        return items[index];
+        set
+        {
+            if (index < 0 || index >= GameConstants.MaxSlot) return;
+            _items[index] = value;
+        }
     }
 
+    #region Initialization
     public void Initialize(PlayerController player, PlayerInputManager inputManager)
     {
         ChoosingSlot = 0;
-        _player = player;
         _inputManager = inputManager;
 
         _inputAction = new InputAction[GameConstants.MaxSlot] {
@@ -61,7 +63,9 @@ public class PlayerInventory
 
         _isAutoFocus = PlayerPrefs.GetInt("IsAutoFocus") == 1;
     }
+    #endregion
 
+    #region Slot Choosing
     private void ChooseSlot(int index)
     {
         if (index < 0 || index >= GameConstants.MaxSlot) return;
@@ -74,8 +78,10 @@ public class PlayerInventory
         ChoosingSlot = (_choosingSlot + 1) % GameConstants.MaxSlot;
         Debug.Log($"Next slot chosen: {_choosingSlot + 1}");
     }
+    #endregion
 
-    public ItemConfig Add(ItemConfig item)
+    #region Add & Remove
+    public ItemConfig TryAdd(ItemConfig item)
     {
         int slotIndex = GetAddSlot();
         if (slotIndex < 0 || slotIndex >= GameConstants.MaxSlot)
@@ -90,31 +96,43 @@ public class PlayerInventory
             return null;
         }
 
-        if (items[slotIndex] != null)
+        if (_items[slotIndex] != null)
         {
             Debug.LogWarning($"Slot {slotIndex + 1} is already occupied. Cannot add item {item.Name}.");
             return null;
         }
 
-        items[slotIndex] = item;
+        // Simulate add logic
+        return SimulateAdd(item, slotIndex);
+    }
+
+    private ItemConfig SimulateAdd(ItemConfig item, int slotIndex)
+    {
+        _items[slotIndex] = item;
         OnSlotUpdated?.Invoke(slotIndex, item.Icon);
         if (_isAutoFocus) ChoosingSlot = slotIndex;
         Debug.Log($"Added up item {item.Name} into slot {slotIndex + 1}");
         return item;
     }
 
-    public ItemConfig Remove()
+    public ItemConfig TryRemove()
     {
-        if (_choosingSlot < 0 || _choosingSlot >= GameConstants.MaxSlot || items[_choosingSlot] == null)
+        if (_choosingSlot < 0 || _choosingSlot >= GameConstants.MaxSlot || _items[_choosingSlot] == null)
         {
             Debug.LogWarning("Invalid slot for drop.");
             return null;
         }
 
-        ItemConfig item = items[_choosingSlot];
-        items[_choosingSlot] = null; 
-        OnSlotUpdated?.Invoke(_choosingSlot, null);
-        Debug.Log($"Removed up item {item.Name} in slot {_choosingSlot + 1}");
+        // Simulate remove logic
+        return SimulateRemove(_choosingSlot);
+    }
+
+    private ItemConfig SimulateRemove(int slotIndex)
+    {
+        ItemConfig item = _items[slotIndex];
+        _items[slotIndex] = null;
+        OnSlotUpdated?.Invoke(slotIndex, null);
+        Debug.Log($"Removed up item {item.Name} in slot {slotIndex + 1}");
         return item;
     }
 
@@ -122,7 +140,7 @@ public class PlayerInventory
     {
         int idx = -1;
         // If choosing slot is empty, choose that slot to add; else find another empty slot
-        if (items[_choosingSlot] == null) idx = _choosingSlot;
+        if (_items[_choosingSlot] == null) idx = _choosingSlot;
         else idx = FindEmptySlot();
         return idx;
     }
@@ -132,9 +150,10 @@ public class PlayerInventory
         // Find the first empty slot
         for (int i = 0; i < GameConstants.MaxSlot; i++)
         {
-            if (items[i] == null) return i;
+            if (_items[i] == null) return i;
         }
 
         return -1;
     } 
+    #endregion
 }

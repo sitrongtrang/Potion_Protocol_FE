@@ -45,6 +45,20 @@ public static class CollisionSystem
         return Tree.RetrieveCollided(collider, colliders);
     }
 
+    public static List<AABBCollider> RayCast(Vector2 origin, Vector2 dir, float maxReach = Mathf.Infinity, EntityLayer layer = EntityLayer.Default)
+    {
+        Vector2 end = origin + dir.normalized * maxReach;
+        float minX = Mathf.Min(origin.x, end.x);
+        float minY = Mathf.Min(origin.y, end.y);
+        float maxX = Mathf.Max(origin.x, end.x);
+        float maxY = Mathf.Max(origin.y, end.y);
+
+        AABBCollider rayCollider = new AABBCollider(new Vector2(minX, minY), new Vector2(maxX - minX, maxY - minY));
+        rayCollider.Mask.SetLayer((int)layer);
+
+        return RetrieveCollided(rayCollider);
+    }
+
     public static void OnDrawGizmos()
     {
         if (Tree != null)

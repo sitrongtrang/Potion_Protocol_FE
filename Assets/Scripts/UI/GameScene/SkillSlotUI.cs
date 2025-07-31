@@ -15,12 +15,12 @@ public class SkillSlotUI : MonoBehaviour
     {
         _icon.sprite = skill.SkillIcon;
         _cooldown.SetActive(false);
-        _cooldownTime = skill.TimeAlive;
+        _cooldownTime = skill.Cooldown;
         _cooldownText.text = _cooldownTime.ToString();
         _timeRemaining = _cooldownTime;
     }
 
-    public void Use()
+    public void OnDeactivated()
     {
         StartCoroutine(Cooldown());
     }
