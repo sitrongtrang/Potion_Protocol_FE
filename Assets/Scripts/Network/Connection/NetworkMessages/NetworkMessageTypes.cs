@@ -92,14 +92,13 @@ public static class NetworkMessageTypes
 
         public static class Player
         {
-            public const short Spawn = 17777;
             public const short Connected = 1001;
             public const short Disconnected = 1002;
         }
 
         public static class GameState
         {
-            public const short StateUpdate = 7;
+            public const short StateUpdate = 301;
             public const short ScoreUpdate = 1501;
             public const short TimeUpdate = 1502;
         }

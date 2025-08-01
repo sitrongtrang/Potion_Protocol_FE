@@ -27,7 +27,7 @@ public class GameStateUpdate : IServerStateSnapshot
     [FieldOrder(6)]
     public OreState[] OreStates;
     // [FieldOrder(7)]
-    // public ItemState[] ItemStates;
+    public ItemState[] ItemStates;
     [FieldOrder(7)]
     public int CurrentServerTime;
     //     public int CurrentScore;

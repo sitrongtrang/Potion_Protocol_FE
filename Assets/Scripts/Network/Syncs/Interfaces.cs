@@ -38,7 +38,7 @@ public interface INetworkInterpolator<TClientState, TServerState>
     where TClientState : IServerStateSnapshot
     where TServerState : IServerStateSnapshot
 {
-    void Store(IReadOnlyList<TServerState> updates, Func<TServerState, int> findIdx);
+    void Store(IReadOnlyList<TServerState> updates, Func<TServerState, int> findIdx = null);
     void IncrementAndInterpolate(Action<TClientState> applyState, Func<bool> notInAcceptingThreshold = null);
     void Reset();
 }

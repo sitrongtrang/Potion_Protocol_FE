@@ -11,6 +11,7 @@ public enum EnemyStateFlags
 public class EnemyState
 {
     public string EnemyId;
+    public string EnemyType;
     public float PositionX;
     public float PositionY;
     public float CurrentHealth;
