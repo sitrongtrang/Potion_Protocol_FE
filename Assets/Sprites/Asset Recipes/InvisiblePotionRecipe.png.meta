@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      InvisiblePotionRecipe_0: 556106705219643962
+      InvisiblePotionRecipe_1: -8965133312758148118
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

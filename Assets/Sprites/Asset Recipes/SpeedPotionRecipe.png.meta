@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SpeedPotionRecipe_0: 4373826421667794598
+      SpeedPotionRecipe_1: 1721038501228668240
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
