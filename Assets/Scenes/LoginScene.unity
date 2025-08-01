@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e306e3f7abc09024d97585dae178bca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ip: 127.0.0.1
+  _ip: 10.7.1.166
   _port: 9000
   _reconnectDelay: 5
 --- !u!1 &127152481
