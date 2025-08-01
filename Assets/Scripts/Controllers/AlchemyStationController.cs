@@ -34,9 +34,9 @@ public class AlchemyStationController : StationController
         }
     }
 
-    public override void RemoveItem(int idx)
+    public override void RemoveItem(int idx, bool drop = true)
     {
-        base.RemoveItem(idx);
+        base.RemoveItem(idx, drop);
         itemsOnTable[_items.Count].SetActive(true);
         itemsOnTable[_items.Count].GetComponent<SpriteRenderer>().sprite = null;
     }
