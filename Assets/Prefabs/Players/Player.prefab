@@ -142,6 +142,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cab98ae966622244587604e6dccbced4, type: 2}
   - {fileID: 11400000, guid: 8ecaa36e9419ef64e90e6c6bf0e52598, type: 2}
   - {fileID: 11400000, guid: e34f1d4ba434b27448891eadceb07d6e, type: 2}
+  _skillUIParent: {fileID: 6770161539210649719, guid: 6d7c8a9fa013e734fb23d5c5e70ea0f4, type: 3}
 --- !u!95 &-4838168921377332254
 Animator:
   serializedVersion: 7

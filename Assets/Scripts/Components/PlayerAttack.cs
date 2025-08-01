@@ -15,6 +15,7 @@ public class PlayerAttack
     [SerializeField] private Skill[] _skills = new Skill[GameConstants.NumSkills];
     private bool _isInAction = false;
     private float _damageMutiplayer = 1;
+    private int[] _timeRemaining;
 
     public void SetDamageMultiplier(float multiplier)
     {
@@ -101,6 +102,7 @@ public class PlayerAttack
         _skills[skillNumber - 1].Deactivate(_player.gameObject);
         // _isInAction = true;
         Debug.Log($"Using ability {skillNumber}");
+        _player.StartCoroutine(GameManager.Instance.StartCoolDown(skillNumber - 1));
         yield return new WaitForSeconds(_player.Config.SkillsCoolDown[skillNumber - 1]);
         // _isInAction = false;
         
