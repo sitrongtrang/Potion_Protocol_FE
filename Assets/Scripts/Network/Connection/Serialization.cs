@@ -117,7 +117,6 @@ public static class Serialization
 
             NetworkMessageTypes.Server.Pregame.StartGame => BinarySerializer.DeserializeFromBytes<ServerStartGame>(payloadBytes),
 
-            NetworkMessageTypes.Server.Player.Spawn => BinarySerializer.DeserializeFromBytes<PlayerSpawnMessage>(payloadBytes),
             NetworkMessageTypes.Server.Player.Connected => BinarySerializer.DeserializeFromBytes<PlayerConnectedMessage>(payloadBytes),
             NetworkMessageTypes.Server.Player.Disconnected => BinarySerializer.DeserializeFromBytes<PlayerDisconnectedMessage>(payloadBytes),
 

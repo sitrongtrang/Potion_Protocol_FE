@@ -43,7 +43,7 @@ public class SelectingLevelUI : MonoBehaviour
 
     private IEnumerator LoadGameScene()
     {
-        List<AsyncOperation> opList = new List<AsyncOperation>();
+        List<AsyncOperation> opList = new();
         AsyncOperation loadSceneRequest = SceneManager.LoadSceneAsync("GameScene");
         opList.Add(loadSceneRequest);
 
