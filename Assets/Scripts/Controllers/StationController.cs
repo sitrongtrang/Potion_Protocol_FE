@@ -45,7 +45,7 @@ public class StationController : MonoBehaviour
         if (drop) DropItem(item, idx + 1);
     }
 
-    private void DropItem(ItemConfig item, int offset = 1)
+    protected void DropItem(ItemConfig item, int offset = 1)
     {
         Vector2 stationPos = transform.position;
         Vector2 dropPosition = stationPos + GameConstants.DropItemSpacing * offset * Vector2.down;
@@ -76,22 +76,14 @@ public class StationController : MonoBehaviour
 
     private IEnumerator SimulateCraft(RecipeConfig recipe)
     {
-        _progressBar = Instantiate(progressBarPrefab, FindFirstObjectByType<Canvas>().transform);
-        Vector2 barOffset = Vector2.down * 0.8f + (_config.Type == StationType.AlchemyStation ? Vector2.right * 0.4f : Vector2.zero);
-        _progressBar.Initialize(transform, recipe.CraftingTime, barOffset);
-
-        float elapsed = 0f;
         _isCrafting = true;
-        while (elapsed < recipe.CraftingTime)
-        {
-            elapsed += Time.deltaTime;
-            _progressBar.SetProgress(elapsed);
-            yield return null;
-        }
+
+        StartProgressBar(recipe.CraftingTime);
+        yield return new WaitForSeconds(recipe.CraftingTime);
 
         _isCrafting = false;
         if (_progressBar != null)
-            Destroy(_progressBar.gameObject);
+            _progressBar.gameObject.SetActive(false);
 
         DropItem(recipe.Product);
     }
@@ -122,4 +114,20 @@ public class StationController : MonoBehaviour
         return -1;
     }
     #endregion
+
+    private void StartProgressBar(float duration)
+    {
+        if (_progressBar == null)
+        {
+            _progressBar = Instantiate(progressBarPrefab, FindFirstObjectByType<Canvas>().transform);
+            Vector2 barOffset = Vector2.down * 0.8f + (_config.Type == StationType.AlchemyStation ? Vector2.right * 0.4f : Vector2.zero);
+            _progressBar.Initialize(transform, barOffset);
+        }
+        else
+        {
+            _progressBar.gameObject.SetActive(true);
+        }
+
+        _progressBar.StartProgress(duration);
+    }
 }

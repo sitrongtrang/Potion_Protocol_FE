@@ -36,6 +36,11 @@ public class PlayerInteraction
     void TryPickup()
     {
         ItemController[] activeItems = ItemPool.Instance.ActiveItems;
+        if (activeItems.Length <= 0)
+        {
+            Debug.Log("No item nearby to pick up");
+            return;
+        }
         // Find nearest item
         float minDistance = Mathf.Infinity;
         ItemController nearestItem = activeItems[0];

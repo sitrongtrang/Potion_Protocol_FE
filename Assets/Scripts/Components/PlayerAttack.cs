@@ -154,6 +154,7 @@ public class PlayerAttack
             Layer = (int)EntityLayer.Player
         };
         hitbox.Mask.SetLayer((int)EntityLayer.Enemy);
+        hitbox.Mask.SetLayer((int)EntityLayer.ItemSource);
         List<AABBCollider> hitTargets = CollisionSystem.RetrieveCollided(hitbox);
 
         for (int i = 0; i < hitTargets.Count; i++)

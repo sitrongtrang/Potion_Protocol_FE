@@ -26,9 +26,7 @@ public class AlchemyStationController : StationController
         }
         else
         {
-            Vector2 stationPos = transform.position;
-            Vector2 dropPosition = stationPos + GameConstants.DropItemSpacing * Vector2.down;
-            ItemPool.Instance.SpawnItem(config, dropPosition);
+            DropItem(config);
             Debug.LogWarning("Cannot add more items to the Alchemy Station.");
             return false;
         }

@@ -4,5 +4,6 @@ public enum EntityLayer
     Player = 1,
     Obstacle = 2,
     Enemy = 3,
-    StationProtection = 4
+    ItemSource = 4,
+    StationProtection = 5,
 }
