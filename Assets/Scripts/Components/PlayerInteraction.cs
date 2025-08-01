@@ -86,7 +86,8 @@ public class PlayerInteraction
         StationController nearStation = null;
         for (int i = 0; i < LevelManager.Instance.Stations.Count; i++)
         {
-            Vector2 distanceVector = _player.gameObject.transform.position - LevelManager.Instance.Stations[i].transform.position;
+            Vector2 position = _player.gameObject.transform.position;
+            Vector2 distanceVector = position - LevelManager.Instance.Stations[i].GetTransferZone();
             float distance = (float)Math.Sqrt(distanceVector.x * distanceVector.x + distanceVector.y * distanceVector.y);
             if (distance < minDistance)
             {

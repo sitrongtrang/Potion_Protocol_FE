@@ -57,6 +57,7 @@ public class ItemSourceController : MonoBehaviour
     private void TrueDie()
     {
         CheckOverlapGrid();
+        CollisionSystem.RemoveStaticCollider(_collider);
         _itemSourceSpawner.NotifyItemSourceRemoved(this);
         Destroy(gameObject);
     }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Regeneration Potion
   _icon: {fileID: -5476297248594744157, guid: 3da72ad25e51f3c499eb0e4a923eac1f, type: 3}
-  _id: P4
+  _id: I35
   _type: 2
   _droppedBy: {fileID: 11400000, guid: e4214e99f307ee74b8d7a842eaa096ab, type: 2}
   _expireTime: 30

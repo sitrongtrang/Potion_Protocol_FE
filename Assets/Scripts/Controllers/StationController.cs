@@ -130,4 +130,9 @@ public class StationController : MonoBehaviour
 
         _progressBar.StartProgress(duration);
     }
+
+    public virtual Vector2 GetTransferZone()
+    {
+        return transform.position;
+    }
 }
