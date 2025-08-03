@@ -3,7 +3,7 @@ using System;
 [Serializable]
 public class FriendRequestClientMessage : ClientMessage
 {
-    public string Id;
+    [FieldOrder(0)] public string Id;
     public FriendRequestClientMessage(string id)
         : base(NetworkMessageTypes.Client.FriendSystem.RemoveFriend)
     {

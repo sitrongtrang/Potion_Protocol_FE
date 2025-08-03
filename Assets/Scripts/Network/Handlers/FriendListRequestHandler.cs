@@ -53,7 +53,14 @@ public class FriendListRequestHandler : MonoBehaviour
                 }
                 break;
             case NetworkMessageTypes.Server.FriendSystem.RemoveFriend:
-                Debug.Log("Remove friend successfully");
+                if (message is FriendRemoveServerMessage)
+                {
+                    Debug.Log("Remove friend successfully");
+                }
+                else
+                {
+                    Debug.LogError("⚠️ Lỗi: Không thể cast message sang FriendListServerMessage.");
+                }
                 break;
         }
     }

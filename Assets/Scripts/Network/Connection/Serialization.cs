@@ -20,14 +20,14 @@ public static class Serialization
             byte[] payloadBytes = CreateByteFromType(message);
 
             short messageLength = (short)(2 + payloadBytes.Length);
-
+            Debug.Log(messageLength);
             using MemoryStream stream = new();
             using BinaryWriter writer = new(stream);
 
             BinarySerializer.WriteInt16BigEndian(writer, messageLength);
             BinarySerializer.WriteInt16BigEndian(writer, message.MessageType);
             writer.Write(payloadBytes);
-
+            Debug.Log(payloadBytes);
             return stream.ToArray();
         }
         catch (Exception e)
