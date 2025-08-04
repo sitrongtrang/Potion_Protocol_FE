@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class EnemyController : MonoBehaviour
 {
     [Header("Component")]
-    [SerializeField] private Animator _animator;
+    private Animator _animator;
     public Animator Animatr => _animator;
-    [SerializeField] private EnemyConfig _config;
+    private EnemyConfig _config;
     public EnemyConfig EnemyConf => _config;
     public EnemySpawner Spawner { get; private set; }
     public int PositionIndex { get; private set; }
@@ -67,8 +67,21 @@ public class EnemyController : MonoBehaviour
     #endregion
 
     #region STATE
-    public void Initialize(EnemySpawner spawner, Vector2 patrolCenter, int positionIndex, int typeIndex)
+    public void Initialize(EntityConfig config, EnemySpawner spawner, Vector2 patrolCenter, int positionIndex, int typeIndex)
     {
+        if (config is EnemyConfig enemyConfig)
+        {
+            _config = enemyConfig;
+            _animator = GetComponent<Animator>();
+            _animator.runtimeAnimatorController = _config.Anim;
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            if (_spriteRenderer)
+            {
+                _spriteRenderer.sprite = _config.Icon;
+                SetCollider();
+            }
+        }
+
         Spawner = spawner;
         PositionIndex = positionIndex;
         TypeIndex = typeIndex;
@@ -90,12 +103,6 @@ public class EnemyController : MonoBehaviour
 
         BasicStateMachine = new(this);
         _config.Initialize(this);
-
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        if (_spriteRenderer)
-        {
-            SetCollider();
-        }
     }
     #endregion
 

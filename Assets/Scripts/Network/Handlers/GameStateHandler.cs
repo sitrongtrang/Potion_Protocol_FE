@@ -60,7 +60,7 @@ public class GameStateHandler : MonoBehaviour
             if (!current.ContainsKey(id))
             {
                 NetworkBehaviour obj = Instantiate(prefab, entityInfo.Position, Quaternion.identity);
-                obj.Initialize(_prafabsMap.GetSO(entityInfo.TypeId));
+                obj.Initialize(id, _prafabsMap.GetSO(entityInfo.TypeId));
                 TrackedObject trackedObject = obj.AddComponent<TrackedObject>();
                 current.Add(id, trackedObject);
             }

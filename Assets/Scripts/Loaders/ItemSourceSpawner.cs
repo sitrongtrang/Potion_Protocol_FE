@@ -10,8 +10,9 @@ using static LevelConfig;
 public class ItemSourceSpawner : MonoBehaviour
 {
     [SerializeField] private bool _debugLogsEnabled = false;
+    [SerializeField] private ItemSourceController _itemSourcePrefab;
     
-    private ItemSourceController[] _itemSourcePrefabs;
+    private ItemSourceConfig[] _itemSourceConfigs;
     private int[] _maxCapacities;
     private int[] _currentAmounts;
 
@@ -20,7 +21,7 @@ public class ItemSourceSpawner : MonoBehaviour
     private float _spawnInterval = 5f;
 
     // Spawn strategy delegate - can be changed at runtime
-    public delegate ItemSourceController GetItemSourceController(ItemSourceController[] itemSourcePrefabs, int[] maxCapacities, int[] currentAmounts);
+    public delegate ItemSourceConfig GetItemSourceController(ItemSourceConfig[] _itemSourceConfigs, int[] maxCapacities, int[] currentAmounts);
     private GetItemSourceController _spawnStrategy;
 
     /// <summary>
@@ -33,20 +34,20 @@ public class ItemSourceSpawner : MonoBehaviour
         ValidateItemSourceSettings(itemSourceSettings);
 
         int count = itemSourceSettings.Count;
-        _itemSourcePrefabs = new ItemSourceController[count];
+        _itemSourceConfigs = new ItemSourceConfig[count];
         _maxCapacities = new int[count];
         _currentAmounts = new int[count];
 
         for (int i = 0; i < count; i++)
         {
             var setting = itemSourceSettings[i];
-            _itemSourcePrefabs[i] = setting.Prefab;
+            _itemSourceConfigs[i] = setting.Config;
             _maxCapacities[i] = setting.MaxCapacity;
             _currentAmounts[i] = 0;
 
             if (_debugLogsEnabled)
             {
-                Debug.Log($"Registered item source: {setting.Prefab.Config.name} with max capacity {setting.MaxCapacity}");
+                Debug.Log($"Registered item source: {setting.Config.name} with max capacity {setting.MaxCapacity}");
             }
         }
 
@@ -61,8 +62,8 @@ public class ItemSourceSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(_spawnInterval);
 
-            ItemSourceController itemSourceController = TrySpawnItemSource();
-            if (itemSourceController == null)
+            ItemSourceConfig itemSourceConfig = TrySpawnItemSource();
+            if (itemSourceConfig == null)
             {
                 if (_debugLogsEnabled)
                     Debug.Log("Không có item source khả dụng để spawn");
@@ -85,8 +86,8 @@ public class ItemSourceSpawner : MonoBehaviour
             }
 
             Vector2 worldPosition = itemSourceGrid.GetWorldPosition(gridCell);
-            ItemSourceController itemSource = Instantiate(itemSourceController, worldPosition, Quaternion.identity);
-            itemSource.Initialize(this);
+            ItemSourceController itemSource = Instantiate(_itemSourcePrefab, worldPosition, Quaternion.identity);
+            itemSource.Initialize(itemSourceConfig, this);
 
             itemSourceGrid.ReleaseCell(gridCell);
             _spawnInterval = UnityEngine.Random.Range(_minSpawnInterval, _maxSpawnInterval);
@@ -97,7 +98,7 @@ public class ItemSourceSpawner : MonoBehaviour
     /// Attempt to spawn an item source based on the current strategy
     /// </summary>
     /// <returns>The item source prefab to spawn, or null if no valid spawn</returns>
-    public ItemSourceController TrySpawnItemSource()
+    public ItemSourceConfig TrySpawnItemSource()
     {
         if (_spawnStrategy == null)
         {
@@ -105,10 +106,10 @@ public class ItemSourceSpawner : MonoBehaviour
             return null;
         }
 
-        var itemSourceToSpawn = _spawnStrategy.Invoke(_itemSourcePrefabs, _maxCapacities, _currentAmounts);
+        var itemSourceToSpawn = _spawnStrategy.Invoke(_itemSourceConfigs, _maxCapacities, _currentAmounts);
         if (itemSourceToSpawn != null)
         {
-            int index = Array.IndexOf(_itemSourcePrefabs, itemSourceToSpawn);
+            int index = Array.IndexOf(_itemSourceConfigs, itemSourceToSpawn);
             if (index >= 0)
             {
                 _currentAmounts[index]++;
@@ -130,9 +131,9 @@ public class ItemSourceSpawner : MonoBehaviour
     public void NotifyItemSourceRemoved(ItemSourceController itemSourceController)
     {
         int index = -1;
-        for (int i = 0; i < _itemSourcePrefabs.Length; i++)
+        for (int i = 0; i < _itemSourceConfigs.Length; i++)
         {
-            if (_itemSourcePrefabs[i].Config == itemSourceController.Config)
+            if (_itemSourceConfigs[i] == itemSourceController.Config)
             {
                 index = i;
                 break;
@@ -197,24 +198,24 @@ public class ItemSourceSpawner : MonoBehaviour
     /// <summary>
     /// Get current count of a specific item source type
     /// </summary>
-    public int GetItemSourceCount(ItemSourceController itemSourceController)
+    public int GetItemSourceCount(ItemSourceConfig itemSourceConfig)
     {
-        int index = Array.IndexOf(_itemSourcePrefabs, itemSourceController);
+        int index = Array.IndexOf(_itemSourceConfigs, itemSourceConfig);
         return index >= 0 ? _currentAmounts[index] : 0;
     }
     
     /// <summary>
     /// Get maximum capacity for a specific item source type
     /// </summary>
-    public int GetItemSourceCapacity(ItemSourceController itemSourceController)
+    public int GetItemSourceCapacity(ItemSourceConfig itemSourceConfig)
     {
-        int index = Array.IndexOf(_itemSourcePrefabs, itemSourceController);
+        int index = Array.IndexOf(_itemSourceConfigs, itemSourceConfig);
         return index >= 0 ? _maxCapacities[index] : 0;
     }
     
     #region DEFAULT SPAWN STRATEGIES
     
-    private ItemSourceController GetRandomAvailableItemSource(ItemSourceController[] itemSourceControllers, int[] maxCapacities, int[] currentAmounts)
+    private ItemSourceConfig GetRandomAvailableItemSource(ItemSourceConfig[] itemSourceConfigs, int[] maxCapacities, int[] currentAmounts)
     {
         int resultIndex = -1;
         int validOptionsCount = 0;
@@ -232,7 +233,7 @@ public class ItemSourceSpawner : MonoBehaviour
             }
         }
         
-        return resultIndex >= 0 ? itemSourceControllers[resultIndex] : null;
+        return resultIndex >= 0 ? itemSourceConfigs[resultIndex] : null;
     }
     
     private GetItemSourceController CreateRoundRobinStrategy()
@@ -336,22 +337,22 @@ public class ItemSourceSpawner : MonoBehaviour
             throw new ArgumentException("Item Source settings cannot be null or empty", nameof(itemSourceSettings));
         }
         
-        var uniquePrefabs = new HashSet<ItemSourceController>();
+        var uniqueConfigs = new HashSet<ItemSourceConfig>();
         foreach (var setting in itemSourceSettings)
         {
-            if (setting.Prefab == null)
+            if (setting.Config == null)
             {
-                throw new ArgumentException("Item Source prefab cannot be null");
+                throw new ArgumentException("Item Source config cannot be null");
             }
             
-            if (!uniquePrefabs.Add(setting.Prefab))
+            if (!uniqueConfigs.Add(setting.Config))
             {
-                throw new ArgumentException($"Duplicate item source prefab detected: {setting.Prefab.Config.name}");
+                throw new ArgumentException($"Duplicate item source config detected: {setting.Config.name}");
             }
             
             if (setting.MaxCapacity <= 0)
             {
-                throw new ArgumentException($"Max capacity must be positive for item source: {setting.Prefab.Config.name}");
+                throw new ArgumentException($"Max capacity must be positive for item source: {setting.Config.name}");
             }
         }
     }

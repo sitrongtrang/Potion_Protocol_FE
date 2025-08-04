@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd9e42f65a764b240a342aa1ef378ac6, type: 3}
   m_Name: AlchemyStation
   m_EditorClassIdentifier: 
+  _name: 
+  _icon: {fileID: 8142887963223585860, guid: 684fc6f7c36189c448a0c8bda50c5af0, type: 3}
+  _anim: {fileID: 0}
+  _id: 
   _type: 1
-  _prefab: {fileID: 1034972948390943926, guid: cb687b3f4ba4b0f4092b9deeb4da29b5, type: 3}

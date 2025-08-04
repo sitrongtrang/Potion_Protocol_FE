@@ -78,7 +78,7 @@ public class LevelInfoSaver : MonoBehaviour
         List<string> EnemyIds = new();
         for (int i = 0; i < config.Enemies.Count; i++)
         {
-            EnemyIds.Add(config.Enemies[i].EnemyConf.Id);
+            EnemyIds.Add(config.Enemies[i].Id);
         }
 
         // Save item source data
@@ -87,7 +87,7 @@ public class LevelInfoSaver : MonoBehaviour
         {
             ItemSourceList.ItemSources.Add(new ItemSourceData()
             {
-                Id = config.ItemSources[i].Prefab.Config.Id,
+                Id = config.ItemSources[i].Config.Id,
                 MaxCapacity = config.ItemSources[i].MaxCapacity
             }
             );

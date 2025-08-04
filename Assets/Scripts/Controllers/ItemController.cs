@@ -3,18 +3,29 @@ using UnityEngine;
 
 public class ItemController : MonoBehaviour
 {
-    [SerializeField] private ItemConfig _config;
+    private ItemConfig _config;
 
     public ItemConfig Config => _config;
 
     void OnEnable()
     {
-        StartCoroutine(Disappear(_config.ExpireTime));
+        if (_config is CraftableItemConfig craftableItemConfig) {
+            StartCoroutine(Disappear(craftableItemConfig.ExpireTime));
+        }
     }
 
     void OnDisable()
     {
         StopAllCoroutines();
+    }
+
+    public void Initialize(EntityConfig entityConfig)
+    {
+        if (entityConfig is ItemConfig itemConfig)
+        {
+            _config = itemConfig;
+            GetComponent<SpriteRenderer>().sprite = itemConfig.Icon;
+        }
     }
 
     private IEnumerator Disappear(float delay)

@@ -531,7 +531,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _config: {fileID: 11400000, guid: 2814ce3f46aa1c8468a0e77c771abbdc, type: 2}
   progressBarPrefab: {fileID: 4172215242974883266, guid: 9820ee527e88f234f9ef29f976945364, type: 3}
-  itemsOnTable:
+  _table: {fileID: 4360740063140336629}
+  _itemsOnTable:
   - {fileID: 8862165679329802028}
   - {fileID: 5982052700094977542}
   - {fileID: 8808643296651280495}

@@ -3,5 +3,7 @@ using UnityEngine;
 
 public abstract class NetworkBehaviour : MonoBehaviour
 {
-    public abstract void Initialize(ScriptableObject scriptableObject);
+    public string EntityId;
+
+    public abstract void Initialize(string entityId, ScriptableObject scriptableObject);
 }

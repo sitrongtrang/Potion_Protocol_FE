@@ -67,8 +67,8 @@ public class HttpAuthHandler : MonoBehaviour
             NetworkManager.Instance.SetAuthenToken(loginSuccess.LoginSuccessDat.Token);
             NetworkManager.Instance.Authenticate();
 
-            // StartCoroutine(LoadMainMenu());
-            LoadTestScene();
+            StartCoroutine(LoadMainMenu());
+            // LoadTestScene();
         }
         else
         {

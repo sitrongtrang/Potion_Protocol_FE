@@ -31,7 +31,7 @@ public class ItemInfoPage : InfoPage
             {
                 _craftText.text = $"Crafted at:";
                 _craftPlaceIcon.gameObject.SetActive(true);
-                _craftPlaceIcon.sprite = craftableItem.CraftPlace;
+                _craftPlaceIcon.sprite = craftableItem.CraftPlace.Icon;
             }
             else
             {

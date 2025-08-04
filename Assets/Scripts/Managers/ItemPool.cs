@@ -3,11 +3,10 @@ using UnityEngine;
 
 public class ItemPool : MonoBehaviour
 {
-    private List<ItemController> _itemPrefabs;
-    private Dictionary<ItemConfig, ItemController> _itemPrefabMap;
+    [SerializeField] private ItemController _itemPrefab;
     private Queue<ItemController> _activeItems = new Queue<ItemController>();
     public ItemController[] ActiveItems => _activeItems.ToArray();
-    private Dictionary<string, Queue<ItemController>> _pooledObjects = new Dictionary<string, Queue<ItemController>>();
+    private Queue<ItemController> _pooledObjects = new Queue<ItemController>();
     public static ItemPool Instance { get; private set; }
 
     private void Awake()
@@ -19,11 +18,6 @@ public class ItemPool : MonoBehaviour
         }
 
         Instance = this;
-    }
-
-    public void Initialize(LevelConfig config)
-    {
-        _itemPrefabs = config.ItemPrefabs;
     }
 
     public ItemController SpawnItem(ItemConfig config, Vector2 position)
@@ -39,6 +33,7 @@ public class ItemPool : MonoBehaviour
         ItemController item = GetFromPool(config);
         item.transform.position = position;
         item.transform.rotation = Quaternion.identity;
+        item.Initialize(config);
         item.gameObject.SetActive(true);
 
         _activeItems.Enqueue(item);
@@ -62,48 +57,19 @@ public class ItemPool : MonoBehaviour
     private void ReturnToPool(ItemController item)
     {
         item.gameObject.SetActive(false);
-
-        // Return item to the appropriate pool
-        string name = item.Config.Name;
-        if (!_pooledObjects.ContainsKey(name))
-            _pooledObjects[name] = new Queue<ItemController>();
-
-        _pooledObjects[name].Enqueue(item);
+        _pooledObjects.Enqueue(item);
     }
 
     private ItemController GetFromPool(ItemConfig config)
     {
-        string name = config.Name;
-
-        // Retrieve an item from pool or instantiate a new one
-        if (_pooledObjects.ContainsKey(name) && _pooledObjects[name].Count > 0)
+        // Retrieve an item from pool
+        if (_pooledObjects.Count > 0)
         {
-            return _pooledObjects[name].Dequeue();
+            return _pooledObjects.Dequeue();
         }
 
         // No available object in pool, instantiate a new one
-        ItemController newObj = null;
-        if (_itemPrefabMap == null)
-        {
-            _itemPrefabMap = new Dictionary<ItemConfig, ItemController>();  
-        }
-        if (_itemPrefabMap.ContainsKey(config))
-        {
-            newObj = Instantiate(_itemPrefabMap[config]);
-        }
-        else 
-        {
-            for (int i = 0; i < _itemPrefabs.Count; i++)
-            {
-                if (_itemPrefabs[i].Config == config)
-                {
-                    newObj = Instantiate(_itemPrefabs[i]);
-                    _itemPrefabMap[config] = newObj;
-                    break;
-                }
-            }
-        }
-        
+        ItemController newObj = Instantiate(_itemPrefab);
         return newObj;
     }
 }
