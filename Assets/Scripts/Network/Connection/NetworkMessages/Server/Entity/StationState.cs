@@ -6,5 +6,6 @@ public class StationState
     public float PositionY;
     public float CraftTime;
     public float CraftMaxTime;
+    public bool IsCrafting;
 
 }

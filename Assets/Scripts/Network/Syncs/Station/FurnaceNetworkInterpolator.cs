@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class PlayerNetworkInterpolator : INetworkInterpolator<PlayerStateInterpolateData, GameStateUpdate>
+public class FurnaceNetworkInterpolator : INetworkInterpolator<FurnaceStateInterpolateData, GameStateUpdate>
 {
-    private NetworkInterpolationBuffer<PlayerStateInterpolateData> _buffer;
+    private NetworkInterpolationBuffer<FurnaceStateInterpolateData> _buffer;
     private int _serverSequence = int.MaxValue;
-    public PlayerNetworkInterpolator(int bufferSize)
+    public FurnaceNetworkInterpolator(int bufferSize)
     {
         _buffer = new(bufferSize);
     }
@@ -33,21 +34,22 @@ public class PlayerNetworkInterpolator : INetworkInterpolator<PlayerStateInterpo
                 }
                 if (update.ServerSequence >= _serverSequence)
                 {
-                    _buffer.Add(new PlayerStateInterpolateData()
+                    _buffer.Add(new FurnaceStateInterpolateData()
                     {
                         ServerSequence = update.ServerSequence,
-                        PositionX = update.PlayerStates[idx].PositionX,
-                        PositionY = update.PlayerStates[idx].PositionY
+                        CraftTime = update.StationStates[idx].CraftTime,
+                        CraftMaxTime = update.StationStates[idx].CraftMaxTime,
+                        IsCrafting = update.StationStates[idx].IsCrafting,
                     });
                 }
             }
         }
     }
-    public void IncrementAndInterpolate(Action<PlayerStateInterpolateData> applyState, Func<bool> notInAcceptingThreshold = null)
+    public void IncrementAndInterpolate(Action<FurnaceStateInterpolateData> applyState, Func<bool> notInAcceptingThreshold = null)
     {
         _serverSequence += 1;
         _buffer.SetMinTickToKeep(_serverSequence);
-        if (_buffer.Poll(_serverSequence, out PlayerStateInterpolateData result))
+        if (_buffer.Poll(_serverSequence, out FurnaceStateInterpolateData result))
         {
             applyState(result);
         }
