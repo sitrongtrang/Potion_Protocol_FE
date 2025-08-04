@@ -12,19 +12,20 @@ public class RoomInfo
     public int MaxPlayers;
     [FieldOrder(5)]
     public int CurrentPlayers;
+    [FieldOrder(6)]
     public PlayerInfo[] PlayerList;
 }
 
 public class PlayerInfo
 {
-    [FieldOrder(6)]
+    [FieldOrder(0)]
     public string PlayerID;
-    [FieldOrder(7)]
+    [FieldOrder(1)]
     public string PlayerDisPlayName;
-    [FieldOrder(8)]
+    [FieldOrder(2)]
     public int level;
-    [FieldOrder(9)]
+    [FieldOrder(3)]
     public short PlayerRole;
-    [FieldOrder(10)]
+    [FieldOrder(4)]
     public short PlayerStatus;
 }

@@ -11,12 +11,12 @@ public class SelectableImage : MonoBehaviour
     {
         outline = GetComponent<Outline>();
         outline.enabled = false;
-        CreateRoom.Register(this);
+        CreateRoomUI.Instance.Register(this);
     }
 
     public void Click()
     {
-        CreateRoom.Select(this);
+        CreateRoomUI.Instance.Select(this);
     }
 
     public void ShowOutline(bool show)

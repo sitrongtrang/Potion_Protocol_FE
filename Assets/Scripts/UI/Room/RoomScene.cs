@@ -1,21 +1,28 @@
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class RoomScene : MonoBehaviour
 {
-    public Image targetImage;
-    public Sprite[] newSprite;
+    public Image TargetImage;
+    public Sprite[] NewSprite;
     public static int img = 0;
-
-    private void Start()
-    {
-        ChooseImage();
-    }
+    public TMP_Text RoomID;
 
     public void ChooseImage()
     {
-        targetImage.sprite = newSprite[img];
+        TargetImage.sprite = NewSprite[img];
+        Debug.Log("Img: " + img);
     }
 
+    public void SetPersonRoomName(string newName, TMP_Text Person)
+    {
+        Person.text = newName;
+    }
 
+    public void SetRoomID(string newID)
+    {
+        RoomID.text = "Room ID: " + newID;
+    }
 }

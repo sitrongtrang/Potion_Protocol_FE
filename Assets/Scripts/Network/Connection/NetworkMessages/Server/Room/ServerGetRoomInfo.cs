@@ -3,6 +3,7 @@ using UnityEngine;
 [SerializeField]
 public class ServerGetRoomInfo : ServerMessage
 {
-    RoomInfo[] Room;
+    [FieldOrder(0)]
+    public RoomInfo Room;
     public ServerGetRoomInfo() : base(NetworkMessageTypes.Server.Room.GetRoomInfo) { }
 }

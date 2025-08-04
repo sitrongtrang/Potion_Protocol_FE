@@ -1,19 +1,21 @@
-﻿using NUnit.Framework;
-using System.Collections.Generic;
-using UnityEditor.XR;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class RoomHandler : MonoBehaviour
 {
+    [SerializeField] private RoomListRenderer _roomListRenderer;
+    [SerializeField] private RoomScene _roomScene;
+    public TMP_Text[] Person;
     private void OnEnable()
     {
         NetworkEvents.OnMessageReceived += HandleNetworkMessage;
+        LoadingScreenUI.Instance.OnSceneEnter += HandleAllRoom;
     }
 
     private void OnDisable()
     {
         NetworkEvents.OnMessageReceived -= HandleNetworkMessage;
+        LoadingScreenUI.Instance.OnSceneEnter -= HandleAllRoom;
     }
 
     private void HandleNetworkMessage(ServerMessage message)
@@ -61,11 +63,18 @@ public class RoomHandler : MonoBehaviour
         }
     }
 
+    private void HandleAllRoom()
+    {
+        Debug.Log("Request get all room");
+        NetworkManager.Instance.SendMessage(new PlayerGetAllRoomRequest());
+    }
+
     private void OnCreateRoomResponse(ServerCreateRoom msg)
     {
         Debug.Log($"Server đã tạo phòng: {msg.RoomID}");
-        // Load create room scene
-        SceneManager.LoadSceneAsync("RoomScene");
+        _roomScene.ChooseImage();
+        CreateRoomUI.Instance.ShowPvPCanvas();
+        NetworkManager.Instance.SendMessage(new PlayerGetRoomInfoRequest{});
     }
 
     private void OnJoinRoomResponse(ServerInRoom msg)
@@ -95,18 +104,24 @@ public class RoomHandler : MonoBehaviour
     private void OnGetRoomInfoResponse(ServerGetRoomInfo msg)
     {
         Debug.Log("Get Room Info");
-
+        Debug.Log(msg.Room.PlayerList[0]);
+        for (int i = 0; i < msg.Room.PlayerList.Length; i++)
+        {
+            _roomScene.SetPersonRoomName(msg.Room.PlayerList[i].PlayerDisPlayName, Person[i]);
+        }
+        _roomScene.SetRoomID(msg.Room.RoomID);
     }
 
     private void OnGetRoomByIDResponse(ServerGetRoomByID msg)
     {
         Debug.Log("Get Room By ID");
-
+        _roomListRenderer.RenderRooms(new RoomInfo[] { msg.Room });
     }
 
     private void OnGetAllRoomResponse(ServerGetAllRoom msg)
     {
         Debug.Log("Get All Room");
-
+        CreateRoomUI.Instance.Refreshed();
+        _roomListRenderer.RenderRooms(msg.Room);
     }
 }

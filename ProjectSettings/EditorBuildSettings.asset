@@ -33,7 +33,7 @@ EditorBuildSettings:
     path: Assets/Scenes/RoomScene.unity
     guid: 13a52fcef80cbd64682217fb55b6db78
   - enabled: 1
-    path: Assets/Scenes/CreateRoom.unity
+    path: Assets/Scenes/CreateRoomScene.unity
     guid: da1abb9143e31004190065194373ca5e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
