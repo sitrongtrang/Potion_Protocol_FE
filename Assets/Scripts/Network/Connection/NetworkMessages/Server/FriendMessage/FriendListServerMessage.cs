@@ -14,7 +14,7 @@ public class Friend
 public class FriendListServerMessage : ServerMessage
 {
     [FieldOrder(0)]
-    public List<Friend> friendList;
+    public List<Friend> FriendList;
 
     public FriendListServerMessage() : base(NetworkMessageTypes.Server.FriendSystem.GetFriendList) { }
 }

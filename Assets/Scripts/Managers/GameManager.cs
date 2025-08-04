@@ -24,4 +24,5 @@ public class GameManager : MonoBehaviour
     }
     public Action<Sprite, float> InitSkillUI;
     public Func<int, IEnumerator> StartCoolDown;
+    public Action<int> LoadFriendList;
 }

@@ -1,26 +1,37 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class FriendListRequestHandler : MonoBehaviour
 {
-    [SerializeField] GameObject _friendItemPrefab;
-    void Start()
-    {
+    [Header("FriendItem")]
+    [SerializeField] GameObject _friendItemPrefab; // format:  nameText, inviteButton, removeButton, avatarObj (1 ring img and avatar child)
+    [SerializeField] TMP_Text _paging; // format: xx/yy
+    [SerializeField] int _numberPerPage;
+    GameObject[] _friendItem;
 
-    }
+    [Header("FriendListContainer")]
+    List<Friend> _friendList = new List<Friend>();
 
     private void OnEnable()
     {
+        _friendItem = new GameObject[_numberPerPage];
+        for (int i = 0; i < _numberPerPage; i++)
+        {
+            _friendItem[i] = Instantiate(_friendItemPrefab, transform);
+            _friendItem[i].SetActive(false);
+        }
         NetworkEvents.OnMessageReceived += HandleNetworkMessage;
+        GameManager.Instance.LoadFriendList += DisplayFriend;
     }
 
     private void OnDisable()
     {
         NetworkEvents.OnMessageReceived -= HandleNetworkMessage;
+        GameManager.Instance.LoadFriendList -= DisplayFriend;
     }
-
-    public void OnButtonClicked()
+    void Start()
     {
         SendGetFriendList();
     }
@@ -30,6 +41,22 @@ public class FriendListRequestHandler : MonoBehaviour
         FriendListClientMessage friendListMsg = new FriendListClientMessage();
         NetworkManager.Instance.SendMessage(friendListMsg);
     }
+
+    void DisplayFriend(int page)
+    {
+        for (int i = (page - 1) * _numberPerPage; i < page * _numberPerPage + _numberPerPage && i < _friendList.Count; i++)
+        {
+            _friendItem[i].SetActive(true);
+            _friendItem[i].GetComponent<FriendItemUI>().nameText.GetComponent<TMP_Text>().text = _friendList[i].FriendDisplayName;
+            _friendItem[i].GetComponent<FriendItemUI>().inviteButton.GetComponent<Button>().onClick.AddListener(() => SendInvite(_friendList[i].Id));
+            _friendItem[i].GetComponent<FriendItemUI>().removeButton.GetComponent<Button>().onClick.AddListener(() =>
+            {
+                SendRemoveFriend(_friendList[i].Id);
+                Destroy(_friendItem[i]);
+            });
+        }
+    }
+
     private void HandleNetworkMessage(ServerMessage message)
     {
         Debug.Log(message.MessageType);
@@ -38,19 +65,16 @@ public class FriendListRequestHandler : MonoBehaviour
             case NetworkMessageTypes.Server.FriendSystem.GetFriendList:
                 if (message is FriendListServerMessage friendListMsg)
                 {
-                    Debug.Log($"👥 Received {friendListMsg.friendList.Count} friends:");
-                    foreach (var friend in friendListMsg.friendList)
+                    Debug.Log($"👥 Received {friendListMsg.FriendList.Count} friends:");
+                    foreach (var friend in friendListMsg.FriendList)
                     {
-                        GameObject friendItem = Instantiate(_friendItemPrefab, transform);
-                        friendItem.GetComponent<FriendItemUI>().nameText.GetComponent<TMP_Text>().text = friend.FriendDisplayName;
-                        friendItem.GetComponent<FriendItemUI>().inviteButton.GetComponent<Button>().onClick.AddListener(() => SendInvite(friend.Id));
-                        friendItem.GetComponent<FriendItemUI>().removeButton.GetComponent<Button>().onClick.AddListener(() =>
-                        {
-                            SendRemoveFriend(friend.Id);
-                            Destroy(friendItem);
-                        });
+                        _friendList.Add(friend);
                         Debug.Log($"👤 {friend.FriendDisplayName} ({friend.FriendId}, {friend.Id})");
                     }
+                    int currentPage = 1;
+                    DisplayFriend(currentPage);
+                    int limitPage = _friendList.Count % _numberPerPage == 0 ? _friendList.Count / _numberPerPage : _friendList.Count / _numberPerPage + 1;
+                    _paging.text = currentPage.ToString() + "/" + limitPage.ToString();
                 }
                 else
                 {

@@ -26,11 +26,11 @@ public class HttpAuthHandler : MonoBehaviour
 
     void Start()
     {
-        // if (NetworkManager.Instance.IsAuthenticated)
-        // {
-        //     NetworkManager.Instance.Authenticate();
-        //     StartCoroutine(LoadMainMenu());
-        // }
+        if (NetworkManager.Instance.IsAuthenticated)
+        {
+            NetworkManager.Instance.Authenticate();
+            StartCoroutine(LoadMainMenu());
+        }
     }
 
     public void OnLoginButtonPressed()
@@ -67,8 +67,8 @@ public class HttpAuthHandler : MonoBehaviour
             NetworkManager.Instance.SetAuthenToken(loginSuccess.LoginSuccessDat.Token);
             NetworkManager.Instance.Authenticate();
 
-            // StartCoroutine(LoadMainMenu());
-            LoadTestScene();
+            StartCoroutine(LoadMainMenu());
+            // LoadTestScene();
         }
         else
         {
