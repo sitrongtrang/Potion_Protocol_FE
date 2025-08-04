@@ -4,7 +4,7 @@ using System;
 public class FriendRemoveServerMessage : ServerMessage
 {
     public FriendRemoveServerMessage()
-        : base(NetworkMessageTypes.Client.FriendSystem.RemoveFriend)
+        : base(NetworkMessageTypes.Server.FriendSystem.RemoveFriend)
     {
         
     }

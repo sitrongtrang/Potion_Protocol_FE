@@ -32,6 +32,7 @@ public class FriendListRequestHandler : MonoBehaviour
     }
     private void HandleNetworkMessage(ServerMessage message)
     {
+        Debug.Log(message.MessageType);
         switch (message.MessageType)
         {
             case NetworkMessageTypes.Server.FriendSystem.GetFriendList:
@@ -43,7 +44,11 @@ public class FriendListRequestHandler : MonoBehaviour
                         GameObject friendItem = Instantiate(_friendItemPrefab, transform);
                         friendItem.GetComponent<FriendItemUI>().nameText.GetComponent<TMP_Text>().text = friend.FriendDisplayName;
                         friendItem.GetComponent<FriendItemUI>().inviteButton.GetComponent<Button>().onClick.AddListener(() => SendInvite(friend.Id));
-                        friendItem.GetComponent<FriendItemUI>().removeButton.GetComponent<Button>().onClick.AddListener(() => SendRemoveFriend(friend.Id));
+                        friendItem.GetComponent<FriendItemUI>().removeButton.GetComponent<Button>().onClick.AddListener(() =>
+                        {
+                            SendRemoveFriend(friend.Id);
+                            Destroy(friendItem);
+                        });
                         Debug.Log($"👤 {friend.FriendDisplayName} ({friend.FriendId}, {friend.Id})");
                     }
                 }
