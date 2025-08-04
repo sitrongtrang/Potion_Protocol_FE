@@ -63,6 +63,14 @@ public class GameStateHandler : MonoBehaviour
                 obj.Initialize(id, _prafabsMap.GetSO(entityInfo.TypeId));
                 TrackedObject trackedObject = obj.AddComponent<TrackedObject>();
                 current.Add(id, trackedObject);
+
+                trackedObject.OnDestroyed += (id) =>
+                {
+                    if (current.ContainsKey(id))
+                    {
+                        current.Remove(id);
+                    }
+                };
             }
         }
     }
