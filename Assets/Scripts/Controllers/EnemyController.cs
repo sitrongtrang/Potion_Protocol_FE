@@ -40,6 +40,13 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private EnemyHealthUI _healthBarPrefab;
     private EnemyHealthUI _healthBar;
 
+    [Header("Collision")]
+    private SpriteRenderer _spriteRenderer;
+    private AABBCollider _collider;
+    public AABBCollider Collider => _collider;
+    private Vector2 _size = Vector2.zero;
+    public Vector2 Size => _size;
+
     #region UNITY_METHODS
     private void Update()
     {
@@ -83,6 +90,12 @@ public class EnemyController : MonoBehaviour
 
         BasicStateMachine = new(this);
         _config.Initialize(this);
+
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        if (_spriteRenderer)
+        {
+            SetCollider();
+        }
     }
     #endregion
 
@@ -119,6 +132,42 @@ public class EnemyController : MonoBehaviour
     public bool IsTooFarFromPatrolCenter()
     {
         return Vector2.Distance(transform.position, PatrolCenter) > EnemyConf.ChaseRadius;
+    }
+
+    public void SetCollider()
+    {
+        Sprite sprite = _spriteRenderer.sprite;
+
+        float pivotY = sprite.pivot.y;
+
+        float pivotToBottom = pivotY / sprite.rect.height * _spriteRenderer.bounds.size.y;
+
+        float colliderWidth = _spriteRenderer.bounds.size.x;
+        float colliderHeight = 2f * pivotToBottom;
+
+        _size = new Vector2(colliderWidth, colliderHeight);
+        Vector2 colliderBottomLeft = new Vector2(
+            transform.position.x - colliderWidth / 2f,
+            transform.position.y - pivotToBottom
+        );
+
+        if (_collider == null)
+        {
+            _collider = new AABBCollider(colliderBottomLeft, _size)
+            {
+                Layer = (int)EntityLayer.Enemy,
+                Owner = gameObject
+            };
+            _collider.Mask.SetLayer((int)EntityLayer.Obstacle);
+            CollisionSystem.InsertDynamicCollider(_collider);
+        }
+        else
+        {
+            _collider.SetSize(_size);
+            Vector2 center = transform.position;
+            _collider.SetBottomLeft(center - _size / 2f);
+        }
+        
     }
     #endregion
 
@@ -166,6 +215,7 @@ public class EnemyController : MonoBehaviour
     }
     private void Die()
     {
+        CollisionSystem.RemoveDynamicCollider(_collider);
         Destroy(_healthBar.gameObject);
         EnemyConf.OnDeath(this);
         ItemPool.Instance.SpawnItem(EnemyConf.Item, transform.position);
@@ -200,5 +250,11 @@ public class EnemyController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(LastSeenPlayerPosition, EnemyConf.SearchRadius);
     }
+
+    // void OnDrawGizmos()
+    // {
+    //     Gizmos.color = Color.green;
+    //     Gizmos.DrawWireCube(_collider.Bounds.center, _collider.Bounds.size);
+    // }
     #endregion
 }

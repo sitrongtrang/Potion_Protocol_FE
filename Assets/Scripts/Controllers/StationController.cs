@@ -7,26 +7,28 @@ public class StationController : MonoBehaviour
 {
     [SerializeField] private StationConfig _config;
     private List<RecipeConfig> _recipes;
-    protected List<ItemConfig> _items;
     [SerializeField] private ProgressBarUI progressBarPrefab;
     private ProgressBarUI _progressBar;
-    protected bool _isCrafting = false;   
-    
+
+    protected List<ItemConfig> _items;
+    protected bool _isCrafting = false;
+
     public StationConfig Config => _config;
 
+    #region Initialization
     public virtual void Initialize(List<RecipeConfig> recipes)
     {
         _recipes = recipes;
         _items = new();
     }
+    #endregion
 
+    #region Add & Remove
     public virtual bool AddItem(ItemConfig config)
     {
         if (_isCrafting)
         {
-            Vector2 stationPos = transform.position;
-            Vector2 dropPosition = stationPos + GameConstants.DropItemSpacing * Vector2.down;
-            ItemPool.Instance.SpawnItem(config, dropPosition);
+            DropItem(config);
             return false;
         }
         else
@@ -36,68 +38,54 @@ public class StationController : MonoBehaviour
         }
     }
 
+    public virtual void RemoveItem(int idx, bool drop = true)
+    {
+        ItemConfig item = _items[idx];
+        _items.RemoveAt(idx);
+        if (drop) DropItem(item, idx + 1);
+    }
+
+    protected void DropItem(ItemConfig item, int offset = 1)
+    {
+        Vector2 stationPos = transform.position;
+        Vector2 dropPosition = stationPos + GameConstants.DropItemSpacing * offset * Vector2.down;
+        ItemPool.Instance.SpawnItem(item, dropPosition);
+    }
+
+    private void ClearItems(bool drop = true)
+    {
+        for (int i = _items.Count - 1; i >= 0; i--)
+            RemoveItem(i, drop);
+    }
+    #endregion
+
+    #region Craft
     public virtual void StartCrafting()
     {
         if (_isCrafting)
         {
-            ClearItems();
+            ClearItems(true);
+            return;
         }
 
         int recipeIndex = FindMatchingRecipe();
+        ClearItems(recipeIndex == -1);
         if (recipeIndex != -1)
-        {
-            for (int i = _items.Count - 1; i >= 0; i--)
-            {
-                RemoveItem(i);
-            }
-
-            StartCoroutine(WaitForCraft(_recipes[recipeIndex]));
-        }
-        else
-        {
-            ClearItems();
-        }
+            StartCoroutine(SimulateCraft(_recipes[recipeIndex]));
     }
 
-    public virtual void RemoveItem(int idx)
+    private IEnumerator SimulateCraft(RecipeConfig recipe)
     {
-        _items.RemoveAt(idx);
-    }
-
-    private void ClearItems()
-    {
-        for (int i = _items.Count - 1; i >= 0; i--)
-        {
-            Vector2 stationPos = transform.position;
-            Vector2 dropPosition = stationPos + GameConstants.DropItemSpacing * (i + 1) * Vector2.down;
-            ItemPool.Instance.SpawnItem(_items[i], dropPosition);
-            RemoveItem(i);
-        }
-    }
-
-    IEnumerator WaitForCraft(RecipeConfig recipe)
-    {
-        //yield return new WaitForSeconds(recipe.CraftingTime);
-        _progressBar = Instantiate(progressBarPrefab, FindFirstObjectByType<Canvas>().transform);
-        Vector2 barOffset = Vector2.down * 0.8f + (_config.Type == StationType.AlchemyStation ? Vector2.right * 0.4f : Vector2.zero);
-        _progressBar.Initialize(transform, recipe.CraftingTime, barOffset);
-
-        float elapsed = 0f;
         _isCrafting = true;
-        while (elapsed < recipe.CraftingTime)
-        {
-            elapsed += Time.deltaTime;
-            _progressBar.SetProgress(elapsed);
-            yield return null;
-        }
+
+        StartProgressBar(recipe.CraftingTime);
+        yield return new WaitForSeconds(recipe.CraftingTime);
 
         _isCrafting = false;
         if (_progressBar != null)
-            Destroy(_progressBar.gameObject);
+            _progressBar.gameObject.SetActive(false);
 
-        Vector2 stationPos = transform.position;
-        Vector2 dropPosition = stationPos + GameConstants.DropItemSpacing * Vector2.down;
-        ItemPool.Instance.SpawnItem(recipe.Product, dropPosition);
+        DropItem(recipe.Product);
     }
 
     private bool MatchRecipe(RecipeConfig recipe)
@@ -111,7 +99,7 @@ public class StationController : MonoBehaviour
         foreach (var kvp in recipeCounts)
         {
             if (!stationCounts.TryGetValue(kvp.Key, out int count) || count != kvp.Value)
-            return false;
+                return false;
         }
         return true;
     }
@@ -121,10 +109,30 @@ public class StationController : MonoBehaviour
         for (int i = 0; i < _recipes.Count; i++)
         {
             if (MatchRecipe(_recipes[i]))
-            {
                 return i;
-            }
         }
         return -1;
+    }
+    #endregion
+
+    private void StartProgressBar(float duration)
+    {
+        if (_progressBar == null)
+        {
+            _progressBar = Instantiate(progressBarPrefab, FindFirstObjectByType<Canvas>().transform);
+            Vector2 barOffset = Vector2.down * 0.8f + (_config.Type == StationType.AlchemyStation ? Vector2.right * 0.4f : Vector2.zero);
+            _progressBar.Initialize(transform, barOffset);
+        }
+        else
+        {
+            _progressBar.gameObject.SetActive(true);
+        }
+
+        _progressBar.StartProgress(duration);
+    }
+
+    public virtual Vector2 GetTransferZone()
+    {
+        return transform.position;
     }
 }

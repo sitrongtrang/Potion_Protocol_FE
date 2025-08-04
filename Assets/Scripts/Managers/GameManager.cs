@@ -22,6 +22,5 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(this);
     }
-    public Action<Sprite, float> InitSkillUI;
     public Func<int, IEnumerator> StartCoolDown;
 }

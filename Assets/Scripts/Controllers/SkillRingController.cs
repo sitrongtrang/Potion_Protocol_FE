@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class SkillRingController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private SpriteRenderer _spriteRenderer;
+
     void Start()
     {
-        
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (GetComponent<SpriteRenderer>().sprite) transform.Rotate(0f, 0f, 360f * Time.deltaTime);
+        if (_spriteRenderer.sprite) transform.Rotate(0f, 0f, 360f * Time.deltaTime);
     }
 }

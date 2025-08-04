@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Slime
   _icon: {fileID: 1290304706820135947, guid: 099b6c8147316e24db74a03cb90d36a9, type: 3}
-  _id: M1
+  _id: Mo6
   _hp: 4
   _speed: 3
   _damage: 1

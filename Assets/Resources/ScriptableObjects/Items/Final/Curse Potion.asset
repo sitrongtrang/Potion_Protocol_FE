@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af21ffac3d2cd7468c79c0f75d3f2a5, type: 3}
+  m_Name: Curse Potion
+  m_EditorClassIdentifier: 
+  _name: Curse Potion
+  _icon: {fileID: -4839590289819068645, guid: 01fa6503936ffbb49bde8854baa951b2, type: 3}
+  _id: I39
+  _type: 2
+  _droppedBy: {fileID: 11400000, guid: 60b2d9c993cd4e24688fcbbbeb1a2c67, type: 2}
+  _expireTime: 30
+  _craftPlace: {fileID: 8142887963223585860, guid: 684fc6f7c36189c448a0c8bda50c5af0, type: 3}

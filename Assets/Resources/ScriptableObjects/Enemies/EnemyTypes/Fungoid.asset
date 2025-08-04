@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Fungoid
   _icon: {fileID: 5425824047393674626, guid: 775a0ddd8db335f49936f4f7519e2154, type: 3}
-  _id: M1
+  _id: Mo5
   _hp: 4
   _speed: 3
   _damage: 1

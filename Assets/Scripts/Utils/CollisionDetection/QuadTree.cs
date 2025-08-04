@@ -156,7 +156,7 @@ public class QuadTree
         return returnColliders;
     }
 
-    void OnDrawGizmos()
+    public void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(_bounds.center, _bounds.size);
