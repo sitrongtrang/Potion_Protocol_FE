@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Vampire Wing
   _icon: {fileID: -8574869354052386629, guid: 11cd5328e2a295b47ba3598be320b9eb, type: 3}
-  _id: I4
+  _id: I1
   _type: 0
   _droppedBy: {fileID: 11400000, guid: 99044dd267a0afa45b8b2c1b347cb735, type: 2}
   _expireTime: 30

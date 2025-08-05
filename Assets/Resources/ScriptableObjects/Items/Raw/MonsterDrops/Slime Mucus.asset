@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Slime Mucus
   _icon: {fileID: 3560892536975691000, guid: 043c01b7f571aa74d9d7adb39303ddb8, type: 3}
-  _id: I1
+  _id: I6
   _type: 0
   _droppedBy: {fileID: 11400000, guid: 102769852e166fd4f8e5161856ae8051, type: 2}
   _expireTime: 30

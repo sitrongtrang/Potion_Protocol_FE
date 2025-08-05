@@ -10,10 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5281950400656108509}
   - component: {fileID: 5467732197492940489}
-  - component: {fileID: 267156249908824472}
   - component: {fileID: 3025303744561858338}
   - component: {fileID: -4838168921377332254}
-  - component: {fileID: 5517552200255497154}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -93,33 +91,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!50 &267156249908824472
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750624711410842289}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!114 &3025303744561858338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,16 +104,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _config: {fileID: 11400000, guid: a7df0d474df11194e9a81497ceca8fdf, type: 2}
-  _rb: {fileID: 267156249908824472}
   _anim: {fileID: -4838168921377332254}
   _swordAnim: {fileID: 2632989158722518406}
   _weapon: {fileID: 11400000, guid: 8254a7f3b589ea54890b2ffd8067927d, type: 2}
   _attackPoint: {fileID: 6906503070484043503}
-  _skills:
-  - {fileID: 11400000, guid: cab98ae966622244587604e6dccbced4, type: 2}
-  - {fileID: 11400000, guid: 8ecaa36e9419ef64e90e6c6bf0e52598, type: 2}
-  - {fileID: 11400000, guid: e34f1d4ba434b27448891eadceb07d6e, type: 2}
   _skillUIParent: {fileID: 6770161539210649719, guid: 6d7c8a9fa013e734fb23d5c5e70ea0f4, type: 3}
+  InteractionDistance: 1
 --- !u!95 &-4838168921377332254
 Animator:
   serializedVersion: 7
@@ -165,43 +132,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!70 &5517552200255497154
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750624711410842289}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.4}
-  m_Size: {x: 0.8, y: 0.5}
-  m_Direction: 1
 --- !u!1 &2603032828928959441
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +159,7 @@ Transform:
   m_GameObject: {fileID: 2603032828928959441}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -324,7 +254,7 @@ GameObject:
   - component: {fileID: 1471869361143169073}
   - component: {fileID: 27543381833076744}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Skill Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

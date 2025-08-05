@@ -1,68 +1,61 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+
+public enum RoomType
+{
+    Public,
+    Private
+}
+
+public enum GameMode
+{
+    Coop,
+    PvP
+}
 
 public class CreateRoom : MonoBehaviour
 {
-    private static List<SelectableImage> allImages = new List<SelectableImage>();
-    private static SelectableImage currentSelected = null;
-    public bool pvp;
-    public TMP_InputField inputField;
-    public GameObject error;
-
-    public static void Register(SelectableImage img)
-    {
-        if (!allImages.Contains(img))
-        {
-            allImages.Add(img);
-        }
-    }
-
-    public static void Select(SelectableImage img)
-    {
-        if (currentSelected != null && currentSelected != img)
-        {
-            currentSelected.ShowOutline(false);
-        }
-
-        currentSelected = img;
-        currentSelected.ShowOutline(true);
-        RoomScene.img = currentSelected.img;
-    }
-
-    public void OnMainMenu()
-    {
-        SceneManager.LoadSceneAsync("MainMenu");
-    }
+    [SerializeField] private GameObject Error;
+    [SerializeField] private TMP_InputField RoomName;
+    [SerializeField] private TMP_InputField Password;
+    private GameMode _gameMode;
+    private RoomType _roomType;
+    private Coroutine _roomNameError;
 
     public void OnRoomScene()
     {
-        if (string.IsNullOrEmpty(inputField.text))
+        if (string.IsNullOrEmpty(RoomName.text))
         {
-            StartCoroutine(ShowError());
+            if (_roomNameError != null) StopCoroutine(_roomNameError);
+            _roomNameError = StartCoroutine(CreateRoomUI.Instance.ShowError(Error));
         }
-        else SceneManager.LoadSceneAsync("RoomScene");
-    }
-
-    public IEnumerator ShowError()
-    {
-        error.SetActive(true);
-        yield return new WaitForSeconds(5f);
-        error.SetActive(false);
+        else
+        {
+            _roomType = string.IsNullOrEmpty(Password.text) ? RoomType.Public : RoomType.Private;
+            PlayerCreateRoomRequest playerCreateRoomRequest = new PlayerCreateRoomRequest
+            {
+                RoomName = RoomName.text,
+                GameMode = (short)_gameMode,
+                RoomType = (short)_roomType,
+                Password = Password.text,
+                MapID = RoomScene.img,
+            };
+            //Debug.Log(playerCreateRoomRequest.RoomName);
+            //Debug.Log(playerCreateRoomRequest.GameMode);
+            //Debug.Log(playerCreateRoomRequest.RoomType);
+            //Debug.Log(playerCreateRoomRequest.Password);
+            NetworkManager.Instance.SendMessage(playerCreateRoomRequest);
+            CreateRoomUI.Instance.ShowPvPCanvas();
+        }
     }
 
     public void OnPvP()
     {
-        pvp = true;
-
+        _gameMode = GameMode.PvP;
     }
 
     public void OnCoop()
     {
-        pvp = false;
+        _gameMode = GameMode.Coop;
     }
 }

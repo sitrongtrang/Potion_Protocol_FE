@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -11,6 +12,8 @@ public class LoadingScreenUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _progressText;
     private float _speed = 0.5f;
     private float _currentProgress = 0f;
+    public Action OnSceneExit;
+    public Action OnSceneEnter;
     public static LoadingScreenUI Instance { get; private set; }
 
     void Awake()
@@ -29,7 +32,7 @@ public class LoadingScreenUI : MonoBehaviour
     public IEnumerator RenderLoadingScene(List<AsyncOperation> loadingOperations)
     {
         _currentProgress = 0f;
-
+        OnSceneExit?.Invoke();
         // Loop until all operations are done
         while (loadingOperations.Exists(op => !op.isDone))
         {
@@ -64,6 +67,7 @@ public class LoadingScreenUI : MonoBehaviour
 
         _progressBar.value = 1f;
         _progressText.text = "100%";
+        OnSceneEnter?.Invoke();
         gameObject.SetActive(false);
     }
 }

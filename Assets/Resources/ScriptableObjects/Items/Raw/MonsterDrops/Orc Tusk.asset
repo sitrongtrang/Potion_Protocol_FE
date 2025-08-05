@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Orc Tusk
   _icon: {fileID: 6003512801403458610, guid: 5baadef4b57a8ab42838bad96b712f13, type: 3}
-  _id: I2
+  _id: I4
   _type: 0
   _droppedBy: {fileID: 11400000, guid: 633df65d44353ef4bae4a2d6e85e8b70, type: 2}
   _expireTime: 30

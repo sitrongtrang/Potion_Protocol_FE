@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Coins
   _icon: {fileID: 3659094839734951899, guid: 754ed49a3daa03e48af644ea09e5c3be, type: 3}
-  _id: I5
+  _id: I3
   _type: 0
   _droppedBy: {fileID: 11400000, guid: 8ae4d85b5d49c874a8ca09ecdad0fce3, type: 2}
   _expireTime: 30

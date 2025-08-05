@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Skeleton
   _icon: {fileID: 8190107228005013420, guid: f113fd8b4ca73ea4999955efa48a190d, type: 3}
-  _id: M1
+  _id: Mo2
   _hp: 4
   _speed: 3
   _damage: 1

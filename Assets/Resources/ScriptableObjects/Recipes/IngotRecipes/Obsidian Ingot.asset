@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: 
   _icon: {fileID: 0}
-  _id: R13
+  _id: C13
   _craftingTime: 5
   _type: 0
   _product: {fileID: 11400000, guid: e228a74a8068dca4fb4514ed8e96cd8d, type: 2}

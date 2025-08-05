@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66fc6c15e23d5c14ebe8c5270ee5fe6b, type: 3}
+  m_Name: Speed Potion Recipe
+  m_EditorClassIdentifier: 
+  _name: 
+  _icon: {fileID: 4373826421667794598, guid: 3f6e16228da8b4044b1a3d273a8bd261, type: 3}
+  _id: C11
+  _craftingTime: 8
+  _type: 1
+  _product: {fileID: 11400000, guid: 3db07630d5bb5dc49aecfbe992ac5fd6, type: 2}
+  _inputs:
+  - {fileID: 11400000, guid: 2d919b3f6ab92a540b5f06c93b662660, type: 2}

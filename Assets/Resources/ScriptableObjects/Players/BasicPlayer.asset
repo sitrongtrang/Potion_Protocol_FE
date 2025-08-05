@@ -16,10 +16,13 @@ MonoBehaviour:
   _dashCooldown: 1
   _dashSpeed: 20
   _dashTime: 0.1
-  _attackCooldown: 0.5
+  _attackCooldown: 1
   _attackDelay: 0.2
   _skillsCooldown:
   - 2
   - 5
   - 7
-  _prefab: {fileID: 3025303744561858338, guid: fae7a45408e97ce489e6df3c409e8d82, type: 3}
+  _skills:
+  - {fileID: 11400000, guid: cab98ae966622244587604e6dccbced4, type: 2}
+  - {fileID: 11400000, guid: e34f1d4ba434b27448891eadceb07d6e, type: 2}
+  - {fileID: 11400000, guid: 8ecaa36e9419ef64e90e6c6bf0e52598, type: 2}

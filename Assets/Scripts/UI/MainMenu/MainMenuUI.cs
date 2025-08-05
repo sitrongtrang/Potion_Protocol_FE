@@ -42,7 +42,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void OnPvpPlay()
     {
-        ShowNotImplemented();
+        SceneManager.LoadSceneAsync("CreateRoomScene");
     }
 
     public void OnSettings(int tab)

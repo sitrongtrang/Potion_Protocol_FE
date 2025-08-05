@@ -24,4 +24,7 @@ public class PlayerConfig : ScriptableObject
 
     [SerializeField] private float[] _skillsCooldown;
     public float[] SkillsCoolDown => _skillsCooldown;
+
+    [SerializeField] private SkillConfig[] _skills;
+    public SkillConfig[] Skills => _skills;
 }

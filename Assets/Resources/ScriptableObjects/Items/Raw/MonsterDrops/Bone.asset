@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Bone
   _icon: {fileID: 4056058344551517612, guid: 190c94bb0c3de9a4183ec22025b3fa46, type: 3}
-  _id: I6
+  _id: I2
   _type: 0
-  _droppedBy: {fileID: 11400000, guid: 25d56e5f71585b143812fbba8bd27b91, type: 2}
+  _droppedBy: {fileID: 11400000, guid: dcdc772e97cc50d419f0c440169fb468, type: 2}
   _expireTime: 30

@@ -14,5 +14,7 @@ public class PlayerCreateRoomRequest : ClientMessage
     public short RoomType;
     [FieldOrder(3)]
     public string Password;
+    [FieldOrder(4)]
+    public int MapID;
     public PlayerCreateRoomRequest() : base(NetworkMessageTypes.Client.Pregame.CreateRoom) { }
 }

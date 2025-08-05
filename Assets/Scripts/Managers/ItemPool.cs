@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class ItemPool : MonoBehaviour
 {
-    [SerializeField] private List<ItemController> _itemPrefabs;
+    private List<ItemController> _itemPrefabs;
     private Dictionary<ItemConfig, ItemController> _itemPrefabMap;
     private Queue<ItemController> _activeItems = new Queue<ItemController>();
+    public ItemController[] ActiveItems => _activeItems.ToArray();
     private Dictionary<string, Queue<ItemController>> _pooledObjects = new Dictionary<string, Queue<ItemController>>();
     public static ItemPool Instance { get; private set; }
 
@@ -18,6 +19,11 @@ public class ItemPool : MonoBehaviour
         }
 
         Instance = this;
+    }
+
+    public void Initialize(LevelConfig config)
+    {
+        _itemPrefabs = config.ItemPrefabs;
     }
 
     public ItemController SpawnItem(ItemConfig config, Vector2 position)

@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/TestTcp.unity.meta
 guid: ad19ca763e3d8ce49b3e7b6ba6af35e0
+========
+guid: 60044cf8f1a09d948b59c269f7341a8d
+folderAsset: yes
+>>>>>>>> main:Assets/Scripts/ScriptableObjects/Skills.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

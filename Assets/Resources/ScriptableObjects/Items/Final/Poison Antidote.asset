@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Poison Antidote
   _icon: {fileID: -7140839936942803760, guid: 577ab485cb38b0b45b0317a97d72eab5, type: 3}
-  _id: P2
+  _id: I32
   _type: 2
   _droppedBy: {fileID: 11400000, guid: 5dc6048ea1bd93d4b8f0a2a8e1fccdfd, type: 2}
   _expireTime: 30

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Mana Potion
   _icon: {fileID: 1352937985377501293, guid: 95c944f5aff0d404cafcbaf7de5ac44c, type: 3}
-  _id: P3
+  _id: I33
   _type: 2
   _droppedBy: {fileID: 11400000, guid: e46837390b24d6b4f994a000e883409b, type: 2}
   _expireTime: 30

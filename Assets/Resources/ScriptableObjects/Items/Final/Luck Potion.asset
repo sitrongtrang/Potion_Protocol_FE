@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Luck Potion
   _icon: {fileID: 1730548010129319703, guid: ba9e5352ecd25644db2e4b2f0a4511e6, type: 3}
-  _id: 
+  _id: I40
   _type: 2
   _droppedBy: {fileID: 11400000, guid: 28d6fb0daa84a844ca9eeb2c48bbe42d, type: 2}
-  _expireTime: 0
+  _expireTime: 30
   _craftPlace: {fileID: 8142887963223585860, guid: 684fc6f7c36189c448a0c8bda50c5af0, type: 3}

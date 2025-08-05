@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/LoginScene.unity
+    guid: c389ac0d0e0b9b44d87c1b96bf66e50b
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: bb49eec44cccf404696f13e7093f67d6
   - enabled: 1
@@ -26,12 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestTcp.unity
     guid: ad19ca763e3d8ce49b3e7b6ba6af35e0
-  - enabled: 0
-    path: Assets/Scenes/CreateSceen.unity
-    guid: b3b4dcb28dff86e40878378f8fc7c036
   - enabled: 1
-    path: Assets/Scenes/RoomScene.unity
-    guid: 13a52fcef80cbd64682217fb55b6db78
+    path: Assets/Scenes/CreateRoomScene.unity
+    guid: da1abb9143e31004190065194373ca5e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

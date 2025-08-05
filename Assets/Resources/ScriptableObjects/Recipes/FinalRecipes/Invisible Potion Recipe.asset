@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66fc6c15e23d5c14ebe8c5270ee5fe6b, type: 3}
+  m_Name: Invisible Potion Recipe
+  m_EditorClassIdentifier: 
+  _name: 
+  _icon: {fileID: 556106705219643962, guid: 72d2efe4d558f2f45a93793ed8e2a6e8, type: 3}
+  _id: C7
+  _craftingTime: 8
+  _type: 1
+  _product: {fileID: 11400000, guid: 23842f1651d3f314aa0a3c3558621500, type: 2}
+  _inputs:
+  - {fileID: 11400000, guid: aae89725aa772264b820dc5a80b52a1e, type: 2}
