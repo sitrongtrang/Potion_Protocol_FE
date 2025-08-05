@@ -4,8 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class SearchRoomByName : MonoBehaviour
 {
-    public Transform contentParent;
     public TMP_InputField searchInput;
+
+    private Coroutine _searchRoom;
 
     void Start()
     {
@@ -14,17 +15,15 @@ public class SearchRoomByName : MonoBehaviour
 
     public void FilterRooms(string keyword)
     {
-        keyword = keyword.ToLower();
+        if (string.IsNullOrEmpty(keyword)) return;
+        if (_searchRoom != null) StopCoroutine(_searchRoom);
+        _searchRoom = StartCoroutine(CreateRoomUI.Instance.HandleRefresh());
 
-        foreach (Transform roomButton in contentParent)
+        NetworkManager.Instance.SendMessage(new PlayerGetRoomByNameRequest
         {
-            TextMeshProUGUI roomName = roomButton.GetComponentInChildren<TextMeshProUGUI>();
+            roomName = keyword,
+        });
 
-            if (roomName != null)
-            {
-                bool isMatch = roomName.text.ToLower().Contains(keyword);
-                roomButton.gameObject.SetActive(isMatch);
-            }
-        }
+        CreateRoomUI.Instance.Refreshed();
     }
 }

@@ -1,11 +1,24 @@
-﻿using TMPro;
+﻿using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
+[System.Serializable]
+public class Person
+{
+    public TMP_Text Name;
+    public TMP_Text ID;
+    public Image ReadyIcon;
+}
 
 public class RoomHandler : MonoBehaviour
 {
     [SerializeField] private RoomListRenderer _roomListRenderer;
     [SerializeField] private RoomScene _roomScene;
-    public TMP_Text[] Person;
+    [SerializeField] private Person[] Person;
+
+    private bool _inRoom = false;
+
     private void OnEnable()
     {
         NetworkEvents.OnMessageReceived += HandleNetworkMessage;
@@ -35,10 +48,14 @@ public class RoomHandler : MonoBehaviour
                 Debug.Log("Not In Room");
                 break;
             case NetworkMessageTypes.Server.Room.PlayerJoined:
-                OnJoinRoomResponse((ServerInRoom)message);
+                OnJoinRoomResponse((ServerJoinRoom)message);
                 break;
             case NetworkMessageTypes.Server.Room.RoomInvalidPassword:
                 Debug.Log("Invalid Password");
+                break;
+            case NetworkMessageTypes.Server.Room.RoomNotExist:
+                Debug.Log("Room not exist");
+                NetworkManager.Instance.SendMessage(new PlayerGetAllRoomRequest());
                 break;
             case NetworkMessageTypes.Server.Room.PlayerLeft:
                 OnLeftRoomResponse((ServerPlayerLeft)message);
@@ -52,8 +69,8 @@ public class RoomHandler : MonoBehaviour
             case NetworkMessageTypes.Server.Room.GetRoomInfo:
                 OnGetRoomInfoResponse((ServerGetRoomInfo)message);
                 break;
-            case NetworkMessageTypes.Server.Room.GetRoomByID:
-                OnGetRoomByIDResponse((ServerGetRoomByID)message);
+            case NetworkMessageTypes.Server.Room.GetRoomByName:
+                OnGetRoomByNameResponse((ServerGetRoomByName)message);
                 break;
             case NetworkMessageTypes.Server.Room.GetAllRoom:
                 OnGetAllRoomResponse((ServerGetAllRoom)message);
@@ -72,55 +89,85 @@ public class RoomHandler : MonoBehaviour
     private void OnCreateRoomResponse(ServerCreateRoom msg)
     {
         Debug.Log($"Server đã tạo phòng: {msg.RoomID}");
-        _roomScene.ChooseImage();
-        CreateRoomUI.Instance.ShowPvPCanvas();
-        NetworkManager.Instance.SendMessage(new PlayerGetRoomInfoRequest{});
+        NetworkManager.Instance.SendMessage(new PlayerGetRoomInfoRequest());
     }
 
-    private void OnJoinRoomResponse(ServerInRoom msg)
+    private void OnJoinRoomResponse(ServerJoinRoom msg)
     {
         Debug.Log("Player Join Room");
+        // pop-up thông báo người chơi mới xuất hiện
 
+        NetworkManager.Instance.SendMessage(new PlayerGetRoomInfoRequest { });
     }
 
     private void OnLeftRoomResponse(ServerPlayerLeft msg)
     {
         Debug.Log("Leave Room");
-
+        _inRoom = false;
+        for (int i = 0; i < Person.Length; i++)
+        {
+            if (string.Compare(msg.UserID, Person[i].ID.text) == 0)
+            {
+                _roomScene.SetPersonRoom(null, Person[i].ID);
+                _roomScene.SetPersonRoom(null, Person[i].Name);
+                break;
+            }
+        }
     }
 
     private void OnPlayerReadyResponse(ServerPlayerReady msg)
     {
         Debug.Log("Player Ready");
-
+        for (int i = 0; i < Person.Length; i++)
+        {
+            if (string.Compare(msg.UserID, Person[i].ID.text) == 0)
+            {
+                CreateRoomUI.Instance.SetImageAlpha(255f, Person[i].ReadyIcon);
+                break;
+            }
+        }
     }
 
     private void OnPlayerUnReadyResponse(ServerPlayerUnReady msg)
     {
         Debug.Log("Player UnReady");
-
+        for (int i = 0; i < Person.Length; i++)
+        {
+            if (string.Compare(msg.UserID, Person[i].ID.text) == 0)
+            {
+                CreateRoomUI.Instance.SetImageAlpha(0f, Person[i].ReadyIcon);
+                break;
+            }
+        }
     }
 
     private void OnGetRoomInfoResponse(ServerGetRoomInfo msg)
     {
         Debug.Log("Get Room Info");
-        Debug.Log(msg.Room.PlayerList[0]);
+        _roomScene.ChooseImage(msg.Room.MapID);
         for (int i = 0; i < msg.Room.PlayerList.Length; i++)
         {
-            _roomScene.SetPersonRoomName(msg.Room.PlayerList[i].PlayerDisPlayName, Person[i]);
+            _roomScene.SetPersonRoom(msg.Room.PlayerList[i].PlayerDisPlayName, Person[i].Name);
+            _roomScene.SetPersonRoom(msg.Room.PlayerList[i].PlayerID, Person[i].ID);
         }
-        _roomScene.SetRoomID(msg.Room.RoomID);
+        _roomScene.SetRoomName(msg.Room.RoomName);
+        if (!_inRoom)
+        {
+            CreateRoomUI.Instance.ShowPvPCanvas();
+            _inRoom = true;
+        }
     }
 
-    private void OnGetRoomByIDResponse(ServerGetRoomByID msg)
+    private void OnGetRoomByNameResponse(ServerGetRoomByName msg)
     {
-        Debug.Log("Get Room By ID");
-        _roomListRenderer.RenderRooms(new RoomInfo[] { msg.Room });
+        Debug.Log("Get Room By Name");
+        _roomListRenderer.RenderRooms(msg.Room);
     }
 
     private void OnGetAllRoomResponse(ServerGetAllRoom msg)
     {
         Debug.Log("Get All Room");
+        if (msg.Room != null && msg.Room.Length > 0) Debug.Log(msg.Room[0].RoomName);
         CreateRoomUI.Instance.Refreshed();
         _roomListRenderer.RenderRooms(msg.Room);
     }

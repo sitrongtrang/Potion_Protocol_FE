@@ -47,10 +47,13 @@ public static class Serialization
             NetworkMessageTypes.Client.Pregame.CreateRoom => BinarySerializer.SerializeToBytes((PlayerCreateRoomRequest)message),
             NetworkMessageTypes.Client.Pregame.JoinRoom => BinarySerializer.SerializeToBytes((PlayerJoinRoomRequest)message),
             NetworkMessageTypes.Client.Pregame.LeaveRoom => BinarySerializer.SerializeToBytes((PlayerLeaveRoom)message),
-
+            
             NetworkMessageTypes.Client.Pregame.GetRoomInfo => BinarySerializer.SerializeToBytes((PlayerGetRoomInfoRequest)message),
-            NetworkMessageTypes.Client.Pregame.GetRoomByID => BinarySerializer.SerializeToBytes((PlayerGetRoomByIDRequest)message),
+            NetworkMessageTypes.Client.Pregame.GetRoomByName => BinarySerializer.SerializeToBytes((PlayerGetRoomByNameRequest)message),
             NetworkMessageTypes.Client.Pregame.GetAllRoom => BinarySerializer.SerializeToBytes((PlayerGetAllRoomRequest)message),
+
+            NetworkMessageTypes.Client.Pregame.Ready => BinarySerializer.SerializeToBytes((PlayerReady)message),
+            NetworkMessageTypes.Client.Pregame.Unready => BinarySerializer.SerializeToBytes((PlayerUnready)message),
 
             NetworkMessageTypes.Client.Pregame.StartGame => BinarySerializer.SerializeToBytes((PlayerStartGameRequest)message),
 
@@ -105,14 +108,13 @@ public static class Serialization
             // NetworkMessageTypes.System.Kick => BinarySerializer.DeserializeFromBytes<KickMessage>(payloadBytes)
 
             NetworkMessageTypes.Server.Room.CreateRoom => BinarySerializer.DeserializeFromBytes<ServerCreateRoom>(payloadBytes),
-            NetworkMessageTypes.Server.Room.RoomFull => BinarySerializer.DeserializeFromBytes<ServerRoomFull>(payloadBytes),
-            NetworkMessageTypes.Server.Room.PlayerJoined => BinarySerializer.DeserializeFromBytes<ServerInRoom>(payloadBytes),
+            NetworkMessageTypes.Server.Room.PlayerJoined => BinarySerializer.DeserializeFromBytes<ServerJoinRoom>(payloadBytes),
             NetworkMessageTypes.Server.Room.PlayerLeft => BinarySerializer.DeserializeFromBytes<ServerPlayerLeft>(payloadBytes),
             NetworkMessageTypes.Server.Room.Ready => BinarySerializer.DeserializeFromBytes<ServerPlayerReady>(payloadBytes),
             NetworkMessageTypes.Server.Room.UnReady => BinarySerializer.DeserializeFromBytes<ServerPlayerUnReady>(payloadBytes),
 
             NetworkMessageTypes.Server.Room.GetRoomInfo => BinarySerializer.DeserializeFromBytes<ServerGetRoomInfo>(payloadBytes),
-            NetworkMessageTypes.Server.Room.GetRoomByID => BinarySerializer.DeserializeFromBytes<ServerGetRoomByID>(payloadBytes),
+            NetworkMessageTypes.Server.Room.GetRoomByName => BinarySerializer.DeserializeFromBytes<ServerGetRoomByName>(payloadBytes),
             NetworkMessageTypes.Server.Room.GetAllRoom => BinarySerializer.DeserializeFromBytes<ServerGetAllRoom>(payloadBytes),
 
             NetworkMessageTypes.Server.Pregame.StartGame => BinarySerializer.DeserializeFromBytes<ServerStartGame>(payloadBytes),

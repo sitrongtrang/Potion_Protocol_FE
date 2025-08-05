@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+#if UNITY_EDITOR
 public class FontReplacer : EditorWindow
 {
     private const string EditorPrefsKey = "Utilities.FontReplacer";
@@ -118,3 +119,4 @@ public class FontReplacer : EditorWindow
         return path;
     }
 }
+#endif

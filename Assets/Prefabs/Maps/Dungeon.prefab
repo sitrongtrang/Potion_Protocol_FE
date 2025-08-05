@@ -11983,6 +11983,10 @@ MonoBehaviour:
   mapGameObject: {fileID: 4130166079983457268}
   tilemaps:
   - {fileID: 5606802352922682915}
+  nonTriggerList:
+    colliders: []
+  triggerList:
+    colliders: []
 --- !u!1 &4149918817601353991
 GameObject:
   m_ObjectHideFlags: 0

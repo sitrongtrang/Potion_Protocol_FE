@@ -1,28 +1,50 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class RoomScene : MonoBehaviour
 {
-    public Image TargetImage;
-    public Sprite[] NewSprite;
+    [SerializeField] private Image TargetImage;
+    [SerializeField] private Sprite[] NewSprite;
+    [SerializeField] private TMP_Text RoomID;
+
     public static int img = 0;
-    public TMP_Text RoomID;
+    private bool _ready = false;
 
-    public void ChooseImage()
+    public void ChooseImage(int image)
     {
-        TargetImage.sprite = NewSprite[img];
-        Debug.Log("Img: " + img);
+        TargetImage.sprite = NewSprite[image];
+        Debug.Log("Img: " + image);
     }
 
-    public void SetPersonRoomName(string newName, TMP_Text Person)
+    public void SetPersonRoom(string newText, TMP_Text Person)
     {
-        Person.text = newName;
+        Person.text = newText;
     }
 
-    public void SetRoomID(string newID)
+    public void SetRoomName(string newName)
     {
-        RoomID.text = "Room ID: " + newID;
+        RoomID.text = "Room Name: " + newName;
+    }
+
+    public void OnLeaveRoom()
+    {
+        NetworkManager.Instance.SendMessage(new PlayerUnready());
+        NetworkManager.Instance.SendMessage(new PlayerLeaveRoom());
+        CreateRoomUI.Instance.ShowRoomListCanvas();
+        CreateRoomUI.Instance.OnRefreshButtonClicked();
+    }
+
+    public void OnReadyRoom()
+    {
+        _ready = !_ready;
+        if (_ready)
+        {
+            NetworkManager.Instance.SendMessage(new PlayerReady());
+        }
+        else
+        {
+            NetworkManager.Instance.SendMessage(new PlayerUnready());
+        }
     }
 }

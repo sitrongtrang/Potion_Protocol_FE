@@ -17,9 +17,9 @@ public static class NetworkMessageTypes
             public const short JoinRoom = 401;
             public const short LeaveRoom = 402;
             public const short Ready = 403;
-            public const short UnReady = 404;
+            public const short Unready = 404;
             public const short GetRoomInfo = 406;
-            public const short GetRoomByID = 407;
+            public const short GetRoomByName = 410;
             public const short GetAllRoom = 408;
         }
 
@@ -54,7 +54,7 @@ public static class NetworkMessageTypes
             public const short UnReady = 704;
 
             public const short GetRoomInfo = 707;
-            public const short GetRoomByID = 708;
+            public const short GetRoomByName = 711;
             public const short GetAllRoom = 709;
 
             public const short RoomFull = 750;
@@ -62,6 +62,7 @@ public static class NetworkMessageTypes
             public const short NotInRoom = 753;
             public const short OnlyLeader = 754;
             public const short RoomInvalidPassword = 755;
+            public const short RoomNotExist = 756;
         }
 
         public static class Pregame

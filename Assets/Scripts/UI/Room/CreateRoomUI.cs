@@ -6,16 +6,17 @@ using UnityEngine.UI;
 
 public class CreateRoomUI : MonoBehaviour
 {
-    public Canvas CreateRoomCanvas;
-    public Canvas RoomListCanvas;
-    public Canvas PrivateRoomCanvas;
-    public Canvas PvPCanvas;
-    private static List<SelectableImage> _allImages = new List<SelectableImage>();
-    public Animator RefreshAnimator;
-    public Button RefreshButton;
+    [Header("Canvas")]
+    [SerializeField] private Canvas _createRoomCanvas;
+    [SerializeField] private Canvas _roomListCanvas;
+    [SerializeField] private Canvas _pvpCanvas;
+    [Header("Refresh")]
+    [SerializeField] private Animator _refreshAnimator;
+    [SerializeField] private Button _refreshButton;
     private Coroutine _refreshRoom;
     private bool _doneRefresh = false;
 
+    private static List<SelectableImage> _allImages = new List<SelectableImage>();
     public static CreateRoomUI Instance { get; private set; }
 
     void Awake()
@@ -64,7 +65,7 @@ public class CreateRoomUI : MonoBehaviour
 
     private void SwitchCanvases(Canvas canvasToShow)
     {
-        List<Canvas> allCanvases = new List<Canvas> { CreateRoomCanvas, RoomListCanvas, PrivateRoomCanvas, PvPCanvas };
+        List<Canvas> allCanvases = new List<Canvas> { _createRoomCanvas, _roomListCanvas, _pvpCanvas };
 
         foreach (var canvas in allCanvases)
         {
@@ -75,22 +76,17 @@ public class CreateRoomUI : MonoBehaviour
 
     public void ShowCreateRoomCanvas()
     {
-        SwitchCanvases(CreateRoomCanvas);
+        SwitchCanvases(_createRoomCanvas);
     }
 
     public void ShowRoomListCanvas()
     {
-        SwitchCanvases(RoomListCanvas);
-    }
-
-    public void ShowPrivateRoomCanvas()
-    {
-        SwitchCanvases(PrivateRoomCanvas);
+        SwitchCanvases(_roomListCanvas);
     }
 
     public void ShowPvPCanvas()
     {
-        SwitchCanvases(PvPCanvas);
+        SwitchCanvases(_pvpCanvas);
     }
 
     public void OnRefreshButtonClicked()
@@ -100,15 +96,15 @@ public class CreateRoomUI : MonoBehaviour
         _refreshRoom = StartCoroutine(HandleRefresh());
     }
 
-    private IEnumerator HandleRefresh()
+    public IEnumerator HandleRefresh()
     {
-        RefreshAnimator.SetBool("isRefreshing", true);
-        RefreshButton.interactable = false;
+        _refreshAnimator.SetBool("IsRefresh", true);
+        _refreshButton.interactable = false;
 
         yield return new WaitUntil(() => _doneRefresh);
 
-        RefreshAnimator.SetBool("isRefreshing", false);
-        RefreshButton.interactable = true;
+        _refreshAnimator.SetBool("IsRefresh", false);
+        _refreshButton.interactable = true;
         _doneRefresh = false;
 
         yield break;
@@ -123,5 +119,14 @@ public class CreateRoomUI : MonoBehaviour
     public void Refreshed()
     { 
         _doneRefresh = true; 
+    }
+
+    public void SetImageAlpha(float alphaValue, Image targetImage)
+    {
+        if (targetImage != null) {
+            Color currentColor = targetImage.color;
+            currentColor.a = alphaValue;
+            targetImage.color = currentColor;
+        }
     }
 }

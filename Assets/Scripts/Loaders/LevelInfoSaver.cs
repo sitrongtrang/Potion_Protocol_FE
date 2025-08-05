@@ -59,15 +59,15 @@ public class LevelInfoSaver : MonoBehaviour
 
     private LevelData _levelData;
 
-    void OnEnable()
-    {
-        LevelManager.Instance.OnLevelInitialized += SaveData;
-    }
+    //void OnEnable()
+    //{
+    //    LevelManager.Instance.OnLevelInitialized += SaveData;
+    //}
 
-    void OnDisable()
-    {
-        LevelManager.Instance.OnLevelInitialized -= SaveData;
-    }
+    //void OnDisable()
+    //{
+    //    LevelManager.Instance.OnLevelInitialized -= SaveData;
+    //}
 
     public void SaveData(LevelConfig config, GameObject mapObject)
     {

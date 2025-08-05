@@ -1,11 +1,5 @@
-﻿using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public enum RoomType
 {
@@ -15,18 +9,18 @@ public enum RoomType
 
 public enum GameMode
 {
-    PvP,
-    Coop
+    Coop,
+    PvP
 }
 
 public class CreateRoom : MonoBehaviour
 {
-    public TMP_InputField RoomName;
-    public TMP_InputField Password;
+    [SerializeField] private GameObject Error;
+    [SerializeField] private TMP_InputField RoomName;
+    [SerializeField] private TMP_InputField Password;
     private GameMode _gameMode;
     private RoomType _roomType;
     private Coroutine _roomNameError;
-    public GameObject Error;
 
     public void OnRoomScene()
     {
@@ -44,8 +38,14 @@ public class CreateRoom : MonoBehaviour
                 GameMode = (short)_gameMode,
                 RoomType = (short)_roomType,
                 Password = Password.text,
+                MapID = RoomScene.img,
             };
+            //Debug.Log(playerCreateRoomRequest.RoomName);
+            //Debug.Log(playerCreateRoomRequest.GameMode);
+            //Debug.Log(playerCreateRoomRequest.RoomType);
+            //Debug.Log(playerCreateRoomRequest.Password);
             NetworkManager.Instance.SendMessage(playerCreateRoomRequest);
+            CreateRoomUI.Instance.ShowPvPCanvas();
         }
     }
 

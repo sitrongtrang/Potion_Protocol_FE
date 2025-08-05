@@ -14,6 +14,8 @@ public class RoomInfo
     public int CurrentPlayers;
     [FieldOrder(6)]
     public PlayerInfo[] PlayerList;
+    [FieldOrder(7)]
+    public int MapID;
 }
 
 public class PlayerInfo
