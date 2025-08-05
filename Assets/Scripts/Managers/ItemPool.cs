@@ -20,11 +20,6 @@ public class ItemPool : MonoBehaviour
         Instance = this;
     }
 
-    public ItemConfig MapIdToConfig(string itemId)
-    {
-        return null; //TODO: implement actual logic for mapping
-    }
-
     public ItemController SpawnItem(ItemConfig config, Vector2 position)
     {
         // Exceed cap
