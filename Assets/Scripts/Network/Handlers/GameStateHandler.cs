@@ -6,14 +6,23 @@ using UnityEngine;
 public class GameStateHandler : MonoBehaviour
 {
     [Header("Prefabs")]
-    [SerializeField] private ScriptableObjectMapping _prafabsMap;
+    private ScriptableObjectMapping _prafabsMap;
 
     private GameStateNetworkInterpolator _interpolator = new(NetworkConstants.NET_INTERPOLATION_BUFFER_SIZE);
-    
+
     private Dictionary<string, TrackedObject> _enemyMap = new();
     private Dictionary<string, TrackedObject> _itemSourceMap = new();
     private Dictionary<string, TrackedObject> _itemMap = new();
     private Dictionary<string, TrackedObject> _stationMap = new();
+
+    void Start()
+    {
+        _prafabsMap = (ScriptableObjectMapping)ScriptableObject.CreateInstance(typeof(ScriptableObjectMapping));
+        List<ScriptableObject> scriptableObjects = new();
+        PrepareConfigs(scriptableObjects);
+        _prafabsMap.InitializeMap(scriptableObjects.ToArray());
+    }
+
     void FixedUpdate()
     {
         _interpolator.IncrementAndInterpolate(
@@ -40,7 +49,8 @@ public class GameStateHandler : MonoBehaviour
         Dictionary<string, GameStateInterpolateData.EntityInfo> data,
         Dictionary<string, TrackedObject> current,
         NetworkBehaviour prefab
-    ) {
+    )
+    {
         List<string> keysToRemove = new();
         foreach (var kvp in current)
         {
@@ -90,5 +100,35 @@ public class GameStateHandler : MonoBehaviour
     private void HandleGameStates(GameStatesUpdate gameStates)
     {
         _interpolator.Store(gameStates.GameStates, null);
+    }
+
+    private void PrepareConfigs(List<ScriptableObject> scriptableObjects)
+    {
+        LevelConfig levelConfig = LevelManager.Instance.Config;
+        for (int i = 0; i < levelConfig.Enemies.Count; i++)
+        {
+            scriptableObjects.Add(levelConfig.Enemies[i]);
+            scriptableObjects.Add(levelConfig.Enemies[i].Item);
+        }
+        for (int i = 0; i < levelConfig.ItemSources.Count; i++)
+        {
+            scriptableObjects.Add(levelConfig.ItemSources[i].Config);
+            scriptableObjects.Add(levelConfig.ItemSources[i].Config.DroppedItem);
+        }
+        for (int i = 0; i < levelConfig.IngotRecipes.Count; i++)
+        {
+            scriptableObjects.Add(levelConfig.IngotRecipes[i]);
+            scriptableObjects.Add(levelConfig.IngotRecipes[i].Product);
+        }
+        for (int i = 0; i < levelConfig.FinalRecipes.Count; i++)
+        {
+            scriptableObjects.Add(levelConfig.FinalRecipes[i]);
+            scriptableObjects.Add(levelConfig.FinalRecipes[i].Product);
+        }
+        StationController[] stationControllers = LevelManager.Instance.Map.GetComponentsInChildren<StationController>();
+        for (int i = 0; i < stationControllers.Length; i++)
+        {
+            scriptableObjects.Add(stationControllers[i].Config);
+        }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ScriptableObjectMapping", menuName = "Scriptable Objects/ScriptableObjectMapping")]
@@ -19,11 +20,11 @@ public class ScriptableObjectMapping : ScriptableObject
     [SerializeField] private NetworkBehaviour _stationPrefab;
 
     [Header("Mappings")]
-    [SerializeField] private SOMap[] _enemyMap;
-    [SerializeField] private SOMap[] _itemSourceMap;
-    [SerializeField] private SOMap[] _itemMap;
-    [SerializeField] private SOMap[] _recipeMap;
-    [SerializeField] private SOMap[] _stationMap;
+    [SerializeField] private List<SOMap> _enemyMap;
+    [SerializeField] private List<SOMap> _itemSourceMap;
+    [SerializeField] private List<SOMap> _itemMap;
+    [SerializeField] private List<SOMap> _recipeMap;
+    [SerializeField] private List<SOMap> _stationMap;
 
     // Internal cache for fast lookup
     private Dictionary<string, ScriptableObject> _lookup = new();
@@ -38,7 +39,59 @@ public class ScriptableObjectMapping : ScriptableObject
         CacheMap(_stationMap);
     }
 
-    private void CacheMap(SOMap[] map)
+    public void InitializeMap(ScriptableObject[] scriptableObjects)
+    {
+        for (int i = 0; i < scriptableObjects.Length; i++)
+        {
+            ScriptableObject config = scriptableObjects[i];
+            if (config is EnemyConfig enemyConfig)
+            {
+                _enemyMap.Add(new SOMap()
+                {
+                    Id = enemyConfig.Id,
+                    SO = config
+                });
+            }
+            else if (config is ItemSourceConfig itemSourceConfig)
+            {
+                _itemSourceMap.Add(new SOMap()
+                {
+                    Id = itemSourceConfig.Id,
+                    SO = config
+                });
+            }
+            else if (config is ItemConfig itemConfig)
+            {
+                _itemMap.Add(new SOMap()
+                {
+                    Id = itemConfig.Id,
+                    SO = config
+                });
+            }
+            else if (config is RecipeConfig recipeConfig)
+            {
+                _recipeMap.Add(new SOMap()
+                {
+                    Id = recipeConfig.Id,
+                    SO = config
+                });
+            }
+            else if (config is StationConfig stationConfig)
+            {
+                _stationMap.Add(new SOMap()
+                {
+                    Id = stationConfig.Id,
+                    SO = config
+                });
+            }
+            else
+            {
+                continue;
+            }
+        }
+    }
+
+    private void CacheMap(List<SOMap> map)
     {
         foreach (var entry in map)
         {

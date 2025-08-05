@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
     private LevelConfig _config;
+    public GameObject Map { get; private set; }
     private int _score = 0;
     public int Score
     {
@@ -92,9 +93,9 @@ public class LevelManager : MonoBehaviour
     {
         _timeLeft = config.LevelTime;
 
-        GameObject map = MapLoader.Instance.RenderMap(config.MapPrefab, Vector2.zero);
+        Map = MapLoader.Instance.RenderMap(config.MapPrefab, Vector2.zero);
 
-        (int width, int height, float cellSize, Vector2 origin) = GetMapParameters(map);
+        (int width, int height, float cellSize, Vector2 origin) = GetMapParameters(Map);
         cellSize *= 0.5f;
 
         Pathfinding.Instance.InitializeGrid(width * 2, height * 2, cellSize, origin);
@@ -111,7 +112,7 @@ public class LevelManager : MonoBehaviour
                 PathNode pathNode = Pathfinding.Instance.GetNode(x, y);
                 pathNode.IsWalkable = !isoverlap;
             },
-            map.transform
+            Map.transform
         );
 
         GameObject spawnItemSourceBounds = GameObject.Find("Spawn ItemSource Bounds");
@@ -132,11 +133,11 @@ public class LevelManager : MonoBehaviour
             {
 
             },
-            map.transform
+            Map.transform
         );
 
         // Spawn & initialize stations
-        StationSpawner[] stationSpawners = map.GetComponentsInChildren<StationSpawner>(true);
+        StationSpawner[] stationSpawners = Map.GetComponentsInChildren<StationSpawner>(true);
         for (int i = 0; i < stationSpawners.Length; i++)
         {
             if (stationSpawners[i].Prefab.Config.Type == StationType.Furnace)
@@ -150,7 +151,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // Initialize enemy spawners
-        EnemySpawner[] enemySpawners = map.GetComponentsInChildren<EnemySpawner>(true);
+        EnemySpawner[] enemySpawners = Map.GetComponentsInChildren<EnemySpawner>(true);
         GameObject[] patrolCenters = GameObject.FindGameObjectsWithTag("PatrolCenter");
         List<Transform> positionsToSpawn = new();
         for (int i = 0; i < patrolCenters.Length; i++)
@@ -166,7 +167,7 @@ public class LevelManager : MonoBehaviour
         // Initialize item source spawner
         _itemSourceSpawner.Initialize(_config.ItemSources);
 
-        OnLevelInitialized?.Invoke(_config, map);
+        OnLevelInitialized?.Invoke(_config, Map);
     }
 
     private IEnumerator LevelTimer()
