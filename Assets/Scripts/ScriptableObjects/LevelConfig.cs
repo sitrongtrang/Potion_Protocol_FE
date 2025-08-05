@@ -34,4 +34,7 @@ public class LevelConfig : ScriptableObject
 
     [SerializeField] private int[] _scoreThresholds; // Thresholds for evaluating 1, 2, or 3 stars
     public int[] ScoreThresholds => _scoreThresholds;
+
+    [SerializeField] private List<ItemController> _itemPrefabs;
+    public List<ItemController> ItemPrefabs => _itemPrefabs;
 }

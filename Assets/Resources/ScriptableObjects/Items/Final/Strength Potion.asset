@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Strength Potion
   _icon: {fileID: -3965660968130455405, guid: 7d5694fe12d79264e97761b308250371, type: 3}
-  _id: P5
+  _id: I34
   _type: 2
   _droppedBy: {fileID: 11400000, guid: 1a7fdfc1366b6914ca8a5b494afdaf04, type: 2}
   _expireTime: 30

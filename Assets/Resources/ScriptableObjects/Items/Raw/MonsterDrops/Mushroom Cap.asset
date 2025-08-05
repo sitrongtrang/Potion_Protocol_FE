@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Mushroom Cap
   _icon: {fileID: -537843970168956909, guid: 543597f805766be46b754304d1c6db94, type: 3}
-  _id: I6
+  _id: I5
   _type: 0
   _droppedBy: {fileID: 11400000, guid: 18a07742fe864b642a0234ff2e2a2060, type: 2}
   _expireTime: 30
