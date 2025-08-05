@@ -23,6 +23,7 @@ public class TstController : MonoBehaviour
     [Header("Game Components")]
     public PlayerInventory Inventory { get; private set; }
     public PlayerInteraction Interaction { get; private set; }
+    private PlayerConfig _config;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
 
@@ -40,6 +41,7 @@ public class TstController : MonoBehaviour
         Application.runInBackground = true;
         Identity = GetComponent<NetworkIdentity>();
         _animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
     void Update()
     {
@@ -97,7 +99,7 @@ public class TstController : MonoBehaviour
     #endregion
 
     #region Initialization
-    public void Initialize(InputActionAsset inputManager, string id, bool isLocal)
+    public void Initialize(PlayerConfig config, InputActionAsset inputManager, string id, bool isLocal)
     {
         _inputManager = new PlayerInputManager(inputManager);
         Identity.Initialize(id, isLocal);
@@ -107,6 +109,9 @@ public class TstController : MonoBehaviour
 
         // Inventory.Initialize(this, inputManager);
         // Interaction.Initialize(this, inputManager);
+        _config = config;
+        _animator.runtimeAnimatorController = _config.Anim;
+        _spriteRenderer.sprite = _config.Icon;
     }
     #endregion
 

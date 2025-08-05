@@ -5,6 +5,7 @@ public class StartGameHandler : MonoBehaviour
 {
     [Header("Prefab")]
     [SerializeField] private GameObject _playerPrefab;
+    [SerializeField] private PlayerConfig _playerConfig;
     [SerializeField] private InputActionAsset _inputActionAsset;
     private void OnEnable()
     {
@@ -29,7 +30,7 @@ public class StartGameHandler : MonoBehaviour
             return;
         }
 
-        localPlayerController.Initialize(_inputActionAsset, playerId, isLocal);
+        localPlayerController.Initialize(_playerConfig, _inputActionAsset, playerId, isLocal);
 
         // Additional setup
         if (isLocal)
