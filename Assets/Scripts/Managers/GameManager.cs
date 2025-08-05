@@ -23,4 +23,5 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
     public Func<int, IEnumerator> StartCoolDown;
+    public Action<int> LoadFriendList;
 }
