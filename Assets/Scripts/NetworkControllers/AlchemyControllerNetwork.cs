@@ -96,7 +96,7 @@ public class AlchemyControllerNetwork : NetworkBehaviour
             }
             else
             {
-                ItemConfig itemConfig = IdConfigMapper.MapIdToConfig(itemIds[i]);
+                ItemConfig itemConfig = IdConfigMapper.MapItemIdToConfig(itemIds[i]);
                 _itemsOnTable[i].SetActive(true);
                 _itemsOnTable[i].GetComponent<SpriteRenderer>().sprite = itemConfig.Icon;
             }
