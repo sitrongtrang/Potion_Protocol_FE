@@ -23,6 +23,8 @@ public class TstController : MonoBehaviour
     [Header("Game Components")]
     public PlayerInventory Inventory { get; private set; }
     public PlayerInteraction Interaction { get; private set; }
+    private Animator _animator;
+    private SpriteRenderer _spriteRenderer;
 
     #region Unity Lifecycle
     void OnEnable()
@@ -37,6 +39,7 @@ public class TstController : MonoBehaviour
     {
         Application.runInBackground = true;
         Identity = GetComponent<NetworkIdentity>();
+        _animator = GetComponent<Animator>();
     }
     void Update()
     {
@@ -78,6 +81,15 @@ public class TstController : MonoBehaviour
         {
             _interpolator.IncrementAndInterpolate((serverState) =>
             {
+                bool xChanged = Mathf.Abs(serverState.PositionX - transform.position.x) >= 0.01f;
+                bool yChanged = Mathf.Abs(serverState.PositionY - transform.position.y) >= 0.01f;
+
+                _animator.SetBool("IsMoving", xChanged || yChanged);
+                if (xChanged) _animator.SetFloat("MoveX", 1);
+                else _animator.SetFloat("MoveX", 0);
+                if (yChanged) _animator.SetFloat("MoveY", 1);
+                else _animator.SetFloat("MoveY", 0);
+
                 transform.position = new(serverState.PositionX, serverState.PositionY);
             });
         }
@@ -142,6 +154,9 @@ public class TstController : MonoBehaviour
         _simulator.Simulate(inputSnapshot,
             (inputSnapshot) =>
             {
+                _animator.SetBool("IsMoving", inputSnapshot.MoveDir != Vector2.zero);
+                _animator.SetFloat("MoveX", inputSnapshot.MoveDir.x);
+                _animator.SetFloat("MoveY", inputSnapshot.MoveDir.y);
                 transform.position = transform.position + (Vector3)(5 * Time.fixedDeltaTime * inputSnapshot.MoveDir);
                 return new()
                 {
