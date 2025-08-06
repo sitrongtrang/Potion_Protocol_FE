@@ -9,6 +9,7 @@ public class Person
     public TMP_Text Name;
     public TMP_Text ID;
     public Image ReadyIcon;
+    public Button addButton;
 }
 
 public class RoomHandler : MonoBehaviour
@@ -110,7 +111,7 @@ public class RoomHandler : MonoBehaviour
             {
                 _roomScene.SetPersonRoom(null, Person[i].ID);
                 _roomScene.SetPersonRoom(null, Person[i].Name);
-                break;
+                Person[i].addButton.gameObject.SetActive(false);
             }
         }
     }
@@ -149,6 +150,16 @@ public class RoomHandler : MonoBehaviour
         {
             _roomScene.SetPersonRoom(msg.Room.PlayerList[i].PlayerDisPlayName, Person[i].Name);
             _roomScene.SetPersonRoom(msg.Room.PlayerList[i].PlayerID, Person[i].ID);
+            if (msg.Room.PlayerList[i].PlayerID != NetworkManager.Instance.ClientId && !string.IsNullOrEmpty(msg.Room.PlayerList[i].PlayerDisPlayName))
+            {
+                Debug.Log(msg.Room.PlayerList[i].PlayerDisPlayName);
+                Person[i].addButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                Debug.Log(!string.IsNullOrEmpty(msg.Room.PlayerList[i].PlayerDisPlayName) ? msg.Room.PlayerList[i].PlayerDisPlayName : "NULLLLLLLLLLLLLL");
+                Person[i].addButton.gameObject.SetActive(false);
+            }
         }
         _roomScene.SetRoomName(msg.Room.RoomName);
         if (!_inRoom)

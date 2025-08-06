@@ -6,6 +6,7 @@ Shader "Custom/CircleGlow"
         _GlowColor("Glow Color", Color) = (1, 0.8, 0.3, 1)
         _GlowIntensity("Glow Intensity", Float) = 1.0
         _GlowRange("Glow Range", Range(0.01, 1)) = 0.2
+        _Stencil("Stencil ID", Float) = 0
     }
     SubShader
     {

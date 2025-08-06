@@ -3,8 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class FriendItemUI : MonoBehaviour
 {
-    public GameObject nameText;
-    public GameObject inviteButton;
-    public GameObject removeButton;
-    public GameObject avatarObj; // 1 ring img and avatar child
+    public GameObject NameText;
+    public GameObject InviteButton;
+    public GameObject RemoveButton;
+    public GameObject AvatarObj; // 1 ring img and avatar child
 }
