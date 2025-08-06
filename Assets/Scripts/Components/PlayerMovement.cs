@@ -39,7 +39,7 @@ public class PlayerMovement
         _playerConfig = player.Config;
         _inputManager = inputManager;
         _playerDir = Vector2.down;
-        _directionChangeInterval = 5f * Time.deltaTime;
+        _directionChangeInterval = 1f * Time.deltaTime;
 
         _inputManager.controls.Player.Move.performed += ctx => TryMove(ctx);
         _inputManager.controls.Player.Move.canceled += ctx => CancelMove();

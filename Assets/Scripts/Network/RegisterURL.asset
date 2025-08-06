@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abc00bda93961e247b8adb8b3f208b3b, type: 3}
   m_Name: RegisterURL
   m_EditorClassIdentifier: 
-  _staticURL: 
+  _staticURL: https://localhost:8080/users/register

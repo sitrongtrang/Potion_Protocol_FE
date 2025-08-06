@@ -26,11 +26,11 @@ public class HttpAuthHandler : MonoBehaviour
 
     void Start()
     {
-        // if (NetworkManager.Instance.IsAuthenticated)
-        // {
-        //     NetworkManager.Instance.Authenticate();
-        //     StartCoroutine(LoadMainMenu());
-        // }
+        if (NetworkManager.Instance.IsAuthenticated)
+        {
+            NetworkManager.Instance.Authenticate();
+            StartCoroutine(LoadMainMenu());
+        }
     }
 
     public void OnLoginButtonPressed()
@@ -62,11 +62,13 @@ public class HttpAuthHandler : MonoBehaviour
             // Parse token or user info if needed
 
             LoginSuccess loginSuccess = JsonConvert.DeserializeObject<LoginSuccess>(request.downloadHandler.text);
+            // GameObject networkManager = new GameObject("Network Manager");
+            // networkManager.AddComponent<NetworkManager>();
             NetworkManager.Instance.SetAuthenToken(loginSuccess.LoginSuccessDat.Token);
             NetworkManager.Instance.Authenticate();
 
-            // StartCoroutine(LoadMainMenu());
-            LoadTestScene();
+            StartCoroutine(LoadMainMenu());
+            // LoadTestScene();
         }
         else
         {

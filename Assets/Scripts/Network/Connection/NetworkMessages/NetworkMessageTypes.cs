@@ -10,6 +10,16 @@ public static class NetworkMessageTypes
             public const short TryHeartBeat = 103;
         }
 
+        public static class FriendSystem
+        {
+            public const short GetFriendList = 505;
+            public const short RemoveFriend = 503;
+            // public const short InviteFriend = 
+            public const short SendFriendRequest = 500;
+            public const short AcceptFriendRequest = 501;
+            public const short DeclineFriendRequest = 502;
+            public const short GetFriendRequests = 504;
+        }
         public static class Pregame
         {
             public const short CreateRoom = 400;
@@ -38,6 +48,15 @@ public static class NetworkMessageTypes
 
     public static class Server
     {
+        public static class FriendSystem
+        {
+            public const short GetFriendList = 601;
+            public const short RemoveFriend = 605;
+            public const short SendFriendRequest = 602;
+            public const short AcceptFriendRequest = 603;
+            public const short DeclineFriendRequest = 604;
+            public const short GetFriendRequests = 600;
+        }
         public static class System
         {
             public const short AuthSuccess = 100;
@@ -74,14 +93,13 @@ public static class NetworkMessageTypes
 
         public static class Player
         {
-            public const short Spawn = 17777;
             public const short Connected = 1001;
             public const short Disconnected = 1002;
         }
 
         public static class GameState
         {
-            public const short StateUpdate = 7;
+            public const short StateUpdate = 301;
             public const short ScoreUpdate = 1501;
             public const short TimeUpdate = 1502;
         }

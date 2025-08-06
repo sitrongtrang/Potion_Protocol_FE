@@ -38,6 +38,14 @@ public class ProgressBarUI : MonoBehaviour
         }
     }
 
+    public void SetMaxValue(float value)
+    {
+        if (_slider != null)
+        {
+            _slider.maxValue = value;
+        }
+    }
+
     public void StartProgress(float duration)
     {
         _slider.maxValue = duration;

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Vampire
   _icon: {fileID: -2314506720581648914, guid: 46eb8fff8ee503447bacaad9ebb1b8e7, type: 3}
+  _anim: {fileID: 9100000, guid: 6dee73aa8084f024cb5487768b973a66, type: 2}
   _id: Mo1
   _hp: 6
   _speed: 3

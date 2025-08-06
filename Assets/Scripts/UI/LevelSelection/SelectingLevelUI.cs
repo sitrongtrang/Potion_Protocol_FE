@@ -43,7 +43,7 @@ public class SelectingLevelUI : MonoBehaviour
 
     private IEnumerator LoadGameScene()
     {
-        List<AsyncOperation> opList = new List<AsyncOperation>();
+        List<AsyncOperation> opList = new();
         AsyncOperation loadSceneRequest = SceneManager.LoadSceneAsync("GameScene");
         opList.Add(loadSceneRequest);
 
@@ -62,19 +62,12 @@ public class SelectingLevelUI : MonoBehaviour
 
             GameObject[] rootObjects = loadedScene.GetRootGameObjects();
             LevelManager levelManager = null;
-            ItemPool itemPool = null;
             for (int i = 0; i < rootObjects.Length; i++)
             {
                 levelManager = rootObjects[i].GetComponentInChildren<LevelManager>();
-                itemPool = rootObjects[i].GetComponentInChildren<ItemPool>();
                 if (levelManager)
                 {
                     levelManager.Initialize(loadLevelRequest.asset as LevelConfig);
-                }
-                if (itemPool)
-                {
-                    itemPool.Initialize(loadLevelRequest.asset as LevelConfig);
-                    break;
                 }
             }
 

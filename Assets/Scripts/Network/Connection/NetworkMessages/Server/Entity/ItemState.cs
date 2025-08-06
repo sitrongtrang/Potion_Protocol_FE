@@ -13,6 +13,7 @@ public enum PositionFlag
 public class ItemState
 {
     public string ItemId;
+    public string ItemType;
     public int PositionFlag;
     public float PositionX;
     public float PositionY;

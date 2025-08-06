@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [CreateAssetMenu(fileName = "PlayerConfig", menuName = "Scriptable Objects/PlayerConfig")]
-public class PlayerConfig : ScriptableObject
+public class PlayerConfig : EntityConfig
 {
     [SerializeField] private float _moveSpeed;
     public float MoveSpeed => _moveSpeed;

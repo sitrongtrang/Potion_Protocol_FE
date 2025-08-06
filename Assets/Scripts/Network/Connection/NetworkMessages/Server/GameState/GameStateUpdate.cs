@@ -19,7 +19,7 @@ public class GameStateUpdate : IServerStateSnapshot
     [FieldOrder(2)]
     public StationState[] StationStates;
     [FieldOrder(3)]
-    public AlchemyState AlchemyStte;
+    public AlchemyState AlchemyState;
     [FieldOrder(4)]
     public EnemyState[] EnemyStates;
     [FieldOrder(5)]
@@ -27,7 +27,7 @@ public class GameStateUpdate : IServerStateSnapshot
     [FieldOrder(6)]
     public OreState[] OreStates;
     // [FieldOrder(7)]
-    // public ItemState[] ItemStates;
+    public ItemState[] ItemStates;
     [FieldOrder(7)]
     public int CurrentServerTime;
     //     public int CurrentScore;

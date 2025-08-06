@@ -1,7 +1,11 @@
 public class StationState
 {
     public string StationId;
-    public float CraftTime;
-    public float CraftMaxTime;
+    public string StationType;
+    public float PositionX;
+    public float PositionY;
+    public float CraftTime;
+    public float CraftMaxTime;
+    public bool IsCrafting;
 
 }

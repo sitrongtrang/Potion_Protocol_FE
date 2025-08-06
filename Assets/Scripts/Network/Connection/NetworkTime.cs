@@ -47,7 +47,8 @@ public class NetworkTime : MonoBehaviour
     {
         while (true)
         {
-            SendPing();
+            if (NetworkManager.Instance.IsAuthenticated)
+                SendPing();
             yield return new WaitForSeconds(_pingIntervalInSeconds);
         }
     }

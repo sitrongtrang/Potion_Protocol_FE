@@ -14,30 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mapPrefab: {fileID: 4130166079983457268, guid: f6b54d1ddc9b1e542ba31f136893e932, type: 3}
   _enemies:
-  - {fileID: 3347175494363194931, guid: de680205cfc6b854caba0af3193e40da, type: 3}
-  - {fileID: 3347175494363194931, guid: b54bd8bbe22ca404aa3ed3e1696ec7a8, type: 3}
-  - {fileID: 3347175494363194931, guid: 702c9c998fa896a4590f1f4f20770197, type: 3}
+  - {fileID: 11400000, guid: 99044dd267a0afa45b8b2c1b347cb735, type: 2}
+  - {fileID: 11400000, guid: 8ae4d85b5d49c874a8ca09ecdad0fce3, type: 2}
+  - {fileID: 11400000, guid: dcdc772e97cc50d419f0c440169fb468, type: 2}
   _recipeAddInterval: 15
   _itemSources:
-  - Prefab: {fileID: 5121789824500213990, guid: b99f9c7a1ed4a1a4eb9b866eafbff8fb, type: 3}
+  - Config: {fileID: 11400000, guid: 356e1f12f7c5491468b866d63b0ef2d6, type: 2}
     MaxCapacity: 2
-  - Prefab: {fileID: 7305391699311526871, guid: 7d2e114a78c03d94b900be3a727059fc, type: 3}
+  - Config: {fileID: 11400000, guid: ba8d169c97343a54baed1eeb0eb67834, type: 2}
     MaxCapacity: 2
-  - Prefab: {fileID: 4386955713575216677, guid: 68fcd2b97e656b84f883910796036bbe, type: 3}
+  - Config: {fileID: 11400000, guid: 09f6c3a4b02011240af73deac06ca414, type: 2}
     MaxCapacity: 2
-  - Prefab: {fileID: -8471841874738260667, guid: 19fff1933068f9148b24c7a349c6f9d3, type: 3}
+  - Config: {fileID: 11400000, guid: 83d8ef65d45d0c74e821d0d5428171a6, type: 2}
     MaxCapacity: 2
-  - Prefab: {fileID: -5381856047087532958, guid: 5076e25edf82bb1439c64ded9ed46d01, type: 3}
-    MaxCapacity: 2
-  - Prefab: {fileID: -8549960958713610796, guid: 0f9c16ab1060b5f4cbb75870c42f633c, type: 3}
+  - Config: {fileID: 11400000, guid: 1c1e53c524551c3499025e47be50af82, type: 2}
     MaxCapacity: 2
   _ingotRecipes:
-  - {fileID: 11400000, guid: 2a2283344bd67b742918d65976225e8c, type: 2}
   - {fileID: 11400000, guid: 3f925be79fe65fd4d8c469145cebcad6, type: 2}
-  - {fileID: 11400000, guid: 6d6cf08d4428bf24089184a8b2ebff84, type: 2}
+  - {fileID: 11400000, guid: bd2c275b3a511c84293d4b8a9c968714, type: 2}
+  - {fileID: 11400000, guid: 71139b813ca0bfc4898f3521d0a6e4de, type: 2}
   _finalRecipes:
   - {fileID: 11400000, guid: 681c9ef66958a6348add4549fb996f30, type: 2}
-  - {fileID: 11400000, guid: e46837390b24d6b4f994a000e883409b, type: 2}
-  - {fileID: 11400000, guid: 5dc6048ea1bd93d4b8f0a2a8e1fccdfd, type: 2}
+  - {fileID: 11400000, guid: 60b2d9c993cd4e24688fcbbbeb1a2c67, type: 2}
+  - {fileID: 11400000, guid: 28d6fb0daa84a844ca9eeb2c48bbe42d, type: 2}
   _levelTime: 300
   _scoreThresholds: 010000000200000003000000
