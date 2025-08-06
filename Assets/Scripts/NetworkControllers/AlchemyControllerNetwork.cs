@@ -3,6 +3,7 @@ using UnityEngine;
 public class AlchemyControllerNetwork : NetworkBehaviour
 {
     private AlchemyNetworkInterpolator _interpolator = new(NetworkConstants.NET_INTERPOLATION_BUFFER_SIZE);
+    private GameStateHandler _gameStateHandler;
     private StationConfig _config;
     private bool _isCrafting;
     private string[] _itemIds;
@@ -14,6 +15,10 @@ public class AlchemyControllerNetwork : NetworkBehaviour
     public StationConfig Config => _config;
 
     #region Unity Lifecycle
+    void Start()
+    {
+        _gameStateHandler = FindFirstObjectByType<GameStateHandler>();
+    }
     void OnEnable()
     {
         NetworkEvents.OnMessageReceived += HandleNetworkMessage;
@@ -96,9 +101,12 @@ public class AlchemyControllerNetwork : NetworkBehaviour
             }
             else
             {
-                ItemConfig itemConfig = IdConfigMapper.MapItemIdToConfig(itemIds[i]);
-                _itemsOnTable[i].SetActive(true);
-                _itemsOnTable[i].GetComponent<SpriteRenderer>().sprite = itemConfig.Icon;
+                ScriptableObject scriptableObject= _gameStateHandler.PrefabsMap.GetSO(itemIds[i]);
+                if (scriptableObject is ItemConfig itemConfig)
+                {
+                    _itemsOnTable[i].SetActive(true);
+                    _itemsOnTable[i].GetComponent<SpriteRenderer>().sprite = itemConfig.Icon;
+                }
             }
         }
     }

@@ -83,14 +83,13 @@ public class PlayerNetworkController : MonoBehaviour
         {
             _interpolator.IncrementAndInterpolate((serverState) =>
             {
-                bool xChanged = Mathf.Abs(serverState.PositionX - transform.position.x) >= 0.01f;
-                bool yChanged = Mathf.Abs(serverState.PositionY - transform.position.y) >= 0.01f;
+                float xDir = Mathf.Abs(serverState.PositionX - transform.position.x);
+                float yDir = Mathf.Abs(serverState.PositionY - transform.position.y);
+                Vector2 dir = new Vector2(xDir, yDir).normalized;
 
-                _animator.SetBool("IsMoving", xChanged || yChanged);
-                if (xChanged) _animator.SetFloat("MoveX", 1);
-                else _animator.SetFloat("MoveX", 0);
-                if (yChanged) _animator.SetFloat("MoveY", 1);
-                else _animator.SetFloat("MoveY", 0);
+                _animator.SetBool("IsMoving", dir != Vector2.zero);
+                _animator.SetFloat("MoveX", dir.x);
+                _animator.SetFloat("MoveY", dir.y);
 
                 transform.position = new(serverState.PositionX, serverState.PositionY);
             });

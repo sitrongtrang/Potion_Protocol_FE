@@ -16,7 +16,13 @@ MonoBehaviour:
   _itemSourcePrefab: {fileID: 0}
   _itemPrefab: {fileID: 0}
   _stationPrefab: {fileID: 0}
-  _enemyMap: []
+  _enemyMap:
+  - Id: 
+    SO: {fileID: 0}
+  - Id: 
+    SO: {fileID: 0}
+  - Id: 
+    SO: {fileID: 0}
   _itemSourceMap: []
   _itemMap: []
   _recipeMap: []
