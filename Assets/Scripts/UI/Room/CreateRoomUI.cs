@@ -10,6 +10,7 @@ public class CreateRoomUI : MonoBehaviour
     [SerializeField] private Canvas _createRoomCanvas;
     [SerializeField] private Canvas _roomListCanvas;
     [SerializeField] private Canvas _pvpCanvas;
+    [SerializeField] private Canvas _passwordCanvas;
     [Header("Refresh")]
     [SerializeField] private Animator _refreshAnimator;
     [SerializeField] private Button _refreshButton;
@@ -65,7 +66,7 @@ public class CreateRoomUI : MonoBehaviour
 
     private void SwitchCanvases(Canvas canvasToShow)
     {
-        List<Canvas> allCanvases = new List<Canvas> { _createRoomCanvas, _roomListCanvas, _pvpCanvas };
+        List<Canvas> allCanvases = new List<Canvas> { _createRoomCanvas, _roomListCanvas, _pvpCanvas, _passwordCanvas };
 
         foreach (var canvas in allCanvases)
         {
@@ -87,6 +88,11 @@ public class CreateRoomUI : MonoBehaviour
     public void ShowPvPCanvas()
     {
         SwitchCanvases(_pvpCanvas);
+    }
+
+    public void ShowPasswordCanvas()
+    {
+        SwitchCanvases(_passwordCanvas);
     }
 
     public void OnRefreshButtonClicked()

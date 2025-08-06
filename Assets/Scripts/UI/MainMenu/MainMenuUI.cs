@@ -19,12 +19,12 @@ public class MainMenuUI : MonoBehaviour
 
     public void OnSoloPlay()
     {
-        StartCoroutine(LoadSelectLevel());
+        StartCoroutine(LoadSelectLevel("LevelSelectionScene"));
     }
 
-    private IEnumerator LoadSelectLevel()
+    private IEnumerator LoadSelectLevel(string SceneName)
     {
-        AsyncOperation request = SceneManager.LoadSceneAsync("LevelSelectionScene");
+        AsyncOperation request = SceneManager.LoadSceneAsync(SceneName);
         request.completed += async (op) =>
         {
             await LoadingScreenUI.Instance.RenderFinish();
@@ -37,7 +37,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void OnCoopPlay()
     {
-        ShowNotImplemented();
+        StartCoroutine(LoadSelectLevel("CreateRoomScene"));
     }
 
     public void OnPvpPlay()

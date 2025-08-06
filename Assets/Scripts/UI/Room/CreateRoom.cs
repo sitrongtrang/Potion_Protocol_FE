@@ -13,6 +13,12 @@ public enum GameMode
     PvP
 }
 
+public enum PlayerRole
+{
+    Leader,
+    Member
+}
+
 public class CreateRoom : MonoBehaviour
 {
     [SerializeField] private GameObject Error;

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class StartGameHandler : MonoBehaviour
 {
@@ -50,6 +51,15 @@ public class StartGameHandler : MonoBehaviour
         {
             case NetworkMessageTypes.Server.Pregame.StartGame:
                 HandlePlayerSpawn((ServerStartGame)message);
+                break;
+            case NetworkMessageTypes.Server.Room.OnlyLeader:
+                Debug.Log("Only Leader");
+                break;
+            case NetworkMessageTypes.Server.Room.PlayerNotReady:
+                Debug.Log("Only Leader");
+                break;
+            case NetworkMessageTypes.Server.Pregame.MatchMaking:
+                Debug.Log("Match Making");
                 break;
             default:
                 break;

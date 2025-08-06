@@ -77,6 +77,7 @@ public static class NetworkMessageTypes
             public const short GetAllRoom = 709;
 
             public const short RoomFull = 750;
+            public const short PlayerNotReady = 751;
             public const short InRoom = 752;
             public const short NotInRoom = 753;
             public const short OnlyLeader = 754;

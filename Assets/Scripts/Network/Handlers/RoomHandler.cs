@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [System.Serializable]
@@ -13,9 +14,13 @@ public class Person
 
 public class RoomHandler : MonoBehaviour
 {
+    [Header("Room Reference")]
     [SerializeField] private RoomListRenderer _roomListRenderer;
     [SerializeField] private RoomScene _roomScene;
+    [Header("Person")]
     [SerializeField] private Person[] Person;
+    [Header("Button")]
+    [SerializeField] private TMP_Text _startButton;
 
     private bool _inRoom = false;
 
@@ -75,6 +80,9 @@ public class RoomHandler : MonoBehaviour
             case NetworkMessageTypes.Server.Room.GetAllRoom:
                 OnGetAllRoomResponse((ServerGetAllRoom)message);
                 break;
+            case NetworkMessageTypes.Server.Pregame.StartGame:
+                SceneManager.LoadSceneAsync("GameScene");
+                break;
             default:
                 break;
         }
@@ -104,15 +112,12 @@ public class RoomHandler : MonoBehaviour
     {
         Debug.Log("Leave Room");
         _inRoom = false;
-        for (int i = 0; i < Person.Length; i++)
+        if (_roomScene.Leader == true)
         {
-            if (string.Compare(msg.UserID, Person[i].ID.text) == 0)
-            {
-                _roomScene.SetPersonRoom(null, Person[i].ID);
-                _roomScene.SetPersonRoom(null, Person[i].Name);
-                break;
-            }
+            _roomScene.Leader = false;
+            _roomScene.SetPersonRoom("Ready", _startButton);
         }
+        NetworkManager.Instance.SendMessage(new PlayerGetRoomInfoRequest { });
     }
 
     private void OnPlayerReadyResponse(ServerPlayerReady msg)
@@ -144,23 +149,17 @@ public class RoomHandler : MonoBehaviour
     private void OnGetRoomInfoResponse(ServerGetRoomInfo msg)
     {
         Debug.Log("Get Room Info");
-        _roomScene.ChooseImage(msg.Room.MapID);
-        for (int i = 0; i < msg.Room.PlayerList.Length; i++)
-        {
-            _roomScene.SetPersonRoom(msg.Room.PlayerList[i].PlayerDisPlayName, Person[i].Name);
-            _roomScene.SetPersonRoom(msg.Room.PlayerList[i].PlayerID, Person[i].ID);
-        }
-        _roomScene.SetRoomName(msg.Room.RoomName);
-        if (!_inRoom)
-        {
-            CreateRoomUI.Instance.ShowPvPCanvas();
-            _inRoom = true;
-        }
+        SetLeader(msg.Room.PlayerList[0]);
+        RenderRoom(msg);
     }
 
     private void OnGetRoomByNameResponse(ServerGetRoomByName msg)
     {
         Debug.Log("Get Room By Name");
+        if (msg.Room != null && msg.Room.Length > 0)
+        {
+            Debug.Log(msg.Room[0].RoomName);
+        }
         _roomListRenderer.RenderRooms(msg.Room);
     }
 
@@ -170,5 +169,45 @@ public class RoomHandler : MonoBehaviour
         if (msg.Room != null && msg.Room.Length > 0) Debug.Log(msg.Room[0].RoomName);
         CreateRoomUI.Instance.Refreshed();
         _roomListRenderer.RenderRooms(msg.Room);
+    }
+
+    private void SetLeader(PlayerInfo Leader)
+    {
+        if (NetworkManager.Instance.ClientId == Leader.PlayerID)
+        {
+            _roomScene.Leader = true;
+            _roomScene.SetPersonRoom("Start", _startButton);
+            NetworkManager.Instance.SendMessage(new PlayerReady());
+        }
+    }
+
+    private void RenderRoom(ServerGetRoomInfo msg)
+    {
+        _roomScene.ChooseImage(msg.Room.MapID);
+        resetRoom();
+        for (int i = 0; i < msg.Room.PlayerList.Length; i++)
+        {
+            _roomScene.SetPersonRoom(msg.Room.PlayerList[i].PlayerDisPlayName, Person[i].Name);
+            _roomScene.SetPersonRoom(msg.Room.PlayerList[i].PlayerID, Person[i].ID);
+            if (msg.Room.PlayerList[i].PlayerRole == (short) PlayerRole.Leader)
+            {
+                Person[i].Name.color = Color.yellow;
+            }
+        }
+        _roomScene.SetRoomName(msg.Room.RoomName);
+        if (!_inRoom)
+        {
+            CreateRoomUI.Instance.ShowPvPCanvas();
+            _inRoom = true;
+        }
+    }
+
+    private void resetRoom()
+    {
+        for (int i = 0; i < Person.Length; i++)
+        {
+            _roomScene.SetPersonRoom(null, Person[i].Name);
+            _roomScene.SetPersonRoom(null, Person[i].ID);
+        }
     }
 }

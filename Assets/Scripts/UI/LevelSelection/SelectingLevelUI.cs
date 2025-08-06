@@ -70,7 +70,6 @@ public class SelectingLevelUI : MonoBehaviour
                     levelManager.Initialize(loadLevelRequest.asset as LevelConfig);
                 }
             }
-
             await LoadingScreenUI.Instance.RenderFinish();
         };
 
