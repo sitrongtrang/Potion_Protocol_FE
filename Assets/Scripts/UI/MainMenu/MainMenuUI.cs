@@ -8,11 +8,8 @@ public class MainMenuUI : MonoBehaviour
 {
     [Header("Buttons")]
     [SerializeField] private Button _soloPlayButton;
-    [SerializeField] private Button _coopPlayButton;
-    [SerializeField] private Button _pvpPlayButton;
-    [SerializeField] private Button _controlOptionButton;
-    [SerializeField] private Button _soundOptionsButton;
-    [SerializeField] private Button _miscOptionsButton;
+    [SerializeField] private Button _onlinePlayButton;
+    [SerializeField] private Button _optionButton;
     [SerializeField] private Button _quitButton;
     [SerializeField] private Button _codexButton;
 
@@ -35,19 +32,14 @@ public class MainMenuUI : MonoBehaviour
         yield return StartCoroutine(LoadingScreenUI.Instance.RenderLoadingScene(opList));
     }
 
-    public void OnCoopPlay()
+    public void OnOnlinePlay()
     {
         StartCoroutine(LoadSelectLevel("CreateRoomScene"));
     }
 
-    public void OnPvpPlay()
+    public void OnSettings()
     {
-        SceneManager.LoadSceneAsync("CreateRoomScene");
-    }
-
-    public void OnSettings(int tab)
-    {
-        SettingsSelection.SelectedTab = (SettingsSelection.Tab)tab;
+        SettingsSelection.SelectedTab = SettingsSelection.Tab.Controls;
         SceneManager.LoadScene("SettingsScene", LoadSceneMode.Additive);
     }
 

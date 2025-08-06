@@ -39,7 +39,7 @@ public class ScriptableObjectMapping : ScriptableObject
         CacheMap(_stationMap);
     }
 
-    public void InitializeMap(ScriptableObject[] scriptableObjects)
+    public void InitializeMapping(ScriptableObject[] scriptableObjects)
     {
         for (int i = 0; i < scriptableObjects.Length; i++)
         {

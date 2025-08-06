@@ -19,12 +19,12 @@ public class StartGameHandler : MonoBehaviour
     }
 
     private void TrySpawnPlayer(string playerId, Vector2 position, bool isLocal)
-    {
+    {    
         if (_playerPrefab == null) return;
 
         GameObject playerObj = Instantiate(_playerPrefab, position, Quaternion.identity);
 
-        if (!playerObj.TryGetComponent<TstController>(out var localPlayerController))
+        if (!playerObj.TryGetComponent<PlayerNetworkController>(out var localPlayerController))
         {
             Debug.LogError("Wrong player object");
             Destroy(playerObj);

@@ -18,9 +18,18 @@ public class GameStateHandler : MonoBehaviour
     void Start()
     {
         _prafabsMap = (ScriptableObjectMapping)ScriptableObject.CreateInstance(typeof(ScriptableObjectMapping));
-        List<ScriptableObject> scriptableObjects = new();
-        PrepareConfigs(scriptableObjects);
-        _prafabsMap.InitializeMap(scriptableObjects.ToArray());
+    }
+
+    void OnEnable()
+    {
+        NetworkEvents.OnMessageReceived += HandleNetworkMessage;
+        LevelManager.Instance.OnLevelInitialized += PrepareConfigs;
+    }
+
+    void OnDisable()
+    {
+        NetworkEvents.OnMessageReceived -= HandleNetworkMessage;
+        LevelManager.Instance.OnLevelInitialized -= PrepareConfigs;
     }
 
     void FixedUpdate()
@@ -34,15 +43,6 @@ public class GameStateHandler : MonoBehaviour
                 HandleSyncing(gameState.StationIds, _stationMap, _prafabsMap.StationPrefab);
             }
         );
-    }
-
-    void OnEnable()
-    {
-        NetworkEvents.OnMessageReceived += HandleNetworkMessage;
-    }
-    void OnDisable()
-    {
-        NetworkEvents.OnMessageReceived -= HandleNetworkMessage;
     }
 
     private void HandleSyncing(
@@ -102,9 +102,9 @@ public class GameStateHandler : MonoBehaviour
         _interpolator.Store(gameStates.GameStates, null);
     }
 
-    private void PrepareConfigs(List<ScriptableObject> scriptableObjects)
+    private void PrepareConfigs(LevelConfig levelConfig, GameObject map)
     {
-        LevelConfig levelConfig = LevelManager.Instance.Config;
+        List<ScriptableObject> scriptableObjects = new();
         for (int i = 0; i < levelConfig.Enemies.Count; i++)
         {
             scriptableObjects.Add(levelConfig.Enemies[i]);
@@ -125,10 +125,12 @@ public class GameStateHandler : MonoBehaviour
             scriptableObjects.Add(levelConfig.FinalRecipes[i]);
             scriptableObjects.Add(levelConfig.FinalRecipes[i].Product);
         }
-        StationController[] stationControllers = LevelManager.Instance.Map.GetComponentsInChildren<StationController>();
+        StationController[] stationControllers = map.GetComponentsInChildren<StationController>();
         for (int i = 0; i < stationControllers.Length; i++)
         {
             scriptableObjects.Add(stationControllers[i].Config);
         }
+
+        _prafabsMap.InitializeMapping(scriptableObjects.ToArray());
     }
 }

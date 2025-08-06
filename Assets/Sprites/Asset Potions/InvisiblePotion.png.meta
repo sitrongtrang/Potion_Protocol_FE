@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 670ce3262a5c29048a6e4d7f85da6c49
+guid: 92b85eda16bf17d498fd8489edd3283a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2688860679172727607
-    second: ready_0
+      213: -4597679370469333081
+    second: InvisiblePotion_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 896
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ready_0
+      name: InvisiblePotion_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 48
-        height: 48
+        x: 62
+        y: 128
+        width: 283
+        height: 352
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7332b90aa80c05520800000000000000
-      internalID: 2688860679172727607
+      spriteID: 7a7a80cd8f2c130c0800000000000000
+      internalID: -4597679370469333081
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ready_0: 2688860679172727607
+      InvisiblePotion_0: -4597679370469333081
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
