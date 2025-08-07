@@ -14,6 +14,8 @@ public class CreateRoomUI : MonoBehaviour
     [Header("Refresh")]
     [SerializeField] private Animator _refreshAnimator;
     [SerializeField] private Button _refreshButton;
+    [Header("Component")]
+    [SerializeField] private SearchRoomByName _searchRoomByName;
     private Coroutine _refreshRoom;
     private bool _doneRefresh = false;
 
@@ -97,7 +99,15 @@ public class CreateRoomUI : MonoBehaviour
 
     public void OnRefreshButtonClicked()
     {
-        RefreshData();
+        if (string.IsNullOrEmpty(_searchRoomByName.SearchInput.text))
+        {
+            RefreshData();
+        }
+        else
+        {
+            RefreshWithFilter(_searchRoomByName.SearchInput.text);
+        }
+
         if (_refreshRoom != null) StopCoroutine(_refreshRoom);
         _refreshRoom = StartCoroutine(HandleRefresh());
     }
@@ -115,6 +125,15 @@ public class CreateRoomUI : MonoBehaviour
 
         yield break;
     }
+
+    private void RefreshWithFilter(string filter)
+    {
+        _doneRefresh = false;
+        NetworkManager.Instance.SendMessage(new PlayerGetRoomByNameRequest()
+        {
+            RoomName = filter
+        });
+    }    
 
     private void RefreshData()
     {

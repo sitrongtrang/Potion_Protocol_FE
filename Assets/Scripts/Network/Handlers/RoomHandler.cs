@@ -17,6 +17,7 @@ public class RoomHandler : MonoBehaviour
     [Header("Room Reference")]
     [SerializeField] private RoomListRenderer _roomListRenderer;
     [SerializeField] private RoomScene _roomScene;
+    [SerializeField] private CreateRoom _createRoom;
     [Header("Person")]
     [SerializeField] private Person[] Person;
     [Header("Button")]
@@ -189,12 +190,7 @@ public class RoomHandler : MonoBehaviour
     private void OnGetRoomByNameResponse(ServerGetRoomByName msg)
     {
         Debug.Log("Get Room By Name");
-        if (msg.Room != null && msg.Room.Length > 0)
-        {
-            Debug.Log(msg.Room[0].RoomName);
-        }
-        if (msg.Room == null) Debug.Log("null nè má");
-        else Debug.Log(msg.Room.Length);
+        CreateRoomUI.Instance.Refreshed();
         _roomListRenderer.RenderRooms(msg.Room);
     }
 
@@ -221,6 +217,7 @@ public class RoomHandler : MonoBehaviour
         {
             _inRoom = !_inRoom;
             CreateRoomUI.Instance.ShowPvPCanvas();
+            _createRoom.ResetRoom();
         }
         for (int i = 0; i < PlayerList.Length; i++)
         {

@@ -4,6 +4,6 @@ using UnityEngine;
 public class PlayerGetRoomByNameRequest : ClientMessage
 {
     [FieldOrder(0)]
-    public string roomName;
+    public string RoomName;
     public PlayerGetRoomByNameRequest() : base(NetworkMessageTypes.Client.Pregame.GetRoomByName) { }
 }
