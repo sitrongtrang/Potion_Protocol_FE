@@ -97,16 +97,23 @@ public class RoomListRenderer : MonoBehaviour
 
     private void OnJoinRoom(string RoomID, string password)
     {
+        //Debug.Log("password: " + password.Length);
+        //Debug.Log("password raw: [" + password + "]");
+        //foreach (char c in password)
+        //{
+        //    Debug.Log("Char: '" + c + "' | ASCII: " + (int)c);
+        //}
+        //string cleanedPassword = password.Replace("\n", "").Replace("\r", "");
         NetworkManager.Instance.SendMessage(new PlayerJoinRoomRequest
         {
             RoomId = RoomID,
-            Password = password
+            Password = password.Replace("\u200B", "")
         });
     }
 
     private void OnJoinPrivateRoom(string RoomID)
     {
-        CreateRoomUI.Instance.ShowPasswordCanvas();
+        CreateRoomUI.Instance.ShowPasswordCanvas(); 
         _joinRoomButton.onClick.AddListener(() => OnJoinRoom(RoomID, _password.text));
     }
 }

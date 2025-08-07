@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -31,10 +31,13 @@ public class RoomScene : MonoBehaviour
 
     public void OnLeaveRoom()
     {
-        NetworkManager.Instance.SendMessage(new PlayerUnready());
+        if (Leader) NetworkManager.Instance.SendMessage(new PlayerUnready());
+        if (_ready)
+        {
+            _ready = !_ready;
+            NetworkManager.Instance.SendMessage(new PlayerUnready());
+        }
         NetworkManager.Instance.SendMessage(new PlayerLeaveRoom());
-        CreateRoomUI.Instance.ShowRoomListCanvas();
-        CreateRoomUI.Instance.OnRefreshButtonClicked();
     }
 
     public void OnReadyRoom()

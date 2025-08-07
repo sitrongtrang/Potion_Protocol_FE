@@ -51,7 +51,6 @@ public class CreateRoom : MonoBehaviour
             //Debug.Log(playerCreateRoomRequest.RoomType);
             //Debug.Log(playerCreateRoomRequest.Password);
             NetworkManager.Instance.SendMessage(playerCreateRoomRequest);
-            CreateRoomUI.Instance.ShowPvPCanvas();
         }
     }
 
