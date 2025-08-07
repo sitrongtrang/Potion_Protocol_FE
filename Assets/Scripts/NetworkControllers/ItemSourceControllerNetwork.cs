@@ -36,7 +36,8 @@ public class ItemSourceControllerNetwork : NetworkBehaviour
     {
         if (_collider == null)
         {
-            _collider = new AABBCollider(_spriteRenderer, transform)
+            AABBCollider temp = AABBCollider.GetColliderBaseOnSprite(_spriteRenderer, transform);
+            _collider = new AABBCollider(temp)
             {
                 Layer = (int)EntityLayer.ItemSource,
                 Owner = gameObject

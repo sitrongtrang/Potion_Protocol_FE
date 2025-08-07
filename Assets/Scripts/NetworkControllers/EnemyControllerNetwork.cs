@@ -107,9 +107,10 @@ public class EnemyControllerNetwork : NetworkBehaviour
     
     public void SetCollider()
     {
+        AABBCollider temp = AABBCollider.GetColliderBaseOnSprite(_spriteRenderer, transform);
         if (_collider == null)
         {
-            _collider = new AABBCollider(_spriteRenderer, transform)
+            _collider = new AABBCollider(temp)
             {
                 Layer = (int)EntityLayer.Enemy,
                 Owner = gameObject
@@ -119,9 +120,8 @@ public class EnemyControllerNetwork : NetworkBehaviour
         }
         else
         {
-            _collider.SetSize(_size);
-            Vector2 center = transform.position;
-            _collider.SetBottomLeft(center - _size / 2f);
+            _collider.SetSize(temp.Size);
+            _collider.SetBottomLeft(temp.BottomLeft);
         }
     }
 }

@@ -125,7 +125,8 @@ public class AlchemyControllerNetwork : NetworkBehaviour
     {
         if (collider == null)
         {
-            collider = new AABBCollider(spriteRenderer, transform)
+            AABBCollider temp = AABBCollider.GetColliderBaseOnSprite(spriteRenderer, transform);
+            collider = new AABBCollider(temp)
             {
                 Layer = (int)EntityLayer.Obstacle,
                 Owner = gameObject
