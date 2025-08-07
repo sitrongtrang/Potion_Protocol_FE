@@ -6,6 +6,12 @@ public class AABBCollider : CustomCollider
     private Vector2 _size;
     public override ColliderType Type => ColliderType.AABB;
 
+    public static AABBCollider MakeColliderBaseOnCenter(Vector2 center, Vector2 size)
+    {
+        Vector2 bottomLeft = center - size * 0.5f;
+        return new AABBCollider(bottomLeft, size);
+    }
+
     public AABBCollider(Vector2 bottomLeft, Vector2 size)
     {
         _bottomLeft = bottomLeft;
