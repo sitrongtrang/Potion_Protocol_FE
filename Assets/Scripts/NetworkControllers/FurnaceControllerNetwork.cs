@@ -4,6 +4,10 @@ public class FurnaceControllerNetwork : NetworkBehaviour
 {
     private FurnaceNetworkInterpolator _interpolator = new(NetworkConstants.NET_INTERPOLATION_BUFFER_SIZE);
     private StationConfig _config;
+    private SpriteRenderer _spriteRenderer;
+    private AABBCollider _collider;
+    private Vector2 _size;
+
     private bool _isCrafting;
     [SerializeField] private ProgressBarUI progressBarPrefab;
     private ProgressBarUI _progressBar;
@@ -63,6 +67,9 @@ public class FurnaceControllerNetwork : NetworkBehaviour
         if (scriptableObject is StationConfig stationConfig)
         {
             _config = stationConfig;
+            _spriteRenderer.sprite = _config.Icon;
+            SetCollider(ref _collider, _spriteRenderer, transform);
+            CollisionSystem.InsertStaticCollider(_collider);
         }
     }
     #endregion
@@ -90,4 +97,22 @@ public class FurnaceControllerNetwork : NetworkBehaviour
         }
     }
     #endregion
+
+    public void SetCollider(ref AABBCollider collider, SpriteRenderer spriteRenderer, Transform transform)
+    {
+        if (collider == null)
+        {
+            collider = new AABBCollider(spriteRenderer, transform)
+            {
+                Layer = (int)EntityLayer.Obstacle,
+                Owner = gameObject
+            };
+        }
+        else
+        {
+            collider.SetSize(_size);
+            Vector2 center = transform.position;
+            collider.SetBottomLeft(center - _size / 2f);
+        }
+    }
 }

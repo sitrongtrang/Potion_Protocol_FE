@@ -5,12 +5,16 @@ public class AlchemyControllerNetwork : NetworkBehaviour
     private AlchemyNetworkInterpolator _interpolator = new(NetworkConstants.NET_INTERPOLATION_BUFFER_SIZE);
     private GameStateHandler _gameStateHandler;
     private StationConfig _config;
-    private bool _isCrafting;
-    private string[] _itemIds;
+    private SpriteRenderer _spriteRenderer;
+    private AABBCollider _collider;
+    private Vector2 _size;
+    private AABBCollider _tableCollider;
     [SerializeField] private GameObject _table;
     [SerializeField] private GameObject[] _itemsOnTable;
     [SerializeField] private ProgressBarUI progressBarPrefab;
     private ProgressBarUI _progressBar;
+    private bool _isCrafting;
+    private string[] _itemTypeIds;
 
     public StationConfig Config => _config;
 
@@ -60,8 +64,8 @@ public class AlchemyControllerNetwork : NetworkBehaviour
                 }
             }
             _isCrafting = serverState.IsCrafting;
-            _itemIds = serverState.ItemIds;
-            DisplayItems(_itemIds);
+            _itemTypeIds = serverState.ItemTypeIds;
+            DisplayItems(_itemTypeIds);
         });
     }
     #endregion
@@ -73,6 +77,12 @@ public class AlchemyControllerNetwork : NetworkBehaviour
         if (scriptableObject is StationConfig stationConfig)
         {
             _config = stationConfig;
+            for (int i = 0; i < _itemsOnTable.Length; i++) _itemsOnTable[i].SetActive(false);
+
+            SetCollider(ref _collider, _spriteRenderer, transform);
+            SetCollider(ref _tableCollider, _table.GetComponent<SpriteRenderer>(), _table.transform);
+            CollisionSystem.InsertStaticCollider(_collider);
+            CollisionSystem.InsertStaticCollider(_tableCollider);
         }
     }
     #endregion
@@ -90,18 +100,18 @@ public class AlchemyControllerNetwork : NetworkBehaviour
     }
     #endregion
 
-    private void DisplayItems(string[] itemIds)
+    private void DisplayItems(string[] itemTypeIds)
     {
         for (int i = 0; i < _itemsOnTable.Length; i++)
         {
-            if (i >= itemIds[i].Length)
+            if (i >= itemTypeIds[i].Length)
             {
                 _itemsOnTable[i].GetComponent<SpriteRenderer>().sprite = null;
                 _itemsOnTable[i].SetActive(false);
             }
             else
             {
-                ScriptableObject scriptableObject= _gameStateHandler.PrefabsMap.GetSO(itemIds[i]);
+                ScriptableObject scriptableObject = _gameStateHandler.PrefabsMap.GetSO(itemTypeIds[i]);
                 if (scriptableObject is ItemConfig itemConfig)
                 {
                     _itemsOnTable[i].SetActive(true);
@@ -109,5 +119,24 @@ public class AlchemyControllerNetwork : NetworkBehaviour
                 }
             }
         }
+    }
+    
+    public void SetCollider(ref AABBCollider collider, SpriteRenderer spriteRenderer, Transform transform)
+    {
+        if (collider == null)
+        {
+            collider = new AABBCollider(spriteRenderer, transform)
+            {
+                Layer = (int)EntityLayer.Obstacle,
+                Owner = gameObject
+            };
+        }
+        else
+        {
+            collider.SetSize(_size);
+            Vector2 center = transform.position;
+            collider.SetBottomLeft(center - _size / 2f);
+        }
+
     }
 }

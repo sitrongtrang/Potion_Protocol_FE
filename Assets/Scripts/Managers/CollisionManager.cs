@@ -2,12 +2,26 @@ using UnityEngine;
 using System;
 using System.IO;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class CollisionManager : MonoBehaviour
 {
-    public static CollisionManager Instance { get; private set; }
     private ColliderSaver.ColliderDataList mapColliderList = new();
     private ColliderSaver.ColliderDataList stationProtectionList = new();
+
+    public static CollisionManager Instance { get; private set; }
+
+    [Serializable]
+    private class MapColliderData
+    {
+        public ColliderSaver.ColliderDataList MapColliders;
+    }
+
+    [Serializable]
+    private class StationProtectionData
+    {
+        public ColliderSaver.ColliderDataList StationProtections;
+    }
 
     void Awake()
     {
@@ -23,21 +37,33 @@ public class CollisionManager : MonoBehaviour
         stationProtectionList = new ColliderSaver.ColliderDataList { colliders = new List<ColliderSaver.RectangleData>() };
     }
 
-    void Start()
+    private void OnEnable()
     {
-        LoadColliders();
+        if (SceneManager.GetActiveScene().name == "OnlineGameScene")
+        {
+            NetworkEvents.OnMessageReceived += HandleNetworkMessage;
+        }
     }
 
-    public void LoadColliders()
+    private void OnDisable()
+    {
+        if (SceneManager.GetActiveScene().name == "OnlineGameScene")
+        {
+            NetworkEvents.OnMessageReceived -= HandleNetworkMessage;
+        }
+    }
+
+    public void LoadColliders(int level)
     {
         string basePath = Application.persistentDataPath;
+        string folderPath = Path.Combine(basePath, "Levels");
+        string filePath = Path.Combine(folderPath, $"level{level}.json");
 
-        // Load map colliders
-        string path = Path.Combine(basePath, "colliders_map.json");
-        if (File.Exists(path))
+        if (File.Exists(filePath))
         {
-            string json = File.ReadAllText(path);
-            mapColliderList = JsonUtility.FromJson<ColliderSaver.ColliderDataList>(json);
+            // Load map colliders
+            string json = File.ReadAllText(filePath);
+            mapColliderList = JsonUtility.FromJson<MapColliderData>(json).MapColliders;
             foreach (var colData in mapColliderList.colliders)
             {
                 AABBCollider collider = new AABBCollider(
@@ -48,18 +74,8 @@ public class CollisionManager : MonoBehaviour
                 CollisionSystem.InsertStaticCollider(collider);
             }
 
-        }
-        else
-        {
-            Debug.LogWarning($"Map collider file not found at {path}");
-        }
-
-        // Load station protections
-        path = Path.Combine(basePath, "colliders_station.json");
-        if (File.Exists(path))
-        {
-            string json = File.ReadAllText(path);
-            stationProtectionList = JsonUtility.FromJson<ColliderSaver.ColliderDataList>(json);
+            // Load station protections
+            stationProtectionList = JsonUtility.FromJson<StationProtectionData>(json).StationProtections;
             foreach (var colData in stationProtectionList.colliders)
             {
                 AABBCollider collider = new AABBCollider(
@@ -73,9 +89,8 @@ public class CollisionManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"Map collider file not found at {path}");
-        } 
-
+            Debug.LogWarning($"Map collider file not found at {filePath}");
+        }
     }
 
     private void OnDrawGizmos()
@@ -91,9 +106,20 @@ public class CollisionManager : MonoBehaviour
         {
             Gizmos.DrawWireCube(new Vector2(c.centerX, c.centerY), new Vector2(c.width, c.height));
         }
-        
+
         Gizmos.color = Color.green;
         CollisionSystem.OnDrawGizmos();
     }
 
+    private void HandleNetworkMessage(ServerMessage message)
+    {
+        switch (message.MessageType)
+        {
+            case NetworkMessageTypes.Server.Pregame.StartGame:
+                LoadColliders(((ServerStartGame)message).Level);
+                break;
+            default:
+                break;
+        }
+    }
 }

@@ -135,9 +135,9 @@ GameObject:
   - component: {fileID: 4948361605728094920}
   - component: {fileID: 5623488004098328084}
   - component: {fileID: -8667639760541199081}
-  - component: {fileID: 1966998418185039277}
+  - component: {fileID: 6097344146582294549}
   m_Layer: 0
-  m_Name: Furnace
+  m_Name: Furnace Network
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -236,7 +236,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1966998418185039277
+--- !u!114 &6097344146582294549
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -245,8 +245,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6779095460143926864}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b71cff6e7db69bd418bded2f8f727dac, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f4f083fcadbcac4fb7b3d8575a8ad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _config: {fileID: 11400000, guid: 6e98964e8a6b82b40acbf2707ea59b40, type: 2}
+  EntityId: 
   progressBarPrefab: {fileID: 1548859400771833277, guid: 04fbe1b63c5d3be4a8c0bb18af77e652, type: 3}

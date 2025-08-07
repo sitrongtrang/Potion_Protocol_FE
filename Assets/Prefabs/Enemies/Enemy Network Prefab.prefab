@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5043132491445800391}
-  - component: {fileID: 3347175494363194931}
   - component: {fileID: -1370842286182258998}
   - component: {fileID: 5247312739759181560}
   - component: {fileID: -2667262709698504437}
+  - component: {fileID: 5183502882462514737}
   m_Layer: 7
-  m_Name: Enemy Prefab
+  m_Name: Enemy Network Prefab
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,28 +35,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3347175494363194931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1672900733462925250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 028e7218131d034458c17cff485d4414, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  _obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  _enemyImpactUI: {fileID: -2667262709698504437}
-  heightHealthBar: 0.8
-  _movementIgnoreObstacles: 0
-  _healthBarPrefab: {fileID: -957368622642131315, guid: 67c66995c641fe64599726b5a9b2209e, type: 3}
 --- !u!95 &-1370842286182258998
 Animator:
   serializedVersion: 7
@@ -148,3 +126,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _flashMaterial: {fileID: 2100000, guid: 8856b6ed434d02c499eb8b98d8e129f7, type: 2}
   _duration: 0.125
+--- !u!114 &5183502882462514737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672900733462925250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e84f18a442351084e93ff7d4767c1e00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EntityId: 
+  _healthBarPrefab: {fileID: -957368622642131315, guid: 67c66995c641fe64599726b5a9b2209e, type: 3}
+  _enemyImpactUI: {fileID: -2667262709698504437}
+  heightHealthBar: 0.8

@@ -1,11 +1,13 @@
 public class AlchemyState
 {
+    [FieldOrder(0)]
     public string StationId;
-    public string StationType;
-    public float PositionX;
-    public float PositionY;
+    [FieldOrder(1)]
     public float CraftTime;
+    [FieldOrder(2)]
     public float CraftMaxTime;
+    [FieldOrder(3)]
     public bool IsCrafting;
-    public string[] ItemIds;
+    [FieldOrder(4)]
+    public string[] ItemTypeIds;
 }

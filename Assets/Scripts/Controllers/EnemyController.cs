@@ -43,9 +43,7 @@ public class EnemyController : MonoBehaviour
     [Header("Collision")]
     private SpriteRenderer _spriteRenderer;
     private AABBCollider _collider;
-    public AABBCollider Collider => _collider;
     private Vector2 _size = Vector2.zero;
-    public Vector2 Size => _size;
 
     #region UNITY_METHODS
     private void Update()

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -8,6 +9,9 @@ public class StartGameHandler : MonoBehaviour
     [SerializeField] private GameObject _playerPrefab;
     [SerializeField] private PlayerConfig _playerConfig;
     [SerializeField] private InputActionAsset _inputActionAsset;
+
+    public event Action<LevelConfig, GameObject> OnLevelInitialized;
+
     private void OnEnable()
     {
         NetworkEvents.OnMessageReceived += HandleNetworkMessage;
@@ -19,7 +23,7 @@ public class StartGameHandler : MonoBehaviour
     }
 
     private void TrySpawnPlayer(string playerId, Vector2 position, bool isLocal)
-    {    
+    {
         if (_playerPrefab == null) return;
 
         GameObject playerObj = Instantiate(_playerPrefab, position, Quaternion.identity);
@@ -51,6 +55,7 @@ public class StartGameHandler : MonoBehaviour
         {
             case NetworkMessageTypes.Server.Pregame.StartGame:
                 HandlePlayerSpawn((ServerStartGame)message);
+                InitializeLevel((ServerStartGame)message);
                 break;
             case NetworkMessageTypes.Server.Room.OnlyLeader:
                 Debug.Log("Only Leader");
@@ -79,4 +84,15 @@ public class StartGameHandler : MonoBehaviour
         }
     }
 
+    private void InitializeLevel(ServerStartGame message)
+    {
+        int level = message.Level;
+
+        string levelPath = $"ScriptableObjects/Levels/Level{level}";
+        LevelConfig config = Resources.Load<LevelConfig>(levelPath);
+
+        GameObject map = Instantiate(config.MapPrefab, Vector2.zero, Quaternion.identity);
+
+        OnLevelInitialized?.Invoke(config, map);
+    }
 }

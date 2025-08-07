@@ -7,7 +7,7 @@ public class AlchemyStateInterpolateData : IServerStateSnapshot, IComparable<Alc
     public float CraftTime;
     public float CraftMaxTime;
     public bool IsCrafting;
-    public string[] ItemIds;
+    public string[] ItemTypeIds;
 
     int IServerStateSnapshot.ServerSequence => ServerSequence;
     

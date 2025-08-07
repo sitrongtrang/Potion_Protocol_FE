@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class GameStateHandler : MonoBehaviour
 {
+    [SerializeField] private StartGameHandler _startGameHandler;
     [Header("Prefabs")]
+    [SerializeField] private ScriptableObjectMapping _prefabMapTemplate;
     private ScriptableObjectMapping _prefabsMap;
 
     private GameStateNetworkInterpolator _interpolator = new(NetworkConstants.NET_INTERPOLATION_BUFFER_SIZE);
@@ -18,21 +20,22 @@ public class GameStateHandler : MonoBehaviour
 
     public ScriptableObjectMapping PrefabsMap => _prefabsMap;
 
-    void Start()
+    void Awake()
     {
-        _prefabsMap = (ScriptableObjectMapping)ScriptableObject.CreateInstance(typeof(ScriptableObjectMapping));
+        // _prefabsMap = (ScriptableObjectMapping)ScriptableObject.CreateInstance(typeof(ScriptableObjectMapping));
+        _prefabsMap = Instantiate(_prefabMapTemplate);
     }
 
     void OnEnable()
     {
         NetworkEvents.OnMessageReceived += HandleNetworkMessage;
-        LevelManager.Instance.OnLevelInitialized += PrepareConfigs;
+        _startGameHandler.OnLevelInitialized += PrepareConfigs;
     }
 
     void OnDisable()
     {
         NetworkEvents.OnMessageReceived -= HandleNetworkMessage;
-        LevelManager.Instance.OnLevelInitialized -= PrepareConfigs;
+        _startGameHandler.OnLevelInitialized -= PrepareConfigs;
     }
 
     void FixedUpdate()

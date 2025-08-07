@@ -85,7 +85,7 @@ public class LevelManager : MonoBehaviour
     {
         _timeLeft = config.LevelTime;
 
-        GameObject map = MapLoader.Instance.RenderMap(config.MapPrefab, Vector2.zero);
+        GameObject map = Instantiate(config.MapPrefab, Vector2.zero, Quaternion.identity);
 
         (int width, int height, float cellSize, Vector2 origin) = GetMapParameters(map);
         cellSize *= 0.5f;
