@@ -4,7 +4,7 @@ using System;
 public class AcceptRequestServerMessage : ServerMessage
 {
     public AcceptRequestServerMessage()
-        : base(NetworkMessageTypes.Client.FriendSystem.RemoveFriend)
+        : base(NetworkMessageTypes.Server.FriendSystem.AcceptFriendRequest)
     {
 
     }

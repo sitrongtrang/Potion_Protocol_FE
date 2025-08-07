@@ -4,7 +4,7 @@ using System;
 public class DeclineRequestServerMessage : ServerMessage
 {
     public DeclineRequestServerMessage()
-        : base(NetworkMessageTypes.Client.FriendSystem.RemoveFriend)
+        : base(NetworkMessageTypes.Server.FriendSystem.DeclineFriendRequest)
     {
         
     }

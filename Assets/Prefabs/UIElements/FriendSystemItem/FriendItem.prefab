@@ -119,10 +119,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 083fb1e560d8e4248b6a472275d1501b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameText: {fileID: 5388378479722795423}
-  inviteButton: {fileID: 8641704014803020678}
-  removeButton: {fileID: 9145356411775485333}
-  avatarObj: {fileID: 7910903866636098508}
+  NameText: {fileID: 5388378479722795423}
+  InviteButton: {fileID: 8641704014803020678}
+  RemoveButton: {fileID: 9145356411775485333}
+  AvatarObj: {fileID: 7910903866636098508}
 --- !u!1 &4168911602544704206
 GameObject:
   m_ObjectHideFlags: 0

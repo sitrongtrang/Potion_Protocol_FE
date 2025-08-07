@@ -4,7 +4,7 @@ using UnityEngine;
 public class SwitchPage : MonoBehaviour
 {
     [SerializeField] int _changing = 0;
-    [SerializeField] TMP_Text _paging;
+    [SerializeField] TMP_Text[] _paging;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,13 +13,18 @@ public class SwitchPage : MonoBehaviour
 
     public void OnButtonClicked()
     {
-        int currentPage = int.Parse(_paging.text.Substring(0, _paging.text.IndexOf("/")));
-        int limitPage = int.Parse(_paging.text.Substring(_paging.text.IndexOf("/")));
+        TMP_Text currentPaging = null;
+        for (int i = 0; i < _paging.Length; i++)
+        {
+            if (_paging[i].enabled) currentPaging = _paging[i];
+        }
+        int currentPage = int.Parse(currentPaging.text.Substring(0, currentPaging.text.IndexOf("/")));
+        int limitPage = int.Parse(currentPaging.text.Substring(currentPaging.text.IndexOf("/")));
         currentPage += _changing;
         if (currentPage <= limitPage && currentPage > 0)
         {
-            _paging.text = currentPage.ToString() + _paging.text.Substring(_paging.text.IndexOf("/"));
-            GameManager.Instance.LoadFriendList(currentPage);
+            currentPaging.text = currentPage.ToString() + currentPaging.text.Substring(currentPaging.text.IndexOf("/"));
+            GameManager.Instance.LoadFriendList(FriendViewMode.FriendList, currentPage);
         }
     }
 

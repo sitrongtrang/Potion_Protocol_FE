@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 1147164582854021128}
   - component: {fileID: 8278989946925768883}
   - component: {fileID: 8562050370051760560}
-  - component: {fileID: 8274532131089969715}
+  - component: {fileID: -25003491879563807}
   m_Layer: 5
   m_Name: MyRequest
   m_TagString: Untagged
@@ -363,7 +363,7 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &8274532131089969715
+--- !u!114 &-25003491879563807
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -372,13 +372,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3972587590867979935}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 083fb1e560d8e4248b6a472275d1501b, type: 3}
+  m_Script: {fileID: 11500000, guid: b1e7013b6c2b27546b5e9e6e7c08c44b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NameText: {fileID: 0}
-  InviteButton: {fileID: 0}
-  RemoveButton: {fileID: 0}
-  AvatarObj: {fileID: 0}
+  NameText: {fileID: 6089134837265062462}
+  CancelRequest: {fileID: 179558184384713147}
+  AvatarObj: {fileID: 7388059358296090582}
 --- !u!1 &4255437423323111256
 GameObject:
   m_ObjectHideFlags: 0

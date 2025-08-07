@@ -248,7 +248,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _changing: 1
-  _paging: {fileID: 1455305356}
+  _paging:
+  - {fileID: 0}
 --- !u!114 &75440917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1085,7 +1086,6 @@ GameObject:
   - component: {fileID: 571838995}
   - component: {fileID: 571838998}
   - component: {fileID: 571838997}
-  - component: {fileID: 571838996}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -1112,26 +1112,6 @@ RectTransform:
   m_AnchoredPosition: {x: -350, y: 350}
   m_SizeDelta: {x: 700, y: 0}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &571838996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 571838994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2f813d2e091d6b4dbd97e0227c3f80d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _friendItemPrefab: {fileID: 2696805140462446793, guid: 9f19866d09ecba34aa20bbeffe5b29f7, type: 3}
-  _friendRequestItemPrefab: {fileID: 0}
-  _myRequestItemPrefab: {fileID: 0}
-  _paging: {fileID: 1455305356}
-  _numberPerPage: 7
-  _friendListContainer: {fileID: 0}
-  _friendRequestContainer: {fileID: 0}
-  _myRequestContainer: {fileID: 0}
 --- !u!114 &571838997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1547,11 +1527,16 @@ MonoBehaviour:
   _friendItemPrefab: {fileID: 2696805140462446793, guid: 9f19866d09ecba34aa20bbeffe5b29f7, type: 3}
   _friendRequestItemPrefab: {fileID: 4004958439820802304, guid: a4c134faa638f33418b67f282011adfe, type: 3}
   _myRequestItemPrefab: {fileID: 3972587590867979935, guid: f2669dfd1a4999b4488409f059bed028, type: 3}
-  _paging: {fileID: 323029370}
+  _friendListPagingText: {fileID: 323029370}
+  _friendRequestPagingText: {fileID: 793086418}
+  _myRequestPagingText: {fileID: 1455305356}
   _numberPerPage: 7
   _friendListContainer: {fileID: 38503517}
   _friendRequestContainer: {fileID: 312871741}
   _myRequestContainer: {fileID: 1679852541}
+  _friendListParent: {fileID: 1154804337}
+  _friendRequestParent: {fileID: 1034069463}
+  _myRequestParent: {fileID: 571838995}
 --- !u!1001 &655040633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1943,7 +1928,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _changing: -1
-  _paging: {fileID: 793086418}
+  _paging:
+  - {fileID: 0}
 --- !u!114 &774039260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2090,7 +2076,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _changing: -1
-  _paging: {fileID: 1455305356}
+  _paging:
+  - {fileID: 0}
 --- !u!114 &774179271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2403,7 +2390,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 858533061}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 654387903}
+        m_TargetAssemblyTypeName: FriendListHandler, Assembly-CSharp
+        m_MethodName: ShowFriendList
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &858533061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2532,7 +2531,6 @@ GameObject:
   - component: {fileID: 1034069463}
   - component: {fileID: 1034069466}
   - component: {fileID: 1034069465}
-  - component: {fileID: 1034069464}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -2559,26 +2557,6 @@ RectTransform:
   m_AnchoredPosition: {x: -350, y: 350}
   m_SizeDelta: {x: 700, y: 100}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &1034069464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1034069462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2f813d2e091d6b4dbd97e0227c3f80d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _friendItemPrefab: {fileID: 2696805140462446793, guid: 9f19866d09ecba34aa20bbeffe5b29f7, type: 3}
-  _friendRequestItemPrefab: {fileID: 0}
-  _myRequestItemPrefab: {fileID: 0}
-  _paging: {fileID: 793086418}
-  _numberPerPage: 7
-  _friendListContainer: {fileID: 0}
-  _friendRequestContainer: {fileID: 0}
-  _myRequestContainer: {fileID: 0}
 --- !u!114 &1034069465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3467,7 +3445,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _changing: 1
-  _paging: {fileID: 323029370}
+  _paging:
+  - {fileID: 0}
 --- !u!1 &1630501134
 GameObject:
   m_ObjectHideFlags: 0
@@ -3583,7 +3562,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1679852542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3972,7 +3951,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _changing: -1
-  _paging: {fileID: 323029370}
+  _paging:
+  - {fileID: 0}
 --- !u!1 &2053081447
 GameObject:
   m_ObjectHideFlags: 0
@@ -4055,7 +4035,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2053081450}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 654387903}
+        m_TargetAssemblyTypeName: FriendListHandler, Assembly-CSharp
+        m_MethodName: ShowFriendRequest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2053081450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4146,7 +4138,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _changing: 1
-  _paging: {fileID: 793086418}
+  _paging:
+  - {fileID: 0}
 --- !u!114 &2084216739
 MonoBehaviour:
   m_ObjectHideFlags: 0

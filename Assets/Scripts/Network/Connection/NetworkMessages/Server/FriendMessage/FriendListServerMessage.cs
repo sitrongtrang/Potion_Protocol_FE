@@ -8,6 +8,7 @@ public class Friend
     [FieldOrder(0)] public string Id;
     [FieldOrder(1)] public string FriendId;
     [FieldOrder(2)] public string FriendDisplayName;
+    [FieldOrder(3)] public bool IsOnline;
 }
 
 [Serializable]
