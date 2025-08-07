@@ -1,5 +1,7 @@
-﻿using TMPro;
+﻿using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum RoomType
 {
@@ -24,6 +26,8 @@ public class CreateRoom : MonoBehaviour
     [SerializeField] private GameObject Error;
     [SerializeField] private TMP_InputField RoomName;
     [SerializeField] private TMP_InputField Password;
+    [SerializeField] private SelectableImage _gameModeOutline;
+    [SerializeField] private SelectableImage _roomTypeOutline;
     private GameMode _gameMode;
     private RoomType _roomType;
     private Coroutine _roomNameError;
@@ -46,12 +50,7 @@ public class CreateRoom : MonoBehaviour
                 Password = Password.text,
                 MapID = RoomScene.img,
             };
-            //Debug.Log(playerCreateRoomRequest.RoomName);
-            //Debug.Log(playerCreateRoomRequest.GameMode);
-            //Debug.Log(playerCreateRoomRequest.RoomType);
-            //Debug.Log(playerCreateRoomRequest.Password);
             NetworkManager.Instance.SendMessage(playerCreateRoomRequest);
-            CreateRoomUI.Instance.ShowPvPCanvas();
         }
     }
 
@@ -63,5 +62,15 @@ public class CreateRoom : MonoBehaviour
     public void OnCoop()
     {
         _gameMode = GameMode.Coop;
+    }
+
+    public void ResetRoom()
+    {
+        Debug.Log("aaaaaaaaa");
+        RoomName.text = null;
+        Password.text = null;
+        Error.SetActive(false);
+        _gameModeOutline.Click();
+        _roomTypeOutline.Click();
     }
 }

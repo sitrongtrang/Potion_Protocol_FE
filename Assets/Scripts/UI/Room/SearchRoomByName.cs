@@ -4,13 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class SearchRoomByName : MonoBehaviour
 {
-    public TMP_InputField searchInput;
-
+    [SerializeField] private TMP_InputField _searchInput;
+    public TMP_InputField SearchInput => _searchInput;
     private Coroutine _searchRoom;
 
     void Start()
     {
-        searchInput.onValueChanged.AddListener(FilterRooms);
+        _searchInput.onValueChanged.AddListener(FilterRooms);
     }
 
     public void FilterRooms(string keyword)
@@ -21,9 +21,12 @@ public class SearchRoomByName : MonoBehaviour
 
         NetworkManager.Instance.SendMessage(new PlayerGetRoomByNameRequest
         {
-            roomName = keyword,
+            RoomName = keyword,
         });
+    }
 
-        CreateRoomUI.Instance.Refreshed();
+    public void ResetSearch()
+    {
+        _searchInput.text = string.Empty;
     }
 }

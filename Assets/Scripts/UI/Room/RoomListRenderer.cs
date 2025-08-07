@@ -9,6 +9,7 @@ public class RoomListRenderer : MonoBehaviour
     [Header("Scroll View")]
     [SerializeField] private Transform _contentParent;
     [SerializeField] private GameObject _roomPrefab;
+
     [Header("Paging")]
     [SerializeField] private int _itemsPerPage = 6;
     [SerializeField] private Button _prevButton;
@@ -17,7 +18,8 @@ public class RoomListRenderer : MonoBehaviour
 
     [Header("Private Room")]
     [SerializeField] private Button _joinRoomButton;
-    [SerializeField] private TMP_Text _password;
+    [SerializeField] private TMP_InputField _password;
+    [SerializeField] private SearchRoomByName _searchRoomByName;
 
     private RoomInfo[] _allRooms;
     private int _currentPage = 0;
@@ -100,13 +102,15 @@ public class RoomListRenderer : MonoBehaviour
         NetworkManager.Instance.SendMessage(new PlayerJoinRoomRequest
         {
             RoomId = RoomID,
-            Password = password
+            Password = password.Replace("\u200B", "")
         });
+        _password.text = string.Empty;
     }
 
     private void OnJoinPrivateRoom(string RoomID)
     {
         CreateRoomUI.Instance.ShowPasswordCanvas();
+        _searchRoomByName.ResetSearch();
         _joinRoomButton.onClick.AddListener(() => OnJoinRoom(RoomID, _password.text));
     }
 }

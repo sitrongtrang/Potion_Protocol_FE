@@ -20,14 +20,14 @@ public static class Serialization
             byte[] payloadBytes = CreateByteFromType(message);
 
             short messageLength = (short)(2 + payloadBytes.Length);
-            Debug.Log(messageLength);
+            //Debug.Log(messageLength);
             using MemoryStream stream = new();
             using BinaryWriter writer = new(stream);
 
             BinarySerializer.WriteInt16BigEndian(writer, messageLength);
             BinarySerializer.WriteInt16BigEndian(writer, message.MessageType);
             writer.Write(payloadBytes);
-            Debug.Log(payloadBytes);
+            //Debug.Log(payloadBytes);
             return stream.ToArray();
         }
         catch (Exception e)
@@ -118,6 +118,8 @@ public static class Serialization
             NetworkMessageTypes.Server.Room.PlayerLeft => BinarySerializer.DeserializeFromBytes<ServerPlayerLeft>(payloadBytes),
             NetworkMessageTypes.Server.Room.Ready => BinarySerializer.DeserializeFromBytes<ServerPlayerReady>(payloadBytes),
             NetworkMessageTypes.Server.Room.UnReady => BinarySerializer.DeserializeFromBytes<ServerPlayerUnReady>(payloadBytes),
+            NetworkMessageTypes.Server.Room.ACK => BinarySerializer.DeserializeFromBytes<ServerACK>(payloadBytes),
+
             NetworkMessageTypes.Server.FriendSystem.GetFriendList =>  BinarySerializer.DeserializeFromBytes<FriendListServerMessage>(payloadBytes),
             NetworkMessageTypes.Server.FriendSystem.RemoveFriend =>  BinarySerializer.DeserializeFromBytes<FriendRemoveServerMessage>(payloadBytes),
             NetworkMessageTypes.Server.FriendSystem.SendFriendRequest => BinarySerializer.DeserializeFromBytes<FriendRequestServerMessage>(payloadBytes),
