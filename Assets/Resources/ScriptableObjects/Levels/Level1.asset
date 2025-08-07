@@ -17,7 +17,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 99044dd267a0afa45b8b2c1b347cb735, type: 2}
   - {fileID: 11400000, guid: 8ae4d85b5d49c874a8ca09ecdad0fce3, type: 2}
   - {fileID: 11400000, guid: dcdc772e97cc50d419f0c440169fb468, type: 2}
-  _recipeAddInterval: 15
+  _recipeAddInterval: 5
   _itemSources:
   - Config: {fileID: 11400000, guid: 356e1f12f7c5491468b866d63b0ef2d6, type: 2}
     MaxCapacity: 2

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: 
   _icon: {fileID: 2327156432000647105, guid: 9a63cf6990f5576448e108a8c4c97aee, type: 3}
+  _anim: {fileID: 0}
   _id: C5
   _craftingTime: 5
   _type: 1
@@ -22,3 +23,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 634d9a3732390f64fa2d0aab041d951e, type: 2}
   - {fileID: 11400000, guid: 3feaa63b66d55be49886d3ec5932cb56, type: 2}
   - {fileID: 11400000, guid: ac226eb1a68d4c74ab7944595baddefd, type: 2}
+  _expireTime: 30
