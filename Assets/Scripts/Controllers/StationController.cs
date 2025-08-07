@@ -6,6 +6,9 @@ using UnityEngine;
 public class StationController : MonoBehaviour
 {
     [SerializeField] private StationConfig _config;
+    private SpriteRenderer _spriteRenderer;
+    private AABBCollider _collider;
+    private Vector2 _size;
     private List<RecipeConfig> _recipes;
     [SerializeField] private ProgressBarUI progressBarPrefab;
     private ProgressBarUI _progressBar;
@@ -20,6 +23,13 @@ public class StationController : MonoBehaviour
     {
         _recipes = recipes;
         _items = new();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        if (_spriteRenderer)
+        {
+            _spriteRenderer.sprite = _config.Icon;
+            SetCollider(ref _collider, _spriteRenderer, transform);
+            CollisionSystem.InsertStaticCollider(_collider);
+        }
     }
     #endregion
 
@@ -131,8 +141,29 @@ public class StationController : MonoBehaviour
         _progressBar.StartProgress(duration);
     }
 
+    #region Interaction
     public virtual Vector2 GetTransferZone()
     {
         return transform.position;
     }
+
+    public void SetCollider(ref AABBCollider collider, SpriteRenderer spriteRenderer, Transform transform)
+    {
+        if (collider == null)
+        {
+            collider = new AABBCollider(spriteRenderer, transform)
+            {
+                Layer = (int)EntityLayer.Obstacle,
+                Owner = gameObject
+            };
+        }
+        else
+        {
+            collider.SetSize(_size);
+            Vector2 center = transform.position;
+            collider.SetBottomLeft(center - _size / 2f);
+        }
+
+    }
+    #endregion
 }

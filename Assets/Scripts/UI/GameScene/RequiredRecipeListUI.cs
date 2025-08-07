@@ -7,21 +7,14 @@ public class RequiredRecipeListUI : MonoBehaviour
 
     void OnEnable()
     {
-        if (LevelManager.Instance != null)
-        {
-            LevelManager.Instance.OnRequiredRecipeAdded += AddRecipe;
-            LevelManager.Instance.OnRequiredRecipeRemoved += RemoveRecipe;
-        }
-        
+        LevelManager.Instance.OnRequiredRecipeAdded += AddRecipe;
+        LevelManager.Instance.OnRequiredRecipeRemoved += RemoveRecipe;
     }
 
     void OnDisable()
     {
-        if (LevelManager.Instance != null)
-        {
-            LevelManager.Instance.OnRequiredRecipeAdded -= AddRecipe;
-            LevelManager.Instance.OnRequiredRecipeRemoved -= RemoveRecipe;
-        }
+        LevelManager.Instance.OnRequiredRecipeAdded -= AddRecipe;
+        LevelManager.Instance.OnRequiredRecipeRemoved -= RemoveRecipe;
     }
 
     public void Initialize(List<RecipeConfig> recipes)
@@ -36,9 +29,6 @@ public class RequiredRecipeListUI : MonoBehaviour
             if (recipes[i] == null) continue;
             AddRecipe(recipes[i]);
         }
-
-        LevelManager.Instance.OnRequiredRecipeAdded += AddRecipe;
-        LevelManager.Instance.OnRequiredRecipeRemoved += RemoveRecipe;
     }
 
     public void AddRecipe(RecipeConfig recipe)

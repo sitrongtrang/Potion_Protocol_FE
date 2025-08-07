@@ -143,24 +143,9 @@ public class EnemyController : MonoBehaviour
 
     public void SetCollider()
     {
-        Sprite sprite = _spriteRenderer.sprite;
-
-        float pivotY = sprite.pivot.y;
-
-        float pivotToBottom = pivotY / sprite.rect.height * _spriteRenderer.bounds.size.y;
-
-        float colliderWidth = _spriteRenderer.bounds.size.x;
-        float colliderHeight = 2f * pivotToBottom;
-
-        _size = new Vector2(colliderWidth, colliderHeight);
-        Vector2 colliderBottomLeft = new Vector2(
-            transform.position.x - colliderWidth / 2f,
-            transform.position.y - pivotToBottom
-        );
-
         if (_collider == null)
         {
-            _collider = new AABBCollider(colliderBottomLeft, _size)
+            _collider = new AABBCollider(_spriteRenderer, transform)
             {
                 Layer = (int)EntityLayer.Enemy,
                 Owner = gameObject
