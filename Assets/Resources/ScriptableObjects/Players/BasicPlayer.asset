@@ -15,11 +15,13 @@ MonoBehaviour:
   _name: Basic Player
   _icon: {fileID: 4584624430962842556, guid: 99ed0225354f39d489d52789a08071e3, type: 3}
   _anim: {fileID: 9100000, guid: fbe1b15306a46f14680fe2a8ac10fb20, type: 2}
-  _id: 
+  _id: P1
   _moveSpeed: 5
   _dashCooldown: 1
   _dashSpeed: 20
   _dashTime: 0.1
+  _weapons:
+  - {fileID: 11400000, guid: 8254a7f3b589ea54890b2ffd8067927d, type: 2}
   _attackCooldown: 1
   _attackDelay: 0.2
   _skillsCooldown:

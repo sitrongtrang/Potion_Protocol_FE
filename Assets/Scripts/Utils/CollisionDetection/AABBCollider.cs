@@ -24,8 +24,27 @@ public class AABBCollider : CustomCollider
         _size = other._size;
         Layer = other.Layer;
         Mask = other.Mask;
-
     }
+
+    public AABBCollider(SpriteRenderer spriteRenderer, Transform transform)
+    {
+        Sprite sprite = spriteRenderer.sprite;
+        float pivotY = sprite.pivot.y;
+
+        float pivotToBottom = pivotY / sprite.rect.height * spriteRenderer.bounds.size.y;
+
+        float colliderWidth = spriteRenderer.bounds.size.x;
+        float colliderHeight = 2f * pivotToBottom;
+
+        Vector2 colliderBottomLeft = new Vector2(
+            transform.position.x - colliderWidth / 2f,
+            transform.position.y - pivotToBottom
+        );
+
+        _bottomLeft = colliderBottomLeft;
+        _size = new Vector2(colliderWidth, colliderHeight);
+    }
+
     public override Rect Bounds => new Rect(_bottomLeft, _size);
 
     public override bool IsColliding(CustomCollider other)

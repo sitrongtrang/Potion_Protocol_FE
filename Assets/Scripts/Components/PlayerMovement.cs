@@ -194,24 +194,9 @@ public class PlayerMovement
 
     private void SetCollider()
     {
-        Sprite sprite = _spriteRenderer.sprite;
-
-        float pivotY = sprite.pivot.y;
-
-        float pivotToBottom = pivotY / sprite.rect.height * _spriteRenderer.bounds.size.y;
-
-        float colliderWidth = _spriteRenderer.bounds.size.x;
-        float colliderHeight = 2f * pivotToBottom;
-
-        _size = new Vector2(colliderWidth, colliderHeight);
-        Vector2 colliderBottomLeft = new Vector2(
-            _transform.position.x - colliderWidth / 2f,
-            _transform.position.y - pivotToBottom
-        );
-
         if (_collider == null)
         {
-            _collider = new AABBCollider(colliderBottomLeft, _size)
+            _collider = new AABBCollider(_spriteRenderer, _transform)
             {
                 Layer = (int)EntityLayer.Player,
                 Owner = _player.gameObject
