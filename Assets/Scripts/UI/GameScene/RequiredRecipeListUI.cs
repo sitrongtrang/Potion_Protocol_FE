@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RequiredRecipeListUI : MonoBehaviour
 {
@@ -7,14 +8,20 @@ public class RequiredRecipeListUI : MonoBehaviour
 
     void OnEnable()
     {
-        RecipeGenerator.Instance.OnRequiredRecipeAdded += AddRecipe;
-        RecipeGenerator.Instance.OnRequiredRecipeRemoved += RemoveRecipe;
+        if (SceneManager.GetActiveScene().name == "GameScene")
+        {
+            RecipeGenerator.Instance.OnRequiredRecipeAdded += AddRecipe;
+            RecipeGenerator.Instance.OnRequiredRecipeRemoved += RemoveRecipe;
+        }
     }
 
     void OnDisable()
     {
-        RecipeGenerator.Instance.OnRequiredRecipeAdded -= AddRecipe;
-        RecipeGenerator.Instance.OnRequiredRecipeRemoved -= RemoveRecipe;
+        if (SceneManager.GetActiveScene().name == "GameScene")
+        {
+            RecipeGenerator.Instance.OnRequiredRecipeAdded -= AddRecipe;
+            RecipeGenerator.Instance.OnRequiredRecipeRemoved -= RemoveRecipe;
+        }
     }
 
     public void Initialize()

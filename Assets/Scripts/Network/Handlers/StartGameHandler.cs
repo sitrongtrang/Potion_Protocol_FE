@@ -86,7 +86,8 @@ public class StartGameHandler : MonoBehaviour
 
     private void InitializeLevel(ServerStartGame message)
     {
-        int level = message.Level;
+        //int level = message.Level;
+        int level = 1;
 
         string levelPath = $"ScriptableObjects/Levels/Level{level}";
         LevelConfig config = Resources.Load<LevelConfig>(levelPath);

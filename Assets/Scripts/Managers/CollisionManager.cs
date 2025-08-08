@@ -116,7 +116,7 @@ public class CollisionManager : MonoBehaviour
         switch (message.MessageType)
         {
             case NetworkMessageTypes.Server.Pregame.StartGame:
-                LoadColliders(((ServerStartGame)message).Level);
+                LoadColliders(1);
                 break;
             default:
                 break;

@@ -31,7 +31,7 @@ public class GameStateUpdate : IServerStateSnapshot
     [FieldOrder(8)]
     public string[] RequiredRecipeIds;
     [FieldOrder(9)]
-    public int CurrentServerTime;
+    public long CurrentServerTime;
     
     int IServerStateSnapshot.ServerSequence => ServerSequence;
 }
