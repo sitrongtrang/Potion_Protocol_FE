@@ -10,7 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97329eacfdb3fa24193ef3709532944f, type: 3}
-  m_Name: Weapon
+  m_Name: Sword
   m_EditorClassIdentifier: 
+  _name: 'Excalibur '
+  _icon: {fileID: 5570841819123970152, guid: 3d1757a04d750694dae5b6151bd5bc96, type: 3}
+  _anim: {fileID: 9100000, guid: 271bf9efaf8ea944284b65387f7a0f53, type: 2}
+  _id: W1
   _attackRange: 0.3
   _attackDamage: 2

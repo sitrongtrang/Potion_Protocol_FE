@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
@@ -10,7 +9,6 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
     private LevelConfig _config;
-    public GameObject Map { get; private set; }
     private int _score = 0;
     public int Score
     {
@@ -52,10 +50,6 @@ public class LevelManager : MonoBehaviour
     public LevelConfig Config => _config;
     [SerializeField] private ItemSourceSpawner _itemSourceSpawner;
 
-    private List<RecipeConfig> _requiredRecipes = new List<RecipeConfig>();
-    public event Action<RecipeConfig> OnRequiredRecipeAdded;
-    public event Action<int> OnRequiredRecipeRemoved;
-    [SerializeField] private RequiredRecipeListUI _requiredRecipeListUI;
     public event Action<LevelConfig, GameObject> OnLevelInitialized;
 
     public List<StationController> Stations { get; private set; } = new List<StationController>();
@@ -74,11 +68,9 @@ public class LevelManager : MonoBehaviour
     public void Initialize(LevelConfig config)
     {
         _config = config;
-        _requiredRecipeListUI.Initialize(_requiredRecipes);
-        _requiredRecipes.Clear();
         LoadLevel(_config);
         StartCoroutine(LevelTimer());
-        StartCoroutine(AddNewRequiredRecipe());
+        RecipeGenerator.Instance.Initialize(config);
     }
 
     void Update()
@@ -93,9 +85,9 @@ public class LevelManager : MonoBehaviour
     {
         _timeLeft = config.LevelTime;
 
-        Map = MapLoader.Instance.RenderMap(config.MapPrefab, Vector2.zero);
+        GameObject map = Instantiate(config.MapPrefab, Vector2.zero, Quaternion.identity);
 
-        (int width, int height, float cellSize, Vector2 origin) = GetMapParameters(Map);
+        (int width, int height, float cellSize, Vector2 origin) = GetMapParameters(map);
         cellSize *= 0.5f;
 
         Pathfinding.Instance.InitializeGrid(width * 2, height * 2, cellSize, origin);
@@ -112,7 +104,7 @@ public class LevelManager : MonoBehaviour
                 PathNode pathNode = Pathfinding.Instance.GetNode(x, y);
                 pathNode.IsWalkable = !isoverlap;
             },
-            Map.transform
+            map.transform
         );
 
         GameObject spawnItemSourceBounds = GameObject.Find("Spawn ItemSource Bounds");
@@ -133,11 +125,11 @@ public class LevelManager : MonoBehaviour
             {
 
             },
-            Map.transform
+            map.transform
         );
 
         // Spawn & initialize stations
-        StationSpawner[] stationSpawners = Map.GetComponentsInChildren<StationSpawner>(true);
+        StationSpawner[] stationSpawners = map.GetComponentsInChildren<StationSpawner>(true);
         for (int i = 0; i < stationSpawners.Length; i++)
         {
             if (stationSpawners[i].Prefab.Config.Type == StationType.Furnace)
@@ -151,7 +143,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // Initialize enemy spawners
-        EnemySpawner[] enemySpawners = Map.GetComponentsInChildren<EnemySpawner>(true);
+        EnemySpawner[] enemySpawners = map.GetComponentsInChildren<EnemySpawner>(true);
         GameObject[] patrolCenters = GameObject.FindGameObjectsWithTag("PatrolCenter");
         List<Transform> positionsToSpawn = new();
         for (int i = 0; i < patrolCenters.Length; i++)
@@ -167,7 +159,7 @@ public class LevelManager : MonoBehaviour
         // Initialize item source spawner
         _itemSourceSpawner.Initialize(_config.ItemSources);
 
-        OnLevelInitialized?.Invoke(_config, Map);
+        OnLevelInitialized?.Invoke(_config, map);
     }
 
     private IEnumerator LevelTimer()
@@ -221,37 +213,15 @@ public class LevelManager : MonoBehaviour
         return (maxXLength, maxYLength, cellSize, bottomLeftWorldPos);
     }
 
-    private RecipeConfig GetNewRequiredRecipe()
-    {
-        int idx = _config.FinalRecipes.Count > 0 ? UnityEngine.Random.Range(0, _config.FinalRecipes.Count) : -1;
-        if (idx == -1) return null;
-        return _config.FinalRecipes[idx];
-    }
-
-    private IEnumerator AddNewRequiredRecipe()
-    {
-        while (true)
-        {
-            RecipeConfig newRecipe = GetNewRequiredRecipe();
-            if (newRecipe != null)
-            {
-                _requiredRecipes.Add(newRecipe);
-                OnRequiredRecipeAdded?.Invoke(newRecipe);
-                yield return new WaitForSeconds(_config.RecipeAddInterval);
-                yield return new WaitUntil(() => _requiredRecipes.Count < GameConstants.MaxRequiredRecipes);
-            }
-        }
-    }
-
     public bool OnProductSubmitted(ItemConfig product, float multiplier)
     {
-        for (int i = 0; i < _requiredRecipes.Count; i++)
+        List<RecipeGenerator.RecipeInstance> requiredRecipes = RecipeGenerator.Instance.RequiredRecipes;
+        for (int i = 0; i < requiredRecipes.Count; i++)
         {
-            if (_requiredRecipes[i].Product == product)
+            if (requiredRecipes[i].Config.Product == product)
             {
-                _requiredRecipes.RemoveAt(i);
-                OnRequiredRecipeRemoved?.Invoke(i);
-                Score += FormulaeCalculator.CalculateScore(_requiredRecipes[i], multiplier);
+                RecipeGenerator.Instance.RemoveRecipe(requiredRecipes[i]);
+                Score += FormulaeCalculator.CalculateScore(requiredRecipes[i].Config, multiplier);
                 return true;
             }
         }

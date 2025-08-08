@@ -12,9 +12,16 @@ public class GameLevelUI : MonoBehaviour
 
     void Start()
     {
-        LevelManager.Instance.OnScoreChanged += UpdateScoreText;
-        LevelManager.Instance.OnTimeChanged += UpdateTimeText;
-        LevelManager.Instance.OnPauseToggled += TogglePause;
+        if (SceneManager.GetActiveScene().name == "GameScene")
+        {
+            LevelManager.Instance.OnScoreChanged += UpdateScoreText;
+            LevelManager.Instance.OnTimeChanged += UpdateTimeText;
+            LevelManager.Instance.OnPauseToggled += TogglePause;
+        }
+        else if (SceneManager.GetActiveScene().name == "OnlineGameScene")
+        {
+            
+        }
     }
 
     public void UpdateScoreText(int score)

@@ -15,4 +15,7 @@ public class RecipeConfig : EntityConfig
 
     [SerializeField] private List<ItemConfig> _inputs;
     public List<ItemConfig> Inputs => _inputs;
+
+    [SerializeField] private float _expireTime;
+    public float ExpireTime => _expireTime;
 }

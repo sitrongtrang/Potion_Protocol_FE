@@ -43,9 +43,7 @@ public class EnemyController : MonoBehaviour
     [Header("Collision")]
     private SpriteRenderer _spriteRenderer;
     private AABBCollider _collider;
-    public AABBCollider Collider => _collider;
     private Vector2 _size = Vector2.zero;
-    public Vector2 Size => _size;
 
     #region UNITY_METHODS
     private void Update()
@@ -143,24 +141,10 @@ public class EnemyController : MonoBehaviour
 
     public void SetCollider()
     {
-        Sprite sprite = _spriteRenderer.sprite;
-
-        float pivotY = sprite.pivot.y;
-
-        float pivotToBottom = pivotY / sprite.rect.height * _spriteRenderer.bounds.size.y;
-
-        float colliderWidth = _spriteRenderer.bounds.size.x;
-        float colliderHeight = 2f * pivotToBottom;
-
-        _size = new Vector2(colliderWidth, colliderHeight);
-        Vector2 colliderBottomLeft = new Vector2(
-            transform.position.x - colliderWidth / 2f,
-            transform.position.y - pivotToBottom
-        );
-
+        AABBCollider temp = AABBCollider.GetColliderBaseOnSprite(_spriteRenderer, transform);
         if (_collider == null)
         {
-            _collider = new AABBCollider(colliderBottomLeft, _size)
+            _collider = new AABBCollider(temp)
             {
                 Layer = (int)EntityLayer.Enemy,
                 Owner = gameObject
@@ -170,9 +154,8 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            _collider.SetSize(_size);
-            Vector2 center = transform.position;
-            _collider.SetBottomLeft(center - _size / 2f);
+            _collider.SetSize(temp.Size);
+            _collider.SetBottomLeft(temp.BottomLeft);
         }
         
     }

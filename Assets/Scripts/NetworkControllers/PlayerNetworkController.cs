@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(NetworkIdentity))]
-public class TstController : MonoBehaviour
+public class PlayerNetworkController : MonoBehaviour
 {
     [Header("Components")]
     private float _sendTimer = 0f;
@@ -83,14 +83,13 @@ public class TstController : MonoBehaviour
         {
             _interpolator.IncrementAndInterpolate((serverState) =>
             {
-                bool xChanged = Mathf.Abs(serverState.PositionX - transform.position.x) >= 0.01f;
-                bool yChanged = Mathf.Abs(serverState.PositionY - transform.position.y) >= 0.01f;
+                float xDir = Mathf.Abs(serverState.PositionX - transform.position.x);
+                float yDir = Mathf.Abs(serverState.PositionY - transform.position.y);
+                Vector2 dir = new Vector2(xDir, yDir).normalized;
 
-                _animator.SetBool("IsMoving", xChanged || yChanged);
-                if (xChanged) _animator.SetFloat("MoveX", 1);
-                else _animator.SetFloat("MoveX", 0);
-                if (yChanged) _animator.SetFloat("MoveY", 1);
-                else _animator.SetFloat("MoveY", 0);
+                _animator.SetBool("IsMoving", dir != Vector2.zero);
+                _animator.SetFloat("MoveX", dir.x);
+                _animator.SetFloat("MoveY", dir.y);
 
                 transform.position = new(serverState.PositionX, serverState.PositionY);
             });
@@ -162,7 +161,7 @@ public class TstController : MonoBehaviour
                 _animator.SetBool("IsMoving", inputSnapshot.MoveDir != Vector2.zero);
                 _animator.SetFloat("MoveX", inputSnapshot.MoveDir.x);
                 _animator.SetFloat("MoveY", inputSnapshot.MoveDir.y);
-                transform.position = transform.position + (Vector3)(5 * Time.fixedDeltaTime * inputSnapshot.MoveDir);
+                transform.position = transform.position + (Vector3)(_config.MoveSpeed * Time.fixedDeltaTime * inputSnapshot.MoveDir);
                 return new()
                 {
                     Position = transform.position,
@@ -241,7 +240,7 @@ public class TstController : MonoBehaviour
                 Vector2 moveDir = new(inputMessage.MoveDirX, inputMessage.MoveDirY);
                 return new PlayerSnapshot()
                 {
-                    Position = transform.position + (Vector3)(5f * Time.fixedDeltaTime * moveDir)
+                    Position = transform.position + (Vector3)(_config.MoveSpeed * Time.fixedDeltaTime * moveDir)
                 };
             }
         );

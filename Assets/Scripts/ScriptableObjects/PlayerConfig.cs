@@ -16,6 +16,9 @@ public class PlayerConfig : EntityConfig
     [SerializeField] private float _dashTime;
     public float DashTime => _dashTime;
 
+    [SerializeField] private WeaponConfig[] _weapons;
+    public WeaponConfig[] Weapons => _weapons;
+
     [SerializeField] private float _attackCooldown;
     public float AttackCooldown => _attackCooldown;
 

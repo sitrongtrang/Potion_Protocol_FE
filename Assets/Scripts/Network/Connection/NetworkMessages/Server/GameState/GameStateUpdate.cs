@@ -26,11 +26,13 @@ public class GameStateUpdate : IServerStateSnapshot
     public PlantState[] PlantStates;
     [FieldOrder(6)]
     public OreState[] OreStates;
-    // [FieldOrder(7)]
-    public ItemState[] ItemStates;
     [FieldOrder(7)]
+    public ItemState[] ItemStates;
+    [FieldOrder(8)]
+    public string[] RequiredRecipeIds;
+    [FieldOrder(9)]
     public int CurrentServerTime;
-    //     public int CurrentScore;
+    
     int IServerStateSnapshot.ServerSequence => ServerSequence;
 }
 

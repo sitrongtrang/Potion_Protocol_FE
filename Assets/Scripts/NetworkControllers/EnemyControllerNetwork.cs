@@ -6,6 +6,8 @@ public class EnemyControllerNetwork : NetworkBehaviour
     private EnemyConfig _config;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
+    private AABBCollider _collider;
+    private Vector2 _size = Vector2.zero;
     private float _currentHp;
     [SerializeField] private EnemyHealthUI _healthBarPrefab;
     private EnemyHealthUI _healthBar;
@@ -28,6 +30,7 @@ public class EnemyControllerNetwork : NetworkBehaviour
     void OnDestroy()
     {
         Destroy(_healthBar.gameObject);
+        CollisionSystem.RemoveDynamicCollider(_collider);
     }
 
     void FixedUpdate()
@@ -44,13 +47,14 @@ public class EnemyControllerNetwork : NetworkBehaviour
             else _animator.SetFloat("MoveY", 0);
 
             transform.position = new(serverState.PositionX, serverState.PositionY);
-            
+
             if (serverState.Health < _currentHp)
             {
                 _enemyImpactUI.Flash();
                 _healthBar.SetHp(_currentHp);
             }
             _currentHp = serverState.Health;
+            SetCollider();
         });
     }
     #endregion
@@ -67,11 +71,13 @@ public class EnemyControllerNetwork : NetworkBehaviour
             _animator.runtimeAnimatorController = _config.Anim;
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _spriteRenderer.sprite = _config.Icon;
+            SetCollider();
         }
 
         _healthBar = Instantiate(_healthBarPrefab, FindFirstObjectByType<Canvas>().transform);
         Vector2 hpOffset = Vector2.up * heightHealthBar;
         _healthBar.Initialize(transform, _currentHp, hpOffset);
+
     }
     #endregion
 
@@ -98,4 +104,24 @@ public class EnemyControllerNetwork : NetworkBehaviour
         }
     }
     #endregion
+    
+    public void SetCollider()
+    {
+        AABBCollider temp = AABBCollider.GetColliderBaseOnSprite(_spriteRenderer, transform);
+        if (_collider == null)
+        {
+            _collider = new AABBCollider(temp)
+            {
+                Layer = (int)EntityLayer.Enemy,
+                Owner = gameObject
+            };
+            _collider.Mask.SetLayer((int)EntityLayer.Obstacle);
+            CollisionSystem.InsertDynamicCollider(_collider);
+        }
+        else
+        {
+            _collider.SetSize(temp.Size);
+            _collider.SetBottomLeft(temp.BottomLeft);
+        }
+    }
 }

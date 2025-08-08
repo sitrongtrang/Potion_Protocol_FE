@@ -21,16 +21,14 @@ public class AudioManager : MonoBehaviour
     private void Awake()
     {
         // Singleton pattern
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
 
         // Tạo AudioSource cho từng sound
         foreach (Sound s in sounds)

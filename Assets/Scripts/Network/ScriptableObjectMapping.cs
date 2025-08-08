@@ -20,11 +20,11 @@ public class ScriptableObjectMapping : ScriptableObject
     [SerializeField] private NetworkBehaviour _stationPrefab;
 
     [Header("Mappings")]
-    [SerializeField] private List<SOMap> _enemyMap;
-    [SerializeField] private List<SOMap> _itemSourceMap;
-    [SerializeField] private List<SOMap> _itemMap;
-    [SerializeField] private List<SOMap> _recipeMap;
-    [SerializeField] private List<SOMap> _stationMap;
+    [SerializeField] private List<SOMap> _enemyMap = new();
+    [SerializeField] private List<SOMap> _itemSourceMap = new();
+    [SerializeField] private List<SOMap> _itemMap = new();
+    [SerializeField] private List<SOMap> _recipeMap = new();
+    [SerializeField] private List<SOMap> _stationMap = new();
 
     // Internal cache for fast lookup
     private Dictionary<string, ScriptableObject> _lookup = new();
@@ -32,14 +32,9 @@ public class ScriptableObjectMapping : ScriptableObject
     private void OnEnable()
     {
         _lookup.Clear();
-        CacheMap(_enemyMap);
-        CacheMap(_itemSourceMap);
-        CacheMap(_itemMap);
-        CacheMap(_recipeMap);
-        CacheMap(_stationMap);
     }
 
-    public void InitializeMap(ScriptableObject[] scriptableObjects)
+    public void InitializeMapping(ScriptableObject[] scriptableObjects)
     {
         for (int i = 0; i < scriptableObjects.Length; i++)
         {
@@ -89,6 +84,12 @@ public class ScriptableObjectMapping : ScriptableObject
                 continue;
             }
         }
+
+        CacheMap(_enemyMap);
+        CacheMap(_itemSourceMap);
+        CacheMap(_itemMap);
+        CacheMap(_recipeMap);
+        CacheMap(_stationMap);
     }
 
     private void CacheMap(List<SOMap> map)

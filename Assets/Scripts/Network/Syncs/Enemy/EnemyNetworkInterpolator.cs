@@ -38,7 +38,8 @@ public class EnemyNetworkInterpolator : INetworkInterpolator<EnemyStateInterpola
                     {
                         ServerSequence = update.ServerSequence,
                         PositionX = update.EnemyStates[idx].PositionX,
-                        PositionY = update.EnemyStates[idx].PositionY
+                        PositionY = update.EnemyStates[idx].PositionY,
+                        Health = update.EnemyStates[idx].CurrentHealth
                     });
                 }
             }

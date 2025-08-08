@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerSpawner : MonoBehaviour
 {
     [SerializeField] private PlayerController _playerPrefab;
-
+    [SerializeField] private PlayerConfig _playerConfig;
     [SerializeField] private InputActionAsset _inputActions;
 
     void Start()
@@ -25,6 +25,6 @@ public class PlayerSpawner : MonoBehaviour
     void SpawnPlayer(Vector2 position, InputActionAsset loadedInputAsset = null)
     {
         PlayerController player = Instantiate(_playerPrefab, position, Quaternion.identity);
-        player.Initialize(loadedInputAsset);
+        player.Initialize(_playerConfig, loadedInputAsset);
     }
 }

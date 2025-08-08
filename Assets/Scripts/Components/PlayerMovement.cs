@@ -19,7 +19,6 @@ public class PlayerMovement
     private bool _canDash = true;
     private SpriteRenderer _spriteRenderer;
     private AABBCollider _collider;
-    private Vector2 _size = Vector2.zero;
     private float _speedMultiplier = 1;
 
     public AABBCollider Collider => _collider;
@@ -127,54 +126,13 @@ public class PlayerMovement
         float deltaTime = Time.deltaTime;
         Vector2 desiredMove = moveDirection * speed * deltaTime;
 
-        // Predict future position
         Vector2 currentPos = new Vector2(_transform.position.x, _transform.position.y);
         Vector2 newPos = currentPos + desiredMove;
 
-        // Create a temp collider at the new position
-        AABBCollider tempCollider = new AABBCollider(newPos - _size / 2, _size);
-        tempCollider.Layer = _collider.Layer;
-        tempCollider.Mask = _collider.Mask;
-
-        // Check collisions at the new position
-        List<AABBCollider> collided = CollisionSystem.RetrieveCollided(tempCollider);
-
-        // If no collision, move freely
-        if (collided.Count == 0)
-        {
-            _player.transform.position = newPos;
-            SetCollider();
-        }
-        else
-        {
-            // Try moving along X axis only
-            Vector2 xMove = new Vector2(desiredMove.x, 0);
-            Vector2 xPos = currentPos + xMove;
-            AABBCollider xCollider = new AABBCollider(xPos - _size / 2, _size);
-            xCollider.Layer = _collider.Layer;
-            xCollider.Mask = _collider.Mask;
-            if (CollisionSystem.RetrieveCollided(xCollider).Count == 0)
-            {
-                _player.transform.position = xPos;
-                SetCollider();
-                return;
-            }
-
-            // Try moving along Y axis only
-            Vector2 yMove = new Vector2(0, desiredMove.y);
-            Vector2 yPos = currentPos + yMove;
-            AABBCollider yCollider = new AABBCollider(yPos - _size / 2, _size);
-            yCollider.Layer = _collider.Layer;
-            yCollider.Mask = _collider.Mask;
-            if (CollisionSystem.RetrieveCollided(yCollider).Count == 0)
-            {
-                _player.transform.position = newPos;
-                SetCollider();
-                return;
-            }
-
-            // No movement if both X and Y are blocked
-        }
+        Vector2 resolvedPos = ContextSolver.ResolveStatic(_transform.position, newPos, _collider, CollisionSystem.Tree);
+        _player.transform.position = resolvedPos;
+        SetCollider();
+        return;
     }
 
     private void TriggerMoveAnimation(bool isMoving = true)
@@ -194,24 +152,10 @@ public class PlayerMovement
 
     private void SetCollider()
     {
-        Sprite sprite = _spriteRenderer.sprite;
-
-        float pivotY = sprite.pivot.y;
-
-        float pivotToBottom = pivotY / sprite.rect.height * _spriteRenderer.bounds.size.y;
-
-        float colliderWidth = _spriteRenderer.bounds.size.x;
-        float colliderHeight = 2f * pivotToBottom;
-
-        _size = new Vector2(colliderWidth, colliderHeight);
-        Vector2 colliderBottomLeft = new Vector2(
-            _transform.position.x - colliderWidth / 2f,
-            _transform.position.y - pivotToBottom
-        );
-
+        AABBCollider temp = AABBCollider.GetColliderBaseOnSprite(_spriteRenderer, _transform);
         if (_collider == null)
         {
-            _collider = new AABBCollider(colliderBottomLeft, _size)
+            _collider = new AABBCollider(temp)
             {
                 Layer = (int)EntityLayer.Player,
                 Owner = _player.gameObject
@@ -220,9 +164,8 @@ public class PlayerMovement
         }
         else
         {
-            _collider.SetSize(_size);
-            Vector2 center = _transform.position;
-            _collider.SetBottomLeft(center - _size / 2f);
+            _collider.SetSize(temp.Size);
+            _collider.SetBottomLeft(temp.BottomLeft / 2f);
         }
 
     }

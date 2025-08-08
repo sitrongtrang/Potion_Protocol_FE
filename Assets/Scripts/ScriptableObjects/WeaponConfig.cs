@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "WeaponConfig", menuName = "Scriptable Objects/WeaponConfig")]
-public class WeaponConfig : ScriptableObject
+public class WeaponConfig : EntityConfig
 {
     [SerializeField] private float _attackRange;
     [SerializeField] private int _attackDamage;

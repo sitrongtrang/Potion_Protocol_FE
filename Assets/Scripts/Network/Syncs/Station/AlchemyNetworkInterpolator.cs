@@ -40,7 +40,7 @@ public class AlchemyNetworkInterpolator : INetworkInterpolator<AlchemyStateInter
                         CraftTime = alchemyState.CraftTime,
                         CraftMaxTime = alchemyState.CraftMaxTime,
                         IsCrafting = alchemyState.IsCrafting,
-                        ItemIds = alchemyState.ItemIds
+                        ItemTypeIds = alchemyState.ItemTypeIds
                     });
                 }
             }

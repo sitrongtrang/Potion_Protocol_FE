@@ -6,6 +6,15 @@ public class AABBCollider : CustomCollider
     private Vector2 _size;
     public override ColliderType Type => ColliderType.AABB;
 
+    public Vector2 Size => _size;
+    public Vector2 BottomLeft => _bottomLeft;
+
+    public static AABBCollider MakeColliderBaseOnCenter(Vector2 center, Vector2 size)
+    {
+        Vector2 bottomLeft = center - size * 0.5f;
+        return new AABBCollider(bottomLeft, size);
+    }
+
     public AABBCollider(Vector2 bottomLeft, Vector2 size)
     {
         _bottomLeft = bottomLeft;
@@ -18,8 +27,27 @@ public class AABBCollider : CustomCollider
         _size = other._size;
         Layer = other.Layer;
         Mask = other.Mask;
-
     }
+
+    public static AABBCollider GetColliderBaseOnSprite(SpriteRenderer spriteRenderer, Transform transform)
+    {
+        Sprite sprite = spriteRenderer.sprite;
+        float pivotY = sprite.pivot.y;
+
+        float pivotToBottom = pivotY / sprite.rect.height * spriteRenderer.bounds.size.y;
+
+        float colliderWidth = spriteRenderer.bounds.size.x;
+        float colliderHeight = 2f * pivotToBottom;
+
+        Vector2 colliderBottomLeft = new Vector2(
+            transform.position.x - colliderWidth / 2f,
+            transform.position.y - pivotToBottom
+        );
+
+        Vector2 colliderSize = new Vector2(colliderWidth, colliderHeight);
+        return new AABBCollider(colliderBottomLeft, colliderSize);
+    }
+
     public override Rect Bounds => new Rect(_bottomLeft, _size);
 
     public override bool IsColliding(CustomCollider other)
