@@ -178,14 +178,14 @@ public class FriendListHandler : MonoBehaviour
                 ui1.AcceptButton.GetComponent<Button>().onClick.RemoveAllListeners();
                 ui1.AcceptButton.GetComponent<Button>().onClick.AddListener(() =>
                 {
-                    SendInvite(data.Id);
+                    SendAccept(data.Id);
                     go.SetActive(false);
                 });
 
                 ui1.DeclineButton.GetComponent<Button>().onClick.RemoveAllListeners();
                 ui1.DeclineButton.GetComponent<Button>().onClick.AddListener(() =>
                 {
-                    SendRemoveFriend(data.Id);
+                    SendDecline(data.Id);
                     go.SetActive(false);
                 });
                 break;
@@ -196,12 +196,22 @@ public class FriendListHandler : MonoBehaviour
                 ui2.CancelButton.GetComponent<Button>().onClick.RemoveAllListeners();
                 ui2.CancelButton.GetComponent<Button>().onClick.AddListener(() =>
                 {
-                    SendRemoveFriend(data.Id);
+                    // SendRemoveRequest(data.Id);
                     go.SetActive(false);
                 });
                 break;
             // TODO: Handle other modes if needed
         }
+    }
+
+    void SendAccept(string id)
+    {
+        NetworkManager.Instance.SendMessage(new AcceptRequestClientMessage(id));
+    }
+
+    void SendDecline(string id)
+    {
+        NetworkManager.Instance.SendMessage(new DeclineRequestClientMessage(id));
     }
 
     void RequestFriendList()
@@ -216,11 +226,13 @@ public class FriendListHandler : MonoBehaviour
 
     void RequestMyRequests()
     {
+        NetworkManager.Instance.SendMessage(new GetMyRequestsClientMessage());
         // Add request message
     }
 
     void HandleNetworkMessage(ServerMessage message)
-    {   
+    {
+        Debug.Log("Message type: " + message.MessageType);
         switch (message.MessageType)
         {
             case NetworkMessageTypes.Server.FriendSystem.GetFriendList:
@@ -252,26 +264,23 @@ public class FriendListHandler : MonoBehaviour
             case NetworkMessageTypes.Server.FriendSystem.RemoveFriend:
                 Debug.Log("✅ Remove friend success.");
                 break;
+            case NetworkMessageTypes.Server.FriendSystem.GetMyRequests:
+                if (message is GetMyRequestsServerMessage myRequest)
+                {
+                    _myRequestList = myRequest.FriendList;
+                    for (int i = 0; i < _myRequestList.Count; i++)
+                    {
+                        Debug.Log(_myRequestList[i].FriendDisplayName);
+                    }
+                    Debug.Log("_currentMode: " + _currentMode);
+                    if (_currentMode == FriendViewMode.MyRequest)
+                    {
+                        DisplayUIItems(_currentMode, _currentPage);
+                    }
+                }
+                break;
         }
-        // switch (message)
-        // {
-        //     case FriendListServerMessage friendListMsg:
-        //         _friendList = friendListMsg.FriendList;
-        //         DisplayUIItems(FriendViewMode.FriendList, _currentPage);
-        //         break;
-
-        //     case GetRequestsServerMessage requestMsg:
-        //         _friendRequestList = requestMsg.FriendList;
-        //         DisplayUIItems(FriendViewMode.FriendRequest, _currentPage);
-        //         break;
-
-        //     case FriendRemoveServerMessage:
-        //         Debug.Log("Friend removed successfully");
-        //         break;
-        // }
     }
-
-    
 
     void SendRemoveFriend(string id)
     {

@@ -248,8 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _changing: 1
-  _paging:
-  - {fileID: 0}
+  _paging: {fileID: 1455305356}
 --- !u!114 &75440917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1928,8 +1927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _changing: -1
-  _paging:
-  - {fileID: 0}
+  _paging: {fileID: 793086418}
 --- !u!114 &774039260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2076,8 +2074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _changing: -1
-  _paging:
-  - {fileID: 0}
+  _paging: {fileID: 1455305356}
 --- !u!114 &774179271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2987,7 +2984,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1469171836}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 654387903}
+        m_TargetAssemblyTypeName: FriendListHandler, Assembly-CSharp
+        m_MethodName: ShowMyRequest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1469171836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3445,8 +3454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _changing: 1
-  _paging:
-  - {fileID: 0}
+  _paging: {fileID: 323029370}
 --- !u!1 &1630501134
 GameObject:
   m_ObjectHideFlags: 0
@@ -3951,8 +3959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _changing: -1
-  _paging:
-  - {fileID: 0}
+  _paging: {fileID: 323029370}
 --- !u!1 &2053081447
 GameObject:
   m_ObjectHideFlags: 0
@@ -4138,8 +4145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _changing: 1
-  _paging:
-  - {fileID: 0}
+  _paging: {fileID: 793086418}
 --- !u!114 &2084216739
 MonoBehaviour:
   m_ObjectHideFlags: 0

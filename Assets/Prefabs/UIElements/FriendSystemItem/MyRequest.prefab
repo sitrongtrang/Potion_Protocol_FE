@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NameText: {fileID: 6089134837265062462}
-  CancelRequest: {fileID: 179558184384713147}
+  CancelButton: {fileID: 179558184384713147}
   AvatarObj: {fileID: 7388059358296090582}
 --- !u!1 &4255437423323111256
 GameObject:

@@ -19,6 +19,7 @@ public static class NetworkMessageTypes
             public const short AcceptFriendRequest = 501;
             public const short DeclineFriendRequest = 502;
             public const short GetFriendRequests = 504;
+            public const short GetMyRequests = 506;
         }
         public static class Pregame
         {
@@ -56,6 +57,7 @@ public static class NetworkMessageTypes
             public const short AcceptFriendRequest = 603;
             public const short DeclineFriendRequest = 604;
             public const short GetFriendRequests = 600;
+            public const short GetMyRequests = 606;
         }
         public static class System
         {
