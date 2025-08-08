@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Chest
   _icon: {fileID: 4827292053532166141, guid: f113fd8b4ca73ea4999955efa48a190d, type: 3}
+  _anim: {fileID: 9100000, guid: 20f3371e78e89c94db00fd73e554924a, type: 2}
   _id: Mo3
   _hp: 3
   _speed: 5

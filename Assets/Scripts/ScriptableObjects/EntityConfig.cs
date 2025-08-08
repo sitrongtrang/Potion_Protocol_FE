@@ -6,6 +6,8 @@ public abstract class EntityConfig : ScriptableObject
     public string Name => _name;
     [SerializeField] private Sprite _icon;
     public Sprite Icon => _icon;
+    [SerializeField] private RuntimeAnimatorController _anim;
+    public RuntimeAnimatorController Anim => _anim;
     [SerializeField] private string _id;
     public string Id => _id;
 }

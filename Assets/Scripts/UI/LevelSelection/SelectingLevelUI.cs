@@ -37,17 +37,16 @@ public class SelectingLevelUI : MonoBehaviour
 
     public void OnLevelSelected(int level)
     {
-        GameManager.Instance.CurrentLevel = level;
-        StartCoroutine(LoadGameScene());
+        StartCoroutine(LoadGameScene(level));
     }
 
-    private IEnumerator LoadGameScene()
+    private IEnumerator LoadGameScene(int level)
     {
         List<AsyncOperation> opList = new();
         AsyncOperation loadSceneRequest = SceneManager.LoadSceneAsync("GameScene");
         opList.Add(loadSceneRequest);
 
-        string levelPath = $"ScriptableObjects/Levels/Level{GameManager.Instance.CurrentLevel + 1}";
+        string levelPath = $"ScriptableObjects/Levels/Level{level + 1}";
         ResourceRequest loadLevelRequest = Resources.LoadAsync<LevelConfig>(levelPath);
         opList.Add(loadLevelRequest);
 
@@ -62,22 +61,21 @@ public class SelectingLevelUI : MonoBehaviour
 
             GameObject[] rootObjects = loadedScene.GetRootGameObjects();
             LevelManager levelManager = null;
-            ItemPool itemPool = null;
+            CollisionManager collisionManager = null;
             for (int i = 0; i < rootObjects.Length; i++)
             {
                 levelManager = rootObjects[i].GetComponentInChildren<LevelManager>();
-                itemPool = rootObjects[i].GetComponentInChildren<ItemPool>();
                 if (levelManager)
                 {
                     levelManager.Initialize(loadLevelRequest.asset as LevelConfig);
                 }
-                if (itemPool)
+                collisionManager = rootObjects[i].GetComponentInChildren<CollisionManager>();
+                if (collisionManager)
                 {
-                    itemPool.Initialize(loadLevelRequest.asset as LevelConfig);
-                    break;
+                    collisionManager.LoadColliders(level + 1);
                 }
-            }
 
+            }
             await LoadingScreenUI.Instance.RenderFinish();
         };
 

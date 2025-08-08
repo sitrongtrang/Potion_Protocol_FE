@@ -73,12 +73,14 @@ public static class NetworkMessageTypes
             public const short PlayerLeft = 702;
             public const short Ready = 703;
             public const short UnReady = 704;
+            public const short ACK = 900;
 
             public const short GetRoomInfo = 707;
             public const short GetRoomByName = 711;
             public const short GetAllRoom = 709;
 
             public const short RoomFull = 750;
+            public const short PlayerNotReady = 751;
             public const short InRoom = 752;
             public const short NotInRoom = 753;
             public const short OnlyLeader = 754;

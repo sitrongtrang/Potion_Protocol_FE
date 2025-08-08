@@ -4,15 +4,16 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private EnemySpawnerConfig _enemySpawnerConfig;
+    [SerializeField] private EnemyController _enemyPrefab;
     private float _currentCooldown;
     private List<Transform> _positionsToSpawn;
-    private List<EnemyController> _enemiesToSpawn;
+    private List<EnemyConfig> _enemiesToSpawn;
     private List<int> _unspawnedEnemyIndices = new();
     private List<int> _unoccupiedPositionIndices = new();
 
     public EnemySpawnerConfig Config => _enemySpawnerConfig;
 
-    public void Initialize(List<EnemyController> enemiesToSpawn, List<Transform> positionsToSpawn)
+    public void Initialize(List<EnemyConfig> enemiesToSpawn, List<Transform> positionsToSpawn)
     {
         _enemiesToSpawn = enemiesToSpawn;
         _positionsToSpawn = positionsToSpawn;
@@ -68,9 +69,9 @@ public class EnemySpawner : MonoBehaviour
         _unspawnedEnemyIndices.Add(index);
     }
 
-    public void Spawn(EnemySpawner spawner, EnemyController prefab, Vector2 position, int positionIndex, int typeIndex)
+    public void Spawn(EnemySpawner spawner, EnemyConfig config, Vector2 position, int positionIndex, int typeIndex)
     {
-        EnemyController enemy = Instantiate(prefab, spawner.transform.position, Quaternion.identity);
-        enemy.Initialize(spawner, position, positionIndex, typeIndex);
+        EnemyController enemy = Instantiate(_enemyPrefab, spawner.transform.position, Quaternion.identity);
+        enemy.Initialize(config, spawner, position, positionIndex, typeIndex);
     }
 }

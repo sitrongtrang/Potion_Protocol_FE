@@ -9,11 +9,17 @@ public class RoomListRenderer : MonoBehaviour
     [Header("Scroll View")]
     [SerializeField] private Transform _contentParent;
     [SerializeField] private GameObject _roomPrefab;
+
     [Header("Paging")]
     [SerializeField] private int _itemsPerPage = 6;
     [SerializeField] private Button _prevButton;
     [SerializeField] private Button _nextButton;
     [SerializeField] private TMP_Text _pageIndicatorText;
+
+    [Header("Private Room")]
+    [SerializeField] private Button _joinRoomButton;
+    [SerializeField] private TMP_InputField _password;
+    [SerializeField] private SearchRoomByName _searchRoomByName;
 
     private RoomInfo[] _allRooms;
     private int _currentPage = 0;
@@ -55,11 +61,17 @@ public class RoomListRenderer : MonoBehaviour
             if (capacity != null) capacity.text = $"{room.CurrentPlayers}/{room.MaxPlayers}";
 
             var privateIcon = button.transform.Find("PrivateIcon").GetComponent<Image>();
-            if (room.RoomType == (short)RoomType.Public) CreateRoomUI.Instance.SetImageAlpha(0f, privateIcon);
-            else if (room.RoomType == (short)RoomType.Private) CreateRoomUI.Instance.SetImageAlpha(255f, privateIcon);
-
             var enterButton = button.transform.Find("Enter").GetComponent<Button>();
-            enterButton.onClick.AddListener(() => OnJoinRoom(room.RoomID, ""));
+            if (room.RoomType == (short)RoomType.Public)
+            {
+                CreateRoomUI.Instance.SetImageAlpha(0f, privateIcon);
+                enterButton.onClick.AddListener(() => OnJoinRoom(room.RoomID, ""));
+            }
+            else if (room.RoomType == (short)RoomType.Private)
+            {
+                CreateRoomUI.Instance.SetImageAlpha(255f, privateIcon);
+                enterButton.onClick.AddListener(() => OnJoinPrivateRoom(room.RoomID));
+            }
         }
 
         _pageIndicatorText.text = $"{_currentPage + 1} / {_totalPages}";
@@ -90,7 +102,15 @@ public class RoomListRenderer : MonoBehaviour
         NetworkManager.Instance.SendMessage(new PlayerJoinRoomRequest
         {
             RoomId = RoomID,
-            Password = password
+            Password = password.Replace("\u200B", "")
         });
+        _password.text = string.Empty;
+    }
+
+    private void OnJoinPrivateRoom(string RoomID)
+    {
+        CreateRoomUI.Instance.ShowPasswordCanvas();
+        _searchRoomByName.ResetSearch();
+        _joinRoomButton.onClick.AddListener(() => OnJoinRoom(RoomID, _password.text));
     }
 }

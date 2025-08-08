@@ -108,7 +108,6 @@ MonoBehaviour:
   _swordAnim: {fileID: 2632989158722518406}
   _weapon: {fileID: 11400000, guid: 8254a7f3b589ea54890b2ffd8067927d, type: 2}
   _attackPoint: {fileID: 6906503070484043503}
-  _skillUIParent: {fileID: 6770161539210649719, guid: 6d7c8a9fa013e734fb23d5c5e70ea0f4, type: 3}
   InteractionDistance: 1
 --- !u!95 &-4838168921377332254
 Animator:
@@ -269,7 +268,7 @@ Transform:
   m_GameObject: {fileID: 3424221767022254891}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []

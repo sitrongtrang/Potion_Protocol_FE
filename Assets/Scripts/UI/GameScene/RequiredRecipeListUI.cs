@@ -7,38 +7,22 @@ public class RequiredRecipeListUI : MonoBehaviour
 
     void OnEnable()
     {
-        if (LevelManager.Instance != null)
-        {
-            LevelManager.Instance.OnRequiredRecipeAdded += AddRecipe;
-            LevelManager.Instance.OnRequiredRecipeRemoved += RemoveRecipe;
-        }
-        
+        RecipeGenerator.Instance.OnRequiredRecipeAdded += AddRecipe;
+        RecipeGenerator.Instance.OnRequiredRecipeRemoved += RemoveRecipe;
     }
 
     void OnDisable()
     {
-        if (LevelManager.Instance != null)
-        {
-            LevelManager.Instance.OnRequiredRecipeAdded -= AddRecipe;
-            LevelManager.Instance.OnRequiredRecipeRemoved -= RemoveRecipe;
-        }
+        RecipeGenerator.Instance.OnRequiredRecipeAdded -= AddRecipe;
+        RecipeGenerator.Instance.OnRequiredRecipeRemoved -= RemoveRecipe;
     }
 
-    public void Initialize(List<RecipeConfig> recipes)
+    public void Initialize()
     {
         foreach (Transform child in transform)
         {
             Destroy(child.gameObject);
         }
-
-        for (int i = 0; i < recipes.Count; i++)
-        {
-            if (recipes[i] == null) continue;
-            AddRecipe(recipes[i]);
-        }
-
-        LevelManager.Instance.OnRequiredRecipeAdded += AddRecipe;
-        LevelManager.Instance.OnRequiredRecipeRemoved += RemoveRecipe;
     }
 
     public void AddRecipe(RecipeConfig recipe)

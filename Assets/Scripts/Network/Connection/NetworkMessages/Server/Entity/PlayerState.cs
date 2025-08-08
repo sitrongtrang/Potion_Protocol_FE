@@ -14,7 +14,10 @@ public class PlayerState : IStateSnapshot
     public bool IsDashing;
     [FieldOrder(5)]
     public int ProcessedInputSequence;
-    // public ItemState[] Inventory;
+    [FieldOrder(6)]
+    public string[] InventoryItemTypes;
+    [FieldOrder(7)]
+    public int Score;
 
     int IStateSnapshot.ProcessedInputSequence => ProcessedInputSequence;
 }

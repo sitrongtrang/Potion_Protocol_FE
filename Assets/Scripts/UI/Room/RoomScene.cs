@@ -1,5 +1,6 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class RoomScene : MonoBehaviour
@@ -8,8 +9,9 @@ public class RoomScene : MonoBehaviour
     [SerializeField] private Sprite[] NewSprite;
     [SerializeField] private TMP_Text RoomID;
 
-    public static int img = 0;
     private bool _ready = false;
+    public static int img = 0;
+    public bool Leader = false;
 
     public void ChooseImage(int image)
     {
@@ -29,14 +31,22 @@ public class RoomScene : MonoBehaviour
 
     public void OnLeaveRoom()
     {
-        NetworkManager.Instance.SendMessage(new PlayerUnready());
+        if (Leader) NetworkManager.Instance.SendMessage(new PlayerUnready());
+        if (_ready)
+        {
+            _ready = !_ready;
+            NetworkManager.Instance.SendMessage(new PlayerUnready());
+        }
         NetworkManager.Instance.SendMessage(new PlayerLeaveRoom());
-        CreateRoomUI.Instance.ShowRoomListCanvas();
-        CreateRoomUI.Instance.OnRefreshButtonClicked();
     }
 
     public void OnReadyRoom()
     {
+        if (Leader)
+        {
+            NetworkManager.Instance.SendMessage(new PlayerStartGameRequest());
+            return;
+        }
         _ready = !_ready;
         if (_ready)
         {

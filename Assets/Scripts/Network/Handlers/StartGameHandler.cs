@@ -1,11 +1,17 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class StartGameHandler : MonoBehaviour
 {
     [Header("Prefab")]
     [SerializeField] private GameObject _playerPrefab;
+    [SerializeField] private PlayerConfig _playerConfig;
     [SerializeField] private InputActionAsset _inputActionAsset;
+
+    public event Action<LevelConfig, GameObject> OnLevelInitialized;
+
     private void OnEnable()
     {
         NetworkEvents.OnMessageReceived += HandleNetworkMessage;
@@ -22,14 +28,14 @@ public class StartGameHandler : MonoBehaviour
 
         GameObject playerObj = Instantiate(_playerPrefab, position, Quaternion.identity);
 
-        if (!playerObj.TryGetComponent<TstController>(out var localPlayerController))
+        if (!playerObj.TryGetComponent<PlayerNetworkController>(out var localPlayerController))
         {
             Debug.LogError("Wrong player object");
             Destroy(playerObj);
             return;
         }
 
-        localPlayerController.Initialize(_inputActionAsset, playerId, isLocal);
+        localPlayerController.Initialize(_playerConfig, _inputActionAsset, playerId, isLocal);
 
         // Additional setup
         if (isLocal)
@@ -49,6 +55,16 @@ public class StartGameHandler : MonoBehaviour
         {
             case NetworkMessageTypes.Server.Pregame.StartGame:
                 HandlePlayerSpawn((ServerStartGame)message);
+                InitializeLevel((ServerStartGame)message);
+                break;
+            case NetworkMessageTypes.Server.Room.OnlyLeader:
+                Debug.Log("Only Leader");
+                break;
+            case NetworkMessageTypes.Server.Room.PlayerNotReady:
+                Debug.Log("Only Leader");
+                break;
+            case NetworkMessageTypes.Server.Pregame.MatchMaking:
+                Debug.Log("Match Making");
                 break;
             default:
                 break;
@@ -68,4 +84,15 @@ public class StartGameHandler : MonoBehaviour
         }
     }
 
+    private void InitializeLevel(ServerStartGame message)
+    {
+        int level = message.Level;
+
+        string levelPath = $"ScriptableObjects/Levels/Level{level}";
+        LevelConfig config = Resources.Load<LevelConfig>(levelPath);
+
+        GameObject map = Instantiate(config.MapPrefab, Vector2.zero, Quaternion.identity);
+
+        OnLevelInitialized?.Invoke(config, map);
+    }
 }

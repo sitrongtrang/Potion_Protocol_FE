@@ -10,9 +10,12 @@ public class CreateRoomUI : MonoBehaviour
     [SerializeField] private Canvas _createRoomCanvas;
     [SerializeField] private Canvas _roomListCanvas;
     [SerializeField] private Canvas _pvpCanvas;
+    [SerializeField] private Canvas _passwordCanvas;
     [Header("Refresh")]
     [SerializeField] private Animator _refreshAnimator;
     [SerializeField] private Button _refreshButton;
+    [Header("Component")]
+    [SerializeField] private SearchRoomByName _searchRoomByName;
     private Coroutine _refreshRoom;
     private bool _doneRefresh = false;
 
@@ -65,7 +68,7 @@ public class CreateRoomUI : MonoBehaviour
 
     private void SwitchCanvases(Canvas canvasToShow)
     {
-        List<Canvas> allCanvases = new List<Canvas> { _createRoomCanvas, _roomListCanvas, _pvpCanvas };
+        List<Canvas> allCanvases = new List<Canvas> { _createRoomCanvas, _roomListCanvas, _pvpCanvas, _passwordCanvas };
 
         foreach (var canvas in allCanvases)
         {
@@ -89,9 +92,22 @@ public class CreateRoomUI : MonoBehaviour
         SwitchCanvases(_pvpCanvas);
     }
 
+    public void ShowPasswordCanvas()
+    {
+        SwitchCanvases(_passwordCanvas);
+    }
+
     public void OnRefreshButtonClicked()
     {
-        RefreshData();
+        if (string.IsNullOrEmpty(_searchRoomByName.SearchInput.text))
+        {
+            RefreshData();
+        }
+        else
+        {
+            RefreshWithFilter(_searchRoomByName.SearchInput.text);
+        }
+
         if (_refreshRoom != null) StopCoroutine(_refreshRoom);
         _refreshRoom = StartCoroutine(HandleRefresh());
     }
@@ -109,6 +125,15 @@ public class CreateRoomUI : MonoBehaviour
 
         yield break;
     }
+
+    private void RefreshWithFilter(string filter)
+    {
+        _doneRefresh = false;
+        NetworkManager.Instance.SendMessage(new PlayerGetRoomByNameRequest()
+        {
+            RoomName = filter
+        });
+    }    
 
     private void RefreshData()
     {

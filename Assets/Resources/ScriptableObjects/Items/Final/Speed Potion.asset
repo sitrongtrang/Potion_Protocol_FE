@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Speed Potion
   m_EditorClassIdentifier: 
   _name: Speed Potion
-  _icon: {fileID: 0}
+  _icon: {fileID: 9123314365467124657, guid: d175d1f40df25b148929388e9b8aa910, type: 3}
+  _anim: {fileID: 0}
   _id: I41
   _type: 2
   _droppedBy: {fileID: 11400000, guid: 6299887861fe2344184c8571bdfbd097, type: 2}

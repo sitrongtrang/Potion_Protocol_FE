@@ -5,42 +5,83 @@ using UnityEngine;
 
 public class GameStateHandler : MonoBehaviour
 {
+    [SerializeField] private StartGameHandler _startGameHandler;
     [Header("Prefabs")]
-    [SerializeField] private ScriptableObjectMapping _prafabsMap;
+    [SerializeField] private ScriptableObjectMapping _prefabMapTemplate;
+    private ScriptableObjectMapping _prefabsMap;
 
     private GameStateNetworkInterpolator _interpolator = new(NetworkConstants.NET_INTERPOLATION_BUFFER_SIZE);
-    
+
     private Dictionary<string, TrackedObject> _enemyMap = new();
     private Dictionary<string, TrackedObject> _itemSourceMap = new();
     private Dictionary<string, TrackedObject> _itemMap = new();
     private Dictionary<string, TrackedObject> _stationMap = new();
-    void FixedUpdate()
+    private List<RecipeConfig> _requiredRecipes = new();
+
+    public ScriptableObjectMapping PrefabsMap => _prefabsMap;
+
+    void Awake()
     {
-        _interpolator.IncrementAndInterpolate(
-            (gameState) =>
-            {
-                HandleSyncing(gameState.EnemyIds, _enemyMap, _prafabsMap.EnemyPrefab);
-                HandleSyncing(gameState.ItemSourceIds, _itemSourceMap, _prafabsMap.ItemSourcePrefab);
-                HandleSyncing(gameState.ItemIds, _itemMap, _prafabsMap.ItemPrefab);
-                HandleSyncing(gameState.StationIds, _stationMap, _prafabsMap.StationPrefab);
-            }
-        );
+        // _prefabsMap = (ScriptableObjectMapping)ScriptableObject.CreateInstance(typeof(ScriptableObjectMapping));
+        _prefabsMap = Instantiate(_prefabMapTemplate);
     }
 
     void OnEnable()
     {
         NetworkEvents.OnMessageReceived += HandleNetworkMessage;
+        _startGameHandler.OnLevelInitialized += PrepareConfigs;
     }
+
     void OnDisable()
     {
         NetworkEvents.OnMessageReceived -= HandleNetworkMessage;
+        _startGameHandler.OnLevelInitialized -= PrepareConfigs;
     }
+
+    void FixedUpdate()
+    {
+        _interpolator.IncrementAndInterpolate(
+            (gameState) =>
+            {
+                HandleSyncing(gameState.EnemyIds, _enemyMap, _prefabsMap.EnemyPrefab);
+                HandleSyncing(gameState.ItemSourceIds, _itemSourceMap, _prefabsMap.ItemSourcePrefab);
+                HandleSyncing(gameState.ItemIds, _itemMap, _prefabsMap.ItemPrefab);
+                HandleSyncing(gameState.StationIds, _stationMap, _prefabsMap.StationPrefab);
+                SyncRecipes(gameState.RequiredRecipeIds);
+            }
+        );
+    }
+
+    private void SyncRecipes(List<string> data)
+    {
+        for (int i = 0; i < data.Count; i++)
+        {
+            ScriptableObject scriptableObject = PrefabsMap.GetSO(data[i]);
+            if (scriptableObject is RecipeConfig recipeConfig)
+            {
+                if (i >= _requiredRecipes.Count)
+                {
+                    _requiredRecipes.Add(recipeConfig);
+                }
+                else
+                {
+                    _requiredRecipes[i] = recipeConfig;
+                }
+            }
+        }
+
+        for (int i = _requiredRecipes.Count - 1; i >= data.Count; i--)
+        {
+            _requiredRecipes.RemoveAt(i);
+        }
+    } 
 
     private void HandleSyncing(
         Dictionary<string, GameStateInterpolateData.EntityInfo> data,
         Dictionary<string, TrackedObject> current,
         NetworkBehaviour prefab
-    ) {
+    )
+    {
         List<string> keysToRemove = new();
         foreach (var kvp in current)
         {
@@ -60,9 +101,17 @@ public class GameStateHandler : MonoBehaviour
             if (!current.ContainsKey(id))
             {
                 NetworkBehaviour obj = Instantiate(prefab, entityInfo.Position, Quaternion.identity);
-                obj.Initialize(_prafabsMap.GetSO(entityInfo.TypeId));
+                obj.Initialize(id, _prefabsMap.GetSO(entityInfo.TypeId));
                 TrackedObject trackedObject = obj.AddComponent<TrackedObject>();
                 current.Add(id, trackedObject);
+
+                trackedObject.OnDestroyed += (id) =>
+                {
+                    if (current.ContainsKey(id))
+                    {
+                        current.Remove(id);
+                    }
+                };
             }
         }
     }
@@ -82,5 +131,37 @@ public class GameStateHandler : MonoBehaviour
     private void HandleGameStates(GameStatesUpdate gameStates)
     {
         _interpolator.Store(gameStates.GameStates, null);
+    }
+
+    private void PrepareConfigs(LevelConfig levelConfig, GameObject map)
+    {
+        List<ScriptableObject> scriptableObjects = new();
+        for (int i = 0; i < levelConfig.Enemies.Count; i++)
+        {
+            scriptableObjects.Add(levelConfig.Enemies[i]);
+            scriptableObjects.Add(levelConfig.Enemies[i].Item);
+        }
+        for (int i = 0; i < levelConfig.ItemSources.Count; i++)
+        {
+            scriptableObjects.Add(levelConfig.ItemSources[i].Config);
+            scriptableObjects.Add(levelConfig.ItemSources[i].Config.DroppedItem);
+        }
+        for (int i = 0; i < levelConfig.IngotRecipes.Count; i++)
+        {
+            scriptableObjects.Add(levelConfig.IngotRecipes[i]);
+            scriptableObjects.Add(levelConfig.IngotRecipes[i].Product);
+        }
+        for (int i = 0; i < levelConfig.FinalRecipes.Count; i++)
+        {
+            scriptableObjects.Add(levelConfig.FinalRecipes[i]);
+            scriptableObjects.Add(levelConfig.FinalRecipes[i].Product);
+        }
+        StationController[] stationControllers = map.GetComponentsInChildren<StationController>();
+        for (int i = 0; i < stationControllers.Length; i++)
+        {
+            scriptableObjects.Add(stationControllers[i].Config);
+        }
+
+        _prefabsMap.InitializeMapping(scriptableObjects.ToArray());
     }
 }

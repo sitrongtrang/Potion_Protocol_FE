@@ -109,7 +109,7 @@ public class PlayerAttack
 
     private void HitEnemy(Vector2 origin, Vector2 dir)
     {
-        float attackRange = _player.Weapon.AttackRange;
+        float attackRange = _player.Weapons[0].AttackRange;
         List<AABBCollider> walls = CollisionSystem.RayCast(origin, dir, attackRange, EntityLayer.Obstacle);
 
         float maxReach = attackRange;
@@ -167,7 +167,7 @@ public class PlayerAttack
                 EnemyController enemy = hitTargets[i].Owner.GetComponent<EnemyController>();
                 if (enemy != null)
                 {
-                    enemy.TakeDamage(_damageMultiplier * _player.Weapon.AttackDamage);
+                    enemy.TakeDamage(_damageMultiplier * _player.Weapons[0].AttackDamage);
                 }
             }
 

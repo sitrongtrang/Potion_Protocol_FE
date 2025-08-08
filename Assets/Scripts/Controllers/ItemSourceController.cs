@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class ItemSourceController : MonoBehaviour
 {
-    [SerializeField] private ItemSourceConfig _config;
+    private ItemSourceConfig _config;
     private Collider2D _collider2D;
     private ItemSourceSpawner _itemSourceSpawner;
     [Header("Collision")]
@@ -16,19 +16,23 @@ public class ItemSourceController : MonoBehaviour
     public AABBCollider Collider => _collider;
     public Vector2 Size => _size;
 
-    public void Initialize(ItemSourceSpawner spawner)
+    public void Initialize(EntityConfig entityConfig, ItemSourceSpawner spawner)
     {
+        if (entityConfig is ItemSourceConfig itemSourceConfig)
+        {
+            _config = itemSourceConfig;
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            if (_spriteRenderer)
+            {
+                _spriteRenderer.sprite = itemSourceConfig.Icon;
+                SetCollider();
+                CollisionSystem.InsertStaticCollider(_collider);
+            }
+        }
         _collider2D = GetComponent<Collider2D>();
         _itemSourceSpawner = spawner;
 
         CheckOverlapGrid();
-
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        if (_spriteRenderer)
-        {
-            SetCollider();
-            CollisionSystem.InsertStaticCollider(_collider);
-        }
     }
 
     public void OnFarmed()
@@ -64,24 +68,10 @@ public class ItemSourceController : MonoBehaviour
     
     public void SetCollider()
     {
-        Sprite sprite = _spriteRenderer.sprite;
-
-        float pivotY = sprite.pivot.y;
-
-        float pivotToBottom = pivotY / sprite.rect.height * _spriteRenderer.bounds.size.y;
-
-        float colliderWidth = _spriteRenderer.bounds.size.x;
-        float colliderHeight = 2f * pivotToBottom;
-
-        _size = new Vector2(colliderWidth, colliderHeight);
-        Vector2 colliderBottomLeft = new Vector2(
-            transform.position.x - colliderWidth / 2f,
-            transform.position.y - pivotToBottom
-        );
-
         if (_collider == null)
         {
-            _collider = new AABBCollider(colliderBottomLeft, _size)
+            AABBCollider temp = AABBCollider.GetColliderBaseOnSprite(_spriteRenderer, transform);
+            _collider = new AABBCollider(temp)
             {
                 Layer = (int)EntityLayer.ItemSource,
                 Owner = gameObject
@@ -93,6 +83,5 @@ public class ItemSourceController : MonoBehaviour
             Vector2 center = transform.position;
             _collider.SetBottomLeft(center - _size / 2f);
         }
-
     }
 }

@@ -217,16 +217,19 @@ public class FriendListHandler : MonoBehaviour
     void RequestFriendList()
     {
         NetworkManager.Instance.SendMessage(new FriendListClientMessage());
+        Debug.Log("Send friend list request");
     }
 
     void RequestFriendRequests()
     {
         NetworkManager.Instance.SendMessage(new GetRequestsClientMessage());
+        Debug.Log("Send friend requests request");
     }
 
     void RequestMyRequests()
     {
         NetworkManager.Instance.SendMessage(new GetMyRequestsClientMessage());
+        Debug.Log("Send my requests request");
         // Add request message
     }
 

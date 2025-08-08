@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class AlchemyStationController : StationController
 {
+    private AABBCollider _tableCollider;
     [SerializeField] private GameObject _table;
     [SerializeField] private GameObject[] _itemsOnTable;
 
@@ -13,6 +14,8 @@ public class AlchemyStationController : StationController
         {
             _itemsOnTable[i].SetActive(false);
         }
+        SetCollider(ref _tableCollider, _table.GetComponent<SpriteRenderer>(), _table.transform);
+        CollisionSystem.InsertStaticCollider(_tableCollider);
     }
 
     public override bool AddItem(ItemConfig config)
@@ -36,7 +39,7 @@ public class AlchemyStationController : StationController
     public override void RemoveItem(int idx, bool drop = true)
     {
         base.RemoveItem(idx, drop);
-        _itemsOnTable[_items.Count].SetActive(true);
+        _itemsOnTable[_items.Count].SetActive(false);
         _itemsOnTable[_items.Count].GetComponent<SpriteRenderer>().sprite = null;
     }
 

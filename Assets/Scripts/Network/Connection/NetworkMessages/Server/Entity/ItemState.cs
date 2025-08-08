@@ -12,11 +12,12 @@ public enum PositionFlag
 
 public class ItemState
 {
+    [FieldOrder(0)]
     public string ItemId;
+    [FieldOrder(1)]
     public string ItemType;
-    public int PositionFlag;
+    [FieldOrder(2)]
     public float PositionX;
+    [FieldOrder(3)]
     public float PositionY;
-    public int Slot;
-    public string StationId;
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [CreateAssetMenu(fileName = "PlayerConfig", menuName = "Scriptable Objects/PlayerConfig")]
-public class PlayerConfig : ScriptableObject
+public class PlayerConfig : EntityConfig
 {
     [SerializeField] private float _moveSpeed;
     public float MoveSpeed => _moveSpeed;
@@ -15,6 +15,9 @@ public class PlayerConfig : ScriptableObject
 
     [SerializeField] private float _dashTime;
     public float DashTime => _dashTime;
+
+    [SerializeField] private WeaponConfig[] _weapons;
+    public WeaponConfig[] Weapons => _weapons;
 
     [SerializeField] private float _attackCooldown;
     public float AttackCooldown => _attackCooldown;

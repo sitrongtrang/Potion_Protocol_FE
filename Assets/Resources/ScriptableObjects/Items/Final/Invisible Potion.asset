@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Invisible Potion
   m_EditorClassIdentifier: 
   _name: Invisible Potion
-  _icon: {fileID: 0}
+  _icon: {fileID: -4597679370469333081, guid: 92b85eda16bf17d498fd8489edd3283a, type: 3}
+  _anim: {fileID: 0}
   _id: I37
   _type: 2
   _droppedBy: {fileID: 11400000, guid: bae8296b44a06aa4fa189c912993eba6, type: 2}

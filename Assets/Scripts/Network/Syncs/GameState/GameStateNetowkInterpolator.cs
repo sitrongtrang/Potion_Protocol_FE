@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameStateNetworkInterpolator : INetworkInterpolator<GameStateInterpolateData, GameStateUpdate>
@@ -68,12 +69,15 @@ public class GameStateNetworkInterpolator : INetworkInterpolator<GameStateInterp
                         s => new Vector2(s.PositionX, s.PositionY)
                     );
 
+                    var requiredRecipe = update.RequiredRecipeIds.ToList();
+
                     _buffer.Add(new GameStateInterpolateData()
                     {
                         ItemIds = item,
                         EnemyIds = enemy,
                         ItemSourceIds = itemSource,
-                        StationIds = station
+                        StationIds = station,
+                        RequiredRecipeIds = requiredRecipe
                     });
                 }
             }

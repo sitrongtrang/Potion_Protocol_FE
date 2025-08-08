@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class EnemyController : MonoBehaviour
 {
     [Header("Component")]
-    [SerializeField] private Animator _animator;
+    private Animator _animator;
     public Animator Animatr => _animator;
-    [SerializeField] private EnemyConfig _config;
+    private EnemyConfig _config;
     public EnemyConfig EnemyConf => _config;
     public EnemySpawner Spawner { get; private set; }
     public int PositionIndex { get; private set; }
@@ -43,9 +43,7 @@ public class EnemyController : MonoBehaviour
     [Header("Collision")]
     private SpriteRenderer _spriteRenderer;
     private AABBCollider _collider;
-    public AABBCollider Collider => _collider;
     private Vector2 _size = Vector2.zero;
-    public Vector2 Size => _size;
 
     #region UNITY_METHODS
     private void Update()
@@ -67,8 +65,21 @@ public class EnemyController : MonoBehaviour
     #endregion
 
     #region STATE
-    public void Initialize(EnemySpawner spawner, Vector2 patrolCenter, int positionIndex, int typeIndex)
+    public void Initialize(EntityConfig config, EnemySpawner spawner, Vector2 patrolCenter, int positionIndex, int typeIndex)
     {
+        if (config is EnemyConfig enemyConfig)
+        {
+            _config = enemyConfig;
+            _animator = GetComponent<Animator>();
+            _animator.runtimeAnimatorController = _config.Anim;
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            if (_spriteRenderer)
+            {
+                _spriteRenderer.sprite = _config.Icon;
+                SetCollider();
+            }
+        }
+
         Spawner = spawner;
         PositionIndex = positionIndex;
         TypeIndex = typeIndex;
@@ -90,12 +101,6 @@ public class EnemyController : MonoBehaviour
 
         BasicStateMachine = new(this);
         _config.Initialize(this);
-
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        if (_spriteRenderer)
-        {
-            SetCollider();
-        }
     }
     #endregion
 
@@ -136,24 +141,10 @@ public class EnemyController : MonoBehaviour
 
     public void SetCollider()
     {
-        Sprite sprite = _spriteRenderer.sprite;
-
-        float pivotY = sprite.pivot.y;
-
-        float pivotToBottom = pivotY / sprite.rect.height * _spriteRenderer.bounds.size.y;
-
-        float colliderWidth = _spriteRenderer.bounds.size.x;
-        float colliderHeight = 2f * pivotToBottom;
-
-        _size = new Vector2(colliderWidth, colliderHeight);
-        Vector2 colliderBottomLeft = new Vector2(
-            transform.position.x - colliderWidth / 2f,
-            transform.position.y - pivotToBottom
-        );
-
+        AABBCollider temp = AABBCollider.GetColliderBaseOnSprite(_spriteRenderer, transform);
         if (_collider == null)
         {
-            _collider = new AABBCollider(colliderBottomLeft, _size)
+            _collider = new AABBCollider(temp)
             {
                 Layer = (int)EntityLayer.Enemy,
                 Owner = gameObject
@@ -163,9 +154,8 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            _collider.SetSize(_size);
-            Vector2 center = transform.position;
-            _collider.SetBottomLeft(center - _size / 2f);
+            _collider.SetSize(temp.Size);
+            _collider.SetBottomLeft(temp.BottomLeft);
         }
         
     }

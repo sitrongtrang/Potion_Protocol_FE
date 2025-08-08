@@ -9,7 +9,7 @@ public class NetworkManager : MonoBehaviour
     public static NetworkManager Instance { get; private set; }
 
     [Header("Connection Settings")]
-    [SerializeField] private string _ip = "127.0.0.1";
+    [SerializeField] private string _ip;
     [SerializeField] private int _port = 9000;
     [SerializeField] private float _reconnectDelay = 5f;
 

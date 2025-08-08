@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd9e42f65a764b240a342aa1ef378ac6, type: 3}
   m_Name: Furnace
   m_EditorClassIdentifier: 
+  _name: 
+  _icon: {fileID: -302608151, guid: 5da0603578617b443ad8708cdaf1febd, type: 3}
+  _anim: {fileID: 9100000, guid: d16f25fd19424a044bdbf9e7c88f95cd, type: 2}
+  _id: 
   _type: 0
-  _prefab: {fileID: 1966998418185039277, guid: 5d2119105a254cd41bb298ebb4a250d0, type: 3}

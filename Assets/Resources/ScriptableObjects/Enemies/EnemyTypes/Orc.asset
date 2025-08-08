@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Orc
   _icon: {fileID: 4074469027547599285, guid: e315fc5201234b442a889f44917c53a3, type: 3}
+  _anim: {fileID: 9100000, guid: 9bd598c0027dd8a4a8d38e714e5ff185, type: 2}
   _id: Mo4
   _hp: 8
   _speed: 3
