@@ -40,14 +40,8 @@ public class CreateRoomUI : MonoBehaviour
         }
     }
 
-    public void Unregister(SelectableImage img)
-    {
-        _allImages.Remove(img);
-    }
-
     public void Select(SelectableImage img)
     {
-        _allImages.RemoveAll(item => item == null);
         var parent = img.transform.parent;
 
         foreach (var other in _allImages)
