@@ -18,6 +18,7 @@ public class GameStateHandler : MonoBehaviour
     private Dictionary<string, TrackedObject> _stationMap = new();
     private List<RecipeConfig> _requiredRecipes = new();
 
+    public event Action<List<RecipeConfig>> OnRecipesSynced;
     public ScriptableObjectMapping PrefabsMap => _prefabsMap;
 
     void Awake()
@@ -74,6 +75,7 @@ public class GameStateHandler : MonoBehaviour
         {
             _requiredRecipes.RemoveAt(i);
         }
+        OnRecipesSynced?.Invoke(_requiredRecipes);
     } 
 
     private void HandleSyncing(
