@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class RequiredRecipeListUI : MonoBehaviour
 {
     [SerializeField] private GameObject _recipeUIPrefab;
+    private GameStateHandler _gameStateHandler;
 
     void OnEnable()
     {
@@ -12,6 +13,14 @@ public class RequiredRecipeListUI : MonoBehaviour
         {
             RecipeGenerator.Instance.OnRequiredRecipeAdded += AddRecipe;
             RecipeGenerator.Instance.OnRequiredRecipeRemoved += RemoveRecipe;
+        } 
+        else if (SceneManager.GetActiveScene().name == "OnlineGameScene")
+        {
+            _gameStateHandler = FindFirstObjectByType<GameStateHandler>();
+            if (_gameStateHandler != null) 
+            {
+                _gameStateHandler.OnRecipesSynced += SyncRecipe; 
+            }
         }
     }
 
@@ -21,6 +30,13 @@ public class RequiredRecipeListUI : MonoBehaviour
         {
             RecipeGenerator.Instance.OnRequiredRecipeAdded -= AddRecipe;
             RecipeGenerator.Instance.OnRequiredRecipeRemoved -= RemoveRecipe;
+        }
+        else if (SceneManager.GetActiveScene().name == "OnlineGameScene")
+        {
+            if (_gameStateHandler != null)
+            {
+                _gameStateHandler.OnRecipesSynced -= SyncRecipe;
+            }
         }
     }
 
@@ -43,5 +59,22 @@ public class RequiredRecipeListUI : MonoBehaviour
     public void RemoveRecipe(int idx)
     {
         Destroy(transform.GetChild(idx).gameObject);
+    }
+
+    public void SyncRecipe(List<RecipeConfig> recipes)
+    {
+        for (int i = 0; i < recipes.Count; i++)
+        {
+            if (i >= _recipeUIPrefab.transform.childCount)
+            {
+                AddRecipe(recipes[i]);
+            } 
+            else
+            {
+                Transform recipeUIObj = _recipeUIPrefab.transform.GetChild(i);
+                RecipeUI recipeUI = recipeUIObj.GetComponent<RecipeUI>();
+                recipeUI.Initialize(recipes[i]);
+            }
+        }
     }
 }

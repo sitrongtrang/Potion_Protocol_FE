@@ -27,4 +27,25 @@ public class RecipeUI : MonoBehaviour
             ingredientImageObj.transform.SetParent(_ingredientList.transform);
         }
     }
+
+    //public void SetRecipe(RecipeConfig recipe)
+    //{
+    //    _productImage.sprite = recipe.Product.Icon;
+    //    for (int i = 0; i < recipe.Inputs.Count; i++)
+    //    {
+    //        ItemConfig ingredient = recipe.Inputs[i];
+    //        if (i >= _ingredientList.transform.childCount)
+    //        {
+    //            GameObject ingredientImageObj = Instantiate(_ingredientImagePrefab, _ingredientList.transform);
+    //            Image ingredientImage = ingredientImageObj.GetComponent<Image>();
+    //            ingredientImage.sprite = ingredient.Icon;
+    //            ingredientImageObj.transform.SetParent(_ingredientList.transform);
+    //        } 
+    //        else
+    //        {
+    //            Image ingredientImage = _ingredientList.transform.GetChild(i).GetComponent<Image>();
+    //            ingredientImage.sprite = ingredient.Icon;
+    //        }
+    //    }
+    //}
 }
