@@ -14,6 +14,7 @@ public class LoadingScreenUI : MonoBehaviour
     private float _currentProgress = 0f;
     public Action OnSceneExit;
     public Action OnSceneEnter;
+    private readonly Dictionary<string, object> _sceneData = new Dictionary<string, object>();
     public static LoadingScreenUI Instance { get; private set; }
 
     void Awake()
@@ -28,6 +29,32 @@ public class LoadingScreenUI : MonoBehaviour
         DontDestroyOnLoad(this);
         gameObject.SetActive(false);
     }
+
+    #region Data Transfer API
+    public void SetData(string key, object value)
+    {
+        _sceneData[key] = value;
+    }
+
+    public T GetData<T>(string key)
+    {
+        if (_sceneData.TryGetValue(key, out object value) && value is T typedValue)
+            return typedValue;
+        return default;
+    }
+
+    public bool HasData(string key) => _sceneData.ContainsKey(key);
+
+    public void ClearData(string key)
+    {
+        _sceneData.Remove(key);
+    }
+
+    public void ClearAllData()
+    {
+        _sceneData.Clear();
+    }
+    #endregion
 
     public IEnumerator RenderLoadingScene(List<AsyncOperation> loadingOperations)
     {
@@ -68,6 +95,7 @@ public class LoadingScreenUI : MonoBehaviour
         _progressBar.value = 1f;
         _progressText.text = "100%";
         OnSceneEnter?.Invoke();
+        ClearAllData();
         gameObject.SetActive(false);
     }
 }

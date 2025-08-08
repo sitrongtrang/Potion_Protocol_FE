@@ -1,4 +1,6 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -83,7 +85,8 @@ public class RoomHandler : MonoBehaviour
                 OnGetAllRoomResponse((ServerGetAllRoom)message);
                 break;
             case NetworkMessageTypes.Server.Pregame.StartGame:
-                SceneManager.LoadSceneAsync("OnlineGameScene");
+                OnGameStart((ServerStartGame)message);
+                // SceneManager.LoadSceneAsync("OnlineGameScene");
                 break;
             case NetworkMessageTypes.Server.Room.ACK:
                 OnSelfLeaveRoom();
@@ -97,6 +100,29 @@ public class RoomHandler : MonoBehaviour
     {
         Debug.Log("Request get all room");
         NetworkManager.Instance.SendMessage(new PlayerGetAllRoomRequest());
+    }
+
+    private void OnGameStart(ServerStartGame msg)
+    {
+        StartCoroutine(LoadGameSceneOnline(msg));
+    }
+
+    private IEnumerator LoadGameSceneOnline(ServerStartGame msg)
+    {
+        LoadingScreenUI.Instance.OnSceneExit += () =>
+        {
+            LoadingScreenUI.Instance.SetData("StartGameData", msg);
+        };
+        AsyncOperation request = SceneManager.LoadSceneAsync("OnlineGameScene");
+        request.completed += async (op) =>
+        {
+            await LoadingScreenUI.Instance.RenderFinish();
+        };
+        LoadingScreenUI.Instance.gameObject.SetActive(true);
+        List<AsyncOperation> opList = new List<AsyncOperation>();
+        opList.Add(request);
+
+        yield return StartCoroutine(LoadingScreenUI.Instance.RenderLoadingScene(opList));
     }
 
     private void OnCreateRoomResponse(ServerCreateRoom msg)

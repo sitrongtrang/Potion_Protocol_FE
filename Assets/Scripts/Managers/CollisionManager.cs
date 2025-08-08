@@ -41,7 +41,8 @@ public class CollisionManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "OnlineGameScene")
         {
-            NetworkEvents.OnMessageReceived += HandleNetworkMessage;
+            LoadingScreenUI.Instance.OnSceneEnter += HandleOnSceneEnter;
+            // NetworkEvents.OnMessageReceived += HandleNetworkMessage;
         }
     }
 
@@ -49,7 +50,8 @@ public class CollisionManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "OnlineGameScene")
         {
-            NetworkEvents.OnMessageReceived -= HandleNetworkMessage;
+            LoadingScreenUI.Instance.OnSceneEnter -= HandleOnSceneEnter;
+            // NetworkEvents.OnMessageReceived -= HandleNetworkMessage;
         }
     }
 
@@ -111,15 +113,21 @@ public class CollisionManager : MonoBehaviour
         CollisionSystem.OnDrawGizmos();
     }
 
-    private void HandleNetworkMessage(ServerMessage message)
+    private void HandleOnSceneEnter()
     {
-        switch (message.MessageType)
-        {
-            case NetworkMessageTypes.Server.Pregame.StartGame:
-                LoadColliders(1);
-                break;
-            default:
-                break;
-        }
+        ServerStartGame msg = LoadingScreenUI.Instance.GetData<ServerStartGame>("StartGameData");
+        LoadColliders(msg.Level);
     }
+
+    // private void HandleNetworkMessage(ServerMessage message)
+    // {
+    //     switch (message.MessageType)
+    //     {
+    //         case NetworkMessageTypes.Server.Pregame.StartGame:
+    //             LoadColliders(1);
+    //             break;
+    //         default:
+    //             break;
+    //     }
+    // }
 }

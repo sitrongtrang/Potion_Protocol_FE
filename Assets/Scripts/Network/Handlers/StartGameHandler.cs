@@ -14,12 +14,14 @@ public class StartGameHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        NetworkEvents.OnMessageReceived += HandleNetworkMessage;
+        LoadingScreenUI.Instance.OnSceneEnter += HandleOnSceneEnter;
+        // NetworkEvents.OnMessageReceived += HandleNetworkMessage;
     }
 
     private void OnDisable()
     {
-        NetworkEvents.OnMessageReceived -= HandleNetworkMessage;
+        LoadingScreenUI.Instance.OnSceneEnter -= HandleOnSceneEnter;
+        // NetworkEvents.OnMessageReceived -= HandleNetworkMessage;
     }
 
     private void TrySpawnPlayer(string playerId, Vector2 position, bool isLocal)
@@ -49,27 +51,27 @@ public class StartGameHandler : MonoBehaviour
         }
     }
 
-    private void HandleNetworkMessage(ServerMessage message)
-    {
-        switch (message.MessageType)
-        {
-            case NetworkMessageTypes.Server.Pregame.StartGame:
-                HandlePlayerSpawn((ServerStartGame)message);
-                InitializeLevel((ServerStartGame)message);
-                break;
-            case NetworkMessageTypes.Server.Room.OnlyLeader:
-                Debug.Log("Only Leader");
-                break;
-            case NetworkMessageTypes.Server.Room.PlayerNotReady:
-                Debug.Log("Only Leader");
-                break;
-            case NetworkMessageTypes.Server.Pregame.MatchMaking:
-                Debug.Log("Match Making");
-                break;
-            default:
-                break;
-        }
-    }
+    // private void HandleNetworkMessage(ServerMessage message)
+    // {
+    //     switch (message.MessageType)
+    //     {
+    //         case NetworkMessageTypes.Server.Pregame.StartGame:
+    //             HandlePlayerSpawn((ServerStartGame)message);
+    //             InitializeLevel((ServerStartGame)message);
+    //             break;
+    //         // case NetworkMessageTypes.Server.Room.OnlyLeader:
+    //         //     Debug.Log("Only Leader");
+    //         //     break;
+    //         // case NetworkMessageTypes.Server.Room.PlayerNotReady:
+    //         //     Debug.Log("Only Leader");
+    //         //     break;
+    //         // case NetworkMessageTypes.Server.Pregame.MatchMaking:
+    //         //     Debug.Log("Match Making");
+    //         //     break;
+    //         default:
+    //             break;
+    //     }
+    // }
 
     private void HandlePlayerSpawn(ServerStartGame message)
     {
@@ -86,8 +88,8 @@ public class StartGameHandler : MonoBehaviour
 
     private void InitializeLevel(ServerStartGame message)
     {
-        //int level = message.Level;
-        int level = 1;
+        int level = message.Level;
+        // int level = 1;
 
         string levelPath = $"ScriptableObjects/Levels/Level{level}";
         LevelConfig config = Resources.Load<LevelConfig>(levelPath);
@@ -95,5 +97,12 @@ public class StartGameHandler : MonoBehaviour
         GameObject map = Instantiate(config.MapPrefab, Vector2.zero, Quaternion.identity);
 
         OnLevelInitialized?.Invoke(config, map);
+    }
+
+    private void HandleOnSceneEnter()
+    {
+        ServerStartGame msg = LoadingScreenUI.Instance.GetData<ServerStartGame>("StartGameData");
+        HandlePlayerSpawn(msg);
+        InitializeLevel(msg);
     }
 }
