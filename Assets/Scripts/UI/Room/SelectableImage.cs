@@ -26,10 +26,4 @@ public class SelectableImage : MonoBehaviour
             outline.enabled = show;
         }
     }
-
-    void OnDestroy()
-    {
-        if (CreateRoomUI.Instance != null)
-            CreateRoomUI.Instance.Unregister(this);
-    }
 }
