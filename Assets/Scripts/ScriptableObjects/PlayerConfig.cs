@@ -15,6 +15,8 @@ public class PlayerConfig : EntityConfig
 
     [SerializeField] private float _dashTime;
     public float DashTime => _dashTime;
+    [SerializeField] private float _interactDistance;
+    public float InteractDistance => _interactDistance;
 
     [SerializeField] private WeaponConfig[] _weapons;
     public WeaponConfig[] Weapons => _weapons;

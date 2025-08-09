@@ -98,7 +98,7 @@ public class PlayerAttack
 
     private bool CheckWall(Vector2 origin, Vector2 dir)
     {
-        float minDistanceToWall = 0.25f;
+        float minDistanceToWall = 0.15f;
         List<AABBCollider> walls = CollisionSystem.RayCast(origin, dir, minDistanceToWall, EntityLayer.Obstacle);
 
         Debug.DrawRay(origin, dir.normalized * minDistanceToWall, Color.cyan, 2f);

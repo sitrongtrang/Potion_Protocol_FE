@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +16,8 @@ public class PlayerNetworkController : MonoBehaviour
     // private int _serverSequence = int.MaxValue;
     // private bool _isReconciling = false;
     private PlayerInputSnapshot _inputListener = new();
+    private Vector2 _playerDir;
+    private bool _canAttack;
     // private NetworkPredictionBuffer<PlayerInputMessage, PlayerSnapshot> _networkPredictionBuffer = new(NetworkConstants.NET_PRED_BUFFER_SIZE);
     // private NetworkInterpolationBuffer<PlayerStateInterpolateData> _networkInterpolationBuffer = new(NetworkConstants.NET_INTERPOLATION_BUFFER_SIZE);
 
@@ -21,11 +25,13 @@ public class PlayerNetworkController : MonoBehaviour
     private PlayerInputManager _inputManager;
 
     [Header("Game Components")]
-    public PlayerInventory Inventory { get; private set; }
-    public PlayerInteraction Interaction { get; private set; }
     private PlayerConfig _config;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
+    private AABBCollider _collider;
+    private Vector2 _size;
+    private List<WeaponConfig> _weapons = new();
+    private Animator _swordAnimator;
 
     #region Unity Lifecycle
     void OnEnable()
@@ -55,7 +61,7 @@ public class PlayerNetworkController : MonoBehaviour
             _inputListener.DashPressed = _inputManager.controls.Player.Dash.WasPressedThisFrame();
             _inputListener.PickupPressed = _inputManager.controls.Player.Pickup.WasPressedThisFrame();
             _inputListener.DropPressed = _inputManager.controls.Player.Drop.WasPressedThisFrame();
-            _inputListener.CombinePressed = _inputManager.controls.Player.Combine.WasPressedThisFrame();
+            _inputListener.CraftPressed = _inputManager.controls.Player.Combine.WasPressedThisFrame();
             _inputListener.TransferPressed = _inputManager.controls.Player.Transfer.WasPressedThisFrame();
             _inputListener.SubmitPressed = _inputManager.controls.Player.Submit.WasPressedThisFrame();
         }
@@ -86,12 +92,15 @@ public class PlayerNetworkController : MonoBehaviour
                 float xDir = Mathf.Abs(serverState.PositionX - transform.position.x);
                 float yDir = Mathf.Abs(serverState.PositionY - transform.position.y);
                 Vector2 dir = new Vector2(xDir, yDir).normalized;
+                _playerDir = dir;
 
                 _animator.SetBool("IsMoving", dir != Vector2.zero);
                 _animator.SetFloat("MoveX", dir.x);
                 _animator.SetFloat("MoveY", dir.y);
 
                 transform.position = new(serverState.PositionX, serverState.PositionY);
+                Vector2 center = transform.position;
+                _collider.SetBottomLeft(center - _size / 2f);
             });
         }
     }
@@ -103,14 +112,23 @@ public class PlayerNetworkController : MonoBehaviour
         _inputManager = new PlayerInputManager(inputManager);
         Identity.Initialize(id, isLocal);
 
-        // Inventory = new PlayerInventory();
-        // Interaction = new PlayerInteraction();
-
-        // Inventory.Initialize(this, inputManager);
-        // Interaction.Initialize(this, inputManager);
         _config = config;
+        _canAttack = true;
         _animator.runtimeAnimatorController = _config.Anim;
         _spriteRenderer.sprite = _config.Icon;
+        Transform WeaponContainer = transform.Find("Weapons");
+        for (int i = 0; i < WeaponContainer.childCount; i++)
+        {
+            if (i >= _weapons.Count) _weapons.Add(_config.Weapons[i]);
+            else _weapons[i] = _config.Weapons[i];
+            Transform weapon = WeaponContainer.GetChild(i);
+            weapon.GetComponent<SpriteRenderer>().sprite = _weapons[i].Icon;
+            weapon.GetComponent<Animator>().runtimeAnimatorController = _weapons[i].Anim;
+            if (weapon.name == "Sword") _swordAnimator = weapon.GetComponent<Animator>();
+        }
+
+        _collider = AABBCollider.GetColliderBaseOnSprite(_spriteRenderer, transform);
+        _size = _collider.Size;
     }
     #endregion
 
@@ -119,9 +137,9 @@ public class PlayerNetworkController : MonoBehaviour
     {
         PlayerInputSnapshot cpy = new(inputSnapshot);
 
-        if (cpy.MoveDir != Vector2.zero && cpy.DashPressed)
+        if (cpy.MoveDir != Vector2.zero)
         {
-
+            TryMove(cpy, cpy.DashPressed);
         }
 
         if (cpy.PickupPressed)
@@ -134,7 +152,7 @@ public class PlayerNetworkController : MonoBehaviour
 
         }
 
-        if (cpy.CombinePressed)
+        if (cpy.CraftPressed)
         {
 
         }
@@ -149,11 +167,13 @@ public class PlayerNetworkController : MonoBehaviour
 
         }
 
-        if (cpy.MoveDir != Vector2.zero)
-            TryMove(cpy);
+        if (cpy.AttackPressed)
+        {
+            TryAttack(cpy);
+        }
     }
 
-    private bool TryMove(PlayerInputSnapshot inputSnapshot)
+    private bool TryMove(PlayerInputSnapshot inputSnapshot, bool DashPressed)
     {
         _simulator.Simulate(inputSnapshot,
             (inputSnapshot) =>
@@ -161,7 +181,13 @@ public class PlayerNetworkController : MonoBehaviour
                 _animator.SetBool("IsMoving", inputSnapshot.MoveDir != Vector2.zero);
                 _animator.SetFloat("MoveX", inputSnapshot.MoveDir.x);
                 _animator.SetFloat("MoveY", inputSnapshot.MoveDir.y);
-                transform.position = transform.position + (Vector3)(_config.MoveSpeed * Time.fixedDeltaTime * inputSnapshot.MoveDir);
+                float moveSpeed = DashPressed ? _config.DashSpeed : _config.MoveSpeed;
+                Vector2 targetPos = transform.position + (Vector3)(moveSpeed * Time.fixedDeltaTime * inputSnapshot.MoveDir);
+                Vector2 resolvedPos = ContextSolver.ResolveStatic(transform.position, targetPos, _collider, CollisionSystem.Tree);
+                _playerDir = inputSnapshot.MoveDir.normalized;
+                transform.position = resolvedPos;
+                Vector2 center = transform.position;
+                _collider.SetBottomLeft(center - _size / 2f);
                 return new()
                 {
                     Position = transform.position,
@@ -169,6 +195,59 @@ public class PlayerNetworkController : MonoBehaviour
             }
         );
         return true;
+    }
+
+    private bool TryAttack(PlayerInputSnapshot inputSnapshot)
+    {
+        if (!_canAttack) return false;
+
+        // If an alchemy nearby, cannot attack
+        AlchemyControllerNetwork alchemy = FindFirstObjectByType<AlchemyControllerNetwork>();
+        if (Vector2.Distance(alchemy.transform.position, transform.position) <= _config.InteractDistance)
+        {
+            return false;
+        }
+
+        // Check wall hit
+        Vector2 dir = _playerDir.normalized;
+        float skinWidth = 0.2f;
+        Vector2 origin = (Vector2)transform.position + dir * skinWidth;
+        bool hitObstacle = CheckWall(origin, dir);
+
+        if (hitObstacle)
+        {
+            Debug.Log("Vướng tường nè má.");
+            return false;
+        }
+
+        // Play animation
+        _swordAnimator.SetTrigger("Attack");
+        if (dir.x != 0 || dir.y != 0)
+        {
+            _swordAnimator.SetFloat("MoveX", dir.x);
+            _swordAnimator.SetFloat("MoveY", dir.y);
+            _canAttack = false;
+            StartCoroutine(AttackCooldown());
+            return true;
+        }
+        return false;
+    }
+
+    private IEnumerator AttackCooldown()
+    {
+        yield return new WaitForSeconds(_config.AttackCooldown);
+        _canAttack = true;
+    }
+
+    private bool CheckWall(Vector2 origin, Vector2 dir)
+    {
+        float minDistanceToWall = 0.15f;
+        List<AABBCollider> walls = CollisionSystem.RayCast(origin, dir, minDistanceToWall, EntityLayer.Obstacle);
+
+        Debug.DrawRay(origin, dir.normalized * minDistanceToWall, Color.cyan, 2f);
+
+        if (walls.Count > 0) return true;
+        else return false;
     }
     #endregion
 

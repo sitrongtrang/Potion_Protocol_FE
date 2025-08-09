@@ -45,7 +45,7 @@ public class PlayerInputMessage : ClientMessage, IInputSnapshot
         Flags = playerInputSnapshot.PickupPressed ? Flags |= (int)InputFlags.Pickup : Flags;
         Flags = playerInputSnapshot.DropPressed ? Flags |= (int)InputFlags.Drop : Flags;
         Flags = playerInputSnapshot.TransferPressed ? Flags |= (int)InputFlags.Transfer : Flags;
-        Flags = playerInputSnapshot.CombinePressed ? Flags |= (int)InputFlags.Craft : Flags;
+        Flags = playerInputSnapshot.CraftPressed ? Flags |= (int)InputFlags.Craft : Flags;
         Flags = playerInputSnapshot.SubmitPressed ? Flags |= (int)InputFlags.Submit : Flags;
 
         ClientSendTime = TimeSyncUtils.GetUnixTimeMilliseconds();

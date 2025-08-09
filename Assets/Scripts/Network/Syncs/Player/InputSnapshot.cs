@@ -7,7 +7,7 @@ public class PlayerInputSnapshot
     public bool DropPressed;
     public bool TransferPressed;
     public bool SubmitPressed;
-    public bool CombinePressed;
+    public bool CraftPressed;
     public bool DashPressed;
 
     public Vector2 MoveDir;
@@ -20,7 +20,7 @@ public class PlayerInputSnapshot
         AttackPressed = other.AttackPressed;
         PickupPressed = other.PickupPressed;
         DropPressed = other.DropPressed;
-        CombinePressed = other.CombinePressed;
+        CraftPressed = other.CraftPressed;
         TransferPressed = other.TransferPressed;
         SubmitPressed = other.SubmitPressed;
         DashPressed = other.DashPressed;

@@ -20,6 +20,7 @@ MonoBehaviour:
   _dashCooldown: 1
   _dashSpeed: 20
   _dashTime: 0.1
+  _interactDistance: 0.5
   _weapons:
   - {fileID: 11400000, guid: 8254a7f3b589ea54890b2ffd8067927d, type: 2}
   _attackCooldown: 1

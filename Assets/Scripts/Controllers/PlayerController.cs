@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
     public Animator SwordAnimatr => _swordAnim;
     public List<WeaponConfig> Weapons => _weapons;
     public Transform AttackPoint => _attackPoint;
-    public float InteractionDistance = 0.6f;
 
     public void Initialize(EntityConfig config, InputActionAsset loadedAsset = null)
     {
