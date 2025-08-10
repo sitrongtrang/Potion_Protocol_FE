@@ -104,7 +104,10 @@ public class PlayerNetworkController : MonoBehaviour
                 _animator.SetFloat("MoveX", dir.x);
                 _animator.SetFloat("MoveY", dir.y);
 
-                transform.position = new(serverState.PositionX, serverState.PositionY);
+                Vector2 targetPos = new(serverState.PositionX, serverState.PositionY);
+                Vector2 resolvedPos = ContextSolver.ResolveStatic(transform.position, targetPos, _collider, CollisionSystem.Tree);
+
+                transform.position = resolvedPos;
                 Vector2 center = transform.position;
                 _collider.SetBottomLeft(center - _size / 2f);
             });
@@ -148,7 +151,7 @@ public class PlayerNetworkController : MonoBehaviour
 
         if (cpy.MoveDir != Vector2.zero)
         {
-            TryMove(cpy, cpy.DashPressed);
+            TryMove(cpy);
         }
 
         if (cpy.PickupPressed)
@@ -182,7 +185,7 @@ public class PlayerNetworkController : MonoBehaviour
         }
     }
 
-    private bool TryMove(PlayerInputSnapshot inputSnapshot, bool DashPressed)
+    private bool TryMove(PlayerInputSnapshot inputSnapshot)
     {
         _simulator.Simulate(inputSnapshot,
             (inputSnapshot) =>
@@ -190,10 +193,12 @@ public class PlayerNetworkController : MonoBehaviour
                 _animator.SetBool("IsMoving", inputSnapshot.MoveDir != Vector2.zero);
                 _animator.SetFloat("MoveX", inputSnapshot.MoveDir.x);
                 _animator.SetFloat("MoveY", inputSnapshot.MoveDir.y);
-                float moveSpeed = DashPressed ? _config.DashSpeed : _config.MoveSpeed;
+                _playerDir = inputSnapshot.MoveDir.normalized;
+
+                float moveSpeed = inputSnapshot.DashPressed ? _config.DashSpeed : _config.MoveSpeed;
                 Vector2 targetPos = transform.position + (Vector3)(moveSpeed * Time.fixedDeltaTime * inputSnapshot.MoveDir);
                 Vector2 resolvedPos = ContextSolver.ResolveStatic(transform.position, targetPos, _collider, CollisionSystem.Tree);
-                _playerDir = inputSnapshot.MoveDir.normalized;
+
                 transform.position = resolvedPos;
                 Vector2 center = transform.position;
                 _collider.SetBottomLeft(center - _size / 2f);
@@ -324,10 +329,14 @@ public class PlayerNetworkController : MonoBehaviour
             },
             (inputMessage) =>
             {
+                bool isDashing = (inputMessage.Flags & (int)InputFlags.Dash) != 0;
+                float moveSpeed = isDashing ? _config.DashSpeed : _config.MoveSpeed;
                 Vector2 moveDir = new(inputMessage.MoveDirX, inputMessage.MoveDirY);
+                Vector2 targetPos = (Vector2)transform.position + moveSpeed * Time.fixedDeltaTime * moveDir;
+                Vector2 resolvedPos = ContextSolver.ResolveStatic(transform.position, targetPos, _collider, CollisionSystem.Tree);
                 return new PlayerSnapshot()
                 {
-                    Position = transform.position + (Vector3)(_config.MoveSpeed * Time.fixedDeltaTime * moveDir)
+                    Position = resolvedPos
                 };
             }
         );
