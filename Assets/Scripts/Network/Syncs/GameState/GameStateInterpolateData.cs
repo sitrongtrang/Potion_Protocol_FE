@@ -20,6 +20,8 @@ public class GameStateInterpolateData : IServerStateSnapshot, IComparable<GameSt
     public Dictionary<string, EntityInfo> ItemSourceIds;
     public Dictionary<string, EntityInfo> StationIds;
     public List<string> RequiredRecipeIds;
+    public Dictionary<string, int> PlayerScores;
+    public Dictionary<string, string[]> PlayerInventories;
 
     public int CompareTo(GameStateInterpolateData other)
     {

@@ -65,16 +65,21 @@ public class RequiredRecipeListUI : MonoBehaviour
     {
         for (int i = 0; i < recipes.Count; i++)
         {
-            if (i >= _recipeUIPrefab.transform.childCount)
+            if (i >= transform.childCount)
             {
                 AddRecipe(recipes[i]);
-            } 
+            }
             else
             {
-                Transform recipeUIObj = _recipeUIPrefab.transform.GetChild(i);
+                Transform recipeUIObj = transform.GetChild(i);
                 RecipeUI recipeUI = recipeUIObj.GetComponent<RecipeUI>();
                 recipeUI.Initialize(recipes[i]);
             }
+        }
+
+        for (int i = recipes.Count; i < transform.childCount; i++)
+        {
+            RemoveRecipe(i);
         }
     }
 }

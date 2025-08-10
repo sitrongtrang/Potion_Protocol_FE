@@ -18,6 +18,8 @@ public class GameStateHandler : MonoBehaviour
     private Dictionary<string, TrackedObject> _stationMap = new();
     private List<RecipeConfig> _requiredRecipes = new();
 
+    public event Action<string[]> OnInventorySynced;
+    public event Action<int> OnScoreChanged;
     public event Action<List<RecipeConfig>> OnRecipesSynced;
     public ScriptableObjectMapping PrefabsMap => _prefabsMap;
 
@@ -48,7 +50,11 @@ public class GameStateHandler : MonoBehaviour
                 HandleSyncing(gameState.ItemSourceIds, _itemSourceMap, _prefabsMap.ItemSourcePrefab);
                 HandleSyncing(gameState.ItemIds, _itemMap, _prefabsMap.ItemPrefab);
                 HandleSyncing(gameState.StationIds, _stationMap, _prefabsMap.StationPrefab);
+
+                // Syncing UI
                 SyncRecipes(gameState.RequiredRecipeIds);
+                SyncScore(gameState.PlayerScores);
+                SyncInventory(gameState.PlayerInventories);
             }
         );
     }
@@ -76,7 +82,33 @@ public class GameStateHandler : MonoBehaviour
             _requiredRecipes.RemoveAt(i);
         }
         OnRecipesSynced?.Invoke(_requiredRecipes);
-    } 
+    }
+
+    private void SyncScore(Dictionary<string, int> scores)
+    {
+        foreach (var item in scores)
+        {
+            string localId = _startGameHandler.LocalPlayer.Identity.PlayerId;
+            if (scores.ContainsKey(localId))
+            {
+                OnScoreChanged?.Invoke(scores[localId]);
+                break;
+            }
+        }
+    }
+
+    private void SyncInventory(Dictionary<string, string[]> inventories)
+    {
+        foreach (var item in inventories)
+        {
+            string localId = _startGameHandler.LocalPlayer.Identity.PlayerId;
+            if (inventories.ContainsKey(localId))
+            {
+                OnInventorySynced?.Invoke(inventories[localId]);
+                break;
+            }
+        }
+    }
 
     private void HandleSyncing(
         Dictionary<string, GameStateInterpolateData.EntityInfo> data,

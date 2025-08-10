@@ -24,7 +24,7 @@ public class GameLevelUI : MonoBehaviour
             _gameStateHandler = FindFirstObjectByType<GameStateHandler>();
             if (_gameStateHandler != null)
             {
-                
+                _gameStateHandler.OnScoreChanged += UpdateScoreText;
             }
         }
     }
@@ -42,7 +42,7 @@ public class GameLevelUI : MonoBehaviour
             _gameStateHandler = FindFirstObjectByType<GameStateHandler>();
             if (_gameStateHandler != null)
             {
-
+                _gameStateHandler.OnScoreChanged -= UpdateScoreText;
             }
         }
     }

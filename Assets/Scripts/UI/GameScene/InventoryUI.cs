@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
     private PlayerInventory _playerInventory;
+    private StartGameHandler _startGameHandler;
+    private GameStateHandler _gameStateHandler;
     [SerializeField] private GameObject[] _inventoryItemsUI;
     [SerializeField] private GameObject[] _inventorySlots;
     [SerializeField] Sprite _unChoosingSlotImg;
@@ -28,18 +31,43 @@ public class InventoryUI : MonoBehaviour
         _playerInventory.OnChoosingSlotChanged += UpdateChoosingSlotUI;
     }
 
-    private void OnEnable()
+    void OnEnable()
     {
-        if (_playerInventory == null) return;
-        _playerInventory.OnSlotUpdated += UpdateInventoryUI;
-        _playerInventory.OnChoosingSlotChanged += UpdateChoosingSlotUI;
+        if (SceneManager.GetActiveScene().name == "OnlineGameScene")
+        {
+            _gameStateHandler = FindFirstObjectByType<GameStateHandler>();
+            if (_gameStateHandler != null)
+            {
+                _gameStateHandler.OnInventorySynced += SyncInventory;
+            }
+
+            _startGameHandler = FindFirstObjectByType<StartGameHandler>();
+            if (_startGameHandler != null)
+            {
+                _startGameHandler.LocalPlayer.OnChoosingSlotChanged += UpdateChoosingSlotUI;
+            }
+        }
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
-        if (_playerInventory == null) return;
-        _playerInventory.OnSlotUpdated -= UpdateInventoryUI;
-        _playerInventory.OnChoosingSlotChanged -= UpdateChoosingSlotUI;
+        if (SceneManager.GetActiveScene().name == "GameScene")
+        {
+            if (_playerInventory == null) return;
+            _playerInventory.OnSlotUpdated -= UpdateInventoryUI;
+            _playerInventory.OnChoosingSlotChanged -= UpdateChoosingSlotUI;
+        }
+        else if (SceneManager.GetActiveScene().name == "OnlineGameScene")
+        {
+            if (_gameStateHandler != null)
+            {
+                _gameStateHandler.OnInventorySynced -= SyncInventory;
+            }
+            if (_startGameHandler != null)
+            {
+                _startGameHandler.LocalPlayer.OnChoosingSlotChanged -= UpdateChoosingSlotUI;
+            }
+        }
     }
 
     private void UpdateChoosingSlotUI(int oldSlotIndex, int newSlotIndex)
@@ -53,5 +81,21 @@ public class InventoryUI : MonoBehaviour
     {
         _inventoryItemsUI[slotIndex].SetActive(sprite != null);
         _inventoryItemsUI[slotIndex].GetComponent<Image>().sprite = sprite;
+    }
+
+    private void SyncInventory(string[] itemTypeIds)
+    {
+        for (int i = 0; i < itemTypeIds.Length; i++)
+        {
+            ScriptableObject scriptableObject = _gameStateHandler.PrefabsMap.GetSO(itemTypeIds[i]);
+            if (scriptableObject is ItemConfig itemConfig)
+            {
+                UpdateInventoryUI(i, itemConfig.Icon);
+            }
+            else
+            {
+                UpdateInventoryUI(i);
+            }
+        }
     }
 }

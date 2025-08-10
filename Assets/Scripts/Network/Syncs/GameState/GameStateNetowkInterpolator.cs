@@ -71,13 +71,39 @@ public class GameStateNetworkInterpolator : INetworkInterpolator<GameStateInterp
 
                     var requiredRecipe = update.RequiredRecipeIds.ToList();
 
+                    Dictionary<string, int> score = new();
+                    Dictionary<string, string[]> inventory = new();
+
+                    foreach (var player in update.PlayerStates)
+                    {
+                        if (score.ContainsKey(player.PlayerId))
+                        {
+                            score[player.PlayerId] = player.Score;
+                        }
+                        else
+                        {
+                            score.Add(player.PlayerId, player.Score);
+                        }
+
+                        if (inventory.ContainsKey(player.PlayerId))
+                        {
+                            inventory[player.PlayerId] = player.InventoryItemTypes;
+                        }
+                        else
+                        {
+                            inventory.Add(player.PlayerId, player.InventoryItemTypes);
+                        }
+                    }
+
                     _buffer.Add(new GameStateInterpolateData()
                     {
                         ItemIds = item,
                         EnemyIds = enemy,
                         ItemSourceIds = itemSource,
                         StationIds = station,
-                        RequiredRecipeIds = requiredRecipe
+                        RequiredRecipeIds = requiredRecipe,
+                        PlayerScores = score,
+                        PlayerInventories = inventory
                     });
                 }
             }

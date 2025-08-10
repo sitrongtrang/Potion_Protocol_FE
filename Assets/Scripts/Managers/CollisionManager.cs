@@ -42,7 +42,6 @@ public class CollisionManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "OnlineGameScene")
         {
             LoadingScreenUI.Instance.OnSceneEnter += HandleOnSceneEnter;
-            // NetworkEvents.OnMessageReceived += HandleNetworkMessage;
         }
     }
 
@@ -51,7 +50,6 @@ public class CollisionManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "OnlineGameScene")
         {
             LoadingScreenUI.Instance.OnSceneEnter -= HandleOnSceneEnter;
-            // NetworkEvents.OnMessageReceived -= HandleNetworkMessage;
         }
     }
 
@@ -118,16 +116,4 @@ public class CollisionManager : MonoBehaviour
         ServerStartGame msg = LoadingScreenUI.Instance.GetData<ServerStartGame>("StartGameData");
         LoadColliders(msg.Level);
     }
-
-    // private void HandleNetworkMessage(ServerMessage message)
-    // {
-    //     switch (message.MessageType)
-    //     {
-    //         case NetworkMessageTypes.Server.Pregame.StartGame:
-    //             LoadColliders(1);
-    //             break;
-    //         default:
-    //             break;
-    //     }
-    // }
 }

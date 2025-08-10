@@ -51,6 +51,7 @@ public class PlayerInputMessage : ClientMessage, IInputSnapshot
         ClientSendTime = TimeSyncUtils.GetUnixTimeMilliseconds();
         ClientEstimatedServerTime = 0;
 
+        SelectedSlot = playerInputSnapshot.SelectedSlot;
     }
 
     int IInputSnapshot.InputSequence => InputSequence;

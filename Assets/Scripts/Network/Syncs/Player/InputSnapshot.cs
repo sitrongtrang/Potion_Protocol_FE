@@ -9,6 +9,7 @@ public class PlayerInputSnapshot
     public bool SubmitPressed;
     public bool CraftPressed;
     public bool DashPressed;
+    public int SelectedSlot;
 
     public Vector2 MoveDir;
 
@@ -24,5 +25,6 @@ public class PlayerInputSnapshot
         TransferPressed = other.TransferPressed;
         SubmitPressed = other.SubmitPressed;
         DashPressed = other.DashPressed;
+        SelectedSlot = other.SelectedSlot;
     }
 }

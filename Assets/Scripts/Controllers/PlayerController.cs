@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
         Interaction = new PlayerInteraction();
         Movement = new PlayerMovement();
 
-        Inventory.Initialize(this, _inputManager);
+        Inventory.Initialize(_inputManager);
         Attack.Initialize(this, _inputManager);
         Interaction.Initialize(this, _inputManager);
         Movement.Initialize(this, _inputManager);

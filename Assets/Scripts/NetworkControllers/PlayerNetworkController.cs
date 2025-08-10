@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,6 +33,10 @@ public class PlayerNetworkController : MonoBehaviour
     private Vector2 _size;
     private List<WeaponConfig> _weapons = new();
     private Animator _swordAnimator;
+    private PlayerInventory _inventory;
+
+    public PlayerInventory Inventory => _inventory;
+    public event Action<int, int> OnChoosingSlotChanged;
 
     #region Unity Lifecycle
     void OnEnable()
@@ -64,6 +69,7 @@ public class PlayerNetworkController : MonoBehaviour
             _inputListener.CraftPressed = _inputManager.controls.Player.Combine.WasPressedThisFrame();
             _inputListener.TransferPressed = _inputManager.controls.Player.Transfer.WasPressedThisFrame();
             _inputListener.SubmitPressed = _inputManager.controls.Player.Submit.WasPressedThisFrame();
+            _inputListener.SelectedSlot = _inventory.ChoosingSlot;
         }
 
         _sendTimer += Time.deltaTime;
@@ -129,6 +135,9 @@ public class PlayerNetworkController : MonoBehaviour
 
         _collider = AABBCollider.GetColliderBaseOnSprite(_spriteRenderer, transform);
         _size = _collider.Size;
+
+        _inventory = new();
+        _inventory.Initialize(_inputManager);
     }
     #endregion
 

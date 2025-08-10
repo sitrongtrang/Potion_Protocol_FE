@@ -9,19 +9,19 @@ public class StartGameHandler : MonoBehaviour
     [SerializeField] private GameObject _playerPrefab;
     [SerializeField] private PlayerConfig _playerConfig;
     [SerializeField] private InputActionAsset _inputActionAsset;
+    private PlayerNetworkController _localPlayer;
 
     public event Action<LevelConfig, GameObject> OnLevelInitialized;
+    public PlayerNetworkController LocalPlayer => _localPlayer;
 
     private void OnEnable()
     {
         LoadingScreenUI.Instance.OnSceneEnter += HandleOnSceneEnter;
-        // NetworkEvents.OnMessageReceived += HandleNetworkMessage;
     }
 
     private void OnDisable()
     {
         LoadingScreenUI.Instance.OnSceneEnter -= HandleOnSceneEnter;
-        // NetworkEvents.OnMessageReceived -= HandleNetworkMessage;
     }
 
     private void TrySpawnPlayer(string playerId, Vector2 position, bool isLocal)
@@ -43,6 +43,7 @@ public class StartGameHandler : MonoBehaviour
         if (isLocal)
         {
             // Setup camera follow, input controls, etc.
+            _localPlayer = localPlayerController;
             Debug.Log($"Spawned local player: {playerId}");
         }
         else
