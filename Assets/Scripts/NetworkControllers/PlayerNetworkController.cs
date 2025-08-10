@@ -304,7 +304,6 @@ public class PlayerNetworkController : MonoBehaviour
                     });
                 }
                 break;
-
         }
     }
 

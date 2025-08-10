@@ -17,10 +17,12 @@ public class GameStateHandler : MonoBehaviour
     private Dictionary<string, TrackedObject> _itemMap = new();
     private Dictionary<string, TrackedObject> _stationMap = new();
     private List<RecipeConfig> _requiredRecipes = new();
+    private float _timeLeft;
 
     public event Action<string[]> OnInventorySynced;
     public event Action<int> OnScoreChanged;
     public event Action<List<RecipeConfig>> OnRecipesSynced;
+    public event Action<float> OnTimeChanged;
     public ScriptableObjectMapping PrefabsMap => _prefabsMap;
 
     void Awake()
@@ -57,6 +59,9 @@ public class GameStateHandler : MonoBehaviour
                 SyncInventory(gameState.PlayerInventories);
             }
         );
+
+        _timeLeft -= Time.fixedDeltaTime;
+        OnTimeChanged?.Invoke(_timeLeft);
     }
 
     private void SyncRecipes(List<string> data)
@@ -197,5 +202,6 @@ public class GameStateHandler : MonoBehaviour
         }
 
         _prefabsMap.InitializeMapping(scriptableObjects.ToArray());
+        _timeLeft = levelConfig.LevelTime;
     }
 }

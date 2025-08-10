@@ -608,6 +608,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d007737d0605a24ca509893b63af145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameStateHandler: {fileID: 1745937010}
+  _startGameHandler: {fileID: 1788294509}
   _inventoryItemsUI:
   - {fileID: 153435180}
   - {fileID: 1954391839}
@@ -1542,6 +1544,8 @@ MonoBehaviour:
   _scoreText: {fileID: 276728084}
   _timeText: {fileID: 175762066}
   _pauseMenu: {fileID: 0}
+  _gameStateHandler: {fileID: 1745937010}
+  _startGameHandler: {fileID: 1788294509}
 --- !u!1001 &1954391837
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1707,6 +1711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _recipeUIPrefab: {fileID: 5679174231672217788, guid: 5a5a272f1a4900f43bd15c7c043e8221, type: 3}
+  _gameStateHandler: {fileID: 1745937010}
 --- !u!114 &1982018796
 MonoBehaviour:
   m_ObjectHideFlags: 0

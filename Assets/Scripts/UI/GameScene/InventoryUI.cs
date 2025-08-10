@@ -5,8 +5,8 @@ using UnityEngine.UI;
 public class InventoryUI : MonoBehaviour
 {
     private PlayerInventory _playerInventory;
-    private StartGameHandler _startGameHandler;
-    private GameStateHandler _gameStateHandler;
+    [SerializeField] private GameStateHandler _gameStateHandler;
+    [SerializeField] private StartGameHandler _startGameHandler;
     [SerializeField] private GameObject[] _inventoryItemsUI;
     [SerializeField] private GameObject[] _inventorySlots;
     [SerializeField] Sprite _unChoosingSlotImg;
@@ -35,17 +35,8 @@ public class InventoryUI : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "OnlineGameScene")
         {
-            _gameStateHandler = FindFirstObjectByType<GameStateHandler>();
-            if (_gameStateHandler != null)
-            {
-                _gameStateHandler.OnInventorySynced += SyncInventory;
-            }
-
-            _startGameHandler = FindFirstObjectByType<StartGameHandler>();
-            if (_startGameHandler != null)
-            {
-                _startGameHandler.LocalPlayer.OnChoosingSlotChanged += UpdateChoosingSlotUI;
-            }
+            _gameStateHandler.OnInventorySynced += SyncInventory;
+            _startGameHandler.LocalPlayer.OnChoosingSlotChanged += UpdateChoosingSlotUI;
         }
     }
 
@@ -59,14 +50,8 @@ public class InventoryUI : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "OnlineGameScene")
         {
-            if (_gameStateHandler != null)
-            {
-                _gameStateHandler.OnInventorySynced -= SyncInventory;
-            }
-            if (_startGameHandler != null)
-            {
-                _startGameHandler.LocalPlayer.OnChoosingSlotChanged -= UpdateChoosingSlotUI;
-            }
+            _gameStateHandler.OnInventorySynced -= SyncInventory;
+            _startGameHandler.LocalPlayer.OnChoosingSlotChanged -= UpdateChoosingSlotUI;
         }
     }
 

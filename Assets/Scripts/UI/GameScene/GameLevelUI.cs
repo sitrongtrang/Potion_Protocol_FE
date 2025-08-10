@@ -9,7 +9,8 @@ public class GameLevelUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private TextMeshProUGUI _timeText;
     [SerializeField] private GameObject _pauseMenu;
-    private GameStateHandler _gameStateHandler;
+    [SerializeField] private GameStateHandler _gameStateHandler;
+    [SerializeField] private StartGameHandler _startGameHandler;
 
     void OnEnable()
     {
@@ -21,11 +22,8 @@ public class GameLevelUI : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "OnlineGameScene")
         {
-            _gameStateHandler = FindFirstObjectByType<GameStateHandler>();
-            if (_gameStateHandler != null)
-            {
-                _gameStateHandler.OnScoreChanged += UpdateScoreText;
-            }
+            _gameStateHandler.OnScoreChanged += UpdateScoreText;
+            _gameStateHandler.OnTimeChanged += UpdateTimeText;
         }
     }
 
@@ -39,11 +37,8 @@ public class GameLevelUI : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "OnlineGameScene")
         {
-            _gameStateHandler = FindFirstObjectByType<GameStateHandler>();
-            if (_gameStateHandler != null)
-            {
-                _gameStateHandler.OnScoreChanged -= UpdateScoreText;
-            }
+            _gameStateHandler.OnScoreChanged -= UpdateScoreText;
+            _gameStateHandler.OnTimeChanged -= UpdateTimeText;
         }
     }
 

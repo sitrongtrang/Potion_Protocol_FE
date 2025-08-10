@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class RequiredRecipeListUI : MonoBehaviour
 {
     [SerializeField] private GameObject _recipeUIPrefab;
-    private GameStateHandler _gameStateHandler;
+    [SerializeField] private GameStateHandler _gameStateHandler;
 
     void OnEnable()
     {
@@ -16,11 +16,7 @@ public class RequiredRecipeListUI : MonoBehaviour
         } 
         else if (SceneManager.GetActiveScene().name == "OnlineGameScene")
         {
-            _gameStateHandler = FindFirstObjectByType<GameStateHandler>();
-            if (_gameStateHandler != null) 
-            {
-                _gameStateHandler.OnRecipesSynced += SyncRecipe; 
-            }
+            _gameStateHandler.OnRecipesSynced += SyncRecipe;
         }
     }
 
@@ -33,10 +29,7 @@ public class RequiredRecipeListUI : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "OnlineGameScene")
         {
-            if (_gameStateHandler != null)
-            {
-                _gameStateHandler.OnRecipesSynced -= SyncRecipe;
-            }
+            _gameStateHandler.OnRecipesSynced -= SyncRecipe;
         }
     }
 
