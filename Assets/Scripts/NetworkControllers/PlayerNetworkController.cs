@@ -216,7 +216,7 @@ public class PlayerNetworkController : MonoBehaviour
 
         // If an alchemy nearby, cannot attack
         AlchemyControllerNetwork alchemy = FindFirstObjectByType<AlchemyControllerNetwork>();
-        if (Vector2.Distance(alchemy.transform.position, transform.position) <= _config.InteractDistance)
+        if (alchemy != null && Vector2.Distance(alchemy.transform.position, transform.position) <= _config.InteractDistance)
         {
             return false;
         }
