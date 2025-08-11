@@ -265,7 +265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 127152483}
   - component: {fileID: 127152484}
-  - component: {fileID: 127152486}
+  - component: {fileID: 127152485}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -305,7 +305,7 @@ MonoBehaviour:
   _toggleButton: {fileID: 961702079}
   _eyeClosedSprite: {fileID: -4135700957782999318, guid: 5ce6d1c41eb6c844ba4f768d0b98b635, type: 3}
   _eyeOpenSprite: {fileID: -3683519701644557706, guid: a5369683e363bed48aebb43301aac0e0, type: 3}
---- !u!114 &127152486
+--- !u!114 &127152485
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

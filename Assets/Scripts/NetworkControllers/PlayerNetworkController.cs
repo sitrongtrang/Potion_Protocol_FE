@@ -19,6 +19,8 @@ public class PlayerNetworkController : MonoBehaviour
     private PlayerInputSnapshot _inputListener = new();
     private Vector2 _playerDir;
     private bool _canAttack;
+    private bool _isDashing;
+    private float _dashCooldown;
     // private NetworkPredictionBuffer<PlayerInputMessage, PlayerSnapshot> _networkPredictionBuffer = new(NetworkConstants.NET_PRED_BUFFER_SIZE);
     // private NetworkInterpolationBuffer<PlayerStateInterpolateData> _networkInterpolationBuffer = new(NetworkConstants.NET_INTERPOLATION_BUFFER_SIZE);
 
@@ -103,11 +105,11 @@ public class PlayerNetworkController : MonoBehaviour
                 TriggerMoveAnimation(dir, dir != Vector2.zero);
 
                 Vector2 targetPos = new(serverState.PositionX, serverState.PositionY);
-                Vector2 resolvedPos = ContextSolver.ResolveStatic(transform.position, targetPos, _collider, CollisionSystem.Tree);
+                // Vector2 resolvedPos = ContextSolver.ResolveStatic(transform.position, targetPos, _collider, CollisionSystem.Tree);
 
-                transform.position = resolvedPos;
-                Vector2 center = transform.position;
-                _collider.SetBottomLeft(center - _size / 2f);
+                transform.position = targetPos;
+                // Vector2 center = transform.position;
+                // _collider.SetBottomLeft(center - _size / 2f);
             });
         }
     }
@@ -287,8 +289,8 @@ public class PlayerNetworkController : MonoBehaviour
                             }
                         }
                     }
-                    Debug.Log(playerSnapshot.ProcessedInputSequence);
-                    Debug.Log(playerSnapshot.Position);
+                    // Debug.Log(playerSnapshot.ProcessedInputSequence);
+                    // Debug.Log(playerSnapshot.Position);
                     TryReconcileServer(playerSnapshot);
                 }
                 else

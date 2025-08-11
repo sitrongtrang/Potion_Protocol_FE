@@ -9,8 +9,8 @@ public class ServerStartGame : ServerMessage
     public string PlayerId;
     [FieldOrder(2)]
     public string[] PlayerIds;
-    [FieldOrder(3)]
-    public int Level;
+    // [FieldOrder(3)]
+    // public int Level;
     // [FieldOrder(4)]
     // public float[] PositionX;
     // [FieldOrder(5)]
