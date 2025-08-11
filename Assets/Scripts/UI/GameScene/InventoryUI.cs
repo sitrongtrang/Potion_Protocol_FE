@@ -36,7 +36,7 @@ public class InventoryUI : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "OnlineGameScene")
         {
             _gameStateHandler.OnInventorySynced += SyncInventory;
-            _startGameHandler.LocalPlayer.OnChoosingSlotChanged += UpdateChoosingSlotUI;
+            // _startGameHandler.LocalPlayer.OnChoosingSlotChanged += UpdateChoosingSlotUI;
         }
     }
 
@@ -51,7 +51,7 @@ public class InventoryUI : MonoBehaviour
         else if (SceneManager.GetActiveScene().name == "OnlineGameScene")
         {
             _gameStateHandler.OnInventorySynced -= SyncInventory;
-            _startGameHandler.LocalPlayer.OnChoosingSlotChanged -= UpdateChoosingSlotUI;
+            // _startGameHandler.LocalPlayer.OnChoosingSlotChanged -= UpdateChoosingSlotUI;
         }
     }
 

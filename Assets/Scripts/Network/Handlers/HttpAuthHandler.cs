@@ -13,15 +13,20 @@ public class HttpAuthHandler : MonoBehaviour
     [SerializeField] private TMP_InputField passwordField;
 
     [Header("Register")]
+    [SerializeField] private TMP_InputField registerusernameField;
+    [SerializeField] private TMP_InputField registerpasswordField;
     [SerializeField] private TMP_InputField confirmpasswordField;
     [SerializeField] private TMP_InputField displaynameField;
 
     [Header("URLs")]
     [SerializeField] private StaticURLSO _loginUrl;
     [SerializeField] private StaticURLSO _registerUrl;
+
     [Header("UI")]
     [SerializeField] private GameObject _loginError;
+    [SerializeField] private GameObject _registerError;
     [SerializeField] private float _disableAfterSeconds;
+
     private Coroutine _loginErrorDisable;
 
     void Start()
@@ -107,7 +112,7 @@ public class HttpAuthHandler : MonoBehaviour
 
     public void OnRegisterButtonPressed()
     {
-        StartCoroutine(SendRegisterRequest(usernameField.text, passwordField.text, confirmpasswordField.text, displaynameField.text));
+        StartCoroutine(SendRegisterRequest(registerusernameField.text, registerpasswordField.text, confirmpasswordField.text, displaynameField.text));
     }
 
     IEnumerator SendRegisterRequest(string username, string password, string confirmPassword, string displayName)
@@ -130,6 +135,11 @@ public class HttpAuthHandler : MonoBehaviour
 
         yield return request.SendWebRequest();
 
+        Debug.Log("UserName: " + username);
+        Debug.Log("Password: " + password);
+        Debug.Log("Display Name: " +  displayName);
+        Debug.Log("Confirm Password: " + confirmPassword);
+
         if (request.result == UnityWebRequest.Result.Success)
         {
             RegisterSuccess resp = JsonConvert.DeserializeObject<RegisterSuccess>(
@@ -140,6 +150,9 @@ public class HttpAuthHandler : MonoBehaviour
         else
         {
             Debug.LogError("Register failed: " + request.error);
+            if (_loginErrorDisable != null) StopCoroutine(_loginErrorDisable);
+            _loginError.SetActive(true);
+            _loginErrorDisable = StartCoroutine(DisableLoginError());
         }
     }
 }
