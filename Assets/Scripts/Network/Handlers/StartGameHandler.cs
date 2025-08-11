@@ -1,7 +1,8 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class StartGameHandler : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class StartGameHandler : MonoBehaviour
     [SerializeField] private GameObject _playerPrefab;
     [SerializeField] private PlayerConfig _playerConfig;
     [SerializeField] private InputActionAsset _inputActionAsset;
+    private List<PlayerSpawner> _playerSpawners = new();
     private PlayerNetworkController _localPlayer;
 
     public event Action<LevelConfig, GameObject> OnLevelInitialized;
@@ -24,11 +26,11 @@ public class StartGameHandler : MonoBehaviour
         LoadingScreenUI.Instance.OnSceneEnter -= HandleOnSceneEnter;
     }
 
-    private void TrySpawnPlayer(string playerId, Vector2 position, bool isLocal)
+    private void TrySpawnPlayer(string playerId, PlayerSpawner playerSpawner, bool isLocal)
     {
         if (_playerPrefab == null) return;
 
-        GameObject playerObj = Instantiate(_playerPrefab, position, Quaternion.identity);
+        GameObject playerObj = playerSpawner.SpawnPlayer(_playerPrefab);
 
         if (!playerObj.TryGetComponent<PlayerNetworkController>(out var playerController))
         {
@@ -59,7 +61,7 @@ public class StartGameHandler : MonoBehaviour
         {
             TrySpawnPlayer(
                 message.PlayerIds[i],
-                Vector2.zero,
+                _playerSpawners[i],
                 thisPlayerId == message.PlayerIds[i]
             );
         }
@@ -67,13 +69,14 @@ public class StartGameHandler : MonoBehaviour
 
     private void InitializeLevel(ServerStartGame message)
     {
-        int level = message.Level;
-        // int level = 1;
+        // int level = message.Level;
+        int level = 1;
 
         string levelPath = $"ScriptableObjects/Levels/Level{level}";
         LevelConfig config = Resources.Load<LevelConfig>(levelPath);
 
         GameObject map = Instantiate(config.MapPrefab, Vector2.zero, Quaternion.identity);
+        _playerSpawners = map.GetComponentsInChildren<PlayerSpawner>().ToList();
 
         OnLevelInitialized?.Invoke(config, map);
     }
@@ -81,7 +84,7 @@ public class StartGameHandler : MonoBehaviour
     private void HandleOnSceneEnter()
     {
         ServerStartGame msg = LoadingScreenUI.Instance.GetData<ServerStartGame>("StartGameData");
-        HandlePlayerSpawn(msg);
         InitializeLevel(msg);
+        HandlePlayerSpawn(msg);
     }
 }

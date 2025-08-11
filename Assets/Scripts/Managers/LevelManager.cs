@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
@@ -9,6 +10,11 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
     private LevelConfig _config;
+    [SerializeField] PlayerConfig _playerConfig;
+    [SerializeField] GameObject _playerPrefab;
+    [SerializeField] GameObject _alchemyPrefab;
+    [SerializeField] GameObject _furnacePrefab;
+    [SerializeField] private InputActionAsset _inputActions;
     private int _score = 0;
     public int Score
     {
@@ -63,6 +69,17 @@ public class LevelManager : MonoBehaviour
         }
 
         Instance = this;
+    }
+
+    void Start()
+    {
+        string path = Application.persistentDataPath + "/rebinds.json";
+        if (System.IO.File.Exists(path))
+        {
+            string json = System.IO.File.ReadAllText(path);
+            _inputActions.LoadBindingOverridesFromJson(json);
+            Debug.Log("🔁 Loaded rebinds in PlayerSpawner");
+        }
     }
 
     public void Initialize(LevelConfig config)
@@ -128,17 +145,29 @@ public class LevelManager : MonoBehaviour
             map.transform
         );
 
+        // Spawn & initialize player
+        PlayerSpawner playerSpawner = map.GetComponentInChildren<PlayerSpawner>();
+        GameObject player = playerSpawner.SpawnPlayer(_playerPrefab);
+        if (player.TryGetComponent<PlayerController>(out var playerController))
+        {
+            playerController.Initialize(_playerConfig, _inputActions);
+        }
+
         // Spawn & initialize stations
         StationSpawner[] stationSpawners = map.GetComponentsInChildren<StationSpawner>(true);
         for (int i = 0; i < stationSpawners.Length; i++)
         {
-            if (stationSpawners[i].Prefab.Config.Type == StationType.Furnace)
+            GameObject prefab = stationSpawners[i].CompareTag("Alchemy") ? _alchemyPrefab : _furnacePrefab;
+            GameObject station = stationSpawners[i].Spawn(prefab);
+            if (station.TryGetComponent<AlchemyStationController>(out var alchemyController))
             {
-                Stations.Add(stationSpawners[i].Spawn(config.IngotRecipes));
+                alchemyController.Initialize(config.FinalRecipes);
+                Stations.Add(alchemyController);
             }
-            else if (stationSpawners[i].Prefab.Config.Type == StationType.AlchemyStation)
+            else if (station.TryGetComponent<FurnaceController>(out var furnaceController))
             {
-                Stations.Add(stationSpawners[i].Spawn(config.FinalRecipes));
+                furnaceController.Initialize(config.IngotRecipes);
+                Stations.Add(furnaceController);
             }
         }
 

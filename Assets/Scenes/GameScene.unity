@@ -2175,6 +2175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _recipeUIPrefab: {fileID: 5679174231672217788, guid: 5a5a272f1a4900f43bd15c7c043e8221, type: 3}
+  _gameStateHandler: {fileID: 0}
 --- !u!1 &1534042817
 GameObject:
   m_ObjectHideFlags: 0
@@ -2489,6 +2490,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9800898f9f14ea4ca8714b315e4c835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerConfig: {fileID: 11400000, guid: a7df0d474df11194e9a81497ceca8fdf, type: 2}
+  _playerPrefab: {fileID: 1750624711410842289, guid: 2703c8811c5bcfb4cbdb883cd1767c6d, type: 3}
+  _alchemyPrefab: {fileID: 6779095460143926864, guid: cb687b3f4ba4b0f4092b9deeb4da29b5, type: 3}
+  _furnacePrefab: {fileID: 6779095460143926864, guid: 5d2119105a254cd41bb298ebb4a250d0, type: 3}
+  _inputActions: {fileID: 0}
   _itemSourceSpawner: {fileID: 511538374}
 --- !u!114 &1603477849
 MonoBehaviour:
@@ -2889,6 +2895,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d007737d0605a24ca509893b63af145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameStateHandler: {fileID: 0}
+  _startGameHandler: {fileID: 0}
   _inventoryItemsUI:
   - {fileID: 1724472249}
   - {fileID: 1096182189}
@@ -3162,6 +3170,8 @@ MonoBehaviour:
   _scoreText: {fileID: 1586707799}
   _timeText: {fileID: 1309109390}
   _pauseMenu: {fileID: 517221242}
+  _gameStateHandler: {fileID: 0}
+  _startGameHandler: {fileID: 0}
 --- !u!1001 &2101277450
 PrefabInstance:
   m_ObjectHideFlags: 0
