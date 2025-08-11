@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -85,7 +86,7 @@ public class RoomHandler : MonoBehaviour
                 SceneManager.LoadSceneAsync("OnlineGameScene");
                 break;
             case NetworkMessageTypes.Server.Room.ACK:
-                OnSelfLeaveRoom();
+                HandleACK((ServerACK)message);
                 break;
             default:
                 break;
@@ -267,4 +268,16 @@ public class RoomHandler : MonoBehaviour
         }
         return false;
     }
+
+    private void HandleACK(ServerACK msg)
+    {
+        switch (msg.clientMessageType)
+        {
+            case 402:
+                OnSelfLeaveRoom();
+                break;
+            default:
+                break;
+        }
+    }    
 }
