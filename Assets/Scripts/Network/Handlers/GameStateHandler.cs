@@ -15,7 +15,7 @@ public class GameStateHandler : MonoBehaviour
     private Dictionary<string, TrackedObject> _enemyMap = new();
     private Dictionary<string, TrackedObject> _itemSourceMap = new();
     private Dictionary<string, TrackedObject> _itemMap = new();
-    private Dictionary<string, TrackedObject> _stationMap = new();
+    // private Dictionary<string, TrackedObject> _stationMap = new();
     private List<RecipeConfig> _requiredRecipes = new();
     private float _timeLeft;
 
@@ -51,7 +51,7 @@ public class GameStateHandler : MonoBehaviour
                 HandleSyncing(gameState.EnemyIds, _enemyMap, _prefabsMap.EnemyPrefab);
                 HandleSyncing(gameState.ItemSourceIds, _itemSourceMap, _prefabsMap.ItemSourcePrefab);
                 HandleSyncing(gameState.ItemIds, _itemMap, _prefabsMap.ItemPrefab);
-                HandleSyncing(gameState.StationIds, _stationMap, _prefabsMap.StationPrefab);
+                // HandleSyncing(gameState.StationIds, _stationMap, _prefabsMap.StationPrefab);
 
                 // Syncing UI
                 SyncRecipes(gameState.RequiredRecipeIds);
@@ -195,11 +195,12 @@ public class GameStateHandler : MonoBehaviour
             scriptableObjects.Add(levelConfig.FinalRecipes[i]);
             scriptableObjects.Add(levelConfig.FinalRecipes[i].Product);
         }
-        StationController[] stationControllers = map.GetComponentsInChildren<StationController>();
-        for (int i = 0; i < stationControllers.Length; i++)
-        {
-            scriptableObjects.Add(stationControllers[i].Config);
-        }
+
+        // StationControllerNetwork[] stationControllers = map.GetComponentsInChildren<StationControllerNetwork>();
+        // for (int i = 0; i < stationControllers.Length; i++)
+        // {
+        //     scriptableObjects.Add(stationControllers[i].Config);
+        // }
 
         _prefabsMap.InitializeMapping(scriptableObjects.ToArray());
         _timeLeft = levelConfig.LevelTime;

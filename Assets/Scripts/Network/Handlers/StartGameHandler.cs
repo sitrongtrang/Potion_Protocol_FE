@@ -7,10 +7,16 @@ using UnityEngine.InputSystem;
 public class StartGameHandler : MonoBehaviour
 {
     [Header("Prefab")]
+    [SerializeField] private GameObject _alchemyPrefab;
+    [SerializeField] private StationConfig _alchemyConfig;
+    [SerializeField] private GameObject _furnacePrefab;
+    [SerializeField] private StationConfig _furnaceConfig;
     [SerializeField] private GameObject _playerPrefab;
     [SerializeField] private PlayerConfig _playerConfig;
     [SerializeField] private InputActionAsset _inputActionAsset;
     private List<PlayerSpawner> _playerSpawners = new();
+    private StationSpawner _alchemySpawner;
+    private List<StationSpawner> _furnaceSpawners = new();
     private PlayerNetworkController _localPlayer;
 
     public event Action<LevelConfig, GameObject> OnLevelInitialized;
@@ -67,6 +73,25 @@ public class StartGameHandler : MonoBehaviour
         }
     }
 
+    private void HandleStationSpawn(ServerStartGame message)
+    {
+        string alchemyId = message.AlchemyId;
+        GameObject alchemy = _alchemySpawner.Spawn(_alchemyPrefab);
+        if (alchemy.TryGetComponent<NetworkBehaviour>(out var alchemyController))
+        {
+            alchemyController.Initialize(alchemyId, _alchemyConfig);
+        }
+        for (int i = 0; i < _furnaceSpawners.Count; i++)
+        {
+            string id = message.FurnaceIds[i];
+            GameObject furnace = _furnaceSpawners[i].Spawn(_furnacePrefab);
+            if (furnace.TryGetComponent<NetworkBehaviour>(out var furnaceController))
+            {
+                furnaceController.Initialize(id, _furnaceConfig);
+            }
+        }
+    }
+
     private void InitializeLevel(ServerStartGame message)
     {
         // int level = message.Level;
@@ -77,6 +102,18 @@ public class StartGameHandler : MonoBehaviour
 
         GameObject map = Instantiate(config.MapPrefab, Vector2.zero, Quaternion.identity);
         _playerSpawners = map.GetComponentsInChildren<PlayerSpawner>().ToList();
+        StationSpawner[] stationSpawners = map.GetComponentsInChildren<StationSpawner>();
+        for (int i = 0; i < stationSpawners.Length; i++)
+        {
+            if (stationSpawners[i].CompareTag("Alchemy"))
+            {
+                _alchemySpawner = stationSpawners[i];
+            }
+            else
+            {
+                _furnaceSpawners.Add(stationSpawners[i]);
+            }
+        }
 
         OnLevelInitialized?.Invoke(config, map);
     }
@@ -86,5 +123,6 @@ public class StartGameHandler : MonoBehaviour
         ServerStartGame msg = LoadingScreenUI.Instance.GetData<ServerStartGame>("StartGameData");
         InitializeLevel(msg);
         HandlePlayerSpawn(msg);
+        HandleStationSpawn(msg);
     }
 }

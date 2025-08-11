@@ -78,6 +78,7 @@ public class AlchemyControllerNetwork : NetworkBehaviour
         {
             _config = stationConfig;
             for (int i = 0; i < _itemsOnTable.Length; i++) _itemsOnTable[i].SetActive(false);
+            _spriteRenderer = GetComponent<SpriteRenderer>();
 
             SetCollider(ref _collider, _spriteRenderer, transform);
             SetCollider(ref _tableCollider, _table.GetComponent<SpriteRenderer>(), _table.transform);
@@ -104,7 +105,7 @@ public class AlchemyControllerNetwork : NetworkBehaviour
     {
         for (int i = 0; i < _itemsOnTable.Length; i++)
         {
-            if (i >= itemTypeIds[i].Length)
+            if (itemTypeIds == null || i >= itemTypeIds[i].Length)
             {
                 _itemsOnTable[i].GetComponent<SpriteRenderer>().sprite = null;
                 _itemsOnTable[i].SetActive(false);

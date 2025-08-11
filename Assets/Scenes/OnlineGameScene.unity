@@ -1479,6 +1479,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d21cdebd72693c4d8c74bab8552b2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _alchemyPrefab: {fileID: 6779095460143926864, guid: b747f4c0bf45d84459f0386c12619bfc, type: 3}
+  _alchemyConfig: {fileID: 11400000, guid: 2814ce3f46aa1c8468a0e77c771abbdc, type: 2}
+  _furnacePrefab: {fileID: 6779095460143926864, guid: ab820a4969afa104c867bc9c78b87a93, type: 3}
+  _furnaceConfig: {fileID: 11400000, guid: 6e98964e8a6b82b40acbf2707ea59b40, type: 2}
   _playerPrefab: {fileID: 1750624711410842289, guid: 2dc41e26d88ac9343a1e44ebcf5e4471, type: 3}
   _playerConfig: {fileID: 11400000, guid: a7df0d474df11194e9a81497ceca8fdf, type: 2}
   _inputActionAsset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
