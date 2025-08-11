@@ -75,14 +75,24 @@ public class PlayerNetworkController : MonoBehaviour
         }
 
         _sendTimer += Time.deltaTime;
-        while (_sendTimer >= NetworkConstants.NET_TICK_INTERVAL)
+        if (_sendTimer >= NetworkConstants.NET_TICK_INTERVAL)
         {
             _sendTimer -= NetworkConstants.NET_TICK_INTERVAL;
 
+            PlayerInputMessage[] source = _simulator.InputBufferAsArray;
+            PlayerInputMessage[] messages = new PlayerInputMessage[source.Length];
+
+            for (int i = 0; i < source.Length; i++)
+            {
+                if (source[i] != null)
+                {
+                    messages[i] = new PlayerInputMessage(source[i]);
+                }
+            }
             NetworkManager.Instance.SendMessage(new BatchPlayerInputMessage
             {
                 PlayerId = Identity.PlayerId,
-                PlayerInputMessages = _simulator.InputBufferAsArray
+                PlayerInputMessages = messages
             });
         }
     }
@@ -105,7 +115,6 @@ public class PlayerNetworkController : MonoBehaviour
                 _animator.SetBool("IsMoving", dir != Vector2.zero);
                 _animator.SetFloat("MoveX", dir.x);
                 _animator.SetFloat("MoveY", dir.y);
-
                 Vector2 targetPos = new(serverState.PositionX, serverState.PositionY);
                 // Vector2 resolvedPos = ContextSolver.ResolveStatic(transform.position, targetPos, _collider, CollisionSystem.Tree);
 
@@ -141,6 +150,7 @@ public class PlayerNetworkController : MonoBehaviour
         _collider = AABBCollider.GetColliderBaseOnSprite(_spriteRenderer, transform);
         _collider.Mask.SetLayer((int)EntityLayer.Obstacle);
         _size = _collider.Size;
+        Debug.Log(_size);
 
         _inventory = new();
         _inventory.Initialize(_inputManager);
@@ -320,7 +330,8 @@ public class PlayerNetworkController : MonoBehaviour
         _simulator.Reconcile(state,
             (serverSnapshot) =>
             {
-
+                // transform.position = serverSnapshot.Position;
+                _simulator.ExpandBuffer(serverSnapshot.ProcessedInputSequence);
             },
             (serverSnapshot, historySnapshot) =>
             {

@@ -115,6 +115,6 @@ public class CollisionManager : MonoBehaviour
     {
         ServerStartGame msg = LoadingScreenUI.Instance.GetData<ServerStartGame>("StartGameData");
         // LoadColliders(msg.Level);
-        LoadColliders(1);
+        // LoadColliders(1);
     }
 }

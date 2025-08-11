@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class NetworkPredictionBuffer<TInput, TState>
     where TInput : IInputSnapshot
@@ -10,8 +11,9 @@ public class NetworkPredictionBuffer<TInput, TState>
     private readonly Queue<TState> _stateBuffer;
     public TState[] StateBufferAsArray => _stateBuffer.ToArray();
 
-    private readonly int _capacity;
+    private int _capacity;
     private int _currentInputSequence = -1;
+    public int CurrentInputSequence => _currentInputSequence;
     public NetworkPredictionBuffer(int capacity)
     {
         _capacity = capacity;
@@ -19,11 +21,10 @@ public class NetworkPredictionBuffer<TInput, TState>
         _stateBuffer = new Queue<TState>(capacity);
     }
 
-    public int GetCurrentInputSequence()
+    public int IcrementAndGetCurrentInputSequence()
     {
         _currentInputSequence += 1;
         return _currentInputSequence;
-
     }
 
     public void EnqueueInput(TInput input)
@@ -40,6 +41,14 @@ public class NetworkPredictionBuffer<TInput, TState>
             _stateBuffer.Dequeue();
 
         _stateBuffer.Enqueue(state);
+    }
+
+    public void SetCapacity(int newCapacity)
+    {
+        if (newCapacity > _capacity)
+        {
+            _capacity = newCapacity;
+        }
     }
 
     public void ClearStateSnapshot()

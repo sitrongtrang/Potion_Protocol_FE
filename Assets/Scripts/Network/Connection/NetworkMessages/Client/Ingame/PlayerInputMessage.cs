@@ -1,18 +1,21 @@
 using System;
+using UnityEngine;
 
 [Flags]
 public enum InputFlags
 {
     None = 0,
     Dash = 1 << 0,
-    Move = 1 << 1,
-    Attack = 1 << 2,
-    Pickup = 1 << 3,
-    Drop = 1 << 4,
-    Transfer = 1 << 5,
-    Craft = 1 << 6,
-    Submit = 1 << 7,
-    UseAbility = 1 << 8,
+    Move = 1 << 2,
+    Attack = 1 << 3,
+    Pickup = 1 << 4,
+    Drop = 1 << 5,
+    Transfer = 1 << 6,
+    Craft = 1 << 7,
+    Submit = 1 << 8,
+    UseAbility1 = 1 << 9,
+    UseAbility2 = 1 << 10,
+    UseAbility3 = 1 << 11
 }
 
 [Serializable]
@@ -39,7 +42,7 @@ public class PlayerInputMessage : ClientMessage, IInputSnapshot
 
         Flags = playerInputSnapshot.DashPressed ? Flags |= (int)InputFlags.Dash : Flags;
         Flags = MoveDirX != 0 || MoveDirY != 0 ? Flags |= (int)InputFlags.Move : Flags;
-
+        
         Flags = playerInputSnapshot.AttackPressed ? Flags |= (int)InputFlags.Attack : Flags;
 
         Flags = playerInputSnapshot.PickupPressed ? Flags |= (int)InputFlags.Pickup : Flags;
@@ -52,6 +55,18 @@ public class PlayerInputMessage : ClientMessage, IInputSnapshot
         ClientEstimatedServerTime = 0;
 
         SelectedSlot = playerInputSnapshot.SelectedSlot;
+    }
+
+    public PlayerInputMessage(PlayerInputMessage other)
+        : base(other.MessageType) // copy the base class type
+    {
+        this.ClientSendTime = other.ClientSendTime;
+        this.ClientEstimatedServerTime = other.ClientEstimatedServerTime;
+        this.InputSequence = other.InputSequence;
+        this.Flags = other.Flags;
+        this.MoveDirX = other.MoveDirX;
+        this.MoveDirY = other.MoveDirY;
+        this.SelectedSlot = other.SelectedSlot;
     }
 
     int IInputSnapshot.InputSequence => InputSequence;
