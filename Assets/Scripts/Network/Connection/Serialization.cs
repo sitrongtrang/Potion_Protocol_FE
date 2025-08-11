@@ -87,7 +87,7 @@ public static class Serialization
             short messageType = BinarySerializer.ReadInt16BigEndian(reader);
             //Debug.Log(messageType);
             short statusCode = BinarySerializer.ReadInt16BigEndian(reader);
-            //Debug.Log("AAAAAAAA: " + messageType + " " + statusCode);
+            // Debug.Log("AAAAAAAA: " + messageType + " " + statusCode);
             byte[] payloadBytes = reader.ReadBytes(messageLength - (2 + 2));
 
             return CreateMessageFromType(messageType, payloadBytes);
