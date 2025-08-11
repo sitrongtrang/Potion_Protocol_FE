@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Runtime.CompilerServices;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -86,7 +87,7 @@ public class RoomHandler : MonoBehaviour
             case NetworkMessageTypes.Server.Pregame.StartGame:
                 SceneManager.LoadSceneAsync("OnlineGameScene");
                 break;
-            case NetworkMessageTypes.Server.Room.ACK:
+            case NetworkMessageTypes.Server.ACK:
                 HandleACK((ServerACK)message);
                 break;
             default:
@@ -134,6 +135,7 @@ public class RoomHandler : MonoBehaviour
             {
                 _roomScene.SetPersonRoom(null, Person[i].Name);
                 _roomScene.SetPersonRoom(null, Person[i].ID);
+                Person[i].addButton.gameObject.SetActive(false);
             }
         }
     }
@@ -182,23 +184,24 @@ public class RoomHandler : MonoBehaviour
 
     private void OnGetRoomInfoResponse(ServerGetRoomInfo msg)
     {
-        Debug.Log("Get Room Info");
         SetLeader(msg.Room.PlayerList[0]);
         _roomScene.ChooseImage(msg.Room.MapID);
+        // 🔹 Reset tất cả slot trước khi set lại
+        for (int j = 0; j < Person.Length; j++)
+        {
+            _roomScene.SetPersonRoom(null, Person[j].Name);
+            _roomScene.SetPersonRoom(null, Person[j].ID);
+            Person[j].addButton.gameObject.SetActive(false);
+        }
         for (int i = 0; i < msg.Room.PlayerList.Length; i++)
         {
+
             _roomScene.SetPersonRoom(msg.Room.PlayerList[i].PlayerDisPlayName, Person[i].Name);
             _roomScene.SetPersonRoom(msg.Room.PlayerList[i].PlayerID, Person[i].ID);
-            if (msg.Room.PlayerList[i].PlayerID != NetworkManager.Instance.ClientId && !string.IsNullOrEmpty(msg.Room.PlayerList[i].PlayerDisPlayName))
-            {
-                Debug.Log(msg.Room.PlayerList[i].PlayerDisPlayName);
-                Person[i].addButton.gameObject.SetActive(true);
-            }
-            else
-            {
-                Debug.Log(!string.IsNullOrEmpty(msg.Room.PlayerList[i].PlayerDisPlayName) ? msg.Room.PlayerList[i].PlayerDisPlayName : "NULLLLLLLLLLLLLL");
-                Person[i].addButton.gameObject.SetActive(false);
-            }
+            bool isNotSelf = !string.Equals(Person[i].ID.text, NetworkManager.Instance.ClientId, StringComparison.Ordinal);
+            bool hasName = !string.IsNullOrEmpty(Person[i].Name.text);
+            bool active = isNotSelf && hasName;
+            Person[i].addButton.gameObject.SetActive(active);
         }
         _roomScene.SetRoomName(msg.Room.RoomName);
         RenderRoom(msg.Room.PlayerList);
@@ -242,9 +245,6 @@ public class RoomHandler : MonoBehaviour
             if (IsExistPerson(PlayerList[i])) continue;
 
             int slot = FindEmptySlot();
-
-            _roomScene.SetPersonRoom(PlayerList[i].PlayerDisPlayName, Person[slot].Name);
-            _roomScene.SetPersonRoom(PlayerList[i].PlayerID, Person[slot].ID);
             if (PlayerList[i].PlayerRole == (short)PlayerRole.Leader)
             {
                 Person[slot].Name.color = Color.yellow;

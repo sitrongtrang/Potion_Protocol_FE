@@ -20,6 +20,7 @@ public static class NetworkMessageTypes
             public const short DeclineFriendRequest = 502;
             public const short GetFriendRequests = 504;
             public const short GetMyRequests = 506;
+            public const short RemoveMyRequest = 507;
         }
         public static class Pregame
         {
@@ -49,6 +50,7 @@ public static class NetworkMessageTypes
 
     public static class Server
     {
+        public const short ACK = 900;
         public static class FriendSystem
         {
             public const short GetFriendList = 601;
@@ -58,6 +60,7 @@ public static class NetworkMessageTypes
             public const short DeclineFriendRequest = 604;
             public const short GetFriendRequests = 600;
             public const short GetMyRequests = 606;
+            public const short NotPendingRequest = 651;
         }
         public static class System
         {
@@ -73,7 +76,7 @@ public static class NetworkMessageTypes
             public const short PlayerLeft = 702;
             public const short Ready = 703;
             public const short UnReady = 704;
-            public const short ACK = 900;
+            
 
             public const short GetRoomInfo = 707;
             public const short GetRoomByName = 711;

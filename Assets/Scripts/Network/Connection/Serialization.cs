@@ -119,7 +119,7 @@ public static class Serialization
             NetworkMessageTypes.Server.Room.PlayerLeft => BinarySerializer.DeserializeFromBytes<ServerPlayerLeft>(payloadBytes),
             NetworkMessageTypes.Server.Room.Ready => BinarySerializer.DeserializeFromBytes<ServerPlayerReady>(payloadBytes),
             NetworkMessageTypes.Server.Room.UnReady => BinarySerializer.DeserializeFromBytes<ServerPlayerUnReady>(payloadBytes),
-            NetworkMessageTypes.Server.Room.ACK => BinarySerializer.DeserializeFromBytes<ServerACK>(payloadBytes),
+            NetworkMessageTypes.Server.ACK => BinarySerializer.DeserializeFromBytes<ServerACK>(payloadBytes),
 
             NetworkMessageTypes.Server.FriendSystem.GetFriendList =>  BinarySerializer.DeserializeFromBytes<FriendListServerMessage>(payloadBytes),
             NetworkMessageTypes.Server.FriendSystem.RemoveFriend =>  BinarySerializer.DeserializeFromBytes<FriendRemoveServerMessage>(payloadBytes),

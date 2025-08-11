@@ -196,7 +196,7 @@ public class FriendListHandler : MonoBehaviour
                 ui2.CancelButton.GetComponent<Button>().onClick.RemoveAllListeners();
                 ui2.CancelButton.GetComponent<Button>().onClick.AddListener(() =>
                 {
-                    // SendRemoveRequest(data.Id);
+                    SendRemoveMyRequest(data.Id);
                     go.SetActive(false);
                 });
                 break;
@@ -204,6 +204,10 @@ public class FriendListHandler : MonoBehaviour
         }
     }
 
+    void SendRemoveMyRequest(string id)
+    {
+        NetworkManager.Instance.SendMessage(new RemoveMyRequestMessage(id));
+    }
     void SendAccept(string id)
     {
         NetworkManager.Instance.SendMessage(new AcceptRequestClientMessage(id));
@@ -281,6 +285,12 @@ public class FriendListHandler : MonoBehaviour
                         DisplayUIItems(_currentMode, _currentPage);
                     }
                 }
+                break;
+            case NetworkMessageTypes.Server.ACK:
+                Debug.Log("Remove my request successfully!!!!!!!!!!!!!!");
+                break;
+            case NetworkMessageTypes.Server.FriendSystem.NotPendingRequest:
+                Debug.Log("This request is no longer exist!!!!!!!!!!!!!!");
                 break;
         }
     }
