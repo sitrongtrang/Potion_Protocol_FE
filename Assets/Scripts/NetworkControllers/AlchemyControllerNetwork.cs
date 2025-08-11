@@ -105,7 +105,7 @@ public class AlchemyControllerNetwork : NetworkBehaviour
     {
         for (int i = 0; i < _itemsOnTable.Length; i++)
         {
-            if (itemTypeIds == null || i >= itemTypeIds[i].Length)
+            if (itemTypeIds == null || i >= itemTypeIds.Length)
             {
                 _itemsOnTable[i].GetComponent<SpriteRenderer>().sprite = null;
                 _itemsOnTable[i].SetActive(false);

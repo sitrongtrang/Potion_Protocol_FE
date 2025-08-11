@@ -150,10 +150,10 @@ public class PlayerNetworkController : MonoBehaviour
     {
         PlayerInputSnapshot cpy = new(inputSnapshot);
 
-        // if (cpy.MoveDir != Vector2.zero)
-        // {
-        TryMove(cpy);
-        // }
+        if (cpy.MoveDir != Vector2.zero)
+        {
+            TryMove(cpy);
+        }
 
         if (cpy.PickupPressed)
         {
