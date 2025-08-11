@@ -154,6 +154,10 @@ public class PlayerNetworkController : MonoBehaviour
         {
             TryMove(cpy);
         }
+        else
+        {
+            TriggerMoveAnimation(_playerDir, false);
+        }
 
         if (cpy.PickupPressed)
         {
