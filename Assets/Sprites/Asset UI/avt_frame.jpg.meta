@@ -116,12 +116,12 @@ TextureImporter:
       name: avt_frame_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 0
-        width: 1019
-        height: 1019
+        x: 53
+        y: 50
+        width: 921
+        height: 919
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: a9f8751468190bb48b400b542a2cf87b
     internalID: 0
     vertices: []
     indices: 
