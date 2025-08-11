@@ -62,12 +62,12 @@ public class GameStateNetworkInterpolator : INetworkInterpolator<GameStateInterp
                         };
                     }
 
-                    var station = CreateEntityMap(
-                        update.StationStates,
-                        s => s.StationId,
-                        s => s.StationType,
-                        s => new Vector2(s.PositionX, s.PositionY)
-                    );
+                    // var station = CreateEntityMap(
+                    //     update.StationStates,
+                    //     s => s.StationId,
+                    //     s => s.StationType,
+                    //     s => new Vector2(s.PositionX, s.PositionY)
+                    // );
 
                     var requiredRecipe = update.RequiredRecipeIds.ToList();
 
@@ -100,7 +100,7 @@ public class GameStateNetworkInterpolator : INetworkInterpolator<GameStateInterp
                         ItemIds = item,
                         EnemyIds = enemy,
                         ItemSourceIds = itemSource,
-                        StationIds = station,
+                        // StationIds = station,
                         RequiredRecipeIds = requiredRecipe,
                         // PlayerScores = score,
                         // PlayerInventories = inventory
