@@ -152,10 +152,10 @@ public class PlayerNetworkController : MonoBehaviour
     {
         PlayerInputSnapshot cpy = new(inputSnapshot);
 
-        if (cpy.MoveDir != Vector2.zero)
-        {
-            TryMove(cpy);
-        }
+        // if (cpy.MoveDir != Vector2.zero)
+        // {
+        TryMove(cpy);
+        // }
 
         if (cpy.PickupPressed)
         {
@@ -216,37 +216,37 @@ public class PlayerNetworkController : MonoBehaviour
 
     private bool TryAttack(PlayerInputSnapshot inputSnapshot)
     {
-        if (!_canAttack) return false;
+        // if (!_canAttack) return false;
 
-        // If an alchemy nearby, cannot attack
-        AlchemyControllerNetwork alchemy = FindFirstObjectByType<AlchemyControllerNetwork>();
-        if (Vector2.Distance(alchemy.transform.position, transform.position) <= _config.InteractDistance)
-        {
-            return false;
-        }
+        // // If an alchemy nearby, cannot attack
+        // AlchemyControllerNetwork alchemy = FindFirstObjectByType<AlchemyControllerNetwork>();
+        // if (Vector2.Distance(alchemy.transform.position, transform.position) <= _config.InteractDistance)
+        // {
+        //     return false;
+        // }
 
-        // Check wall hit
-        Vector2 dir = _playerDir.normalized;
-        float skinWidth = 0.2f;
-        Vector2 origin = (Vector2)transform.position + dir * skinWidth;
-        bool hitObstacle = CheckWall(origin, dir);
+        // // Check wall hit
+        // Vector2 dir = _playerDir.normalized;
+        // float skinWidth = 0.2f;
+        // Vector2 origin = (Vector2)transform.position + dir * skinWidth;
+        // bool hitObstacle = CheckWall(origin, dir);
 
-        if (hitObstacle)
-        {
-            Debug.Log("Vướng tường nè má.");
-            return false;
-        }
+        // if (hitObstacle)
+        // {
+        //     Debug.Log("Vướng tường nè má.");
+        //     return false;
+        // }
 
-        // Play animation
-        _swordAnimator.SetTrigger("Attack");
-        if (dir.x != 0 || dir.y != 0)
-        {
-            _swordAnimator.SetFloat("MoveX", dir.x);
-            _swordAnimator.SetFloat("MoveY", dir.y);
-            _canAttack = false;
-            StartCoroutine(AttackCooldown());
-            return true;
-        }
+        // // Play animation
+        // _swordAnimator.SetTrigger("Attack");
+        // if (dir.x != 0 || dir.y != 0)
+        // {
+        //     _swordAnimator.SetFloat("MoveX", dir.x);
+        //     _swordAnimator.SetFloat("MoveY", dir.y);
+        //     _canAttack = false;
+        //     StartCoroutine(AttackCooldown());
+        //     return true;
+        // }
         return false;
     }
 
