@@ -141,7 +141,7 @@ public class LevelInfoSaver : MonoBehaviour
         {
             Stations.Add(new StationData()
             {
-                Type = stationSpawners[i].Prefab.Config.Type,
+                Type = stationSpawners[i].CompareTag("Alchemy") ? StationType.AlchemyStation : StationType.Furnace,
                 StationLocation = new Location()
                 {
                     LocationX = stationSpawners[i].transform.position.x,

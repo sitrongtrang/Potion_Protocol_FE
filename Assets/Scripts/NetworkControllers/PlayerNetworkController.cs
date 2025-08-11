@@ -100,9 +100,7 @@ public class PlayerNetworkController : MonoBehaviour
                 Vector2 dir = new Vector2(xDir, yDir).normalized;
                 _playerDir = dir;
 
-                _animator.SetBool("IsMoving", dir != Vector2.zero);
-                _animator.SetFloat("MoveX", dir.x);
-                _animator.SetFloat("MoveY", dir.y);
+                TriggerMoveAnimation(dir, dir != Vector2.zero);
 
                 Vector2 targetPos = new(serverState.PositionX, serverState.PositionY);
                 Vector2 resolvedPos = ContextSolver.ResolveStatic(transform.position, targetPos, _collider, CollisionSystem.Tree);
@@ -191,9 +189,7 @@ public class PlayerNetworkController : MonoBehaviour
         _simulator.Simulate(inputSnapshot,
             (inputSnapshot) =>
             {
-                _animator.SetBool("IsMoving", inputSnapshot.MoveDir != Vector2.zero);
-                _animator.SetFloat("MoveX", inputSnapshot.MoveDir.x);
-                _animator.SetFloat("MoveY", inputSnapshot.MoveDir.y);
+                TriggerMoveAnimation(inputSnapshot.MoveDir, inputSnapshot.MoveDir != Vector2.zero);
                 _playerDir = inputSnapshot.MoveDir.normalized;
 
                 float moveSpeed = inputSnapshot.DashPressed ? _config.DashSpeed : _config.MoveSpeed;
@@ -345,6 +341,20 @@ public class PlayerNetworkController : MonoBehaviour
     #endregion
 
     #region Utilities
+    private void TriggerMoveAnimation(Vector2 dir, bool isMoving = true)
+    {
+        if (_animator)
+        {
+            _animator.SetFloat("MoveX", dir.x);
+            _animator.SetFloat("MoveY", dir.y);
+            _animator.SetBool("IsMoving", isMoving);
+        }
+        if (_swordAnimator)
+        {
+            _swordAnimator.SetFloat("MoveX", dir.x);
+            _swordAnimator.SetFloat("MoveY", dir.y);
+        }
+    }
     void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
