@@ -11,10 +11,10 @@ public class ServerStartGame : ServerMessage
     public string[] PlayerIds;
     [FieldOrder(3)]
     public int Level;
-    [FieldOrder(4)]
-    public float[] PositionX;
-    [FieldOrder(5)]
-    public float[] PositionY;
+    // [FieldOrder(4)]
+    // public float[] PositionX;
+    // [FieldOrder(5)]
+    // public float[] PositionY;
     public ServerStartGame() : base(NetworkMessageTypes.Server.Pregame.StartGame) { }
 }
 

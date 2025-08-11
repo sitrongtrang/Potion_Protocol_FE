@@ -1479,7 +1479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d21cdebd72693c4d8c74bab8552b2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPrefab: {fileID: 1750624711410842289, guid: fae7a45408e97ce489e6df3c409e8d82, type: 3}
+  _playerPrefab: {fileID: 1750624711410842289, guid: 2dc41e26d88ac9343a1e44ebcf5e4471, type: 3}
   _playerConfig: {fileID: 11400000, guid: a7df0d474df11194e9a81497ceca8fdf, type: 2}
   _inputActionAsset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!4 &1788294510

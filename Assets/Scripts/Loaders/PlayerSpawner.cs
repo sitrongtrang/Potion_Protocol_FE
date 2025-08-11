@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerSpawner : MonoBehaviour
 {
@@ -19,7 +20,8 @@ public class PlayerSpawner : MonoBehaviour
             Debug.Log("🔁 Loaded rebinds in PlayerSpawner");
         }
 
-        SpawnPlayer(transform.position, _inputActions);
+        if (SceneManager.GetActiveScene().name == "GameScene") 
+            SpawnPlayer(transform.position, _inputActions);
     }
 
     void SpawnPlayer(Vector2 position, InputActionAsset loadedInputAsset = null)

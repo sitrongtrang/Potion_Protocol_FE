@@ -55,8 +55,8 @@ public class GameStateHandler : MonoBehaviour
 
                 // Syncing UI
                 SyncRecipes(gameState.RequiredRecipeIds);
-                SyncScore(gameState.PlayerScores);
-                SyncInventory(gameState.PlayerInventories);
+                // SyncScore(gameState.PlayerScores);
+                // SyncInventory(gameState.PlayerInventories);
             }
         );
 

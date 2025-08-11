@@ -42,8 +42,7 @@ public class PlayerController : MonoBehaviour
                 Transform weapon = WeaponContainer.GetChild(i);
                 weapon.GetComponent<SpriteRenderer>().sprite = _weapons[i].Icon;
                 weapon.GetComponent<Animator>().runtimeAnimatorController = _weapons[i].Anim;
-            }
-             
+            }   
         }
 
         _inputManager = loadedAsset != null

@@ -137,6 +137,7 @@ public class PlayerNetworkController : MonoBehaviour
         }
 
         _collider = AABBCollider.GetColliderBaseOnSprite(_spriteRenderer, transform);
+        _collider.Mask.SetLayer((int)EntityLayer.Obstacle);
         _size = _collider.Size;
 
         _inventory = new();
@@ -344,6 +345,11 @@ public class PlayerNetworkController : MonoBehaviour
     #endregion
 
     #region Utilities
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(_collider.Bounds.center, _collider.Bounds.size);
+    }
 
     #endregion
 }

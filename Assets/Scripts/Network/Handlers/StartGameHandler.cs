@@ -30,20 +30,20 @@ public class StartGameHandler : MonoBehaviour
 
         GameObject playerObj = Instantiate(_playerPrefab, position, Quaternion.identity);
 
-        if (!playerObj.TryGetComponent<PlayerNetworkController>(out var localPlayerController))
+        if (!playerObj.TryGetComponent<PlayerNetworkController>(out var playerController))
         {
             Debug.LogError("Wrong player object");
             Destroy(playerObj);
             return;
         }
 
-        localPlayerController.Initialize(_playerConfig, _inputActionAsset, playerId, isLocal);
+        playerController.Initialize(_playerConfig, _inputActionAsset, playerId, isLocal);
 
         // Additional setup
         if (isLocal)
         {
             // Setup camera follow, input controls, etc.
-            _localPlayer = localPlayerController;
+            _localPlayer = playerController;
             Debug.Log($"Spawned local player: {playerId}");
         }
         else
@@ -51,28 +51,6 @@ public class StartGameHandler : MonoBehaviour
             Debug.Log($"Spawned remote player: {playerId}");
         }
     }
-
-    // private void HandleNetworkMessage(ServerMessage message)
-    // {
-    //     switch (message.MessageType)
-    //     {
-    //         case NetworkMessageTypes.Server.Pregame.StartGame:
-    //             HandlePlayerSpawn((ServerStartGame)message);
-    //             InitializeLevel((ServerStartGame)message);
-    //             break;
-    //         // case NetworkMessageTypes.Server.Room.OnlyLeader:
-    //         //     Debug.Log("Only Leader");
-    //         //     break;
-    //         // case NetworkMessageTypes.Server.Room.PlayerNotReady:
-    //         //     Debug.Log("Only Leader");
-    //         //     break;
-    //         // case NetworkMessageTypes.Server.Pregame.MatchMaking:
-    //         //     Debug.Log("Match Making");
-    //         //     break;
-    //         default:
-    //             break;
-    //     }
-    // }
 
     private void HandlePlayerSpawn(ServerStartGame message)
     {
