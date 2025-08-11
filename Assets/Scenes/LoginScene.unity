@@ -265,7 +265,6 @@ GameObject:
   m_Component:
   - component: {fileID: 127152483}
   - component: {fileID: 127152484}
-  - component: {fileID: 127152485}
   - component: {fileID: 127152486}
   m_Layer: 0
   m_Name: UIManager
@@ -306,26 +305,6 @@ MonoBehaviour:
   _toggleButton: {fileID: 961702079}
   _eyeClosedSprite: {fileID: -4135700957782999318, guid: 5ce6d1c41eb6c844ba4f768d0b98b635, type: 3}
   _eyeOpenSprite: {fileID: -3683519701644557706, guid: a5369683e363bed48aebb43301aac0e0, type: 3}
---- !u!114 &127152485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 127152481}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1cb1cf1401988d46b9e6fd5d2c1b2ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  usernameField: {fileID: 740484365}
-  passwordField: {fileID: 1417809007}
-  confirmpasswordField: {fileID: 0}
-  displaynameField: {fileID: 0}
-  _loginUrl: {fileID: 11400000, guid: 368f128f270b7b143a06c7f984e88109, type: 2}
-  _registerUrl: {fileID: 0}
-  _loginError: {fileID: 548310841}
-  _disableAfterSeconds: 3
 --- !u!114 &127152486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2832,8 +2811,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 127152485}
-        m_TargetAssemblyTypeName: HttpAuthManager, Assembly-CSharp
+      - m_Target: {fileID: 127152486}
+        m_TargetAssemblyTypeName: HttpAuthHandler, Assembly-CSharp
         m_MethodName: OnLoginButtonPressed
         m_Mode: 1
         m_Arguments:
