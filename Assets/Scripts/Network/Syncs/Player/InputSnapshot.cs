@@ -27,4 +27,17 @@ public class PlayerInputSnapshot
         DashPressed = other.DashPressed;
         SelectedSlot = other.SelectedSlot;
     }
+
+    public bool HasInput()
+    {
+        return MoveDir != Vector2.zero
+            || AttackPressed
+            || PickupPressed
+            || DropPressed
+            || TransferPressed
+            || SubmitPressed
+            || CraftPressed
+            || DashPressed;
+    }
+
 }

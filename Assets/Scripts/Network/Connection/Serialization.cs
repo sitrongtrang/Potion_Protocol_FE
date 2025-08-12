@@ -82,6 +82,12 @@ public static class Serialization
             using MemoryStream stream = new(rawData);
             using BinaryReader reader = new(stream);
 
+            if (rawData.Length < 2)
+            {
+                Debug.LogWarning("[Deserialization Warning] Not enough data for message length.");
+                return null;
+            }
+
             short messageLength = BinarySerializer.ReadInt16BigEndian(reader);
 
             short messageType = BinarySerializer.ReadInt16BigEndian(reader);

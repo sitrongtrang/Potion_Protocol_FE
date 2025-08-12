@@ -110,9 +110,9 @@ public class PlayerNetworkController : MonoBehaviour
                 float xDir = Mathf.Abs(serverState.PositionX - transform.position.x);
                 float yDir = Mathf.Abs(serverState.PositionY - transform.position.y);
                 Vector2 dir = new Vector2(xDir, yDir).normalized;
-                _playerDir = dir;
+                _playerDir = dir != Vector2.zero ? dir : _playerDir;
 
-                TriggerMoveAnimation(dir, dir != Vector2.zero);
+                TriggerMoveAnimation(_playerDir, dir != Vector2.zero);
 
                 Vector2 targetPos = new(serverState.PositionX, serverState.PositionY);
                 // Vector2 resolvedPos = ContextSolver.ResolveStatic(transform.position, targetPos, _collider, CollisionSystem.Tree);
@@ -161,14 +161,14 @@ public class PlayerNetworkController : MonoBehaviour
     {
         PlayerInputSnapshot cpy = new(inputSnapshot);
 
-        if (cpy.MoveDir != Vector2.zero)
-        {
-            TryMove(cpy);
-        }
-        else
-        {
-            TriggerMoveAnimation(_playerDir, false);
-        }
+        if (!cpy.HasInput()) return;
+
+        TryMove(cpy);
+        
+        // else
+        // {
+        //     TriggerMoveAnimation(_playerDir, false);
+        // }
 
         if (cpy.PickupPressed)
         {
@@ -206,8 +206,8 @@ public class PlayerNetworkController : MonoBehaviour
         _simulator.Simulate(inputSnapshot,
             (inputSnapshot) =>
             {
-                TriggerMoveAnimation(inputSnapshot.MoveDir, inputSnapshot.MoveDir != Vector2.zero);
-                _playerDir = inputSnapshot.MoveDir.normalized;
+                _playerDir = inputSnapshot.MoveDir != Vector2.zero ? inputSnapshot.MoveDir.normalized : _playerDir;
+                TriggerMoveAnimation(_playerDir, inputSnapshot.MoveDir != Vector2.zero);
 
                 float moveSpeed = inputSnapshot.DashPressed ? _config.DashSpeed : _config.MoveSpeed;
                 Vector2 targetPos = transform.position + (Vector3)(moveSpeed * Time.fixedDeltaTime * inputSnapshot.MoveDir);

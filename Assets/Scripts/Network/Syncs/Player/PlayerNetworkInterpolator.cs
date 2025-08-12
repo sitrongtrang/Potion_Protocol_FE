@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerNetworkInterpolator : INetworkInterpolator<PlayerStateInterpolateData, GameStateUpdate>
 {
@@ -17,7 +18,7 @@ public class PlayerNetworkInterpolator : INetworkInterpolator<PlayerStateInterpo
             int idx = findIdx(update);
             if (idx > -1)
             {
-                if ((inInitializing && update.ServerSequence < _serverSequence) || update.ServerSequence - _serverSequence > _buffer.Capacity)
+                if ((inInitializing && update.ServerSequence < _serverSequence) || (Mathf.Abs(update.ServerSequence - _serverSequence) > _buffer.Capacity))
                 {
                     _serverSequence = update.ServerSequence - 1;
                     _buffer.SetMinTickToKeep(_serverSequence);
