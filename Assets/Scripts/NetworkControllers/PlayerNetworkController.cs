@@ -160,10 +160,14 @@ public class PlayerNetworkController : MonoBehaviour
     {
         PlayerInputSnapshot cpy = new(inputSnapshot);
 
-        if (!cpy.HasInput()) return;
+        if (!cpy.HasInput())
+        {
+            TriggerMoveAnimation(_playerDir, false);
+            return;
+        }
 
         TryMove(cpy);
-        
+
         // else
         // {
         //     TriggerMoveAnimation(_playerDir, false);
