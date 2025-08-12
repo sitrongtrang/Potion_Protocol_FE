@@ -6,10 +6,13 @@ using UnityEngine.UI;
 public class SkillContainerUI : MonoBehaviour
 {
     [SerializeField] private GameObject _skillUIPrefab;
+    private PlayerAttack _playerAttack;
     private List<SkillSlotUI> skillSlots = new();
 
     public void Initialize(PlayerController player)
     {
+        _playerAttack = player.Attack;
+
         for (int i = 0; i < GameConstants.NumSkills; i++)
         {
             GameObject skillUI = Instantiate(_skillUIPrefab, transform);
@@ -21,8 +24,16 @@ public class SkillContainerUI : MonoBehaviour
                 skillSlots.Add(skillSlot);
             }
         }
+    }
 
-        player.Attack.OnSkillDeactivated += StartCooldown;
+    void OnEnable()
+    {
+        _playerAttack.OnSkillDeactivated += StartCooldown;
+    }
+
+    void OnDisable()
+    {
+        _playerAttack.OnSkillDeactivated -= StartCooldown;
     }
 
     private void StartCooldown(int skillNumber)
