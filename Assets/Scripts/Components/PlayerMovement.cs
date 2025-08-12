@@ -161,6 +161,7 @@ public class PlayerMovement
                 Owner = _player.gameObject
             };
             _collider.Mask.SetLayer((int)EntityLayer.Obstacle);
+            _collider.Mask.SetLayer((int)EntityLayer.ItemSource);
         }
         else
         {

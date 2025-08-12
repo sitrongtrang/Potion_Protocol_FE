@@ -26,17 +26,19 @@ public class InventoryUI : MonoBehaviour
             else
                 _inventorySlots[i].GetComponent<Image>().sprite = _choosingSlotImg;
         }
-
-        _playerInventory.OnSlotUpdated += UpdateInventoryUI;
-        _playerInventory.OnChoosingSlotChanged += UpdateChoosingSlotUI;
     }
 
     void OnEnable()
     {
-        if (SceneManager.GetActiveScene().name == "OnlineGameScene")
+        if (SceneManager.GetActiveScene().name == "GameScene")
+        {
+            _playerInventory.OnSlotUpdated += UpdateInventoryUI;
+            _playerInventory.OnChoosingSlotChanged += UpdateChoosingSlotUI;
+        }
+        else if (SceneManager.GetActiveScene().name == "OnlineGameScene")
         {
             _gameStateHandler.OnInventorySynced += SyncInventory;
-            // _startGameHandler.LocalPlayer.OnChoosingSlotChanged += UpdateChoosingSlotUI;
+            _startGameHandler.LocalPlayer.OnChoosingSlotChanged += UpdateChoosingSlotUI;
         }
     }
 
@@ -51,7 +53,7 @@ public class InventoryUI : MonoBehaviour
         else if (SceneManager.GetActiveScene().name == "OnlineGameScene")
         {
             _gameStateHandler.OnInventorySynced -= SyncInventory;
-            // _startGameHandler.LocalPlayer.OnChoosingSlotChanged -= UpdateChoosingSlotUI;
+            _startGameHandler.LocalPlayer.OnChoosingSlotChanged -= UpdateChoosingSlotUI;
         }
     }
 

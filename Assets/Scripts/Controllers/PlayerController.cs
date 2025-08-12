@@ -11,8 +11,6 @@ public class PlayerController : MonoBehaviour
     private List<WeaponConfig> _weapons = new();
     [SerializeField] private Animator _swordAnim;
     [SerializeField] private Transform _attackPoint;
-    private InventoryUI _inventoryUI;
-    private SkillContainerUI _skillContainerUI;
 
     public PlayerConfig Config => _config;
     public PlayerInventory Inventory { get; private set; }
@@ -42,7 +40,7 @@ public class PlayerController : MonoBehaviour
                 Transform weapon = WeaponContainer.GetChild(i);
                 weapon.GetComponent<SpriteRenderer>().sprite = _weapons[i].Icon;
                 weapon.GetComponent<Animator>().runtimeAnimatorController = _weapons[i].Anim;
-            }   
+            }
         }
 
         _inputManager = loadedAsset != null
@@ -59,12 +57,13 @@ public class PlayerController : MonoBehaviour
         Interaction.Initialize(this, _inputManager);
         Movement.Initialize(this, _inputManager);
 
-        _inventoryUI = FindFirstObjectByType<InventoryUI>();
-        _inventoryUI.Initialize(this);
-        _inventoryUI.gameObject.SetActive(true);
+        InventoryUI inventoryUI = FindFirstObjectByType<InventoryUI>(FindObjectsInactive.Include);
+        inventoryUI.Initialize(this);
+        inventoryUI.gameObject.SetActive(true);
 
-        _skillContainerUI = FindFirstObjectByType<SkillContainerUI>();
-        _skillContainerUI.Initialize(this);
+        SkillContainerUI skillContainerUI = FindFirstObjectByType<SkillContainerUI>(FindObjectsInactive.Include);
+        skillContainerUI.Initialize(this);
+        skillContainerUI.gameObject.SetActive(true);
     }
 
     void Update()
