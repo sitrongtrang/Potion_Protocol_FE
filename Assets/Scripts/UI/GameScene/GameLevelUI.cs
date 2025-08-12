@@ -32,7 +32,7 @@ public class GameLevelUI : MonoBehaviour
 
     public void UpdateTimeText(float time)
     {
-        if (time <= 290f && time >= 0.5f)
+        if (time <= 30f && time >= 0.5f)
         {
             _timeImageAnimator.SetBool("isTimeUp", true);
             _timeTextAnimator.SetBool("isTimeUp", true);
