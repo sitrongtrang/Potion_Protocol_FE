@@ -100,7 +100,7 @@ public static class Serialization
         }
         catch (Exception e)
         {
-            Debug.LogError($"[Deserialization Error] {e.StackTrace}");
+            Debug.LogError($"[Deserialization Error] {e.StackTrace} {rawData.Length}");
             return null;
         }
     }
