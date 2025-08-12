@@ -13,11 +13,13 @@ public class PlayerState : IStateSnapshot
     [FieldOrder(4)]
     public bool IsDashing;
     [FieldOrder(5)]
+    public bool IsAttacking;
+    [FieldOrder(6)]
     public int ProcessedInputSequence;
-    // [FieldOrder(6)]
-    // public string[] InventoryItemTypes;
-    // [FieldOrder(7)]
-    // public int Score;
+    [FieldOrder(7)]
+    public string[] InventoryItemTypes;
+    [FieldOrder(8)]
+    public int Score;
 
     int IStateSnapshot.ProcessedInputSequence => ProcessedInputSequence;
 }

@@ -132,6 +132,16 @@ public class PlayerNetworkController : MonoBehaviour
                 Vector2 dir = new Vector2(xDir, yDir).normalized;
                 _playerDir = dir != Vector2.zero ? dir : _playerDir;
 
+                if (serverState.IsAttacking)
+                {
+                    _swordAnimator.SetTrigger("Attack");
+                    if (_playerDir.x != 0 || _playerDir.y != 0)
+                    {
+                        _swordAnimator.SetFloat("MoveX", dir.x);
+                        _swordAnimator.SetFloat("MoveY", dir.y);
+                    }
+                }
+
                 TriggerMoveAnimation(_playerDir, dir != Vector2.zero);
 
                 Vector2 targetPos = new(serverState.PositionX, serverState.PositionY);
@@ -182,7 +192,7 @@ public class PlayerNetworkController : MonoBehaviour
     {
         PlayerInputSnapshot cpy = new(inputSnapshot);
 
-        if (!cpy.HasInput())
+        if (!cpy.HasInput() && !_isDashing)
         {
             TriggerMoveAnimation(_playerDir, false);
             return;
@@ -237,16 +247,14 @@ public class PlayerNetworkController : MonoBehaviour
                     _playerDir = inputSnapshot.MoveDir != Vector2.zero ? inputSnapshot.MoveDir.normalized : _playerDir;
                 }
 
-                if (!_isDashing)
-                {
-                    float moveSpeed = _config.MoveSpeed;
-                    Vector2 targetPos = transform.position + (Vector3)(moveSpeed * Time.fixedDeltaTime * _playerDir);
-                    Vector2 resolvedPos = ContextSolver.ResolveStatic(transform.position, targetPos, _collider, CollisionSystem.Tree);
+                float moveSpeed = _config.MoveSpeed;
+                Vector2 targetPos = transform.position + (Vector3)(moveSpeed * Time.fixedDeltaTime * _playerDir);
+                Vector2 resolvedPos = ContextSolver.ResolveStatic(transform.position, targetPos, _collider, CollisionSystem.Tree);
 
-                    transform.position = resolvedPos;
-                    Vector2 center = transform.position;
-                    _collider.SetBottomLeft(center - _size / 2f);
-                }
+                transform.position = resolvedPos;
+                Vector2 center = transform.position;
+                _collider.SetBottomLeft(center - _size / 2f);
+                    
                 return new()
                 {
                     Position = transform.position,
