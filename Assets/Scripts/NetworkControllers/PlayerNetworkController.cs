@@ -107,8 +107,8 @@ public class PlayerNetworkController : MonoBehaviour
         {
             _interpolator.IncrementAndInterpolate((serverState) =>
             {
-                float xDir = Mathf.Abs(serverState.PositionX - transform.position.x);
-                float yDir = Mathf.Abs(serverState.PositionY - transform.position.y);
+                float xDir = serverState.PositionX - transform.position.x;
+                float yDir = serverState.PositionY - transform.position.y;
                 Vector2 dir = new Vector2(xDir, yDir).normalized;
                 _playerDir = dir != Vector2.zero ? dir : _playerDir;
 
@@ -161,10 +161,14 @@ public class PlayerNetworkController : MonoBehaviour
     {
         PlayerInputSnapshot cpy = new(inputSnapshot);
 
-        if (!cpy.HasInput()) return;
+        if (!cpy.HasInput())
+        {
+            TriggerMoveAnimation(_playerDir, false);
+            return;
+        }
 
         TryMove(cpy);
-        
+
         // else
         // {
         //     TriggerMoveAnimation(_playerDir, false);
