@@ -42,8 +42,11 @@ public class EnemyControllerNetwork : NetworkBehaviour
             Vector2 dir = new Vector2(xDir, yDir).normalized;
 
             _animator.SetBool("IsMoving", dir != Vector2.zero);
-            _animator.SetFloat("MoveX", dir.x);
-            _animator.SetFloat("MoveY", dir.y);
+            if (dir != Vector2.zero)
+            {
+                _animator.SetFloat("MoveX", dir.x);
+                _animator.SetFloat("MoveY", dir.y); 
+            }
 
             transform.position = new(serverState.PositionX, serverState.PositionY);
 
