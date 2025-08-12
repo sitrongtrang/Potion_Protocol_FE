@@ -47,6 +47,7 @@ public static class Serialization
             NetworkMessageTypes.Client.Pregame.CreateRoom => BinarySerializer.SerializeToBytes((PlayerCreateRoomRequest)message),
             NetworkMessageTypes.Client.Pregame.JoinRoom => BinarySerializer.SerializeToBytes((PlayerJoinRoomRequest)message),
             NetworkMessageTypes.Client.Pregame.LeaveRoom => BinarySerializer.SerializeToBytes((PlayerLeaveRoom)message),
+
             NetworkMessageTypes.Client.FriendSystem.GetFriendList => BinarySerializer.SerializeToBytes((FriendListClientMessage)message),
             NetworkMessageTypes.Client.FriendSystem.RemoveFriend => BinarySerializer.SerializeToBytes((FriendRemoveClientMessage)message),
             NetworkMessageTypes.Client.FriendSystem.SendFriendRequest => BinarySerializer.SerializeToBytes((FriendRequestClientMessage)message),
@@ -54,9 +55,11 @@ public static class Serialization
             NetworkMessageTypes.Client.FriendSystem.DeclineFriendRequest => BinarySerializer.SerializeToBytes((DeclineRequestClientMessage)message),
             NetworkMessageTypes.Client.FriendSystem.GetFriendRequests => BinarySerializer.SerializeToBytes((GetRequestsClientMessage)message),
             // NetworkMessageTypes.Client.FriendSystem.InviteFriend => BinarySerializer.SerializeToBytes((SendInviteClientMessage)message),
+
             NetworkMessageTypes.Client.Pregame.GetRoomInfo => BinarySerializer.SerializeToBytes((PlayerGetRoomInfoRequest)message),
             NetworkMessageTypes.Client.Pregame.GetRoomByName => BinarySerializer.SerializeToBytes((PlayerGetRoomByNameRequest)message),
             NetworkMessageTypes.Client.Pregame.GetAllRoom => BinarySerializer.SerializeToBytes((PlayerGetAllRoomRequest)message),
+            NetworkMessageTypes.Client.Pregame.SendRoomInvite => BinarySerializer.SerializeToBytes((PlayerSendInvite)message),
 
             NetworkMessageTypes.Client.Pregame.Ready => BinarySerializer.SerializeToBytes((PlayerReady)message),
             NetworkMessageTypes.Client.Pregame.Unready => BinarySerializer.SerializeToBytes((PlayerUnready)message),
@@ -119,6 +122,7 @@ public static class Serialization
             NetworkMessageTypes.Server.Room.Ready => BinarySerializer.DeserializeFromBytes<ServerPlayerReady>(payloadBytes),
             NetworkMessageTypes.Server.Room.UnReady => BinarySerializer.DeserializeFromBytes<ServerPlayerUnReady>(payloadBytes),
             NetworkMessageTypes.Server.Room.ACK => BinarySerializer.DeserializeFromBytes<ServerACK>(payloadBytes),
+            NetworkMessageTypes.Server.Room.SendRoomInvite => BinarySerializer.DeserializeFromBytes<ServerSendInvite>(payloadBytes),
 
             NetworkMessageTypes.Server.FriendSystem.GetFriendList =>  BinarySerializer.DeserializeFromBytes<FriendListServerMessage>(payloadBytes),
             NetworkMessageTypes.Server.FriendSystem.RemoveFriend =>  BinarySerializer.DeserializeFromBytes<FriendRemoveServerMessage>(payloadBytes),

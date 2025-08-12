@@ -13,6 +13,8 @@ public class HttpAuthHandler : MonoBehaviour
     [SerializeField] private TMP_InputField passwordField;
 
     [Header("Register")]
+    [SerializeField] private TMP_InputField registerusernameField;
+    [SerializeField] private TMP_InputField registerpasswordField;
     [SerializeField] private TMP_InputField confirmpasswordField;
     [SerializeField] private TMP_InputField displaynameField;
 
@@ -21,8 +23,13 @@ public class HttpAuthHandler : MonoBehaviour
     [SerializeField] private StaticURLSO _registerUrl;
     [Header("UI")]
     [SerializeField] private GameObject _loginError;
+    [SerializeField] private GameObject _registerError;
     [SerializeField] private float _disableAfterSeconds;
+    [SerializeField] private Canvas _loginCanvas;
+    [SerializeField] private Canvas _signupCanvas;
+
     private Coroutine _loginErrorDisable;
+    private Coroutine _registerErrorDisable;
 
     void Start()
     {
@@ -105,9 +112,15 @@ public class HttpAuthHandler : MonoBehaviour
         _loginError.SetActive(false);
     }
 
+    private IEnumerator DisableRegisterError()
+    {
+        yield return new WaitForSeconds(_disableAfterSeconds);
+        _registerError.SetActive(false);
+    }
+
     public void OnRegisterButtonPressed()
     {
-        StartCoroutine(SendRegisterRequest(usernameField.text, passwordField.text, confirmpasswordField.text, displaynameField.text));
+        StartCoroutine(SendRegisterRequest(registerusernameField.text, registerpasswordField.text, confirmpasswordField.text, displaynameField.text));
     }
 
     IEnumerator SendRegisterRequest(string username, string password, string confirmPassword, string displayName)
@@ -130,16 +143,37 @@ public class HttpAuthHandler : MonoBehaviour
 
         yield return request.SendWebRequest();
 
+        Debug.Log("UserName: " + username);
+        Debug.Log("Password: " + password);
+        Debug.Log("Display Name: " +  displayName);
+        Debug.Log("Confirm Password: " + confirmPassword);
+
         if (request.result == UnityWebRequest.Result.Success)
         {
             RegisterSuccess resp = JsonConvert.DeserializeObject<RegisterSuccess>(
                 request.downloadHandler.text
             );
             Debug.Log("Register successful! Message: " + resp.Message);
+            showLogin();
         }
         else
         {
             Debug.LogError("Register failed: " + request.error);
+            if (_registerErrorDisable != null) StopCoroutine(_registerErrorDisable);
+            _registerError.SetActive(true);
+            _registerErrorDisable = StartCoroutine(DisableRegisterError());
         }
+    }
+
+    public void showSignup()
+    {
+        _signupCanvas.gameObject.SetActive(true);
+        _loginCanvas.gameObject.SetActive(false);
+    }
+
+    public void showLogin()
+    {
+        _signupCanvas.gameObject.SetActive(false);
+        _loginCanvas.gameObject.SetActive(true);
     }
 }
