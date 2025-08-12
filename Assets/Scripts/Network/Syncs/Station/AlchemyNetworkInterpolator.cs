@@ -18,19 +18,11 @@ public class AlchemyNetworkInterpolator : INetworkInterpolator<AlchemyStateInter
             AlchemyState alchemyState = update.AlchemyState;
             if (alchemyState != null)
             {
-                if (inInitializing)
+                if ((inInitializing && update.ServerSequence < _serverSequence) || (Mathf.Abs(update.ServerSequence - _serverSequence) > _buffer.Capacity))
                 {
-                    if (update.ServerSequence < _serverSequence)
-                    {
-                        _serverSequence = update.ServerSequence - 1;
-                    }
-                }
-                else // THIS PART IS A LITTLE IFFY
-                {
-                    if (update.ServerSequence - _serverSequence > _buffer.Capacity && _buffer.IsEmpty())
-                    {
-                        _serverSequence = update.ServerSequence - 1;
-                    }
+                    _serverSequence = update.ServerSequence - 1;
+                    _buffer.SetMinTickToKeep(_serverSequence);
+                    _buffer.Clear();
                 }
                 if (update.ServerSequence >= _serverSequence)
                 {

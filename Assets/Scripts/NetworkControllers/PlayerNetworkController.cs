@@ -165,6 +165,7 @@ public class PlayerNetworkController : MonoBehaviour
 
         _collider = AABBCollider.GetColliderBaseOnSprite(_spriteRenderer, transform);
         _collider.Mask.SetLayer((int)EntityLayer.Obstacle);
+        _collider.Mask.SetLayer((int)EntityLayer.ItemSource);
         _size = _collider.Size;
         Debug.Log(_size);
 
