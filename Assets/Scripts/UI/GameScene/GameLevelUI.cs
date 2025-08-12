@@ -9,7 +9,8 @@ public class GameLevelUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private TextMeshProUGUI _timeText;
     [SerializeField] private GameObject _pauseMenu;
-
+    [SerializeField] Animator _timeImageAnimator;
+    [SerializeField] Animator _timeTextAnimator;
     void Start()
     {
         if (SceneManager.GetActiveScene().name == "GameScene")
@@ -31,6 +32,16 @@ public class GameLevelUI : MonoBehaviour
 
     public void UpdateTimeText(float time)
     {
+        if (time <= 290f && time >= 0.5f)
+        {
+            _timeImageAnimator.SetBool("isTimeUp", true);
+            _timeTextAnimator.SetBool("isTimeUp", true);
+        }
+        if (time <= 0.5f)
+        {
+            _timeImageAnimator.SetBool("isTimeOut", true);
+            _timeTextAnimator.SetBool("isTimeOut", true);
+        }
         TimeSpan timeSpan = TimeSpan.FromSeconds(time);
         _timeText.text = string.Format("{0:mm}:{0:ss}", timeSpan);
     }
