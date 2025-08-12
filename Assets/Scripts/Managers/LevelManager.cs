@@ -57,6 +57,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private ItemSourceSpawner _itemSourceSpawner;
 
     public event Action<LevelConfig, GameObject> OnLevelInitialized;
+    public PlayerController Player { get; private set; }
 
     public List<StationController> Stations { get; private set; } = new List<StationController>();
 
@@ -151,6 +152,7 @@ public class LevelManager : MonoBehaviour
         if (player.TryGetComponent<PlayerController>(out var playerController))
         {
             playerController.Initialize(_playerConfig, _inputActions);
+            // Player = playerController;
         }
 
         // Spawn & initialize stations

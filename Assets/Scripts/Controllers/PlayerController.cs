@@ -58,11 +58,11 @@ public class PlayerController : MonoBehaviour
         Movement.Initialize(this, _inputManager);
 
         InventoryUI inventoryUI = FindFirstObjectByType<InventoryUI>(FindObjectsInactive.Include);
-        inventoryUI.Initialize(this);
+        inventoryUI.Initialize(Inventory);
         inventoryUI.gameObject.SetActive(true);
 
         SkillContainerUI skillContainerUI = FindFirstObjectByType<SkillContainerUI>(FindObjectsInactive.Include);
-        skillContainerUI.Initialize(this);
+        skillContainerUI.Initialize(Attack);
         skillContainerUI.gameObject.SetActive(true);
     }
 

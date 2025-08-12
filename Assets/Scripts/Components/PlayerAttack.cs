@@ -14,6 +14,7 @@ public class PlayerAttack
     private SkillConfig[] _skills = new SkillConfig[GameConstants.NumSkills];
     private float _damageMultiplier = 1;
 
+    public SkillConfig[] Skills => _skills;
     public event Action<int> OnSkillDeactivated;
     public float DamageMultiplier
     {

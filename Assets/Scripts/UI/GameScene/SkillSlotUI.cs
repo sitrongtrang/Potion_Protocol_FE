@@ -13,11 +13,22 @@ public class SkillSlotUI : MonoBehaviour
 
     public void Initialize(SkillConfig skill)
     {
-        _icon.sprite = skill.SkillIcon;
+        if (skill != null)
+        {
+            _icon.sprite = skill.SkillIcon;
+            _cooldownTime = skill.Cooldown;
+            _cooldownText.text = _cooldownTime.ToString();
+            _timeRemaining = _cooldownTime;
+        }
+        else
+        {
+            _icon.sprite = null;
+            _cooldownTime = Mathf.Infinity;
+            _cooldownText.text = _cooldownTime.ToString();
+            _timeRemaining = _cooldownTime;
+        }
+
         _cooldown.SetActive(false);
-        _cooldownTime = skill.Cooldown;
-        _cooldownText.text = _cooldownTime.ToString();
-        _timeRemaining = _cooldownTime;
     }
 
     public void OnDeactivated()
