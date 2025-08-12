@@ -226,7 +226,7 @@ public class PlayerNetworkController : MonoBehaviour
         _simulator.Simulate(inputSnapshot,
             (inputSnapshot) =>
             {
-                _playerDir = inputSnapshot.MoveDir != Vector2.zero ? inputSnapshot.MoveDir.normalized : _playerDir;
+                _playerDir = !_isDashing && inputSnapshot.MoveDir != Vector2.zero ? inputSnapshot.MoveDir.normalized : _playerDir;
                 TriggerMoveAnimation(_playerDir, inputSnapshot.MoveDir != Vector2.zero);
 
                 if (inputSnapshot.DashPressed && !_isDashing && _canDash)
@@ -234,10 +234,11 @@ public class PlayerNetworkController : MonoBehaviour
                     _canDash = false;
                     _isDashing = true;
                     _dashDuration = _config.DashTime;
+                    _playerDir = inputSnapshot.MoveDir != Vector2.zero ? inputSnapshot.MoveDir.normalized : _playerDir;
                 }
 
                 float moveSpeed = _isDashing ? _config.DashSpeed : _config.MoveSpeed;
-                Vector2 targetPos = transform.position + (Vector3)(moveSpeed * Time.fixedDeltaTime * inputSnapshot.MoveDir);
+                Vector2 targetPos = transform.position + (Vector3)(moveSpeed * Time.fixedDeltaTime * _playerDir);
                 Vector2 resolvedPos = ContextSolver.ResolveStatic(transform.position, targetPos, _collider, CollisionSystem.Tree);
 
                 transform.position = resolvedPos;
