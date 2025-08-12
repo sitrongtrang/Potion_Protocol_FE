@@ -19,7 +19,10 @@ public class PlayerNetworkController : MonoBehaviour
     private PlayerInputSnapshot _inputListener = new();
     private Vector2 _playerDir;
     private bool _canAttack;
+    private float _attackCooldown;
+    private bool _canDash;
     private bool _isDashing;
+    private float _dashDuration;
     private float _dashCooldown;
     // private NetworkPredictionBuffer<PlayerInputMessage, PlayerSnapshot> _networkPredictionBuffer = new(NetworkConstants.NET_PRED_BUFFER_SIZE);
     // private NetworkInterpolationBuffer<PlayerStateInterpolateData> _networkInterpolationBuffer = new(NetworkConstants.NET_INTERPOLATION_BUFFER_SIZE);
@@ -100,6 +103,24 @@ public class PlayerNetworkController : MonoBehaviour
     {
         if (Identity.IsLocalPlayer)
         {
+            if (_attackCooldown > 0) _attackCooldown -= Time.fixedDeltaTime;
+            else _canAttack = true;
+
+            if (!_isDashing)
+            {
+                if (_dashCooldown > 0) _dashCooldown -= Time.fixedDeltaTime;
+                else _canDash = true;
+            }
+            else
+            {
+                if (_dashDuration > 0) _dashDuration -= Time.fixedDeltaTime;
+                else
+                {
+                    _isDashing = false;
+                    _dashCooldown = _config.DashCooldown;
+                }
+            }
+
             Simulate(_inputListener);
         }
         else
@@ -132,6 +153,7 @@ public class PlayerNetworkController : MonoBehaviour
 
         _config = config;
         _canAttack = true;
+        _canDash = true;
         _animator.runtimeAnimatorController = _config.Anim;
         _spriteRenderer.sprite = _config.Icon;
         Transform WeaponContainer = transform.Find("Weapons");
@@ -167,11 +189,6 @@ public class PlayerNetworkController : MonoBehaviour
         }
 
         TryMove(cpy);
-
-        // else
-        // {
-        //     TriggerMoveAnimation(_playerDir, false);
-        // }
 
         if (cpy.PickupPressed)
         {
@@ -212,7 +229,14 @@ public class PlayerNetworkController : MonoBehaviour
                 _playerDir = inputSnapshot.MoveDir != Vector2.zero ? inputSnapshot.MoveDir.normalized : _playerDir;
                 TriggerMoveAnimation(_playerDir, inputSnapshot.MoveDir != Vector2.zero);
 
-                float moveSpeed = inputSnapshot.DashPressed ? _config.DashSpeed : _config.MoveSpeed;
+                if (inputSnapshot.DashPressed && !_isDashing && _canDash)
+                {
+                    _canDash = false;
+                    _isDashing = true;
+                    _dashDuration = _config.DashTime;
+                }
+
+                float moveSpeed = _isDashing ? _config.DashSpeed : _config.MoveSpeed;
                 Vector2 targetPos = transform.position + (Vector3)(moveSpeed * Time.fixedDeltaTime * inputSnapshot.MoveDir);
                 Vector2 resolvedPos = ContextSolver.ResolveStatic(transform.position, targetPos, _collider, CollisionSystem.Tree);
 
@@ -258,16 +282,10 @@ public class PlayerNetworkController : MonoBehaviour
             _swordAnimator.SetFloat("MoveX", dir.x);
             _swordAnimator.SetFloat("MoveY", dir.y);
             _canAttack = false;
-            StartCoroutine(AttackCooldown());
+            _attackCooldown = _config.AttackCooldown;
             return true;
         }
         return false;
-    }
-
-    private IEnumerator AttackCooldown()
-    {
-        yield return new WaitForSeconds(_config.AttackCooldown);
-        _canAttack = true;
     }
 
     private bool CheckWall(Vector2 origin, Vector2 dir)
