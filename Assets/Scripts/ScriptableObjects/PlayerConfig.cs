@@ -13,8 +13,6 @@ public class PlayerConfig : EntityConfig
     [SerializeField] private float _dashSpeed;
     public float DashSpeed => _dashSpeed;
 
-    [SerializeField] private float _dashTime;
-    public float DashTime => _dashTime;
     [SerializeField] private float _interactDistance;
     public float InteractDistance => _interactDistance;
 

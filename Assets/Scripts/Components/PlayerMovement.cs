@@ -95,30 +95,7 @@ public class PlayerMovement
 
     private void TryDash()
     {
-        if (_canDash && _player) _player.StartCoroutine(SimulateDash());
-    }
-
-    private IEnumerator SimulateDash()
-    {
-        _isDashing = true;
-        _canDash = false;
-
-        float dashTime = 0f;
-        while (dashTime < _playerConfig.DashTime)
-        {
-            SimulateMove(_playerDir, _playerConfig.DashSpeed);
-            TriggerMoveAnimation(true);
-
-            dashTime += Time.deltaTime;
-            yield return null;
-        }
-        _isDashing = false;
-
-        TriggerMoveAnimation(false);
-
-        // Dash Cooldown
-        yield return new WaitForSeconds(_playerConfig.DashCooldown);
-        _canDash = true;
+        if (_canDash && _player) SimulateMove(_playerDir, _playerConfig.DashSpeed);
     }
 
     void SimulateMove(Vector2 moveDirection, float speed)

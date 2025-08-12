@@ -21,8 +21,6 @@ public class PlayerNetworkController : MonoBehaviour
     private bool _canAttack;
     private float _attackCooldown;
     private bool _canDash;
-    private bool _isDashing;
-    private float _dashDuration;
     private float _dashCooldown;
     // private NetworkPredictionBuffer<PlayerInputMessage, PlayerSnapshot> _networkPredictionBuffer = new(NetworkConstants.NET_PRED_BUFFER_SIZE);
     // private NetworkInterpolationBuffer<PlayerStateInterpolateData> _networkInterpolationBuffer = new(NetworkConstants.NET_INTERPOLATION_BUFFER_SIZE);
@@ -106,20 +104,8 @@ public class PlayerNetworkController : MonoBehaviour
             if (_attackCooldown > 0) _attackCooldown -= Time.fixedDeltaTime;
             else _canAttack = true;
 
-            if (!_isDashing)
-            {
-                if (_dashCooldown > 0) _dashCooldown -= Time.fixedDeltaTime;
-                else _canDash = true;
-            }
-            else
-            {
-                if (_dashDuration > 0) _dashDuration -= Time.fixedDeltaTime;
-                else
-                {
-                    _isDashing = false;
-                    _dashCooldown = _config.DashCooldown;
-                }
-            }
+            if (_dashCooldown > 0) _dashCooldown -= Time.fixedDeltaTime;
+            else _canDash = true;
 
             Simulate(_inputListener);
         }
@@ -192,7 +178,7 @@ public class PlayerNetworkController : MonoBehaviour
     {
         PlayerInputSnapshot cpy = new(inputSnapshot);
 
-        if (!cpy.HasInput() && !_isDashing)
+        if (!cpy.HasInput())
         {
             TriggerMoveAnimation(_playerDir, false);
             return;
@@ -236,18 +222,10 @@ public class PlayerNetworkController : MonoBehaviour
         _simulator.Simulate(inputSnapshot,
             (inputSnapshot) =>
             {
-                _playerDir = !_isDashing && inputSnapshot.MoveDir != Vector2.zero ? inputSnapshot.MoveDir.normalized : _playerDir;
+                _playerDir = inputSnapshot.MoveDir != Vector2.zero ? inputSnapshot.MoveDir.normalized : _playerDir;
                 TriggerMoveAnimation(_playerDir, inputSnapshot.MoveDir != Vector2.zero);
 
-                if (inputSnapshot.DashPressed && !_isDashing && _canDash)
-                {
-                    _canDash = false;
-                    _isDashing = true;
-                    _dashDuration = _config.DashTime;
-                    _playerDir = inputSnapshot.MoveDir != Vector2.zero ? inputSnapshot.MoveDir.normalized : _playerDir;
-                }
-
-                float moveSpeed = _config.MoveSpeed;
+                float moveSpeed = inputSnapshot.DashPressed && _canDash ? _config.DashSpeed : _config.MoveSpeed;
                 Vector2 targetPos = transform.position + (Vector3)(moveSpeed * Time.fixedDeltaTime * _playerDir);
                 Vector2 resolvedPos = ContextSolver.ResolveStatic(transform.position, targetPos, _collider, CollisionSystem.Tree);
 
