@@ -33,13 +33,13 @@ public class InventoryUI : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "GameScene")
         {
             _playerInventory.OnSlotUpdated += UpdateInventoryUI;
-            _playerInventory.OnChoosingSlotChanged += UpdateChoosingSlotUI;
         }
         else if (SceneManager.GetActiveScene().name == "OnlineGameScene")
         {
             _gameStateHandler.OnInventorySynced += SyncInventory;
-            _startGameHandler.LocalPlayer.OnChoosingSlotChanged += UpdateChoosingSlotUI;
         }
+
+        _playerInventory.OnChoosingSlotChanged += UpdateChoosingSlotUI;
     }
 
     void OnDisable()
@@ -47,13 +47,13 @@ public class InventoryUI : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "GameScene")
         {
             _playerInventory.OnSlotUpdated -= UpdateInventoryUI;
-            _playerInventory.OnChoosingSlotChanged -= UpdateChoosingSlotUI;
         }
         else if (SceneManager.GetActiveScene().name == "OnlineGameScene")
         {
             _gameStateHandler.OnInventorySynced -= SyncInventory;
-            _startGameHandler.LocalPlayer.OnChoosingSlotChanged -= UpdateChoosingSlotUI;
         }
+
+        _playerInventory.OnChoosingSlotChanged -= UpdateChoosingSlotUI;
     }
 
     private void UpdateChoosingSlotUI(int oldSlotIndex, int newSlotIndex)

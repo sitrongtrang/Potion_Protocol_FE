@@ -38,7 +38,6 @@ public class PlayerNetworkController : MonoBehaviour
     private PlayerInventory _inventory;
 
     public PlayerInventory Inventory => _inventory;
-    public event Action<int, int> OnChoosingSlotChanged;
 
     #region Unity Lifecycle
     void OnEnable()
