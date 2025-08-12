@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
 using Unity.VisualScripting;
@@ -25,6 +26,7 @@ public class RoomHandler : MonoBehaviour
     [SerializeField] private Person[] Person;
     [Header("Button")]
     [SerializeField] private TMP_Text _startButton;
+    private List<Friend> _friends;
 
     private bool _inRoom = false;
 
@@ -32,6 +34,7 @@ public class RoomHandler : MonoBehaviour
     {
         NetworkEvents.OnMessageReceived += HandleNetworkMessage;
         LoadingScreenUI.Instance.OnSceneEnter += HandleAllRoom;
+        NetworkManager.Instance.SendMessage(new FriendListClientMessage());
     }
 
     private void OnDisable()
@@ -89,6 +92,12 @@ public class RoomHandler : MonoBehaviour
                 break;
             case NetworkMessageTypes.Server.ACK:
                 HandleACK((ServerACK)message);
+                break;
+            case NetworkMessageTypes.Server.FriendSystem.GetFriendList:
+                if (message is FriendListServerMessage flMsg)
+                {
+                    _friends = flMsg.FriendList;
+                }
                 break;
             default:
                 break;
@@ -195,13 +204,23 @@ public class RoomHandler : MonoBehaviour
         }
         for (int i = 0; i < msg.Room.PlayerList.Length; i++)
         {
-
             _roomScene.SetPersonRoom(msg.Room.PlayerList[i].PlayerDisPlayName, Person[i].Name);
             _roomScene.SetPersonRoom(msg.Room.PlayerList[i].PlayerID, Person[i].ID);
             bool isNotSelf = !string.Equals(Person[i].ID.text, NetworkManager.Instance.ClientId, StringComparison.Ordinal);
             bool hasName = !string.IsNullOrEmpty(Person[i].Name.text);
             bool active = isNotSelf && hasName;
-            Person[i].addButton.gameObject.SetActive(active);
+            if (active)
+            {
+                bool isFriend = false;
+                for (int j = 0; j < _friends.Count; j++)
+                {
+                    if (_friends[i].FriendDisplayName == msg.Room.PlayerList[i].PlayerDisPlayName)
+                    {
+                        isFriend = true;
+                    }
+                }
+                if (!isFriend) Person[i].addButton.gameObject.SetActive(active);
+            }
         }
         _roomScene.SetRoomName(msg.Room.RoomName);
         RenderRoom(msg.Room.PlayerList);
