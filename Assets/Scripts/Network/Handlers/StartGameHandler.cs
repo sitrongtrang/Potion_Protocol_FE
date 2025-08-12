@@ -53,6 +53,7 @@ public class StartGameHandler : MonoBehaviour
             // Setup camera follow, input controls, etc.
             _localPlayer = playerController;
             InventoryUI inventoryUI = FindFirstObjectByType<InventoryUI>(FindObjectsInactive.Include);
+            inventoryUI.Initialize(playerController.Inventory);
             inventoryUI.gameObject.SetActive(true);
             Debug.Log($"Spawned local player: {playerId}");
         }

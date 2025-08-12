@@ -9,20 +9,17 @@ public class SkillContainerUI : MonoBehaviour
     private PlayerAttack _playerAttack;
     private List<SkillSlotUI> skillSlots = new();
 
-    public void Initialize(PlayerController player)
+    public void Initialize(PlayerAttack playerAttack)
     {
-        _playerAttack = player.Attack;
+        _playerAttack = playerAttack;
 
         for (int i = 0; i < GameConstants.NumSkills; i++)
         {
             GameObject skillUI = Instantiate(_skillUIPrefab, transform);
             skillUI.transform.SetParent(transform);
             SkillSlotUI skillSlot = skillUI.GetComponent<SkillSlotUI>();
-            if (skillSlot != null)
-            {
-                skillSlot.Initialize(player.Config.Skills[i]);
-                skillSlots.Add(skillSlot);
-            }
+            skillSlot.Initialize(playerAttack.Skills[i]);
+            skillSlots.Add(skillSlot);
         }
     }
 

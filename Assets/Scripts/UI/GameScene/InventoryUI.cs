@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,16 +13,15 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] Sprite _unChoosingSlotImg;
     [SerializeField] Sprite _choosingSlotImg;
 
-    public void Initialize(PlayerController player)
+    public void Initialize(PlayerInventory playerInventory)
     {
-        _playerInventory = player.Inventory;
-
-        // Initialize inventory UI
+        _playerInventory = playerInventory;
+        
         for (int i = 0; i < GameConstants.MaxSlot; i++)
         {
             _inventoryItemsUI[i].GetComponent<Image>().sprite = null;
             _inventoryItemsUI[i].SetActive(false);
-            if (i != player.Inventory.ChoosingSlot)
+            if (i != playerInventory.ChoosingSlot)
                 _inventorySlots[i].GetComponent<Image>().sprite = _unChoosingSlotImg;
             else
                 _inventorySlots[i].GetComponent<Image>().sprite = _choosingSlotImg;
@@ -46,7 +46,6 @@ public class InventoryUI : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "GameScene")
         {
-            if (_playerInventory == null) return;
             _playerInventory.OnSlotUpdated -= UpdateInventoryUI;
             _playerInventory.OnChoosingSlotChanged -= UpdateChoosingSlotUI;
         }
