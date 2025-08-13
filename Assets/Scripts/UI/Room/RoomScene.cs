@@ -52,4 +52,10 @@ public class RoomScene : MonoBehaviour
             NetworkManager.Instance.SendMessage(new PlayerUnready());
         }
     }
+
+    public void RunAnim(Animator anim, bool state)
+
+    {
+        anim.SetBool("InRoom", state);
+    }
 }

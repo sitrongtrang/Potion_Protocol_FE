@@ -8,6 +8,7 @@ public static class NetworkMessageTypes
             public const short TryReconnect = 101;
             public const short TryDisconnect = 102;
             public const short TryHeartBeat = 103;
+            public const short LogOut = 105;
         }
 
         public static class FriendSystem

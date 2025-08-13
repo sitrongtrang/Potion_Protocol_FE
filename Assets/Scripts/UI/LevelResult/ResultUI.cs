@@ -21,31 +21,30 @@ public class ResultUI : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(PlayResultSequence());
+        int score = LoadingScreenUI.Instance.GetData<int>("Score"); 
+        int star = LoadingScreenUI.Instance.GetData<int>("Stars"); 
+        StartCoroutine(PlayResultSequence(score, star));
     }
 
-    private IEnumerator PlayResultSequence()
+    private IEnumerator PlayResultSequence(int score, int star)
     {
-        int score = GameManager.Instance != null
-            ? GameManager.Instance.Score
-            : 0;
-        int[] thresholds = _levelConfig.ScoreThresholds;
-        int starsEarned = 3;
+        // int[] thresholds = _levelConfig.ScoreThresholds;
+        // int starsEarned = 3;
 
-        for (int i = thresholds.Length - 1; i >= 0; i--)
-        {
-            if (score >= thresholds[i]) break;
-            starsEarned--;
-        }
+        // for (int i = thresholds.Length - 1; i >= 0; i--)
+        // {
+        //     if (score >= thresholds[i]) break;
+        //     starsEarned--;
+        // }
 
         bool scoreDone = false, starDone = false;
 
         StartCoroutine(Wrap(_scoreAnim.AnimateScore(score), () => scoreDone = true));
-        StartCoroutine(Wrap(_starAnim.AnimateStar(starsEarned), () => starDone = true));
+        StartCoroutine(Wrap(_starAnim.AnimateStar(star), () => starDone = true));
 
         yield return new WaitUntil(() => scoreDone && starDone);
 
-        if (starsEarned == 3)
+        if (star == 3)
         {
             _starDrop.SpawnStars();
         }

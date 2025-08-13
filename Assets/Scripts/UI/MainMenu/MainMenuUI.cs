@@ -13,6 +13,7 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private Button _optionButton;
     [SerializeField] private Button _quitButton;
     [SerializeField] private Button _codexButton;
+    [SerializeField] private Button _logoutButton;
     [Header("Welcome Board")]
     [SerializeField] private TMP_Text _name;
 
@@ -69,5 +70,14 @@ public class MainMenuUI : MonoBehaviour
     void ShowNotImplemented()
     {
         Debug.Log("Feature not implemented yet.");
+    }
+
+    public void OnLogout()
+    {
+        NetworkManager.Instance.IsAuthenticated = false;
+        NetworkManager.Instance.SessionToken = string.Empty;
+        NetworkManager.Instance.AuthToken = string.Empty;
+        StartCoroutine(LoadSelectLevel("LoginScene"));
+        NetworkManager.Instance.SendMessage(new LogoutRequest());
     }
 }

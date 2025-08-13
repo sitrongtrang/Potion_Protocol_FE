@@ -24,6 +24,7 @@ public class RoomHandler : MonoBehaviour
     // [SerializeField] private RoomInviteUI _roomInvite;
     [Header("Person")]
     [SerializeField] private Person[] Person;
+    [SerializeField] private Animator[] Avt;
     [Header("Button")]
     [SerializeField] private TMP_Text _startButton;
 
@@ -93,7 +94,7 @@ public class RoomHandler : MonoBehaviour
                 break;
             // case NetworkMessageTypes.Server.Room.SendRoomInvite:
             //     OnReceiveInvite((ServerSendInvite)message);
-                break;
+                //break;
             default:
                 break;
         }
@@ -162,6 +163,7 @@ public class RoomHandler : MonoBehaviour
             {
                 CreateRoomUI.Instance.SetText(null, Person[i].Name);
                 CreateRoomUI.Instance.SetText(null, Person[i].ID);
+                _roomScene.RunAnim(Avt[i], false);
             }
         }
     }
@@ -258,6 +260,7 @@ public class RoomHandler : MonoBehaviour
 
             CreateRoomUI.Instance.SetText(PlayerList[i].PlayerDisPlayName, Person[slot].Name);
             CreateRoomUI.Instance.SetText(PlayerList[i].PlayerID, Person[slot].ID);
+            _roomScene.RunAnim(Avt[slot], true);
             if (PlayerList[i].PlayerRole == (short)PlayerRole.Leader)
             {
                 Person[slot].Name.color = Color.yellow;
@@ -283,6 +286,7 @@ public class RoomHandler : MonoBehaviour
         {
             CreateRoomUI.Instance.SetText(null, Person[i].Name);
             CreateRoomUI.Instance.SetText(null, Person[i].ID);
+            _roomScene.RunAnim(Avt[i], false);
         }
     }
 
