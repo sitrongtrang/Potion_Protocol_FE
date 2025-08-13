@@ -11,7 +11,7 @@ public class LoginScene : MonoBehaviour
     [SerializeField] private TMP_InputField _passwordField;
     [SerializeField] private Button _toggleButton;
     [SerializeField] private Sprite _eyeClosedSprite;
-    [SerializeField] private Sprite _eyeOpenSprite;
+    [SerializeField] private Sprite _eyeOpenSprite;           
 
     private bool _isPasswordVisible = false;
     private Image _buttonImage;

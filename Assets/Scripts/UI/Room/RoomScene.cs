@@ -19,6 +19,11 @@ public class RoomScene : MonoBehaviour
         Debug.Log("Img: " + image);
     }
 
+    public void SetPersonRoom(string newText, TMP_Text Person)
+    {
+        Person.text = newText;
+    }
+
     public void SetRoomName(string newName)
     {
         RoomID.text = "Room Name: " + newName;
@@ -51,5 +56,10 @@ public class RoomScene : MonoBehaviour
         {
             NetworkManager.Instance.SendMessage(new PlayerUnready());
         }
+    }
+
+    public void RunAnim(Animator anim, bool state)
+    {
+        anim.SetBool("InRoom", state);
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,7 +11,6 @@ public class CreateRoomUI : MonoBehaviour
     [SerializeField] private Canvas _roomListCanvas;
     [SerializeField] private Canvas _pvpCanvas;
     [SerializeField] private Canvas _passwordCanvas;
-    [SerializeField] private Canvas _roomInviteCanvas;
     [Header("Refresh")]
     [SerializeField] private Animator _refreshAnimator;
     [SerializeField] private Button _refreshButton;
@@ -42,8 +40,14 @@ public class CreateRoomUI : MonoBehaviour
         }
     }
 
+    public void Unregister(SelectableImage img)
+    {
+        _allImages.Remove(img);
+    }
+
     public void Select(SelectableImage img)
     {
+        _allImages.RemoveAll(item => item == null);
         var parent = img.transform.parent;
 
         foreach (var other in _allImages)
@@ -70,7 +74,7 @@ public class CreateRoomUI : MonoBehaviour
 
     private void SwitchCanvases(Canvas canvasToShow)
     {
-        List<Canvas> allCanvases = new List<Canvas> { _createRoomCanvas, _roomListCanvas, _pvpCanvas, _passwordCanvas, _roomInviteCanvas };
+        List<Canvas> allCanvases = new List<Canvas> { _createRoomCanvas, _roomListCanvas, _pvpCanvas, _passwordCanvas };
 
         foreach (var canvas in allCanvases)
         {
@@ -97,11 +101,6 @@ public class CreateRoomUI : MonoBehaviour
     public void ShowPasswordCanvas()
     {
         SwitchCanvases(_passwordCanvas);
-    }
-
-    public void ShowInviteRoomCanvas()
-    {
-        SwitchCanvases(_roomInviteCanvas);
     }
 
     public void OnRefreshButtonClicked()
@@ -160,10 +159,5 @@ public class CreateRoomUI : MonoBehaviour
             currentColor.a = alphaValue;
             targetImage.color = currentColor;
         }
-    }
-
-    public void SetText(string newText, TMP_Text Text)
-    {
-        Text.text = newText;
     }
 }

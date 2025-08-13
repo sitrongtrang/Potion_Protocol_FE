@@ -9,7 +9,7 @@ public class NetworkManager : MonoBehaviour
     public static NetworkManager Instance { get; private set; }
 
     [Header("Connection Settings")]
-    [SerializeField] private string _ip;
+    [SerializeField] private string _ip = "127.0.0.1";
     [SerializeField] private int _port = 9000;
     [SerializeField] private float _reconnectDelay = 5f;
 
@@ -21,9 +21,7 @@ public class NetworkManager : MonoBehaviour
 
     [Header("Client Identification")]
     private string _clientId; // Server-assigned ID
-    private string _clientDisplayName;
     public string ClientId => _clientId;
-    public string ClientDisplayName => _clientDisplayName;
     private string _sessionToken; // For reconnection
     private string _authToken;
     private bool _isAuthenticated;
@@ -71,6 +69,7 @@ public class NetworkManager : MonoBehaviour
     public void ConnectToServer()
     {
         if (_isConnected) return;
+
         try
         {
             _client = new TcpClient();
@@ -268,7 +267,6 @@ public class NetworkManager : MonoBehaviour
     private void SetUserInfo(GetUserInfoServer getUserInfoServer)
     {
         _clientId = getUserInfoServer.ClientId;
-        _clientDisplayName = getUserInfoServer.DisplayName;
     } 
 
     #endregion

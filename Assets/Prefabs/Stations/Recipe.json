@@ -10,19 +10,13 @@
         "crafting_formula": [
             {
                 "$binary": {
-                    "base64": "YZazkO1SQm208Vb3kQwbag==",
+                    "base64": "5bho7pcBS+uplQkbnHvd",
                     "subType": "04"
                 }
             },
             {
                 "$binary": {
                     "base64": "R/3Tl/OfQqKtzqRGgY4puA==",
-                    "subType": "04"
-                }
-            },
-            {
-                "$binary": {
-                    "base64": "qanQTQSoR92JuHfqm3mHOw==",
                     "subType": "04"
                 }
             }
@@ -47,7 +41,7 @@
         "crafting_formula": [
             {
                 "$binary": {
-                    "base64": "FdRVM9t7SZOnPN3JCLTMyw==",
+                    "base64": "qanQTQSoR92JuHfqm3mHOw==",
                     "subType": "04"
                 }
             },
@@ -78,6 +72,12 @@
         "crafting_formula":[
             {
                 "$binary": {
+                    "base64": "+8PxH/bbQuW1FkUSTeQipg==",
+                    "subType": "04"
+                }
+            },
+            {
+                "$binary": {
                     "base64": "NDYP9pGMS0SGh8hzqQzIqg==",
                     "subType": "04"
                 }
@@ -101,6 +101,12 @@
         },
         "id": "C4",
         "crafting_formula":[
+            {
+                "$binary": {
+                    "base64": "UFRn/c5VSHyICT2AzwKzwg==",
+                    "subType": "04"
+                }
+            },
             {
                 "$binary": {
                     "base64": "CvNH1WC/RNyKmh47KMgIJQ==",
@@ -128,19 +134,13 @@
         "crafting_formula":[
             {
                 "$binary": {
-                    "base64": "YCbzyWdJTfi3unpLaE2iOA==",
+                    "base64": "YZazkO1SQm208Vb3kQwbag==",
                     "subType": "04"
                 }
             },
             {
                 "$binary": {
-                    "base64": "0JVT1LDxRiOtst7KJn9Vvg==",
-                    "subType": "04"
-                }
-            },
-            {
-                "$binary": {
-                    "base64": "cSvXRZgJS7eDQVsGMMGOAw==",
+                    "base64": "FdRVM9t7SZOnPN3JCLTMyw==",
                     "subType": "04"
                 }
             }
@@ -165,7 +165,7 @@
         "crafting_formula":[
             {
                 "$binary": {
-                    "base64": "cSvXRZgJS7eDQVsGMMGOAw==",
+                    "base64": "YZazkO1SQm208Vb3kQwbag==",
                     "subType": "04"
                 }
             }
@@ -190,7 +190,7 @@
         "crafting_formula":[
             {
                 "$binary": {
-                    "base64": "0a0gx5WTQjej3+LCbqfvOg==",
+                    "base64": "UFRn/c5VSHyICT2AzwKzwg==",
                     "subType": "04"
                 }
             }
@@ -215,13 +215,7 @@
         "crafting_formula":[
             {
                 "$binary": {
-                    "base64": "YCbzyWdJTfi3unpLaE2iOA==",
-                    "subType": "04"
-                }
-            },
-            {
-                "$binary": {
-                    "base64": "CvNH1WC/RNyKmh47KMgIJQ==",
+                    "base64": "TB1C8Me1TaKF+cCjparOmg==",
                     "subType": "04"
                 }
             }
@@ -246,19 +240,7 @@
         "crafting_formula":[
             {
                 "$binary": {
-                    "base64": "UFRn/c5VSHyICT2AzwKzwg==",
-                    "subType": "04"
-                }
-            },
-            {
-                "$binary": {
-                    "base64": "+8PxH/bbQuW1FkUSTeQipg==",
-                    "subType": "04"
-                }
-            },
-            {
-                "$binary": {
-                    "base64": "Q2gMMDQiTuGzjIZPr8f0aw==",
+                    "base64": "YCbzyWdJTfi3unpLaE2iOA==",
                     "subType": "04"
                 }
             }
@@ -314,7 +296,7 @@
         "crafting_formula":[
             {
                 "$binary": {
-                    "base64": "N74hjnAtQYmWfw/Hw5ILnA==",
+                    "base64": "bVf9Lr3NS4ObsdgkYeuaIQ==",
                     "subType": "04"
                 }
             }
@@ -339,19 +321,7 @@
         "crafting_formula":[
             {
                 "$binary": {
-                    "base64": "bVf9Lr3NS4ObsdgkYeuaIQ==",
-                    "subType": "04"
-                }
-            },
-            {
-                "$binary": {
-                    "base64": "0su3Z+P1QBiTdM0Mi8ny0w==",
-                    "subType": "04"
-                }
-            },
-            {
-                "$binary": {
-                    "base64": "jxZGe7ntQjW+NqMUaf91oA==",
+                    "base64": "qanQTQSoR92JuHfqm3mHOw==",
                     "subType": "04"
                 }
             }
