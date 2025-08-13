@@ -187,31 +187,6 @@ public class PlayerNetworkController : MonoBehaviour
 
         TryMove(cpy);
 
-        if (cpy.PickupPressed)
-        {
-
-        }
-
-        if (cpy.DropPressed)
-        {
-
-        }
-
-        if (cpy.CraftPressed)
-        {
-
-        }
-
-        if (cpy.TransferPressed)
-        {
-
-        }
-
-        if (cpy.SubmitPressed)
-        {
-
-        }
-
         if (cpy.AttackPressed)
         {
             TryAttack(cpy);
@@ -223,6 +198,7 @@ public class PlayerNetworkController : MonoBehaviour
         _simulator.Simulate(inputSnapshot,
             (inputSnapshot) =>
             {
+                if (inputSnapshot.PickupPressed) Debug.Log(inputSnapshot.PickupPressed);
                 _playerDir = inputSnapshot.MoveDir != Vector2.zero ? inputSnapshot.MoveDir.normalized : _playerDir;
                 TriggerMoveAnimation(_playerDir, inputSnapshot.MoveDir != Vector2.zero);
 

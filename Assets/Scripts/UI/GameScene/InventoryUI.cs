@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -71,17 +72,21 @@ public class InventoryUI : MonoBehaviour
 
     private void SyncInventory(string[] itemTypeIds, int[] indicies)
     {
+        HashSet<int> invInd = new HashSet<int>();
         for (int i = 0; i < itemTypeIds.Length; i++)
         {
+            int index = indicies[i];
+            invInd.Add(index);
             ScriptableObject scriptableObject = _gameStateHandler.PrefabsMap.GetSO(itemTypeIds[i]);
             if (scriptableObject is ItemConfig itemConfig)
             {
-                UpdateInventoryUI(indicies[i], itemConfig.Icon);
+                UpdateInventoryUI(index, itemConfig.Icon);
             }
-            else
-            {
-                UpdateInventoryUI(indicies[i]);
-            }
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+            if (!invInd.Contains(i)) UpdateInventoryUI(i);
         }
     }
 }

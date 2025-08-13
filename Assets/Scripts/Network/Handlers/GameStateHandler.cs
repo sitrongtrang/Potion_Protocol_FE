@@ -24,7 +24,7 @@ public class GameStateHandler : MonoBehaviour
     public event Action<List<RecipeConfig>> OnRecipesSynced;
     public event Action<float> OnTimeChanged;
     public ScriptableObjectMapping PrefabsMap => _prefabsMap;
-
+    
     void Awake()
     {
         // _prefabsMap = (ScriptableObjectMapping)ScriptableObject.CreateInstance(typeof(ScriptableObjectMapping));
@@ -182,6 +182,13 @@ public class GameStateHandler : MonoBehaviour
     private void HandleGameStates(GameStatesUpdate gameStates)
     {
         _interpolator.Store(gameStates.GameStates, null);
+        // if (gameStates.GameStates[0] != null)
+        // {
+        //     for (int i = 0; i < gameStates.GameStates[0].ItemStates.Length; i++)
+        //     {
+        //         Debug.Log(gameStates.GameStates[0].ItemStates[i].ItemType);
+        //     }
+        // }
     }
 
     private void PrepareConfigs(LevelConfig levelConfig, GameObject map)
