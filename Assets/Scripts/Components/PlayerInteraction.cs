@@ -21,7 +21,7 @@ public class PlayerInteraction
     {
         _player = player;
         _inventory = player.Inventory;
-        _interactDistance = player.InteractionDistance;
+        _interactDistance = player.Config.InteractDistance;
         _inputManager = inputManager;
 
         _inputManager.controls.Player.Submit.performed += ctx => TrySubmit();

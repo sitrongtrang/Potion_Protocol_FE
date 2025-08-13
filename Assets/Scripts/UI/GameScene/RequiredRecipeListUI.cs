@@ -1,20 +1,36 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RequiredRecipeListUI : MonoBehaviour
 {
     [SerializeField] private GameObject _recipeUIPrefab;
+    [SerializeField] private GameStateHandler _gameStateHandler;
 
     void OnEnable()
     {
-        RecipeGenerator.Instance.OnRequiredRecipeAdded += AddRecipe;
-        RecipeGenerator.Instance.OnRequiredRecipeRemoved += RemoveRecipe;
+        if (SceneManager.GetActiveScene().name == "GameScene")
+        {
+            RecipeGenerator.Instance.OnRequiredRecipeAdded += AddRecipe;
+            RecipeGenerator.Instance.OnRequiredRecipeRemoved += RemoveRecipe;
+        } 
+        else if (SceneManager.GetActiveScene().name == "OnlineGameScene")
+        {
+            _gameStateHandler.OnRecipesSynced += SyncRecipe;
+        }
     }
 
     void OnDisable()
     {
-        RecipeGenerator.Instance.OnRequiredRecipeAdded -= AddRecipe;
-        RecipeGenerator.Instance.OnRequiredRecipeRemoved -= RemoveRecipe;
+        if (SceneManager.GetActiveScene().name == "GameScene")
+        {
+            RecipeGenerator.Instance.OnRequiredRecipeAdded -= AddRecipe;
+            RecipeGenerator.Instance.OnRequiredRecipeRemoved -= RemoveRecipe;
+        }
+        else if (SceneManager.GetActiveScene().name == "OnlineGameScene")
+        {
+            _gameStateHandler.OnRecipesSynced -= SyncRecipe;
+        }
     }
 
     public void Initialize()
@@ -36,5 +52,27 @@ public class RequiredRecipeListUI : MonoBehaviour
     public void RemoveRecipe(int idx)
     {
         Destroy(transform.GetChild(idx).gameObject);
+    }
+
+    public void SyncRecipe(List<RecipeConfig> recipes)
+    {
+        for (int i = 0; i < recipes.Count; i++)
+        {
+            if (i >= transform.childCount)
+            {
+                AddRecipe(recipes[i]);
+            }
+            else
+            {
+                Transform recipeUIObj = transform.GetChild(i);
+                RecipeUI recipeUI = recipeUIObj.GetComponent<RecipeUI>();
+                recipeUI.Initialize(recipes[i]);
+            }
+        }
+
+        for (int i = recipes.Count; i < transform.childCount; i++)
+        {
+            RemoveRecipe(i);
+        }
     }
 }

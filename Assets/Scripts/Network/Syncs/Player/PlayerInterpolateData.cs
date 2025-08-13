@@ -6,7 +6,7 @@ public class PlayerStateInterpolateData : IServerStateSnapshot, IComparable<Play
     public int ServerSequence;
     public float PositionX;
     public float PositionY;
-    // public PlayerState State;
+    public bool IsAttacking;
 
     int IServerStateSnapshot.ServerSequence => ServerSequence;
     

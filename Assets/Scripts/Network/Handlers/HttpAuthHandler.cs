@@ -21,6 +21,7 @@ public class HttpAuthHandler : MonoBehaviour
     [Header("URLs")]
     [SerializeField] private StaticURLSO _loginUrl;
     [SerializeField] private StaticURLSO _registerUrl;
+
     [Header("UI")]
     [SerializeField] private GameObject _loginError;
     [SerializeField] private GameObject _registerError;

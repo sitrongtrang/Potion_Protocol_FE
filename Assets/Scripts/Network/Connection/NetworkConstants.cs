@@ -1,5 +1,7 @@
 public class NetworkConstants
 {
+    // public const float NET_TICK_MS = 33.3f;
+    // public const float SIM_TICK_MS = 16f;
     public const float NET_TICK_MS = 33.3f;
     public const float SIM_TICK_MS = 16f;
     public const float NET_TICK_INTERVAL = NET_TICK_MS / 1000f;

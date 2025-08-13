@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Station
   - Item
   - SubmissionPoint
   - PatrolCenter
@@ -14,6 +13,7 @@ TagManager:
   - Obstacle
   - MainCanvas
   - ItemSource
+  - Alchemy
   layers:
   - Default
   - TransparentFX

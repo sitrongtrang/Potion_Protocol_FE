@@ -10,7 +10,12 @@ public class ServerStartGame : ServerMessage
     [FieldOrder(2)]
     public string[] PlayerIds;
     [FieldOrder(3)]
+    public string AlchemyId;
+    [FieldOrder(4)]
+    public string[] FurnaceIds;
+    [FieldOrder(5)]
     public int Level;
+
     public ServerStartGame() : base(NetworkMessageTypes.Server.Pregame.StartGame) { }
 }
 

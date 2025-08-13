@@ -59,7 +59,7 @@ public static class Serialization
             NetworkMessageTypes.Client.Pregame.GetRoomInfo => BinarySerializer.SerializeToBytes((PlayerGetRoomInfoRequest)message),
             NetworkMessageTypes.Client.Pregame.GetRoomByName => BinarySerializer.SerializeToBytes((PlayerGetRoomByNameRequest)message),
             NetworkMessageTypes.Client.Pregame.GetAllRoom => BinarySerializer.SerializeToBytes((PlayerGetAllRoomRequest)message),
-            NetworkMessageTypes.Client.Pregame.SendRoomInvite => BinarySerializer.SerializeToBytes((PlayerSendInvite)message),
+            // NetworkMessageTypes.Client.Pregame.SendRoomInvite => BinarySerializer.SerializeToBytes((PlayerSendInvite)message),
 
             NetworkMessageTypes.Client.Pregame.Ready => BinarySerializer.SerializeToBytes((PlayerReady)message),
             NetworkMessageTypes.Client.Pregame.Unready => BinarySerializer.SerializeToBytes((PlayerUnready)message),
@@ -85,19 +85,25 @@ public static class Serialization
             using MemoryStream stream = new(rawData);
             using BinaryReader reader = new(stream);
 
+            if (rawData.Length < 2)
+            {
+                Debug.LogWarning("[Deserialization Warning] Not enough data for message length.");
+                return null;
+            }
+
             short messageLength = BinarySerializer.ReadInt16BigEndian(reader);
 
             short messageType = BinarySerializer.ReadInt16BigEndian(reader);
-            Debug.Log(messageType);
+            //Debug.Log(messageType);
             short statusCode = BinarySerializer.ReadInt16BigEndian(reader);
-            Debug.Log(statusCode);
+            // Debug.Log("AAAAAAAA: " + messageType + " " + statusCode);
             byte[] payloadBytes = reader.ReadBytes(messageLength - (2 + 2));
 
             return CreateMessageFromType(messageType, payloadBytes);
         }
         catch (Exception e)
         {
-            Debug.LogError($"[Deserialization Error] {e.Message}");
+            Debug.LogError($"[Deserialization Error] {e.StackTrace} {rawData.Length}");
             return null;
         }
     }
@@ -122,7 +128,7 @@ public static class Serialization
             NetworkMessageTypes.Server.Room.Ready => BinarySerializer.DeserializeFromBytes<ServerPlayerReady>(payloadBytes),
             NetworkMessageTypes.Server.Room.UnReady => BinarySerializer.DeserializeFromBytes<ServerPlayerUnReady>(payloadBytes),
             NetworkMessageTypes.Server.Room.ACK => BinarySerializer.DeserializeFromBytes<ServerACK>(payloadBytes),
-            NetworkMessageTypes.Server.Room.SendRoomInvite => BinarySerializer.DeserializeFromBytes<ServerSendInvite>(payloadBytes),
+            // NetworkMessageTypes.Server.Room.SendRoomInvite => BinarySerializer.DeserializeFromBytes<ServerSendInvite>(payloadBytes),
 
             NetworkMessageTypes.Server.FriendSystem.GetFriendList =>  BinarySerializer.DeserializeFromBytes<FriendListServerMessage>(payloadBytes),
             NetworkMessageTypes.Server.FriendSystem.RemoveFriend =>  BinarySerializer.DeserializeFromBytes<FriendRemoveServerMessage>(payloadBytes),

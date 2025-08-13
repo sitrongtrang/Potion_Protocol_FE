@@ -1,4 +1,6 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -19,7 +21,7 @@ public class RoomHandler : MonoBehaviour
     [SerializeField] private RoomListRenderer _roomListRenderer;
     [SerializeField] private RoomScene _roomScene;
     [SerializeField] private CreateRoom _createRoom;
-    [SerializeField] private RoomInviteUI _roomInvite;
+    // [SerializeField] private RoomInviteUI _roomInvite;
     [Header("Person")]
     [SerializeField] private Person[] Person;
     [Header("Button")]
@@ -84,13 +86,13 @@ public class RoomHandler : MonoBehaviour
                 OnGetAllRoomResponse((ServerGetAllRoom)message);
                 break;
             case NetworkMessageTypes.Server.Pregame.StartGame:
-                SceneManager.LoadSceneAsync("OnlineGameScene");
+                OnGameStart((ServerStartGame)message);
                 break;
             case NetworkMessageTypes.Server.Room.ACK:
                 HandleACK((ServerACK)message);
                 break;
-            case NetworkMessageTypes.Server.Room.SendRoomInvite:
-                OnReceiveInvite((ServerSendInvite)message);
+            // case NetworkMessageTypes.Server.Room.SendRoomInvite:
+            //     OnReceiveInvite((ServerSendInvite)message);
                 break;
             default:
                 break;
@@ -101,6 +103,29 @@ public class RoomHandler : MonoBehaviour
     {
         Debug.Log("Request get all room");
         NetworkManager.Instance.SendMessage(new PlayerGetAllRoomRequest());
+    }
+
+    private void OnGameStart(ServerStartGame msg)
+    {
+        StartCoroutine(LoadGameSceneOnline(msg));
+    }
+
+    private IEnumerator LoadGameSceneOnline(ServerStartGame msg)
+    {
+        LoadingScreenUI.Instance.OnSceneExit += () =>
+        {
+            LoadingScreenUI.Instance.SetData("StartGameData", msg);
+        };
+        AsyncOperation request = SceneManager.LoadSceneAsync("OnlineGameScene");
+        request.completed += async (op) =>
+        {
+            await LoadingScreenUI.Instance.RenderFinish();
+        };
+        LoadingScreenUI.Instance.gameObject.SetActive(true);
+        List<AsyncOperation> opList = new List<AsyncOperation>();
+        opList.Add(request);
+
+        yield return StartCoroutine(LoadingScreenUI.Instance.RenderLoadingScene(opList));
     }
 
     private void OnCreateRoomResponse(ServerCreateRoom msg)
@@ -288,9 +313,9 @@ public class RoomHandler : MonoBehaviour
         }
     }    
 
-    private void OnReceiveInvite(ServerSendInvite msg)
-    {
-        _roomInvite.SetName(msg.RequesterDisplayName, msg.RoomId);
-        CreateRoomUI.Instance.ShowInviteRoomCanvas();
-    }
+    // private void OnReceiveInvite(ServerSendInvite msg)
+    // {
+    //     _roomInvite.SetName(msg.RequesterDisplayName, msg.RoomId);
+    //     CreateRoomUI.Instance.ShowInviteRoomCanvas();
+    // }
 }

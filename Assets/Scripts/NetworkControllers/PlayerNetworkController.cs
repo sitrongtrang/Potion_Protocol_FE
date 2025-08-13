@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +17,11 @@ public class PlayerNetworkController : MonoBehaviour
     // private int _serverSequence = int.MaxValue;
     // private bool _isReconciling = false;
     private PlayerInputSnapshot _inputListener = new();
+    private Vector2 _playerDir;
+    private bool _canAttack;
+    private float _attackCooldown;
+    private bool _canDash;
+    private float _dashCooldown;
     // private NetworkPredictionBuffer<PlayerInputMessage, PlayerSnapshot> _networkPredictionBuffer = new(NetworkConstants.NET_PRED_BUFFER_SIZE);
     // private NetworkInterpolationBuffer<PlayerStateInterpolateData> _networkInterpolationBuffer = new(NetworkConstants.NET_INTERPOLATION_BUFFER_SIZE);
 
@@ -21,11 +29,16 @@ public class PlayerNetworkController : MonoBehaviour
     private PlayerInputManager _inputManager;
 
     [Header("Game Components")]
-    public PlayerInventory Inventory { get; private set; }
-    public PlayerInteraction Interaction { get; private set; }
     private PlayerConfig _config;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
+    private AABBCollider _collider;
+    private Vector2 _size;
+    private List<WeaponConfig> _weapons = new();
+    private Animator _swordAnimator;
+    private PlayerInventory _inventory;
+
+    public PlayerInventory Inventory => _inventory;
 
     #region Unity Lifecycle
     void OnEnable()
@@ -55,20 +68,31 @@ public class PlayerNetworkController : MonoBehaviour
             _inputListener.DashPressed = _inputManager.controls.Player.Dash.WasPressedThisFrame();
             _inputListener.PickupPressed = _inputManager.controls.Player.Pickup.WasPressedThisFrame();
             _inputListener.DropPressed = _inputManager.controls.Player.Drop.WasPressedThisFrame();
-            _inputListener.CombinePressed = _inputManager.controls.Player.Combine.WasPressedThisFrame();
+            _inputListener.CraftPressed = _inputManager.controls.Player.Combine.WasPressedThisFrame();
             _inputListener.TransferPressed = _inputManager.controls.Player.Transfer.WasPressedThisFrame();
             _inputListener.SubmitPressed = _inputManager.controls.Player.Submit.WasPressedThisFrame();
+            _inputListener.SelectedSlot = _inventory.ChoosingSlot;
         }
 
         _sendTimer += Time.deltaTime;
-        while (_sendTimer >= NetworkConstants.NET_TICK_INTERVAL)
+        if (_sendTimer >= NetworkConstants.NET_TICK_INTERVAL)
         {
             _sendTimer -= NetworkConstants.NET_TICK_INTERVAL;
 
+            PlayerInputMessage[] source = _simulator.InputBufferAsArray;
+            PlayerInputMessage[] messages = new PlayerInputMessage[source.Length];
+
+            for (int i = 0; i < source.Length; i++)
+            {
+                if (source[i] != null)
+                {
+                    messages[i] = new PlayerInputMessage(source[i]);
+                }
+            }
             NetworkManager.Instance.SendMessage(new BatchPlayerInputMessage
             {
                 PlayerId = Identity.PlayerId,
-                PlayerInputMessages = _simulator.InputBufferAsArray
+                PlayerInputMessages = messages
             });
         }
     }
@@ -77,21 +101,41 @@ public class PlayerNetworkController : MonoBehaviour
     {
         if (Identity.IsLocalPlayer)
         {
+            if (_attackCooldown > 0) _attackCooldown -= Time.fixedDeltaTime;
+            else _canAttack = true;
+
+            if (_dashCooldown > 0) _dashCooldown -= Time.fixedDeltaTime;
+            else _canDash = true;
+
             Simulate(_inputListener);
         }
         else
         {
             _interpolator.IncrementAndInterpolate((serverState) =>
             {
-                float xDir = Mathf.Abs(serverState.PositionX - transform.position.x);
-                float yDir = Mathf.Abs(serverState.PositionY - transform.position.y);
+                float xDir = serverState.PositionX - transform.position.x;
+                float yDir = serverState.PositionY - transform.position.y;
                 Vector2 dir = new Vector2(xDir, yDir).normalized;
+                _playerDir = dir != Vector2.zero ? dir : _playerDir;
 
-                _animator.SetBool("IsMoving", dir != Vector2.zero);
-                _animator.SetFloat("MoveX", dir.x);
-                _animator.SetFloat("MoveY", dir.y);
+                if (serverState.IsAttacking)
+                {
+                    _swordAnimator.SetTrigger("Attack");
+                    if (_playerDir.x != 0 || _playerDir.y != 0)
+                    {
+                        _swordAnimator.SetFloat("MoveX", dir.x);
+                        _swordAnimator.SetFloat("MoveY", dir.y);
+                    }
+                }
 
-                transform.position = new(serverState.PositionX, serverState.PositionY);
+                TriggerMoveAnimation(_playerDir, dir != Vector2.zero);
+
+                Vector2 targetPos = new(serverState.PositionX, serverState.PositionY);
+                // Vector2 resolvedPos = ContextSolver.ResolveStatic(transform.position, targetPos, _collider, CollisionSystem.Tree);
+
+                transform.position = targetPos;
+                // Vector2 center = transform.position;
+                // _collider.SetBottomLeft(center - _size / 2f);
             });
         }
     }
@@ -103,14 +147,30 @@ public class PlayerNetworkController : MonoBehaviour
         _inputManager = new PlayerInputManager(inputManager);
         Identity.Initialize(id, isLocal);
 
-        // Inventory = new PlayerInventory();
-        // Interaction = new PlayerInteraction();
-
-        // Inventory.Initialize(this, inputManager);
-        // Interaction.Initialize(this, inputManager);
         _config = config;
+        _canAttack = true;
+        _canDash = true;
         _animator.runtimeAnimatorController = _config.Anim;
         _spriteRenderer.sprite = _config.Icon;
+        Transform WeaponContainer = transform.Find("Weapons");
+        for (int i = 0; i < WeaponContainer.childCount; i++)
+        {
+            if (i >= _weapons.Count) _weapons.Add(_config.Weapons[i]);
+            else _weapons[i] = _config.Weapons[i];
+            Transform weapon = WeaponContainer.GetChild(i);
+            weapon.GetComponent<SpriteRenderer>().sprite = _weapons[i].Icon;
+            weapon.GetComponent<Animator>().runtimeAnimatorController = _weapons[i].Anim;
+            if (weapon.name == "Sword") _swordAnimator = weapon.GetComponent<Animator>();
+        }
+
+        _collider = AABBCollider.GetColliderBaseOnSprite(_spriteRenderer, transform);
+        _collider.Mask.SetLayer((int)EntityLayer.Obstacle);
+        _collider.Mask.SetLayer((int)EntityLayer.ItemSource);
+        _size = _collider.Size;
+        Debug.Log(_size);
+
+        _inventory = new();
+        _inventory.Initialize(_inputManager);
     }
     #endregion
 
@@ -119,10 +179,13 @@ public class PlayerNetworkController : MonoBehaviour
     {
         PlayerInputSnapshot cpy = new(inputSnapshot);
 
-        if (cpy.MoveDir != Vector2.zero && cpy.DashPressed)
+        if (!cpy.HasInput())
         {
-
+            TriggerMoveAnimation(_playerDir, false);
+            return;
         }
+
+        TryMove(cpy);
 
         if (cpy.PickupPressed)
         {
@@ -134,7 +197,7 @@ public class PlayerNetworkController : MonoBehaviour
 
         }
 
-        if (cpy.CombinePressed)
+        if (cpy.CraftPressed)
         {
 
         }
@@ -149,8 +212,10 @@ public class PlayerNetworkController : MonoBehaviour
 
         }
 
-        if (cpy.MoveDir != Vector2.zero)
-            TryMove(cpy);
+        if (cpy.AttackPressed)
+        {
+            TryAttack(cpy);
+        }
     }
 
     private bool TryMove(PlayerInputSnapshot inputSnapshot)
@@ -158,10 +223,17 @@ public class PlayerNetworkController : MonoBehaviour
         _simulator.Simulate(inputSnapshot,
             (inputSnapshot) =>
             {
-                _animator.SetBool("IsMoving", inputSnapshot.MoveDir != Vector2.zero);
-                _animator.SetFloat("MoveX", inputSnapshot.MoveDir.x);
-                _animator.SetFloat("MoveY", inputSnapshot.MoveDir.y);
-                transform.position = transform.position + (Vector3)(_config.MoveSpeed * Time.fixedDeltaTime * inputSnapshot.MoveDir);
+                _playerDir = inputSnapshot.MoveDir != Vector2.zero ? inputSnapshot.MoveDir.normalized : _playerDir;
+                TriggerMoveAnimation(_playerDir, inputSnapshot.MoveDir != Vector2.zero);
+
+                float moveSpeed = inputSnapshot.DashPressed && _canDash ? _config.DashSpeed : _config.MoveSpeed;
+                Vector2 targetPos = transform.position + (Vector3)(moveSpeed * Time.fixedDeltaTime * _playerDir);
+                Vector2 resolvedPos = ContextSolver.ResolveStatic(transform.position, targetPos, _collider, CollisionSystem.Tree);
+
+                transform.position = resolvedPos;
+                Vector2 center = transform.position;
+                _collider.SetBottomLeft(center - _size / 2f);
+                    
                 return new()
                 {
                     Position = transform.position,
@@ -169,6 +241,53 @@ public class PlayerNetworkController : MonoBehaviour
             }
         );
         return true;
+    }
+
+    private bool TryAttack(PlayerInputSnapshot inputSnapshot)
+    {
+        if (!_canAttack) return false;
+
+        // If an alchemy nearby, cannot attack
+        AlchemyControllerNetwork alchemy = FindFirstObjectByType<AlchemyControllerNetwork>();
+        if (alchemy != null && Vector2.Distance(alchemy.transform.position, transform.position) <= _config.InteractDistance)
+        {
+            return false;
+        }
+
+        // Check wall hit
+        Vector2 dir = _playerDir.normalized;
+        float skinWidth = 0.2f;
+        Vector2 origin = (Vector2)transform.position + dir * skinWidth;
+        bool hitObstacle = CheckWall(origin, dir);
+
+        if (hitObstacle)
+        {
+            Debug.Log("Vướng tường nè má.");
+            return false;
+        }
+
+        // Play animation
+        _swordAnimator.SetTrigger("Attack");
+        if (dir.x != 0 || dir.y != 0)
+        {
+            _swordAnimator.SetFloat("MoveX", dir.x);
+            _swordAnimator.SetFloat("MoveY", dir.y);
+            _canAttack = false;
+            _attackCooldown = _config.AttackCooldown;
+            return true;
+        }
+        return false;
+    }
+
+    private bool CheckWall(Vector2 origin, Vector2 dir)
+    {
+        float minDistanceToWall = 0.15f;
+        List<AABBCollider> walls = CollisionSystem.RayCast(origin, dir, minDistanceToWall, EntityLayer.Obstacle);
+
+        Debug.DrawRay(origin, dir.normalized * minDistanceToWall, Color.cyan, 2f);
+
+        if (walls.Count > 0) return true;
+        else return false;
     }
     #endregion
 
@@ -197,8 +316,8 @@ public class PlayerNetworkController : MonoBehaviour
                             }
                         }
                     }
-                    Debug.Log(playerSnapshot.ProcessedInputSequence);
-                    Debug.Log(playerSnapshot.Position);
+                    // Debug.Log(playerSnapshot.ProcessedInputSequence);
+                    // Debug.Log(playerSnapshot.Position);
                     TryReconcileServer(playerSnapshot);
                 }
                 else
@@ -216,7 +335,6 @@ public class PlayerNetworkController : MonoBehaviour
                     });
                 }
                 break;
-
         }
     }
 
@@ -225,7 +343,8 @@ public class PlayerNetworkController : MonoBehaviour
         _simulator.Reconcile(state,
             (serverSnapshot) =>
             {
-
+                // transform.position = serverSnapshot.Position;
+                _simulator.ExpandBuffer(serverSnapshot.ProcessedInputSequence);
             },
             (serverSnapshot, historySnapshot) =>
             {
@@ -237,10 +356,14 @@ public class PlayerNetworkController : MonoBehaviour
             },
             (inputMessage) =>
             {
+                bool isDashing = (inputMessage.Flags & (int)InputFlags.Dash) != 0;
+                float moveSpeed = isDashing ? _config.DashSpeed : _config.MoveSpeed;
                 Vector2 moveDir = new(inputMessage.MoveDirX, inputMessage.MoveDirY);
+                Vector2 targetPos = (Vector2)transform.position + moveSpeed * Time.fixedDeltaTime * moveDir;
+                Vector2 resolvedPos = ContextSolver.ResolveStatic(transform.position, targetPos, _collider, CollisionSystem.Tree);
                 return new PlayerSnapshot()
                 {
-                    Position = transform.position + (Vector3)(_config.MoveSpeed * Time.fixedDeltaTime * moveDir)
+                    Position = resolvedPos
                 };
             }
         );
@@ -248,6 +371,25 @@ public class PlayerNetworkController : MonoBehaviour
     #endregion
 
     #region Utilities
+    private void TriggerMoveAnimation(Vector2 dir, bool isMoving = true)
+    {
+        if (_animator)
+        {
+            _animator.SetFloat("MoveX", dir.x);
+            _animator.SetFloat("MoveY", dir.y);
+            _animator.SetBool("IsMoving", isMoving);
+        }
+        if (_swordAnimator)
+        {
+            _swordAnimator.SetFloat("MoveX", dir.x);
+            _swordAnimator.SetFloat("MoveY", dir.y);
+        }
+    }
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(_collider.Bounds.center, _collider.Bounds.size);
+    }
 
     #endregion
 }

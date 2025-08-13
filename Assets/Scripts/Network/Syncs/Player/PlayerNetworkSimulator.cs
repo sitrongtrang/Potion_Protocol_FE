@@ -20,7 +20,7 @@ public class PlayerNetworkSimulator :
     {
         if (_isReconciling) return;
 
-        int sequence = _buffer.GetCurrentInputSequence();
+        int sequence = _buffer.IcrementAndGetCurrentInputSequence();
 
         var message = new PlayerInputMessage(input)
         {
@@ -87,6 +87,14 @@ public class PlayerNetworkSimulator :
         }
 
         _isReconciling = false;
+    }
+
+    public void ExpandBuffer(int lostSequence)
+    {
+        if (lostSequence > _buffer.CurrentInputSequence)
+        {
+            _buffer.SetCapacity(_buffer.CurrentInputSequence - lostSequence);
+        }
     }
 
     public void Reset()

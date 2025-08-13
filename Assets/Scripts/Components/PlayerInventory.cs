@@ -40,7 +40,7 @@ public class PlayerInventory
     }
 
     #region Initialization
-    public void Initialize(PlayerController player, PlayerInputManager inputManager)
+    public void Initialize(PlayerInputManager inputManager)
     {
         ChoosingSlot = 0;
         _inputManager = inputManager;

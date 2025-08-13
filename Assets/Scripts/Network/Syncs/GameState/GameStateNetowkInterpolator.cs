@@ -19,16 +19,11 @@ public class GameStateNetworkInterpolator : INetworkInterpolator<GameStateInterp
         {
             if (inInitializing)
             {
-                if (update.ServerSequence < _serverSequence)
+                if ((inInitializing && update.ServerSequence < _serverSequence) || (Mathf.Abs(update.ServerSequence - _serverSequence) > _buffer.Capacity))
                 {
                     _serverSequence = update.ServerSequence - 1;
-                }
-                else // THIS PART IS A LITTLE IFFY
-                {
-                    if (update.ServerSequence - _serverSequence > _buffer.Capacity && _buffer.IsEmpty())
-                    {
-                        _serverSequence = update.ServerSequence - 1;
-                    }
+                    _buffer.SetMinTickToKeep(_serverSequence);
+                    _buffer.Clear();
                 }
                 if (update.ServerSequence >= _serverSequence)
                 {
@@ -62,22 +57,48 @@ public class GameStateNetworkInterpolator : INetworkInterpolator<GameStateInterp
                         };
                     }
 
-                    var station = CreateEntityMap(
-                        update.StationStates,
-                        s => s.StationId,
-                        s => s.StationType,
-                        s => new Vector2(s.PositionX, s.PositionY)
-                    );
+                    // var station = CreateEntityMap(
+                    //     update.StationStates,
+                    //     s => s.StationId,
+                    //     s => s.StationType,
+                    //     s => new Vector2(s.PositionX, s.PositionY)
+                    // );
 
                     var requiredRecipe = update.RequiredRecipeIds.ToList();
+
+                    Dictionary<string, int> score = new();
+                    Dictionary<string, string[]> inventory = new();
+
+                    foreach (var player in update.PlayerStates)
+                    {
+                        if (score.ContainsKey(player.PlayerId))
+                        {
+                            score[player.PlayerId] = player.Score;
+                        }
+                        else
+                        {
+                            score.Add(player.PlayerId, player.Score);
+                        }
+
+                        if (inventory.ContainsKey(player.PlayerId))
+                        {
+                            inventory[player.PlayerId] = player.InventoryItemTypes;
+                        }
+                        else
+                        {
+                            inventory.Add(player.PlayerId, player.InventoryItemTypes);
+                        }
+                    }
 
                     _buffer.Add(new GameStateInterpolateData()
                     {
                         ItemIds = item,
                         EnemyIds = enemy,
                         ItemSourceIds = itemSource,
-                        StationIds = station,
-                        RequiredRecipeIds = requiredRecipe
+                        // StationIds = station,
+                        RequiredRecipeIds = requiredRecipe,
+                        PlayerScores = score,
+                        PlayerInventories = inventory
                     });
                 }
             }

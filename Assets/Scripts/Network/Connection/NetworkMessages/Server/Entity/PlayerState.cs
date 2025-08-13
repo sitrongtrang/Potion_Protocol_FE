@@ -11,7 +11,7 @@ public class PlayerState : IStateSnapshot
     [FieldOrder(3)]
     public float PositionY;
     [FieldOrder(4)]
-    public bool IsDashing;
+    public bool IsAttacking;
     [FieldOrder(5)]
     public int ProcessedInputSequence;
     [FieldOrder(6)]

@@ -15,9 +15,14 @@ public class GameStateHandler : MonoBehaviour
     private Dictionary<string, TrackedObject> _enemyMap = new();
     private Dictionary<string, TrackedObject> _itemSourceMap = new();
     private Dictionary<string, TrackedObject> _itemMap = new();
-    private Dictionary<string, TrackedObject> _stationMap = new();
+    // private Dictionary<string, TrackedObject> _stationMap = new();
     private List<RecipeConfig> _requiredRecipes = new();
+    private float _timeLeft;
 
+    public event Action<string[]> OnInventorySynced;
+    public event Action<int> OnScoreChanged;
+    public event Action<List<RecipeConfig>> OnRecipesSynced;
+    public event Action<float> OnTimeChanged;
     public ScriptableObjectMapping PrefabsMap => _prefabsMap;
 
     void Awake()
@@ -46,10 +51,17 @@ public class GameStateHandler : MonoBehaviour
                 HandleSyncing(gameState.EnemyIds, _enemyMap, _prefabsMap.EnemyPrefab);
                 HandleSyncing(gameState.ItemSourceIds, _itemSourceMap, _prefabsMap.ItemSourcePrefab);
                 HandleSyncing(gameState.ItemIds, _itemMap, _prefabsMap.ItemPrefab);
-                HandleSyncing(gameState.StationIds, _stationMap, _prefabsMap.StationPrefab);
+                // HandleSyncing(gameState.StationIds, _stationMap, _prefabsMap.StationPrefab);
+
+                // Syncing UI
                 SyncRecipes(gameState.RequiredRecipeIds);
+                SyncScore(gameState.PlayerScores);
+                SyncInventory(gameState.PlayerInventories);
             }
         );
+
+        _timeLeft -= Time.fixedDeltaTime;
+        OnTimeChanged?.Invoke(_timeLeft);
     }
 
     private void SyncRecipes(List<string> data)
@@ -74,7 +86,34 @@ public class GameStateHandler : MonoBehaviour
         {
             _requiredRecipes.RemoveAt(i);
         }
-    } 
+        OnRecipesSynced?.Invoke(_requiredRecipes);
+    }
+
+    private void SyncScore(Dictionary<string, int> scores)
+    {
+        foreach (var item in scores)
+        {
+            string localId = _startGameHandler.LocalPlayer.Identity.PlayerId;
+            if (scores.ContainsKey(localId))
+            {
+                OnScoreChanged?.Invoke(scores[localId]);
+                break;
+            }
+        }
+    }
+
+    private void SyncInventory(Dictionary<string, string[]> inventories)
+    {
+        foreach (var item in inventories)
+        {
+            string localId = _startGameHandler.LocalPlayer.Identity.PlayerId;
+            if (inventories.ContainsKey(localId))
+            {
+                OnInventorySynced?.Invoke(inventories[localId]);
+                break;
+            }
+        }
+    }
 
     private void HandleSyncing(
         Dictionary<string, GameStateInterpolateData.EntityInfo> data,
@@ -156,12 +195,14 @@ public class GameStateHandler : MonoBehaviour
             scriptableObjects.Add(levelConfig.FinalRecipes[i]);
             scriptableObjects.Add(levelConfig.FinalRecipes[i].Product);
         }
-        StationController[] stationControllers = map.GetComponentsInChildren<StationController>();
-        for (int i = 0; i < stationControllers.Length; i++)
-        {
-            scriptableObjects.Add(stationControllers[i].Config);
-        }
+
+        // StationControllerNetwork[] stationControllers = map.GetComponentsInChildren<StationControllerNetwork>();
+        // for (int i = 0; i < stationControllers.Length; i++)
+        // {
+        //     scriptableObjects.Add(stationControllers[i].Config);
+        // }
 
         _prefabsMap.InitializeMapping(scriptableObjects.ToArray());
+        _timeLeft = levelConfig.LevelTime;
     }
 }

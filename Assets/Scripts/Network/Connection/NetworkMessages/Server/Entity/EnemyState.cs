@@ -1,13 +1,3 @@
-using System;
-
-[Flags]
-public enum EnemyStateFlags
-{
-    None = 0,
-    Return = 1 << 0,
-    Patrol = 1 << 1,
-    Idle = 1 << 2,
-}
 public class EnemyState
 {
     [FieldOrder(0)]

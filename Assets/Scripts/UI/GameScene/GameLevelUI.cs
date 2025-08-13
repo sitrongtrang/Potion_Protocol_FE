@@ -9,8 +9,10 @@ public class GameLevelUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private TextMeshProUGUI _timeText;
     [SerializeField] private GameObject _pauseMenu;
+    [SerializeField] private GameStateHandler _gameStateHandler;
+    [SerializeField] private StartGameHandler _startGameHandler;
 
-    void Start()
+    void OnEnable()
     {
         if (SceneManager.GetActiveScene().name == "GameScene")
         {
@@ -20,7 +22,23 @@ public class GameLevelUI : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "OnlineGameScene")
         {
-            
+            _gameStateHandler.OnScoreChanged += UpdateScoreText;
+            _gameStateHandler.OnTimeChanged += UpdateTimeText;
+        }
+    }
+
+    void OnDisable()
+    {
+        if (SceneManager.GetActiveScene().name == "GameScene")
+        {
+            LevelManager.Instance.OnScoreChanged -= UpdateScoreText;
+            LevelManager.Instance.OnTimeChanged -= UpdateTimeText;
+            LevelManager.Instance.OnPauseToggled -= TogglePause;
+        }
+        else if (SceneManager.GetActiveScene().name == "OnlineGameScene")
+        {
+            _gameStateHandler.OnScoreChanged -= UpdateScoreText;
+            _gameStateHandler.OnTimeChanged -= UpdateTimeText;
         }
     }
 

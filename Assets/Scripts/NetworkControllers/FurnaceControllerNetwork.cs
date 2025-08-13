@@ -67,7 +67,7 @@ public class FurnaceControllerNetwork : NetworkBehaviour
         if (scriptableObject is StationConfig stationConfig)
         {
             _config = stationConfig;
-            _spriteRenderer.sprite = _config.Icon;
+            _spriteRenderer = GetComponent<SpriteRenderer>();
             SetCollider(ref _collider, _spriteRenderer, transform);
             CollisionSystem.InsertStaticCollider(_collider);
         }
