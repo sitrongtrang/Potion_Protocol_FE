@@ -129,16 +129,17 @@ public class GameStateHandler : MonoBehaviour
         NetworkBehaviour prefab
     )
     {
-        // Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         List<string> keysToRemove = new();
         foreach (var kvp in current)
         {
             if (!data.ContainsKey(kvp.Key))
+            {
                 keysToRemove.Add(kvp.Key);
+            }
         }
         foreach (var key in keysToRemove)
         {
-            Destroy(current[key]);
+            Destroy(current[key].gameObject);
         }
 
         foreach (var kvp in data)
