@@ -97,7 +97,8 @@ public class GameStateNetworkInterpolator : INetworkInterpolator<GameStateInterp
                     RequiredRecipeIds = requiredRecipe,
                     PlayerScores = score,
                     PlayerInventories = inventory,
-                    ServerSequence = update.ServerSequence
+                    ServerSequence = update.ServerSequence,
+                    TimeLeft = update.CurrentGameTime
                 });
             
             }

@@ -57,11 +57,11 @@ public class GameStateHandler : MonoBehaviour
                 SyncRecipes(gameState.RequiredRecipeIds);
                 SyncScore(gameState.PlayerScores);
                 SyncInventory(gameState.PlayerInventories);
+                SyncTime(gameState.TimeLeft);
             }
         );
 
-        _timeLeft -= Time.fixedDeltaTime;
-        OnTimeChanged?.Invoke(_timeLeft);
+        // _timeLeft -= Time.fixedDeltaTime;
     }
 
     private void SyncRecipes(List<string> data)
@@ -115,6 +115,12 @@ public class GameStateHandler : MonoBehaviour
                 break;
             }
         }
+    }
+
+    private void SyncTime(float timeLeft)
+    {
+        _timeLeft = timeLeft;
+        OnTimeChanged?.Invoke(_timeLeft);
     }
 
     private void HandleSyncing(
@@ -208,6 +214,6 @@ public class GameStateHandler : MonoBehaviour
         // }
 
         _prefabsMap.InitializeMapping(scriptableObjects.ToArray());
-        _timeLeft = levelConfig.LevelTime;
+        // _timeLeft = levelConfig.LevelTime;
     }
 }

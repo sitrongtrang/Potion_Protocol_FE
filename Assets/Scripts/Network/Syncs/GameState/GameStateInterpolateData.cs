@@ -22,6 +22,7 @@ public class GameStateInterpolateData : IServerStateSnapshot, IComparable<GameSt
     public List<string> RequiredRecipeIds;
     public Dictionary<string, int> PlayerScores;
     public Dictionary<string, string[]> PlayerInventories;
+    public float TimeLeft;
 
     public int CompareTo(GameStateInterpolateData other)
     {
