@@ -17,7 +17,7 @@ public class PlayerNetworkController : MonoBehaviour
     // private int _serverSequence = int.MaxValue;
     // private bool _isReconciling = false;
     private PlayerInputSnapshot _inputListener = new();
-    private Vector2 _playerDir;
+    private Vector2 _playerDir = new Vector2(1, 0);
     private bool _canAttack;
     private float _attackCooldown;
     private bool _canDash;
@@ -200,7 +200,7 @@ public class PlayerNetworkController : MonoBehaviour
             {
                 _playerDir = inputSnapshot.MoveDir != Vector2.zero ? inputSnapshot.MoveDir.normalized : _playerDir;
                 TriggerMoveAnimation(_playerDir, inputSnapshot.MoveDir != Vector2.zero);
-                
+
                 if (inputSnapshot.DashPressed && _canDash)
                 {
                     float moveSpeed = _config.DashSpeed;
@@ -210,6 +210,10 @@ public class PlayerNetworkController : MonoBehaviour
                     transform.position = resolvedPos;
                     Vector2 center = transform.position;
                     _collider.SetBottomLeft(center - _size / 2f);
+
+                    _canDash = false;
+                    _dashCooldown = _config.DashCooldown;
+                    // Debug.Log(transform.position);
                 }
                 else if (inputSnapshot.MoveDir != Vector2.zero)
                 {
