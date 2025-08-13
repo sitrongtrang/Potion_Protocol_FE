@@ -2309,6 +2309,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6724058662931018572, guid: 9ea1d33ac57689647a3416ae6809abf9, type: 3}
   m_PrefabInstance: {fileID: 339104628}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &339104630 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6008212070274152235, guid: 9ea1d33ac57689647a3416ae6809abf9, type: 3}
+  m_PrefabInstance: {fileID: 339104628}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &384806572
 GameObject:
   m_ObjectHideFlags: 0
@@ -5843,8 +5854,8 @@ MonoBehaviour:
   _contentParent: {fileID: 117658343}
   _roomPrefab: {fileID: 8608040529552152302, guid: 7e49c75ed6f44874fab2d890430d012d, type: 3}
   _itemsPerPage: 6
-  _prevButton: {fileID: 0}
-  _nextButton: {fileID: 0}
+  _prevButton: {fileID: 339104630}
+  _nextButton: {fileID: 1336872801}
   _pageIndicatorText: {fileID: 688171350}
   _joinRoomButton: {fileID: 983152294}
   _password: {fileID: 139208394}
@@ -7884,6 +7895,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5857323488571461437, guid: 22687f330ab46f84c96163e16172acd1, type: 3}
   m_PrefabInstance: {fileID: 1336872799}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1336872801 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7477551527073280919, guid: 22687f330ab46f84c96163e16172acd1, type: 3}
+  m_PrefabInstance: {fileID: 1336872799}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1353097778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10377,7 +10399,6 @@ MonoBehaviour:
   _roomListRenderer: {fileID: 1014140678}
   _roomScene: {fileID: 1503962239}
   _createRoom: {fileID: 1216165343}
-  _roomInvite: {fileID: 0}
   Person:
   - Name: {fileID: 252786358}
     ID: {fileID: 861611107}
