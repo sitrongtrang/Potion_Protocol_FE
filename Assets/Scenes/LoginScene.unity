@@ -659,13 +659,13 @@ MonoBehaviour:
   registerpasswordField: {fileID: 125611415}
   confirmpasswordField: {fileID: 290658535}
   displaynameField: {fileID: 2076514662}
-  _loginUrl: {fileID: 11400000, guid: dc48c5913bb46784bb1c1c4e9ce467cc, type: 2}
+  _loginUrl: {fileID: 11400000, guid: 368f128f270b7b143a06c7f984e88109, type: 2}
   _registerUrl: {fileID: 11400000, guid: cecf6d6e4be4c2341a18c05733d79061, type: 2}
   _loginError: {fileID: 548310841}
   _registerError: {fileID: 760253706}
   _disableAfterSeconds: 3
-  _loginCanvas: {fileID: 0}
-  _signupCanvas: {fileID: 0}
+  _loginCanvas: {fileID: 813751193}
+  _signupCanvas: {fileID: 1126106806}
 --- !u!1 &127912777
 GameObject:
   m_ObjectHideFlags: 0
@@ -4195,8 +4195,8 @@ RectTransform:
   - {fileID: 539362809}
   m_Father: {fileID: 1669320622}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.15, y: 0.15}
-  m_AnchorMax: {x: 0.35, y: 0.3}
+  m_AnchorMin: {x: 0.15, y: 0.1}
+  m_AnchorMax: {x: 0.35, y: 0.25}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0}
@@ -4874,7 +4874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e306e3f7abc09024d97585dae178bca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ip: 127.0.0.1
+  _ip: 10.7.1.82
   _port: 9000
   _reconnectDelay: 5
 --- !u!1 &1353990093

@@ -11986,10 +11986,1159 @@ MonoBehaviour:
   mapGameObject: {fileID: 4130166079983457268}
   tilemaps:
   - {fileID: 5606802352922682915}
+  - {fileID: 3125369238115257826}
   nonTriggerList:
-    colliders: []
+    colliders:
+    - centerX: 2.499998
+      centerY: -1.6079249
+      width: 0.31224275
+      height: 0.21585572
+    - centerX: 7.001974
+      centerY: 0.3881117
+      width: 4.001945
+      height: 0.21860278
+    - centerX: -2.2490225
+      centerY: 0.39094713
+      width: 3.4842348
+      height: 0.21576768
+    - centerX: -7.0000257
+      centerY: 0.39041036
+      width: 4.0115604
+      height: 0.2148222
+    - centerX: -0.9999725
+      centerY: -5.0314894
+      width: 2.012302
+      height: 0.06898546
+    - centerX: 2.247067
+      centerY: 0.3912217
+      width: 3.4943485
+      height: 0.21581316
+    - centerX: 2.1732152
+      centerY: 0.5624331
+      width: 0.3437729
+      height: 0.12825221
+    - centerX: 2.827215
+      centerY: 0.5618384
+      width: 0.3437729
+      height: 0.1233083
+    - centerX: 5.497513
+      centerY: 2.3908377
+      width: 0.301867
+      height: 0.21408153
+    - centerX: -9.078125
+      centerY: -4.75
+      width: 0.15625
+      height: 0.5
+    - centerX: -8.75
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: -8.25
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: -7.75
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: -7.25
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: -6.75
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: -6.078125
+      centerY: -4.609375
+      width: 0.15625
+      height: 0.21875
+    - centerX: -6.25
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: -5.75
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: -5.25
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: -4.75
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: -4.25
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: -3.75
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: -3.25
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: -2.75
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: -2.25
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: 0.25
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: 0.75
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: 1.25
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: 1.75
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: 2.25
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: 2.75
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: 3.25
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: 3.75
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: 4.25
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: 4.578125
+      centerY: -4.609375
+      width: 0.15625
+      height: 0.21875
+    - centerX: 4.75
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: 5.25
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: 5.75
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: 6.25
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: 6.75
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: 7.25
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: 7.75
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: 8.25
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: 8.75
+      centerY: -4.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: 9.078125
+      centerY: -4.75
+      width: 0.15625
+      height: 0.5
+    - centerX: -9.078125
+      centerY: -4.25
+      width: 0.15625
+      height: 0.5
+    - centerX: -6.078125
+      centerY: -4.25
+      width: 0.15625
+      height: 0.5
+    - centerX: 4.578125
+      centerY: -4.25
+      width: 0.15625
+      height: 0.5
+    - centerX: 9.078125
+      centerY: -4.25
+      width: 0.15625
+      height: 0.5
+    - centerX: -9.078125
+      centerY: -3.75
+      width: 0.15625
+      height: 0.5
+    - centerX: -6.078125
+      centerY: -3.75
+      width: 0.15625
+      height: 0.5
+    - centerX: 4.578125
+      centerY: -3.75
+      width: 0.15625
+      height: 0.5
+    - centerX: 9.078125
+      centerY: -3.75
+      width: 0.15625
+      height: 0.5
+    - centerX: -9.078125
+      centerY: -3.25
+      width: 0.15625
+      height: 0.5
+    - centerX: -6.078125
+      centerY: -3.25
+      width: 0.15625
+      height: 0.5
+    - centerX: 4.578125
+      centerY: -3.25
+      width: 0.15625
+      height: 0.5
+    - centerX: 9.078125
+      centerY: -3.25
+      width: 0.15625
+      height: 0.5
+    - centerX: -9.078125
+      centerY: -2.75
+      width: 0.15625
+      height: 0.5
+    - centerX: -6.078125
+      centerY: -2.75
+      width: 0.15625
+      height: 0.5
+    - centerX: 2.421875
+      centerY: -2.75
+      width: 0.15625
+      height: 0.5
+    - centerX: 2.578125
+      centerY: -2.75
+      width: 0.15625
+      height: 0.5
+    - centerX: 4.578125
+      centerY: -2.75
+      width: 0.15625
+      height: 0.5
+    - centerX: 9.078125
+      centerY: -2.75
+      width: 0.15625
+      height: 0.5
+    - centerX: -9.078125
+      centerY: -2.25
+      width: 0.15625
+      height: 0.5
+    - centerX: -8.75
+      centerY: -2.359375
+      width: 0.5
+      height: 0.28125
+    - centerX: -8.25
+      centerY: -2.359375
+      width: 0.5
+      height: 0.28125
+    - centerX: -6.75
+      centerY: -2.359375
+      width: 0.5
+      height: 0.28125
+    - centerX: -6.25
+      centerY: -2.359375
+      width: 0.5
+      height: 0.28125
+    - centerX: -2.921875
+      centerY: -2.109375
+      width: 0.15625
+      height: 0.21875
+    - centerX: -2.75
+      centerY: -2.359375
+      width: 0.5
+      height: 0.28125
+    - centerX: -2.25
+      centerY: -2.359375
+      width: 0.5
+      height: 0.28125
+    - centerX: -1.75
+      centerY: -2.359375
+      width: 0.5
+      height: 0.28125
+    - centerX: -1.25
+      centerY: -2.359375
+      width: 0.5
+      height: 0.28125
+    - centerX: -0.75
+      centerY: -2.359375
+      width: 0.5
+      height: 0.28125
+    - centerX: -0.25
+      centerY: -2.359375
+      width: 0.5
+      height: 0.28125
+    - centerX: 0.421875
+      centerY: -2.109375
+      width: 0.15625
+      height: 0.21875
+    - centerX: 0.25
+      centerY: -2.359375
+      width: 0.5
+      height: 0.28125
+    - centerX: 2.421875
+      centerY: -2.25
+      width: 0.15625
+      height: 0.5
+    - centerX: 2.578125
+      centerY: -2.25
+      width: 0.15625
+      height: 0.5
+    - centerX: 4.578125
+      centerY: -2.25
+      width: 0.15625
+      height: 0.5
+    - centerX: 9.078125
+      centerY: -2.25
+      width: 0.15625
+      height: 0.5
+    - centerX: -9.078125
+      centerY: -1.75
+      width: 0.15625
+      height: 0.5
+    - centerX: -2.921875
+      centerY: -1.75
+      width: 0.15625
+      height: 0.5
+    - centerX: 0.421875
+      centerY: -1.75
+      width: 0.15625
+      height: 0.5
+    - centerX: 1.75
+      centerY: -1.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: 2.25
+      centerY: -1.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: 2.75
+      centerY: -1.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: 3.25
+      centerY: -1.859375
+      width: 0.5
+      height: 0.28125
+    - centerX: 4.578125
+      centerY: -1.75
+      width: 0.15625
+      height: 0.5
+    - centerX: 9.078125
+      centerY: -1.75
+      width: 0.15625
+      height: 0.5
+    - centerX: -9.078125
+      centerY: -1.25
+      width: 0.15625
+      height: 0.5
+    - centerX: -2.921875
+      centerY: -1.4375
+      width: 0.15625
+      height: 0.125
+    - centerX: 0.421875
+      centerY: -1.4375
+      width: 0.15625
+      height: 0.125
+    - centerX: 2.421875
+      centerY: -1.25
+      width: 0.15625
+      height: 0.5
+    - centerX: 2.578125
+      centerY: -1.25
+      width: 0.15625
+      height: 0.5
+    - centerX: 4.75
+      centerY: -1.359375
+      width: 0.5
+      height: 0.28125
+    - centerX: 5.25
+      centerY: -1.359375
+      width: 0.5
+      height: 0.28125
+    - centerX: 5.75
+      centerY: -1.359375
+      width: 0.5
+      height: 0.28125
+    - centerX: 7.75
+      centerY: -1.359375
+      width: 0.5
+      height: 0.28125
+    - centerX: 8.25
+      centerY: -1.359375
+      width: 0.5
+      height: 0.28125
+    - centerX: 8.75
+      centerY: -1.359375
+      width: 0.5
+      height: 0.28125
+    - centerX: 9.078125
+      centerY: -1.25
+      width: 0.15625
+      height: 0.5
+    - centerX: -9.078125
+      centerY: -0.75
+      width: 0.15625
+      height: 0.5
+    - centerX: 2.421875
+      centerY: -0.9375
+      width: 0.15625
+      height: 0.125
+    - centerX: 2.578125
+      centerY: -0.9375
+      width: 0.15625
+      height: 0.125
+    - centerX: 9.078125
+      centerY: -0.75
+      width: 0.15625
+      height: 0.5
+    - centerX: -9.078125
+      centerY: -0.25
+      width: 0.15625
+      height: 0.5
+    - centerX: 9.078125
+      centerY: -0.25
+      width: 0.15625
+      height: 0.5
+    - centerX: -9.078125
+      centerY: 0.25
+      width: 0.15625
+      height: 0.5
+    - centerX: -8.75
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -8.25
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -7.75
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -7.25
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -6.75
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -6.25
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -5.75
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -5.25
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -3.75
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -3.25
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -2.75
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -2.25
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -1.75
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -1.25
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -0.75
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 0.75
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 1.25
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 1.75
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 2.25
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 2.75
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 3.25
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 3.75
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 5.25
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 5.75
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 6.25
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 6.75
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 7.25
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 7.75
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 8.25
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 8.75
+      centerY: 0.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 9.078125
+      centerY: 0.25
+      width: 0.15625
+      height: 0.5
+    - centerX: -9.078125
+      centerY: 0.75
+      width: 0.15625
+      height: 0.5
+    - centerX: -8.75
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: -8.25
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: -7.75
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: -7.25
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: -6.75
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: -6.25
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: -5.75
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: -5.25
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: -3.75
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: -3.25
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: -2.75
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: -2.25
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: -1.75
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: -1.25
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: -0.75
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: 0.75
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: 1.25
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: 1.75
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: 2.421875
+      centerY: 0.75
+      width: 0.15625
+      height: 0.5
+    - centerX: 2.578125
+      centerY: 0.75
+      width: 0.15625
+      height: 0.5
+    - centerX: 3.25
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: 3.75
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: 5.25
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: 5.75
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: 6.25
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: 6.75
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: 7.25
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: 7.75
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: 8.25
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: 8.75
+      centerY: 0.5625
+      width: 0.5
+      height: 0.125
+    - centerX: 9.078125
+      centerY: 0.75
+      width: 0.15625
+      height: 0.5
+    - centerX: -9.078125
+      centerY: 1.25
+      width: 0.15625
+      height: 0.5
+    - centerX: 2.421875
+      centerY: 1.25
+      width: 0.15625
+      height: 0.5
+    - centerX: 2.578125
+      centerY: 1.25
+      width: 0.15625
+      height: 0.5
+    - centerX: 9.078125
+      centerY: 1.25
+      width: 0.15625
+      height: 0.5
+    - centerX: -9.078125
+      centerY: 1.75
+      width: 0.15625
+      height: 0.5
+    - centerX: -8.75
+      centerY: 1.640625
+      width: 0.5
+      height: 0.28125
+    - centerX: -8.25
+      centerY: 1.640625
+      width: 0.5
+      height: 0.28125
+    - centerX: -6.75
+      centerY: 1.640625
+      width: 0.5
+      height: 0.28125
+    - centerX: -6.078125
+      centerY: 1.890625
+      width: 0.15625
+      height: 0.21875
+    - centerX: -6.25
+      centerY: 1.640625
+      width: 0.5
+      height: 0.28125
+    - centerX: -4.921875
+      centerY: 1.890625
+      width: 0.15625
+      height: 0.21875
+    - centerX: -4.75
+      centerY: 1.640625
+      width: 0.5
+      height: 0.28125
+    - centerX: -2.578125
+      centerY: 1.890625
+      width: 0.15625
+      height: 0.21875
+    - centerX: -2.75
+      centerY: 1.640625
+      width: 0.5
+      height: 0.28125
+    - centerX: 0.921875
+      centerY: 1.75
+      width: 0.15625
+      height: 0.5
+    - centerX: 1.078125
+      centerY: 1.75
+      width: 0.15625
+      height: 0.5
+    - centerX: 2.421875
+      centerY: 1.5625
+      width: 0.15625
+      height: 0.125
+    - centerX: 2.578125
+      centerY: 1.5625
+      width: 0.15625
+      height: 0.125
+    - centerX: 9.078125
+      centerY: 1.75
+      width: 0.15625
+      height: 0.5
+    - centerX: -9.078125
+      centerY: 2.25
+      width: 0.15625
+      height: 0.5
+    - centerX: -6.078125
+      centerY: 2.25
+      width: 0.15625
+      height: 0.5
+    - centerX: -4.921875
+      centerY: 2.25
+      width: 0.15625
+      height: 0.5
+    - centerX: -2.578125
+      centerY: 2.25
+      width: 0.15625
+      height: 0.5
+    - centerX: -1.078125
+      centerY: 2.25
+      width: 0.15625
+      height: 0.5
+    - centerX: -0.921875
+      centerY: 2.25
+      width: 0.15625
+      height: 0.5
+    - centerX: 0.921875
+      centerY: 2.25
+      width: 0.15625
+      height: 0.5
+    - centerX: 1.078125
+      centerY: 2.25
+      width: 0.15625
+      height: 0.5
+    - centerX: 4.75
+      centerY: 2.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 5.25
+      centerY: 2.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 5.75
+      centerY: 2.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 6.25
+      centerY: 2.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 6.75
+      centerY: 2.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 7.25
+      centerY: 2.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 7.75
+      centerY: 2.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 8.25
+      centerY: 2.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 8.75
+      centerY: 2.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 9.078125
+      centerY: 2.25
+      width: 0.15625
+      height: 0.5
+    - centerX: -9.078125
+      centerY: 2.75
+      width: 0.15625
+      height: 0.5
+    - centerX: -6.078125
+      centerY: 2.75
+      width: 0.15625
+      height: 0.5
+    - centerX: -4.921875
+      centerY: 2.75
+      width: 0.15625
+      height: 0.5
+    - centerX: -2.578125
+      centerY: 2.75
+      width: 0.15625
+      height: 0.5
+    - centerX: -1.078125
+      centerY: 2.75
+      width: 0.15625
+      height: 0.5
+    - centerX: -0.921875
+      centerY: 2.75
+      width: 0.15625
+      height: 0.5
+    - centerX: 0.25
+      centerY: 2.640625
+      width: 0.5
+      height: 0.28125
+    - centerX: 0.75
+      centerY: 2.640625
+      width: 0.5
+      height: 0.28125
+    - centerX: 1.25
+      centerY: 2.640625
+      width: 0.5
+      height: 0.28125
+    - centerX: 1.75
+      centerY: 2.640625
+      width: 0.5
+      height: 0.28125
+    - centerX: 5.421875
+      centerY: 2.75
+      width: 0.15625
+      height: 0.5
+    - centerX: 5.578125
+      centerY: 2.75
+      width: 0.15625
+      height: 0.5
+    - centerX: 9.078125
+      centerY: 2.75
+      width: 0.15625
+      height: 0.5
+    - centerX: -9.078125
+      centerY: 3.25
+      width: 0.15625
+      height: 0.5
+    - centerX: -6.078125
+      centerY: 3.25
+      width: 0.15625
+      height: 0.5
+    - centerX: -4.75
+      centerY: 3.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -4.25
+      centerY: 3.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -3.75
+      centerY: 3.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -3.25
+      centerY: 3.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -2.75
+      centerY: 3.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -1.078125
+      centerY: 3.25
+      width: 0.15625
+      height: 0.5
+    - centerX: -0.921875
+      centerY: 3.25
+      width: 0.15625
+      height: 0.5
+    - centerX: 5.421875
+      centerY: 3.0625
+      width: 0.15625
+      height: 0.125
+    - centerX: 5.578125
+      centerY: 3.0625
+      width: 0.15625
+      height: 0.125
+    - centerX: 9.078125
+      centerY: 3.25
+      width: 0.15625
+      height: 0.5
+    - centerX: -9.078125
+      centerY: 3.75
+      width: 0.15625
+      height: 0.5
+    - centerX: -6.078125
+      centerY: 3.75
+      width: 0.15625
+      height: 0.5
+    - centerX: -1.078125
+      centerY: 3.75
+      width: 0.15625
+      height: 0.5
+    - centerX: -0.921875
+      centerY: 3.75
+      width: 0.15625
+      height: 0.5
+    - centerX: 9.078125
+      centerY: 3.75
+      width: 0.15625
+      height: 0.5
+    - centerX: -9.078125
+      centerY: 4.25
+      width: 0.15625
+      height: 0.5
+    - centerX: -8.75
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -8.25
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -7.75
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -7.25
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -6.75
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -6.25
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -5.75
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -5.25
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -4.75
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -4.25
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -3.75
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -3.25
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -2.75
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -2.25
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -1.75
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -1.25
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -0.75
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: -0.25
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 0.25
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 0.75
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 1.25
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 1.75
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 2.25
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 2.75
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 3.25
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 3.75
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 4.25
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 4.75
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 5.25
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 5.75
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 6.25
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 6.75
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 7.25
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 7.75
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 8.25
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 8.75
+      centerY: 4.140625
+      width: 0.5
+      height: 0.28125
+    - centerX: 9.078125
+      centerY: 4.25
+      width: 0.15625
+      height: 0.5
+    - centerX: -9.25
+      centerY: 4.75
+      width: 0.5
+      height: 0.5
+    - centerX: 9.25
+      centerY: 4.75
+      width: 0.5
+      height: 0.5
+    - centerX: 3.4899998
+      centerY: 3.69
+      width: 0.5
+      height: 0.5
+    - centerX: 3.9899998
+      centerY: 3.69
+      width: 0.5
+      height: 0.5
+    - centerX: 3.4899998
+      centerY: 3.9556253
+      width: 0.5
+      height: 0.03125
+    - centerX: 3.9899998
+      centerY: 3.9556253
+      width: 0.5
+      height: 0.03125
   triggerList:
-    colliders: []
+    colliders:
+    - centerX: 0.014223099
+      centerY: -0.4040327
+      width: 18.069313
+      height: 8.926838
+    - centerX: 6.83
+      centerY: -2.91
+      width: 4.584839
+      height: 2.9999995
+    - centerX: -7.5
+      centerY: -3.5
+      width: 3
+      height: 2
+    - centerX: -7.5
+      centerY: 3
+      width: 3
+      height: 3
 --- !u!1 &4149918817601353991
 GameObject:
   m_ObjectHideFlags: 0
@@ -12559,7 +13708,7 @@ Transform:
   m_GameObject: {fileID: 6913651313991692330}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.12, y: -0.03, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13001,8 +14150,8 @@ Transform:
   - {fileID: 5282554640620182517}
   - {fileID: 9010944885933689401}
   - {fileID: 1635654624153907494}
-  - {fileID: 1366736502175605912}
   - {fileID: 1404498915019615370}
+  - {fileID: 1366736502175605912}
   m_Father: {fileID: 2056131363973384503}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8624858911450339349
