@@ -7,14 +7,12 @@ public class ScoreDisplay : MonoBehaviour
 
     private void Start()
     {
-        RenderScore();
+        int score = LoadingScreenUI.Instance.GetData<int>("Score");
+        RenderScore(score);
     }
 
-    private void RenderScore()
+    private void RenderScore(int score)
     {
-        int score = GameManager.Instance != null
-                    ? GameManager.Instance.Score
-                    : 0;
         _scoreText.text = "Score: " + score.ToString();
     }
 }

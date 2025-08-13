@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameStateHandler : MonoBehaviour
 {
@@ -17,7 +19,11 @@ public class GameStateHandler : MonoBehaviour
     private Dictionary<string, TrackedObject> _itemMap = new();
     // private Dictionary<string, TrackedObject> _stationMap = new();
     private List<RecipeConfig> _requiredRecipes = new();
+    private int[] _scoreThresholds;
+    private int _totalScore;
+    private int _stars;
     private float _timeLeft;
+    private float _maxTime;
 
     public event Action<string[], int[]> OnInventorySynced;
     public event Action<int> OnScoreChanged;
@@ -91,8 +97,10 @@ public class GameStateHandler : MonoBehaviour
 
     private void SyncScore(Dictionary<string, int> scores)
     {
+        _totalScore = 0;
         foreach (var item in scores)
         {
+            _totalScore += item.Value;
             string localId = _startGameHandler.LocalPlayer?.Identity.PlayerId;
             if (localId == null) continue;
             if (scores.ContainsKey(localId))
@@ -100,6 +108,13 @@ public class GameStateHandler : MonoBehaviour
                 OnScoreChanged?.Invoke(scores[localId]);
                 break;
             }
+        }
+
+        _stars = 3;
+        for (int i = _scoreThresholds.Length - 1; i >= 0; i--)
+        {
+            if (_totalScore >= _scoreThresholds[i]) break;
+                _stars--;
         }
     }
 
@@ -121,6 +136,10 @@ public class GameStateHandler : MonoBehaviour
     {
         _timeLeft = timeLeft;
         OnTimeChanged?.Invoke(_timeLeft);
+        if (_timeLeft >= _maxTime)
+        {
+            StartCoroutine(LoadLevelResult(_totalScore, _stars));
+        }
     }
 
     private void HandleSyncing(
@@ -208,13 +227,28 @@ public class GameStateHandler : MonoBehaviour
             scriptableObjects.Add(levelConfig.FinalRecipes[i].Product);
         }
 
-        // StationControllerNetwork[] stationControllers = map.GetComponentsInChildren<StationControllerNetwork>();
-        // for (int i = 0; i < stationControllers.Length; i++)
-        // {
-        //     scriptableObjects.Add(stationControllers[i].Config);
-        // }
-
         _prefabsMap.InitializeMapping(scriptableObjects.ToArray());
-        // _timeLeft = levelConfig.LevelTime;
+        _maxTime = levelConfig.LevelTime;
+        _scoreThresholds = levelConfig.ScoreThresholds;
+
+    }
+    
+    private IEnumerator LoadLevelResult(int score, int star)
+    {
+        LoadingScreenUI.Instance.OnSceneExit += () =>
+        {
+            LoadingScreenUI.Instance.SetData("Score", score);
+            LoadingScreenUI.Instance.SetData("Stars", star);
+        };
+        AsyncOperation request = SceneManager.LoadSceneAsync("LevelResultScene");
+        request.completed += async (op) =>
+        {
+            await LoadingScreenUI.Instance.RenderFinish();
+        };
+        LoadingScreenUI.Instance.gameObject.SetActive(true);
+        List<AsyncOperation> opList = new List<AsyncOperation>();
+        opList.Add(request);
+
+        yield return StartCoroutine(LoadingScreenUI.Instance.RenderLoadingScene(opList));
     }
 }

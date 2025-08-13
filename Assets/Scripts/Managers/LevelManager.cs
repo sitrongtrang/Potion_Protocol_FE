@@ -203,9 +203,7 @@ public class LevelManager : MonoBehaviour
         }
         if (_timeLeft <= 0)
         {
-            GameManager.Instance.Star = _stars;
-            GameManager.Instance.Score = _score;
-            SceneManager.LoadScene("LevelResultScene");
+            StartCoroutine(LoadLevelResult(_score, _stars));
         }
     }
 
@@ -258,5 +256,24 @@ public class LevelManager : MonoBehaviour
         }
         Debug.Log($"Submitted product {product.Name} is not in the required recipes list.");
         return false;
+    }
+
+    private IEnumerator LoadLevelResult(int score, int star)
+    {
+        LoadingScreenUI.Instance.OnSceneExit += () =>
+        {
+            LoadingScreenUI.Instance.SetData("Scores", score);
+            LoadingScreenUI.Instance.SetData("Stars", star);
+        };
+        AsyncOperation request = SceneManager.LoadSceneAsync("LevelResultScene");
+        request.completed += async (op) =>
+        {
+            await LoadingScreenUI.Instance.RenderFinish();
+        };
+        LoadingScreenUI.Instance.gameObject.SetActive(true);
+        List<AsyncOperation> opList = new List<AsyncOperation>();
+        opList.Add(request);
+
+        yield return StartCoroutine(LoadingScreenUI.Instance.RenderLoadingScene(opList));
     }
 }
