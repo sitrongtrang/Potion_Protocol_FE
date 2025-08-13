@@ -26,8 +26,11 @@ public class HttpAuthHandler : MonoBehaviour
     [SerializeField] private GameObject _loginError;
     [SerializeField] private GameObject _registerError;
     [SerializeField] private float _disableAfterSeconds;
+    [SerializeField] private Canvas _loginCanvas;
+    [SerializeField] private Canvas _signupCanvas;
 
     private Coroutine _loginErrorDisable;
+    private Coroutine _registerErrorDisable;
 
     void Start()
     {
@@ -110,6 +113,12 @@ public class HttpAuthHandler : MonoBehaviour
         _loginError.SetActive(false);
     }
 
+    private IEnumerator DisableRegisterError()
+    {
+        yield return new WaitForSeconds(_disableAfterSeconds);
+        _registerError.SetActive(false);
+    }
+
     public void OnRegisterButtonPressed()
     {
         StartCoroutine(SendRegisterRequest(registerusernameField.text, registerpasswordField.text, confirmpasswordField.text, displaynameField.text));
@@ -146,13 +155,40 @@ public class HttpAuthHandler : MonoBehaviour
                 request.downloadHandler.text
             );
             Debug.Log("Register successful! Message: " + resp.Message);
+            showLogin();
         }
         else
         {
             Debug.LogError("Register failed: " + request.error);
-            if (_loginErrorDisable != null) StopCoroutine(_loginErrorDisable);
-            _loginError.SetActive(true);
-            _loginErrorDisable = StartCoroutine(DisableLoginError());
+            if (_registerErrorDisable != null) StopCoroutine(_registerErrorDisable);
+            _registerError.SetActive(true);
+            _registerErrorDisable = StartCoroutine(DisableRegisterError());
         }
+    }
+
+    public void showSignup()
+    {
+        _loginCanvas.gameObject.SetActive(false);
+        Reset();
+        _signupCanvas.gameObject.SetActive(true);
+    }
+
+    public void showLogin()
+    {
+        _signupCanvas.gameObject.SetActive(false);
+        Reset();
+        _loginCanvas.gameObject.SetActive(true);
+    }
+
+    private void Reset()
+    {
+        usernameField.text = string.Empty;
+        passwordField.text = string.Empty;
+        registerusernameField.text = string.Empty;
+        registerpasswordField.text = string.Empty;
+        confirmpasswordField.text = string.Empty;
+        displaynameField.text = string.Empty;
+        _registerError.SetActive(false);
+        _loginError.SetActive(false);
     }
 }
