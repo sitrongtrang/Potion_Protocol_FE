@@ -978,6 +978,7 @@ GameObject:
   - component: {fileID: 734162630}
   - component: {fileID: 734162629}
   - component: {fileID: 734162628}
+  - component: {fileID: 734162631}
   m_Layer: 5
   m_Name: Options
   m_TagString: Untagged
@@ -1099,6 +1100,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734162626}
   m_CullTransparentMesh: 1
+--- !u!114 &734162631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734162626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd6086419e917c41847b043a22098fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hoverTexture: {fileID: 2800000, guid: b8a2ec852d386df4f9eec22f1b15e897, type: 3}
 --- !u!1 &808311991
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,6 +1126,7 @@ GameObject:
   - component: {fileID: 808311994}
   - component: {fileID: 808311993}
   - component: {fileID: 808311996}
+  - component: {fileID: 808311997}
   m_Layer: 5
   m_Name: Friend List
   m_TagString: Untagged
@@ -1246,6 +1261,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneName: FriendListScene
+--- !u!114 &808311997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808311991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd6086419e917c41847b043a22098fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hoverTexture: {fileID: 2800000, guid: b8a2ec852d386df4f9eec22f1b15e897, type: 3}
 --- !u!1 &846332876
 GameObject:
   m_ObjectHideFlags: 0
@@ -1410,6 +1438,7 @@ GameObject:
   - component: {fileID: 936002939}
   - component: {fileID: 936002938}
   - component: {fileID: 936002937}
+  - component: {fileID: 936002940}
   m_Layer: 5
   m_Name: MP
   m_TagString: Untagged
@@ -1531,6 +1560,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 936002935}
   m_CullTransparentMesh: 1
+--- !u!114 &936002940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936002935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd6086419e917c41847b043a22098fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hoverTexture: {fileID: 2800000, guid: b8a2ec852d386df4f9eec22f1b15e897, type: 3}
 --- !u!1 &1215175325
 GameObject:
   m_ObjectHideFlags: 0
@@ -1543,6 +1585,7 @@ GameObject:
   - component: {fileID: 1215175329}
   - component: {fileID: 1215175328}
   - component: {fileID: 1215175327}
+  - component: {fileID: 1215175330}
   m_Layer: 5
   m_Name: Codex
   m_TagString: Untagged
@@ -1664,6 +1707,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215175325}
   m_CullTransparentMesh: 1
+--- !u!114 &1215175330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215175325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd6086419e917c41847b043a22098fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hoverTexture: {fileID: 2800000, guid: b8a2ec852d386df4f9eec22f1b15e897, type: 3}
 --- !u!1 &1285621456
 GameObject:
   m_ObjectHideFlags: 0
@@ -1936,6 +1992,7 @@ GameObject:
   - component: {fileID: 1555055588}
   - component: {fileID: 1555055587}
   - component: {fileID: 1555055586}
+  - component: {fileID: 1555055589}
   m_Layer: 5
   m_Name: Solo
   m_TagString: Untagged
@@ -2057,6 +2114,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555055584}
   m_CullTransparentMesh: 1
+--- !u!114 &1555055589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555055584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd6086419e917c41847b043a22098fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hoverTexture: {fileID: 2800000, guid: b8a2ec852d386df4f9eec22f1b15e897, type: 3}
 --- !u!1 &1615817158
 GameObject:
   m_ObjectHideFlags: 0
@@ -2494,6 +2564,7 @@ MonoBehaviour:
   _optionButton: {fileID: 734162628}
   _quitButton: {fileID: 0}
   _codexButton: {fileID: 0}
+  _name: {fileID: 274876420}
 --- !u!4 &1784847385
 Transform:
   m_ObjectHideFlags: 0
