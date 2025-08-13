@@ -41,7 +41,7 @@ public class PlayerInputMessage : ClientMessage, IInputSnapshot
         MoveDirY = playerInputSnapshot.MoveDir.y;
 
         Flags = playerInputSnapshot.DashPressed ? Flags |= (int)InputFlags.Dash : Flags;
-        Flags = MoveDirX != 0 || MoveDirY != 0 ? Flags |= (int)InputFlags.Move : Flags;
+        Flags = !(MoveDirX == 0 || MoveDirY == 0) ? Flags |= (int)InputFlags.Move : Flags;
         
         Flags = playerInputSnapshot.AttackPressed ? Flags |= (int)InputFlags.Attack : Flags;
 

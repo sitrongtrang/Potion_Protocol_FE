@@ -201,13 +201,16 @@ public class PlayerNetworkController : MonoBehaviour
                 _playerDir = inputSnapshot.MoveDir != Vector2.zero ? inputSnapshot.MoveDir.normalized : _playerDir;
                 TriggerMoveAnimation(_playerDir, inputSnapshot.MoveDir != Vector2.zero);
 
-                float moveSpeed = inputSnapshot.DashPressed && _canDash ? _config.DashSpeed : _config.MoveSpeed;
-                Vector2 targetPos = transform.position + (Vector3)(moveSpeed * Time.fixedDeltaTime * _playerDir);
-                Vector2 resolvedPos = ContextSolver.ResolveStatic(transform.position, targetPos, _collider, CollisionSystem.Tree);
+                if (inputSnapshot.MoveDir != Vector2.zero)
+                {
+                    float moveSpeed = inputSnapshot.DashPressed && _canDash ? _config.DashSpeed : _config.MoveSpeed;
+                    Vector2 targetPos = transform.position + (Vector3)(moveSpeed * Time.fixedDeltaTime * _playerDir);
+                    Vector2 resolvedPos = ContextSolver.ResolveStatic(transform.position, targetPos, _collider, CollisionSystem.Tree);
 
-                transform.position = resolvedPos;
-                Vector2 center = transform.position;
-                _collider.SetBottomLeft(center - _size / 2f);
+                    transform.position = resolvedPos;
+                    Vector2 center = transform.position;
+                    _collider.SetBottomLeft(center - _size / 2f);
+                }
                     
                 return new()
                 {
