@@ -167,13 +167,27 @@ public class HttpAuthHandler : MonoBehaviour
 
     public void showSignup()
     {
-        _signupCanvas.gameObject.SetActive(true);
         _loginCanvas.gameObject.SetActive(false);
+        Reset();
+        _signupCanvas.gameObject.SetActive(true);
     }
 
     public void showLogin()
     {
         _signupCanvas.gameObject.SetActive(false);
+        Reset();
         _loginCanvas.gameObject.SetActive(true);
+    }
+
+    private void Reset()
+    {
+        usernameField.text = string.Empty;
+        passwordField.text = string.Empty;
+        registerusernameField.text = string.Empty;
+        registerpasswordField.text = string.Empty;
+        confirmpasswordField.text = string.Empty;
+        displaynameField.text = string.Empty;
+        _registerError.SetActive(false);
+        _loginError.SetActive(false);
     }
 }
