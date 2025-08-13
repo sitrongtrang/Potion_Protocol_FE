@@ -69,18 +69,18 @@ public class InventoryUI : MonoBehaviour
         _inventoryItemsUI[slotIndex].GetComponent<Image>().sprite = sprite;
     }
 
-    private void SyncInventory(string[] itemTypeIds)
+    private void SyncInventory(string[] itemTypeIds, int[] indicies)
     {
         for (int i = 0; i < itemTypeIds.Length; i++)
         {
             ScriptableObject scriptableObject = _gameStateHandler.PrefabsMap.GetSO(itemTypeIds[i]);
             if (scriptableObject is ItemConfig itemConfig)
             {
-                UpdateInventoryUI(i, itemConfig.Icon);
+                UpdateInventoryUI(indicies[i], itemConfig.Icon);
             }
             else
             {
-                UpdateInventoryUI(i);
+                UpdateInventoryUI(indicies[i]);
             }
         }
     }

@@ -19,7 +19,7 @@ public class GameStateHandler : MonoBehaviour
     private List<RecipeConfig> _requiredRecipes = new();
     private float _timeLeft;
 
-    public event Action<string[]> OnInventorySynced;
+    public event Action<string[], int[]> OnInventorySynced;
     public event Action<int> OnScoreChanged;
     public event Action<List<RecipeConfig>> OnRecipesSynced;
     public event Action<float> OnTimeChanged;
@@ -56,7 +56,7 @@ public class GameStateHandler : MonoBehaviour
                 // Syncing UI
                 SyncRecipes(gameState.RequiredRecipeIds);
                 SyncScore(gameState.PlayerScores);
-                SyncInventory(gameState.PlayerInventories);
+                SyncInventory(gameState.PlayerInventories, gameState.PlayerInventoriesIndices);
                 SyncTime(gameState.TimeLeft);
             }
         );
@@ -103,15 +103,15 @@ public class GameStateHandler : MonoBehaviour
         }
     }
 
-    private void SyncInventory(Dictionary<string, string[]> inventories)
+    private void SyncInventory(Dictionary<string, string[]> inventories, Dictionary<string, int[]> inventoryIndecies)
     {
         foreach (var item in inventories)
         {
             string localId = _startGameHandler.LocalPlayer?.Identity.PlayerId;
             if (localId == null) continue;
-            if (inventories.ContainsKey(localId))
+            if (inventories.ContainsKey(localId) && inventoryIndecies.ContainsKey(localId))
             {
-                OnInventorySynced?.Invoke(inventories[localId]);
+                OnInventorySynced?.Invoke(inventories[localId], inventoryIndecies[localId]);
                 break;
             }
         }

@@ -66,6 +66,7 @@ public class GameStateNetworkInterpolator : INetworkInterpolator<GameStateInterp
 
                 Dictionary<string, int> score = new();
                 Dictionary<string, string[]> inventory = new();
+                Dictionary<string, int[]> inventoryIndices = new();
 
                 foreach (var player in update.PlayerStates)
                 {
@@ -86,6 +87,15 @@ public class GameStateNetworkInterpolator : INetworkInterpolator<GameStateInterp
                     {
                         inventory.Add(player.PlayerId, player.InventoryItemTypes);
                     }
+
+                    if (inventoryIndices.ContainsKey(player.PlayerId))
+                    {
+                        inventoryIndices[player.PlayerId] = player.InventoryItemIndicies;
+                    }
+                    else
+                    {
+                        inventoryIndices.Add(player.PlayerId, player.InventoryItemIndicies);
+                    }
                 }
 
                 _buffer.Add(new GameStateInterpolateData()
@@ -97,6 +107,7 @@ public class GameStateNetworkInterpolator : INetworkInterpolator<GameStateInterp
                     RequiredRecipeIds = requiredRecipe,
                     PlayerScores = score,
                     PlayerInventories = inventory,
+                    PlayerInventoriesIndices = inventoryIndices,
                     ServerSequence = update.ServerSequence,
                     TimeLeft = update.CurrentGameTime
                 });
