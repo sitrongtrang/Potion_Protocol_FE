@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 3032114515740211782}
   - component: {fileID: 987742061083891330}
   - component: {fileID: 6008212070274152235}
+  - component: {fileID: 1168895370243416819}
   m_Layer: 5
   m_Name: PreviousPage
   m_TagString: Untagged
@@ -257,3 +258,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1168895370243416819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6129794820848003306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd6086419e917c41847b043a22098fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hoverTexture: {fileID: 2800000, guid: b8a2ec852d386df4f9eec22f1b15e897, type: 3}

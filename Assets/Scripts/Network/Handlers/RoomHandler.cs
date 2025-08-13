@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -20,9 +21,9 @@ public class RoomHandler : MonoBehaviour
     [SerializeField] private RoomListRenderer _roomListRenderer;
     [SerializeField] private RoomScene _roomScene;
     [SerializeField] private CreateRoom _createRoom;
+    // [SerializeField] private RoomInviteUI _roomInvite;
     [Header("Person")]
     [SerializeField] private Person[] Person;
-    [SerializeField] private Animator[] Avt;
     [Header("Button")]
     [SerializeField] private TMP_Text _startButton;
 
@@ -88,7 +89,10 @@ public class RoomHandler : MonoBehaviour
                 OnGameStart((ServerStartGame)message);
                 break;
             case NetworkMessageTypes.Server.Room.ACK:
-                OnSelfLeaveRoom();
+                HandleACK((ServerACK)message);
+                break;
+            // case NetworkMessageTypes.Server.Room.SendRoomInvite:
+            //     OnReceiveInvite((ServerSendInvite)message);
                 break;
             default:
                 break;
@@ -151,14 +155,13 @@ public class RoomHandler : MonoBehaviour
             if (string.Compare(msg.LeaderID, Person[i].ID.text) == 0)
             {
                 Person[i].Name.color = Color.yellow;
-                _roomScene.SetPersonRoom("Start", _startButton);
+                CreateRoomUI.Instance.SetText("Start", _startButton);
             }
 
             if (string.Compare(msg.UserID, Person[i].ID.text) == 0)
             {
-                _roomScene.SetPersonRoom(null, Person[i].Name);
-                _roomScene.SetPersonRoom(null, Person[i].ID);
-                _roomScene.RunAnim(Avt[i], false);
+                CreateRoomUI.Instance.SetText(null, Person[i].Name);
+                CreateRoomUI.Instance.SetText(null, Person[i].ID);
             }
         }
     }
@@ -170,7 +173,7 @@ public class RoomHandler : MonoBehaviour
         if (_roomScene.Leader == true)
         {
             _roomScene.Leader = false;
-            _roomScene.SetPersonRoom("Ready", _startButton);
+            CreateRoomUI.Instance.SetText("Ready", _startButton);
         }
 
         ResetRoom();
@@ -253,17 +256,16 @@ public class RoomHandler : MonoBehaviour
 
             int slot = FindEmptySlot();
 
-            _roomScene.SetPersonRoom(PlayerList[i].PlayerDisPlayName, Person[slot].Name);
-            _roomScene.SetPersonRoom(PlayerList[i].PlayerID, Person[slot].ID);
-            _roomScene.RunAnim(Avt[slot], true);
+            CreateRoomUI.Instance.SetText(PlayerList[i].PlayerDisPlayName, Person[slot].Name);
+            CreateRoomUI.Instance.SetText(PlayerList[i].PlayerID, Person[slot].ID);
             if (PlayerList[i].PlayerRole == (short)PlayerRole.Leader)
             {
                 Person[slot].Name.color = Color.yellow;
             }
             else Person[slot].Name.color = Color.white;
         }
-        if (_roomScene.Leader == true) _roomScene.SetPersonRoom("Start", _startButton);
-        else _roomScene.SetPersonRoom("Ready", _startButton);
+        if (_roomScene.Leader == true) CreateRoomUI.Instance.SetText("Start", _startButton);
+        else CreateRoomUI.Instance.SetText("Ready", _startButton);
     }
 
     private int FindEmptySlot()
@@ -279,9 +281,8 @@ public class RoomHandler : MonoBehaviour
     {
         for (int i = 0; i < Person.Length; i++)
         {
-            _roomScene.SetPersonRoom(null, Person[i].Name);
-            _roomScene.SetPersonRoom(null, Person[i].ID);
-            _roomScene.RunAnim(Avt[i], false);
+            CreateRoomUI.Instance.SetText(null, Person[i].Name);
+            CreateRoomUI.Instance.SetText(null, Person[i].ID);
         }
     }
 
@@ -296,4 +297,25 @@ public class RoomHandler : MonoBehaviour
         }
         return false;
     }
+
+    private void HandleACK(ServerACK msg)
+    {
+        switch (msg.clientMessageType)
+        {
+            case NetworkMessageTypes.Client.Pregame.LeaveRoom:
+                OnSelfLeaveRoom();
+                break;
+            case NetworkMessageTypes.Client.Pregame.SendRoomInvite:
+                Debug.Log("Join Room By Invite");
+                break;
+            default:
+                break;
+        }
+    }    
+
+    // private void OnReceiveInvite(ServerSendInvite msg)
+    // {
+    //     _roomInvite.SetName(msg.RequesterDisplayName, msg.RoomId);
+    //     CreateRoomUI.Instance.ShowInviteRoomCanvas();
+    // }
 }

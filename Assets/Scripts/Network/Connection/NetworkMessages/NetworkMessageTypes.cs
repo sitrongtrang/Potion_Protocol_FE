@@ -31,6 +31,7 @@ public static class NetworkMessageTypes
             public const short GetRoomInfo = 406;
             public const short GetRoomByName = 410;
             public const short GetAllRoom = 408;
+            public const short SendRoomInvite = 409;
         }
 
         public static class Ingame
@@ -76,6 +77,7 @@ public static class NetworkMessageTypes
             public const short GetRoomInfo = 707;
             public const short GetRoomByName = 711;
             public const short GetAllRoom = 709;
+            public const short SendRoomInvite = 710;
 
             public const short RoomFull = 750;
             public const short PlayerNotReady = 751;
