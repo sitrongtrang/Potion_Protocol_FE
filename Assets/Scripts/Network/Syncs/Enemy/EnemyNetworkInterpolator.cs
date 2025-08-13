@@ -31,7 +31,8 @@ public class EnemyNetworkInterpolator : INetworkInterpolator<EnemyStateInterpola
                         ServerSequence = update.ServerSequence,
                         PositionX = update.EnemyStates[idx].PositionX,
                         PositionY = update.EnemyStates[idx].PositionY,
-                        Health = update.EnemyStates[idx].CurrentHealth
+                        Health = update.EnemyStates[idx].CurrentHealth,
+                        IsStandingStill = update.EnemyStates[idx].IsStandingStill
                     });
                 }
             }
@@ -39,6 +40,7 @@ public class EnemyNetworkInterpolator : INetworkInterpolator<EnemyStateInterpola
     }
     public void IncrementAndInterpolate(Action<EnemyStateInterpolateData> applyState, Func<bool> notInAcceptingThreshold = null)
     {
+        if (_serverSequence == int.MaxValue) return;
         _serverSequence += 1;
         _buffer.SetMinTickToKeep(_serverSequence);
         if (_buffer.Poll(_serverSequence, out EnemyStateInterpolateData result))

@@ -7,6 +7,7 @@ public class EnemyStateInterpolateData : IServerStateSnapshot, IComparable<Enemy
     public float PositionX;
     public float PositionY;
     public float Health;
+    public bool IsStandingStill;
 
     int IServerStateSnapshot.ServerSequence => ServerSequence;
     

@@ -40,6 +40,7 @@ public class AlchemyNetworkInterpolator : INetworkInterpolator<AlchemyStateInter
     }
     public void IncrementAndInterpolate(Action<AlchemyStateInterpolateData> applyState, Func<bool> notInAcceptingThreshold = null)
     {
+        if (_serverSequence == int.MaxValue) return;
         _serverSequence += 1;
         _buffer.SetMinTickToKeep(_serverSequence);
         if (_buffer.Poll(_serverSequence, out AlchemyStateInterpolateData result))

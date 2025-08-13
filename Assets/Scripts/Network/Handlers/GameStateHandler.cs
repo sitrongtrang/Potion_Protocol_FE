@@ -93,7 +93,8 @@ public class GameStateHandler : MonoBehaviour
     {
         foreach (var item in scores)
         {
-            string localId = _startGameHandler.LocalPlayer.Identity.PlayerId;
+            string localId = _startGameHandler.LocalPlayer?.Identity.PlayerId;
+            if (localId == null) continue;
             if (scores.ContainsKey(localId))
             {
                 OnScoreChanged?.Invoke(scores[localId]);
@@ -106,7 +107,8 @@ public class GameStateHandler : MonoBehaviour
     {
         foreach (var item in inventories)
         {
-            string localId = _startGameHandler.LocalPlayer.Identity.PlayerId;
+            string localId = _startGameHandler.LocalPlayer?.Identity.PlayerId;
+            if (localId == null) continue;
             if (inventories.ContainsKey(localId))
             {
                 OnInventorySynced?.Invoke(inventories[localId]);
@@ -121,6 +123,7 @@ public class GameStateHandler : MonoBehaviour
         NetworkBehaviour prefab
     )
     {
+        // Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         List<string> keysToRemove = new();
         foreach (var kvp in current)
         {
@@ -143,6 +146,8 @@ public class GameStateHandler : MonoBehaviour
                 obj.Initialize(id, _prefabsMap.GetSO(entityInfo.TypeId));
                 TrackedObject trackedObject = obj.AddComponent<TrackedObject>();
                 current.Add(id, trackedObject);
+
+                trackedObject.Id = id;
 
                 trackedObject.OnDestroyed += (id) =>
                 {

@@ -66,7 +66,6 @@ public class CreateRoom : MonoBehaviour
 
     public void ResetRoom()
     {
-        Debug.Log("aaaaaaaaa");
         RoomName.text = null;
         Password.text = null;
         Error.SetActive(false);

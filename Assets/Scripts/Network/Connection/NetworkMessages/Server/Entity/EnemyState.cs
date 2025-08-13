@@ -10,4 +10,6 @@ public class EnemyState
     public float PositionY;
     [FieldOrder(4)]
     public float CurrentHealth;
+    [FieldOrder(5)]
+    public bool IsStandingStill;
 }
