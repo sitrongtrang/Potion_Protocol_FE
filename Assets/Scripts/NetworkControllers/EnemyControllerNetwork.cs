@@ -56,7 +56,7 @@ public class EnemyControllerNetwork : NetworkBehaviour
             if (serverState.Health < _currentHp)
             {
                 _enemyImpactUI.Flash();
-                _healthBar.SetHp(_currentHp);
+                _healthBar.SetHp(serverState.Health);
             }
             _currentHp = serverState.Health;
             // SetCollider();
