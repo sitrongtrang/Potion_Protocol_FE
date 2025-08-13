@@ -27,7 +27,11 @@ public class NetworkManager : MonoBehaviour
     private string _sessionToken; // For reconnection
     private string _authToken;
     private bool _isAuthenticated;
-    public bool IsAuthenticated => _isAuthenticated;
+    public bool IsAuthenticated
+    {
+        get { return _isAuthenticated; }
+        set { _isAuthenticated = value; }
+    }
 
     #region Unity Lifecycle
     private void Awake()
