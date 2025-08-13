@@ -17,95 +17,96 @@ public class GameStateNetworkInterpolator : INetworkInterpolator<GameStateInterp
         bool inInitializing = _serverSequence == int.MaxValue;
         foreach (var update in updates)
         {
-            if (inInitializing)
+            if ((inInitializing && update.ServerSequence < _serverSequence) || (Mathf.Abs(update.ServerSequence - _serverSequence) > 1))
             {
-                if ((inInitializing && update.ServerSequence < _serverSequence) || (Mathf.Abs(update.ServerSequence - _serverSequence) > _buffer.Capacity))
+                _serverSequence = update.ServerSequence - 1;
+                _buffer.SetMinTickToKeep(_serverSequence);
+                _buffer.Clear();
+            }
+            if (update.ServerSequence >= _serverSequence)
+            {
+                var item = CreateEntityMap(
+                    update.ItemStates,
+                    s => s.ItemId,
+                    s => s.ItemType,
+                    s => new Vector2(s.PositionX, s.PositionY)
+                );
+
+                var enemy = CreateEntityMap(
+                    update.EnemyStates,
+                    s => s.EnemyId,
+                    s => s.EnemyType,
+                    s => new Vector2(s.PositionX, s.PositionY)
+                );
+
+                var itemSource = CreateEntityMap(
+                    update.OreStates,
+                    s => s.OreId,
+                    s => s.OreType,
+                    s => new Vector2(s.PositionX, s.PositionY)
+                );
+
+                foreach (var plant in update.PlantStates)
                 {
-                    _serverSequence = update.ServerSequence - 1;
-                    _buffer.SetMinTickToKeep(_serverSequence);
-                    _buffer.Clear();
-                }
-                if (update.ServerSequence >= _serverSequence)
-                {
-                    var item = CreateEntityMap(
-                        update.ItemStates,
-                        s => s.ItemId,
-                        s => s.ItemType,
-                        s => new Vector2(s.PositionX, s.PositionY)
-                    );
-
-                    var enemy = CreateEntityMap(
-                        update.EnemyStates,
-                        s => s.EnemyId,
-                        s => s.EnemyType,
-                        s => new Vector2(s.PositionX, s.PositionY)
-                    );
-
-                    var itemSource = CreateEntityMap(
-                        update.OreStates,
-                        s => s.OreId,
-                        s => s.OreType,
-                        s => new Vector2(s.PositionX, s.PositionY)
-                    );
-
-                    foreach (var plant in update.PlantStates)
+                    itemSource[plant.PlantId] = new GameStateInterpolateData.EntityInfo
                     {
-                        itemSource[plant.PlantId] = new GameStateInterpolateData.EntityInfo
-                        {
-                            TypeId = plant.PlantType,
-                            Position = new Vector2(plant.PositionX, plant.PositionY)
-                        };
+                        TypeId = plant.PlantType,
+                        Position = new Vector2(plant.PositionX, plant.PositionY)
+                    };
+                }
+
+                // var station = CreateEntityMap(
+                //     update.StationStates,
+                //     s => s.StationId,
+                //     s => s.StationType,
+                //     s => new Vector2(s.PositionX, s.PositionY)
+                // );
+
+                var requiredRecipe = update.RequiredRecipeIds.ToList();
+
+                Dictionary<string, int> score = new();
+                Dictionary<string, string[]> inventory = new();
+
+                foreach (var player in update.PlayerStates)
+                {
+                    if (score.ContainsKey(player.PlayerId))
+                    {
+                        score[player.PlayerId] = player.Score;
+                    }
+                    else
+                    {
+                        score.Add(player.PlayerId, player.Score);
                     }
 
-                    // var station = CreateEntityMap(
-                    //     update.StationStates,
-                    //     s => s.StationId,
-                    //     s => s.StationType,
-                    //     s => new Vector2(s.PositionX, s.PositionY)
-                    // );
-
-                    var requiredRecipe = update.RequiredRecipeIds.ToList();
-
-                    Dictionary<string, int> score = new();
-                    Dictionary<string, string[]> inventory = new();
-
-                    foreach (var player in update.PlayerStates)
+                    if (inventory.ContainsKey(player.PlayerId))
                     {
-                        if (score.ContainsKey(player.PlayerId))
-                        {
-                            score[player.PlayerId] = player.Score;
-                        }
-                        else
-                        {
-                            score.Add(player.PlayerId, player.Score);
-                        }
-
-                        if (inventory.ContainsKey(player.PlayerId))
-                        {
-                            inventory[player.PlayerId] = player.InventoryItemTypes;
-                        }
-                        else
-                        {
-                            inventory.Add(player.PlayerId, player.InventoryItemTypes);
-                        }
+                        inventory[player.PlayerId] = player.InventoryItemTypes;
                     }
-
-                    _buffer.Add(new GameStateInterpolateData()
+                    else
                     {
-                        ItemIds = item,
-                        EnemyIds = enemy,
-                        ItemSourceIds = itemSource,
-                        // StationIds = station,
-                        RequiredRecipeIds = requiredRecipe,
-                        PlayerScores = score,
-                        PlayerInventories = inventory
-                    });
+                        inventory.Add(player.PlayerId, player.InventoryItemTypes);
+                    }
                 }
+
+                _buffer.Add(new GameStateInterpolateData()
+                {
+                    ItemIds = item,
+                    EnemyIds = enemy,
+                    ItemSourceIds = itemSource,
+                    // StationIds = station,
+                    RequiredRecipeIds = requiredRecipe,
+                    PlayerScores = score,
+                    PlayerInventories = inventory,
+                    ServerSequence = update.ServerSequence,
+                    TimeLeft = update.CurrentGameTime
+                });
+            
             }
         }
     }
     public void IncrementAndInterpolate(Action<GameStateInterpolateData> applyState, Func<bool> notInAcceptingThreshold = null)
     {
+        if (_serverSequence == int.MaxValue) return;
         _serverSequence += 1;
         _buffer.SetMinTickToKeep(_serverSequence);
         if (_buffer.Poll(_serverSequence, out GameStateInterpolateData result))

@@ -39,6 +39,7 @@ public class FurnaceNetworkInterpolator : INetworkInterpolator<FurnaceStateInter
     }
     public void IncrementAndInterpolate(Action<FurnaceStateInterpolateData> applyState, Func<bool> notInAcceptingThreshold = null)
     {
+        if (_serverSequence == int.MaxValue) return;
         _serverSequence += 1;
         _buffer.SetMinTickToKeep(_serverSequence);
         if (_buffer.Poll(_serverSequence, out FurnaceStateInterpolateData result))

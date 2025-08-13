@@ -29,7 +29,8 @@ public class EnemyControllerNetwork : NetworkBehaviour
 
     void OnDestroy()
     {
-        Destroy(_healthBar.gameObject);
+        if (_healthBar != null)
+            Destroy(_healthBar.gameObject);
         CollisionSystem.RemoveDynamicCollider(_collider);
     }
 
@@ -41,11 +42,13 @@ public class EnemyControllerNetwork : NetworkBehaviour
             float yDir = serverState.PositionY - transform.position.y;
             Vector2 dir = new Vector2(xDir, yDir).normalized;
 
-            _animator.SetBool("IsMoving", dir != Vector2.zero);
+            if (serverState.IsStandingStill)
+                _animator.SetBool("IsMoving", false);
+            else _animator.SetBool("IsMoving", true);
             if (dir != Vector2.zero)
             {
                 _animator.SetFloat("MoveX", dir.x);
-                _animator.SetFloat("MoveY", dir.y); 
+                _animator.SetFloat("MoveY", dir.y);
             }
 
             transform.position = new(serverState.PositionX, serverState.PositionY);
@@ -56,7 +59,7 @@ public class EnemyControllerNetwork : NetworkBehaviour
                 _healthBar.SetHp(_currentHp);
             }
             _currentHp = serverState.Health;
-            SetCollider();
+            // SetCollider();
         });
     }
     #endregion
@@ -73,7 +76,7 @@ public class EnemyControllerNetwork : NetworkBehaviour
             _animator.runtimeAnimatorController = _config.Anim;
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _spriteRenderer.sprite = _config.Icon;
-            SetCollider();
+            // SetCollider();
         }
 
         _healthBar = Instantiate(_healthBarPrefab, FindFirstObjectByType<Canvas>().transform);

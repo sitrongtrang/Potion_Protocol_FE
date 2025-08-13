@@ -57,11 +57,11 @@ public class GameStateHandler : MonoBehaviour
                 SyncRecipes(gameState.RequiredRecipeIds);
                 SyncScore(gameState.PlayerScores);
                 SyncInventory(gameState.PlayerInventories);
+                SyncTime(gameState.TimeLeft);
             }
         );
 
-        _timeLeft -= Time.fixedDeltaTime;
-        OnTimeChanged?.Invoke(_timeLeft);
+        // _timeLeft -= Time.fixedDeltaTime;
     }
 
     private void SyncRecipes(List<string> data)
@@ -93,7 +93,8 @@ public class GameStateHandler : MonoBehaviour
     {
         foreach (var item in scores)
         {
-            string localId = _startGameHandler.LocalPlayer.Identity.PlayerId;
+            string localId = _startGameHandler.LocalPlayer?.Identity.PlayerId;
+            if (localId == null) continue;
             if (scores.ContainsKey(localId))
             {
                 OnScoreChanged?.Invoke(scores[localId]);
@@ -106,7 +107,8 @@ public class GameStateHandler : MonoBehaviour
     {
         foreach (var item in inventories)
         {
-            string localId = _startGameHandler.LocalPlayer.Identity.PlayerId;
+            string localId = _startGameHandler.LocalPlayer?.Identity.PlayerId;
+            if (localId == null) continue;
             if (inventories.ContainsKey(localId))
             {
                 OnInventorySynced?.Invoke(inventories[localId]);
@@ -115,12 +117,19 @@ public class GameStateHandler : MonoBehaviour
         }
     }
 
+    private void SyncTime(float timeLeft)
+    {
+        _timeLeft = timeLeft;
+        OnTimeChanged?.Invoke(_timeLeft);
+    }
+
     private void HandleSyncing(
         Dictionary<string, GameStateInterpolateData.EntityInfo> data,
         Dictionary<string, TrackedObject> current,
         NetworkBehaviour prefab
     )
     {
+        // Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         List<string> keysToRemove = new();
         foreach (var kvp in current)
         {
@@ -143,6 +152,8 @@ public class GameStateHandler : MonoBehaviour
                 obj.Initialize(id, _prefabsMap.GetSO(entityInfo.TypeId));
                 TrackedObject trackedObject = obj.AddComponent<TrackedObject>();
                 current.Add(id, trackedObject);
+
+                trackedObject.Id = id;
 
                 trackedObject.OnDestroyed += (id) =>
                 {
@@ -203,6 +214,6 @@ public class GameStateHandler : MonoBehaviour
         // }
 
         _prefabsMap.InitializeMapping(scriptableObjects.ToArray());
-        _timeLeft = levelConfig.LevelTime;
+        // _timeLeft = levelConfig.LevelTime;
     }
 }

@@ -80,6 +80,9 @@ public class QuadTree
 
     public void Remove(AABBCollider collider)
     {
+        if (collider == null)
+            return;
+
         if (_colliders.Contains(collider))
         {
             _colliders.Remove(collider);
