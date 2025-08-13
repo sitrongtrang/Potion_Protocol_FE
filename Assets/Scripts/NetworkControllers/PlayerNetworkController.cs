@@ -17,7 +17,7 @@ public class PlayerNetworkController : MonoBehaviour
     // private int _serverSequence = int.MaxValue;
     // private bool _isReconciling = false;
     private PlayerInputSnapshot _inputListener = new();
-    private Vector2 _playerDir = new Vector2(1, 0);
+    private Vector2 _playerDir = new Vector2(0, 1);
     private bool _canAttack;
     private float _attackCooldown;
     private bool _canDash;
@@ -248,15 +248,15 @@ public class PlayerNetworkController : MonoBehaviour
 
         // Check wall hit
         Vector2 dir = _playerDir.normalized;
-        float skinWidth = 0.2f;
-        Vector2 origin = (Vector2)transform.position + dir * skinWidth;
-        bool hitObstacle = CheckWall(origin, dir);
+        // float skinWidth = 0.2f;
+        // Vector2 origin = (Vector2)transform.position + dir * skinWidth;
+        // bool hitObstacle = CheckWall(origin, dir);
 
-        if (hitObstacle)
-        {
-            Debug.Log("Vướng tường nè má.");
-            return false;
-        }
+        // if (hitObstacle)
+        // {
+        //     Debug.Log("Vướng tường nè má.");
+        //     return false;
+        // }
 
         // Play animation
         _swordAnimator.SetTrigger("Attack");
