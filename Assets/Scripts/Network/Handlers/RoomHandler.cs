@@ -21,7 +21,7 @@ public class RoomHandler : MonoBehaviour
     [SerializeField] private RoomListRenderer _roomListRenderer;
     [SerializeField] private RoomScene _roomScene;
     [SerializeField] private CreateRoom _createRoom;
-    [SerializeField] private RoomInviteUI _roomInvite;
+    // [SerializeField] private RoomInviteUI _roomInvite;
     [Header("Person")]
     [SerializeField] private Person[] Person;
     [Header("Button")]
@@ -91,8 +91,8 @@ public class RoomHandler : MonoBehaviour
             case NetworkMessageTypes.Server.Room.ACK:
                 HandleACK((ServerACK)message);
                 break;
-            case NetworkMessageTypes.Server.Room.SendRoomInvite:
-                OnReceiveInvite((ServerSendInvite)message);
+            // case NetworkMessageTypes.Server.Room.SendRoomInvite:
+            //     OnReceiveInvite((ServerSendInvite)message);
                 break;
             default:
                 break;
@@ -313,9 +313,9 @@ public class RoomHandler : MonoBehaviour
         }
     }    
 
-    private void OnReceiveInvite(ServerSendInvite msg)
-    {
-        _roomInvite.SetName(msg.RequesterDisplayName, msg.RoomId);
-        CreateRoomUI.Instance.ShowInviteRoomCanvas();
-    }
+    // private void OnReceiveInvite(ServerSendInvite msg)
+    // {
+    //     _roomInvite.SetName(msg.RequesterDisplayName, msg.RoomId);
+    //     CreateRoomUI.Instance.ShowInviteRoomCanvas();
+    // }
 }
