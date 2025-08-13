@@ -75,6 +75,8 @@ public class MainMenuUI : MonoBehaviour
     public void OnLogout()
     {
         NetworkManager.Instance.IsAuthenticated = false;
+        NetworkManager.Instance.SessionToken = string.Empty;
+        NetworkManager.Instance.AuthToken = string.Empty;
         StartCoroutine(LoadSelectLevel("LoginScene"));
         NetworkManager.Instance.SendMessage(new LogoutRequest());
     }

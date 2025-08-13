@@ -25,7 +25,17 @@ public class NetworkManager : MonoBehaviour
     public string ClientId => _clientId;
     public string ClientDisplayName => _clientDisplayName;
     private string _sessionToken; // For reconnection
+    public string SessionToken
+    {
+        get { return _sessionToken; }
+        set { _sessionToken = value; }
+    }
     private string _authToken;
+    public string AuthToken
+    {
+        get { return _authToken; }
+        set { _authToken = value; }
+    }
     private bool _isAuthenticated;
     public bool IsAuthenticated
     {
