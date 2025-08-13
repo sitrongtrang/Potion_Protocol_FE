@@ -17,6 +17,8 @@ public class PlayerState : IStateSnapshot
     [FieldOrder(6)]
     public string[] InventoryItemTypes;
     [FieldOrder(7)]
+    public int[] InventoryItemIndicies;
+    [FieldOrder(8)]
     public int Score;
 
     int IStateSnapshot.ProcessedInputSequence => ProcessedInputSequence;
