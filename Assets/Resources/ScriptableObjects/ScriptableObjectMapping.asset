@@ -16,13 +16,7 @@ MonoBehaviour:
   _itemSourcePrefab: {fileID: -1275209392323848664, guid: 1f3672568ad7f684f9dcb8d30eac9c4f, type: 3}
   _itemPrefab: {fileID: 5034726193266538610, guid: 21664bc530682cf4ba26f51a4b5669c0, type: 3}
   _stationPrefab: {fileID: 6097344146582294549, guid: ab820a4969afa104c867bc9c78b87a93, type: 3}
-  _enemyMap:
-  - Id: 
-    SO: {fileID: 0}
-  - Id: 
-    SO: {fileID: 0}
-  - Id: 
-    SO: {fileID: 0}
+  _enemyMap: []
   _itemSourceMap: []
   _itemMap: []
   _recipeMap: []
