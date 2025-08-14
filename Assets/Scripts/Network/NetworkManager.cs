@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class NetworkManager : MonoBehaviour
 {
+    public static Action OnDisconnectedComplete;
     // Singleton instance
     public static NetworkManager Instance { get; private set; }
 
@@ -26,15 +27,18 @@ public class NetworkManager : MonoBehaviour
     private string _authToken;
     private bool _isAuthenticated;
     public bool IsAuthenticated => _isAuthenticated;
+    public bool IsInGame = false;
 
     #region Unity Lifecycle
     private void Awake()
     {
+
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
             Initialize();
+
         }
         else
         {
@@ -84,9 +88,17 @@ public class NetworkManager : MonoBehaviour
 
             Debug.Log($"Connected to {_ip}:{_port}");
             NetworkEvents.InvokeConnectionStatusChanged(true);
+            // Reset timeout ngay sau khi kết nối
+            NetworkTime.Instance?.ResetTimeoutTimers();
 
             // Start authentication process
-            // Authenticate();
+            if (!string.IsNullOrEmpty(_authToken))
+            {
+                SendMessage(new AuthMessage
+                {
+                    Token = PlayerPrefs.GetString("AuthToken"),
+                });
+            }
         }
         catch (Exception e)
         {
@@ -97,13 +109,25 @@ public class NetworkManager : MonoBehaviour
 
     public void Authenticate()
     {
+        Debug.Log("Authentication! This is my session token: " + _sessionToken);
         if (!string.IsNullOrEmpty(_sessionToken))
         {
             // Try to reconnect with existing session
-            SendMessage(new ReconnectMessage
+            UnityMainThreadDispatcher.Instance.Enqueue(() =>
             {
-                Token = _authToken,
-                SessionToken = _sessionToken
+                if (!string.IsNullOrEmpty(_authToken) && !string.IsNullOrEmpty(_sessionToken))
+                    SendMessage(new ReconnectMessage { Token = _authToken, SessionToken = _sessionToken });
+                else if (PlayerPrefs.HasKey("SessionToken") && PlayerPrefs.HasKey("AuthToken"))
+                {
+                    Debug.Log("Authenticate token: " + PlayerPrefs.GetString("AuthToken") + "Session token: " + PlayerPrefs.GetString("SessionToken"));
+                    SendMessage(
+                        new ReconnectMessage
+                        {
+                            Token = PlayerPrefs.GetString("AuthToken"),
+                            SessionToken = PlayerPrefs.GetString("SessionToken")
+                        }
+                    );
+                }
             });
         }
         else
@@ -121,7 +145,7 @@ public class NetworkManager : MonoBehaviour
     {
         _isConnected = false;
         _isAuthenticated = false;
-        
+
         try
         {
             if (_receiveThread != null && _receiveThread.IsAlive)
@@ -139,9 +163,9 @@ public class NetworkManager : MonoBehaviour
             if (_stream != null)
             {
                 lock (_stream)
-                    {
-                        _stream?.Close();
-                    }
+                {
+                    _stream?.Close();
+                }
             }
             _client?.Close();
         }
@@ -151,9 +175,10 @@ public class NetworkManager : MonoBehaviour
         }
 
         NetworkEvents.InvokeConnectionStatusChanged(false);
+        OnDisconnectedComplete?.Invoke();
     }
 
-    private void ScheduleReconnect()
+    public void ScheduleReconnect()
     {
         UnityMainThreadDispatcher.Instance.Enqueue(() =>
         {
@@ -198,7 +223,7 @@ public class NetworkManager : MonoBehaviour
                 Thread.Sleep(100);
                 if (_isConnected)
                 {
-                    Debug.LogError($"Receive error: {e.Message}");
+                    Debug.LogWarning($"Receive error: {e.Message}");
                     UnityMainThreadDispatcher.Instance.Enqueue(() =>
                     {
                         Disconnect();
@@ -215,6 +240,14 @@ public class NetworkManager : MonoBehaviour
         if (!_isConnected || _stream == null || !_stream.CanWrite)
             return;
 
+        // Nếu chưa authenticate, chỉ cho phép gửi message Authenticate/Reconnect
+        if (!_isAuthenticated &&
+            message.MessageType != NetworkMessageTypes.Client.Authentication.TryAuth &&
+            message.MessageType !=  NetworkMessageTypes.Client.Authentication.TryReconnect)
+        {
+            Debug.LogWarning($"[SendMessage] Chưa authenticated, bỏ qua {message.MessageType}");
+            return;
+        }
         try
         {
             byte[] data = Serialization.SerializeMessage(message);
@@ -236,9 +269,12 @@ public class NetworkManager : MonoBehaviour
     #region System Message Handlers
     private bool HandleSystemMessage(ServerMessage message)
     {
+        NetworkTime.Instance?.OnAnyMessageReceived(message);
+        Debug.Log(message.MessageType);
         switch (message.MessageType)
         {
             case NetworkMessageTypes.Server.System.AuthSuccess:
+                
                 HandleAuthSuccess((AuthSuccessMessage)message);
                 return true;
             case NetworkMessageTypes.Server.System.Pong:
@@ -247,17 +283,44 @@ public class NetworkManager : MonoBehaviour
             case NetworkMessageTypes.Server.System.GetUserInfo:
                 SetUserInfo((GetUserInfoServer)message);
                 return true;
-
+            case NetworkMessageTypes.Server.System.AuthFail:
+                SendReconnect();
+                return true;
             default:
                 return false;
         }
+    }
+
+    private void SendReconnect()
+    {
+        UnityMainThreadDispatcher.Instance.Enqueue(() =>
+        {
+            if (!string.IsNullOrEmpty(_authToken) && !string.IsNullOrEmpty(_sessionToken))
+                SendMessage(new ReconnectMessage { Token = _authToken, SessionToken = _sessionToken });
+            if (PlayerPrefs.HasKey("SessionToken") && PlayerPrefs.HasKey("AuthToken"))
+            {
+                Debug.Log("Authenticate token: " + PlayerPrefs.GetString("AuthToken") + "Session token: " + PlayerPrefs.GetString("SessionToken"));
+                SendMessage(
+                    new ReconnectMessage
+                    {
+                        Token = PlayerPrefs.GetString("AuthToken"),
+                        SessionToken = PlayerPrefs.GetString("SessionToken")
+                    }
+                );
+            }
+        });
     }
 
     private void HandleAuthSuccess(AuthSuccessMessage message)
     {
         _isAuthenticated = true;
         _sessionToken = message.ReconnectToken;
-        // PlayerPrefs.SetString("SessionToken", _sessionToken);
+        // PlayerPrefs.SetString("SessionToken", message.ReconnectToken);
+        UnityMainThreadDispatcher.Instance.Enqueue(() =>
+        {
+            PlayerPrefs.SetString("SessionToken", message.ReconnectToken);
+            PlayerPrefs.Save();
+        });
         Debug.Log("Authentication successful");
 
         SendMessage(new GetUserInfoClient());
@@ -267,7 +330,7 @@ public class NetworkManager : MonoBehaviour
     private void SetUserInfo(GetUserInfoServer getUserInfoServer)
     {
         _clientId = getUserInfoServer.ClientId;
-    } 
+    }
 
     #endregion
 
@@ -275,6 +338,7 @@ public class NetworkManager : MonoBehaviour
     public void SetAuthenToken(string authToken)
     {
         _authToken = authToken;
+        
     }
     public void SetClientId(string clientId)
     {
