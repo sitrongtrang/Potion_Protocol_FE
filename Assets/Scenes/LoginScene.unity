@@ -4840,7 +4840,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1259164044}
   - component: {fileID: 1259164045}
-  - component: {fileID: 1259164046}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged

@@ -90,8 +90,7 @@ public class HttpAuthHandler : MonoBehaviour
 
     private void LoadTestScene()
     {
-        //SceneManager.LoadSceneAsync("TestTcp");
-        SceneManager.LoadSceneAsync("CreateRoomScene");
+        SceneManager.LoadSceneAsync("FriendListScene");
     }
 
     private IEnumerator LoadMainMenu()

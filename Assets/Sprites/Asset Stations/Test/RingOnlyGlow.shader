@@ -7,6 +7,12 @@ Shader "Custom/SoftCircleGlowV2"
         _GlowIntensity("Glow Intensity", Float) = 1.0
         _GlowRange("Glow Range", Range(0.001, 0.5)) = 0.1
         _CircleRadius("Circle Radius", Range(0.0, 0.5)) = 0.4
+        _Stencil("Stencil ID", Float) = 0
+        _StencilComp("Stencil Comparison", Float) = 8        // Always
+        _StencilOp("Stencil Operation", Float) = 0           // Keep
+        _StencilWriteMask("Stencil Write Mask", Float) = 255
+        _StencilReadMask("Stencil Read Mask", Float) = 255
+        _ColorMask("Color Mask", Float) = 15
     }
     SubShader
     {
@@ -17,10 +23,14 @@ Shader "Custom/SoftCircleGlowV2"
 
         Pass
         {
-            Stencil {
-                Ref 1
-                Comp Equal
-                Pass Keep
+            ColorMask [_ColorMask]
+            Stencil
+            {
+                Ref [_Stencil]
+                Comp [_StencilComp]
+                Pass [_StencilOp]
+                ReadMask [_StencilReadMask]
+                WriteMask [_StencilWriteMask]
             }
             HLSLPROGRAM
             #pragma vertex vert
