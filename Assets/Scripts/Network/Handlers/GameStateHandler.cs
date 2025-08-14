@@ -23,7 +23,7 @@ public class GameStateHandler : MonoBehaviour
     private int _totalScore = 0;
     private int _stars = 0;
     private float _timeLeft = 0f;
-    private float _maxTime = Mathf.Infinity;
+    private float _maxTime = 300;
 
     public event Action<string[], int[]> OnInventorySynced;
     public event Action<int> OnScoreChanged;
@@ -136,7 +136,7 @@ public class GameStateHandler : MonoBehaviour
     private void SyncTime(float timeLeft)
     {
         _timeLeft = timeLeft;
-        OnTimeChanged?.Invoke(_timeLeft);
+        OnTimeChanged?.Invoke(_maxTime - _timeLeft);
         if (_timeLeft >= _maxTime)
         {
             Debug.LogError("Time left is greater than max time!");

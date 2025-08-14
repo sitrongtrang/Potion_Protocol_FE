@@ -13,13 +13,14 @@ public class SwitchPage : MonoBehaviour
 
     public void OnButtonClicked()
     {
+        
         int currentPage = int.Parse(_paging.text.Substring(0, _paging.text.IndexOf("/")));
-        int limitPage = int.Parse(_paging.text.Substring(_paging.text.IndexOf("/")));
+        int limitPage = int.Parse(_paging.text.Substring(_paging.text.IndexOf("/") + 1));
         currentPage += _changing;
         if (currentPage <= limitPage && currentPage > 0)
         {
             _paging.text = currentPage.ToString() + _paging.text.Substring(_paging.text.IndexOf("/"));
-            GameManager.Instance.LoadFriendList(currentPage);
+            GameManager.Instance.LoadFriendList(FriendViewMode.FriendList, currentPage);
         }
     }
 
