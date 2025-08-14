@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Amethyst Ore
   _icon: {fileID: -7019663373282665737, guid: 05c5e734534090c45b3b7697b5450c26, type: 3}
   _anim: {fileID: 0}
-  _id: O7
+  _id: O0007
   _description: A deep violet crystal prized for its magical resonance, often used
     in enchantments and talismans.
   _droppedItem: {fileID: 11400000, guid: f28627cb24c0b1347b63ce31a2ca2a36, type: 2}

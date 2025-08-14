@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Silver Ore
   _icon: {fileID: 1160809305625320999, guid: 05c5e734534090c45b3b7697b5450c26, type: 3}
   _anim: {fileID: 0}
-  _id: O3
+  _id: O0003
   _description: A bright, lustrous metal known for its purity and effectiveness against
     dark creatures.
   _droppedItem: {fileID: 11400000, guid: a430ab3b0bf4be74e8be1079f1908279, type: 2}

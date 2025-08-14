@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Poison Antidote
   _icon: {fileID: -7140839936942803760, guid: 577ab485cb38b0b45b0317a97d72eab5, type: 3}
   _anim: {fileID: 0}
-  _id: I32
+  _id: I0032
   _description: A bitter green venom that creeps through the blood, stealing life
     with each beat.
   _type: 2

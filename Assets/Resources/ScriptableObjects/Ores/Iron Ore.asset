@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Iron Ore
   _icon: {fileID: 3134224210375033781, guid: 05c5e734534090c45b3b7697b5450c26, type: 3}
   _anim: {fileID: 0}
-  _id: O2
+  _id: O0002
   _description: A common but essential metal source, forming the backbone of weapons,
     armor, and tools.
   _droppedItem: {fileID: 11400000, guid: a8e7ecf9d5e10c94ab7a1ca6881cab78, type: 2}

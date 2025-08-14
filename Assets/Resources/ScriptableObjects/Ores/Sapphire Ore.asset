@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Sapphire Ore
   _icon: {fileID: 7596041989571635809, guid: 05c5e734534090c45b3b7697b5450c26, type: 3}
   _anim: {fileID: 0}
-  _id: O8
+  _id: O0008
   _description: 'A rich blue gem that channels calming energies, often used in jewelry
     and magic foci. '
   _droppedItem: {fileID: 11400000, guid: db5687697bc97e241b852ecbbf57c25b, type: 2}

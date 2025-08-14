@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Iron Ingot
   _icon: {fileID: -2643760491537033724, guid: a35bbe8aadba99f418111c1cf06a245a, type: 3}
-  _id: I22
+  _anim: {fileID: 0}
+  _id: I0022
+  _description: 
   _type: 1
   _droppedBy: {fileID: 11400000, guid: f1bd6be02e680ca4d9a2d1d699a3f844, type: 2}
   _expireTime: 30

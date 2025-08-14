@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Skeleton
   _icon: {fileID: 8190107228005013420, guid: f113fd8b4ca73ea4999955efa48a190d, type: 3}
   _anim: {fileID: 9100000, guid: 2050f59719b91fd4bbaedb61296d5547, type: 2}
-  _id: Mo2
+  _id: Mo0002
   _description: "A body of bones should not walk without flesh\u2014yet walk they
     do, bound by foul rites older than kingdoms. They do not tire, they do not feel,
     and unless each bone is splintered, they will rise again. Even ash remembers
