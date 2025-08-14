@@ -205,7 +205,8 @@ public class PlayerNetworkController : MonoBehaviour
                 {
                     float moveSpeed = _config.DashSpeed;
                     Vector2 targetPos = transform.position + (Vector3)(moveSpeed * Time.fixedDeltaTime * _playerDir);
-                    Vector2 resolvedPos = ContextSolver.ResolveStatic(transform.position, targetPos, _collider, CollisionSystem.Tree);
+                    //Vector2 resolvedPos = ContextSolver.ResolveStatic(transform.position, targetPos, _collider, CollisionSystem.Tree);
+                    Vector2 resolvedPos = ContextSolver.MoveWithSweep(transform.position, targetPos, _collider, CollisionSystem.Tree);
 
                     transform.position = resolvedPos;
                     Vector2 center = transform.position;
