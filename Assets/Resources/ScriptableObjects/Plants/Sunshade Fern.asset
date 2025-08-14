@@ -17,8 +17,7 @@ MonoBehaviour:
   _anim: {fileID: 0}
   _id: P3
   _description: "Though harmless to the touch, this pale fern shapes the life of
-    whole groves. Beneath its fronds, small creatures find refuge from the sun, and
-    the soil stays cool and damp. In the high summer, you can walk for hours under
-    a canopy of their leaves and never feel the day\u2019s heat\u2014though some
-    travelers swear the ferns turn to follow them, as if listening."
+    whole groves. In the high summer, you can walk for hours under a canopy of their
+    leaves and never feel the day\u2019s heat\u2014though some travelers swear the
+    ferns turn to follow them, as if listening."
   _droppedItem: {fileID: 11400000, guid: 3feaa63b66d55be49886d3ec5932cb56, type: 2}
