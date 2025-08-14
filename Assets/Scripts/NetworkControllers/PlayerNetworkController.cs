@@ -40,6 +40,8 @@ public class PlayerNetworkController : MonoBehaviour
 
     public PlayerInventory Inventory => _inventory;
 
+    [SerializeField] private GameObject _isLocal;
+
     #region Unity Lifecycle
     void OnEnable()
     {
@@ -146,6 +148,14 @@ public class PlayerNetworkController : MonoBehaviour
     {
         _inputManager = new PlayerInputManager(inputManager);
         Identity.Initialize(id, isLocal);
+        if (isLocal)
+        {
+            _isLocal?.SetActive(true);
+        }
+        else
+        {
+            _isLocal?.SetActive(false);
+        }
 
         _config = config;
         _canAttack = true;

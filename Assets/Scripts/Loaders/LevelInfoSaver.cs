@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class LevelInfoSaver : MonoBehaviour
 {
     [Serializable]
@@ -59,15 +58,15 @@ public class LevelInfoSaver : MonoBehaviour
 
     private LevelData _levelData;
 
-    //void OnEnable()
-    //{
-    //    LevelManager.Instance.OnLevelInitialized += SaveData;
-    //}
+    void OnEnable()
+    {
+       LevelManager.Instance.OnLevelInitialized += SaveData;
+    }
 
-    //void OnDisable()
-    //{
-    //    LevelManager.Instance.OnLevelInitialized -= SaveData;
-    //}
+    void OnDisable()
+    {
+       LevelManager.Instance.OnLevelInitialized -= SaveData;
+    }
 
     public void SaveData(LevelConfig config, GameObject mapObject)
     {
@@ -192,7 +191,7 @@ public class LevelInfoSaver : MonoBehaviour
 
         // Save collider data
         ColliderSaver colliderSaver = mapObject.GetComponentInChildren<ColliderSaver>();
-        colliderSaver.SaveColliders();
+        colliderSaver.SaveColliders(LevelNumber);
         ColliderSaver.ColliderDataList MapColliders = colliderSaver.nonTriggerList;
         ColliderSaver.ColliderDataList StationProtections = colliderSaver.triggerList;
 

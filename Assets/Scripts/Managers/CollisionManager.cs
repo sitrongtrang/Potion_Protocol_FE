@@ -8,6 +8,7 @@ public class CollisionManager : MonoBehaviour
 {
     private ColliderSaver.ColliderDataList mapColliderList = new();
     private ColliderSaver.ColliderDataList stationProtectionList = new();
+    public int Level { get; private set; }
 
     public static CollisionManager Instance { get; private set; }
 
@@ -57,13 +58,13 @@ public class CollisionManager : MonoBehaviour
     {
         string basePath = Application.persistentDataPath;
         string folderPath = Path.Combine(basePath, "Levels");
-        string filePath = Path.Combine(folderPath, $"level{level}.json");
+        string pathNon = Path.Combine(folderPath, $"level{level}_colliders_map.json");
 
-        if (File.Exists(filePath))
+        if (File.Exists(pathNon))
         {
             // Load map colliders
-            string json = File.ReadAllText(filePath);
-            mapColliderList = JsonUtility.FromJson<MapColliderData>(json).MapColliders;
+            string json = File.ReadAllText(pathNon);
+            mapColliderList = JsonUtility.FromJson<ColliderSaver.ColliderDataList>(json);
             foreach (var colData in mapColliderList.colliders)
             {
                 AABBCollider collider = new AABBCollider(
@@ -73,9 +74,14 @@ public class CollisionManager : MonoBehaviour
                 { Layer = (int)EntityLayer.Obstacle };
                 CollisionSystem.InsertStaticCollider(collider);
             }
+        }
 
+        string pathTrig = Path.Combine(folderPath, $"level{level}_colliders_station.json");
+        if (File.Exists(pathTrig))
+        {
             // Load station protections
-            stationProtectionList = JsonUtility.FromJson<StationProtectionData>(json).StationProtections;
+            string json = File.ReadAllText(pathNon);
+            stationProtectionList = JsonUtility.FromJson<ColliderSaver.ColliderDataList>(json);
             foreach (var colData in stationProtectionList.colliders)
             {
                 AABBCollider collider = new AABBCollider(
@@ -86,10 +92,6 @@ public class CollisionManager : MonoBehaviour
                 CollisionSystem.InsertStaticCollider(collider);
             }
 
-        }
-        else
-        {
-            Debug.LogWarning($"Map collider file not found at {filePath}");
         }
     }
 
@@ -114,7 +116,8 @@ public class CollisionManager : MonoBehaviour
     private void HandleOnSceneEnter()
     {
         ServerStartGame msg = LoadingScreenUI.Instance.GetData<ServerStartGame>("StartGameData");
-        LoadColliders(msg.Level);
+        Level = msg.Level;
+        // LoadColliders(msg.Level);
         // LoadColliders(1);
     }
 }

@@ -5,7 +5,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-[ExecuteInEditMode]
 public class ColliderSaver : MonoBehaviour
 {
     [Serializable]
@@ -37,14 +36,14 @@ public class ColliderSaver : MonoBehaviour
 
     private void Start()
     {
-        SaveColliders();
+        SaveColliders(CollisionManager.Instance.Level);
     }
 
-    public void SaveColliders()
+    public void SaveColliders(int level)
     {
         nonTriggerList = new ColliderDataList { colliders = new List<RectangleData>() };
         triggerList = new ColliderDataList { colliders = new List<RectangleData>() };
-        
+
         var all = mapGameObject.GetComponentsInChildren<Collider2D>(true);
         foreach (var col in all)
         {
@@ -54,7 +53,7 @@ public class ColliderSaver : MonoBehaviour
             var targetList = col.isTrigger ? triggerList : nonTriggerList;
             var b = col.bounds;
             targetList.colliders.Add(new RectangleData(
-                b.center.x, b.center.y, 
+                b.center.x, b.center.y,
                 b.size.x, b.size.y
             ));
         }
@@ -67,16 +66,22 @@ public class ColliderSaver : MonoBehaviour
         }
 
         string basePath = Application.persistentDataPath;
+        string folderPath = Path.Combine(basePath, "Levels");
+        if (!Directory.Exists(folderPath))
+            Directory.CreateDirectory(folderPath);
+        string pathNon = Path.Combine(folderPath, $"level{level}_colliders_map.json");
+
         string jsonNonTrigger = JsonUtility.ToJson(nonTriggerList, prettyPrint: true);
-        string pathNon = Path.Combine(basePath, "colliders_map.json");
         File.WriteAllText(pathNon, jsonNonTrigger);
 
         string jsonTrigger = JsonUtility.ToJson(triggerList, prettyPrint: true);
-        string pathTrig = Path.Combine(basePath, "colliders_station.json");
+        string pathTrig = Path.Combine(folderPath, $"level{level}_colliders_station.json");
         File.WriteAllText(pathTrig, jsonTrigger);
 
         Debug.Log($"Saved {nonTriggerList.colliders.Count} colliders_map to: {pathNon}");
         Debug.Log($"Saved {triggerList.colliders.Count} colliders_station to: {pathTrig}");
+        
+        CollisionManager.Instance.LoadColliders(level);
     }
 
     private void ExtractTileColliders(Tilemap tm, TilemapCollider2D tilemapCollider)
