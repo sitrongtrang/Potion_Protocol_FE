@@ -17,7 +17,7 @@ MonoBehaviour:
   _anim: {fileID: 9100000, guid: fbe1b15306a46f14680fe2a8ac10fb20, type: 2}
   _id: P1
   _moveSpeed: 5
-  _dashCooldown: 1
+  _dashCooldown: 0.5
   _dashSpeed: 100
   _interactDistance: 0.5
   _weapons:
