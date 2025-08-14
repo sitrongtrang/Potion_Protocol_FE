@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class NetworkTime : MonoBehaviour
@@ -23,6 +24,8 @@ public class NetworkTime : MonoBehaviour
     private const double SmoothingFactor = 0.1;
     [SerializeField] private float _pingIntervalInSeconds = 5f;
     private Coroutine _pingRoutine;
+    [SerializeField] private TMP_Text _ping;
+
     public long EstimatedServerTime => TimeSyncUtils.GetUnixTimeMilliseconds() + ClockOffset;
     public long RoundTripTime { get; private set; }
     public long ClockOffset { get; private set; }
@@ -77,5 +80,20 @@ public class NetworkTime : MonoBehaviour
         OnPingChanged?.Invoke(RoundTripTime);
 
         Debug.Log($"[TimeSync] RTT: {RoundTripTime:F4}ms, Offset: {ClockOffset:F4}ms, ServerTime: {EstimatedServerTime:F4}ms");
+    }
+
+    private void OnEnable()
+    {
+        OnPingChanged += UpdatePing;
+    }
+
+    private void OnDisable()
+    {
+        OnPingChanged -= UpdatePing;
+    }
+
+    private void UpdatePing(long newPing)
+    {
+        _ping.text = newPing.ToString() + " ms";
     }
 }

@@ -20,9 +20,9 @@ MonoBehaviour:
     in for gold only to find themselves clamped in the maw of a false coffer. The
     \u2018Chest\u2019 waits motionless for hours, needing neither breath nor patience,
     for greed is the lure that always works."
-  _hp: 3
+  _hp: 5
   _speed: 5
-  _damage: 0
+  _damage: 2
   _patrolRadius: 5.5
   _patrolInterval: 1
   _chaseRadius: 7

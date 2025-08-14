@@ -22,7 +22,7 @@ MonoBehaviour:
     do not hear them coming, and you do not hear yourself fall."
   _hp: 4
   _speed: 3
-  _damage: 1
+  _damage: 4
   _patrolRadius: 5.5
   _patrolInterval: 1
   _chaseRadius: 7
