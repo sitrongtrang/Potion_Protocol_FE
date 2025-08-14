@@ -89,7 +89,7 @@ public class RoomHandler : MonoBehaviour
             case NetworkMessageTypes.Server.Pregame.StartGame:
                 OnGameStart((ServerStartGame)message);
                 break;
-            case NetworkMessageTypes.Server.Room.ACK:
+            case NetworkMessageTypes.Server.ACK:
                 HandleACK((ServerACK)message);
                 break;
             // case NetworkMessageTypes.Server.Room.SendRoomInvite:

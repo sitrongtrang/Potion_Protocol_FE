@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public int PlayedLevels = 3;
     public int CurrentLevel;
     public int Star;
-    public Action<int> LoadFriendList;
+    public Action<FriendViewMode, int> LoadFriendList;
 
     private void Awake()
     {
