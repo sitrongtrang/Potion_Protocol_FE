@@ -6,7 +6,7 @@
                 "subType": "04"
             }
         },
-        "id": "C1",
+        "id": "C0001",
         "crafting_formula": [
             {
                 "$binary": {
@@ -43,7 +43,7 @@
                 "subType": "04"
             }
         },
-        "id": "C2",
+        "id": "C0002",
         "crafting_formula": [
             {
                 "$binary": {
@@ -74,7 +74,7 @@
                 "subType": "04"
             }
         },
-        "id": "C3",
+        "id": "C0003",
         "crafting_formula":[
             {
                 "$binary": {
@@ -99,7 +99,7 @@
                 "subType": "04"
             }
         },
-        "id": "C4",
+        "id": "C0004",
         "crafting_formula":[
             {
                 "$binary": {
@@ -124,7 +124,7 @@
                 "subType": "04"
             }
         },
-        "id": "C5",
+        "id": "C0005",
         "crafting_formula":[
             {
                 "$binary": {
@@ -161,7 +161,7 @@
                 "subType": "04"
             }
         },
-        "id": "C6",
+        "id": "C0006",
         "crafting_formula":[
             {
                 "$binary": {
@@ -186,7 +186,7 @@
                 "subType": "04"
             }
         },
-        "id": "C7",
+        "id": "C0007",
         "crafting_formula":[
             {
                 "$binary": {
@@ -211,7 +211,7 @@
                 "subType": "04"
             }
         },
-        "id": "C8",
+        "id": "C0008",
         "crafting_formula":[
             {
                 "$binary": {
@@ -242,7 +242,7 @@
                 "subType": "04"
             }
         },
-        "id": "C9",
+        "id": "C0009",
         "crafting_formula":[
             {
                 "$binary": {
@@ -279,7 +279,7 @@
                 "subType": "04"
             }
         },
-        "id": "C10",
+        "id": "C0010",
         "crafting_formula":[
             {
                 "$binary": {
@@ -310,7 +310,7 @@
                 "subType": "04"
             }
         },
-        "id": "C11",
+        "id": "C0011",
         "crafting_formula":[
             {
                 "$binary": {
@@ -335,7 +335,7 @@
                 "subType": "04"
             }
         },
-        "id": "C12",
+        "id": "C0012",
         "crafting_formula":[
             {
                 "$binary": {
@@ -372,7 +372,7 @@
                 "subType": "04"
             }
         },
-        "id": "C13",
+        "id": "C0013",
         "crafting_formula":[
             {
                 "$binary": {
@@ -397,7 +397,7 @@
                 "subType": "04"
             }
         },
-        "id": "C14",
+        "id": "C0014",
         "crafting_formula":[
             {
                 "$binary": {
@@ -422,7 +422,7 @@
                 "subType": "04"
             }
         },
-        "id": "C15",
+        "id": "C0015",
         "crafting_formula":[
             {
                 "$binary": {
@@ -447,7 +447,7 @@
                 "subType": "04"
             }
         },
-        "id": "C16",
+        "id": "C0016",
         "crafting_formula":[
             {
                 "$binary": {
@@ -472,7 +472,7 @@
                 "subType": "04"
             }
         },
-        "id": "C17",
+        "id": "C0017",
         "crafting_formula":[
             {
                 "$binary": {
@@ -497,7 +497,7 @@
                 "subType": "04"
             }
         },
-        "id": "C18",
+        "id": "C0018",
         "crafting_formula":[
             {
                 "$binary": {
@@ -522,7 +522,7 @@
                 "subType": "04"
             }
         },
-        "id": "C19",
+        "id": "C0019",
         "crafting_formula":[
             {
                 "$binary": {
@@ -547,7 +547,7 @@
                 "subType": "04"
             }
         },
-        "id": "C20",
+        "id": "C0020",
         "crafting_formula":[
             {
                 "$binary": {
@@ -572,7 +572,7 @@
                 "subType": "04"
             }
         },
-        "id": "C21",
+        "id": "C0021",
         "crafting_formula":[
             {
                 "$binary": {
@@ -597,7 +597,7 @@
                 "subType": "04"
             }
         },
-        "id": "C22",
+        "id": "C0022",
         "crafting_formula":[
             {
                 "$binary": {
