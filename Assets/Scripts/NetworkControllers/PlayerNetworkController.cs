@@ -248,16 +248,16 @@ public class PlayerNetworkController : MonoBehaviour
         }
 
         // Check wall hit
-         Vector2 dir = _playerDir.normalized;
-        float skinWidth = 0.2f;
-        Vector2 origin = (Vector2)transform.position + dir * skinWidth;
-        bool hitObstacle = CheckWall(origin, dir);
+        // Vector2 dir = _playerDir.normalized;
+        // float skinWidth = 0.2f;
+        // Vector2 origin = (Vector2)transform.position + dir * skinWidth;
+        // bool hitObstacle = CheckWall(origin, dir);
 
-        if (hitObstacle)
-        {
-            Debug.Log("Vướng tường nè má.");
-            return false;
-        }
+        // if (hitObstacle)
+        // {
+        //     Debug.Log("Vướng tường nè má.");
+        //     return false;
+        // }
 
         // Play animation
         _swordAnimator.SetTrigger("Attack");
