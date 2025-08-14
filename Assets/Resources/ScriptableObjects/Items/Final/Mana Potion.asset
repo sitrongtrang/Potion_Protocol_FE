@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Mana Potion
   _icon: {fileID: 1352937985377501293, guid: 95c944f5aff0d404cafcbaf7de5ac44c, type: 3}
   _anim: {fileID: 0}
-  _id: I33
+  _id: I0033
   _description: Blue as a clear sky, it fills the mind with clarity and magic renewed.
   _type: 2
   _droppedBy: {fileID: 11400000, guid: e46837390b24d6b4f994a000e883409b, type: 2}

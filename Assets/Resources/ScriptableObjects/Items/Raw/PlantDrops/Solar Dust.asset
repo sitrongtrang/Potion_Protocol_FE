@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Solar Dust
   _icon: {fileID: 746823278, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
-  _id: I9
+  _anim: {fileID: 0}
+  _id: I0009
+  _description: 
   _type: 0
   _droppedBy: {fileID: 11400000, guid: 7da77574c7d8d43489715c6bb2dbfaf5, type: 2}
   _expireTime: 30

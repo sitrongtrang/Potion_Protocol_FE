@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Amethyst Ingot
   _icon: {fileID: 6500151337436090292, guid: a35bbe8aadba99f418111c1cf06a245a, type: 3}
-  _id: I27
+  _anim: {fileID: 0}
+  _id: I0027
+  _description: 
   _type: 1
   _droppedBy: {fileID: 11400000, guid: 1a38560a20ee56949bb7a768307d3dcf, type: 2}
   _expireTime: 30

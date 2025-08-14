@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Strength Potion
   _icon: {fileID: -3965660968130455405, guid: 7d5694fe12d79264e97761b308250371, type: 3}
   _anim: {fileID: 0}
-  _id: I34
+  _id: I0034
   _description: Fiery orange, it swells the muscle and lends the arm the power of
     ten.
   _type: 2

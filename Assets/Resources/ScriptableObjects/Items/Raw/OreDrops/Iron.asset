@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Iron
   _icon: {fileID: 3265609578105065361, guid: 05c5e734534090c45b3b7697b5450c26, type: 3}
-  _id: I12
+  _anim: {fileID: 0}
+  _id: I0012
+  _description: 
   _type: 0
   _droppedBy: {fileID: 11400000, guid: 1623e473d2511cf47b1ce263c4225082, type: 2}
   _expireTime: 30

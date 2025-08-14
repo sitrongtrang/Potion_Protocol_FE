@@ -15,7 +15,8 @@ MonoBehaviour:
   _name: 
   _icon: {fileID: -1557352920040126117, guid: 8785efde6d3f3764ba132bef66d42b96, type: 3}
   _anim: {fileID: 0}
-  _id: C12
+  _id: C0012
+  _description: 
   _craftingTime: 8
   _type: 1
   _product: {fileID: 11400000, guid: 7eef6b06c06436542b7eabfc8d8b7d2c, type: 2}

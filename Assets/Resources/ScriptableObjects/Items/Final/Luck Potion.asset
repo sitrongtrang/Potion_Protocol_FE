@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Luck Potion
   _icon: {fileID: 1730548010129319703, guid: ba9e5352ecd25644db2e4b2f0a4511e6, type: 3}
   _anim: {fileID: 0}
-  _id: I40
+  _id: I0040
   _description: Golden and warm, it whispers to fate, nudging fortune into your grasp.
   _type: 2
   _droppedBy: {fileID: 11400000, guid: 28d6fb0daa84a844ca9eeb2c48bbe42d, type: 2}

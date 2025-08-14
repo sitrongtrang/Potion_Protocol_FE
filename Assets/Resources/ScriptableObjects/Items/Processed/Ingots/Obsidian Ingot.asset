@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Obsidian Ingot
   _icon: {fileID: -7795363881259474946, guid: a35bbe8aadba99f418111c1cf06a245a, type: 3}
-  _id: I21
+  _anim: {fileID: 0}
+  _id: I0021
+  _description: 
   _type: 1
   _droppedBy: {fileID: 11400000, guid: bd2c275b3a511c84293d4b8a9c968714, type: 2}
   _expireTime: 30

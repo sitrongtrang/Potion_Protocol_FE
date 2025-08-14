@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Purification Potion
   _icon: {fileID: 7415759765643248134, guid: c0a4b16b93e7f8e459bdf6381a1e33a8, type: 3}
   _anim: {fileID: 0}
-  _id: I42
+  _id: I0042
   _description: White as fresh snow, it burns away toxin, curse, and corruption.
   _type: 2
   _droppedBy: {fileID: 11400000, guid: ecd7aa05b01161a4085996dc2f87d742, type: 2}

@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Ethereal Petal
   _icon: {fileID: -1743477566, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
-  _id: I8
+  _anim: {fileID: 0}
+  _id: I0008
+  _description: 
   _type: 0
   _droppedBy: {fileID: 11400000, guid: 1c1e53c524551c3499025e47be50af82, type: 2}
   _expireTime: 30

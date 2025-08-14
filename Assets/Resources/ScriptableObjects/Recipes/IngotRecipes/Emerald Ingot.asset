@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: 
   _icon: {fileID: 0}
-  _id: C21
+  _anim: {fileID: 0}
+  _id: C0021
+  _description: 
   _craftingTime: 8
   _type: 0
   _product: {fileID: 11400000, guid: 72d83e139067d1e449e993b8ec3674fd, type: 2}
   _inputs:
   - {fileID: 11400000, guid: 7a7b0e41bc6e5c842b9038e06bb1ba53, type: 2}
+  _expireTime: 0

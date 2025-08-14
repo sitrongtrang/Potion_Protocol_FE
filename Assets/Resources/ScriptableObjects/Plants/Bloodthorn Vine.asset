@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Bloodthorn Vine
   _icon: {fileID: 1180080827, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
   _anim: {fileID: 0}
-  _id: P1
+  _id: P0001
   _description: "It creeps where the ground is soft and the air is still. Its tendrils
     glisten with tiny hooks, eager for the warmth of blood. A single scratch is enough\u2014the
     vine will drink deep, feeding its roots until the bloom above glows a deeper,

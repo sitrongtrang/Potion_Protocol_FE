@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Invisible Potion
   _icon: {fileID: -4597679370469333081, guid: 92b85eda16bf17d498fd8489edd3283a, type: 3}
   _anim: {fileID: 0}
-  _id: I37
+  _id: I0037
   _description: "Silver and thin, it bends the world\u2019s gaze until you are but
     a shadow."
   _type: 2

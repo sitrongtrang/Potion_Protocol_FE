@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Gold Ore
   _icon: {fileID: 5725364665942933221, guid: 05c5e734534090c45b3b7697b5450c26, type: 3}
   _anim: {fileID: 0}
-  _id: O5
+  _id: O0005
   _description: A gleaming yellow metal, rare and treasured for both currency and
     ornate craftsmanship.
   _droppedItem: {fileID: 11400000, guid: 59f0c497d6f4d8e46983734b82c83b70, type: 2}
