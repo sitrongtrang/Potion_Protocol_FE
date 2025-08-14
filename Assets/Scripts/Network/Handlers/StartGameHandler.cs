@@ -84,13 +84,29 @@ public class StartGameHandler : MonoBehaviour
         {
             alchemyController.Initialize(alchemyId, _alchemyConfig);
         }
-        for (int i = 0; i < _furnaceSpawners.Count; i++)
+        
+        for (int i = 0; i < message.FurnaceIds.Length; i++)
         {
             string id = message.FurnaceIds[i];
-            GameObject furnace = _furnaceSpawners[i].Spawn(_furnacePrefab);
-            if (furnace.TryGetComponent<NetworkBehaviour>(out var furnaceController))
+            Vector2 stationPos = new Vector2(message.FurnaceXs[i], message.FurnaceYs[i]);
+
+            float minDist = Mathf.Infinity;
+            StationSpawner correctSpawner = null;
+            for (int j = 0; j < _furnaceSpawners.Count; j++)
             {
-                furnaceController.Initialize(id, _furnaceConfig);
+                if (Vector2.Distance(stationPos, _furnaceSpawners[i].transform.position) < minDist)
+                {
+                    correctSpawner = _furnaceSpawners[i];
+                    minDist = Vector2.Distance(stationPos, _furnaceSpawners[i].transform.position);
+                }
+            }
+            if (correctSpawner != null)
+            {
+                GameObject furnace = correctSpawner.Spawn(_furnacePrefab);
+                if (furnace.TryGetComponent<NetworkBehaviour>(out var furnaceController))
+                {
+                    furnaceController.Initialize(id, _furnaceConfig);
+                }
             }
         }
     }

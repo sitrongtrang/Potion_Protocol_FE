@@ -14,6 +14,10 @@ public class ServerStartGame : ServerMessage
     [FieldOrder(4)]
     public string[] FurnaceIds;
     [FieldOrder(5)]
+    public float[] FurnaceXs;
+    [FieldOrder(6)]
+    public float[] FurnaceYs;
+    [FieldOrder(7)]
     public int Level;
 
     public ServerStartGame() : base(NetworkMessageTypes.Server.Pregame.StartGame) { }
