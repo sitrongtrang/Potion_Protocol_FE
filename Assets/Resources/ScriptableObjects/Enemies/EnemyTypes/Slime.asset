@@ -20,7 +20,7 @@ MonoBehaviour:
     leg. The elders of the eastern swamps speak of them as \u2018the Hungry Clear,\u2019
     for their bodies are water-bright, hiding the acid that can strip a man to bone.
     They are patient eaters. They prefer their meals\u2026 still."
-  _hp: 4
+  _hp: 3
   _speed: 3
   _damage: 1
   _patrolRadius: 5.5

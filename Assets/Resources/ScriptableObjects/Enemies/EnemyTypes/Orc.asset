@@ -20,7 +20,7 @@ MonoBehaviour:
     old sagas say the first Orcs were shaped in the war-fires of the gods themselves.
     Thick of muscle, quick of temper, they find joy in the crash of battle and honor
     only in victory.
-  _hp: 8
+  _hp: 6
   _speed: 3
   _damage: 3
   _patrolRadius: 5.5
