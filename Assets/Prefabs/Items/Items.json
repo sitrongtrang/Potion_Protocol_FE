@@ -6,7 +6,7 @@
                 "subType": "04"
             }
         },
-        "id": "I1",
+        "id": "I0001",
         "name": "Vampire Wing",
         "type": "Raw"
     },
@@ -17,7 +17,7 @@
                 "subType": "04"
             }
         },
-        "id": "I2",
+        "id": "I0002",
         "name": "Bone",
         "type": "Raw"
     },
@@ -28,7 +28,7 @@
                 "subType": "04"
             }
         },
-        "id": "I3",
+        "id": "I0003",
         "name": "Pile of Coins",
         "type": "Raw"
     },
@@ -39,7 +39,7 @@
                 "subType": "04"
             }
         },
-        "id": "I4",
+        "id": "I0004",
         "name": "Orc Tusk",
         "type": "Raw"
     },
@@ -50,7 +50,7 @@
                 "subType": "04"
             }
         },
-        "id": "I5",
+        "id": "I0005",
         "name": "Mushroom cap",
         "type": "Raw"
     },
@@ -61,7 +61,7 @@
                 "subType": "04"
             }
         },
-        "id": "I6",
+        "id": "I0006",
         "name": "Slime Mucus",
         "type": "Raw"
     },
@@ -72,7 +72,7 @@
                 "subType": "04"
             }
         },
-        "id": "I7",
+        "id": "I0007",
         "name": "Blood Resin",
         "type": "Raw"
     },
@@ -83,7 +83,7 @@
                 "subType": "04"
             }
         },
-        "id": "I8",
+        "id": "I0008",
         "name": "Etheral Petal",
         "type": "Raw"
     },
@@ -94,7 +94,7 @@
                 "subType": "04"
             }
         },
-        "id": "I9",
+        "id": "I0009",
         "name": "Solar Dust",
         "type": "Raw"
     },
@@ -105,7 +105,7 @@
                 "subType": "04"
             }
         },
-        "id": "I10",
+        "id": "I0010",
         "name": "Fae Nectar",
         "type": "Raw"
     },
@@ -116,7 +116,7 @@
                 "subType": "04"
             }
         },
-        "id": "I11",
+        "id": "I0011",
         "name": "Obsidian Ore",
         "type": "Raw"
     },
@@ -127,7 +127,7 @@
                 "subType": "04"
             }
         },
-        "id": "I12",
+        "id": "I0012",
         "name": "Iron Ore",
         "type": "Raw"
     },
@@ -138,7 +138,7 @@
                 "subType": "04"
             }
         },
-        "id": "I13",
+        "id": "I0013",
         "name": "Silver Ore",
         "type": "Raw"
     },
@@ -149,7 +149,7 @@
                 "subType": "04"
             }
         },
-        "id": "I14",
+        "id": "I0014",
         "name": "Bronzite Ore",
         "type": "Raw"
     },
@@ -160,7 +160,7 @@
                 "subType": "04"
             }
         },
-        "id": "I15",
+        "id": "I0015",
         "name": "Gold Ore",
         "type": "Raw"
     },
@@ -171,7 +171,7 @@
                 "subType": "04"
             }
         },
-        "id": "I16",
+        "id": "I0016",
         "name": "Ruby Ore",
         "type": "Raw"
     },
@@ -182,7 +182,7 @@
                 "subType": "04"
             }
         },
-        "id": "I17",
+        "id": "I0017",
         "name": "Amethyst Ore",
         "type": "Raw"
     },
@@ -193,7 +193,7 @@
                 "subType": "04"
             }
         },
-        "id": "I18",
+        "id": "I0018",
         "name": "Sapphire Ore",
         "type": "Raw"
     },
@@ -204,7 +204,7 @@
                 "subType": "04"
             }
         },
-        "id": "I19",
+        "id": "I0019",
         "name": "Emerald Ore",
         "type": "Raw"
     },
@@ -215,7 +215,7 @@
                 "subType": "04"
             }
         },
-        "id": "I20",
+        "id": "I0020",
         "name": "Mythril Ore",
         "type": "Raw"
     },
@@ -226,7 +226,7 @@
                 "subType": "04"
             }
         },
-        "id": "I21",
+        "id": "I0021",
         "name": "Obsidian Ingot",
         "type": "Processed"
     },
@@ -237,7 +237,7 @@
                 "subType": "04"
             }
         },
-        "id": "I22",
+        "id": "I0022",
         "name": "Iron Ingot",
         "type": "Processed"
     },
@@ -248,7 +248,7 @@
                 "subType": "04"
             }
         },
-        "id": "I23",
+        "id": "I0023",
         "name": "Silver Ingot",
         "type": "Processed"
     },
@@ -259,7 +259,7 @@
                 "subType": "04"
             }
         },
-        "id": "I24",
+        "id": "I0024",
         "name": "Bronzite Ingot",
         "type": "Processed"
     },
@@ -270,7 +270,7 @@
                 "subType": "04"
             }
         },
-        "id": "I25",
+        "id": "I0025",
         "name": "Gold Ingot",
         "type": "Processed"
     },
@@ -281,7 +281,7 @@
                 "subType": "04"
             }
         },
-        "id": "I26",
+        "id": "I0026",
         "name": "Ruby Ingot",
         "type": "Processed"
     },
@@ -292,7 +292,7 @@
                 "subType": "04"
             }
         },
-        "id": "I27",
+        "id": "I0027",
         "name": "Amethyst Ingot",
         "type": "Processed"
     },
@@ -303,7 +303,7 @@
                 "subType": "04"
             }
         },
-        "id": "I28",
+        "id": "I0028",
         "name": "Sapphire Ingot",
         "type": "Processed"
     },
@@ -314,7 +314,7 @@
                 "subType": "04"
             }
         },
-        "id": "I29",
+        "id": "I0029",
         "name": "Emerald Ingot",
         "type": "Processed"
     },
@@ -325,7 +325,7 @@
                 "subType": "04"
             }
         },
-        "id": "I30",
+        "id": "I0030",
         "name": "Mythril Ingot",
         "type": "Processed"
     },
@@ -336,7 +336,7 @@
                 "subType": "04"
             }
         },
-        "id": "I31",
+        "id": "I0031",
         "name": "Healing Potion",
         "type": "Potion"
     },
@@ -347,7 +347,7 @@
                 "subType": "04"
             }
         },
-        "id": "I32",
+        "id": "I0032",
         "name": "Poison Antidote",
         "type": "Potion"
     },
@@ -358,7 +358,7 @@
                 "subType": "04"
             }
         },
-        "id": "I33",
+        "id": "I0033",
         "name": "Mana Potion",
         "type": "Potion"
     },
@@ -369,7 +369,7 @@
                 "subType": "04"
             }
         },
-        "id": "I34",
+        "id": "I0034",
         "name": "Strength Potion",
         "type": "Potion"
     },
@@ -380,7 +380,7 @@
                 "subType": "04"
             }
         },
-        "id": "I35",
+        "id": "I0035",
         "name": "Regeneration Potion",
         "type": "Potion"
     },
@@ -391,7 +391,7 @@
                 "subType": "04"
             }
         },
-        "id": "I36",
+        "id": "I0036",
         "name": "Charm Potion",
         "type": "Potion"
     },
@@ -402,7 +402,7 @@
                 "subType": "04"
             }
         },
-        "id": "I37",
+        "id": "I0037",
         "name": "Invisible Potion",
         "type": "Potion"
     },
@@ -413,7 +413,7 @@
                 "subType": "04"
             }
         },
-        "id": "I38",
+        "id": "I0038",
         "name": "Defense Potion",
         "type": "Potion"
     },
@@ -424,7 +424,7 @@
                 "subType": "04"
             }
         },
-        "id": "I39",
+        "id": "I0039",
         "name": "Curse Potion",
         "type": "Potion"
     },
@@ -435,7 +435,7 @@
                 "subType": "04"
             }
         },
-        "id": "I40",
+        "id": "I0040",
         "name": "Luck Potion",
         "type": "Potion"
     },
@@ -446,7 +446,7 @@
                 "subType": "04"
             }
         },
-        "id": "I41",
+        "id": "I0041",
         "name": "Speed Potion",
         "type": "Potion"
     },
@@ -457,7 +457,7 @@
                 "subType": "04"
             }
         },
-        "id": "I42",
+        "id": "I0042",
         "name": "Purification Potion",
         "type": "Potion"
     }

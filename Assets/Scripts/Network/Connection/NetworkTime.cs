@@ -27,6 +27,7 @@ public class NetworkTime : MonoBehaviour
     public long RoundTripTime { get; private set; }
     public long ClockOffset { get; private set; }
     private bool _awaitingPong;
+    public Action<long> OnPingChanged;
 
     private void Start()
     {
@@ -73,7 +74,8 @@ public class NetworkTime : MonoBehaviour
 
         _awaitingPong = false;
 
+        OnPingChanged?.Invoke(RoundTripTime);
+
         Debug.Log($"[TimeSync] RTT: {RoundTripTime:F4}ms, Offset: {ClockOffset:F4}ms, ServerTime: {EstimatedServerTime:F4}ms");
     }
-
 }
