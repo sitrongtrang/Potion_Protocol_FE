@@ -137,9 +137,8 @@ public class GameStateHandler : MonoBehaviour
     {
         _timeLeft = timeLeft;
         OnTimeChanged?.Invoke(_maxTime - _timeLeft);
-        if (_timeLeft >= _maxTime)
+        if (_timeLeft >= _maxTime - 1)
         {
-            Debug.LogError("Time left is greater than max time!");
             StartCoroutine(LoadLevelResult(_totalScore, _stars));
         }
     }
