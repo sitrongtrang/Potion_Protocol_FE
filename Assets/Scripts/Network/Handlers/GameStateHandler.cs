@@ -19,11 +19,11 @@ public class GameStateHandler : MonoBehaviour
     private Dictionary<string, TrackedObject> _itemMap = new();
     // private Dictionary<string, TrackedObject> _stationMap = new();
     private List<RecipeConfig> _requiredRecipes = new();
-    private int[] _scoreThresholds;
-    private int _totalScore;
-    private int _stars;
-    private float _timeLeft;
-    private float _maxTime;
+    private int[] _scoreThresholds = new int[3];
+    private int _totalScore = 0;
+    private int _stars = 0;
+    private float _timeLeft = 0f;
+    private float _maxTime = Mathf.Infinity;
 
     public event Action<string[], int[]> OnInventorySynced;
     public event Action<int> OnScoreChanged;
@@ -110,6 +110,7 @@ public class GameStateHandler : MonoBehaviour
             }
         }
 
+        if (_scoreThresholds.Length == 0) return;   
         _stars = 3;
         for (int i = _scoreThresholds.Length - 1; i >= 0; i--)
         {
@@ -138,6 +139,7 @@ public class GameStateHandler : MonoBehaviour
         OnTimeChanged?.Invoke(_timeLeft);
         if (_timeLeft >= _maxTime)
         {
+            Debug.LogError("Time left is greater than max time!");
             StartCoroutine(LoadLevelResult(_totalScore, _stars));
         }
     }

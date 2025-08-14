@@ -10,7 +10,7 @@ public class LoadingScreenUI : MonoBehaviour
 {
     [SerializeField] private Scrollbar _progressBar;
     [SerializeField] private TextMeshProUGUI _progressText;
-    private float _speed = 0.5f;
+    private float _speed = 2f;
     private float _currentProgress = 0f;
     public Action OnSceneExit;
     public Action OnSceneEnter;
