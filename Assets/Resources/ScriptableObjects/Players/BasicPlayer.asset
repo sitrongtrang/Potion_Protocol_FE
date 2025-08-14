@@ -17,12 +17,12 @@ MonoBehaviour:
   _anim: {fileID: 9100000, guid: fbe1b15306a46f14680fe2a8ac10fb20, type: 2}
   _id: P1
   _moveSpeed: 5
-  _dashCooldown: 0.5
+  _dashCooldown: 1
   _dashSpeed: 100
   _interactDistance: 0.5
   _weapons:
   - {fileID: 11400000, guid: 8254a7f3b589ea54890b2ffd8067927d, type: 2}
-  _attackCooldown: 1
+  _attackCooldown: 0.5
   _attackDelay: 0.2
   _skillsCooldown:
   - 2
