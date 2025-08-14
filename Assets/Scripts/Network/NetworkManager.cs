@@ -92,13 +92,7 @@ public class NetworkManager : MonoBehaviour
             NetworkTime.Instance?.ResetTimeoutTimers();
 
             // Start authentication process
-            if (!string.IsNullOrEmpty(_authToken))
-            {
-                SendMessage(new AuthMessage
-                {
-                    Token = PlayerPrefs.GetString("AuthToken"),
-                });
-            }
+            Authenticate();
         }
         catch (Exception e)
         {
@@ -110,7 +104,7 @@ public class NetworkManager : MonoBehaviour
     public void Authenticate()
     {
         Debug.Log("Authentication! This is my session token: " + _sessionToken);
-        if (!string.IsNullOrEmpty(_sessionToken))
+        if (!string.IsNullOrEmpty(_sessionToken) && IsInGame)
         {
             // Try to reconnect with existing session
             UnityMainThreadDispatcher.Instance.Enqueue(() =>
