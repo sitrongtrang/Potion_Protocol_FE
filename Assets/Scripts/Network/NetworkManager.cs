@@ -166,6 +166,7 @@ public class NetworkManager : MonoBehaviour
         }
 
         NetworkEvents.InvokeConnectionStatusChanged(false);
+        SendMessage(new DisconnectMessage());
     }
 
     private void ScheduleReconnect()
