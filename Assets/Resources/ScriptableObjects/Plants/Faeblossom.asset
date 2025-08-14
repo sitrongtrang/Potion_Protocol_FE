@@ -14,5 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Faeblossom
   _icon: {fileID: -1616518274, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
+  _anim: {fileID: 0}
   _id: P4
+  _description: "They say this flower was a gift from the moon to the first travelers
+    of the wild. Its leaves are ordinary enough, but under silver light its petals
+    shimmer faintly, like a dream half-remembered. Those who sleep near a Faeblossom
+    often wake with strange visions\u2026 some call them blessings, others, warnings."
   _droppedItem: {fileID: 11400000, guid: f328770432ef4884da308476bb83d8e2, type: 2}

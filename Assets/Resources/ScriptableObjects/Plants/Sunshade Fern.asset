@@ -14,5 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Sunshade Fern
   _icon: {fileID: 366094697, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
+  _anim: {fileID: 0}
   _id: P3
+  _description: "Though harmless to the touch, this pale fern shapes the life of
+    whole groves. Beneath its fronds, small creatures find refuge from the sun, and
+    the soil stays cool and damp. In the high summer, you can walk for hours under
+    a canopy of their leaves and never feel the day\u2019s heat\u2014though some
+    travelers swear the ferns turn to follow them, as if listening."
   _droppedItem: {fileID: 11400000, guid: 3feaa63b66d55be49886d3ec5932cb56, type: 2}

@@ -10,4 +10,7 @@ public abstract class EntityConfig : ScriptableObject
     public RuntimeAnimatorController Anim => _anim;
     [SerializeField] private string _id;
     public string Id => _id;
+
+    [SerializeField] private string _description;
+    public string Description => _description;
 }

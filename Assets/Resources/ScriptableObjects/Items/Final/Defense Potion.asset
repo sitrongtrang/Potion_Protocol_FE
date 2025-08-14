@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Defense Potion
   _icon: {fileID: -3334625345001301643, guid: 8b922a80b9ddd924996474a988218515, type: 3}
+  _anim: {fileID: 0}
   _id: I38
+  _description: Thick and earthy, it steels the bones and hardens the skin against
+    harm.
   _type: 2
   _droppedBy: {fileID: 11400000, guid: 6924774fe3ec33940bb913adc4d4d4bf, type: 2}
   _expireTime: 30

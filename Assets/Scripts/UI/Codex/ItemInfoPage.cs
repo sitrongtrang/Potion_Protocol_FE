@@ -8,12 +8,17 @@ public class ItemInfoPage : InfoPage
     [SerializeField] private Image _craftPlaceIcon;
     [SerializeField] private TextMeshProUGUI _droppedByText;
     [SerializeField] private Image _droppedByIcon;
+    [SerializeField] private TextMeshProUGUI _descriptionText;
 
     public override void DisplayInfo(EntityConfig entityConfig)
     {
         base.DisplayInfo(entityConfig);
         if (entityConfig is ItemConfig itemConfig)
         {
+            if (!string.IsNullOrEmpty(itemConfig.Description))
+                _descriptionText.text = itemConfig.Description;
+            else
+                _descriptionText.text = "...";
             if (itemConfig.DroppedBy != null)
             {
                 _droppedByText.text = $"Dropped by:";
@@ -22,7 +27,7 @@ public class ItemInfoPage : InfoPage
             }
             else
             {
-                _droppedByText.text = "Dropped by: N/A";
+                _droppedByText.text = "Dropped by: ???";
                 _droppedByIcon.sprite = null;
                 _droppedByIcon.gameObject.SetActive(false);
             }
@@ -35,19 +40,20 @@ public class ItemInfoPage : InfoPage
             }
             else
             {
-                _craftText.text = "Crafted at: N/A";
+                _craftText.text = "Crafted at: ???";
                 _craftPlaceIcon.sprite = null;
                 _craftPlaceIcon.gameObject.SetActive(false);
             }
         }
         else
         {
-            _craftText.text = "Crafted at: N/A";
-            _droppedByText.text = "Dropped by: N/A";
+            _craftText.text = "Crafted at: ???";
+            _droppedByText.text = "Dropped by: ???";
             _craftPlaceIcon.sprite = null;
             _craftPlaceIcon.gameObject.SetActive(false);
             _droppedByIcon.sprite = null;
             _droppedByIcon.gameObject.SetActive(false);
+            _descriptionText.text = "...";
         }
     }
 }

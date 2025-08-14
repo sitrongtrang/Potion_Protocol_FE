@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Curse Potion
   _icon: {fileID: -4839590289819068645, guid: 01fa6503936ffbb49bde8854baa951b2, type: 3}
+  _anim: {fileID: 0}
   _id: I39
+  _description: Black as midnight ink, its touch spreads ruin through flesh or spirit
+    alike.
   _type: 2
   _droppedBy: {fileID: 11400000, guid: 60b2d9c993cd4e24688fcbbbeb1a2c67, type: 2}
   _expireTime: 30

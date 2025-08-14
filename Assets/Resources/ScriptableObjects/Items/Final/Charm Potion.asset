@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Charm Potion
   _icon: {fileID: -5284172887423439315, guid: b8a2ec852d386df4f9eec22f1b15e897, type: 3}
+  _anim: {fileID: 0}
   _id: I36
+  _description: "Rosy and sweet, it warms the tongue and softens the heart\u2014foe
+    or friend, all will see you in a kinder light."
   _type: 2
   _droppedBy: {fileID: 11400000, guid: 245ffce521942154d86199ec1b173cf1, type: 2}
   _expireTime: 30

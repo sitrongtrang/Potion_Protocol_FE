@@ -14,5 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Gravebloom
   _icon: {fileID: -1473506108, guid: 8e7bff70d3419f145b7c426cae20680d, type: 3}
+  _anim: {fileID: 0}
   _id: P2
+  _description: "Do not plant one unless you are prepared for what it calls. Graveblooms
+    thrive in the earth of forgotten cemeteries, their roots twined around bone and
+    memory. The orange of their petals is not of fire, but of spirit-flame\u2014feeding
+    on the restless dead until only stillness remains."
   _droppedItem: {fileID: 11400000, guid: beb25794779a99b4b91a16c504c21141, type: 2}

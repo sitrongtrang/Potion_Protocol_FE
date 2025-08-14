@@ -1245,6 +1245,7 @@ MonoBehaviour:
   _cratfTimeText: {fileID: 1610727736}
   _outputText: {fileID: 1196235111}
   _outputImage: {fileID: 20363536}
+  _descriptionText: {fileID: 390522512}
 --- !u!1 &288257212
 GameObject:
   m_ObjectHideFlags: 0
@@ -1669,6 +1670,7 @@ MonoBehaviour:
   _nameText: {fileID: 1591986825}
   _dropItemIcon: {fileID: 1554196615}
   _dropItemText: {fileID: 1928838818}
+  _descriptionText: {fileID: 377956}
 --- !u!1 &390522510
 GameObject:
   m_ObjectHideFlags: 0
@@ -6525,6 +6527,7 @@ MonoBehaviour:
   _craftPlaceIcon: {fileID: 361157762}
   _droppedByText: {fileID: 1125280858}
   _droppedByIcon: {fileID: 1282503969}
+  _descriptionText: {fileID: 1050138044}
 --- !u!1 &1630364952
 GameObject:
   m_ObjectHideFlags: 0
@@ -7902,6 +7905,7 @@ MonoBehaviour:
   _speedText: {fileID: 1890704588}
   _dropItemText: {fileID: 2082033045}
   _dropItemIcon: {fileID: 1729867627}
+  _descriptionText: {fileID: 229516423}
 --- !u!114 &2057275612 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7477551527073280919, guid: 22687f330ab46f84c96163e16172acd1, type: 3}
