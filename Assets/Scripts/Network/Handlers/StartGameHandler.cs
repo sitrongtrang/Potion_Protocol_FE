@@ -97,7 +97,7 @@ public class StartGameHandler : MonoBehaviour
                 float dist = Vector2.Distance(stationPos, _furnaceSpawners[j].transform.position);
                 if (dist < minDist)
                 {
-                    correctSpawner = _furnaceSpawners[i];
+                    correctSpawner = _furnaceSpawners[j];
                     minDist = dist;
                 }
             }
