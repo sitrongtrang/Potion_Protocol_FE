@@ -56,4 +56,14 @@ public class LoginScene : MonoBehaviour
         opList.Add(request);
         yield return StartCoroutine(LoadingScreenUI.Instance.RenderLoadingScene(opList));
     }
+
+    public void OnQuit()
+    {
+        Debug.Log("Quit game");
+        Application.Quit();
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+    }
 }
