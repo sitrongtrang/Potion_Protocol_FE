@@ -68,6 +68,7 @@ public static class NetworkMessageTypes
         {
             public const short AuthSuccess = 100;
             public const short Pong = 800;
+            public const short AuthFail = 101;
             public const short GetUserInfo = 200;
         }
 

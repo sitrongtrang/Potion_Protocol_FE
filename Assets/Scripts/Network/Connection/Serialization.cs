@@ -97,9 +97,9 @@ public static class Serialization
             short messageLength = BinarySerializer.ReadInt16BigEndian(reader);
 
             short messageType = BinarySerializer.ReadInt16BigEndian(reader);
-            //Debug.Log(messageType);
+            // Debug.Log(messageType);
             short statusCode = BinarySerializer.ReadInt16BigEndian(reader);
-            // Debug.Log("AAAAAAAA: " + messageType + " " + statusCode);
+            // Debug.Log(statusCode);
             byte[] payloadBytes = reader.ReadBytes(messageLength - (2 + 2));
 
             return CreateMessageFromType(messageType, payloadBytes);
@@ -123,6 +123,7 @@ public static class Serialization
             NetworkMessageTypes.Server.System.AuthSuccess => BinarySerializer.DeserializeFromBytes<AuthSuccessMessage>(payloadBytes),
             NetworkMessageTypes.Server.System.Pong => BinarySerializer.DeserializeFromBytes<PongMessage>(payloadBytes),
             NetworkMessageTypes.Server.System.GetUserInfo => BinarySerializer.DeserializeFromBytes<GetUserInfoServer>(payloadBytes),
+            NetworkMessageTypes.Server.System.AuthFail => BinarySerializer.DeserializeFromBytes<AuthFailMessage>(payloadBytes),
             // NetworkMessageTypes.System.Kick => BinarySerializer.DeserializeFromBytes<KickMessage>(payloadBytes)
 
             NetworkMessageTypes.Server.Room.CreateRoom => BinarySerializer.DeserializeFromBytes<ServerCreateRoom>(payloadBytes),

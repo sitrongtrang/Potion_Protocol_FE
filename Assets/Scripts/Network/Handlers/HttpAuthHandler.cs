@@ -48,6 +48,10 @@ public class HttpAuthHandler : MonoBehaviour
 
     IEnumerator SendLoginRequest(string username, string password)
     {
+        PlayerPrefs.DeleteKey("AuthToken");
+        PlayerPrefs.DeleteKey("SessionToken");
+        PlayerPrefs.DeleteKey("Username");
+        PlayerPrefs.DeleteKey("Password");
         LoginData loginData = new LoginData
         {
             Username = username,
@@ -73,6 +77,9 @@ public class HttpAuthHandler : MonoBehaviour
             // GameObject networkManager = new GameObject("Network Manager");
             // networkManager.AddComponent<NetworkManager>();
             NetworkManager.Instance.SetAuthenToken(loginSuccess.LoginSuccessDat.Token);
+            PlayerPrefs.SetString("AuthToken", loginSuccess.LoginSuccessDat.Token);
+            PlayerPrefs.SetString("Username", username);
+            PlayerPrefs.SetString("Password", password);
             NetworkManager.Instance.Authenticate();
 
             StartCoroutine(LoadMainMenu(true));
