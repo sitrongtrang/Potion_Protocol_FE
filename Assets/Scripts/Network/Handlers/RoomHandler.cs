@@ -88,6 +88,7 @@ public class RoomHandler : MonoBehaviour
                 OnGetAllRoomResponse((ServerGetAllRoom)message);
                 break;
             case NetworkMessageTypes.Server.Pregame.StartGame:
+                NetworkManager.Instance.IsInGame = true;
                 SceneManager.LoadSceneAsync("OnlineGameScene");
                 break;
             case NetworkMessageTypes.Server.ACK:

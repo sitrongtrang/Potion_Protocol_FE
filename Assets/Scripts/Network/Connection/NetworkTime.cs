@@ -72,32 +72,36 @@ public class NetworkTime : MonoBehaviour
         NetworkManager.Instance.ScheduleReconnect();
         if (PlayerPrefs.HasKey("Username") && PlayerPrefs.HasKey("Password"))
         {
-            LoginData loginData = new LoginData
+            if (!NetworkManager.Instance.IsInGame)
             {
-                Username = PlayerPrefs.GetString("Username"),
-                Password = PlayerPrefs.GetString("Password")
-            };
+                LoginData loginData = new LoginData
+                {
+                    Username = PlayerPrefs.GetString("Username"),
+                    Password = PlayerPrefs.GetString("Password")
+                };
 
-            string json = JsonConvert.SerializeObject(loginData);
-            byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(json);
+                string json = JsonConvert.SerializeObject(loginData);
+                byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(json);
 
-            UnityWebRequest request = new UnityWebRequest(_loginUrl.StaticURL, "POST");
-            request.uploadHandler = new UploadHandlerRaw(bodyRaw);
-            request.downloadHandler = new DownloadHandlerBuffer();
-            request.SetRequestHeader("Content-Type", "application/json");
+                UnityWebRequest request = new UnityWebRequest(_loginUrl.StaticURL, "POST");
+                request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+                request.downloadHandler = new DownloadHandlerBuffer();
+                request.SetRequestHeader("Content-Type", "application/json");
 
-            yield return request.SendWebRequest();
+                yield return request.SendWebRequest();
 
-            if (request.result == UnityWebRequest.Result.Success)
-            {
-                LoginSuccess loginSuccess = JsonConvert.DeserializeObject<LoginSuccess>(request.downloadHandler.text);
-                // GameObject networkManager = new GameObject("Network Manager");
-                // networkManager.AddComponent<NetworkManager>();
-                Debug.Log("AuthToken: ++" + loginSuccess.LoginSuccessDat.Token);
-                NetworkManager.Instance.SetAuthenToken(loginSuccess.LoginSuccessDat.Token);
-                PlayerPrefs.SetString("AuthToken", loginSuccess.LoginSuccessDat.Token);
-                
+                if (request.result == UnityWebRequest.Result.Success)
+                {
+                    LoginSuccess loginSuccess = JsonConvert.DeserializeObject<LoginSuccess>(request.downloadHandler.text);
+                    // GameObject networkManager = new GameObject("Network Manager");
+                    // networkManager.AddComponent<NetworkManager>();
+                    Debug.Log("AuthToken: ++" + loginSuccess.LoginSuccessDat.Token);
+                    NetworkManager.Instance.SetAuthenToken(loginSuccess.LoginSuccessDat.Token);
+                    PlayerPrefs.SetString("AuthToken", loginSuccess.LoginSuccessDat.Token);
+
+                }
             }
+            
         }
         else
         {
