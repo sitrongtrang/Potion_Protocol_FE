@@ -94,10 +94,11 @@ public class StartGameHandler : MonoBehaviour
             StationSpawner correctSpawner = null;
             for (int j = 0; j < _furnaceSpawners.Count; j++)
             {
-                if (Vector2.Distance(stationPos, _furnaceSpawners[j].transform.position) < minDist)
+                float dist = Vector2.Distance(stationPos, _furnaceSpawners[j].transform.position);
+                if (dist < minDist)
                 {
                     correctSpawner = _furnaceSpawners[i];
-                    minDist = Vector2.Distance(stationPos, _furnaceSpawners[j].transform.position);
+                    minDist = dist;
                 }
             }
             if (correctSpawner != null)
