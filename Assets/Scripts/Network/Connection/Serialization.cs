@@ -93,6 +93,11 @@ public static class Serialization
         }
 
         short messageLength = BinarySerializer.ReadInt16BigEndian(reader);
+        if (messageLength < 2)
+        {
+            Debug.LogWarning("[Deserialization Warning] Not enough data for message type.");
+            return null;
+        }
 
         short messageType = BinarySerializer.ReadInt16BigEndian(reader);
             //Debug.Log(messageType);
@@ -106,7 +111,7 @@ public static class Serialization
         }
         catch (Exception e)
         {
-            Debug.LogError($"[Deserialization Error] {e.StackTrace} {messageType} {rawData.Length}");
+            Debug.LogError($"[Deserialization Error] {e.StackTrace} {messageType} {messageLength} {rawData.Length}");
             return null;
         }
     }
