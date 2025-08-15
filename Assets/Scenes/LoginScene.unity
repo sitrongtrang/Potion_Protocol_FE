@@ -5140,6 +5140,7 @@ MonoBehaviour:
   _ip: 10.7.1.82
   _port: 9001
   _reconnectDelay: 5
+  IsInGame: 0
 --- !u!114 &1259164046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5153,6 +5154,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pingIntervalInSeconds: 5
+  _maxMissedPongs: 2
+  _loginUrl: {fileID: 11400000, guid: 368f128f270b7b143a06c7f984e88109, type: 2}
 --- !u!1 &1353990093
 GameObject:
   m_ObjectHideFlags: 0
