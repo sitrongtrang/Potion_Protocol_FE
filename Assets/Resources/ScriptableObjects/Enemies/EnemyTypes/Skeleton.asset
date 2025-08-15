@@ -20,7 +20,7 @@ MonoBehaviour:
     do, bound by foul rites older than kingdoms. They do not tire, they do not feel,
     and unless each bone is splintered, they will rise again. Even ash remembers
     its shape if the curse is strong enough."
-  _hp: 4
+  _hp: 8
   _speed: 3
   _damage: 1
   _patrolRadius: 5.5
