@@ -21,4 +21,12 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(this);
     }
+
+    void Update() 
+    {
+        if (Input.GetKeyDown(KeyCode.LeftAlt))
+        {
+            Screen.fullScreen = !Screen.fullScreen;
+        }
+    }
 }
