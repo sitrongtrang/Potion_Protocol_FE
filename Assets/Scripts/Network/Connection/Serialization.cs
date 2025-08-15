@@ -83,30 +83,30 @@ public static class Serialization
     /// </summary>
     public static ServerMessage DeserializeMessage(byte[] rawData)
     {
+        using MemoryStream stream = new(rawData);
+        using BinaryReader reader = new(stream);
+
+        if (rawData.Length < 2)
+        {
+            Debug.LogWarning("[Deserialization Warning] Not enough data for message length.");
+            return null;
+        }
+
+        short messageLength = BinarySerializer.ReadInt16BigEndian(reader);
+
         try
         {
-            using MemoryStream stream = new(rawData);
-            using BinaryReader reader = new(stream);
-
-            if (rawData.Length < 2)
-            {
-                Debug.LogWarning("[Deserialization Warning] Not enough data for message length.");
-                return null;
-            }
-
-            short messageLength = BinarySerializer.ReadInt16BigEndian(reader);
-
             short messageType = BinarySerializer.ReadInt16BigEndian(reader);
             //Debug.Log(messageType);
             short statusCode = BinarySerializer.ReadInt16BigEndian(reader);
             // Debug.Log("AAAAAAAA: " + messageType + " " + statusCode);
             byte[] payloadBytes = reader.ReadBytes(messageLength - (2 + 2));
-
+        
             return CreateMessageFromType(messageType, payloadBytes);
         }
         catch (Exception e)
         {
-            Debug.LogError($"[Deserialization Error] {e.StackTrace} {rawData.Length}");
+            Debug.LogError($"[Deserialization Error] {e.StackTrace} {messageType} {rawData.Length}");
             return null;
         }
     }
