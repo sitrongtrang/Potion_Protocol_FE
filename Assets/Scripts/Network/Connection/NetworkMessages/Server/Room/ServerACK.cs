@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
 
-[SerializeField]
+[Serializable]
 public class ServerACK : ServerMessage
 {
     [FieldOrder(0)]

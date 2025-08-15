@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
 
-[SerializeField]
+[Serializable]
 public class ServerPlayerUnReady : ServerMessage
 {
     [FieldOrder(0)]

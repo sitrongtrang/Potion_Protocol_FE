@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 
+[Serializable]
 public class ServerCreateRoom : ServerMessage
 {
     [FieldOrder(0)]

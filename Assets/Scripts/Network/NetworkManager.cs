@@ -280,7 +280,7 @@ public class NetworkManager : MonoBehaviour
     private bool HandleSystemMessage(ServerMessage message)
     {
         NetworkTime.Instance?.OnAnyMessageReceived(message);
-        Debug.Log(message.MessageType);
+        // Debug.Log(message.MessageType);
         switch (message.MessageType)
         {
             case NetworkMessageTypes.Server.System.AuthSuccess:
@@ -309,7 +309,7 @@ public class NetworkManager : MonoBehaviour
                 SendMessage(new ReconnectMessage { Token = _authToken, SessionToken = _sessionToken });
             if (PlayerPrefs.HasKey("SessionToken") && PlayerPrefs.HasKey("AuthToken"))
             {
-                Debug.Log("Authenticate token: " + PlayerPrefs.GetString("AuthToken") + "Session token: " + PlayerPrefs.GetString("SessionToken"));
+                // Debug.Log("Authenticate token: " + PlayerPrefs.GetString("AuthToken") + "Session token: " + PlayerPrefs.GetString("SessionToken"));
                 SendMessage(
                     new ReconnectMessage
                     {

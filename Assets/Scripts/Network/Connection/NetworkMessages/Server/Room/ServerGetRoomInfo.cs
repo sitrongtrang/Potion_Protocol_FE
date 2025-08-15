@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
 
-[SerializeField]
+[Serializable]
 public class ServerGetRoomInfo : ServerMessage
 {
     [FieldOrder(0)]

@@ -1,7 +1,8 @@
+using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-[SerializeField]
+[Serializable]
 public class ServerPlayerLeft : ServerMessage
 {
     [FieldOrder(0)]

@@ -13,7 +13,6 @@ public class NetworkTime : MonoBehaviour
     {
         if (Instance == null)
         {
-            NetworkManager.OnDisconnectedComplete += Reconnect;
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
@@ -65,6 +64,16 @@ public class NetworkTime : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        NetworkManager.OnDisconnectedComplete += Reconnect;
+    }
+
+    private void OnDisable()
+    {
+        NetworkManager.OnDisconnectedComplete -= Reconnect;
+    }
+
     void Reconnect()
     {
         StartCoroutine(StartReconnect());
@@ -73,7 +82,7 @@ public class NetworkTime : MonoBehaviour
     IEnumerator StartReconnect()
     {
         Debug.Log("Starting reconnect");
-        NetworkManager.Instance.ScheduleReconnect();
+        NetworkManager.Instance?.ScheduleReconnect();
         if (PlayerPrefs.HasKey("Username") && PlayerPrefs.HasKey("Password"))
         {
             if (!NetworkManager.Instance.IsInGame)
@@ -99,10 +108,14 @@ public class NetworkTime : MonoBehaviour
                     LoginSuccess loginSuccess = JsonConvert.DeserializeObject<LoginSuccess>(request.downloadHandler.text);
                     // GameObject networkManager = new GameObject("Network Manager");
                     // networkManager.AddComponent<NetworkManager>();
-                    Debug.Log("AuthToken: ++" + loginSuccess.LoginSuccessDat.Token);
-                    NetworkManager.Instance.SetAuthenToken(loginSuccess.LoginSuccessDat.Token);
+                    // Debug.Log("AuthToken: ++" + loginSuccess.LoginSuccessDat.Token);
+                    NetworkManager.Instance?.SetAuthenToken(loginSuccess.LoginSuccessDat.Token);
                     PlayerPrefs.SetString("AuthToken", loginSuccess.LoginSuccessDat.Token);
-
+                    ResetTimeoutTimers();
+                }
+                else
+                {
+                    SceneManager.LoadScene("LoginScene");
                 }
             }
             
@@ -136,7 +149,7 @@ public class NetworkTime : MonoBehaviour
         {
             if (NetworkManager.Instance.IsAuthenticated)
                 SendPing();
-            Debug.Log("Ping");
+            // Debug.Log("Ping");
             yield return new WaitForSeconds(_pingIntervalInSeconds);
         }
     }
@@ -165,7 +178,10 @@ public class NetworkTime : MonoBehaviour
 
         _awaitingPong = false;
 
-        OnPingChanged?.Invoke(RoundTripTime);
+        UnityMainThreadDispatcher.Instance.Enqueue(() =>
+        {
+            OnPingChanged?.Invoke(RoundTripTime);
+        });
 
         _lastPongTime = TimeSyncUtils.GetUnixTimeMilliseconds();
         _missedPongCount = 0; // reset khi có pong
