@@ -105,7 +105,7 @@ public class NetworkManager : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogError($"Connection failed: {e.Message} {_ip} {_port}");
+            Debug.LogError($"Connection failed: {e.Message}");
             ScheduleReconnect();
         }
     }
@@ -181,7 +181,7 @@ public class NetworkManager : MonoBehaviour
     #region Data Handling
     private void ReceiveData()
     {
-        byte[] buffer = new byte[4096 * 2];
+        byte[] buffer = new byte[4096 * 2 * 2];
         while (_isConnected)
         {
             try
