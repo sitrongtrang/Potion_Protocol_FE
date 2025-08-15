@@ -17,7 +17,8 @@ public class RoomPing : MonoBehaviour
 
     private void UpdatePing(long newPing)
     {
-        _ping.text = newPing.ToString() + " ms";
+        _ping.SetText("{0} ms", newPing);
+        _ping.ForceMeshUpdate();
         Debug.Log("Ping: " + newPing);
     }
 }
