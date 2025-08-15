@@ -54,6 +54,10 @@ public class EnemyController : MonoBehaviour
     {
         HandleDetection();
     }
+    private void OnDestroy()
+    {
+        if (_healthBar) Destroy(_healthBar.gameObject);
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
 

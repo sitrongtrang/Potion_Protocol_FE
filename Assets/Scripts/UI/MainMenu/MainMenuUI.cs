@@ -20,6 +20,7 @@ public class MainMenuUI : MonoBehaviour
     private void Start()
     {
         _name.text = NetworkManager.Instance.ClientDisplayName;
+        _onlinePlayButton.interactable = LoadingScreenUI.Instance.GetData<bool>("Online");
     }
 
 

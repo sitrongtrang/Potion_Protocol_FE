@@ -37,7 +37,7 @@ public class HttpAuthHandler : MonoBehaviour
         if (NetworkManager.Instance.IsAuthenticated)
         {
             NetworkManager.Instance.Authenticate();
-            StartCoroutine(LoadMainMenu());
+            StartCoroutine(LoadMainMenu(true));
         }
     }
 
@@ -75,7 +75,7 @@ public class HttpAuthHandler : MonoBehaviour
             NetworkManager.Instance.SetAuthenToken(loginSuccess.LoginSuccessDat.Token);
             NetworkManager.Instance.Authenticate();
 
-            StartCoroutine(LoadMainMenu());
+            StartCoroutine(LoadMainMenu(true));
             // LoadTestScene();
         }
         else
@@ -93,8 +93,14 @@ public class HttpAuthHandler : MonoBehaviour
         SceneManager.LoadSceneAsync("FriendListScene");
     }
 
-    private IEnumerator LoadMainMenu()
+    public void OnPlayAsGuest()
     {
+        StartCoroutine(LoadMainMenu(false));
+    }
+
+    private IEnumerator LoadMainMenu(bool isOnline)
+    {
+        LoadingScreenUI.Instance.SetData("Online", isOnline);
         AsyncOperation request = SceneManager.LoadSceneAsync("MainMenu");
         request.completed += async (op) =>
         {
