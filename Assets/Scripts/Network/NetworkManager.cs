@@ -181,7 +181,7 @@ public class NetworkManager : MonoBehaviour
     #region Data Handling
     private void ReceiveData()
     {
-        byte[] buffer = new byte[4096 * 2 * 2 * 2];
+        byte[] buffer = new byte[4096 * 2 * 2];
         while (_isConnected)
         {
             try
